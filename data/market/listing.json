@@ -1,6 +1,6 @@
 {
   "errors": [
-    "afx: afx.kwayisi.org was unreachable earlier in this run; skipping https://afx.kwayisi.org/nse/"
+    "afx: HTTPSConnectionPool(host='afx.kwayisi.org', port=443): Max retries exceeded with url: /nse/ (Caused by NewConnectionError(\"HTTPSConnection(host='afx.kwayisi.org', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))"
   ],
   "intraday": null,
   "rows": {
