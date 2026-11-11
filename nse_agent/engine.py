@@ -142,8 +142,8 @@ def _tier(r: dict, vals: dict, valued: bool, screen: list[str], base: float | No
     if len(vals) < 2:
         blockers.append(f"only {len(vals)} valuation model(s) available, needs 2")
     elif not valued:
-        blockers.append(f"margin of safety under {mos_threshold:.0%} "
-                        f"({len(r['agree'])} of {len(vals)} models agree, needs {r['agree_needed']})")
+        blockers.append(f"only {len(r['agree'])} of {len(vals)} valuation models show {mos_threshold:.0%} or more "
+                        f"upside, needs {r['agree_needed']}")
     if base is not None and base <= hurdle:
         blockers.append(f"base return {base:.1%} does not beat the {hurdle:.2%} hurdle")
     r["blockers"] = blockers
