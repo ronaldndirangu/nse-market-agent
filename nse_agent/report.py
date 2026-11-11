@@ -7,6 +7,7 @@ from pathlib import Path
 
 from . import DISCLAIMER, __version__, config, fundamentals as fnd
 from .fmt import kes, num, pct, table
+from .returns import weights_text
 
 MODEL_NAMES = {
     "justified_pb": "justified P/B",
@@ -174,7 +175,7 @@ def render(result: dict, portfolio_md: str | None = None) -> str:
                           "Quality", "Momentum", "Composite", "Status", "Confidence"], trs))
     else:
         out.append("No counters could be valued. See data gaps.")
-    out += ["", "Composite rank = 0.5 z(margin of safety) + 0.3 z(quality) + 0.2 z(momentum).", ""]
+    out += ["", f"Composite rank = {weights_text()}.", ""]
 
     out += ["## Picks", ""]
     if picks:
@@ -243,8 +244,11 @@ def write(result: dict, portfolio_md: str | None = None) -> Path:
     return dated
 
 
-PAGES = [("latest.md", "index.html", "Latest report"), ("simulation.md", "simulation.html", "Simulation"),
-         ("backtest.md", "backtest.html", "Backtest"), ("scorecard.md", "scorecard.html", "Scorecard")]
+PAGES = [("latest.md", "index.html", "Weekly report"), ("daily/latest.md", "daily.html", "Daily brief"),
+         ("retrospective.md", "retrospective.html", "Retrospective"), ("simulation.md", "simulation.html", "Simulation"),
+         ("backtest.md", "backtest.html", "Backtest"), ("scorecard.md", "scorecard.html", "Scorecard"),
+         ("tuning.md", "tuning.html", "Weight tuning")]
+DATED = re.compile(r"\d{4}-\d{2}-\d{2}\.md")
 
 CSS = """body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:1100px;margin:2rem auto;
 padding:0 1rem;line-height:1.5;color:#1f2328}table{border-collapse:collapse;display:block;overflow-x:auto;margin:1rem 0}
@@ -265,9 +269,11 @@ def build_site() -> list[Path]:
     """Render the Markdown reports into a static site for GitHub Pages."""
     config.SITE.mkdir(parents=True, exist_ok=True)
     present = [(src, dst, title) for src, dst, title in PAGES if (config.REPORTS / src).exists()]
-    archive = sorted((p for p in config.REPORTS.glob("*.md") if re.fullmatch(r"\d{4}-\d{2}-\d{2}\.md", p.name)),
-                     reverse=True)
+    archives = [("reports", config.REPORTS, "archive.html", "Weekly report archive"),
+                ("daily", config.REPORTS / "daily", "daily-archive.html", "Daily brief archive")]
     links = [(dst, title) for _, dst, title in present] + [("archive.html", "Archive")]
+    if (config.REPORTS / "daily").exists():
+        links.append(("daily-archive.html", "Daily archive"))
     written = []
 
     def page(name: str, title: str, body: str) -> None:
@@ -284,12 +290,15 @@ def build_site() -> list[Path]:
 
     for src, dst, title in present:
         page(dst, title, _md_to_html((config.REPORTS / src).read_text(encoding="utf-8")))
-    (config.SITE / "reports").mkdir(exist_ok=True)
-    items = []
-    for p in archive:
-        name = p.stem + ".html"
-        page(f"reports/{name}", p.stem, _md_to_html(p.read_text(encoding="utf-8")))
-        items.append(f'<li><a href="reports/{name}">{p.stem}</a></li>')
-    page("archive.html", "Archive", "<h1>Report archive</h1><ul>" + "".join(items) + "</ul>")
+    for sub, src_dir, index, heading in archives:
+        if sub == "daily" and not src_dir.exists():
+            continue
+        (config.SITE / sub).mkdir(exist_ok=True)
+        items = []
+        for p in sorted((p for p in src_dir.glob("*.md") if DATED.fullmatch(p.name)), reverse=True):
+            name = f"{sub}/{p.stem}.html"
+            page(name, p.stem, _md_to_html(p.read_text(encoding="utf-8")))
+            items.append(f'<li><a href="{name}">{p.stem}</a></li>')
+        page(index, heading, f"<h1>{heading}</h1><ul>" + "".join(items) + "</ul>")
     (config.SITE / ".nojekyll").write_text("", encoding="utf-8")
     return written

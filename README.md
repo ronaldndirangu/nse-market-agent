@@ -54,7 +54,7 @@ All thresholds live in [`data/settings.yaml`](data/settings.yaml).
 
 | Workflow | When (UTC) | What it does |
 | --- | --- | --- |
-| Daily prices | 13:00 Mon to Fri (16:00 EAT) | Records closing prices and NASI, commits `data/` |
+| Daily brief | 13:00 Mon to Fri (16:00 EAT) | Records closing prices, values and ranks every stock, writes the daily brief (top 5 tiered Buy, Watch or Avoid, with reasons and what changed), appends the prediction ledger in `data/rankings/`, deploys Pages, and comments on the `daily-alert` issue only on a material change |
 | Results watch | 13:30 Mon to Fri | Detects results announcements, extracts figures by rule, opens a review PR |
 | Weekly report | 14:00 Friday | Values and ranks, runs simulation, backtest and scorecard, commits `reports/`, deploys Pages, opens an issue |
 | Monthly scorecard | 15:00 on the 1st | Scores every logged pick against the market |

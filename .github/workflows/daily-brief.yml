@@ -1,0 +1,80 @@
+name: Daily brief
+
+on:
+  schedule:
+    - cron: "0 13 * * 1-5" # 16:00 EAT, one hour after the NSE close
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  brief:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Record closing prices
+        id: prices
+        continue-on-error: true
+        run: python -m nse_agent daily
+      - name: Value, rank and write the daily brief
+        run: |
+          python -m nse_agent brief --no-prices --alert-file "$RUNNER_TEMP/alert.md" | tee "$RUNNER_TEMP/brief.txt"
+          cat "$RUNNER_TEMP/brief.txt" >> "$GITHUB_STEP_SUMMARY"
+      - name: Commit brief, ledger and data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data reports
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Daily brief $(date -u +%F)"
+          git pull --rebase
+          git push
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+      - name: Alert on material change
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/daily.html
+        run: |
+          alert="$RUNNER_TEMP/alert.md"
+          if [ ! -s "$alert" ]; then echo "No material change"; exit 0; fi
+          printf '\nFull brief: %s\n' "$PAGES_URL" >> "$alert"
+          gh label create daily-alert --repo "$GITHUB_REPOSITORY" --color D93F0B \
+            --description "Material change in the daily brief" --force
+          issue=$(gh issue list --repo "$GITHUB_REPOSITORY" --label daily-alert --state open --limit 1 --json number --jq '.[0].number // empty')
+          if [ -n "$issue" ]; then
+            gh issue comment "$issue" --repo "$GITHUB_REPOSITORY" --body-file "$alert"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "NSE daily alerts" --label daily-alert --body-file "$alert"
+          fi
+      - name: Fail if no price source answered
+        if: steps.prices.outcome == 'failure'
+        run: |
+          echo "::error::Every price source failed; the brief used cached prices."
+          exit 1
+
+  deploy:
+    needs: brief
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

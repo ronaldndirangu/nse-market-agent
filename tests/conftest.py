@@ -33,10 +33,12 @@ def fixture_text():
 
 @pytest.fixture(autouse=True)
 def _fresh_caches():
-    from nse_agent import fundamentals, prices
+    from nse_agent import dividends, fundamentals, prices
 
     prices.clear_cache()
+    dividends.clear_cache()
     fundamentals._load.cache_clear()
     yield
     prices.clear_cache()
+    dividends.clear_cache()
     fundamentals._load.cache_clear()

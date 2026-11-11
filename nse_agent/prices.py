@@ -14,21 +14,27 @@ def _rows(ticker: str) -> tuple:
     return tuple((r["date"], r["close"], r["volume"]) for r in storage.read_prices(ticker))
 
 
+@lru_cache(maxsize=64)
+def _dates(ticker: str) -> tuple:
+    return tuple(d for d, _, _ in _rows(ticker))
+
+
 def clear_cache() -> None:
     _rows.cache_clear()
+    _dates.cache_clear()
 
 
 def rows(ticker: str, as_of: date | None = None) -> list[tuple[str, float, float | None]]:
     data = _rows(ticker)
     if as_of is None:
         return list(data)
-    i = bisect_right([d for d, _, _ in data], as_of.isoformat())
-    return list(data[:i])
+    return list(data[:bisect_right(_dates(ticker), as_of.isoformat())])
 
 
 def last_close(ticker: str, as_of: date | None = None) -> tuple[str, float] | None:
-    r = rows(ticker, as_of)
-    return (r[-1][0], r[-1][1]) if r else None
+    data = _rows(ticker)
+    i = len(data) if as_of is None else bisect_right(_dates(ticker), as_of.isoformat())
+    return (data[i - 1][0], data[i - 1][1]) if i else None
 
 
 def avg_turnover(ticker: str, as_of: date | None = None, sessions: int = 60) -> tuple[float | None, int]:
@@ -46,6 +52,15 @@ def momentum(ticker: str, as_of: date | None = None) -> float | None:
         return None
     skip = closes[-22]
     return fmean([skip / closes[-253] - 1, skip / closes[-127] - 1])
+
+
+def volatility(ticker: str, as_of: date | None = None, weeks: int = 52) -> float | None:
+    """Annualised standard deviation of the last `weeks` weekly returns (needs at least half)."""
+    wr = weekly_returns(ticker, as_of)
+    recent = [wr[k] for k in sorted(wr)[-weeks:]]
+    if len(recent) < weeks // 2:
+        return None
+    return pvariance(recent) ** 0.5 * 52 ** 0.5
 
 
 def weekly_closes(ticker: str, as_of: date | None = None) -> dict[str, float]:
