@@ -28,7 +28,7 @@ quality:
   warning_lookback_days: 180
 
 ranking:
-  weights: {margin_of_safety: 0.5, quality: 0.3, momentum: 0.2}
+  weights: {dividend_yield: 0.3, margin_of_safety: 0.1, momentum: 0.4, quality: 0.2}
 
 scenarios:
   growth_shift: 0.02
