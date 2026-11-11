@@ -4,7 +4,7 @@ from datetime import date
 import pytest
 import yaml
 
-from nse_agent import announcements, brief, dividends, ledger, storage
+from nse_agent import announcements, brief, config, dividends, ledger, storage
 from nse_agent.engine import analyze
 from nse_agent.fmt import pct
 from nse_agent.returns import SIGNALS
@@ -23,13 +23,16 @@ def outputs(root):
 
 
 def test_tiers_binding_and_signal_breakdown(market):
+    weights = config.settings()["ranking"]["weights"]
     result = analyze(AS_OF)
     for t, r in result["rows"].items():
         assert r["binding"].startswith(PREFIX[r["tier"]])
         assert (r["tier"] == "Buy") == (t in result["buys"])
         assert set(r["signals"]) == set(SIGNALS)
         assert r["composite"] == pytest.approx(sum(s["contribution"] for s in r["signals"].values()))
-        assert r["signals"]["dividend_yield"]["contribution"] == 0
+        for name, s in r["signals"].items():
+            assert s["weight"] == weights.get(name, 0)
+            assert s["contribution"] == pytest.approx(s["weight"] * s["z"])
         assert r["volatility"] > 0
 
 
