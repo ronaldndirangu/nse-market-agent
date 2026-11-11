@@ -73,3 +73,30 @@ def test_nse_announcements():
     items = nse.parse_announcements(page)
     assert items == [{"title": "KCB Group Plc & Subsidiaries Unaudited Results",
                       "url": "https://www.nse.co.ke/wp-content/uploads/2026/11/kcb.pdf"}]
+
+def test_unreachable_host_is_skipped_after_retries(monkeypatch):
+    import requests
+
+    from nse_agent import http
+
+    calls = []
+
+    class DeadSession:
+        def request(self, method, url, **kwargs):
+            calls.append(url)
+            raise requests.ConnectionError("Network is unreachable")
+
+    monkeypatch.setattr(http, "_down_hosts", set())
+    monkeypatch.setattr(http, "session", lambda: DeadSession())
+
+    with pytest.raises(requests.ConnectionError):
+        http.get_text("https://blocked.example/a")
+    assert len(calls) == 3
+
+    with pytest.raises(requests.ConnectionError, match="unreachable earlier"):
+        http.get_text("https://blocked.example/b")
+    assert len(calls) == 3
+
+    with pytest.raises(requests.ConnectionError):
+        http.get_text("https://other.example/c")
+    assert len(calls) == 6

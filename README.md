@@ -154,7 +154,10 @@ Tools: `screen_stocks`, `run_valuation`, `get_fundamentals`, `get_announcements`
   fundamentals.
 - AFX does not publish NASI history, so NASI comparisons start from the first daily run. The scorecard and backtest use
   an equal-weight index of the universe until then.
-- Either price source may block GitHub runner IPs. The daily job fails visibly when both do.
+- AFX is unreachable from GitHub-hosted runners (IPv4 connections time out), so scheduled runs take prices and volume
+  from the NSE ticker API, record no NASI level, and keep AFX company stats from the last local `refresh`. The HTTP
+  client stops calling a host for the rest of a run once it fails every retry. The daily job fails visibly when both
+  price sources fail.
 - Capital gains tax is not modelled.
 - The cost of equity is high (about 20% at beta 1: the 10-year Kenyan bond yield less the default spread, plus beta x
   ERP plus the country risk premium). Gordon and earnings-power values are conservative as a result, so most counters
