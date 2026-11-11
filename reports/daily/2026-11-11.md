@@ -4,13 +4,37 @@
 
 16 stocks valued. Buy 0, Watch 3, Avoid 13. The 364-day T-bill nets 7.7% after withholding tax; the buy hurdle is 12.67%.
 
+## High confidence undervalued
+
+A stock is flagged **High confidence undervalued** only when all four gates pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.67% hurdle (Return). Risk is rated separately from seven factors and never changes the flag, so check it before sizing a position.
+
+No stock qualifies on 2026-11-11. The closest candidates and the gates they miss:
+
+| Ticker | Tier | Gates passed | Missing | Risk |
+|---|---|---|---|---|
+| KPLC | Watch | 3 of 4 | Valuation: 1 of 2 models show at least 15% upside, needs 3 | High |
+| KCB | Watch | 3 of 4 | Valuation: 2 of 5 models show at least 15% upside, needs 3 | High |
+| EQTY | Avoid | 2 of 4 | Valuation: 1 of 5 models show at least 15% upside, needs 3; Return: base return 11.3% against the 12.67% hurdle | High |
+
+### Risk profile
+
+Each factor is rated Low, Moderate or High from fixed thresholds in `data/settings.yaml`. Overall risk is High when the balance sheet or events factor is High or two factors are High, and Moderate when one factor is High or three are Moderate.
+
+| Ticker | Risk | Volatility | Beta | Liquidity | Downside | Valuation spread | Balance sheet | Events |
+|---|---|---|---|---|---|---|---|---|
+| KPLC | High | High (37%) | High (1.70) | Low (KES 27.5M) | High (-13.9%) | High (5.9x) | n/a | Low (none) |
+| KCB | High | Moderate (30%) | High (1.34) | Low (KES 126.0M) | Moderate (-6.4%) | High (2.9x) | Moderate (NPL 15.1%) | Low (none) |
+| EQTY | High | Moderate (31%) | Moderate (1.06) | Low (KES 197.0M) | High (-14.4%) | High (3.0x) | Low (NPL 9.5%) | Low (none) |
+| COOP | Moderate | Moderate (29%) | Moderate (0.99) | Low (KES 32.3M) | Moderate (-8.5%) | Moderate (1.7x) | Moderate (NPL 13.9%) | Low (none) |
+| ABSA | Moderate | Moderate (34%) | Moderate (1.12) | Moderate (KES 11.1M) | High (-10.2%) | Moderate (1.8x) | Moderate (NPL 10.1%) | Low (none) |
+
 ## Top 5
 
-- KPLC #1 (Watch): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: margin of safety (+1.32). Not a Buy: margin of safety under 15% (1 of 2 models agree, needs 2).
-- KCB #2 (Watch): 10.8% upside to base fair value KES 99.47; base return 16.9% a year beats the 12.67% hurdle. Biggest score driver: margin of safety (+0.60). Not a Buy: margin of safety under 15% (2 of 5 models agree, needs 3).
-- EQTY #3 (Avoid): 0.0% upside to base fair value KES 99.53; base return 11.3% a year trails the 12.67% hurdle. Biggest score driver: margin of safety (+0.43). Avoid: margin of safety under 15% (1 of 5 models agree, needs 3); base return 11.3% does not beat the 12.67% hurdle.
-- COOP #4 (Avoid): 24.8% downside to base fair value KES 27.88; base return 2.5% a year trails the 12.67% hurdle. Biggest score driver: quality (+0.32). Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return 2.5% does not beat the 12.67% hurdle.
-- ABSA #5 (Avoid): 25.2% downside to base fair value KES 23.11; base return 2.2% a year trails the 12.67% hurdle. Biggest score driver: quality (+0.32). Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return 2.2% does not beat the 12.67% hurdle.
+- KPLC #1 (Watch): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: margin of safety (+1.32). Not a Buy: margin of safety under 15% (1 of 2 models agree, needs 2). High risk (volatility 37%; beta 1.70).
+- KCB #2 (Watch): 10.8% upside to base fair value KES 99.47; base return 16.9% a year beats the 12.67% hurdle. Biggest score driver: margin of safety (+0.60). Not a Buy: margin of safety under 15% (2 of 5 models agree, needs 3). High risk (beta 1.34; fair value spread 2.9x (51.7 to 152.6)).
+- EQTY #3 (Avoid): 0.0% upside to base fair value KES 99.53; base return 11.3% a year trails the 12.67% hurdle. Biggest score driver: margin of safety (+0.43). Avoid: margin of safety under 15% (1 of 5 models agree, needs 3); base return 11.3% does not beat the 12.67% hurdle. High risk (bear case -14.4% a year; fair value spread 3.0x (46.3 to 139.9)).
+- COOP #4 (Avoid): 24.8% downside to base fair value KES 27.88; base return 2.5% a year trails the 12.67% hurdle. Biggest score driver: quality (+0.32). Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return 2.5% does not beat the 12.67% hurdle. Moderate risk (volatility 29%; beta 0.99).
+- ABSA #5 (Avoid): 25.2% downside to base fair value KES 23.11; base return 2.2% a year trails the 12.67% hurdle. Biggest score driver: quality (+0.32). Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return 2.2% does not beat the 12.67% hurdle. Moderate risk (bear case -10.2% a year; volatility 34%).
 
 ### Score breakdown
 
@@ -33,29 +57,31 @@ No earlier brief in the ledger, so there is nothing to compare yet.
 
 ## Full ranking
 
-| Rank | Ticker | Tier | Composite | Price | MoS | Bear / base / bull a year | Div. yield | Volatility | Binding constraint |
-|---|---|---|---|---|---|---|---|---|---|
-| 1 | KPLC | Watch | +1.49 | KES 22.00 | 56.9% | -13.9% / 29.6% / 56.7% | 5.0% | 36.7% | Not a Buy: margin of safety under 15% (1 of 2 models agree, needs 2). |
-| 2 | KCB | Watch | +0.95 | KES 89.75 | 10.8% | -6.4% / 16.9% / 36.3% | 6.7% | 30.2% | Not a Buy: margin of safety under 15% (2 of 5 models agree, needs 3). |
-| 3 | EQTY | Avoid | +0.89 | KES 99.50 | 0.0% | -14.4% / 11.3% / 26.4% | 5.8% | 31.0% | Avoid: margin of safety under 15% (1 of 5 models agree, needs 3); base return 11.3% does not beat the 12.67% hurdle. |
-| 4 | COOP | Avoid | +0.43 | KES 37.05 | -24.8% | -8.5% / 2.5% / 12.3% | 6.7% | 29.2% | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return 2.5% does not beat the 12.67% hurdle. |
-| 5 | ABSA | Avoid | +0.28 | KES 30.90 | -25.2% | -10.2% / 2.2% / 11.3% | 7.6% | 34.5% | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return 2.2% does not beat the 12.67% hurdle. |
-| 6 | IMH | Avoid | +0.19 | KES 85.00 | -46.3% | -23.2% / -10.1% / 11.0% | 4.4% | 31.0% | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return -10.1% does not beat the 12.67% hurdle. |
-| 7 | BAT | Avoid | -0.21 | KES 536.00 | -38.1% | -9.9% / -3.6% / 2.4% | 13.1% | 21.8% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -3.6% does not beat the 12.67% hurdle. |
-| 8 | DTK | Avoid | -0.23 | KES 187.75 | -23.5% | -19.3% / 1.2% / 50.8% | 4.8% | 29.6% | Avoid: margin of safety under 15% (2 of 5 models agree, needs 3); base return 1.2% does not beat the 12.67% hurdle. |
-| 9 | EABL | Avoid | -0.36 | KES 272.25 | -66.1% | -29.3% / -22.1% / -15.6% | 4.7% | 34.4% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -22.1% does not beat the 12.67% hurdle. |
-| 10 | NCBA | Watch | -0.36 | KES 88.25 | 4.8% | -0.2% / 15.1% / 21.6% | 9.5% | 24.2% | Not a Buy: margin of safety under 15% (1 of 5 models agree, needs 3). |
-| 11 | KEGN | Avoid | -0.42 | KES 9.80 | -46.7% | -20.7% / -11.5% / -3.3% | 16.8% | 33.7% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -11.5% does not beat the 12.67% hurdle. |
-| 12 | CARB | Avoid | -0.44 | KES 43.10 | -58.4% | -20.6% / -16.9% / -13.2% | 4.6% | 39.0% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -16.9% does not beat the 12.67% hurdle. |
-| 13 | SCOM | Avoid | -0.48 | KES 35.05 | -63.7% | -27.9% / -20.0% / -12.8% | 5.7% | 24.3% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -20.0% does not beat the 12.67% hurdle. |
-| 14 | SBIC | Avoid | -0.50 | KES 261.25 | -24.2% | -1.0% / 4.1% / 14.3% | 7.7% | 27.2% | Avoid: quality gate failed (Piotroski 2/6 below gate); margin of safety under 15% (0 of 5 models agree, needs 3) (+1 more). |
-| 15 | SCBK | Avoid | -0.53 | KES 302.00 | -27.8% | -9.5% / -0.8% / 1.3% | 10.4% | 18.4% | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return -0.8% does not beat the 12.67% hurdle. |
-| 16 | TOTL | Avoid | -0.71 | KES 45.15 | -59.9% | -22.0% / -20.2% / -18.4% | 7.6% | 26.8% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -20.2% does not beat the 12.67% hurdle. |
+| Rank | Ticker | Tier | Composite | Price | MoS | Bear / base / bull a year | Div. yield | Volatility | Risk | Binding constraint |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | KPLC | Watch | +1.49 | KES 22.00 | 56.9% | -13.9% / 29.6% / 56.7% | 5.0% | 36.7% | High | Not a Buy: margin of safety under 15% (1 of 2 models agree, needs 2). |
+| 2 | KCB | Watch | +0.95 | KES 89.75 | 10.8% | -6.4% / 16.9% / 36.3% | 6.7% | 30.2% | High | Not a Buy: margin of safety under 15% (2 of 5 models agree, needs 3). |
+| 3 | EQTY | Avoid | +0.89 | KES 99.50 | 0.0% | -14.4% / 11.3% / 26.4% | 5.8% | 31.0% | High | Avoid: margin of safety under 15% (1 of 5 models agree, needs 3); base return 11.3% does not beat the 12.67% hurdle. |
+| 4 | COOP | Avoid | +0.43 | KES 37.05 | -24.8% | -8.5% / 2.5% / 12.3% | 6.7% | 29.2% | Moderate | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return 2.5% does not beat the 12.67% hurdle. |
+| 5 | ABSA | Avoid | +0.28 | KES 30.90 | -25.2% | -10.2% / 2.2% / 11.3% | 7.6% | 34.5% | Moderate | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return 2.2% does not beat the 12.67% hurdle. |
+| 6 | IMH | Avoid | +0.19 | KES 85.00 | -46.3% | -23.2% / -10.1% / 11.0% | 4.4% | 31.0% | High | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return -10.1% does not beat the 12.67% hurdle. |
+| 7 | BAT | Avoid | -0.21 | KES 536.00 | -38.1% | -9.9% / -3.6% / 2.4% | 13.1% | 21.8% | Low | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -3.6% does not beat the 12.67% hurdle. |
+| 8 | DTK | Avoid | -0.23 | KES 187.75 | -23.5% | -19.3% / 1.2% / 50.8% | 4.8% | 29.6% | High | Avoid: margin of safety under 15% (2 of 5 models agree, needs 3); base return 1.2% does not beat the 12.67% hurdle. |
+| 9 | EABL | Avoid | -0.36 | KES 272.25 | -66.1% | -29.3% / -22.1% / -15.6% | 4.7% | 34.4% | Moderate | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -22.1% does not beat the 12.67% hurdle. |
+| 10 | NCBA | Watch | -0.36 | KES 88.25 | 4.8% | -0.2% / 15.1% / 21.6% | 9.5% | 24.2% | Moderate | Not a Buy: margin of safety under 15% (1 of 5 models agree, needs 3). |
+| 11 | KEGN | Avoid | -0.42 | KES 9.80 | -46.7% | -20.7% / -11.5% / -3.3% | 16.8% | 33.7% | High | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -11.5% does not beat the 12.67% hurdle. |
+| 12 | CARB | Avoid | -0.44 | KES 43.10 | -58.4% | -20.6% / -16.9% / -13.2% | 4.6% | 39.0% | High | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -16.9% does not beat the 12.67% hurdle. |
+| 13 | SCOM | Avoid | -0.48 | KES 35.05 | -63.7% | -27.9% / -20.0% / -12.8% | 5.7% | 24.3% | Moderate | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -20.0% does not beat the 12.67% hurdle. |
+| 14 | SBIC | Avoid | -0.50 | KES 261.25 | -24.2% | -1.0% / 4.1% / 14.3% | 7.7% | 27.2% | Moderate | Avoid: quality gate failed (Piotroski 2/6 below gate); margin of safety under 15% (0 of 5 models agree, needs 3) (+1 more). |
+| 15 | SCBK | Avoid | -0.53 | KES 302.00 | -27.8% | -9.5% / -0.8% / 1.3% | 10.4% | 18.4% | Moderate | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return -0.8% does not beat the 12.67% hurdle. |
+| 16 | TOTL | Avoid | -0.71 | KES 45.15 | -59.9% | -22.0% / -20.2% / -18.4% | 7.6% | 26.8% | High | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -20.2% does not beat the 12.67% hurdle. |
 
 ## How to read this
 
 - Composite score = 0.5 z(margin of safety) + 0.3 z(quality) + 0.2 z(momentum). Dividend yield and volatility are logged for research but carry no weight until a reviewed tuning PR changes the weights.
 - **Buy** clears every gate: quality passes, the screen passes, at least two valuation models agree on a margin of safety of 15% or more, and the base return beats the hurdle. **Watch** passes quality and misses one gate. **Avoid** misses more, or fails quality.
+- **High confidence undervalued** is a stricter Buy: three or more models agree and quality scores 0.67 or more. In the monthly backtest it fired rarely and lost money over 12 months in none of its cases, but its excess return over the equal-weight universe was mixed, so treat it as a filter for review, not a guarantee.
+- **Risk** (Low, Moderate or High) rates volatility, beta, liquidity, bear-case return, fair value spread, balance sheet (Altman Z'' or bank NPL) and warning announcements. It is shown beside the tier and never changes it.
 - Returns are annualised over 3 years, net of trading costs and dividend withholding tax.
 - Every stock's score, signals, tier and projections are appended daily to `data/rankings/live/` and never edited, so the retrospective can score these calls later.
 
