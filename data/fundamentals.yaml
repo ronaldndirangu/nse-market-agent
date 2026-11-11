@@ -13,6 +13,26 @@ companies:
       it
     - H1-FY2027 is unaudited and reflects an IFRS 15 policy change, so comparatives may differ
     - H1-FY2027 omits dps, long_term_debt and gross_profit (not printed)
+    - 'gross_profit omitted for all periods: Safaricom''s income statement prints no gross profit line (consistent
+      with existing records).'
+    - 'FY2017 not recorded: no FY2017 or FY2018 annual results file is on nse.co.ke (the media library jumps from
+      the FY2016 release to the HY Sep 2018 release), safaricom.co.ke returns Incapsula 403, and the africanfinancials
+      mirror returns Wordfence 403.'
+    - FY2018-FY2020 come from releases printed in KShs billions to 2 decimals (precision about +/-5m); FY2021-FY2023
+      are in KShs millions.
+    - 'Accounting basis changes: FY2018 is IAS 18 / IAS 17 (prior-year comparative in the FY2019 release); FY2019
+      is the IFRS 15 ''as reported'' column, pre-IFRS 16; FY2020 onward is IFRS 16.'
+    - FY2018-FY2021 releases use a capital-employed balance sheet layout; total_assets (NCA + CA) and total_liabilities
+      (NCL + CL) are computed and tie to equity exactly.
+    - 'long_term_debt 0 for FY2018-FY2021: all bank borrowings are classified as current; FY2021 non-current liabilities
+      (17,541.7) are not itemised and are not borrowings per the borrowings paragraph.'
+    - operating_cash_flow missing for FY2018 (FY2019 release prints only free cash flow); FY2019 operating_cash_flow
+      is the prior-year comparative in the FY2020 release.
+    - FY2018 dps derived from the proposed dividend reserve; FY2019 dps includes the 0.62 special dividend.
+    - EPS is printed to one decimal (FY2023 1.6, FY2022 1.7); net_income/shares gives 1.554 and 1.738, within the
+      5% check against the rounded print.
+    - total_liabilities + total_equity (parent) is lower than total_assets by the non-controlling interest (FY2023
+      75,810.0; FY2022 40,232.3, mainly Safaricom Ethiopia); TL + parent equity + NCI ties exactly.
     periods:
     - period: H1-FY2027
       period_end: '2026-09-30'
@@ -130,10 +150,191 @@ companies:
         long_term_debt: 63093.2
         operating_cash_flow: 107923.6
         shares_outstanding: 40065.4
+    - period: FY2023
+      period_end: '2023-03-31'
+      published: '2023-07-31'
+      published_basis: deadline
+      type: annual
+      source_url: https://africanfinancials.com/document/ke-scom-2023-ar-00/
+      source_note: Safaricom Plc 2023 Annual Report (africanfinancials mirror, Google Drive file 1UYH7vvTm4rpcUbPobhEHNx4SA1OkiAab),
+        group consolidated statements, KShs millions, approved by the board 10 May 2023. revenue = total revenue;
+        ebit = operating profit; net_income = profit attributable to equity holders of the parent (profit incl.
+        NCI 52,482.8 after Ethiopia losses; includes IAS 29 hyperinflation monetary gain 10,383.1). total_equity
+        excludes NCI 75,810.0. retained_earnings excludes the proposed final dividend reserve 24,840.6. long_term_debt
+        = non-current borrowings 42,050.0 (excludes non-current lease liabilities 29,984.0). dps = interim 0.58
+        + final 0.62.
+      values:
+        revenue: 310904.8
+        ebit: 84997.4
+        net_income: 62268.9
+        eps: 1.6
+        dps: 1.2
+        total_assets: 509207.0
+        total_liabilities: 245841.1
+        total_equity: 187555.9
+        current_assets: 72435.5
+        current_liabilities: 140377.2
+        retained_earnings: 121823.6
+        long_term_debt: 42050.0
+        operating_cash_flow: 116151.1
+        shares_outstanding: 40065.4
+    - period: FY2022
+      period_end: '2022-03-31'
+      published: '2022-07-31'
+      published_basis: deadline
+      type: annual
+      source_url: https://africanfinancials.com/document/ke-scom-2023-ar-00/
+      source_note: Prior-year comparative from the Safaricom Plc 2023 Annual Report (group consolidated statements,
+        KShs millions). revenue = total revenue; ebit = operating profit; net_income = profit attributable to equity
+        holders of the parent (profit incl. NCI 67,496.1). total_equity excludes NCI 40,232.3. retained_earnings
+        excludes the proposed final dividend reserve 30,049.1. long_term_debt = non-current borrowings 44,910.8
+        (excludes non-current lease liabilities 14,584.9). dps = interim 0.64 + final 0.75 per the FY2023 AR dividend
+        note.
+      values:
+        revenue: 298077.9
+        ebit: 109128.6
+        net_income: 69648.1
+        eps: 1.7
+        dps: 1.39
+        total_assets: 346798.6
+        total_liabilities: 167097.7
+        total_equity: 139468.6
+        current_assets: 65250.0
+        current_liabilities: 98150.6
+        retained_earnings: 110528.9
+        long_term_debt: 44910.8
+        operating_cash_flow: 110700.5
+        shares_outstanding: 40065.4
+    - period: FY2021
+      period_end: '2021-03-31'
+      published: '2021-05-12'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/safaricom-plc-condensed-audited-results-for-the-year-ended-31-mar-2021-summary.pdf
+      source_note: 'Safaricom Plc condensed audited results for the year ended 31 March 2021 (NSE announcement,
+        scanned, KShs millions), signed by the Chairman 12 May 2021. IFRS 16 basis; no NCI in FY2021. revenue =
+        total revenue; ebit = EBIT; net_income = profit attributable to equity holders. The balance sheet uses a
+        capital-employed layout, so total_assets = non-current assets 174,719.9 + current assets 55,909.4 and total_liabilities
+        = non-current liabilities 17,541.7 + current liabilities 75,452.3 (computed). retained_earnings excludes
+        the proposed dividend reserve 36,860.2. long_term_debt 0: bank borrowings of 14,772.0 are all shown in current
+        liabilities; non-current liabilities are not itemised in the summary. dps = interim 0.45 + final 0.92 =
+        1.37 as printed in the dividends paragraph.'
+      values:
+        revenue: 264026.5
+        ebit: 96164.9
+        net_income: 68676.2
+        eps: 1.71
+        dps: 1.37
+        total_assets: 230629.3
+        total_liabilities: 92994.0
+        total_equity: 137635.3
+        current_assets: 55909.4
+        current_liabilities: 75452.3
+        retained_earnings: 96571.8
+        long_term_debt: 0
+        operating_cash_flow: 105377.4
+        shares_outstanding: 40065.4
+    - period: FY2020
+      period_end: '2020-03-31'
+      published: '2020-04-28'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/safaricom-plc-audited-results-for-the-year-ended-31-mar-2020.pdf
+      source_note: 'Safaricom Plc audited results for the year ended 31 March 2020 (NSE announcement), board approval
+        28 April 2020. Printed in KShs billions to 2 decimals and converted to millions (precision about +/-5).
+        The FY2021 release prints these as prior-year comparatives in millions and agrees within rounding (revenue
+        262,555.7; EBIT 101,493.8; net income 73,657.9; equity 143,080.1; current assets 48,822.2; current liabilities
+        56,500.7; OCF 110,362.6). First year on IFRS 16. total_assets = NCA 164,400 + CA 48,820 and total_liabilities
+        = NCL 13,640 + CL 56,500 (computed). retained_earnings excludes the proposed dividend reserve (56,091.6).
+        long_term_debt 0: borrowings of 8,000 are current. dps = final 1.40 (no interim).'
+      values:
+        revenue: 262560.0
+        ebit: 101490.0
+        net_income: 73660.0
+        eps: 1.84
+        dps: 1.4
+        total_assets: 213220.0
+        total_liabilities: 70140.0
+        total_equity: 143080.0
+        current_assets: 48820.0
+        current_liabilities: 56500.0
+        retained_earnings: 82790.0
+        long_term_debt: 0
+        operating_cash_flow: 110360.0
+        shares_outstanding: 40065.4
+    - period: FY2019
+      period_end: '2019-03-31'
+      published: '2019-05-03'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/safaricom-plc-audited-results-for-the-year-ended-31-march-2019.pdf
+      source_note: 'Safaricom Plc audited results for the year ended 31 March 2019 (NSE announcement, scanned; cover
+        letter dated 3 May 2019). Printed in KShs billions to 2 decimals and converted to millions. Values from
+        the IFRS 15 ''as reported'' column (pre-IFRS 16). total_assets = NCA 142,520 + CA 49,960 and total_liabilities
+        = NCL 1,870 + CL 46,260 (computed). retained_earnings excludes proposed dividend reserves (normal 50,080;
+        special 24,840). long_term_debt 0: borrowings of 4,030 are current. dps = final 1.25 + special 0.62 per
+        the cover letter. The release prints only free cash flow (63,110); operating_cash_flow is the prior-year
+        comparative in the FY2020 release.'
+      field_sources:
+        operating_cash_flow: https://www.nse.co.ke/wp-content/uploads/safaricom-plc-audited-results-for-the-year-ended-31-mar-2020.pdf
+      values:
+        revenue: 250280.0
+        ebit: 88970.0
+        net_income: 62490.0
+        eps: 1.56
+        dps: 1.87
+        total_assets: 192480.0
+        total_liabilities: 48130.0
+        total_equity: 144350.0
+        current_assets: 49960.0
+        current_liabilities: 46260.0
+        retained_earnings: 65220.0
+        long_term_debt: 0
+        operating_cash_flow: 99810.0
+        shares_outstanding: 40065.4
+    - period: FY2018
+      period_end: '2018-03-31'
+      published: '2018-07-31'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/safaricom-plc-audited-results-for-the-year-ended-31-march-2019.pdf
+      source_note: 'Prior-year comparative from the Safaricom Plc FY2019 audited results announcement (IAS 18 /
+        IAS 17 basis as previously reported), KShs billions to 2 decimals converted to millions. The original FY2018
+        release is not on nse.co.ke and safaricom.co.ke is blocked. total_assets = NCA 139,980 + CA 27,460; total_liabilities
+        = current liabilities 43,530 (no non-current liabilities printed). retained_earnings excludes the proposed
+        dividend reserve 44,070. long_term_debt 0: borrowings of 4,040 are current. dps derived. operating_cash_flow
+        not available.'
+      field_sources:
+        dps: 'derived: proposed dividend reserve at 31 Mar 2018 44,070 / 40,065.4m shares = 1.10 (proposed special
+          dividend 0.00)'
+      values:
+        revenue: 234220.0
+        ebit: 79270.0
+        net_income: 55290.0
+        eps: 1.38
+        dps: 1.1
+        total_assets: 167440.0
+        total_liabilities: 43530.0
+        total_equity: 123910.0
+        current_assets: 27460.0
+        current_liabilities: 43530.0
+        retained_earnings: 75640.0
+        long_term_debt: 0
+        shares_outstanding: 40065.4
   EABL:
     name: East African Breweries Plc
     gaps:
     - FY2026 final dividend 8.70 is proposed; AGM approval not verified
+    - total_liabilities computed as non-current + current liabilities for every period, so it EXCLUDES non-controlling
+      interests; total_assets = total_liabilities + total_equity (parent) + NCI ties exactly in every year (this
+      is the same arithmetic as the existing FY2024 record, whose note says 'includes NCI' but whose numbers also
+      tie only after adding NCI).
+    - FY2017-FY2022 annual reports print no operating profit line; ebit for those years is computed as gross profit
+      - selling and distribution - administrative - other expenses (= profit before tax + finance costs - finance
+      income). The FY2023 AR prints FY2022 operating profit as 28,252.250, which equals this computation.
+    - long_term_debt = non-current borrowings only; non-current lease liabilities (from FY2020, IFRS 16) and finance
+      lease liabilities (FY2017) are excluded and stated in each source_note.
+    - 'FY2021 dps recorded as 0: the directors declared no interim or final dividend for the year (COVID-19).'
     periods:
     - period: FY2026
       period_end: '2026-06-30'
@@ -213,11 +414,229 @@ companies:
         long_term_debt: 41426.867
         operating_cash_flow: 22098.165
         shares_outstanding: 790.774356
+    - period: FY2023
+      period_end: '2023-06-30'
+      published: '2023-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://staticcontents.investis.com/files/d/diageo/eabl-2023-annual-report.pdf
+      source_note: EABL 2023 Integrated Report & Financial Statements (linked from eabl.com/investors/annual-reports),
+        consolidated, Ksh thousands converted to millions; approved 27 July 2023. ebit = printed operating profit.
+        total_assets and total_liabilities computed (non-current + current); NCI 10,332.042 excluded from both total_liabilities
+        and total_equity. retained_earnings excludes the proposed dividend reserve 1,383.855. long_term_debt = non-current
+        borrowings (non-current lease liabilities 2,051.832 excluded). dps 5.50 = 3.75 interim + 1.75 final.
+      values:
+        revenue: 109649.413
+        gross_profit: 47399.974
+        ebit: 24194.43
+        net_income: 9857.351
+        eps: 12.47
+        dps: 5.5
+        total_assets: 132593.187
+        total_liabilities: 100849.309
+        total_equity: 21411.836
+        current_assets: 43437.797
+        current_liabilities: 41890.816
+        retained_earnings: 14186.178
+        long_term_debt: 48965.793
+        operating_cash_flow: 11054.161
+        shares_outstanding: 790.774356
+    - period: FY2022
+      period_end: '2022-06-30'
+      published: '2022-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.eabl.com/~/media/Files/E/eabl/documents/investor/annual-reports/2022/eabl-2022-annual-report.pdf
+      source_note: EABL 2022 Financial Statements, consolidated, Kshs thousands converted to millions; approved
+        27 July 2022. The 2022 income statement prints no operating profit line; ebit 28,252.250 is the operating
+        profit printed as the FY2022 comparative in the 2023 AR and equals the 2022 AR's gross profit less selling,
+        administrative and other expenses. total_assets and total_liabilities computed; NCI 10,200.169 excluded
+        from both. retained_earnings excludes the proposed dividend 5,733.114. long_term_debt = non-current borrowings
+        (lease liabilities 999.918 excluded). dps 11.00 = 3.75 interim + 7.25 final.
+      field_sources:
+        ebit: https://staticcontents.investis.com/files/d/diageo/eabl-2023-annual-report.pdf
+      values:
+        revenue: 109409.027
+        gross_profit: 52855.998
+        ebit: 28252.25
+        net_income: 11857.336
+        eps: 15.0
+        dps: 11.0
+        total_assets: 110426.67
+        total_liabilities: 84012.875
+        total_equity: 16213.626
+        current_assets: 35410.863
+        current_liabilities: 41838.42
+        retained_earnings: 8678.086
+        long_term_debt: 35161.874
+        operating_cash_flow: 25905.703
+        shares_outstanding: 790.774356
+    - period: FY2021
+      period_end: '2021-06-30'
+      published: '2021-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.eabl.com/~/media/Files/E/eabl/documents/investor/annual-reports/2021/eabl-2021-annual-report-september.pdf
+      source_note: 'EABL 2021 Integrated Report & Financial Statements, consolidated, Kshs thousands converted to
+        millions; approved 29 July 2021. ebit computed (no operating profit line printed): gross profit 37,413.693
+        - selling 7,362.119 - administrative 9,320.113 - other expenses 5,924.689 = 14,806.772 (= PBT 10,858.033
+        + finance costs 4,039.981 - finance income 91.242). total_assets and total_liabilities computed; NCI 8,667.237
+        excluded from both. No proposed dividend reserve. long_term_debt = non-current borrowings (lease liabilities
+        1,062.360 excluded). No dividend declared for FY2021.'
+      values:
+        revenue: 85961.815
+        gross_profit: 37413.693
+        ebit: 14806.772
+        net_income: 4354.228
+        eps: 5.51
+        dps: 0.0
+        total_assets: 100117.014
+        total_liabilities: 85264.584
+        total_equity: 6185.193
+        current_assets: 34092.534
+        current_liabilities: 39702.313
+        retained_earnings: 5519.268
+        long_term_debt: 38260.591
+        operating_cash_flow: 14611.771
+        shares_outstanding: 790.774356
+    - period: FY2020
+      period_end: '2020-06-30'
+      published: '2020-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.eabl.com/~/media/Files/E/eabl/documents/investor/annual-reports/2020/eabl-2020-annual-report.pdf
+      source_note: 'EABL 2020 Integrated Report and Financial Statements, consolidated, Kshs thousands converted
+        to millions; approved 29 July 2020. ebit computed (no operating profit line printed): gross profit 33,020.030
+        - selling 6,590.629 - administrative 8,565.240 - other expenses 3,382.811 = 14,481.350 (= PBT + finance
+        costs - finance income). total_assets and total_liabilities computed; NCI 7,672.325 excluded from both.
+        long_term_debt = non-current borrowings (lease liabilities 1,151.841 excluded). dps 3.00 = interim only;
+        no final dividend (COVID-19).'
+      values:
+        revenue: 74916.259
+        gross_profit: 33020.03
+        ebit: 14481.35
+        net_income: 4086.477
+        eps: 5.17
+        dps: 3.0
+        total_assets: 88658.406
+        total_liabilities: 74665.138
+        total_equity: 6320.943
+        current_assets: 25968.419
+        current_liabilities: 31044.6
+        retained_earnings: 5869.572
+        long_term_debt: 36900.0
+        operating_cash_flow: 3346.849
+        shares_outstanding: 790.774356
+    - period: FY2019
+      period_end: '2019-06-30'
+      published: '2019-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.eabl.com/~/media/Files/E/eabl/documents/investor/annual-reports/2019/eabl-annual-report-2019.pdf
+      source_note: 'EABL 2019 Integrated Report and Financial Statements, consolidated, Kshs thousands converted
+        to millions; approved 25 July 2019. ebit computed (no operating profit line printed): gross profit 38,117.137
+        - selling 7,209.400 - administrative 9,398.222 - other expenses 322.889 = 21,186.626 (= PBT + finance costs
+        - finance income). total_assets and total_liabilities computed; NCI 7,510.372 excluded from both. retained_earnings
+        excludes the proposed dividend 4,744.646. long_term_debt = non-current borrowings (no leases). dps 8.50
+        = 2.50 interim + 6.00 final.'
+      values:
+        revenue: 82543.241
+        gross_profit: 38117.137
+        ebit: 21186.626
+        net_income: 8877.789
+        eps: 11.23
+        dps: 8.5
+        total_assets: 87065.627
+        total_liabilities: 70910.876
+        total_equity: 8644.379
+        current_assets: 29602.381
+        current_liabilities: 33659.381
+        retained_earnings: 4015.601
+        long_term_debt: 31115.178
+        operating_cash_flow: 22565.803
+        shares_outstanding: 790.774356
+    - period: FY2018
+      period_end: '2018-06-30'
+      published: '2018-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.eabl.com/~/media/Files/E/eabl/documents/investor/annual-reports/2018/eabl-annual-report-2018.pdf
+      source_note: 'EABL 2018 Integrated Report and Financial Statements, consolidated, Kshs thousands converted
+        to millions; approved 26 July 2018. ebit computed (no operating profit line printed): gross profit 32,404.423
+        - selling 6,423.767 - administrative 8,534.844 - other expenses 2,344.884 = 15,100.928 (= PBT + finance
+        costs - finance income). total_assets and total_liabilities computed; NCI 5,971.091 excluded from both.
+        retained_earnings excludes the proposed dividend 4,349.259. long_term_debt = non-current borrowings. dps
+        7.50 = 2.00 interim + 5.50 final.'
+      values:
+        revenue: 73456.832
+        gross_profit: 32404.423
+        ebit: 15100.928
+        net_income: 5683.764
+        eps: 7.19
+        dps: 7.5
+        total_assets: 71246.826
+        total_liabilities: 59594.79
+        total_equity: 5680.945
+        current_assets: 21525.962
+        current_liabilities: 25783.768
+        retained_earnings: 1933.212
+        long_term_debt: 30546.789
+        operating_cash_flow: 13559.342
+        shares_outstanding: 790.774356
+    - period: FY2017
+      period_end: '2017-06-30'
+      published: '2017-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.eabl.com/~/media/Files/E/eabl/documents/investor/annual-reports/2017/eabl-annual-report-2017.pdf
+      source_note: 'EABL 2017 Integrated Report and Financial Statements, consolidated, Kshs thousands converted
+        to millions; approved 27 July 2017. revenue as printed (''Revenue''). ebit computed (no operating profit
+        line printed): gross profit 31,130.323 - selling 5,375.078 - administrative 8,249.140 - other expenses 1,025.056
+        = 16,481.049 (= PBT + finance costs - finance income). total_assets and total_liabilities computed; NCI
+        was negative (-397.403), so total_liabilities + total_equity exceeds total_assets by 397.403. retained_earnings
+        excludes the proposed dividend 4,349.259. long_term_debt = non-current borrowings (finance lease liabilities
+        110.166 excluded). dps 7.50 = 2.00 interim + 5.50 final.'
+      values:
+        revenue: 70247.065
+        gross_profit: 31130.323
+        ebit: 16481.049
+        net_income: 7677.032
+        eps: 9.71
+        dps: 7.5
+        total_assets: 66666.312
+        total_liabilities: 54678.142
+        total_equity: 12385.573
+        current_assets: 22134.6
+        current_liabilities: 21983.714
+        retained_earnings: 7334.7
+        long_term_debt: 27488.274
+        operating_cash_flow: 13914.471
+        shares_outstanding: 790.774356
   BAT:
     name: British American Tobacco Kenya Plc
     gaps:
     - FY2025 final dividend 60 is proposed; AGM approval not verified
     - H1-2026 omits ebit, gross_profit and retained_earnings (not comparable or not printed)
+    - Full annual reports on batkenya.com (and africanfinancials mirrors) return HTTP 403; every period is taken
+      from the condensed audited results announcement filed on nse.co.ke (KShs millions).
+    - 'gross_profit omitted for all periods: the announcements print only net revenue and a single ''cost of operations''
+      line (total operating costs), no cost of sales or gross profit.'
+    - 'long_term_debt omitted for all periods: the condensed balance sheet prints only total non-current liabilities
+      (deferred tax, lease liabilities, etc.) with no borrowings line.'
+    - total_assets computed as non-current + current assets and total_liabilities as non-current + current liabilities;
+      total_equity = shareholders' funds (no NCI). TA = TL + TE ties exactly in every period.
+    - FY2022, FY2021 and FY2020 announcements are image-only PDFs; values were read with OCR (Windows.Media.Ocr)
+      and verified by internal totals; FY2022 also matches the comparatives in the text-based FY2023 announcement.
+    - 'Later re-presentations not used (originals recorded): FY2021 operating cash flow 6,240 shown as 6,235 in
+      the FY2022 announcement; FY2019 operating cash flow 7,684 shown as 7,635, and FY2019 current assets/current
+      liabilities 11,122/10,221 shown as 11,251/10,350 (net working capital unchanged at 901), in the FY2020 announcement.'
+    - FY2018 is a prior-year comparative from the FY2019 announcement (the original FY2018 announcement is not on
+      nse.co.ke). The FY2019 statement of changes in equity shows an accounting policy change of -14 to retained
+      earnings at 1 Jan 2018. FY2018 dps 35.00 derived from the printed dividend for the year of KSh 3,500m / 100m
+      shares (per-share amount not printed).
+    - 'FY2017 and FY2016 not recorded: no BAT Kenya results files exist on nse.co.ke for those years and batkenya.com
+      returns 403. A web search summary quoted FY2017 figures, but the underlying document could not be opened,
+      so nothing was recorded.'
     periods:
     - period: H1-2026
       period_end: '2026-06-30'
@@ -323,11 +742,168 @@ companies:
         long_term_debt: 8.813
         operating_cash_flow: 5619.301
         shares_outstanding: 100.0
+    - period: FY2022
+      period_end: '2022-12-31'
+      published: '2023-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/BAT-Kenya-Plc-Audited-Results-for-the-Year-Ended-31-Dec-2022.pdf
+      source_note: BAT Kenya Plc audited results for the year ended 31 Dec 2022 (announcement dated 16 Feb 2023,
+        image PDF read by OCR), KShs millions. revenue = net revenue (after excise duty and VAT); ebit = profit
+        from operations; total_assets = NCA 12,096 + CA 11,851; total_liabilities = NCL 2,084 + CL 5,481; total_equity
+        = shareholders' funds. dps 57.00 = interim 5.00 + final 52.00. Figures agree with the comparatives in the
+        FY2023 announcement.
+      values:
+        revenue: 27378.0
+        ebit: 9880.0
+        net_income: 6892.0
+        eps: 68.92
+        dps: 57.0
+        total_assets: 23947.0
+        total_liabilities: 7565.0
+        total_equity: 16382.0
+        current_assets: 11851.0
+        current_liabilities: 5481.0
+        retained_earnings: 12582.0
+        operating_cash_flow: 5619.0
+        shares_outstanding: 100.0
+    - period: FY2021
+      period_end: '2021-12-31'
+      published: '2022-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/BAT-Kenya-Plc-Audited-Results-for-the-Year-Ended-31-Dec-2021.pdf
+      source_note: BAT Kenya Plc audited results for the year ended 31 Dec 2021 (announcement dated 17 Feb 2022,
+        image PDF read by OCR), KShs millions. revenue = net revenue; ebit = profit from operations; total_assets
+        = NCA 12,305 + CA 11,814; total_liabilities = NCL 1,939 + CL 7,206. dps 53.50 = interim 3.50 + final 50.00.
+        operating_cash_flow 6,240 as originally published (re-presented as 6,235 in the FY2022 announcement).
+      values:
+        revenue: 25428.0
+        ebit: 9370.0
+        net_income: 6483.0
+        eps: 64.83
+        dps: 53.5
+        total_assets: 24119.0
+        total_liabilities: 9145.0
+        total_equity: 14974.0
+        current_assets: 11814.0
+        current_liabilities: 7206.0
+        retained_earnings: 11137.0
+        operating_cash_flow: 6240.0
+        shares_outstanding: 100.0
+    - period: FY2020
+      period_end: '2020-12-31'
+      published: '2021-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/bat-kenya-plc-audited-results-for-the-year-ended-31-dec-2020.pdf
+      source_note: BAT Kenya Plc audited results for the year ended 31 Dec 2020 (announcement dated 18 Feb 2021,
+        image PDF read by OCR), KShs millions. revenue = net revenue; ebit = profit from operations; total_assets
+        = NCA 10,914 + CA 10,792; total_liabilities = NCL 1,576 + CL 8,274. dps 45.00 = interim 3.50 + final 41.50.
+      values:
+        revenue: 25339.0
+        ebit: 7589.0
+        net_income: 5518.0
+        eps: 55.18
+        dps: 45.0
+        total_assets: 21706.0
+        total_liabilities: 9850.0
+        total_equity: 11856.0
+        current_assets: 10792.0
+        current_liabilities: 8274.0
+        retained_earnings: 9129.0
+        operating_cash_flow: 4746.0
+        shares_outstanding: 100.0
+    - period: FY2019
+      period_end: '2019-12-31'
+      published: '2020-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/bat-kenya-plc-full-year-results-for-the-year-ended-31-dec-2019.pdf
+      source_note: BAT Kenya Plc full year results for the year ended 31 Dec 2019 (announcement dated 19 Feb 2020;
+        extracted from the audited consolidated financial statements), KShs millions. revenue = net revenue (gross
+        39,827 less excise and VAT 15,788); ebit = profit from operations; total_assets = NCA 10,685 + CA 11,122;
+        total_liabilities = NCL 1,871 + CL 10,221. dps 33.50 = interim 3.50 + final 30.00 (dividend for the year
+        3,350m). Originals recorded; the FY2020 announcement re-presents operating cash flow as 7,635 and CA/CL
+        as 11,251/10,350.
+      values:
+        revenue: 24039.0
+        ebit: 5726.0
+        net_income: 3885.0
+        eps: 38.85
+        dps: 33.5
+        total_assets: 21807.0
+        total_liabilities: 12092.0
+        total_equity: 9715.0
+        current_assets: 11122.0
+        current_liabilities: 10221.0
+        retained_earnings: 6959.0
+        operating_cash_flow: 7684.0
+        shares_outstanding: 100.0
+    - period: FY2018
+      period_end: '2018-12-31'
+      published: '2019-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/bat-kenya-plc-full-year-results-for-the-year-ended-31-dec-2019.pdf
+      source_note: Prior-year comparative from the BAT Kenya Plc FY2019 full year results announcement, KShs millions.
+        revenue = net revenue (gross 36,496 less excise and VAT 15,746); ebit = profit from operations; total_assets
+        = NCA 9,123 + CA 9,216; total_liabilities = NCL 3,237 + CL 5,792. dps 35.00 derived from the printed dividend
+        for the year of 3,500m / 100m shares. Retained earnings reflect a -14 accounting policy change at 1 Jan
+        2018.
+      field_sources:
+        dps: 'derived: dividend for the year KSh 3,500m (FY2019 announcement income statement) / 100m shares'
+      values:
+        revenue: 20750.0
+        ebit: 6219.0
+        net_income: 4085.0
+        eps: 40.85
+        dps: 35.0
+        total_assets: 18339.0
+        total_liabilities: 9029.0
+        total_equity: 9310.0
+        current_assets: 9216.0
+        current_liabilities: 5792.0
+        retained_earnings: 6490.0
+        operating_cash_flow: 5301.0
+        shares_outstanding: 100.0
   KEGN:
     name: KenGen (Kenya Electricity Generating Company Plc)
     gaps:
     - FY2026 dps 0.75 is the proposed final only; AGM approval not verified
     - Company-only statements; no gross_profit line
+    - Company-only statements as in the repo (KenGen files no group accounts in its results announcements); KShs
+      millions; shares_outstanding 6,594.522m for every period (no share issues after the 2016 rights issue). kengen.co.ke
+      serves a JavaScript bot-challenge page, so every period is taken from nse.co.ke filings.
+    - 'gross_profit omitted for all periods: KenGen prints revenue, reimbursable expenses and operating expenses
+      but no cost of sales or gross profit line (same as the repo records). ebit = operating profit as printed.'
+    - 'FY2017 not recorded: no FY2017 or FY2018 annual results announcement exists on nse.co.ke. The two ''abridged
+      results for the year ended 30 June 2017'' files (kengen-ltd-abridged-financial-statements-notice-of-agm.pdf
+      and the AGM notice variant) contain only the Auditor-General''s report and the AGM notice, with no financial
+      statements, and no half-year Dec 2017 report (which would carry June 2017 columns) was found.'
+    - 'FY2022 is partial: no FY2022 or FY2023 annual results file is on nse.co.ke and the FY2024 announcement carries
+      only FY2023 comparatives. Only the audited 30 June 2022 balance-sheet column and the 1 July 2022 equity opening
+      in the HY Dec 2022 report were found, so revenue, ebit, net_income, eps, operating_cash_flow and long_term_debt
+      are omitted for FY2022. FY2022 dps 0.20 is derived from the dividend of KShs 1,319m paid in the HY Dec 2022
+      equity statement / 6,594.522m shares. FY2022 release was delayed (CMA-approved extension to 30 Nov 2022, notice
+      dated 27 Oct 2022).'
+    - 'FY2022 later restated: the FY2024 announcement shows equity at 1 July 2022 of 274,597 and retained earnings
+      106,686, against 275,082 and 108,024 in the HY Dec 2022 report (originals recorded). The HY Dec 2022 report
+      also restated equity at 1 July 2021 to 206,982 (originally published as 210,323 at 30 June 2021; retained-earnings
+      adjustment of -1,753).'
+    - 'long_term_debt omitted for FY2022, FY2021 and FY2018: those condensed statements print only total non-current
+      liabilities with no borrowings line. FY2023, FY2020 and FY2019 use the non-current borrowings line (repo convention).'
+    - 'FY2019 audited release was delayed: the HY Dec 2019 report published the FY2019 column as unaudited and stated
+      the audit was not complete. FY2019 is recorded from the audited prior-year comparative in the FY2020 annual
+      report (approved 27 Jan 2021), so published uses that date (conservative); the unaudited FY2019 figures in
+      the HY Dec 2019 report are identical.'
+    - 'FY2020 release was delayed: financial statements approved by the Board on 27 Jan 2021 (published = approval
+      date, noted).'
+    - FY2023 operating_cash_flow (23,227) is 'net cash generated from operating activities' in the FY2024 summary
+      cash-flow statement; that summary shows FY2024 as 35,650 while the repo FY2024 record carries 36,845, so the
+      repo may use a different cash-flow line. Treat FY2023 OCF comparability with the repo as unverified.
+    - FY2018 dps 0.40 derived from dividends declared in FY2019 of KShs 2,638m (FY2020 annual report equity statement)
+      / 6,594.522m shares; the per-share amount was not printed in an FY2018 source.
     periods:
     - period: FY2026
       period_end: '2026-06-30'
@@ -400,6 +976,161 @@ companies:
         long_term_debt: 107748.716
         operating_cash_flow: 36845.309
         shares_outstanding: 6594.522
+    - period: FY2023
+      period_end: '2023-06-30'
+      published: '2023-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/KenGen-Plc-Audited-Financial-Results-for-the-Year-Ended-30th-Jun-2024.pdf
+      source_note: 'Prior-year comparative from the KenGen FY2024 audited results announcement (image PDF read by
+        OCR), KShs millions, company. ebit = operating profit; total_liabilities computed (non-current borrowings
+        137,042 + other non-current liabilities 83,155 + current liabilities 22,187). dps 0.30 = first and final
+        (''2023: KShs 0.30''). TA = TL + TE ties.'
+      values:
+        revenue: 53964.0
+        ebit: 9568.0
+        net_income: 5017.0
+        eps: 0.76
+        dps: 0.3
+        total_assets: 516577.0
+        total_liabilities: 242384.0
+        total_equity: 274193.0
+        current_assets: 45873.0
+        current_liabilities: 22187.0
+        retained_earnings: 113193.0
+        long_term_debt: 137042.0
+        operating_cash_flow: 23227.0
+        shares_outstanding: 6594.522
+    - period: FY2022
+      period_end: '2022-06-30'
+      published: '2023-02-28'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/KenGen-Plc-Unaudited-Results-for-the-Half-Year-Ended-31st-December-2022.pdf
+      source_note: 'Partial record: audited 30 June 2022 column of the summary statement of financial position and
+        the 1 July 2022 equity opening in the KenGen HY Dec 2022 report (dated 28 Feb 2023; published = that date
+        because the original FY2022 announcement, due by the CMA-extended 30 Nov 2022, was not found). total_assets
+        = PPE 440,181 + other NCA 22,349 + CA 39,532; total_liabilities = NCL 204,858 + CL 22,122. Income statement,
+        EPS and cash flow not available.'
+      field_sources:
+        dps: 'derived: dividends paid KShs 1,319m in the HY Dec 2022 equity statement (FY2022 final) / 6,594.522m
+          shares'
+      values:
+        dps: 0.2
+        total_assets: 502062.0
+        total_liabilities: 226980.0
+        total_equity: 275082.0
+        current_assets: 39532.0
+        current_liabilities: 22122.0
+        retained_earnings: 108024.0
+        shares_outstanding: 6594.522
+    - period: FY2021
+      period_end: '2021-06-30'
+      published: '2021-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/kengen-plc-audited-results-for-the-year-ended-30-jun-2021.pdf
+      source_note: KenGen audited results for the year ended 30 June 2021 (no release date printed; deadline used),
+        KShs millions, company. ebit = operating profit; total_liabilities computed (NCL 194,939 + CL 20,396). dps
+        0.30 = first and final. Net income is depressed by the tax charge from the corporate tax rate reverting
+        to 30%.
+      values:
+        revenue: 45901.0
+        ebit: 15935.0
+        net_income: 1188.0
+        eps: 0.18
+        dps: 0.3
+        total_assets: 425658.0
+        total_liabilities: 215335.0
+        total_equity: 210323.0
+        current_assets: 43819.0
+        current_liabilities: 20396.0
+        retained_earnings: 106333.0
+        operating_cash_flow: 27443.0
+        shares_outstanding: 6594.522
+    - period: FY2020
+      period_end: '2020-06-30'
+      published: '2021-01-27'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/kengen-plc-audited-results-of-the-company-for-the-financial-year-ended-30-jun-2020.pdf
+      source_note: 'KenGen annual report and audited financial statements for the year ended 30 June 2020 (image
+        PDF read by OCR; detailed statements in KShs ''000 converted to millions), company. Delayed: approved by
+        the Board 27 Jan 2021 (published = approval date). ebit = operating profit; total_liabilities computed (NCL
+        184,552 + CL 17,056); long_term_debt = non-current borrowings. dps 0.30 = first and final. operating_cash_flow
+        17,857 per the detailed cash-flow statement (one summary page prints 17,837); FY2021 comparative confirms
+        17,857.'
+      values:
+        revenue: 44110.491
+        ebit: 20602.85
+        net_income: 18377.0
+        eps: 2.79
+        dps: 0.3
+        total_assets: 412926.93
+        total_liabilities: 201608.0
+        total_equity: 211318.0
+        current_assets: 34038.0
+        current_liabilities: 17056.0
+        retained_earnings: 105444.0
+        long_term_debt: 137349.668
+        operating_cash_flow: 17857.335
+        shares_outstanding: 6594.522
+    - period: FY2019
+      period_end: '2019-06-30'
+      published: '2021-01-27'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/kengen-plc-audited-results-of-the-company-for-the-financial-year-ended-30-jun-2020.pdf
+      source_note: 'Audited prior-year comparative from the KenGen FY2020 annual report (approved 27 Jan 2021; image
+        PDF read by OCR), KShs ''000 converted to millions, company. The FY2019 audit was delayed: the HY Dec 2019
+        report printed the same FY2019 figures as unaudited. published = FY2020 report approval date (conservative;
+        the audited FY2019 release date was not found). ebit = operating profit; total_liabilities computed (NCL
+        180,860 + CL 25,597.466); long_term_debt = non-current borrowings. dps 0.25 = first and final.'
+      values:
+        revenue: 45965.646
+        ebit: 15284.579
+        net_income: 7884.335
+        eps: 1.2
+        dps: 0.25
+        total_assets: 401422.249
+        total_liabilities: 206457.0
+        total_equity: 194965.0
+        current_assets: 33629.0
+        current_liabilities: 25597.466
+        retained_earnings: 86629.244
+        long_term_debt: 128771.882
+        operating_cash_flow: 30585.0
+        shares_outstanding: 6594.522
+    - period: FY2018
+      period_end: '2018-06-30'
+      published: '2018-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/kengen-plc-unaudited-financial-results-for-the-six-months-ended-31-dec-2019-full-year-ended-30-jun-2019.pdf
+      source_note: Audited 30 June 2018 column of the KenGen HY Dec 2019 report (which carries 31 Dec 2019, 31 Dec
+        2018, 30 Jun 2019 and 30 Jun 2018 columns; image PDF read by OCR), KShs millions, company. The original
+        FY2018 announcement is not on nse.co.ke. ebit = operating profit; total_equity = share capital 16,488 +
+        share premium 22,151 + reserves and retained earnings 151,465; total_liabilities computed (NCL 168,370 +
+        CL 20,879).
+      field_sources:
+        retained_earnings: https://www.nse.co.ke/wp-content/uploads/kengen-plc-audited-results-of-the-company-for-the-financial-year-ended-30-jun-2020.pdf
+          (equity statement balance at 1 July 2018, before the IFRS 9 adjustment)
+        dps: 'derived: dividends declared in FY2019 of KShs 2,638m (FY2020 annual report equity statement) / 6,594.522m
+          shares'
+      values:
+        revenue: 45290.0
+        ebit: 11442.0
+        net_income: 7891.0
+        eps: 1.2
+        dps: 0.4
+        total_assets: 379353.0
+        total_liabilities: 189249.0
+        total_equity: 190104.0
+        current_assets: 31412.0
+        current_liabilities: 20879.0
+        retained_earnings: 79659.0
+        operating_cash_flow: 17509.0
+        shares_outstanding: 6594.522
   KPLC:
     name: Kenya Power and Lighting Company Plc
     gaps:
@@ -407,6 +1138,28 @@ companies:
     - FY2026 omits retained_earnings, long_term_debt and shares_outstanding (one-page condensed announcement), so
       no FY2026 BVPS
     - Company-only statements
+    - Company (not group) statements, matching existing KPLC records. revenue = revenue from contracts with customers
+      (electricity sales + foreign exchange adjustment + fuel cost charge), excluding other operating income; ebit
+      = printed 'Operating profit' (includes other operating income); total_liabilities computed as non-current
+      + current liabilities; long_term_debt = non-current 'Borrowings' only (non-current lease liabilities and the
+      43.0 preference shares excluded).
+    - FY2023 statement pages in the original FY2023 annual report are images (not text-extractable); values taken
+      from the prior-year comparative in the FY2024 annual report, which agree with the original FY2023 audited
+      results announcement (KES millions) of 26 Oct 2023.
+    - 'Restatements (originals recorded): FY2017 restated in FY2018 report (net_income 7,266.131 -> 5,280.425; EPS
+      3.72 -> 2.71; total_equity 69,961.655 -> 63,333.617; deferred tax and other corrections). FY2018 restated
+      in FY2019 report (net_income 1,917.992 -> 3,268.626; EPS 0.98 -> 1.67; total_equity 64,207.389 -> 60,622.423;
+      revenue 125,854.230 -> 131,378.974). FY2022 restated in FY2023 report (net_income 3,504.289 -> 3,263; total_equity
+      60,179.394 -> 59,633).'
+    - 'Reclassifications (originals recorded): FY2019 balance sheet re-presented in FY2020 report (total_assets
+      328,004.926 -> 328,494.615; operating_cash_flow 26,750.718 -> 26,839.031). FY2021 re-presented in FY2022 report
+      (total_assets 332,230.125 -> 331,206.664; long_term_debt 91,042.791 -> 90,247.806; operating_cash_flow 32,466.340
+      -> 33,489.802).'
+    - 'Delayed reporting: FY2018 statements approved 22 Nov 2018, FY2019 approved 4 Sep 2020 and FY2020 approved
+      25 Feb 2021 (all past the 30 Oct deadline), so those three records use published_basis noted with the board
+      approval date; the public announcement may have followed by a few days.'
+    - FY2022 annual report cash-flow page header mislabels its columns as 2021/2020; the values are FY2022/FY2021
+      (they tie to the FY2021 report).
     periods:
     - period: FY2026
       period_end: '2026-06-30'
@@ -482,11 +1235,219 @@ companies:
         long_term_debt: 81895.385
         operating_cash_flow: 28374.216
         shares_outstanding: 1951.467045
+    - period: FY2023
+      period_end: '2023-06-30'
+      published: '2023-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.kplc.co.ke/storage/01JDRPZS8NZ473CWE2XCSQ1REJ.pdf
+      source_note: 'Prior-year comparative from the KPLC Annual Report and Financial Statements for the year ended
+        30 June 2024 (company statements, Shs''000 converted to millions). Agrees with the original FY2023 audited
+        results announcement dated 26 Oct 2023 (field_sources dps). Original FY2023 annual report statement pages
+        are images. total_liabilities computed (NCL 164,606.943 + CL 132,275.488). dps 0: no interim paid and no
+        dividend recommended for FY2023.'
+      field_sources:
+        dps: https://www.kplc.co.ke/storage/01J1A57J1MX470CNCD228FKTNG.pdf
+      values:
+        revenue: 190974.954
+        gross_profit: 47399.424
+        ebit: 19213.426
+        net_income: -3193.179
+        eps: -1.64
+        dps: 0.0
+        total_assets: 353725.272
+        total_liabilities: 296882.431
+        total_equity: 56842.841
+        current_assets: 81041.557
+        current_liabilities: 132275.488
+        retained_earnings: 29942.955
+        long_term_debt: 94456.942
+        operating_cash_flow: 32651.766
+        shares_outstanding: 1951.467045
+    - period: FY2022
+      period_end: '2022-06-30'
+      published: '2022-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.kplc.co.ke/storage/01J199X5D4WQQ1XEK07HM6WJYZ.pdf
+      source_note: 'KPLC Annual Report and Financial Statements for the year ended 30 June 2022 (company statements,
+        Shs''000 converted to millions); approved 27 Oct 2022. total_liabilities computed (NCL 159,098.240 + CL
+        110,431.165). Cash-flow page header mislabels columns as 2021/2020; values are FY2022. dps 0: no interim
+        paid and no final recommended. Later restated in FY2023 report (net_income 3,263; equity 59,633).'
+      values:
+        revenue: 157353.254
+        gross_profit: 42145.214
+        ebit: 17414.809
+        net_income: 3504.289
+        eps: 1.8
+        dps: 0.0
+        total_assets: 329708.799
+        total_liabilities: 269529.405
+        total_equity: 60179.394
+        current_assets: 54687.018
+        current_liabilities: 110431.165
+        retained_earnings: 33279.508
+        long_term_debt: 86664.395
+        operating_cash_flow: 28550.753
+        shares_outstanding: 1951.467045
+    - period: FY2021
+      period_end: '2021-06-30'
+      published: '2021-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.kplc.co.ke/storage/01J198A2CH7WVT0BCK27040511.pdf
+      source_note: 'KPLC Annual Report and Financial Statements for the year ended 30 June 2021 (company statements,
+        Shs''000 converted to millions); approved 29 Oct 2021. total_liabilities computed (NCL 158,942.073 + CL
+        116,114.111). dps 0: no interim paid and no final recommended. Balance sheet and cash flow re-presented
+        in FY2022 report (total_assets 331,206.664); originals recorded.'
+      values:
+        revenue: 144119.605
+        gross_profit: 49899.591
+        ebit: 17084.918
+        net_income: 1489.688
+        eps: 0.76
+        dps: 0.0
+        total_assets: 332230.125
+        total_liabilities: 275056.184
+        total_equity: 57173.941
+        current_assets: 49634.944
+        current_liabilities: 116114.111
+        retained_earnings: 30274.055
+        long_term_debt: 91042.791
+        operating_cash_flow: 32466.34
+        shares_outstanding: 1951.467045
+    - period: FY2020
+      period_end: '2020-06-30'
+      published: '2021-02-25'
+      published_basis: noted
+      type: annual
+      source_url: https://www.kplc.co.ke/storage/01J198CFZXC4HKJQBXWY74KZCN.pdf
+      source_note: 'KPLC Annual Report and Financial Statements 2019/2020 (company statements, Shs''000 converted
+        to millions). Delayed: approved by the Board 25 Feb 2021 (published date = approval date). total_liabilities
+        computed (NCL 152,894.799 + CL 117,475.761). dps 0: no interim paid and no final recommended. Figures agree
+        with FY2021 report comparatives.'
+      values:
+        revenue: 133258.602
+        gross_profit: 45759.21
+        ebit: 5312.226
+        net_income: -939.482
+        eps: -0.48
+        dps: 0.0
+        total_assets: 325267.359
+        total_liabilities: 270370.56
+        total_equity: 54896.799
+        current_assets: 42626.939
+        current_liabilities: 117475.761
+        retained_earnings: 27996.913
+        long_term_debt: 94957.232
+        operating_cash_flow: 23561.211
+        shares_outstanding: 1951.467045
+    - period: FY2019
+      period_end: '2019-06-30'
+      published: '2020-09-04'
+      published_basis: noted
+      type: annual
+      source_url: https://www.kplc.co.ke/storage/01J1CEQZDM3VQ0Z0EMGC2900ND.pdf
+      source_note: 'KPLC Annual Report and Financial Statements 2018/2019 (company statements, Shs''000 converted
+        to millions). Delayed: approved by the Board 4 Sep 2020 (published date = approval date). total_liabilities
+        computed (NCL 156,583.263 + CL 115,190.801). dps 0: no interim paid and no final recommended. Balance sheet
+        re-presented in FY2020 report (total_assets 328,494.615); originals recorded.'
+      values:
+        revenue: 133140.887
+        gross_profit: 42988.591
+        ebit: 10530.956
+        net_income: 261.553
+        eps: 0.13
+        dps: 0.0
+        total_assets: 328004.926
+        total_liabilities: 271774.064
+        total_equity: 56230.862
+        current_assets: 44220.94
+        current_liabilities: 115190.801
+        retained_earnings: 29330.976
+        long_term_debt: 92615.401
+        operating_cash_flow: 26750.718
+        shares_outstanding: 1951.467045
+    - period: FY2018
+      period_end: '2018-06-30'
+      published: '2018-11-22'
+      published_basis: noted
+      type: annual
+      source_url: https://www.kplc.co.ke/storage/01J1A7G5T652FT6M83842HKB2P.pdf
+      source_note: 'KPLC Annual Report and Financial Statements 2017/2018 (company statements, Shs''000 converted
+        to millions); Delayed: approved by the Board 22 Nov 2018 (published date = approval date). total_liabilities
+        computed (NCL 166,190.004 + CL 106,257.796). dps 0: directors did not recommend a dividend. Restated in
+        FY2019 report (net_income 3,268.626, EPS 1.67); originals recorded.'
+      values:
+        revenue: 125854.23
+        gross_profit: 41753.751
+        ebit: 10795.885
+        net_income: 1917.992
+        eps: 0.98
+        dps: 0.0
+        total_assets: 336655.189
+        total_liabilities: 272447.8
+        total_equity: 64207.389
+        current_assets: 54620.181
+        current_liabilities: 106257.796
+        retained_earnings: 37307.503
+        long_term_debt: 96929.05
+        operating_cash_flow: 28086.126
+        shares_outstanding: 1951.467045
+    - period: FY2017
+      period_end: '2017-06-30'
+      published: '2017-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.kplc.co.ke/storage/01J1A98QFJKJB2AG3HWFK1QC5Q.pdf
+      source_note: 'KPLC Annual Report and Financial Statements 2016/2017 (company statements, Shs''000 converted
+        to millions); approved 19 Oct 2017. retained_earnings = ''Reserves'' line (note 24: retained earnings; ties
+        to retained earnings column in statement of changes in equity). total_liabilities computed (NCL 196,433.605
+        + CL 75,257.967). dps 0.50 = first and final (no interim). Restated in FY2018 report (net_income 5,280.425,
+        EPS 2.71, equity 63,333.617); originals recorded.'
+      values:
+        revenue: 120742.27
+        gross_profit: 41803.508
+        ebit: 16517.236
+        net_income: 7266.131
+        eps: 3.72
+        dps: 0.5
+        total_assets: 341653.227
+        total_liabilities: 271691.572
+        total_equity: 69961.655
+        current_assets: 65286.094
+        current_liabilities: 75257.967
+        retained_earnings: 43061.769
+        long_term_debt: 111075.216
+        operating_cash_flow: 27359.824
+        shares_outstanding: 1951.467045
   TOTL:
     name: TotalEnergies Marketing Kenya Plc
     gaps:
     - shares_outstanding includes 454.477m redeemable preference shares, matching the printed EPS
     - No ebit or long_term_debt lines in the statements
+    - Single-entity statements (Total Kenya / TotalEnergies Marketing Kenya files no group accounts), KShs thousands
+      converted to millions. revenue = net sales after indirect taxes and duties. total_liabilities computed as
+      non-current + current liabilities, which equals total assets - total equity for every period. shares_outstanding
+      629.542m = 175.065m ordinary + 454.477m redeemable preference shares (repo convention); the printed EPS ties
+      to profit / 629.542m in every year FY2016-FY2022.
+    - 'ebit and long_term_debt omitted for all periods: the statements have no operating-profit subtotal, and no
+      non-current borrowings exist (only short-term borrowings inside current liabilities, e.g. 6,200 in FY2022,
+      748.6 in FY2019, 5,168.4 in FY2017, 3,804.2 in FY2016). Same treatment as the repo records.'
+    - current_assets excludes 'non-current assets classified as held for sale' (24.364) for FY2017-FY2022, as presented.
+      The original FY2016 report included that amount within trade receivables (current assets 25,379.5 as recorded);
+      the FY2017 report restates FY2016 current assets to 25,355.1 with 24.364 shown separately. The FY2018 balance
+      sheet (HY June 2019 report) shows no separate held-for-sale line, so 27,261.3 is as printed.
+    - 'FY2018 is partial: no FY2018 or FY2019 annual results announcement is on nse.co.ke (media API searched for
+      ''total kenya'', ''total kenya plc audited'' and ''2018''). The balance sheet comes from the 31 Dec 2018 comparative
+      column of the HY June 2019 unaudited report (dated 29 Aug 2019). revenue, gross_profit, net_income, eps and
+      operating_cash_flow omitted; net income is not back-derived from the retained-earnings movement because IFRS
+      9 opening adjustments in 2018 could distort it. FY2018 dps 1.30 derived from ''Dividends declared - 2018''
+      of 818,405 in the HY June 2019 equity statement / 629.542m.'
+    - FY2019 and FY2022 are prior-year comparatives (FY2020 and FY2023 annual reports respectively); the original
+      FY2019 and FY2022 announcements are not on nse.co.ke.
+    - Most pre-2022 NSE files are scanned images; values were read from rendered page images (FY2016, FY2017, FY2018,
+      FY2019, FY2020, FY2021) and cross-checked by the balance-sheet identity and EPS = profit / 629.542m.
     periods:
     - period: FY2025
       period_end: '2025-12-31'
@@ -563,11 +1524,197 @@ companies:
         retained_earnings: 20486.4
         operating_cash_flow: 1440.6
         shares_outstanding: 629.542
+    - period: FY2022
+      period_end: '2022-12-31'
+      published: '2023-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/TotalEnergies-Marketing-Kenya-PLC-Audited-Financial-Results-for-the-Year-Ended-31-Dec-2023.pdf
+      source_note: 'Prior-year comparative from the TotalEnergies Marketing Kenya FY2023 audited results announcement
+        (text PDF), single entity, KShs thousands converted to millions. total_liabilities computed (NCL 1,846.3
+        + CL 40,966.4). dps 1.31 = first and final (''2022: KShs 1.31''; dividends declared 824,701 / 629.542m).
+        Current assets exclude held-for-sale assets of 24.364.'
+      values:
+        revenue: 102802.4
+        gross_profit: 9579.9
+        net_income: 2444.3
+        eps: 3.88
+        dps: 1.31
+        total_assets: 73043.1
+        total_liabilities: 42812.7
+        total_equity: 30230.4
+        current_assets: 58665.7
+        current_liabilities: 40966.4
+        retained_earnings: 18288.2
+        operating_cash_flow: -1589.7
+        shares_outstanding: 629.542
+    - period: FY2021
+      period_end: '2021-12-31'
+      published: '2022-03-31'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/Totalenergies-Marketing-Kenya-Plc-Audited-Financial-Statements-for-the-Year-Ended-31-Dec-2021.pdf
+      source_note: TotalEnergies Marketing Kenya audited results for the year ended 31 Dec 2021 (image PDF; board
+        date 31 March 2022, NSE upload 1 April 2022), single entity, KShs thousands converted to millions. total_liabilities
+        computed (NCL 2,239.8 + CL 16,179.5). dps 1.31 = first and final. Current assets exclude held-for-sale assets
+        of 24.364.
+      values:
+        revenue: 74710.5
+        gross_profit: 8801.0
+        net_income: 2738.9
+        eps: 4.35
+        dps: 1.31
+        total_assets: 47030.1
+        total_liabilities: 18419.3
+        total_equity: 28610.8
+        current_assets: 32654.8
+        current_liabilities: 16179.5
+        retained_earnings: 16668.5
+        operating_cash_flow: 3617.3
+        shares_outstanding: 629.542
+    - period: FY2020
+      period_end: '2020-12-31'
+      published: '2021-03-31'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/total-kenya-plc-audited-financial-statements-for-the-year-ended-31-dec-2020.pdf
+      source_note: Total Kenya audited results for the year ended 31 Dec 2020 (image PDF; board date 31 March 2021),
+        single entity, KShs thousands converted to millions. total_liabilities computed (NCL 1,839.7 + CL 14,287.1).
+        dps 1.57 = first and final (dividends declared 988,382 / 629.542m). OCF 8,726.271 here and 8,726.270 in
+        the FY2021 comparative (same after rounding). Current assets exclude held-for-sale assets of 24.364.
+      values:
+        revenue: 65431.2
+        gross_profit: 9057.1
+        net_income: 3296.5
+        eps: 5.24
+        dps: 1.57
+        total_assets: 42987.2
+        total_liabilities: 16126.9
+        total_equity: 26860.3
+        current_assets: 29311.6
+        current_liabilities: 14287.1
+        retained_earnings: 14918.0
+        operating_cash_flow: 8726.3
+        shares_outstanding: 629.542
+    - period: FY2019
+      period_end: '2019-12-31'
+      published: '2020-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/total-kenya-plc-audited-financial-statements-for-the-year-ended-31-dec-2020.pdf
+      source_note: Prior-year comparative from the Total Kenya FY2020 audited results announcement (image PDF),
+        single entity, KShs thousands converted to millions. total_liabilities computed (NCL 2,125.5 + CL 11,057.0).
+        dps 1.30 = first and final per the FY2020 report. Current assets exclude held-for-sale assets of 24.364.
+      values:
+        revenue: 111876.9
+        gross_profit: 8610.8
+        net_income: 2534.5
+        eps: 4.03
+        dps: 1.3
+        total_assets: 37564.7
+        total_liabilities: 13182.5
+        total_equity: 24382.2
+        current_assets: 23804.9
+        current_liabilities: 11057.0
+        retained_earnings: 12439.9
+        operating_cash_flow: -275.1
+        shares_outstanding: 629.542
+    - period: FY2018
+      period_end: '2018-12-31'
+      published: '2019-08-29'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/total-kenya-plc-unaudited-financial-statements-for-the-period-ended-30-jun-2019.pdf
+      source_note: 'Partial record: 31 Dec 2018 comparative column of the statement of financial position in the
+        Total Kenya unaudited HY June 2019 report (image PDF, dated 29 Aug 2019; published = that date because the
+        original FY2018 announcement was not found). total_liabilities computed (NCL 1,188.7 + CL 15,404.2). The
+        same opening equity (22,666.043) and retained earnings (10,723.752) appear at 1 Jan 2019 in the FY2020 annual
+        report. Income statement, EPS and cash flow not available.'
+      field_sources:
+        dps: 'derived: ''Dividends declared - 2018'' KShs 818,405k in the HY June 2019 and FY2020 equity statements
+          / 629.542m shares'
+      values:
+        dps: 1.3
+        total_assets: 39258.9
+        total_liabilities: 16592.9
+        total_equity: 22666.0
+        current_assets: 27261.3
+        current_liabilities: 15404.2
+        retained_earnings: 10723.8
+        shares_outstanding: 629.542
+    - period: FY2017
+      period_end: '2017-12-31'
+      published: '2018-03-28'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/total-kenya-plc-audited-financial-statements-for-the-year-ended-31st-december-2017.pdf
+      source_note: Total Kenya audited results for the year ended 31 Dec 2017 (image PDF; board date 28 March 2018),
+        single entity, KShs thousands converted to millions. total_liabilities computed (NCL 1,339.2 + CL 15,255.7).
+        dps 1.30 = first and final recommended. Current assets exclude held-for-sale assets of 24.364. Short-term
+        borrowings 5,168.4 sit in current liabilities.
+      values:
+        revenue: 111423.6
+        gross_profit: 8252.0
+        net_income: 2738.2
+        eps: 4.35
+        dps: 1.3
+        total_assets: 38012.1
+        total_liabilities: 16594.9
+        total_equity: 21417.2
+        current_assets: 26454.2
+        current_liabilities: 15255.7
+        retained_earnings: 9474.9
+        operating_cash_flow: 381.1
+        shares_outstanding: 629.542
+    - period: FY2016
+      period_end: '2016-12-31'
+      published: '2017-03-28'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/total-kenya-ltd-audited-financial-statements-for-the-year-ended-31-dec-2016.pdf
+      source_note: Total Kenya Limited audited results for the year ended 31 Dec 2016 (image PDF; board date 28
+        March 2017), single entity, KShs thousands converted to millions. total_liabilities computed (NCL 1,426.4
+        + CL 15,409.6). dps 1.06 = first and final recommended (dividends declared in 2017 670,287 / 629.542m).
+        current_assets 25,379.5 as originally printed (includes 24.364 later reclassified as held for sale; FY2017
+        comparative 25,355.1). Other figures agree with the FY2017 comparative.
+      values:
+        revenue: 89060.9
+        gross_profit: 7851.6
+        net_income: 2234.3
+        eps: 3.55
+        dps: 1.06
+        total_assets: 36185.4
+        total_liabilities: 16836.1
+        total_equity: 19349.3
+        current_assets: 25379.5
+        current_liabilities: 15409.6
+        retained_earnings: 7407.0
+        operating_cash_flow: 3601.0
+        shares_outstanding: 629.542
   CARB:
     name: Carbacid Investments Plc
     gaps:
     - FY2026 dps 2.00 is the proposed final only; AGM approval not verified
     - Balance-sheet pages are image-only; some fields were read by OCR and checked by arithmetic ties
+    - Group (consolidated) figures, KSh thousands converted to millions (3 decimals). revenue = turnover / operating
+      revenue from CO2 sales (repo convention). ebit = profit before tax + finance costs (operating profit including
+      other income and fair-value items, repo convention); FY2017-FY2021 have no finance costs, so ebit = profit
+      before tax. total_assets and total_liabilities computed (non-current + current), each matching total equity
+      + liabilities as printed. shares_outstanding 254.852m for every year (no bonus issue or split in FY2017-FY2023).
+    - 'FY2017 and FY2018 revenue: the annual reports print a broader ''Revenue'' line that includes interest, rental
+      and dividend income (FY2018: 753.164). The recorded revenue is operating revenue from note 5 (FY2018 565.508;
+      FY2017 589.380) to match later years, where turnover excludes investment income. FY2018 gross_profit is derived
+      as operating revenue 565.508 - cost of sales 206.292.'
+    - FY2017 printed 'Operating profit' (273.922) excludes finance income and fair-value items, so ebit uses profit
+      before tax (456.656) for consistency with the repo convention.
+    - FY2017 values are as originally published in the 2017 annual report; the 2018 annual report restates the FY2017
+      comparatives for current assets (1,039.302 vs 1,008.052) and operating cash flow (327.107 vs 326.574).
+    - 'FY2019 EPS: the results announcement narrative says KSh 1.03 while the income statement table (and the FY2020
+      annual report comparative) shows 1.04; 1.04 recorded (264.589 / 254.852 = 1.038).'
+    - 'long_term_debt = non-current borrowings: none on the balance sheet for FY2017-FY2021 (recorded as 0); FY2022
+      40.197 and FY2023 205.491.'
+    - 'dps = total dividend declared for the fiscal year: final 0.70 for FY2017-FY2020; FY2021 1.60 = final 0.70
+      + special 0.90; FY2022 and FY2023 final 1.70 each.'
     periods:
     - period: FY2026
       period_end: '2026-07-31'
@@ -647,6 +1794,194 @@ companies:
         retained_earnings: 4306.251
         long_term_debt: 655.496
         operating_cash_flow: 861.477
+        shares_outstanding: 254.852
+    - period: FY2023
+      period_end: '2023-07-31'
+      published: '2023-10-24'
+      published_basis: noted
+      type: annual
+      source_url: https://carbacid.com/documents/58/2023_Annual_Report_Eh9LW90.pdf
+      source_note: Carbacid Investments Plc 2023 annual report (image PDF), consolidated statements authorised for
+        issue 24 Oct 2023, KSh thousands converted to millions. ebit = PBT 1,080.982 + finance costs 16.435. total_assets
+        = non-current 4,092.210 + current 1,020.914; total_liabilities = current 529.150 + non-current borrowings
+        205.491 + deferred tax 216.581. dps 1.70 = final dividend recommended in the directors' report (total KSh
+        433,248,375).
+      values:
+        revenue: 1720.943
+        gross_profit: 1012.322
+        ebit: 1097.417
+        net_income: 816.013
+        eps: 3.2
+        dps: 1.7
+        total_assets: 5113.124
+        total_liabilities: 951.222
+        total_equity: 4161.902
+        current_assets: 1020.914
+        current_liabilities: 529.15
+        retained_earnings: 3874.109
+        long_term_debt: 205.491
+        operating_cash_flow: 739.163
+        shares_outstanding: 254.852
+    - period: FY2022
+      period_end: '2022-07-31'
+      published: '2022-10-31'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/Carbacid-Investments-Plc-Audited-Group-Results-for-the-Year-Ended-31-Jul-2022.pdf
+      source_note: Carbacid Investments Plc audited group results for the year ended 31 Jul 2022 (NSE announcement
+        dated 31 Oct 2022), KSh thousands converted to millions; matches the comparatives in the 2023 annual report.
+        ebit = PBT 913.829 + finance costs 3.404. total_assets = non-current 3,705.970 + current 755.777; total_liabilities
+        = current 457.520 + non-current borrowings 40.197 + deferred tax 175.330. dps 1.70 = final dividend.
+      values:
+        revenue: 1414.66
+        gross_profit: 840.177
+        ebit: 917.233
+        net_income: 707.664
+        eps: 2.78
+        dps: 1.7
+        total_assets: 4461.747
+        total_liabilities: 673.047
+        total_equity: 3788.7
+        current_assets: 755.777
+        current_liabilities: 457.52
+        retained_earnings: 3491.344
+        long_term_debt: 40.197
+        operating_cash_flow: 706.032
+        shares_outstanding: 254.852
+    - period: FY2021
+      period_end: '2021-07-31'
+      published: '2021-11-01'
+      published_basis: noted
+      type: annual
+      source_url: https://carbacid.com/documents/35/CIL_FS_signed_compressed.pdf
+      source_note: Carbacid Investments Plc 2021 annual report (image PDF), consolidated statements authorised for
+        issue 1 Nov 2021, KSh thousands converted to millions. No finance costs, so ebit = PBT. total_assets = non-current
+        2,676.282 + current 1,242.942; total_liabilities = deferred tax 181.067 + current 249.358. No borrowings
+        (long_term_debt 0). dps 1.60 = final 0.70 + special 0.90 per the directors' report (total KSh 407,763,176).
+      values:
+        revenue: 906.588
+        gross_profit: 553.647
+        ebit: 540.265
+        net_income: 415.099
+        eps: 1.63
+        dps: 1.6
+        total_assets: 3919.224
+        total_liabilities: 430.425
+        total_equity: 3488.799
+        current_assets: 1242.942
+        current_liabilities: 249.358
+        retained_earnings: 3175.982
+        long_term_debt: 0
+        operating_cash_flow: 487.753
+        shares_outstanding: 254.852
+    - period: FY2020
+      period_end: '2020-07-31'
+      published: '2020-11-20'
+      published_basis: noted
+      type: annual
+      source_url: https://carbacid.com/documents/22/CIL_Annual_Report_2020.pdf
+      source_note: 'Carbacid Investments Plc 2020 annual report (image PDF), consolidated statements authorised
+        for issue 20 Nov 2020, KSh thousands converted to millions. No finance costs, so ebit = PBT. total_assets
+        = non-current 2,571.505 + current 1,056.326; total_liabilities = deferred tax 192.441 + current 183.294.
+        No borrowings (long_term_debt 0). dps 0.70 = final dividend (confirmed as ''2020: KSh 0.70 per share'' in
+        the 2021 directors'' report).'
+      values:
+        revenue: 682.878
+        gross_profit: 424.211
+        ebit: 426.959
+        net_income: 324.654
+        eps: 1.27
+        dps: 0.7
+        total_assets: 3627.831
+        total_liabilities: 375.735
+        total_equity: 3252.096
+        current_assets: 1056.326
+        current_liabilities: 183.294
+        retained_earnings: 2875.547
+        long_term_debt: 0
+        operating_cash_flow: 389.686
+        shares_outstanding: 254.852
+    - period: FY2019
+      period_end: '2019-07-31'
+      published: '2019-10-24'
+      published_basis: noted
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/carbacid-investment-plc-audited-group-results-for-the-year-ended-31st-july-2019.pdf
+      source_note: Carbacid Investments Plc audited group results for the year ended 31 Jul 2019 (NSE announcement
+        dated 24 Oct 2019), KSh thousands converted to millions. No finance costs, so ebit = PBT. total_liabilities
+        = current 167.958 + deferred tax 208.052. No borrowings (long_term_debt 0). EPS 1.04 per the income statement
+        (narrative text says 1.03). dps 0.70 = final dividend.
+      values:
+        revenue: 630.5
+        gross_profit: 400.269
+        ebit: 377.153
+        net_income: 264.589
+        eps: 1.04
+        dps: 0.7
+        total_assets: 3503.502
+        total_liabilities: 376.01
+        total_equity: 3127.492
+        current_assets: 956.355
+        current_liabilities: 167.958
+        retained_earnings: 2729.289
+        long_term_debt: 0
+        operating_cash_flow: 411.404
+        shares_outstanding: 254.852
+    - period: FY2018
+      period_end: '2018-07-31'
+      published: '2018-10-25'
+      published_basis: noted
+      type: annual
+      source_url: https://carbacid.com/documents/16/Annual_Report_2018.pdf
+      source_note: Carbacid Investments Plc 2018 annual report, consolidated statements authorised for issue 25
+        Oct 2018, KSh thousands converted to millions. revenue = note 5 operating revenue 565.508 (the income statement
+        'Revenue' of 753.164 includes interest, rental and dividend income). gross_profit derived = 565.508 - cost
+        of sales 206.292. No finance costs, so ebit = PBT. total_liabilities = deferred tax 214.016 + current 113.003.
+        No borrowings (long_term_debt 0). dps 0.70 = final dividend recommended.
+      field_sources:
+        gross_profit: 'derived: operating revenue 565.508 - cost of sales 206.292'
+      values:
+        revenue: 565.508
+        gross_profit: 359.216
+        ebit: 378.938
+        net_income: 298.526
+        eps: 1.17
+        dps: 0.7
+        total_assets: 3371.233
+        total_liabilities: 327.019
+        total_equity: 3044.214
+        current_assets: 1065.394
+        current_liabilities: 113.003
+        retained_earnings: 2637.207
+        long_term_debt: 0
+        operating_cash_flow: 296.691
+        shares_outstanding: 254.852
+    - period: FY2017
+      period_end: '2017-07-31'
+      published: '2017-11-08'
+      published_basis: noted
+      type: annual
+      source_url: https://carbacid.com/documents/13/2017_Annual_Report.pdf
+      source_note: Carbacid Investments Plc 2017 annual report, consolidated statements authorised for issue 8 Nov
+        2017, KSh thousands converted to millions, as originally published (the 2018 report restates current assets
+        to 1,039.302 and OCF to 327.107). revenue = operating revenue 589.380. ebit = PBT 456.656 (printed 'operating
+        profit' of 273.922 excludes finance income and fair-value items). total_liabilities = deferred tax 234.698
+        + current 148.192. No borrowings (long_term_debt 0). dps 0.70 = final dividend.
+      values:
+        revenue: 589.38
+        gross_profit: 392.648
+        ebit: 456.656
+        net_income: 352.3
+        eps: 1.38
+        dps: 0.7
+        total_assets: 3306.974
+        total_liabilities: 382.89
+        total_equity: 2924.084
+        current_assets: 1008.052
+        current_liabilities: 148.192
+        retained_earnings: 2509.157
+        long_term_debt: 0
+        operating_cash_flow: 326.574
         shares_outstanding: 254.852
   EQTY:
     name: Equity Group Holdings Plc
