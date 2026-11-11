@@ -99,7 +99,9 @@ def test_dividends_adjust_for_splits_and_withholding(outputs):
     data = outputs / "data"
     (data / "dividends.yaml").write_text(yaml.safe_dump({"dividends": {"TST": [
         {"fiscal_period": "FY2025", "type": "final", "amount": 4.0, "book_closure": "2026-03-01",
-         "source_url": "https://example.test/div.pdf"}]}}), encoding="utf-8")
+         "source_url": "https://example.test/div.pdf"},
+        {"fiscal_period": "FY2026", "type": "final", "amount": 1.0, "announced": "2027-04-01",
+         "source_url": "https://example.test/div2.pdf"}]}}), encoding="utf-8")
     (data / "corporate_actions.yaml").write_text(yaml.safe_dump({"actions": [
         {"ticker": "TST", "type": "split", "ratio": "2:1", "factor": 0.5, "ex_date": "2026-06-01",
          "source_url": "https://example.test/split.pdf"}]}), encoding="utf-8")
@@ -111,5 +113,7 @@ def test_dividends_adjust_for_splits_and_withholding(outputs):
         assert dividends.total_return("TST", date(2026, 1, 2), date(2026, 12, 1)) == pytest.approx(0.138)
         assert dividends.trailing_yield("TST", date(2026, 12, 1), 55.0) == pytest.approx(2 / 55)
         assert dividends.trailing_yield("TST", date(2025, 6, 1), 50.0, dps=3.0) == pytest.approx(0.06)
+        assert dividends.history("TST")[-1] == (date(2027, 4, 1), 1.0)
+        assert dividends.trailing_yield("TST", date(2027, 3, 1), 55.0, dps=3.0) == pytest.approx(3 / 55)
     finally:
         storage.price_path("TST").unlink(missing_ok=True)

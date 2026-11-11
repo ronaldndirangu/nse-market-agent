@@ -20,13 +20,13 @@ def _yaml_or_empty(name: str) -> dict:
 
 @lru_cache(maxsize=1)
 def _dividends() -> dict[str, list[tuple[date, float]]]:
-    """Ticker -> [(ex date, KES per share)]; book closure approximates the ex date, payment date is the fallback."""
+    """Ticker -> [(ex date, KES per share)]; ex date is book closure, else payment, else announcement date."""
     raw = _yaml_or_empty("dividends.yaml").get("dividends") or {}
     out: dict[str, list[tuple[date, float]]] = {}
     for t, recs in raw.items():
         rows = []
         for r in recs or []:
-            ex = _d(r.get("book_closure")) or _d(r.get("payment"))
+            ex = _d(r.get("book_closure")) or _d(r.get("payment")) or _d(r.get("announced"))
             if ex and r.get("amount"):
                 rows.append((ex, float(r["amount"])))
         out[t] = sorted(rows)
@@ -65,15 +65,15 @@ def factor(ticker: str, d: date) -> float:
 def trailing_yield(ticker: str, as_of: date, price: float | None, dps: float | None = None) -> float | None:
     """Gross dividends with ex dates in the past 365 days over price.
 
-    Uses the sourced history once it covers as_of; otherwise falls back to the latest reported DPS.
+    Uses sourced dividends in the window; when the window has none (history not started or a sourcing gap),
+    falls back to the latest reported DPS, which is 0 for a company that skipped its dividend.
     """
     if not price:
         return None
-    hist = history(ticker)
-    if hist and hist[0][0] <= as_of:
-        start = as_of - timedelta(days=365)
-        paid = sum(amt * factor(ticker, ex) / factor(ticker, as_of) for ex, amt in hist if start < ex <= as_of)
-        return paid / price
+    start = as_of - timedelta(days=365)
+    paid = [amt * factor(ticker, ex) / factor(ticker, as_of) for ex, amt in history(ticker) if start < ex <= as_of]
+    if paid:
+        return sum(paid) / price
     return dps / price if dps is not None else None
 
 

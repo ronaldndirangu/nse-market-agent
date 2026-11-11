@@ -68,7 +68,9 @@ activity; the daily and weekly commits keep it active.
 | Data | Source | File |
 | --- | --- | --- |
 | Daily prices, volume | [afx.kwayisi.org/nse](https://afx.kwayisi.org/nse/), fallback [nse.co.ke](https://www.nse.co.ke/) | `data/prices/*.csv` |
-| NASI | AFX index page, recorded daily from the first run | `data/nasi.csv` |
+| NASI | Month-end closes from 2016 in [CMA](https://www.cma.or.ke/) quarterly statistical bulletins (CBK weekly bulletin for the latest month), plus the AFX index page daily when reachable | `data/nasi.csv`, sources in `data/nasi_sources.csv` |
+| Dividends | Company notices, CMA bulletins and annual reports, from 2016 | `data/dividends.yaml` |
+| Bonus issues, splits, rights, mergers | NSE and company notices | `data/corporate_actions.yaml` |
 | Fundamentals | Company annual and interim reports | `data/fundamentals.yaml` |
 | T-bills, CBR, inflation | [Central Bank of Kenya](https://www.centralbank.go.ke/) | `data/macro.yaml` |
 | Equity and country risk premium | [Damodaran](https://pages.stern.nyu.edu/~adamodar/) | `data/macro.yaml` |
@@ -173,8 +175,8 @@ Tools: `screen_stocks`, `run_valuation`, `get_fundamentals`, `get_announcements`
 
 - The 16-stock universe covers the most liquid counters. Add more in `data/universe.yaml` along with sourced
   fundamentals.
-- AFX does not publish NASI history, so NASI comparisons start from the first daily run. The scorecard and backtest use
-  an equal-weight index of the universe until then.
+- NASI history is month-end only before the daily runs began, so NASI comparisons use the last month-end close on or
+  before each window's start and end dates.
 - AFX is unreachable from GitHub-hosted runners (IPv4 connections time out), so scheduled runs take prices and volume
   from the NSE ticker API, record no NASI level, and keep AFX company stats from the last local `refresh`. The HTTP
   client stops calling a host for the rest of a run once it fails every retry. The daily job fails visibly when both
@@ -187,8 +189,15 @@ Tools: `screen_stocks`, `run_valuation`, `get_fundamentals`, `get_announcements`
 
 ### Known data issues
 
-- AFX price history is not adjusted for corporate actions. I&M bonus issues on 2019-05-13 and 2021-05-11 show as price
-  drops.
+- AFX price history is not adjusted for corporate actions. Total returns in the scorecard, retrospective and tuning
+  apply the bonus factors in `data/corporate_actions.yaml` and add net dividends. Momentum and volatility still use raw
+  closes, so bonus issues (for example I&M on 2019-05-13 and 2021-05-11) show as one-day drops in those signals.
+- Dividends announced before mid-2019 often lack a sourced book-closure or payment date. For those rows the engine uses
+  the `announced` date as the ex date, which can be up to about two months early. Dividends between mid-2019 and early
+  2021 are mostly unsourced; when a trailing 12-month window has no sourced dividend, the yield falls back to the
+  latest reported DPS. Unsourced rows are listed under `gaps` in `data/dividends.yaml`.
+- CMA prints NASI 161.35 for July 2017, above the daily highs in the CBK weekly bulletin; it is kept and flagged in
+  `data/nasi_sources.csv`.
 - Two one-day spikes over 40% decay within days: IMH on 2024-08-21 and KPLC on 2024-10-29. They are kept as published
   and can inflate volatility, beta and backtest returns around those dates.
 - Most `published` dates are the CMA filing deadline, not the exact release date (see `published_basis`).

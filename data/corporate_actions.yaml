@@ -1,0 +1,138 @@
+notes:
+- 'factor: multiply closes dated before ex_date by factor to make them comparable with closes on/after ex_date. null = not computed.'
+- 'ex_date: first trading day on which the price trades ex-entitlement (the trading day after book closure where the repo price series shows the adjustment).'
+- Ratio for bonus is new:held. Ticker renames with no share change (BBK to ABSA, Total to TotalEnergies, CFC Stanbic to Stanbic) need no factor and are not listed.
+- Scan of all 16 repo price CSVs found no other one-day moves beyond +/-25% besides the jumps below (EABL 2022-10-14 is +23.2%, included because it was requested).
+actions:
+- ticker: DTK
+  type: bonus
+  ratio: '1:10'
+  factor: 0.909091
+  ex_date: null
+  announced: '2016-03-10'
+  source_url: https://www.cma.or.ke/download/49/2016/4451/cma-quarterly-statistical-bulletin-q1-2016.pdf
+  note: 'CMA Q1-2016 Table 31: "DTB 10-03-2016 Bonus issue- subject to approval 1.10" (one new for every ten held). Book closure / ex-date not found in sources gathered. Predates the repo price series (starts 2016-11-14), so no adjustment needed.'
+- ticker: KEGN
+  type: rights
+  ratio: '2:1'
+  factor: null
+  ex_date: null
+  book_closure: '2016-05-16'
+  announced: '2016-05-10'
+  source_url: https://www.capitalfm.co.ke/business/2016/05/cma-approves-sh28-8bn-kengen-rights-issue/
+  note: 'Rights issue of 2 new shares for every 1 held at KES 6.55 (4,396.72m new shares, about KES 28.8bn; offer 23 May to 10 Jun 2016; new shares listed 2016-07-06; about 92% subscribed). CMA Q2-2016 also lists "KENGEN 10-5-2016 Rights issue 2:1". Factor left null: a rights adjustment needs the cum-rights price (TERP) and the event predates the repo price series (starts 2016-11-14).'
+- ticker: COOP
+  type: bonus
+  ratio: '1:5'
+  factor: 0.833333
+  ex_date: '2017-07-03'
+  announced: '2017-03-17'
+  source_url: https://kenyanwallstreet.com/co-op-bank-posts-15-2-increase-profits-tax-recommends-15-bonus-issue
+  note: One bonus share for every five held (about 977m new shares), recommended with FY2016 results; also CMA Q1-2017 (https://www.cma.or.ke/download/50/2017/4454/cma-quarterly-statistical-bulletin-q1-2017.pdf) and Cytonn H1-2017 note (https://www.cytonn.com/uploads/downloads/co-operative-bank-earnings-note-h1-2017.pdf). Book closure date not confirmed from a source; ex_date inferred from the repo price series (16.90 on 2017-06-30 to 14.85 on 2017-07-03, -12.1%).
+- ticker: NCBA
+  type: bonus
+  ratio: '1:10'
+  factor: 0.909091
+  ex_date: '2018-05-02'
+  book_closure: '2018-04-30'
+  announced: '2018-03-22'
+  source_url: https://kenyanwallstreet.com/nic-bank-net-earnings-drop-4-3-declares-bonus-issue
+  note: NIC Group (pre-merger ticker NIC) bonus of one new share for every ten held, with the FY2017 KES 1.00 dividend; register closed 2018-04-30. Also CMA Q1-2018 "NIC BANK 22-Mar-2018 Bonus 1:10". Price 40.75 to 36.75 on 2018-05-02 includes the KES 1.00 dividend going ex the same day.
+- ticker: IMH
+  type: bonus
+  ratio: '1:1'
+  factor: 0.5
+  ex_date: '2019-05-13'
+  book_closure: '2019-05-10'
+  announced: '2019-03-27'
+  source_url: http://web.archive.org/web/20191216111429/https://www.nse.co.ke/listed-companies/company-announcements/corporateactions.html
+  note: 'NSE corporate actions page (Wayback 2019-12-16): "I&M Holdings Plc announced a Bonus Issue of 1:1 on 27-Mar-2019; Books Closure 10-May-2019; Crediting Date 23-May-2019." Also CMA Q1-2019. Explains the 2019-05-13 -40.6% move (118.75 to 70.50).'
+- ticker: NCBA
+  type: merger
+  ratio: null
+  factor: 1.0
+  ex_date: '2019-10-01'
+  source_url: https://cytonn.com/uploads/downloads/cba-nic-merger-note.pdf
+  note: NIC Group acquired CBA via share swap; NIC issued about 793.8m new shares to CBA shareholders (53:47 CBA:NIC ownership) and was renamed NCBA Group; ticker NIC to NCBA. Existing NIC holders kept their shares one-for-one, so no price factor. Completion also reported at https://kenyanwallstreet.com/nic-cba-merger-a-done-deal. Price 28.95 to 30.90 around the switch.
+- ticker: SCBK
+  type: bonus
+  ratio: '1:10'
+  factor: 0.909091
+  ex_date: '2020-04-28'
+  book_closure: '2020-04-27'
+  announced: '2020-06-19'
+  source_url: https://www.the-star.co.ke/news/2020-06-20-stanchart-bank-cuts-2019-shareholders-dividends
+  note: Bonus of one new share for every ten held to holders on the register at close of business 2020-04-27, recommended in June 2020 alongside the FY2019 final dividend cut to KES 7.50, approved at the 2020-07-24 AGM; 34,551,057 bonus shares listed around 2020-08-04 (https://kenyanwallstreet.com/scbk-lists-an-additional-34-5-million-shares). Because the record date preceded the announcement, the price series shows no clean adjustment (-3.0% on 2020-04-28, nothing notable around 2020-08-04). ex_date is the first trading day after the record date; applying the factor is a judgement call.
+- ticker: NCBA
+  type: bonus
+  ratio: '1:10'
+  factor: 0.909091
+  ex_date: '2020-05-13'
+  book_closure: '2020-05-12'
+  source_url: https://nyakundireport.com/a/88611/shareholders-of-ncba-will-get-bonus-shares-instead-of-cash-dividends
+  note: One bonus share for every ten held, issued in lieu of the proposed FY2019 KES 1.50 cash dividend; register 2020-05-12. Price 32.25 to 28.80 on 2020-05-13 (-10.7%).
+- ticker: IMH
+  type: bonus
+  ratio: '1:1'
+  factor: 0.5
+  ex_date: '2021-05-11'
+  book_closure: '2021-05-10'
+  source_url: https://kenyanwallstreet.com/im-holdings-proposes-dividend-bonus-issue-as-profit-falls-by-21
+  note: I&M Group bonus of one new share for every one held with FY2020 results; books closure 2021-05-10. Explains the 2021-05-11 -41.7% move (42.60 to 24.85).
+jumps:
+- ticker: IMH
+  date: '2019-05-13'
+  change_pct: -40.6
+  prev_close: 118.75
+  close: 70.5
+  explanation: corporate_action
+  detail: 1:1 bonus issue, books closure 2019-05-10 (see actions).
+  source_url: http://web.archive.org/web/20191216111429/https://www.nse.co.ke/listed-companies/company-announcements/corporateactions.html
+- ticker: IMH
+  date: '2021-05-11'
+  change_pct: -41.7
+  prev_close: 42.6
+  close: 24.85
+  explanation: corporate_action
+  detail: 1:1 bonus issue, books closure 2021-05-10 (see actions).
+  source_url: https://kenyanwallstreet.com/im-holdings-proposes-dividend-bonus-issue-as-profit-falls-by-21
+- ticker: IMH
+  date: '2024-08-21'
+  change_pct: 66.3
+  prev_close: 20.6
+  close: 34.25
+  explanation: genuine_move
+  detail: Price rally after I&M Group H1-2024 results (net profit up about 17%); no corporate action found. Also https://biznakenya.com/im-bank-shares-rise-net-profit/
+  source_url: https://www.african-markets.com/en/stock-markets/nse/kenya-i-m-group-share-price-up-66-after-half-year-profit-jump
+- ticker: EABL
+  date: '2022-10-14'
+  change_pct: 23.2
+  prev_close: 138.0
+  close: 170.0
+  explanation: genuine_move
+  detail: Diageo announced intention to raise its EABL stake via a partial tender offer at KES 192 per share. Also https://www.businessdailyafrica.com/bd/markets/capital-markets/investors-sell-sh285m-eabl-shares-diageo-plan-revs-up-price-4002796
+  source_url: https://khusoko.com/2022/10/16/eabl-shares-gain-23-2-on-diageos-intention-to-acquire-15pct-stake/
+- ticker: KEGN
+  date: '2024-10-29'
+  change_pct: 31.1
+  prev_close: 3.15
+  close: 4.13
+  explanation: genuine_move
+  detail: KenGen FY2024 results with dividend raised to KES 0.65 (announced 2024-10-29), same day as Kenya Power record results. Also https://kingdomsecurities.co.ke/wp-content/uploads/2024/11/Daily-Market-Wrap-29-October-2024-Kingdom-Securities-Limited.pdf
+  source_url: https://kenyanwallstreet.com/kenya-power-kengen-stocks-soar-after-record-profits-dividends
+- ticker: KPLC
+  date: '2024-10-29'
+  change_pct: 49.7
+  prev_close: 3.5
+  close: 5.24
+  explanation: genuine_move
+  detail: Kenya Power FY2024 record profit and KES 0.70 final dividend, announced 2024-10-29 (CMA Q4-2024 corporate actions). Also Kingdom Securities daily wrap 29-Oct-2024.
+  source_url: https://kenyanwallstreet.com/kenya-power-kengen-stocks-soar-after-record-profits-dividends
+- ticker: NCBA
+  date: '2018-12-07'
+  change_pct: 32.5
+  prev_close: 22.65
+  close: 30.0
+  explanation: genuine_move
+  detail: NIC Group rallied on news of merger talks with CBA; NIC issued a cautionary announcement (https://www.nse.co.ke/wp-content/uploads/nic-group-plc-cautionary-announcement-2.pdf). The merger itself completed 2019-10-01 (see actions).
+  source_url: https://www.businessdailyafrica.com/bd/markets/capital-markets/nic-stock-rises-32pc-after-news-of-merger-with-kenyatta-linked-bank--2230744
