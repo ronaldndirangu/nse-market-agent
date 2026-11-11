@@ -7,283 +7,1143 @@
     "quality": 0.3
   },
   "data_end": "2026-11-11",
-  "dates": 31,
-  "first": "2024-05-01",
+  "dates": 117,
+  "first": "2017-03-01",
   "generated": "2026-11-11",
   "path": [
     {
-      "date": "2025-01-01",
+      "date": "2017-11-01",
       "train": 6,
       "weights": {
-        "dividend_yield": 0.2,
-        "margin_of_safety": 0.4,
+        "dividend_yield": 0.0,
+        "margin_of_safety": 0.5,
+        "momentum": 0.2,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2017-12-01",
+      "train": 7,
+      "weights": {
+        "dividend_yield": 0.0,
+        "margin_of_safety": 0.5,
+        "momentum": 0.2,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2018-01-01",
+      "train": 8,
+      "weights": {
+        "dividend_yield": 0.0,
+        "margin_of_safety": 0.5,
+        "momentum": 0.2,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2018-02-01",
+      "train": 9,
+      "weights": {
+        "dividend_yield": 0.0,
+        "margin_of_safety": 0.3,
+        "momentum": 0.2,
+        "quality": 0.5
+      }
+    },
+    {
+      "date": "2018-03-01",
+      "train": 10,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.0,
         "momentum": 0.4,
-        "quality": 0.0
+        "quality": 0.5
+      }
+    },
+    {
+      "date": "2018-04-01",
+      "train": 11,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.0,
+        "momentum": 0.3,
+        "quality": 0.6
+      }
+    },
+    {
+      "date": "2018-05-01",
+      "train": 12,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.5
+      }
+    },
+    {
+      "date": "2018-06-01",
+      "train": 13,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.5
+      }
+    },
+    {
+      "date": "2018-07-01",
+      "train": 14,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.4
+      }
+    },
+    {
+      "date": "2018-08-01",
+      "train": 15,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.4
+      }
+    },
+    {
+      "date": "2018-09-01",
+      "train": 16,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.4
+      }
+    },
+    {
+      "date": "2018-10-01",
+      "train": 17,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.4
+      }
+    },
+    {
+      "date": "2018-11-01",
+      "train": 18,
+      "weights": {
+        "dividend_yield": 0.5,
+        "margin_of_safety": 0.0,
+        "momentum": 0.3,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2018-12-01",
+      "train": 19,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.2,
+        "quality": 0.4
+      }
+    },
+    {
+      "date": "2019-01-01",
+      "train": 20,
+      "weights": {
+        "dividend_yield": 0.4,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2019-02-01",
+      "train": 21,
+      "weights": {
+        "dividend_yield": 0.5,
+        "margin_of_safety": 0.0,
+        "momentum": 0.3,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2019-03-01",
+      "train": 22,
+      "weights": {
+        "dividend_yield": 0.4,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2019-04-01",
+      "train": 23,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2019-05-01",
+      "train": 24,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2019-06-01",
+      "train": 25,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2019-07-01",
+      "train": 26,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2019-08-01",
+      "train": 27,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2019-09-01",
+      "train": 28,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2019-10-01",
+      "train": 29,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2019-11-01",
+      "train": 30,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2019-12-01",
+      "train": 31,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2020-01-01",
+      "train": 32,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2020-02-01",
+      "train": 33,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2020-03-01",
+      "train": 34,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2020-04-01",
+      "train": 35,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2020-05-01",
+      "train": 36,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2020-06-01",
+      "train": 37,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2020-07-01",
+      "train": 38,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2020-08-01",
+      "train": 39,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2020-09-01",
+      "train": 40,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2020-10-01",
+      "train": 41,
+      "weights": {
+        "dividend_yield": 0.4,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2020-11-01",
+      "train": 42,
+      "weights": {
+        "dividend_yield": 0.4,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2020-12-01",
+      "train": 43,
+      "weights": {
+        "dividend_yield": 0.4,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2021-01-01",
+      "train": 44,
+      "weights": {
+        "dividend_yield": 0.4,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2021-02-01",
+      "train": 45,
+      "weights": {
+        "dividend_yield": 0.4,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2021-03-01",
+      "train": 46,
+      "weights": {
+        "dividend_yield": 0.4,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2021-04-01",
+      "train": 47,
+      "weights": {
+        "dividend_yield": 0.4,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2021-05-01",
+      "train": 48,
+      "weights": {
+        "dividend_yield": 0.4,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2021-06-01",
+      "train": 49,
+      "weights": {
+        "dividend_yield": 0.4,
+        "margin_of_safety": 0.0,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2021-07-01",
+      "train": 50,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2021-08-01",
+      "train": 51,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2021-09-01",
+      "train": 52,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2021-10-01",
+      "train": 53,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2021-11-01",
+      "train": 54,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2021-12-01",
+      "train": 55,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2022-01-01",
+      "train": 56,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2022-02-01",
+      "train": 57,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2022-03-01",
+      "train": 58,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2022-04-01",
+      "train": 59,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2022-05-01",
+      "train": 60,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2022-06-01",
+      "train": 61,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2022-07-01",
+      "train": 62,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2022-08-01",
+      "train": 63,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2022-09-01",
+      "train": 64,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2022-10-01",
+      "train": 65,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2022-11-01",
+      "train": 66,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2022-12-01",
+      "train": 67,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2023-01-01",
+      "train": 68,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2023-02-01",
+      "train": 69,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2023-03-01",
+      "train": 70,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2023-04-01",
+      "train": 71,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2023-05-01",
+      "train": 72,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2023-06-01",
+      "train": 73,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2023-07-01",
+      "train": 74,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2023-08-01",
+      "train": 75,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2023-09-01",
+      "train": 76,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2023-10-01",
+      "train": 77,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2023-11-01",
+      "train": 78,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2023-12-01",
+      "train": 79,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2024-01-01",
+      "train": 80,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2024-02-01",
+      "train": 81,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2024-03-01",
+      "train": 82,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2024-04-01",
+      "train": 83,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2024-05-01",
+      "train": 84,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2024-06-01",
+      "train": 85,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2024-07-01",
+      "train": 86,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2024-08-01",
+      "train": 87,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.0,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2024-09-01",
+      "train": 88,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2024-10-01",
+      "train": 89,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2024-11-01",
+      "train": 90,
+      "weights": {
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
+      }
+    },
+    {
+      "date": "2024-12-01",
+      "train": 91,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.1,
+        "momentum": 0.5,
+        "quality": 0.3
+      }
+    },
+    {
+      "date": "2025-01-01",
+      "train": 92,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.1,
+        "momentum": 0.5,
+        "quality": 0.3
       }
     },
     {
       "date": "2025-02-01",
-      "train": 7,
+      "train": 93,
       "weights": {
         "dividend_yield": 0.2,
-        "margin_of_safety": 0.4,
+        "margin_of_safety": 0.1,
         "momentum": 0.4,
-        "quality": 0.0
+        "quality": 0.3
       }
     },
     {
       "date": "2025-03-01",
-      "train": 8,
+      "train": 94,
       "weights": {
         "dividend_yield": 0.2,
-        "margin_of_safety": 0.4,
+        "margin_of_safety": 0.1,
         "momentum": 0.4,
-        "quality": 0.0
+        "quality": 0.3
       }
     },
     {
       "date": "2025-04-01",
-      "train": 9,
+      "train": 95,
       "weights": {
-        "dividend_yield": 0.2,
-        "margin_of_safety": 0.4,
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
         "momentum": 0.4,
-        "quality": 0.0
+        "quality": 0.2
       }
     },
     {
       "date": "2025-05-01",
-      "train": 10,
+      "train": 96,
       "weights": {
-        "dividend_yield": 0.2,
-        "margin_of_safety": 0.4,
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
         "momentum": 0.4,
-        "quality": 0.0
+        "quality": 0.2
       }
     },
     {
       "date": "2025-06-01",
-      "train": 11,
+      "train": 97,
       "weights": {
-        "dividend_yield": 0.2,
-        "margin_of_safety": 0.4,
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
         "momentum": 0.4,
-        "quality": 0.0
+        "quality": 0.2
       }
     },
     {
       "date": "2025-07-01",
-      "train": 12,
+      "train": 98,
       "weights": {
-        "dividend_yield": 0.2,
-        "margin_of_safety": 0.4,
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
         "momentum": 0.4,
-        "quality": 0.0
+        "quality": 0.2
       }
     },
     {
       "date": "2025-08-01",
-      "train": 13,
+      "train": 99,
       "weights": {
-        "dividend_yield": 0.2,
-        "margin_of_safety": 0.4,
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
         "momentum": 0.4,
-        "quality": 0.0
+        "quality": 0.2
       }
     },
     {
       "date": "2025-09-01",
-      "train": 14,
+      "train": 100,
       "weights": {
-        "dividend_yield": 0.2,
-        "margin_of_safety": 0.4,
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
         "momentum": 0.4,
-        "quality": 0.0
+        "quality": 0.2
       }
     },
     {
       "date": "2025-10-01",
-      "train": 15,
+      "train": 101,
       "weights": {
-        "dividend_yield": 0.2,
-        "margin_of_safety": 0.4,
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
         "momentum": 0.4,
-        "quality": 0.0
+        "quality": 0.2
       }
     },
     {
       "date": "2025-11-01",
-      "train": 16,
+      "train": 102,
       "weights": {
         "dividend_yield": 0.2,
-        "margin_of_safety": 0.4,
+        "margin_of_safety": 0.1,
         "momentum": 0.4,
-        "quality": 0.0
+        "quality": 0.3
       }
     },
     {
       "date": "2025-12-01",
-      "train": 17,
+      "train": 103,
       "weights": {
-        "dividend_yield": 0.1,
-        "margin_of_safety": 0.6,
-        "momentum": 0.3,
-        "quality": 0.0
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.3
       }
     },
     {
       "date": "2026-01-01",
-      "train": 18,
+      "train": 104,
       "weights": {
-        "dividend_yield": 0.1,
-        "margin_of_safety": 0.6,
-        "momentum": 0.3,
-        "quality": 0.0
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.3
       }
     },
     {
       "date": "2026-02-01",
-      "train": 19,
+      "train": 105,
       "weights": {
-        "dividend_yield": 0.1,
-        "margin_of_safety": 0.6,
-        "momentum": 0.3,
-        "quality": 0.0
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
       }
     },
     {
       "date": "2026-03-01",
-      "train": 20,
+      "train": 106,
       "weights": {
-        "dividend_yield": 0.1,
-        "margin_of_safety": 0.7,
-        "momentum": 0.2,
-        "quality": 0.0
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
       }
     },
     {
       "date": "2026-04-01",
-      "train": 21,
+      "train": 107,
       "weights": {
-        "dividend_yield": 0.1,
-        "margin_of_safety": 0.8,
-        "momentum": 0.1,
-        "quality": 0.0
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
       }
     },
     {
       "date": "2026-05-01",
-      "train": 22,
+      "train": 108,
       "weights": {
-        "dividend_yield": 0.1,
-        "margin_of_safety": 0.8,
-        "momentum": 0.1,
-        "quality": 0.0
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
       }
     },
     {
       "date": "2026-06-01",
-      "train": 23,
+      "train": 109,
       "weights": {
-        "dividend_yield": 0.1,
-        "margin_of_safety": 0.8,
-        "momentum": 0.1,
-        "quality": 0.0
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
       }
     },
     {
       "date": "2026-07-01",
-      "train": 24,
+      "train": 110,
       "weights": {
-        "dividend_yield": 0.1,
-        "margin_of_safety": 0.8,
-        "momentum": 0.1,
-        "quality": 0.0
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
       }
     },
     {
       "date": "2026-08-01",
-      "train": 25,
+      "train": 111,
       "weights": {
-        "dividend_yield": 0.1,
-        "margin_of_safety": 0.8,
-        "momentum": 0.1,
-        "quality": 0.0
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
       }
     },
     {
       "date": "2026-09-01",
-      "train": 26,
+      "train": 112,
       "weights": {
-        "dividend_yield": 0.1,
-        "margin_of_safety": 0.8,
-        "momentum": 0.1,
-        "quality": 0.0
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
       }
     },
     {
       "date": "2026-10-01",
-      "train": 27,
+      "train": 113,
       "weights": {
-        "dividend_yield": 0.1,
-        "margin_of_safety": 0.8,
-        "momentum": 0.1,
-        "quality": 0.0
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
       }
     },
     {
       "date": "2026-11-01",
-      "train": 28,
+      "train": 114,
       "weights": {
-        "dividend_yield": 0.1,
-        "margin_of_safety": 0.8,
-        "momentum": 0.1,
-        "quality": 0.0
+        "dividend_yield": 0.3,
+        "margin_of_safety": 0.1,
+        "momentum": 0.4,
+        "quality": 0.2
       }
     }
   ],
   "proposal": {
-    "dividend_yield": 0.1,
-    "margin_of_safety": 0.8,
-    "momentum": 0.1,
-    "quality": 0.0
+    "dividend_yield": 0.3,
+    "margin_of_safety": 0.1,
+    "momentum": 0.4,
+    "quality": 0.2
   },
-  "recommend": false,
+  "recommend": true,
   "results": {
     "12": {
       "current": {
-        "excess": 0.1549769114164846,
-        "hit_rate": 0.7090909090909091,
-        "ic": 0.39518716577540103,
-        "n": 11,
-        "top_return": 0.8676674581191626,
-        "universe": 0.712690546702678
+        "excess": 0.031341222711113885,
+        "hit_rate": 0.5381443298969072,
+        "ic": 0.09404483731348498,
+        "n": 97,
+        "top_return": 0.23382720842575594,
+        "universe": 0.20248598571464205
       },
       "tuned": {
-        "excess": 0.0650416028894431,
-        "hit_rate": 0.5818181818181819,
-        "ic": 0.30213903743315507,
-        "n": 11,
-        "top_return": 0.7777321495921211,
-        "universe": 0.712690546702678
+        "excess": 0.05588546243975874,
+        "hit_rate": 0.5958762886597938,
+        "ic": 0.23220039511731444,
+        "n": 97,
+        "top_return": 0.2583714481544008,
+        "universe": 0.20248598571464205
       }
     },
     "3": {
       "current": {
-        "excess": 0.0308875717298362,
-        "hit_rate": 0.5,
-        "ic": 0.13397058823529412,
-        "n": 20,
-        "top_return": 0.17544250538558595,
-        "universe": 0.14455493365574973
+        "excess": 0.014343567029065104,
+        "hit_rate": 0.5018867924528302,
+        "ic": 0.07477293331899325,
+        "n": 106,
+        "top_return": 0.05922728349835283,
+        "universe": 0.04488371646928772
       },
       "tuned": {
-        "excess": 0.03225173085576051,
-        "hit_rate": 0.52,
-        "ic": 0.16720588235294118,
-        "n": 20,
-        "top_return": 0.17680666451151025,
-        "universe": 0.14455493365574973
+        "excess": 0.019471018824180352,
+        "hit_rate": 0.5264150943396226,
+        "ic": 0.14740391868582767,
+        "n": 106,
+        "top_return": 0.06435473529346808,
+        "universe": 0.04488371646928772
       }
     }
   }

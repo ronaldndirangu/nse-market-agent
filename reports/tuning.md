@@ -2,11 +2,11 @@
 
 > **Not financial advice.** This report is generated automatically from public data and fixed rules. It is not financial advice, an offer, or a recommendation to buy or sell any security. Figures can be wrong or stale. Verify everything against company filings and consult a licensed adviser before investing.
 
-Generated 2026-11-11. Prices through 2026-11-11. 31 reconstructed month starts (first 2024-05-01), 286 candidate weightings.
+Generated 2026-11-11. Prices through 2026-11-11. 117 reconstructed month starts (first 2017-03-01), 286 candidate weightings.
 
-**Keep the current weights. The tuner would pick margin of safety 0.8, momentum 0.1, dividend yield 0.1 on all matured data, but walk-forward selection did not beat the current weights out of sample on both rank IC and excess return at every horizon, so the evidence does not support a change.**
+**Proposed weights: margin of safety 0.1, quality 0.2, momentum 0.4, dividend yield 0.3. Walk-forward selection beat the current weights out of sample on both rank IC and top-5 excess return at every evaluated horizon.**
 
-Current weights: margin of safety 0.5, quality 0.3, momentum 0.2. Selected on all matured data: margin of safety 0.8, momentum 0.1, dividend yield 0.1.
+Current weights: margin of safety 0.5, quality 0.3, momentum 0.2. Selected on all matured data: margin of safety 0.1, quality 0.2, momentum 0.4, dividend yield 0.3.
 
 ## Method
 
@@ -18,19 +18,41 @@ The weights change only through a reviewed pull request, and only when walk-forw
 
 | Horizon | Weights | Windows | Top 5 | Universe (EW) | Excess | Hit rate | Rank IC |
 |---|---|---|---|---|---|---|---|
-| 3m | current weights | 20 | 17.5% | 14.5% | 3.1% | 50% | +0.134 |
-| 3m | walk-forward | 20 | 17.7% | 14.5% | 3.2% | 52% | +0.167 |
-| 12m | current weights | 11 | 86.8% | 71.3% | 15.5% | 71% | +0.395 |
-| 12m | walk-forward | 11 | 77.8% | 71.3% | 6.5% | 58% | +0.302 |
+| 3m | current weights | 106 | 5.9% | 4.5% | 1.4% | 50% | +0.075 |
+| 3m | walk-forward | 106 | 6.4% | 4.5% | 1.9% | 53% | +0.147 |
+| 12m | current weights | 97 | 23.4% | 20.2% | 3.1% | 54% | +0.094 |
+| 12m | walk-forward | 97 | 25.8% | 20.2% | 5.6% | 60% | +0.232 |
 
 ## Weights chosen over time
 
 | From | Training windows | Weights |
 |---|---|---|
-| 2025-01-01 | 6 | margin of safety 0.4, momentum 0.4, dividend yield 0.2 |
-| 2025-12-01 | 17 | margin of safety 0.6, momentum 0.3, dividend yield 0.1 |
-| 2026-03-01 | 20 | margin of safety 0.7, momentum 0.2, dividend yield 0.1 |
-| 2026-04-01 | 21 | margin of safety 0.8, momentum 0.1, dividend yield 0.1 |
+| 2017-11-01 | 6 | margin of safety 0.5, quality 0.3, momentum 0.2 |
+| 2018-02-01 | 9 | margin of safety 0.3, quality 0.5, momentum 0.2 |
+| 2018-03-01 | 10 | quality 0.5, momentum 0.4, dividend yield 0.1 |
+| 2018-04-01 | 11 | quality 0.6, momentum 0.3, dividend yield 0.1 |
+| 2018-05-01 | 12 | quality 0.5, momentum 0.4, dividend yield 0.1 |
+| 2018-07-01 | 14 | quality 0.4, momentum 0.5, dividend yield 0.1 |
+| 2018-11-01 | 18 | quality 0.2, momentum 0.3, dividend yield 0.5 |
+| 2018-12-01 | 19 | margin of safety 0.1, quality 0.4, momentum 0.2, dividend yield 0.3 |
+| 2019-01-01 | 20 | quality 0.2, momentum 0.4, dividend yield 0.4 |
+| 2019-02-01 | 21 | quality 0.2, momentum 0.3, dividend yield 0.5 |
+| 2019-03-01 | 22 | quality 0.2, momentum 0.4, dividend yield 0.4 |
+| 2019-04-01 | 23 | quality 0.2, momentum 0.5, dividend yield 0.3 |
+| 2020-10-01 | 41 | quality 0.2, momentum 0.4, dividend yield 0.4 |
+| 2021-07-01 | 50 | quality 0.2, momentum 0.5, dividend yield 0.3 |
+| 2021-11-01 | 54 | quality 0.3, momentum 0.5, dividend yield 0.2 |
+| 2024-02-01 | 81 | margin of safety 0.1, quality 0.2, momentum 0.4, dividend yield 0.3 |
+| 2024-04-01 | 83 | margin of safety 0.1, quality 0.3, momentum 0.4, dividend yield 0.2 |
+| 2024-05-01 | 84 | margin of safety 0.1, quality 0.2, momentum 0.4, dividend yield 0.3 |
+| 2024-07-01 | 86 | margin of safety 0.1, quality 0.3, momentum 0.4, dividend yield 0.2 |
+| 2024-08-01 | 87 | quality 0.3, momentum 0.5, dividend yield 0.2 |
+| 2024-09-01 | 88 | margin of safety 0.1, quality 0.2, momentum 0.4, dividend yield 0.3 |
+| 2024-12-01 | 91 | margin of safety 0.1, quality 0.3, momentum 0.5, dividend yield 0.1 |
+| 2025-02-01 | 93 | margin of safety 0.1, quality 0.3, momentum 0.4, dividend yield 0.2 |
+| 2025-04-01 | 95 | margin of safety 0.1, quality 0.2, momentum 0.4, dividend yield 0.3 |
+| 2025-11-01 | 102 | margin of safety 0.1, quality 0.3, momentum 0.4, dividend yield 0.2 |
+| 2026-02-01 | 105 | margin of safety 0.1, quality 0.2, momentum 0.4, dividend yield 0.3 |
 
 ## Limitations
 

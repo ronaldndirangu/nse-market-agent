@@ -2,7 +2,7 @@
 
 > **Not financial advice.** This report is generated automatically from public data and fixed rules. It is not financial advice, an offer, or a recommendation to buy or sell any security. Figures can be wrong or stale. Verify everything against company filings and consult a licensed adviser before investing.
 
-Generated 2026-11-11. Prices through 2026-11-11. Reconstructed rankings cover 31 month starts (first 2024-05-01); the live ledger covers 1 days (first 2026-11-11).
+Generated 2026-11-11. Prices through 2026-11-11. Reconstructed rankings cover 117 month starts (first 2017-03-01); the live ledger covers 1 days (first 2026-11-11).
 
 ## Forward scorecard
 
@@ -16,10 +16,10 @@ No live window has matured yet. The first 1-month results are due on 2026-12-11.
 
 | Horizon | Windows | Top 5 | Universe (EW) | NASI | Excess | Hit rate | Rank IC | Inside bear-bull |
 |---|---|---|---|---|---|---|---|---|
-| 1m | 30 | 5.8% | 4.5% | 2.9% | 1.2% | 49% | +0.144 | 11% (28% below, 60% above, n=452) |
-| 3m | 28 | 18.4% | 15.1% | 9.4% | 3.4% | 50% | +0.265 | 14% (12% below, 74% above, n=420) |
-| 6m | 25 | 37.6% | 33.6% | 20.9% | 4.0% | 52% | +0.319 | 10% (3% below, 87% above, n=372) |
-| 12m | 19 | 87.0% | 78.5% | 48.4% | 8.5% | 54% | +0.483 | 7% (0% below, 92% above, n=276) |
+| 1m | 116 | 1.7% | 1.6% | 0.7% | 0.1% | 50% | +0.074 | 12% (38% below, 50% above, n=1472) |
+| 3m | 114 | 5.9% | 4.9% | 2.2% | 1.0% | 49% | +0.090 | 19% (28% below, 53% above, n=1440) |
+| 6m | 111 | 11.8% | 9.8% | 4.0% | 2.1% | 53% | +0.084 | 23% (21% below, 56% above, n=1392) |
+| 12m | 105 | 24.2% | 20.3% | 7.2% | 3.9% | 55% | +0.094 | 27% (16% below, 57% above, n=1296) |
 
 ## Per-signal rank IC
 
@@ -27,12 +27,12 @@ Mean monthly Spearman IC between each signal and the forward total return, with 
 
 | Signal | Source | 1m | 3m | 6m | 12m |
 |---|---|---|---|---|---|
-| margin_of_safety | reconstructed ledger | +0.168 (70% > 0, n=30) | +0.335 (86% > 0, n=28) | +0.472 (100% > 0, n=25) | +0.645 (100% > 0, n=19) |
-| quality | reconstructed ledger | -0.010 (44% > 0, n=27) | -0.071 (44% > 0, n=25) | -0.217 (18% > 0, n=22) | -0.322 (6% > 0, n=16) |
+| margin_of_safety | reconstructed ledger | +0.040 (50% > 0, n=115) | +0.064 (55% > 0, n=113) | +0.058 (55% > 0, n=110) | +0.055 (58% > 0, n=104) |
+| quality | reconstructed ledger | +0.083 (59% > 0, n=108) | +0.079 (63% > 0, n=106) | +0.099 (58% > 0, n=103) | +0.145 (69% > 0, n=97) |
 | momentum | prices | +0.087 (64% > 0, n=107) | +0.109 (63% > 0, n=105) | +0.130 (65% > 0, n=102) | +0.186 (76% > 0, n=96) |
-| dividend_yield | prices | +0.093 (63% > 0, n=115) | +0.139 (66% > 0, n=113) | +0.162 (65% > 0, n=110) | +0.251 (80% > 0, n=104) |
+| dividend_yield | prices | +0.074 (61% > 0, n=119) | +0.126 (64% > 0, n=117) | +0.170 (68% > 0, n=114) | +0.241 (74% > 0, n=108) |
 | low_volatility | prices | +0.028 (52% > 0, n=113) | +0.034 (50% > 0, n=111) | +0.037 (56% > 0, n=108) | +0.016 (56% > 0, n=102) |
-| composite | reconstructed ledger | +0.144 (73% > 0, n=30) | +0.265 (82% > 0, n=28) | +0.319 (92% > 0, n=25) | +0.483 (100% > 0, n=19) |
+| composite | reconstructed ledger | +0.074 (57% > 0, n=115) | +0.090 (58% > 0, n=113) | +0.084 (57% > 0, n=110) | +0.094 (63% > 0, n=104) |
 
 ## Reverse attribution
 
@@ -42,9 +42,9 @@ Each month start, the 5 best actual total returns over the next 3, 6 and 12 mont
 
 | Horizon | Winners | Caught (top 5) | Event | Missing data | Turnaround | Macro | Signal miss |
 |---|---|---|---|---|---|---|---|
-| 3m | 585 | 62 | 19 | 439 | 0 | 18 | 47 |
-| 6m | 570 | 52 | 36 | 421 | 0 | 51 | 10 |
-| 12m | 540 | 50 | 53 | 404 | 0 | 33 | 0 |
+| 3m | 585 | 211 | 16 | 120 | 13 | 28 | 197 |
+| 6m | 570 | 211 | 31 | 98 | 10 | 73 | 147 |
+| 12m | 540 | 211 | 50 | 77 | 3 | 60 | 139 |
 
 ### Signals that flagged the winners
 
@@ -52,10 +52,10 @@ Share of actual winners with a positive z-score on each signal at the start date
 
 | Signal | 3m | 6m | 12m |
 |---|---|---|---|
-| margin_of_safety | 54% (n=127) | 56% (n=113) | 64% (n=83) |
-| quality | 55% (n=127) | 50% (n=113) | 49% (n=83) |
+| margin_of_safety | 40% (n=457) | 39% (n=458) | 38% (n=440) |
+| quality | 53% (n=457) | 58% (n=458) | 60% (n=440) |
 | momentum | 48% (n=585) | 45% (n=570) | 48% (n=540) |
-| dividend_yield | 39% (n=585) | 44% (n=570) | 47% (n=540) |
+| dividend_yield | 48% (n=585) | 53% (n=570) | 60% (n=540) |
 | low_volatility | 55% (n=585) | 55% (n=570) | 55% (n=540) |
 
 ### Latest winners
@@ -64,17 +64,17 @@ Share of actual winners with a positive z-score on each signal at the start date
 
 | Start | Ticker | Return | Rank given | Signals flagged | Class | Why |
 |---|---|---|---|---|---|---|
-| 2026-06-01 | IMH | 57.6% | 9 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2026-06-01 | KPLC | 46.1% | 1 of 16 | margin_of_safety, momentum | caught | ranked 1 of 16 |
+| 2026-06-01 | IMH | 57.6% | 8 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2026-06-01 | KPLC | 46.1% | 5 of 16 | margin_of_safety, momentum | caught | ranked 5 of 16 |
 | 2026-06-01 | CARB | 44.1% | 12 of 16 | quality, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2026-06-01 | KCB | 42.7% | 2 of 16 | margin_of_safety, quality, dividend_yield, low_volatility | caught | ranked 2 of 16 |
-| 2026-06-01 | DTK | 31.9% | 5 of 16 | margin_of_safety, quality, momentum, low_volatility | caught | ranked 5 of 16 |
-| 2026-07-01 | KPLC | 32.9% | 4 of 16 | margin_of_safety, momentum | caught | ranked 4 of 16 |
+| 2026-06-01 | KCB | 42.7% | 1 of 16 | margin_of_safety, quality, dividend_yield, low_volatility | caught | ranked 1 of 16 |
+| 2026-06-01 | DTK | 31.9% | 4 of 16 | margin_of_safety, quality, momentum, low_volatility | caught | ranked 4 of 16 |
+| 2026-07-01 | KPLC | 32.9% | 7 of 16 | margin_of_safety, momentum | signal miss | ranked outside the top 5 on available signals |
 | 2026-07-01 | DTK | 30.3% | 3 of 16 | margin_of_safety, quality, momentum, low_volatility | caught | ranked 3 of 16 |
 | 2026-07-01 | CARB | 28.5% | 12 of 16 | quality | signal miss | ranked outside the top 5 on available signals |
 | 2026-07-01 | EQTY | 27.3% | 1 of 16 | margin_of_safety, quality, momentum, low_volatility | caught | ranked 1 of 16 |
 | 2026-07-01 | KCB | 20.4% | 2 of 16 | margin_of_safety, quality, dividend_yield | caught | ranked 2 of 16 |
-| 2026-08-01 | IMH | 19.9% | 6 of 16 | momentum, low_volatility | signal miss | ranked outside the top 5 on available signals |
+| 2026-08-01 | IMH | 19.9% | 5 of 16 | momentum, low_volatility | caught | ranked 5 of 16 |
 | 2026-08-01 | CARB | 18.6% | 11 of 16 | quality | signal miss | ranked outside the top 5 on available signals |
 | 2026-08-01 | DTK | 17.5% | 4 of 16 | margin_of_safety, quality, momentum, low_volatility | caught | ranked 4 of 16 |
 | 2026-08-01 | EQTY | 9.5% | 1 of 16 | margin_of_safety, quality, momentum, low_volatility | caught | ranked 1 of 16 |
@@ -84,19 +84,19 @@ Share of actual winners with a positive z-score on each signal at the start date
 
 | Start | Ticker | Return | Rank given | Signals flagged | Class | Why |
 |---|---|---|---|---|---|---|
-| 2026-03-01 | IMH | 61.1% | 10 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2026-03-01 | CARB | 40.1% | 8 of 16 | quality, momentum, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2026-03-01 | COOP | 31.8% | 9 of 16 | margin_of_safety, momentum, dividend_yield, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2026-03-01 | EQTY | 31.7% | 11 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2026-03-01 | DTK | 31.1% | 3 of 16 | margin_of_safety, quality, momentum, low_volatility | caught | ranked 3 of 16 |
-| 2026-04-01 | IMH | 73.1% | 12 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2026-04-01 | EQTY | 60.1% | 8 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2026-04-01 | CARB | 46.2% | 9 of 16 | quality, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2026-03-01 | IMH | 61.1% | 11 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2026-03-01 | CARB | 40.1% | 10 of 16 | quality, momentum, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2026-03-01 | COOP | 31.8% | 8 of 16 | margin_of_safety, momentum, dividend_yield, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2026-03-01 | EQTY | 31.7% | 6 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2026-03-01 | DTK | 31.1% | 2 of 16 | margin_of_safety, quality, momentum, low_volatility | caught | ranked 2 of 16 |
+| 2026-04-01 | IMH | 73.1% | 10 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2026-04-01 | EQTY | 60.1% | 5 of 16 | margin_of_safety, low_volatility | caught | ranked 5 of 16 |
+| 2026-04-01 | CARB | 46.2% | 11 of 16 | quality, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
 | 2026-04-01 | KCB | 42.1% | 3 of 16 | margin_of_safety, momentum, dividend_yield | caught | ranked 3 of 16 |
-| 2026-04-01 | COOP | 39.4% | 10 of 16 | margin_of_safety, momentum, dividend_yield, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2026-04-01 | COOP | 39.4% | 8 of 16 | margin_of_safety, momentum, dividend_yield, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
 | 2026-05-01 | IMH | 64.1% | 8 of 16 | margin_of_safety, dividend_yield, low_volatility | signal miss | ranked outside the top 5 on available signals |
-| 2026-05-01 | CARB | 40.2% | 9 of 16 | quality, low_volatility | signal miss | ranked outside the top 5 on available signals |
-| 2026-05-01 | EQTY | 36.7% | 10 of 16 | margin_of_safety, low_volatility | signal miss | ranked outside the top 5 on available signals |
+| 2026-05-01 | CARB | 40.2% | 10 of 16 | quality, low_volatility | signal miss | ranked outside the top 5 on available signals |
+| 2026-05-01 | EQTY | 36.7% | 5 of 16 | margin_of_safety, low_volatility | caught | ranked 5 of 16 |
 | 2026-05-01 | KCB | 32.6% | 3 of 16 | margin_of_safety, momentum, dividend_yield | caught | ranked 3 of 16 |
 | 2026-05-01 | KPLC | 32.5% | 1 of 16 | margin_of_safety, momentum | caught | ranked 1 of 16 |
 
@@ -104,21 +104,21 @@ Share of actual winners with a positive z-score on each signal at the start date
 
 | Start | Ticker | Return | Rank given | Signals flagged | Class | Why |
 |---|---|---|---|---|---|---|
-| 2025-09-01 | DTK | 124.7% | 2 of 16 | margin_of_safety, quality, low_volatility | caught | ranked 2 of 16 |
-| 2025-09-01 | COOP | 121.5% | 10 of 16 | margin_of_safety, dividend_yield, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2025-09-01 | IMH | 114.0% | 8 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2025-09-01 | KCB | 87.8% | 3 of 16 | margin_of_safety, low_volatility | caught | ranked 3 of 16 |
-| 2025-09-01 | EQTY | 81.6% | 11 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2025-09-01 | DTK | 124.7% | 1 of 16 | margin_of_safety, quality, low_volatility | caught | ranked 1 of 16 |
+| 2025-09-01 | COOP | 121.5% | 9 of 16 | margin_of_safety, dividend_yield, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2025-09-01 | IMH | 114.0% | 7 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2025-09-01 | KCB | 87.8% | 2 of 16 | margin_of_safety, low_volatility | caught | ranked 2 of 16 |
+| 2025-09-01 | EQTY | 81.6% | 10 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
 | 2025-10-01 | IMH | 99.8% | 8 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2025-10-01 | EQTY | 90.5% | 10 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2025-10-01 | DTK | 88.6% | 2 of 16 | margin_of_safety, quality, low_volatility | caught | ranked 2 of 16 |
-| 2025-10-01 | COOP | 87.0% | 12 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2025-10-01 | KCB | 72.9% | 4 of 16 | margin_of_safety, dividend_yield, low_volatility | caught | ranked 4 of 16 |
-| 2025-11-01 | IMH | 93.2% | 9 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
-| 2025-11-01 | COOP | 79.5% | 10 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2025-10-01 | EQTY | 90.5% | 9 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2025-10-01 | DTK | 88.6% | 1 of 16 | margin_of_safety, quality, low_volatility | caught | ranked 1 of 16 |
+| 2025-10-01 | COOP | 87.0% | 10 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2025-10-01 | KCB | 72.9% | 2 of 16 | margin_of_safety, dividend_yield, low_volatility | caught | ranked 2 of 16 |
+| 2025-11-01 | IMH | 93.2% | 8 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
+| 2025-11-01 | COOP | 79.5% | 9 of 16 | margin_of_safety, low_volatility | macro | over 70% of the universe moved more than 10% the same way |
 | 2025-11-01 | DTK | 78.9% | 2 of 16 | margin_of_safety, quality, momentum, low_volatility | caught | ranked 2 of 16 |
 | 2025-11-01 | KPLC | 65.3% | 1 of 16 | margin_of_safety, momentum | caught | ranked 1 of 16 |
-| 2025-11-01 | CARB | 56.1% | 8 of 16 | quality | macro | over 70% of the universe moved more than 10% the same way |
+| 2025-11-01 | CARB | 56.1% | 13 of 16 | quality | macro | over 70% of the universe moved more than 10% the same way |
 
 ## Limitations
 
