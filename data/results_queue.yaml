@@ -1,0 +1,38 @@
+note: Rule-based extractions awaiting human review. Copy verified figures into data/fundamentals.yaml
+  (KES millions) with the source URL, then delete the entry.
+items:
+- ticker: TOTL
+  title: TotalEnergies Marketing Kenya PLC- Audited Financial Results for the Year
+    Ended 31-Dec-2025
+  url: https://www.nse.co.ke/wp-content/uploads/TotalEnergies-Marketing-Kenya-PLC-Audited-Financial-Results-for-the-Year-Ended-31-Dec-2025.pdf
+  date: '2026-11-11'
+  detected: {}
+  status: needs review
+  units: as printed in the source, usually KES thousands; convert to KES millions
+- ticker: SCOM
+  title: Safaricom Plc –Audited Results for the Year Ended 31 March 2026
+  url: https://www.nse.co.ke/wp-content/uploads/Safaricom-Plc-–Audited-Results-for-the-Year-Ended-31-March-2026.pdf
+  date: '2026-11-11'
+  detected:
+    net_income:
+    - - 73676.0
+      - 45757.2
+      - 118353.9
+      - 94954.1
+    eps:
+    - - 2.39
+      - 1.74
+      - 2.95
+      - 2.37
+    total_assets:
+    - - 518045.4
+      - 515284.2
+      - 489805.8
+      - 432548.0
+    total_liabilities:
+    - - 287124.3
+      - 291263.1
+      - 181250.0
+      - 183786.1
+  status: needs review
+  units: as printed in the source, usually KES thousands; convert to KES millions
