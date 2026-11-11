@@ -28,6 +28,17 @@ def test_piotroski_bank_uses_total_liabilities():
     assert "leverage_falling" in f["signals"] and "gross_margin_improving" not in f["signals"]
 
 
+def test_piotroski_bank_signals_from_sourced_bank_fields():
+    prev = dict(net_income=10, total_assets=100, total_equity=12, shares_outstanding=10, cost_to_income=0.50,
+                core_capital_ratio=0.16)
+    cur = dict(net_income=12, total_assets=110, total_equity=14, shares_outstanding=10, cost_to_income=0.45,
+               core_capital_ratio=0.15)
+    f = quality.piotroski([period(year=2023, **prev), period(year=2024, **cur)], bank=True)
+    assert f["signals"] == {"roa_positive": True, "roa_improving": True, "leverage_falling": True,
+                            "cost_to_income_improving": True, "capital_ratio_improving": False,
+                            "no_dilution": True}
+
+
 def test_altman_z2():
     p = period(current_assets=400, current_liabilities=200, retained_earnings=300, ebit=150, total_equity=500,
                total_liabilities=500, total_assets=1000)

@@ -648,3 +648,1008 @@ companies:
         long_term_debt: 655.496
         operating_cash_flow: 861.477
         shares_outstanding: 254.852
+  EQTY:
+    name: Equity Group Holdings Plc
+    gaps:
+    - H1-2026 omits total_equity (only equity including NCI was printed) and shares_outstanding
+    - FY2025 deposits were later restated to 1,443,458.895
+    periods:
+    - period: H1-2026
+      period_end: '2026-06-30'
+      published: '2026-08-30'
+      published_basis: deadline
+      type: interim
+      source_url: https://www.use.or.ug/uploads/2ae88b67-dff2-4a89-9a79-d889f03d6d41.pdf
+      source_note: Unaudited group H1-2026 FS (USE-hosted copy). total_equity and shares omitted - only equity including
+        NCI (350,357.975) was seen. EPS is half-year. Cost-to-income excludes provisions (53.8% including).
+      field_sources:
+        roe: https://equitygroupholdings.com/wp-content/uploads/2026/08/Equity-Group-Holdings-PLC-HY-2026-Investor-Booklet.pdf
+        npl_ratio: https://equitygroupholdings.com/wp-content/uploads/2026/08/Equity-Group-Holdings-PLC-HY-2026-Investor-Booklet.pdf
+        cost_to_income: https://equitygroupholdings.com/wp-content/uploads/2026/08/Equity-Group-Holdings-PLC-HY-2026-Investor-Booklet.pdf
+        core_capital_ratio: https://equitygroupholdings.com/wp-content/uploads/2026/08/Equity-Group-Holdings-PLC-HY-2026-Investor-Booklet.pdf
+      values:
+        net_income: 43798.877
+        eps: 11.61
+        total_assets: 2155547.629
+        npl_ratio: 0.095
+        net_loans: 981035.8
+        deposits: 1589419.802
+        roe: 0.265
+        cost_to_income: 0.486
+        core_capital_ratio: 0.173
+    - period: FY2025
+      period_end: '2025-12-31'
+      published: '2026-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.use.or.ug/uploads/46d239d2-356e-4c5c-a297-7ed44d72f790.pdf
+      source_note: Audited group FS FY2025 (USE-hosted copy). Original figures; deposits were later restated to
+        1,443,458.895 in the H1 documents. Cost-to-income excludes provisions (58% including).
+      field_sources:
+        roe: https://equitygroupholdings.com/wp-content/uploads/2026/03/Equity-Group-Holdings-PLC-FY-2025-Investor-Booklet.pdf
+        npl_ratio: https://equitygroupholdings.com/wp-content/uploads/2026/03/Equity-Group-Holdings-PLC-FY-2025-Investor-Booklet.pdf
+        cost_to_income: https://equitygroupholdings.com/wp-content/uploads/2026/03/Equity-Group-Holdings-PLC-FY-2025-Investor-Booklet.pdf
+        core_capital_ratio: https://equitygroupholdings.com/wp-content/uploads/2026/03/Equity-Group-Holdings-PLC-FY-2025-Investor-Booklet.pdf
+      values:
+        net_income: 71963.808
+        eps: 19.07
+        dps: 5.75
+        total_assets: 1970992.243
+        total_equity: 309505
+        shares_outstanding: 3773.674802
+        npl_ratio: 0.105
+        net_loans: 882457.036
+        deposits: 1455142.011
+        roe: 0.267
+        cost_to_income: 0.51
+        core_capital_ratio: 0.191
+    - period: FY2024
+      period_end: '2024-12-31'
+      published: '2025-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/Equity-Group-Holdings-Plc-Audited-Financial-Statements-Other-Disclosures-for-the-Period-Ended-31-Dec-2024.pdf
+      source_note: Audited group FS FY2024. Core capital 17.3% as printed in the audited FS (booklet prints 17.2%).
+        Cost-to-income excludes provisions (68.7% including).
+      field_sources:
+        roe: https://equitygroupholdings.com/wp-content/uploads/2025/03/Equity-Group-Holdings-PLC-FY-2024-Investor-Booklet.pdf
+        npl_ratio: https://equitygroupholdings.com/wp-content/uploads/2025/03/Equity-Group-Holdings-PLC-FY-2024-Investor-Booklet.pdf
+        cost_to_income: https://equitygroupholdings.com/wp-content/uploads/2025/03/Equity-Group-Holdings-PLC-FY-2024-Investor-Booklet.pdf
+      values:
+        net_income: 46549.519
+        eps: 12.34
+        dps: 4.25
+        total_assets: 1804624.428
+        total_equity: 234041
+        shares_outstanding: 3773.674802
+        npl_ratio: 0.122
+        net_loans: 819235.956
+        deposits: 1399648.121
+        roe: 0.215
+        cost_to_income: 0.582
+        core_capital_ratio: 0.173
+    - period: FY2023
+      period_end: '2023-12-31'
+      published: '2024-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/Equity-Group-Holdings-Plc-Audited-Financial-Statements-Other-Disclosures-for-the-Period-Ended-31-Dec-2023.pdf
+      source_note: Audited group FS and other disclosures FY2023. Original (pre-restatement) figures. Ratios from
+        the 2023 integrated report. Cost-to-income is the headline ratio excluding provisions (71.3% including).
+      field_sources:
+        roe: https://equitygroupholdings.com/wp-content/uploads/2024/05/Equity-Group-Holdings-PLC-2023-Integrated-Report-and-Financial-Statements.pdf
+        npl_ratio: https://equitygroupholdings.com/wp-content/uploads/2024/05/Equity-Group-Holdings-PLC-2023-Integrated-Report-and-Financial-Statements.pdf
+        cost_to_income: https://equitygroupholdings.com/wp-content/uploads/2024/05/Equity-Group-Holdings-PLC-2023-Integrated-Report-and-Financial-Statements.pdf
+        core_capital_ratio: https://equitygroupholdings.com/wp-content/uploads/2024/05/Equity-Group-Holdings-PLC-2023-Integrated-Report-and-Financial-Statements.pdf
+      values:
+        net_income: 41976.207
+        eps: 11.12
+        dps: 4.0
+        total_assets: 1821434.52
+        total_equity: 207793
+        shares_outstanding: 3773.674802
+        npl_ratio: 0.117
+        net_loans: 887379.798
+        deposits: 1358183.071
+        roe: 0.223
+        cost_to_income: 0.523
+        core_capital_ratio: 0.143
+  KCB:
+    name: KCB Group Plc
+    gaps:
+    - H1-2026 EPS is annualised as printed (interim periods only feed the NPL trend, not valuations)
+    - source_url values point to IR listing pages because the PDFs are signed download links
+    - 'FY2023 EPS conflict: 11.26 (FY2024 comparative, used) vs 11.41 (FY2023 abridged statements)'
+    - Core capital and NPL differ between financial statements and press releases; statement figures used
+    periods:
+    - period: H1-2026
+      period_end: '2026-06-30'
+      published: '2026-08-30'
+      published_basis: deadline
+      type: interim
+      source_url: https://kcbgroup.com/financial-statements?years=2026
+      source_note: KCB IR listing page; unaudited group H1-2026 FS. EPS is ANNUALISED (2 x half-year). Core capital
+        18.0% per FS (press release 18.6%).
+      field_sources:
+        dps: https://kcbgroup.com/dividends
+        roe: https://kcbgroup.com/investor-presentations?years=2026
+        npl_ratio: https://kcbgroup.com/investor-presentations?years=2026
+        cost_to_income: https://kcbgroup.com/investor-presentations?years=2026
+      values:
+        net_income: 36074.196
+        eps: 22.45
+        dps: 3.0
+        total_assets: 2299352.24
+        total_equity: 356952.024
+        shares_outstanding: 3213.462815
+        npl_ratio: 0.151
+        net_loans: 1240744.34
+        deposits: 1710752.739
+        roe: 0.211
+        cost_to_income: 0.444
+        core_capital_ratio: 0.18
+    - period: FY2025
+      period_end: '2025-12-31'
+      published: '2026-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://kcbgroup.com/financial-statements?years=2025
+      source_note: KCB IR listing page; group audited FS FY2025. Basic EPS (continuing-ops EPS 19.81). NBK sale
+        to Access Bank completed 30 May 2025 (NBK shown as discontinued). Equity cross-checked to the integrated
+        report's "attributable to equity holders". Core capital 18.6% per FS (press release 18.4%); cost-to-income
+        42.3% (press release 42.5%).
+      field_sources:
+        dps: https://kcbgroup.com/dividends
+        shares_outstanding: https://kcbgroup.com/shareholder-profile
+        total_equity: https://kcbgroup.com/integrated-reports
+        roe: https://kcbgroup.com/investor-presentations?years=2026
+        npl_ratio: https://kcbgroup.com/investor-presentations?years=2026
+        cost_to_income: https://kcbgroup.com/investor-presentations?years=2026
+      values:
+        net_income: 66819.429
+        eps: 20.8
+        dps: 7.0
+        total_assets: 2147206.575
+        total_equity: 331466.78
+        shares_outstanding: 3213.462815
+        npl_ratio: 0.169
+        net_loans: 1151576.544
+        deposits: 1592611.825
+        roe: 0.225
+        cost_to_income: 0.423
+        core_capital_ratio: 0.186
+    - period: FY2024
+      period_end: '2024-12-31'
+      published: '2025-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://kcbgroup.com/financial-statements?years=2024
+      source_note: KCB IR listing page; group audited FS FY2024. Ratios from FY2024 results press release / investor
+        presentation on the IR site. Cost-to-income basis not stated (appears to exclude provisions).
+      field_sources:
+        dps: https://kcbgroup.com/dividends
+        shares_outstanding: https://kcbgroup.com/shareholder-profile
+      values:
+        net_income: 60089.353
+        eps: 18.7
+        dps: 3.0
+        total_assets: 1962320.08
+        total_equity: 274889.584
+        shares_outstanding: 3213.462815
+        npl_ratio: 0.192
+        net_loans: 990412.959
+        deposits: 1381975.669
+        roe: 0.246
+        cost_to_income: 0.454
+        core_capital_ratio: 0.168
+    - period: FY2023
+      period_end: '2023-12-31'
+      published: '2024-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://kcbgroup.com/financial-statements?years=2023
+      source_note: KCB IR listing page (documents are signed download links, no stable direct PDF URL). Group audited
+        FS FY2023. Other docs on the IR site - integrated reports, FY2023 press release - were used for ratios.
+        Equity is "total shareholders' funds".
+      field_sources:
+        eps: https://kcbgroup.com/financial-statements?years=2024
+        dps: https://kcbgroup.com/dividends
+        shares_outstanding: https://kcbgroup.com/shareholder-profile
+        npl_ratio: https://kcbgroup.com/integrated-reports
+      values:
+        net_income: 36176.0
+        eps: 11.26
+        dps: 0.0
+        total_assets: 2170873.992
+        total_equity: 227522.0
+        shares_outstanding: 3213.462815
+        npl_ratio: 0.173
+        net_loans: 1095933.214
+        deposits: 1690908.411
+        roe: 0.178
+        cost_to_income: 0.503
+        core_capital_ratio: 0.122
+  ABSA:
+    name: Absa Bank Kenya Plc
+    gaps:
+    - H1-2026 omits shares_outstanding
+    - Core capital ratio is Bank level, not Group
+    periods:
+    - period: H1-2026
+      period_end: '2026-06-30'
+      published: '2026-08-30'
+      published_basis: deadline
+      type: interim
+      source_url: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/unaudited-results-for-period-ended-30-June-2026.pdf
+      source_note: Unaudited H1-2026 results. Balance-sheet equity used (97,975.145); the statement of changes in
+        equity shows 100,686.037 (difference is the interim dividend payable of about 2,715.768). Ratios from the
+        H1 2026 investor briefing. Core capital is "Bank" level.
+      field_sources:
+        npl_ratio: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-investor-briefing-2026.pdf
+        cost_to_income: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-investor-briefing-2026.pdf
+      values:
+        net_income: 10532.517
+        eps: 1.94
+        dps: 0.5
+        total_assets: 558119.412
+        total_equity: 97975.145
+        npl_ratio: 0.101
+        net_loans: 329870.337
+        deposits: 380676.99
+        roe: 0.217
+        cost_to_income: 0.412
+        core_capital_ratio: 0.174
+    - period: FY2025
+      period_end: '2025-12-31'
+      published: '2026-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/financial-results-2025.pdf
+      source_note: Published audited FS FY2025; equity includes the proposed final dividend. Ratios from the FY2025
+        investor briefing (cost-to-income excludes provisions). Core capital is "Bank" level. Cytonn NPL is slightly
+        higher (10.2%); company figure used.
+      field_sources:
+        npl_ratio: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-investor-briefing-2025.pdf
+        cost_to_income: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-investor-briefing-2025.pdf
+        shares_outstanding: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/2025-integrated-annual-report.pdf
+      values:
+        net_income: 22905.43
+        eps: 4.22
+        dps: 2.05
+        total_assets: 537645.353
+        total_equity: 100519.491
+        shares_outstanding: 5431.536
+        npl_ratio: 0.114
+        net_loans: 312166.142
+        deposits: 372382.837
+        roe: 0.228
+        cost_to_income: 0.365
+        core_capital_ratio: 0.183
+    - period: FY2024
+      period_end: '2024-12-31'
+      published: '2025-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-financial-statement-full-year-2024.pdf
+      source_note: Published audited FS FY2024. NPL is the FY2024 comparative printed in the FY2025 briefing. Cost-to-income
+        excludes loan-loss provisions. Core capital is "Bank" level.
+      field_sources:
+        npl_ratio: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-investor-briefing-2025.pdf
+        shares_outstanding: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/integrated-report-2024.pdf
+      values:
+        net_income: 20875.701
+        eps: 3.84
+        dps: 1.75
+        total_assets: 506476.258
+        total_equity: 85204.206
+        shares_outstanding: 5431.536
+        npl_ratio: 0.123
+        net_loans: 309097.555
+        deposits: 367114.721
+        roe: 0.245
+        cost_to_income: 0.377
+        core_capital_ratio: 0.17
+    - period: FY2023
+      period_end: '2023-12-31'
+      published: '2024-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-financials-full-year-2023.pdf
+      source_note: Published audited FS FY2023. NPL and cost-to-income (excluding loan-loss provisions) from the
+        2023 investor briefing pack. Core capital is printed under the "Bank" heading; no separate group figure
+        was found.
+      field_sources:
+        npl_ratio: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-investor-briefing-pack-2023.pdf
+        cost_to_income: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-investor-briefing-pack-2023.pdf
+        shares_outstanding: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/integrated-report-2023.pdf
+      values:
+        net_income: 16367.329
+        eps: 3.01
+        dps: 1.55
+        total_assets: 519795.508
+        total_equity: 69195.21
+        shares_outstanding: 5431.536
+        npl_ratio: 0.096
+        net_loans: 335713.679
+        deposits: 362749.279
+        roe: 0.237
+        cost_to_income: 0.397
+        core_capital_ratio: 0.136
+  COOP:
+    name: The Co-operative Bank of Kenya Ltd
+    gaps:
+    - FY2023 NPL is the original 16.1% (restated to 16.7%)
+    periods:
+    - period: H1-2026
+      period_end: '2026-06-30'
+      published: '2026-08-30'
+      published_basis: deadline
+      type: interim
+      source_url: https://www.co-opbank.co.ke/wp-content/uploads/2026/08/48626-CO-OP-BANK-Q2-2026-FINANCIALS-12-8-26.pdf
+      source_note: Unaudited H1-2026 group FS; parent profit and equity from the statement of changes in equity.
+        Ratios from the H1 press release (.docx), corroborated by The Star on profit. EPS is half-year. Cytonn H1
+        NPL 14.2% differs from company 13.9%.
+      field_sources:
+        roe: https://www.co-opbank.co.ke/wp-content/uploads/2026/08/Press-Release-H12026_3029.docx
+        npl_ratio: https://www.co-opbank.co.ke/wp-content/uploads/2026/08/Press-Release-H12026_3029.docx
+        cost_to_income: https://www.co-opbank.co.ke/wp-content/uploads/2026/08/Press-Release-H12026_3029.docx
+        core_capital_ratio: https://www.co-opbank.co.ke/wp-content/uploads/2026/08/Press-Release-H12026_3029.docx
+      values:
+        net_income: 18023.708
+        eps: 3.08
+        total_assets: 869469.695
+        total_equity: 170688.675
+        shares_outstanding: 5867.18
+        npl_ratio: 0.139
+        net_loans: 462211.02
+        deposits: 621271.969
+        roe: 0.22
+        cost_to_income: 0.46
+        core_capital_ratio: 0.21
+    - period: FY2025
+      period_end: '2025-12-31'
+      published: '2026-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.co-opbank.co.ke/wp-content/uploads/2026/03/CO-OP-Bank-Financials-2025.pdf
+      source_note: CBK-format group FS FY2025. Parent profit and equity and the exact share count (5,867,180,103)
+        from the 2025 integrated report. DPS = interim 1.00 + final 1.50. Cytonn NPL 15.7% differs from company
+        15.4%.
+      field_sources:
+        net_income: https://www.co-opbank.co.ke/wp-content/uploads/2026/05/2025-Co-op-Bank-Integrated-Report-Web.pdf
+        total_equity: https://www.co-opbank.co.ke/wp-content/uploads/2026/05/2025-Co-op-Bank-Integrated-Report-Web.pdf
+        shares_outstanding: https://www.co-opbank.co.ke/wp-content/uploads/2026/05/2025-Co-op-Bank-Integrated-Report-Web.pdf
+      values:
+        net_income: 29563.529
+        eps: 5.04
+        dps: 2.5
+        total_assets: 827352.327
+        total_equity: 165134.519
+        shares_outstanding: 5867.18
+        npl_ratio: 0.154
+        net_loans: 421002.682
+        deposits: 574170.104
+        roe: 0.191
+        cost_to_income: 0.463
+        core_capital_ratio: 0.203
+    - period: FY2024
+      period_end: '2024-12-31'
+      published: '2025-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.co-opbank.co.ke/wp-content/uploads/2025/03/CO-OP-Bank-FY-Financials-2024.pdf
+      source_note: CBK-format group FS FY2024. Parent profit and equity from the 2024 integrated report; DPS from
+        the 2024 integrated report p9. Share count from paid-up capital KES 5,867,180k at KES 1 par.
+      field_sources:
+        net_income: https://www.co-opbank.co.ke/wp-content/uploads/2025/05/Co-op-2024-IR-07_05_compressed-1.pdf
+        total_equity: https://www.co-opbank.co.ke/wp-content/uploads/2025/05/Co-op-2024-IR-07_05_compressed-1.pdf
+        dps: https://www.co-opbank.co.ke/wp-content/uploads/2025/05/Co-op-2024-IR-07_05_compressed-1.pdf
+      values:
+        net_income: 25432.927
+        eps: 4.33
+        dps: 1.5
+        total_assets: 743190.144
+        total_equity: 145029.04
+        shares_outstanding: 5867.18
+        npl_ratio: 0.168
+        net_loans: 373732.927
+        deposits: 506112.147
+        roe: 0.197
+        cost_to_income: 0.472
+        core_capital_ratio: 0.183
+    - period: FY2023
+      period_end: '2023-12-31'
+      published: '2024-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.co-opbank.co.ke/wp-content/uploads/2024/03/Co-op-Bank-Group-FY2023-Financials.pdf
+      source_note: CBK-format group FS FY2023 (total assets 671,131.286; the integrated report prints 672,527.388).
+        Parent profit and equity from the 2023 integrated report. NPL 16.1% is the original (later reports restate
+        to 16.7%). Cost-to-income excludes provisions. Share count rests on paid-up capital of KES 5,867,180k at
+        KES 1 par (no exact share count printed).
+      field_sources:
+        net_income: https://www.co-opbank.co.ke/wp-content/uploads/2024/05/CO-OP-BANK-2023-Integrated-Report-1.pdf
+        total_equity: https://www.co-opbank.co.ke/wp-content/uploads/2024/05/CO-OP-BANK-2023-Integrated-Report-1.pdf
+      values:
+        net_income: 23023.816
+        eps: 3.92
+        dps: 1.5
+        total_assets: 671131.286
+        total_equity: 113189.087
+        shares_outstanding: 5867.18
+        npl_ratio: 0.161
+        net_loans: 374227.421
+        deposits: 451642.048
+        roe: 0.21
+        cost_to_income: 0.47
+        core_capital_ratio: 0.182
+  SCBK:
+    name: Standard Chartered Bank Kenya Ltd
+    gaps:
+    - EPS is on ordinary profit after preference dividends, so it differs from net_income / shares
+    - total_equity includes about KES 2.8bn of preference shares and capital grants, so derived BVPS is slightly
+      high
+    - ROE is Cytonn-computed (the company prints none); H1-2026 NPL is press-release text quoted by media
+    - H1-2026 omits shares_outstanding; core capital ratio is Bank level
+    events:
+    - date: 2025-09-15
+      type: profit_warning
+      detail: FY2025 profit after tax expected to be at least 25% lower than FY2024 (Retirement Benefits Appeals
+        Tribunal / IAS 19 past-service cost). Actual FY2025 PAT fell about 38%.
+      source_url: https://av.sc.com/ke/content/docs/ke-profit-warning-announcement.pdf
+    periods:
+    - period: H1-2026
+      period_end: '2026-06-30'
+      published: '2026-08-30'
+      published_basis: deadline
+      type: interim
+      source_url: https://www.nse.co.ke/wp-content/uploads/Standard-Chartered-Bank-Kenya-Ltd-Consolidated-Company-Financial-Statements-Disclosures-for-the-Period-Ended-30-Jun-2026.pdf
+      source_note: NSE-filed unaudited H1-2026 FS. EPS is half-year. NPL from press-release text quoted by Kenya
+        Online News (Kingdom 5.08%, Cytonn 5.1%). ROE from Cytonn H1'26 report. Cost-to-income is a Kingdom Securities
+        computation excluding provisions; the company-printed figure was not seen. Shares omitted - no H1 count
+        seen. Core capital is Bank level.
+      field_sources:
+        npl_ratio: https://www.kenyaonlinenews.com/standard-chartered-kenya-reports-kshs-9-6bn
+        roe: https://cytonn.com/uploads/downloads/kenya-listed-banks-h12026-full-reportvf.pdf
+        cost_to_income: https://kingdomsecurities.co.ke/wp-content/uploads/2026/08/Standard-Chartered-Bank-Kenya-Earnings-Update-H1-2026-.pdf
+      values:
+        net_income: 6726.505
+        eps: 17.58
+        dps: 8.5
+        total_assets: 418128.228
+        total_equity: 63796.134
+        npl_ratio: 0.05
+        net_loans: 169166.341
+        deposits: 309112.7
+        roe: 0.171
+        cost_to_income: 0.4988
+        core_capital_ratio: 0.1816
+    - period: FY2025
+      period_end: '2025-12-31'
+      published: '2026-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/Standard-Chartered-Bank-Ltd-Financial-Results-for-the-Year-Ended-31-Dec-2025.pdf
+      source_note: NSE-filed FY2025 results; company abridged FS and annual report 2025 are alternates. PAT before
+        preference dividends (ordinary attributable 12,268.571). Equity includes about KES 2.8bn of preference shares
+        and capital grants. ROE is Cytonn-computed; cost-to-income is the Cytonn ex-provisions figure. Core capital
+        is Bank level.
+      field_sources:
+        roe: https://cytonn.com/uploads/downloads/scbk-fy2025-earnings-notevf.pdf
+        cost_to_income: https://cytonn.com/uploads/downloads/scbk-fy2025-earnings-notevf.pdf
+      values:
+        net_income: 12436.571
+        eps: 32.47
+        dps: 31.0
+        total_assets: 363491.556
+        total_equity: 66320.181
+        shares_outstanding: 377.850589
+        npl_ratio: 0.054
+        net_loans: 154307.039
+        deposits: 283451.83
+        roe: 0.18
+        cost_to_income: 0.556
+        core_capital_ratio: 0.2036
+    - period: FY2024
+      period_end: '2024-12-31'
+      published: '2025-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://av.sc.com/ke/content/docs/ke-sc-annual-report-2024.pdf
+      source_note: Annual report 2024 incl. five-year table p15. Ratios from the FY2024 press release / investor
+        briefing. ROE Cytonn-computed (company prints none). Cost-to-income 39.6% (annual-report basis 39.8%). Core
+        capital is Bank level.
+      field_sources:
+        npl_ratio: https://av.sc.com/ke/content/docs/ke-press-release-standard-chartered-fy-2024-results.pdf
+        cost_to_income: https://av.sc.com/ke/content/docs/ke-investor-briefing-19-march-2025.pdf
+        roe: https://cytonn.com/uploads/downloads/scbk-fy2025-earnings-notevf.pdf
+      values:
+        net_income: 20060.587
+        eps: 52.65
+        dps: 45.0
+        total_assets: 384574.089
+        total_equity: 71776.12
+        shares_outstanding: 377.850589
+        npl_ratio: 0.074
+        net_loans: 151647.379
+        deposits: 295690.089
+        roe: 0.301
+        cost_to_income: 0.396
+        core_capital_ratio: 0.1948
+    - period: FY2023
+      period_end: '2023-12-31'
+      published: '2024-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://av.sc.com/ke/content/docs/ke-sc-2023-annual-report.pdf
+      source_note: Annual report 2023 (profit is PAT before preference dividends; no NCI). EPS 36.17 is on ordinary
+        attributable profit (13,667.467). ROE is NOT printed by the company; value is Cytonn-computed. net_loans
+        163,162 is the rounded comparative from the FY2024 press release. Core capital is the Bank (CBK) figure,
+        not group.
+      field_sources:
+        net_loans: https://av.sc.com/ke/content/docs/ke-press-release-standard-chartered-fy-2024-results.pdf
+        npl_ratio: https://av.sc.com/ke/content/docs/ke-fy-23-results-and-strategy-presentation-vff.pdf
+        cost_to_income: https://av.sc.com/ke/content/docs/ke-fy-23-results-and-strategy-presentation-vff.pdf
+        roe: https://cytonn.com/uploads/downloads/scbk-fy2025-earnings-notevf.pdf
+      values:
+        net_income: 13835.467
+        eps: 36.17
+        dps: 29.0
+        total_assets: 428962.175
+        total_equity: 61532.267
+        shares_outstanding: 377.850589
+        npl_ratio: 0.097
+        net_loans: 163162.0
+        deposits: 342853.241
+        roe: 0.235
+        cost_to_income: 0.448
+        core_capital_ratio: 0.1777
+  NCBA:
+    name: NCBA Group Plc
+    gaps:
+    - H1-2026 net_loans uses the CBK format line, a different definition from the FY IFRS line
+    - H1-2026 omits shares_outstanding; Nedbank tender offer (unconditional 2026-10-19) did not change the share
+      count
+    periods:
+    - period: H1-2026
+      period_end: '2026-06-30'
+      published: '2026-08-30'
+      published_basis: deadline
+      type: interim
+      source_url: https://ncbagroup.com/wp-content/uploads/2026/08/NCBA-Group-H1-2026-Unaudited-Financials.pdf
+      source_note: Unaudited H1-2026 FS. net_income is "Profit for the period" (NCI may differ slightly). net_loans
+        is the CBK-format line (FY2025 on the same basis was 317,161.201) - NOT comparable to the FY2023-25 net_loans
+        above, which use the IFRS line. EPS is half-year. Shares omitted. NPL 10.5% company (Cytonn 10.8%).
+      field_sources:
+        roe: https://ncbagroup.com/wp-content/uploads/2026/08/NCBA-Group-Plc-H1-26-Investor-Deck-1.pdf
+        npl_ratio: https://ncbagroup.com/wp-content/uploads/2026/08/NCBA-Group-Plc-H1-26-Investor-Deck-1.pdf
+        cost_to_income: https://ncbagroup.com/wp-content/uploads/2026/08/NCBA-Group-Plc-H1-26-Investor-Deck-1.pdf
+      values:
+        net_income: 12391.249
+        eps: 7.52
+        dps: 3.75
+        total_assets: 739399.257
+        total_equity: 131543.362
+        npl_ratio: 0.105
+        net_loans: 345878.539
+        deposits: 551408.924
+        roe: 0.19
+        cost_to_income: 0.487
+        core_capital_ratio: 0.2159
+    - period: FY2025
+      period_end: '2025-12-31'
+      published: '2026-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://ncbagroup.com/wp-content/uploads/2026/06/NCBA-Group-Plc-Annual-2025-Integrated-Report.pdf
+      source_note: 2025 integrated report. DPS = interim 2.50 + final 4.60. Ratios from the FY2025 investor deck.
+        Core capital is the company figure printed as the comparative in the H1-2026 FS.
+      field_sources:
+        roe: https://ncbagroup.com/wp-content/uploads/securepdfs/2026/04/NCBA-Group-Plc-FY-2025-Investor-Deck-FINAL.pdf
+        npl_ratio: https://ncbagroup.com/wp-content/uploads/securepdfs/2026/04/NCBA-Group-Plc-FY-2025-Investor-Deck-FINAL.pdf
+        cost_to_income: https://ncbagroup.com/wp-content/uploads/securepdfs/2026/04/NCBA-Group-Plc-FY-2025-Investor-Deck-FINAL.pdf
+        core_capital_ratio: https://ncbagroup.com/wp-content/uploads/2026/08/NCBA-Group-H1-2026-Unaudited-Financials.pdf
+      values:
+        net_income: 23400.299
+        eps: 14.2
+        dps: 7.1
+        total_assets: 716047.157
+        total_equity: 127454.581
+        shares_outstanding: 1647.519532
+        npl_ratio: 0.102
+        net_loans: 306917.975
+        deposits: 531866.221
+        roe: 0.197
+        cost_to_income: 0.523
+        core_capital_ratio: 0.2187
+    - period: FY2024
+      period_end: '2024-12-31'
+      published: '2025-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/09/NCBA-Group-Plc-Annual-2024-Integrated-Report-23.05.2025.pdf
+      source_note: 2024 integrated report. Ratios from the FY2024 investor deck. Core capital is as reported by
+        Cytonn.
+      field_sources:
+        roe: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/09/NCBA-Group-Plc-FY-2024-Investor-Deck.pdf
+        npl_ratio: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/09/NCBA-Group-Plc-FY-2024-Investor-Deck.pdf
+        cost_to_income: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/09/NCBA-Group-Plc-FY-2024-Investor-Deck.pdf
+        core_capital_ratio: https://cytonn.com/uploads/downloads/ncba-bank-fy2024-earnings-notev3.pdf
+      values:
+        net_income: 21881.139
+        eps: 13.28
+        dps: 5.5
+        total_assets: 665943.764
+        total_equity: 109730.121
+        shares_outstanding: 1647.519532
+        npl_ratio: 0.112
+        net_loans: 293932.35
+        deposits: 502016.493
+        roe: 0.217
+        cost_to_income: 0.513
+        core_capital_ratio: 0.212
+    - period: FY2023
+      period_end: '2023-12-31'
+      published: '2024-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/09/NCBA-Group-Plc-Annual-2024-Integrated-Report-23.05.2025.pdf
+      source_note: FY2023 comparatives in the 2024 integrated report (the FY2023 abridged FS PDF is image-only).
+        ROE, NPL and cost-to-income from the FY2023 investor deck (cost-to-income 45.7% original; restated to 46.1%
+        in the FY2025 deck). Core capital is as reported by Cytonn, not read from a company document.
+      field_sources:
+        roe: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/02/NCBA-Group-Plc-FY-2023-Investor-Deck.pdf
+        npl_ratio: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/02/NCBA-Group-Plc-FY-2023-Investor-Deck.pdf
+        cost_to_income: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/02/NCBA-Group-Plc-FY-2023-Investor-Deck.pdf
+        core_capital_ratio: https://www.cytonn.com/uploads/downloads/earnings-note-fy2023-ncba-bank-v3.pdf
+      values:
+        net_income: 21456.633
+        eps: 13.02
+        dps: 4.75
+        total_assets: 734621.408
+        total_equity: 96663.178
+        shares_outstanding: 1647.519
+        npl_ratio: 0.121
+        net_loans: 330214.425
+        deposits: 579401.918
+        roe: 0.241
+        cost_to_income: 0.457
+        core_capital_ratio: 0.18
+  IMH:
+    name: I&M Group Plc
+    gaps:
+    - FY2024 values are the original OCR-read figures; the FY2025 release restated FY2024 (EPS 8.90)
+    - Private placement on 2025-05-21 raised shares from 1,653.6m to 1,740.1m (derived; no document prints the total)
+    - ROE and cost-to-income are integer-rounded by the company; H1-2026 NPL is the text '9%'
+    periods:
+    - period: H1-2026
+      period_end: '2026-06-30'
+      published: '2026-08-30'
+      published_basis: deadline
+      type: interim
+      source_url: https://www.imbankgroup.com/wp-content/uploads/2026/08/IM-Group-HY-2026-V5-DN-FP-275x330mm.pdf
+      source_note: Published H1-2026 group FS. EPS is half-year. Ratios from the H1 investor presentation. NPL is
+        the text "Gross NPL ratio of 9%" (coarse; Cytonn 8.4%). ROE and cost-to-income integer-rounded. Share count
+        carried from FY2025 (no later issue found).
+      field_sources:
+        roe: https://www.imbankgroup.com/wp-content/uploads/2026/08/IM-GROUP-PLC-HY2026-IVESTOR-PRESENTATION.pdf
+        npl_ratio: https://www.imbankgroup.com/wp-content/uploads/2026/08/IM-GROUP-PLC-HY2026-IVESTOR-PRESENTATION.pdf
+        cost_to_income: https://www.imbankgroup.com/wp-content/uploads/2026/08/IM-GROUP-PLC-HY2026-IVESTOR-PRESENTATION.pdf
+        core_capital_ratio: https://www.imbankgroup.com/wp-content/uploads/2026/08/IM-GROUP-PLC-HY2026-IVESTOR-PRESENTATION.pdf
+      values:
+        net_income: 9305.096
+        eps: 5.35
+        total_assets: 746307.916
+        total_equity: 119412.481
+        shares_outstanding: 1740.121476
+        npl_ratio: 0.09
+        net_loans: 333810.989
+        deposits: 505157.363
+        roe: 0.17
+        cost_to_income: 0.44
+        core_capital_ratio: 0.177
+    - period: FY2025
+      period_end: '2025-12-31'
+      published: '2026-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.imbankgroup.com/wp-content/uploads/2026/03/im-bank-group-financials.pdf
+      source_note: Published FY2025 group FS. Ratios from the FY2025 investor presentation (ROE and cost-to-income
+        integer-rounded). Share count 1,740,121,476 = pre-placement 1,653,621,476 + 86,500,000 new shares placed
+        2025-05-21; no document prints the post-issue total directly (derived from the shareholder circular's expanded
+        maximum and the completion release).
+      field_sources:
+        roe: https://www.imbankgroup.com/wp-content/uploads/2026/03/IM-GROUP-FY-2025-IP-March-2026.pdf
+        npl_ratio: https://www.imbankgroup.com/wp-content/uploads/2026/03/IM-GROUP-FY-2025-IP-March-2026.pdf
+        cost_to_income: https://www.imbankgroup.com/wp-content/uploads/2026/03/IM-GROUP-FY-2025-IP-March-2026.pdf
+        core_capital_ratio: https://www.imbankgroup.com/wp-content/uploads/2026/03/IM-GROUP-FY-2025-IP-March-2026.pdf
+        shares_outstanding: https://www.africinvest.com/images/doc/234_doc.pdf
+      values:
+        net_income: 18781.449
+        eps: 10.79
+        dps: 3.75
+        total_assets: 668884.028
+        total_equity: 115160.998
+        shares_outstanding: 1740.121476
+        npl_ratio: 0.098
+        net_loans: 306279.926
+        deposits: 483935.081
+        roe: 0.18
+        cost_to_income: 0.46
+        core_capital_ratio: 0.1689
+    - period: FY2024
+      period_end: '2024-12-31'
+      published: '2025-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.imbankgroup.com/wp-content/uploads/2025/03/imbank-finacials-fy-2024.pdf
+      source_note: Published FY2024 FS (image-only PDF, values read by OCR; core values agree with Cytonn and Sterling).
+        ORIGINAL pre-restatement figures. The FY2025 release restated FY2024 to PAT 14,720.585, EPS 8.90, equity
+        93,815.369, net loans 287,489.372, assets 580,904.985, NPL 11.8%. Ratios from the FY2024 investor presentation,
+        integer-rounded for ROE and cost-to-income.
+      field_sources:
+        roe: https://www.imbankgroup.com/wp-content/uploads/2025/03/imgp-fy-2024-investor-briefing-presentation.pdf
+        npl_ratio: https://www.imbankgroup.com/wp-content/uploads/2025/03/imgp-fy-2024-investor-briefing-presentation.pdf
+        cost_to_income: https://www.imbankgroup.com/wp-content/uploads/2025/03/imgp-fy-2024-investor-briefing-presentation.pdf
+        core_capital_ratio: https://www.imbankgroup.com/wp-content/uploads/2025/03/imgp-fy-2024-investor-briefing-presentation.pdf
+      values:
+        net_income: 15379.279
+        eps: 9.3
+        dps: 3.0
+        total_assets: 581280.3
+        total_equity: 94474.063
+        shares_outstanding: 1653.621476
+        npl_ratio: 0.124
+        net_loans: 287082.574
+        deposits: 412179.477
+        roe: 0.17
+        cost_to_income: 0.46
+        core_capital_ratio: 0.1682
+    - period: FY2023
+      period_end: '2023-12-31'
+      published: '2024-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/IM-Group-Plc-Audited-Financial-Results-for-the-Year-Ended-31st-December-2023.pdf
+      source_note: NSE-filed audited FY2023 results; equity excludes NCI. ROE, NPL, cost-to-income and core capital
+        are FY2023 comparatives from the FY2024/FY2025 investor presentations (original FY2023 deck not found).
+        ROE and cost-to-income are integer-rounded by the company; cost-to-income appears pre-provision.
+      field_sources:
+        roe: https://www.imbankgroup.com/wp-content/uploads/2025/03/imgp-fy-2024-investor-briefing-presentation.pdf
+        npl_ratio: https://www.imbankgroup.com/wp-content/uploads/2025/03/imgp-fy-2024-investor-briefing-presentation.pdf
+        cost_to_income: https://www.imbankgroup.com/wp-content/uploads/2025/03/imgp-fy-2024-investor-briefing-presentation.pdf
+        core_capital_ratio: https://www.imbankgroup.com/wp-content/uploads/2025/03/imgp-fy-2024-investor-briefing-presentation.pdf
+      values:
+        net_income: 12615.177
+        eps: 7.63
+        dps: 2.55
+        total_assets: 579719.438
+        total_equity: 88173.149
+        shares_outstanding: 1653.621476
+        npl_ratio: 0.114
+        net_loans: 311330.84
+        deposits: 416674.435
+        roe: 0.15
+        cost_to_income: 0.48
+        core_capital_ratio: 0.1453
+  DTK:
+    name: Diamond Trust Bank Kenya Ltd
+    gaps:
+    - H1-2026 statements are image-only and were read by OCR; H1-2026 omits EPS and core capital
+    periods:
+    - period: H1-2026
+      period_end: '2026-06-30'
+      published: '2026-08-30'
+      published_basis: deadline
+      type: interim
+      source_url: https://dtbk.dtbafrica.com/storage/uploads/e0a928bd-1b84-4e66-899f-cbac2c2d2cff/DTB-H1-Financial-Results.pdf
+      source_note: H1-2026 FS (image-only PDF, values read by OCR; corroborated by the H1 investor presentation
+        - assets 675.1bn, loans 328.0bn, deposits 534.2bn - and Kenyan Wall Street on profit 6.39bn). EPS omitted
+        (only an annualised 45.72 is printed). Core capital omitted (only a bank-like 15.6% is printed). Share count
+        is the FY2025 year-end count (no later issue found). Ratios from the H1 investor presentation.
+      field_sources:
+        roe: https://dtbk.dtbafrica.com/storage/uploads/57708716-7a7e-4fb3-aa8d-82bd3155b151/DTB-H1-2026-Investor-Presentation.pdf
+        npl_ratio: https://dtbk.dtbafrica.com/storage/uploads/57708716-7a7e-4fb3-aa8d-82bd3155b151/DTB-H1-2026-Investor-Presentation.pdf
+        cost_to_income: https://dtbk.dtbafrica.com/storage/uploads/57708716-7a7e-4fb3-aa8d-82bd3155b151/DTB-H1-2026-Investor-Presentation.pdf
+      values:
+        net_income: 6391.88
+        total_assets: 675086.105
+        total_equity: 102384.913
+        shares_outstanding: 279.60222
+        npl_ratio: 0.116
+        net_loans: 327993.936
+        deposits: 534153.949
+        roe: 0.126
+        cost_to_income: 0.46
+    - period: FY2025
+      period_end: '2025-12-31'
+      published: '2026-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://dtbk.dtbafrica.com/storage/uploads/c37e106d-9829-44ac-ae50-05d797e66b64/DTB-Intergrated-Report-2025---digital.pdf
+      source_note: 2025 integrated report. Cost-to-income 48.8% from the FY2025 investor presentation (the IR prints
+        50.2%). DPS is final only (no interim declared). Cytonn ROE 11.7% differs from company 10.3%.
+      field_sources:
+        cost_to_income: https://dtbk.dtbafrica.com/storage/uploads/3d643ffa-87cc-4835-b0be-ccc45f706789/DTB-FY-2025-Investor-Presentation-.pdf
+      values:
+        net_income: 9407.239
+        eps: 33.65
+        dps: 9.0
+        total_assets: 659118.478
+        total_equity: 101104.067
+        shares_outstanding: 279.60222
+        npl_ratio: 0.108
+        net_loans: 324172.604
+        deposits: 509139.215
+        roe: 0.103
+        cost_to_income: 0.488
+        core_capital_ratio: 0.166
+    - period: FY2024
+      period_end: '2024-12-31'
+      published: '2025-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://dtbk.dtbafrica.com/storage/uploads/60f271a7-43a7-4d5c-8262-f313c8493d58/DTB_2024_Integrated_Report_digital.pdf
+      source_note: Original 2024 integrated report. The FY2025 report restates 2024 for discontinued Burundi operations
+        (attributable profit unchanged). Cost-to-income from the FY2024 investor presentation (53.4%; later chart
+        53.6%, FY2025 deck restates to 51.8%).
+      field_sources:
+        cost_to_income: https://dtbk.dtbafrica.com/storage/uploads/35baddb4-8e42-4ada-bd49-c44c87087e16/DTB-2024-Investor-Presentation---FY-2024-.pdf
+      values:
+        net_income: 7642.442
+        eps: 27.33
+        dps: 7.0
+        total_assets: 573886.914
+        total_equity: 81778.872
+        shares_outstanding: 279.60222
+        npl_ratio: 0.1234
+        net_loans: 285296.663
+        deposits: 447216.813
+        roe: 0.0976
+        cost_to_income: 0.534
+        core_capital_ratio: 0.168
+    - period: FY2023
+      period_end: '2023-12-31'
+      published: '2024-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://dtbk.dtbafrica.com/storage/uploads/80087989-d891-49f0-bca5-cb2d73f9735f/2023_Integrated_report.pdf
+      source_note: 2023 integrated report (customer deposit line used, not "customers and banks"). Core capital
+        15.5% is Group Tier 1/TRWA from the capital note (the highlights page's 16.31% is bank-only). Cost-to-income
+        from the FY2023 investor presentation, excluding provisions (IR 51.7% vs later chart 52.3%).
+      field_sources:
+        cost_to_income: https://dtbk.dtbafrica.com/storage/uploads/e4ed387d-0c18-4712-b751-e3349fc58610/DTB-2023-Investor-Presentation-.pdf
+      values:
+        net_income: 6879.176
+        eps: 24.6
+        dps: 6.0
+        total_assets: 635040.842
+        total_equity: 74888.755
+        shares_outstanding: 279.60222
+        npl_ratio: 0.1305
+        net_loans: 308454.062
+        deposits: 486090.594
+        roe: 0.0956
+        cost_to_income: 0.517
+        core_capital_ratio: 0.155
+  SBIC:
+    name: Stanbic Holdings Plc
+    gaps:
+    - H1-2026 net_loans and deposits are at KES 0.1bn precision; core capital ratio is Bank level
+    - 'FY2024 DPS conflict: 20.74 (used) vs 20.83'
+    periods:
+    - period: H1-2026
+      period_end: '2026-06-30'
+      published: '2026-08-30'
+      published_basis: deadline
+      type: interim
+      source_url: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2026/Stanbic%20Holdings%20Plc%20H1%202026%20Financial%20Results.pdf
+      source_note: H1-2026 group release. The release prints combined loans/deposits lines only; customer-only group
+        loans (289.8bn) and deposits (421.7bn) come from the H1 presentation at 1 decimal in KES bn (100m precision).
+        Core capital is from the bank-level (Stanbic Bank Kenya Ltd) release. ROE is half-year with the annualisation
+        basis unstated. Shares from a Kingdom Securities note.
+      field_sources:
+        net_loans: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2026/Stanbic%20Holdings%20Plc%20H1%202026%20Financial%20Results%20Presentation.pdf
+        deposits: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2026/Stanbic%20Holdings%20Plc%20H1%202026%20Financial%20Results%20Presentation.pdf
+        roe: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2026/Stanbic%20Holdings%20Plc%20H1%202026%20Financial%20Results%20Presentation.pdf
+        npl_ratio: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2026/Stanbic%20Holdings%20Plc%20H1%202026%20Financial%20Results%20Presentation.pdf
+        cost_to_income: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2026/Stanbic%20Holdings%20Plc%20H1%202026%20Financial%20Results%20Presentation.pdf
+        core_capital_ratio: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Bank%20Limited/Financials/2026/Stanbic%20Bank%20H1%202026%20Financial%20Results.pdf
+        shares_outstanding: https://kingdomsecurities.co.ke/wp-content/uploads/2026/08/Stanbic-Bank-Plc-Earnings-Update-1H26.pdf
+      values:
+        net_income: 6607.4
+        eps: 16.71
+        dps: 1.64
+        total_assets: 602179.8
+        total_equity: 79208.2
+        shares_outstanding: 395.32
+        npl_ratio: 0.0737
+        net_loans: 289800.0
+        deposits: 421700.0
+        roe: 0.161
+        cost_to_income: 0.495
+        core_capital_ratio: 0.136
+    - period: FY2025
+      period_end: '2025-12-31'
+      published: '2026-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2026/Stanbic%20Holdings%20Plc%202025%20Full%20Year%20Financial%20Results.pdf
+      source_note: FY2025 group results release. Net loans, deposits, shares and core capital (bank-level) from
+        the 2025 annual report; ROE, NPL and cost-to-income from the FY2025 presentation. DPS 22.35 = 3.80 interim
+        + 18.55 final (confirmed by 2026 AGM resolutions). Cost-to-income 46.2% (presentation p26 and annual report
+        p4); the annual report p71 prints 46.6%. Audited group loans/deposits used; broader (Kenyan Wall Street)
+        and bank-only (Cytonn) definitions differ.
+      field_sources:
+        net_loans: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Annual%20Reports/2025/Stanbic_Holdings_Annual_Integrated_Report_2025.pdf
+        deposits: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Annual%20Reports/2025/Stanbic_Holdings_Annual_Integrated_Report_2025.pdf
+        shares_outstanding: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Annual%20Reports/2025/Stanbic_Holdings_Annual_Integrated_Report_2025.pdf
+        core_capital_ratio: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Annual%20Reports/2025/Stanbic_Holdings_Annual_Integrated_Report_2025.pdf
+        roe: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2026/Stanbic%20Holdings%202025%20Full%20Year%20Results%20Investor%20Presentation.pdf
+        npl_ratio: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2026/Stanbic%20Holdings%202025%20Full%20Year%20Results%20Investor%20Presentation.pdf
+        cost_to_income: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2026/Stanbic%20Holdings%202025%20Full%20Year%20Results%20Investor%20Presentation.pdf
+      values:
+        net_income: 13718.3
+        eps: 34.7
+        dps: 22.35
+        total_assets: 541253.4
+        total_equity: 80149.9
+        shares_outstanding: 395.32
+        npl_ratio: 0.08
+        net_loans: 272919.0
+        deposits: 373725.0
+        roe: 0.18
+        cost_to_income: 0.462
+        core_capital_ratio: 0.14
+    - period: FY2024
+      period_end: '2024-12-31'
+      published: '2025-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2025/Stanbic%20Holdings%20Plc%20Audited%20Financial%20Statements%2031st%20December%202024.pdf
+      source_note: Audited group FS FY2024. Net loans, deposits, DPS (1.84 interim + 18.90 final; the FY2025 deck
+        shows 20.83), cost-to-income 44.5% original (44.4% restated) and core capital (bank-level) from this document.
+        ROE and NPL from the FY2024 presentation. Exact share count 395,321,638 from the FY2025 annual report.
+      field_sources:
+        roe: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2025/Stanbic%20Holdings%20Investor%20Presentation%20-%202024%20Full%20Year%20Results.pdf
+        npl_ratio: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2025/Stanbic%20Holdings%20Investor%20Presentation%20-%202024%20Full%20Year%20Results.pdf
+        shares_outstanding: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Annual%20Reports/2025/Stanbic_Holdings_Annual_Integrated_Report_2025.pdf
+      values:
+        net_income: 13715.7
+        eps: 34.7
+        dps: 20.74
+        total_assets: 454834.4
+        total_equity: 75400.6
+        shares_outstanding: 395.32
+        npl_ratio: 0.0911
+        net_loans: 230218.0
+        deposits: 318193.0
+        roe: 0.193
+        cost_to_income: 0.445
+        core_capital_ratio: 0.149
+    - period: FY2023
+      period_end: '2023-12-31'
+      published: '2024-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2023/Stanbic%20Holdings%20Plc%20December%202023%20Final.pdf
+      source_note: Audited group FS FY2023 (equity is the single "total equity" line; no NCI line). Net loans, deposits,
+        shares ("395" million as printed), DPS, cost-to-income and core capital from this document. DPS 15.35 =
+        1.15 interim + 14.20 final. Core capital is for Stanbic Bank Kenya Ltd (bank-level); no group ratio is printed.
+        Cytonn prints 14.2 as the final dividend only.
+      field_sources:
+        roe: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2024/Stanbic%20Holdings%20Plc%20FY%202023%20Results%20presentation-2.pdf
+        npl_ratio: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2024/Stanbic%20Holdings%20Plc%20FY%202023%20Results%20presentation-2.pdf
+      values:
+        net_income: 12157.6
+        eps: 30.75
+        dps: 15.35
+        total_assets: 459283.9
+        total_equity: 68554.4
+        shares_outstanding: 395.0
+        npl_ratio: 0.0947
+        net_loans: 260509.0
+        deposits: 321234.0
+        roe: 0.186
+        cost_to_income: 0.435
+        core_capital_ratio: 0.13

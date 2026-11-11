@@ -13,6 +13,7 @@ KEYS = (
     "revenue", "gross_profit", "ebit", "net_income", "eps", "dps", "total_assets", "total_liabilities",
     "total_equity", "current_assets", "current_liabilities", "retained_earnings", "long_term_debt",
     "operating_cash_flow", "shares_outstanding", "bvps", "npl_ratio",
+    "net_loans", "deposits", "roe", "cost_to_income", "core_capital_ratio",
 )
 
 

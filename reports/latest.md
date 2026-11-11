@@ -4,7 +4,7 @@
 
 ## Summary
 
-- Universe: 16 counters; 7 had prices and sourced fundamentals.
+- Universe: 16 counters; 16 had prices and sourced fundamentals.
 - Undervalued picks (models agree, screens and quality pass): **0**.
 - Buy candidates (base return clears the hurdle): **0**.
 - Watchlist (models agree but a screen or quality check is missing or failing): none.
@@ -24,13 +24,22 @@
 
 | # | Ticker | Price | Fair value low / base / high | MoS | Agree | Return p.a. bear / base / bull | Quality | Momentum | Composite | Status | Confidence |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | KPLC | KES 22.00 | 10.02 / 34.53 / 59.03 | 56.9% | 1/2 | -13.9% / 29.6% / 56.7% | pass | 50.2% | 1.33 | Not undervalued | Low |
-| 2 | EABL | KES 272.25 | 72.15 / 92.40 / 112.66 | -66.1% | 0/2 | -29.3% / -22.1% / -15.6% | pass | 19.5% | 0.24 | Not undervalued | Low |
-| 3 | BAT | KES 544.00 | 279.54 / 331.64 / 383.75 | -39.0% | 0/2 | -10.5% / -4.2% / 1.8% | pass | 16.8% | -0.11 | Not undervalued | Low |
-| 4 | SCOM | KES 34.75 | 9.67 / 12.64 / 15.60 | -63.6% | 0/2 | -27.7% / -20.0% / -12.9% | pass | 16.6% | -0.13 | Not undervalued | Low |
-| 5 | KEGN | KES 9.80 | 3.89 / 5.22 / 6.55 | -46.8% | 0/2 | -20.7% / -11.5% / -3.3% | pass | 12.2% | -0.34 | Not undervalued | Low |
-| 6 | CARB | KES 42.90 | 16.46 / 17.95 / 19.45 | -58.2% | 0/2 | -20.5% / -16.8% / -13.1% | pass | 41.2% | -0.35 | Not undervalued | Low |
-| 7 | TOTL | KES 45.65 | 17.88 / 18.11 / 18.33 | -60.3% | 0/2 | -22.3% / -20.6% / -18.8% | pass | 2.8% | -0.63 | Not undervalued | Low |
+| 1 | KPLC | KES 22.00 | 10.02 / 34.52 / 59.03 | 56.9% | 1/2 | -13.9% / 29.6% / 56.7% | pass | 47.5% | 1.53 | Not undervalued | Low |
+| 2 | KCB | KES 89.75 | 51.75 / 97.06 / 152.60 | 8.1% | 2/5 | -6.4% / 16.0% / 36.3% | pass | 31.7% | 0.94 | Not undervalued | Low |
+| 3 | EQTY | KES 99.50 | 46.27 / 96.12 / 139.91 | -3.4% | 1/5 | -14.4% / 10.1% / 26.4% | pass | 43.5% | 0.86 | Not undervalued | Low |
+| 4 | COOP | KES 37.05 | 20.57 / 27.49 / 35.15 | -25.8% | 0/5 | -8.5% / 2.1% / 12.3% | pass | 36.3% | 0.43 | Not undervalued | Low |
+| 5 | ABSA | KES 30.90 | 16.20 / 23.11 / 28.62 | -25.2% | 0/5 | -10.2% / 2.2% / 11.3% | pass | 20.5% | 0.30 | Not undervalued | Low |
+| 6 | IMH | KES 85.00 | 29.58 / 45.64 / 82.78 | -46.3% | 0/5 | -23.2% / -10.1% / 11.0% | pass | 90.6% | 0.20 | Not undervalued | Low |
+| 7 | BAT | KES 536.00 | 279.49 / 331.59 / 383.69 | -38.1% | 0/2 | -9.9% / -3.6% / 2.4% | pass | 16.5% | -0.20 | Not undervalued | Low |
+| 8 | DTK | KES 187.75 | 74.94 / 143.71 / 465.19 | -23.5% | 2/5 | -19.3% / 1.2% / 50.8% | pass | 46.4% | -0.21 | Not undervalued | Low |
+| 9 | EABL | KES 272.25 | 72.14 / 92.40 / 112.65 | -66.1% | 0/2 | -29.3% / -22.1% / -15.6% | pass | 20.3% | -0.36 | Not undervalued | Low |
+| 10 | NCBA | KES 88.25 | 62.10 / 88.80 / 104.18 | 0.6% | 1/5 | -0.2% / 13.7% / 21.6% | pass | 2.8% | -0.41 | Not undervalued | Low |
+| 11 | KEGN | KES 9.80 | 3.89 / 5.22 / 6.55 | -46.8% | 0/2 | -20.7% / -11.5% / -3.3% | pass | 11.8% | -0.41 | Not undervalued | Low |
+| 12 | CARB | KES 43.10 | 16.45 / 17.95 / 19.44 | -58.4% | 0/2 | -20.6% / -16.9% / -13.2% | pass | 40.6% | -0.44 | Not undervalued | Low |
+| 13 | SCOM | KES 35.05 | 9.67 / 12.64 / 15.60 | -63.9% | 0/2 | -28.0% / -20.2% / -13.2% | pass | 19.4% | -0.48 | Not undervalued | Low |
+| 14 | SBIC | KES 261.25 | 178.43 / 194.19 / 253.18 | -25.7% | 0/5 | -1.1% / 3.3% / 14.2% | fail | 17.4% | -0.51 | Not undervalued | Low |
+| 15 | SCBK | KES 302.00 | 170.66 / 214.79 / 219.77 | -28.9% | 0/5 | -9.6% / -1.2% / 1.2% | pass | -2.0% | -0.54 | Not undervalued | Low |
+| 16 | TOTL | KES 45.15 | 17.88 / 18.10 / 18.33 | -59.9% | 0/2 | -22.0% / -20.2% / -18.4% | pass | 2.8% | -0.71 | Not undervalued | Low |
 
 Composite rank = 0.5 z(margin of safety) + 0.3 z(quality) + 0.2 z(momentum).
 
@@ -40,12 +49,12 @@ No counter passed every rule this week. The closest candidates follow.
 
 ### 1. Kenya Power and Lighting (KPLC): Not undervalued, Low confidence
 
-- **Valuation:** last close KES 22.00 on 2026-11-10. Fair value range KES 10.02 to KES 59.03, base KES 34.53, a margin of safety of 56.9%. 1 of 2 models value it at least 15% above the price (needs 2).
+- **Valuation:** last close KES 22.00 on 2026-11-11. Fair value range KES 10.02 to KES 59.03, base KES 34.52, a margin of safety of 56.9%. 1 of 2 models value it at least 15% above the price (needs 2).
 - **Models:** earnings power value KES 59.03 (agrees); Gordon dividend model KES 10.02.
 - **Inputs:** FY2026 results: EPS KES 12.81, book value per share n/a, DPS KES 1.50. P/E 1.7, P/B n/a. Average ROE 26.7%, sustainable growth 7.0%, cost of equity 23.0% (beta 1.70).
 - **Projected annual return over 3 years (net of costs and withholding tax):** bear -13.9%, base 29.6%, bull 56.7%. Net dividend yield 6.5%. The 364-day T-bill nets 7.7%; the buy hurdle is 12.7%.
 - **Quality:** Piotroski 6/7 signals; quality gate passes.
-- **Momentum (average of 6 and 12 month returns, skipping the last month):** 50.2%.
+- **Momentum (average of 6 and 12 month returns, skipping the last month):** 47.5%.
 - **Risks:**
   - Only 2 valuation models had inputs, so the fair value range is narrow evidence.
   - Bear case (-13.9%) trails the net T-bill yield (7.7%).
@@ -53,38 +62,39 @@ No counter passed every rule this week. The closest candidates follow.
   - Kenyan market risks: shilling depreciation, interest-rate and tax policy changes, thin trading.
 - **Source:** [FY2026 results](https://www.nse.co.ke/wp-content/uploads/Kenya-Power-and-Lighting-Company-Plc-%E2%80%93-Audited-Financial-Results-for-the-Year-Ended-30-June-2026.pdf)
 
-### 2. East African Breweries (EABL): Not undervalued, Low confidence
+### 2. KCB Group (KCB): Not undervalued, Low confidence
 
-- **Valuation:** last close KES 272.25 on 2026-11-10. Fair value range KES 72.15 to KES 112.66, base KES 92.40, a margin of safety of -66.1%. 0 of 2 models value it at least 15% above the price (needs 2).
-- **Models:** Gordon dividend model KES 112.66; earnings power value KES 72.15.
-- **Inputs:** FY2026 results: EPS KES 18.99, book value per share KES 43.50, DPS KES 12.70. P/E 14.3, P/B 6.26. Average ROE 40.1%, sustainable growth 7.0%, cost of equity 19.1% (beta 0.77).
-- **Projected annual return over 3 years (net of costs and withholding tax):** bear -29.3%, base -22.1%, bull -15.6%. Net dividend yield 4.4%. The 364-day T-bill nets 7.7%; the buy hurdle is 12.7%.
-- **Quality:** Piotroski 9/9 signals, Altman Z'' 3.06; quality gate passes.
-- **Momentum (average of 6 and 12 month returns, skipping the last month):** 19.5%.
+- **Valuation:** last close KES 89.75 on 2026-11-11. Fair value range KES 51.75 to KES 152.60, base KES 97.06, a margin of safety of 8.1%. 2 of 5 models value it at least 15% above the price (needs 3).
+- **Models:** sector P/E KES 152.60 (agrees); sector P/B KES 132.70 (agrees); justified P/B KES 97.06; earnings power value KES 78.79; Gordon dividend model KES 51.75.
+- **Inputs:** FY2025 results: EPS KES 20.80, book value per share KES 103.15, DPS KES 7.00. P/E 4.3, P/B 0.87. Average ROE 20.6%, sustainable growth 7.0%, cost of equity 21.5% (beta 1.34).
+- **Projected annual return over 3 years (net of costs and withholding tax):** bear -6.4%, base 16.0%, bull 36.3%. Net dividend yield 7.4%. The 364-day T-bill nets 7.7%; the buy hurdle is 12.7%.
+- **Quality:** Piotroski 6/6 signals, NPL ratio 15.1%, change -1.8pp (ok); quality gate passes.
+- **Momentum (average of 6 and 12 month returns, skipping the last month):** 31.7%.
 - **Risks:**
-  - Only 2 valuation models had inputs, so the fair value range is narrow evidence.
-  - Bear case (-29.3%) trails the net T-bill yield (7.7%).
+  - Bear case (-6.4%) trails the net T-bill yield (7.7%).
+  - Models disagree widely (high fair value is more than twice the low).
   - Kenyan market risks: shilling depreciation, interest-rate and tax policy changes, thin trading.
-- **Source:** [FY2026 results](https://www.eabl.com/~/media/Files/E/eabl/documents/investor/agm/2026/eabl-2026-integrated-annual-report-web-version.pdf)
+- **Source:** [FY2025 results](https://kcbgroup.com/financial-statements?years=2025)
 
-### 3. British American Tobacco Kenya (BAT): Not undervalued, Low confidence
+### 3. Equity Group Holdings (EQTY): Not undervalued, Low confidence
 
-- **Valuation:** last close KES 544.00 on 2026-11-10. Fair value range KES 279.54 to KES 383.75, base KES 331.64, a margin of safety of -39.0%. 0 of 2 models value it at least 15% above the price (needs 2).
-- **Models:** Gordon dividend model KES 383.75; earnings power value KES 279.54.
-- **Inputs:** FY2025 results: EPS KES 52.46, book value per share KES 154.85, DPS KES 70.00. P/E 10.4, P/B 3.51. Average ROE 32.0%, sustainable growth 0.0%, cost of equity 18.2% (beta 0.57).
-- **Projected annual return over 3 years (net of costs and withholding tax):** bear -10.5%, base -4.2%, bull 1.8%. Net dividend yield 12.2%. The 364-day T-bill nets 7.7%; the buy hurdle is 12.7%.
-- **Quality:** Piotroski 7/9 signals, Altman Z'' 7.09; quality gate passes.
-- **Momentum (average of 6 and 12 month returns, skipping the last month):** 16.8%.
+- **Valuation:** last close KES 99.50 on 2026-11-11. Fair value range KES 46.27 to KES 139.91, base KES 96.12, a margin of safety of -3.4%. 1 of 5 models value it at least 15% above the price (needs 3).
+- **Models:** sector P/E KES 139.91 (agrees); sector P/B KES 105.51; justified P/B KES 96.12; earnings power value KES 69.84; Gordon dividend model KES 46.27.
+- **Inputs:** FY2025 results: EPS KES 19.07, book value per share KES 82.02, DPS KES 5.75. P/E 5.2, P/B 1.21. Average ROE 22.6%, sustainable growth 7.0%, cost of equity 20.3% (beta 1.06).
+- **Projected annual return over 3 years (net of costs and withholding tax):** bear -14.4%, base 10.1%, bull 26.4%. Net dividend yield 5.5%. The 364-day T-bill nets 7.7%; the buy hurdle is 12.7%.
+- **Quality:** Piotroski 6/6 signals, NPL ratio 9.5%, change -1.0pp (ok); quality gate passes.
+- **Momentum (average of 6 and 12 month returns, skipping the last month):** 43.5%.
 - **Risks:**
-  - Only 2 valuation models had inputs, so the fair value range is narrow evidence.
-  - Bear case (-10.5%) trails the net T-bill yield (7.7%).
+  - Bear case (-14.4%) trails the net T-bill yield (7.7%).
+  - Models disagree widely (high fair value is more than twice the low).
   - Kenyan market risks: shilling depreciation, interest-rate and tax policy changes, thin trading.
-- **Source:** [FY2025 results](https://africanfinancials.com/document/ke-bat-2025-ar-00/)
+- **Source:** [FY2025 results](https://www.use.or.ug/uploads/46d239d2-356e-4c5c-a297-7ed44d72f790.pdf)
 
 ## Exclusions and screen failures
 
 | Ticker | Reason |
 |---|---|
+| SBIC | Piotroski 2/6 below gate |
 | BRIT | Insurer: needs embedded-value model (not built) |
 | JUB | Insurer: needs embedded-value model (not built) |
 | CIC | Insurer: needs embedded-value model (not built) |
@@ -92,15 +102,27 @@ No counter passed every rule this week. The closest candidates follow.
 
 ## Data gaps
 
-- EQTY: no sourced annual fundamentals
-- KCB: no sourced annual fundamentals
-- ABSA: no sourced annual fundamentals
-- COOP: no sourced annual fundamentals
-- SCBK: no sourced annual fundamentals
-- NCBA: no sourced annual fundamentals
-- IMH: no sourced annual fundamentals
-- DTK: no sourced annual fundamentals
-- SBIC: no sourced annual fundamentals
+- EQTY: H1-2026 omits total_equity (only equity including NCI was printed) and shares_outstanding
+- EQTY: FY2025 deposits were later restated to 1,443,458.895
+- KCB: H1-2026 EPS is annualised as printed (interim periods only feed the NPL trend, not valuations)
+- KCB: source_url values point to IR listing pages because the PDFs are signed download links
+- KCB: FY2023 EPS conflict: 11.26 (FY2024 comparative, used) vs 11.41 (FY2023 abridged statements)
+- KCB: Core capital and NPL differ between financial statements and press releases; statement figures used
+- ABSA: H1-2026 omits shares_outstanding
+- ABSA: Core capital ratio is Bank level, not Group
+- COOP: FY2023 NPL is the original 16.1% (restated to 16.7%)
+- SCBK: EPS is on ordinary profit after preference dividends, so it differs from net_income / shares
+- SCBK: total_equity includes about KES 2.8bn of preference shares and capital grants, so derived BVPS is slightly high
+- SCBK: ROE is Cytonn-computed (the company prints none); H1-2026 NPL is press-release text quoted by media
+- SCBK: H1-2026 omits shares_outstanding; core capital ratio is Bank level
+- NCBA: H1-2026 net_loans uses the CBK format line, a different definition from the FY IFRS line
+- NCBA: H1-2026 omits shares_outstanding; Nedbank tender offer (unconditional 2026-10-19) did not change the share count
+- IMH: FY2024 values are the original OCR-read figures; the FY2025 release restated FY2024 (EPS 8.90)
+- IMH: Private placement on 2025-05-21 raised shares from 1,653.6m to 1,740.1m (derived; no document prints the total)
+- IMH: ROE and cost-to-income are integer-rounded by the company; H1-2026 NPL is the text '9%'
+- DTK: H1-2026 statements are image-only and were read by OCR; H1-2026 omits EPS and core capital
+- SBIC: H1-2026 net_loans and deposits are at KES 0.1bn precision; core capital ratio is Bank level
+- SBIC: FY2024 DPS conflict: 20.74 (used) vs 20.83
 - SCOM: Audited IFRS figures include the IAS 29 (Ethiopia hyperinflation) impact; press-release headline profit excludes it
 - SCOM: H1-FY2027 is unaudited and reflects an IFRS 15 policy change, so comparatives may differ
 - SCOM: H1-FY2027 omits dps, long_term_debt and gross_profit (not printed)

@@ -13,7 +13,11 @@ def _ratio(a: float | None, b: float | None) -> float | None:
 
 
 def piotroski(periods: list[Period], bank: bool) -> dict | None:
-    """Share of available F-score signals that pass. Banks skip gross margin and current ratio."""
+    """Share of available F-score signals that pass.
+
+    Banks swap gross margin and current ratio for cost-to-income and core capital trends, and derive
+    liabilities as assets less equity when the statement total is not sourced.
+    """
     if len(periods) < 2:
         return None
     cur, prev = periods[-1], periods[-2]
@@ -30,12 +34,26 @@ def piotroski(periods: list[Period], bank: bool) -> dict | None:
         signals["roa_improving"] = roa_c > roa_p
     if cfo is not None and g(cur, "net_income") is not None:
         signals["cfo_exceeds_income"] = cfo > g(cur, "net_income")
-    debt_key = "total_liabilities" if bank else "long_term_debt"
-    lev_c = _ratio(g(cur, debt_key), g(cur, "total_assets"))
-    lev_p = _ratio(g(prev, debt_key), g(prev, "total_assets"))
+    def debt(p: Period) -> float | None:
+        if not bank:
+            return g(p, "long_term_debt")
+        if g(p, "total_liabilities") is not None:
+            return g(p, "total_liabilities")
+        ta, eq = g(p, "total_assets"), g(p, "total_equity")
+        return ta - eq if ta is not None and eq is not None else None
+
+    lev_c = _ratio(debt(cur), g(cur, "total_assets"))
+    lev_p = _ratio(debt(prev), g(prev, "total_assets"))
     if lev_c is not None and lev_p is not None:
         signals["leverage_falling"] = lev_c <= lev_p
-    if not bank:
+    if bank:
+        ci_c, ci_p = g(cur, "cost_to_income"), g(prev, "cost_to_income")
+        if ci_c is not None and ci_p is not None:
+            signals["cost_to_income_improving"] = ci_c < ci_p
+        cc_c, cc_p = g(cur, "core_capital_ratio"), g(prev, "core_capital_ratio")
+        if cc_c is not None and cc_p is not None:
+            signals["capital_ratio_improving"] = cc_c >= cc_p
+    else:
         cr_c = _ratio(g(cur, "current_assets"), g(cur, "current_liabilities"))
         cr_p = _ratio(g(prev, "current_assets"), g(prev, "current_liabilities"))
         if cr_c is not None and cr_p is not None:
