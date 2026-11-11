@@ -4,7 +4,7 @@ from datetime import date
 import pytest
 import yaml
 
-from nse_agent import announcements, brief, dividends, ledger, storage
+from nse_agent import announcements, brief, config, dividends, ledger, storage
 from nse_agent.engine import analyze
 from nse_agent.fmt import pct
 from nse_agent.returns import SIGNALS
@@ -23,13 +23,16 @@ def outputs(root):
 
 
 def test_tiers_binding_and_signal_breakdown(market):
+    weights = config.settings()["ranking"]["weights"]
     result = analyze(AS_OF)
     for t, r in result["rows"].items():
         assert r["binding"].startswith(PREFIX[r["tier"]])
         assert (r["tier"] == "Buy") == (t in result["buys"])
         assert set(r["signals"]) == set(SIGNALS)
         assert r["composite"] == pytest.approx(sum(s["contribution"] for s in r["signals"].values()))
-        assert r["signals"]["dividend_yield"]["contribution"] == 0
+        for name, s in r["signals"].items():
+            assert s["weight"] == weights.get(name, 0)
+            assert s["contribution"] == pytest.approx(s["weight"] * s["z"])
         assert r["volatility"] > 0
 
 
@@ -78,8 +81,10 @@ def test_brief_flags_changes_and_material_alerts(market, outputs, tmp_path):
     body = alert.read_text(encoding="utf-8")
     assert "Warning announcement for KCB" in body
     assert "Buy dropped: KCB." in body
-    if promoted in analyze(AS_OF)["buys"]:
-        assert f"New Buy: {promoted} #" in body
+    result = analyze(AS_OF)
+    if promoted in result["buys"]:
+        label = "New Buy, high confidence undervalued" if promoted in result["high_confidence"] else "New Buy"
+        assert f"{label}: {promoted} #" in body
 
     alert.unlink()
     assert "ledger_rows=0" in brief.run_brief(fetch=False, alert_file=str(alert), as_of=AS_OF)

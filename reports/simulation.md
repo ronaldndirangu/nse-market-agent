@@ -7,7 +7,7 @@ Basket (top 3 ranked (no undervalued picks this week)): **KPLC, KCB, EQTY**, equ
 Weekly basket returns from 2016-W48 to 2026-W46 (520 weeks) are resampled in 4-week blocks to keep short-term momentum and volatility clustering. Each path adds the basket's net dividend yield (6.5%) and one round trip of trading costs. Results are annualised.
 
 - **History:** repeats the basket's own past drift and volatility.
-- **Valuation-anchored:** keeps the historical volatility but centres the drift on the engine's base projection (18.6% a year).
+- **Valuation-anchored:** keeps the historical volatility but centres the drift on the engine's base projection (19.3% a year).
 - Net 364-day T-bill: 7.67%.
 
 | Model | Horizon | P5 | P25 | Median | P75 | P95 | P(beat T-bill) | P(loss) |
@@ -15,9 +15,9 @@ Weekly basket returns from 2016-W48 to 2026-W46 (520 weeks) are resampled in 4-w
 | History | 1y | -27.0% | -2.9% | 17.4% | 41.8% | 88.4% | 63% | 28% |
 | History | 3y | -7.8% | 8.1% | 21.0% | 34.9% | 58.1% | 76% | 13% |
 | History | 5y | -1.5% | 11.0% | 21.1% | 32.1% | 49.7% | 83% | 6% |
-| Valuation-anchored | 1y | -27.8% | -4.0% | 16.1% | 40.3% | 86.4% | 61% | 29% |
-| Valuation-anchored | 3y | -8.8% | 6.9% | 19.7% | 33.4% | 56.4% | 73% | 14% |
-| Valuation-anchored | 5y | -2.6% | 9.8% | 19.8% | 30.7% | 48.1% | 80% | 7% |
+| Valuation-anchored | 1y | -27.3% | -3.4% | 16.9% | 41.2% | 87.6% | 62% | 29% |
+| Valuation-anchored | 3y | -8.2% | 7.6% | 20.4% | 34.3% | 57.4% | 75% | 13% |
+| Valuation-anchored | 5y | -2.0% | 10.5% | 20.6% | 31.5% | 49.0% | 82% | 7% |
 
 ## Stress tests
 

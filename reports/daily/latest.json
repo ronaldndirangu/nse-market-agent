@@ -1,0 +1,2274 @@
+{
+  "alerts": [],
+  "as_of": "2026-11-11",
+  "changes": {
+    "announcements": 2,
+    "crossings": 0,
+    "moves": 0,
+    "prev_date": null,
+    "tiers": 0,
+    "top_in": [],
+    "top_out": []
+  },
+  "counts": {
+    "Avoid": 13,
+    "Buy": 0,
+    "Watch": 3
+  },
+  "generated": "2026-11-11T18:21:08+00:00",
+  "high_confidence": [],
+  "hurdle": 0.1267397,
+  "near_misses": [
+    {
+      "base": 0.29604519598603135,
+      "bear": -0.13949839785669865,
+      "binding": "Not a Buy: only 1 of 2 valuation models show 15% or more upside, needs 2.",
+      "bull": 0.5672489612935823,
+      "composite": 1.491498948896095,
+      "conviction": {
+        "failed": [
+          "Valuation"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "1 of 2 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.86, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 29.6% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": true
+          }
+        ]
+      },
+      "dividend_yield": 0.05,
+      "driver": {
+        "contribution": 1.323881102374662,
+        "label": "margin of safety",
+        "signal": "margin_of_safety"
+      },
+      "fair_base": 34.52311830046941,
+      "fair_high": 59.02626107998005,
+      "fair_low": 10.01997552095877,
+      "mos": 0.5692326500213369,
+      "name": "Kenya Power and Lighting",
+      "price": 22.0,
+      "price_date": "2026-11-11",
+      "rank": 1,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 37%",
+            "level": "High",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.70",
+            "level": "High",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 27.5M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -13.9% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 5.9x (10.0 to 59.0)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "Balance sheet: not assessed",
+            "level": null,
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: volatility 37%; beta 1.70; bear case -13.9% a year (+1 more). Not assessed: balance sheet."
+      },
+      "sector": "Energy",
+      "ticker": "KPLC",
+      "tier": "Watch",
+      "why": "KPLC #1 (Watch): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: margin of safety (+1.32). Not a Buy: only 1 of 2 valuation models show 15% or more upside, needs 2. High risk (volatility 37%; beta 1.70)."
+    },
+    {
+      "base": 0.16928410933908872,
+      "bear": -0.06411945695914073,
+      "binding": "Not a Buy: only 2 of 5 valuation models show 15% or more upside, needs 3.",
+      "bull": 0.36294058171653126,
+      "composite": 0.9532957480232618,
+      "conviction": {
+        "failed": [
+          "Valuation"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "2 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 16.9% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": true
+          }
+        ]
+      },
+      "dividend_yield": 0.06685236768802229,
+      "driver": {
+        "contribution": 0.5967821229747637,
+        "label": "margin of safety",
+        "signal": "margin_of_safety"
+      },
+      "fair_base": 99.47312793307462,
+      "fair_high": 152.60403972015345,
+      "fair_low": 51.746425619265075,
+      "mos": 0.10833568727659748,
+      "name": "KCB Group",
+      "price": 89.75,
+      "price_date": "2026-11-11",
+      "rank": 2,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 30%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.34",
+            "level": "High",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 126.0M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -6.4% a year",
+            "level": "Moderate",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 2.9x (51.7 to 152.6)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 15.1%, stable or falling",
+            "level": "Moderate",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: beta 1.34; fair value spread 2.9x (51.7 to 152.6); volatility 30% (+2 more)."
+      },
+      "sector": "Banking",
+      "ticker": "KCB",
+      "tier": "Watch",
+      "why": "KCB #2 (Watch): 10.8% upside to base fair value KES 99.47; base return 16.9% a year beats the 12.67% hurdle. Biggest score driver: margin of safety (+0.60). Not a Buy: only 2 of 5 valuation models show 15% or more upside, needs 3. High risk (beta 1.34; fair value spread 2.9x (51.7 to 152.6))."
+    },
+    {
+      "base": 0.11289114542237813,
+      "bear": -0.1437658922114929,
+      "binding": "Avoid: only 1 of 5 valuation models show 15% or more upside, needs 3; base return 11.3% does not beat the 12.67% hurdle.",
+      "bull": 0.26391875114475394,
+      "composite": 0.8888810975262382,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "1 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 11.3% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.05778894472361809,
+      "driver": {
+        "contribution": 0.4264274493398649,
+        "label": "margin of safety",
+        "signal": "margin_of_safety"
+      },
+      "fair_base": 99.53487034241131,
+      "fair_high": 139.91149218573685,
+      "fair_low": 46.26755113116841,
+      "mos": 0.0003504557026261512,
+      "name": "Equity Group Holdings",
+      "price": 99.5,
+      "price_date": "2026-11-11",
+      "rank": 3,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 31%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.06",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 197.0M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -14.4% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 3.0x (46.3 to 139.9)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 9.5%, stable or falling",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: bear case -14.4% a year; fair value spread 3.0x (46.3 to 139.9); volatility 31% (+1 more)."
+      },
+      "sector": "Banking",
+      "ticker": "EQTY",
+      "tier": "Avoid",
+      "why": "EQTY #3 (Avoid): 0.0% upside to base fair value KES 99.53; base return 11.3% a year trails the 12.67% hurdle. Biggest score driver: margin of safety (+0.43). Avoid: only 1 of 5 valuation models show 15% or more upside, needs 3; base return 11.3% does not beat the 12.67% hurdle. High risk (bear case -14.4% a year; fair value spread 3.0x (46.3 to 139.9))."
+    }
+  ],
+  "ranking": [
+    {
+      "base": 0.29604519598603135,
+      "bear": -0.13949839785669865,
+      "bull": 0.5672489612935823,
+      "composite": 1.491498948896095,
+      "conviction": {
+        "failed": [
+          "Valuation"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "1 of 2 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.86, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 29.6% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": true
+          }
+        ]
+      },
+      "dividend_yield": 0.05,
+      "driver": {
+        "contribution": 1.323881102374662,
+        "label": "margin of safety",
+        "signal": "margin_of_safety"
+      },
+      "fair_base": 34.52311830046941,
+      "fair_high": 59.02626107998005,
+      "fair_low": 10.01997552095877,
+      "mos": 0.5692326500213369,
+      "name": "Kenya Power and Lighting",
+      "price": 22.0,
+      "price_date": "2026-11-11",
+      "rank": 1,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 37%",
+            "level": "High",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.70",
+            "level": "High",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 27.5M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -13.9% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 5.9x (10.0 to 59.0)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "Balance sheet: not assessed",
+            "level": null,
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: volatility 37%; beta 1.70; bear case -13.9% a year (+1 more). Not assessed: balance sheet."
+      },
+      "sector": "Energy",
+      "ticker": "KPLC",
+      "tier": "Watch"
+    },
+    {
+      "base": 0.16928410933908872,
+      "bear": -0.06411945695914073,
+      "bull": 0.36294058171653126,
+      "composite": 0.9532957480232618,
+      "conviction": {
+        "failed": [
+          "Valuation"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "2 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 16.9% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": true
+          }
+        ]
+      },
+      "dividend_yield": 0.06685236768802229,
+      "driver": {
+        "contribution": 0.5967821229747637,
+        "label": "margin of safety",
+        "signal": "margin_of_safety"
+      },
+      "fair_base": 99.47312793307462,
+      "fair_high": 152.60403972015345,
+      "fair_low": 51.746425619265075,
+      "mos": 0.10833568727659748,
+      "name": "KCB Group",
+      "price": 89.75,
+      "price_date": "2026-11-11",
+      "rank": 2,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 30%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.34",
+            "level": "High",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 126.0M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -6.4% a year",
+            "level": "Moderate",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 2.9x (51.7 to 152.6)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 15.1%, stable or falling",
+            "level": "Moderate",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: beta 1.34; fair value spread 2.9x (51.7 to 152.6); volatility 30% (+2 more)."
+      },
+      "sector": "Banking",
+      "ticker": "KCB",
+      "tier": "Watch"
+    },
+    {
+      "base": 0.11289114542237813,
+      "bear": -0.1437658922114929,
+      "bull": 0.26391875114475394,
+      "composite": 0.8888810975262382,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "1 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 11.3% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.05778894472361809,
+      "driver": {
+        "contribution": 0.4264274493398649,
+        "label": "margin of safety",
+        "signal": "margin_of_safety"
+      },
+      "fair_base": 99.53487034241131,
+      "fair_high": 139.91149218573685,
+      "fair_low": 46.26755113116841,
+      "mos": 0.0003504557026261512,
+      "name": "Equity Group Holdings",
+      "price": 99.5,
+      "price_date": "2026-11-11",
+      "rank": 3,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 31%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.06",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 197.0M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -14.4% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 3.0x (46.3 to 139.9)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 9.5%, stable or falling",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: bear case -14.4% a year; fair value spread 3.0x (46.3 to 139.9); volatility 31% (+1 more)."
+      },
+      "sector": "Banking",
+      "ticker": "EQTY",
+      "tier": "Avoid"
+    },
+    {
+      "base": 0.025185097763056878,
+      "bear": -0.08507706558423012,
+      "bull": 0.12298108186424961,
+      "composite": 0.43330574848163605,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 2.5% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.06747638326585695,
+      "driver": {
+        "contribution": 0.32225469714746013,
+        "label": "quality",
+        "signal": "quality"
+      },
+      "fair_base": 27.878180265700365,
+      "fair_high": 35.14726597483292,
+      "fair_low": 20.567561572239665,
+      "mos": -0.24755248945478092,
+      "name": "Co-operative Bank of Kenya",
+      "price": 37.05,
+      "price_date": "2026-11-11",
+      "rank": 4,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 29%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 0.99",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 32.3M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -8.5% a year",
+            "level": "Moderate",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.7x (20.6 to 35.1)",
+            "level": "Moderate",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 13.9%, stable or falling",
+            "level": "Moderate",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "Moderate",
+        "summary": "Moderate risk: volatility 29%; beta 0.99; bear case -8.5% a year (+2 more)."
+      },
+      "sector": "Banking",
+      "ticker": "COOP",
+      "tier": "Avoid"
+    },
+    {
+      "base": 0.022150362357851124,
+      "bear": -0.10240091545999667,
+      "bull": 0.11344784942859182,
+      "composite": 0.2847377314096377,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 2.2% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.0760517799352751,
+      "driver": {
+        "contribution": 0.32225469714746013,
+        "label": "quality",
+        "signal": "quality"
+      },
+      "fair_base": 23.11057296273072,
+      "fair_high": 28.624216130114014,
+      "fair_low": 16.202771466229304,
+      "mos": -0.2520850173873552,
+      "name": "Absa Bank Kenya",
+      "price": 30.9,
+      "price_date": "2026-11-11",
+      "rank": 5,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 34%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.12",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 11.1M a day",
+            "level": "Moderate",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -10.2% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.8x (16.2 to 28.6)",
+            "level": "Moderate",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 10.1%, stable or falling",
+            "level": "Moderate",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "Moderate",
+        "summary": "Moderate risk: bear case -10.2% a year; volatility 34%; beta 1.12 (+3 more)."
+      },
+      "sector": "Banking",
+      "ticker": "ABSA",
+      "tier": "Avoid"
+    },
+    {
+      "base": -0.10053559442351707,
+      "bear": -0.23167425527692237,
+      "bull": 0.11021239909807583,
+      "composite": 0.19425900151255915,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.83, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return -10.1% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.04411764705882353,
+      "driver": {
+        "contribution": 0.5614368678576661,
+        "label": "momentum",
+        "signal": "momentum"
+      },
+      "fair_base": 45.640983143121254,
+      "fair_high": 82.78165798681988,
+      "fair_low": 29.579170883828642,
+      "mos": -0.4630472571397499,
+      "name": "I&M Group",
+      "price": 85.0,
+      "price_date": "2026-11-11",
+      "rank": 6,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 31%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.12",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 34.2M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -23.2% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 2.8x (29.6 to 82.8)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 9.0%, stable or falling",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: bear case -23.2% a year; fair value spread 2.8x (29.6 to 82.8); volatility 31% (+1 more)."
+      },
+      "sector": "Banking",
+      "ticker": "IMH",
+      "tier": "Avoid"
+    },
+    {
+      "base": -0.03598557870244235,
+      "bear": -0.09927520808779855,
+      "bull": 0.0243795347080532,
+      "composite": -0.2119376353180067,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 2 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.89, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return -3.6% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.13059701492537312,
+      "driver": {
+        "contribution": 0.06571075343877567,
+        "label": "quality",
+        "signal": "quality"
+      },
+      "fair_base": 331.5941098838414,
+      "fair_high": 383.6943167512835,
+      "fair_low": 279.4939030163992,
+      "mos": -0.3813542726047735,
+      "name": "British American Tobacco Kenya",
+      "price": 536.0,
+      "price_date": "2026-11-11",
+      "rank": 7,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 22%",
+            "level": "Low",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 0.57",
+            "level": "Low",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 12.5M a day",
+            "level": "Moderate",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -9.9% a year",
+            "level": "Moderate",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.4x (279.5 to 383.7)",
+            "level": "Low",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "Altman Z'' 7.09, safe zone",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "Low",
+        "summary": "Low risk: turnover KES 12.5M a day; bear case -9.9% a year."
+      },
+      "sector": "Manufacturing",
+      "ticker": "BAT",
+      "tier": "Avoid"
+    },
+    {
+      "base": 0.012189765600237401,
+      "bear": -0.19349305632323802,
+      "bull": 0.5083489540956375,
+      "composite": -0.22611429044620457,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Quality",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "2 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.67, needs pass and 0.67",
+            "name": "Quality",
+            "passed": false
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 1.2% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.047936085219707054,
+      "driver": {
+        "contribution": 0.16542994118596321,
+        "label": "momentum",
+        "signal": "momentum"
+      },
+      "fair_base": 143.71065028094637,
+      "fair_high": 465.1854996483461,
+      "fair_low": 74.94121793173443,
+      "mos": -0.23456378012811518,
+      "name": "Diamond Trust Bank Kenya",
+      "price": 187.75,
+      "price_date": "2026-11-11",
+      "rank": 8,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 30%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 0.95",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 40.1M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -19.3% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 6.2x (74.9 to 465.2)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 11.6%, rising",
+            "level": "Moderate",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: bear case -19.3% a year; fair value spread 6.2x (74.9 to 465.2); volatility 30% (+2 more)."
+      },
+      "sector": "Banking",
+      "ticker": "DTK",
+      "tier": "Avoid"
+    },
+    {
+      "base": -0.22146398751151525,
+      "bear": -0.2933899169085927,
+      "bull": -0.1555939706554988,
+      "composite": -0.3617840700141769,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 2 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return -22.1% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.046831955922865015,
+      "driver": {
+        "contribution": 0.32225469714746013,
+        "label": "quality",
+        "signal": "quality"
+      },
+      "fair_base": 92.39536943755361,
+      "fair_high": 112.6458014335718,
+      "fair_low": 72.14493744153542,
+      "mos": -0.6606230690998949,
+      "name": "East African Breweries",
+      "price": 272.25,
+      "price_date": "2026-11-11",
+      "rank": 9,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 34%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 0.77",
+            "level": "Low",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 86.4M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -29.3% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.6x (72.1 to 112.6)",
+            "level": "Moderate",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "Altman Z'' 3.06, safe zone",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "Moderate",
+        "summary": "Moderate risk: bear case -29.3% a year; volatility 34%; fair value spread 1.6x (72.1 to 112.6)."
+      },
+      "sector": "Manufacturing",
+      "ticker": "EABL",
+      "tier": "Avoid"
+    },
+    {
+      "base": 0.1513044328673005,
+      "bear": -0.0017951682024932077,
+      "bull": 0.21629583120591728,
+      "composite": -0.3622354312446909,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Quality"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "1 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.58, needs pass and 0.67",
+            "name": "Quality",
+            "passed": false
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 15.1% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": true
+          }
+        ]
+      },
+      "dividend_yield": 0.09461756373937677,
+      "driver": {
+        "contribution": 0.5023010640212959,
+        "label": "margin of safety",
+        "signal": "margin_of_safety"
+      },
+      "fair_base": 92.52532277100885,
+      "fair_high": 104.18160403972014,
+      "fair_low": 62.09526777437952,
+      "mos": 0.048445583807465775,
+      "name": "NCBA Group",
+      "price": 88.25,
+      "price_date": "2026-11-11",
+      "rank": 10,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 24%",
+            "level": "Low",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 0.81",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 12.9M a day",
+            "level": "Moderate",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -0.2% a year",
+            "level": "Moderate",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.7x (62.1 to 104.2)",
+            "level": "Moderate",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 10.5%, rising",
+            "level": "Moderate",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "Moderate",
+        "summary": "Moderate risk: beta 0.81; turnover KES 12.9M a day; bear case -0.2% a year (+2 more)."
+      },
+      "sector": "Banking",
+      "ticker": "NCBA",
+      "tier": "Watch"
+    },
+    {
+      "base": -0.11507212154934646,
+      "bear": -0.2068245970726468,
+      "bull": -0.032742052856005545,
+      "composite": -0.421975128613126,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 2 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.88, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return -11.5% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.16836734693877548,
+      "driver": {
+        "contribution": 0.033642760475190235,
+        "label": "quality",
+        "signal": "quality"
+      },
+      "fair_base": 5.218589188932919,
+      "fair_high": 6.549483345882329,
+      "fair_low": 3.8876950319835073,
+      "mos": -0.46749089908847774,
+      "name": "KenGen",
+      "price": 9.8,
+      "price_date": "2026-11-11",
+      "rank": 11,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 34%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.30",
+            "level": "High",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 18.1M a day",
+            "level": "Moderate",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -20.7% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.7x (3.9 to 6.5)",
+            "level": "Moderate",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "Altman Z'' 2.93, safe zone",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: beta 1.30; bear case -20.7% a year; volatility 34% (+2 more)."
+      },
+      "sector": "Energy",
+      "ticker": "KEGN",
+      "tier": "Avoid"
+    },
+    {
+      "base": -0.16901913933395374,
+      "bear": -0.20636293525112803,
+      "bull": -0.13208033705622368,
+      "composite": -0.4433286867217906,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 2 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.83, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return -16.9% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.04640371229698376,
+      "driver": {
+        "contribution": 0.11398723712122193,
+        "label": "momentum",
+        "signal": "momentum"
+      },
+      "fair_base": 17.948009119198826,
+      "fair_high": 19.443257460277387,
+      "fair_low": 16.452760778120265,
+      "mos": -0.5835728742645284,
+      "name": "Carbacid Investments",
+      "price": 43.1,
+      "price_date": "2026-11-11",
+      "rank": 12,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 39%",
+            "level": "High",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 0.99",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 2.0M a day",
+            "level": "High",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -20.6% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.2x (16.5 to 19.4)",
+            "level": "Low",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "Altman Z'' 9.77, safe zone",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: volatility 39%; turnover KES 2.0M a day; bear case -20.6% a year (+1 more)."
+      },
+      "sector": "Manufacturing",
+      "ticker": "CARB",
+      "tier": "Avoid"
+    },
+    {
+      "base": -0.199587260760931,
+      "bear": -0.278948466420337,
+      "bull": -0.127849808309747,
+      "composite": -0.47679577551019403,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 2 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.94, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return -20.0% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.05706134094151213,
+      "driver": {
+        "contribution": 0.1779487288113252,
+        "label": "quality",
+        "signal": "quality"
+      },
+      "fair_base": 12.73257060586701,
+      "fair_high": 15.790299758734466,
+      "fair_low": 9.674841452999557,
+      "mos": -0.6367312237983734,
+      "name": "Safaricom",
+      "price": 35.05,
+      "price_date": "2026-11-11",
+      "rank": 13,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 24%",
+            "level": "Low",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 0.93",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 239.0M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -27.9% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.6x (9.7 to 15.8)",
+            "level": "Moderate",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "Altman Z'' 2.97, safe zone",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "Moderate",
+        "summary": "Moderate risk: bear case -27.9% a year; beta 0.93; fair value spread 1.6x (9.7 to 15.8)."
+      },
+      "sector": "Telecommunication",
+      "ticker": "SCOM",
+      "tier": "Avoid"
+    },
+    {
+      "base": 0.040816103955460974,
+      "bear": -0.01005929360062841,
+      "bull": 0.1434449637884313,
+      "composite": -0.4967856809977406,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Quality",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate fail, score 0.67, needs pass and 0.67",
+            "name": "Quality",
+            "passed": false
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 4.1% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.0772822966507177,
+      "driver": {
+        "contribution": 0.04443406265582416,
+        "label": "margin of safety",
+        "signal": "margin_of_safety"
+      },
+      "fair_base": 198.08253730224115,
+      "fair_high": 253.18460370659093,
+      "fair_low": 178.4286739308964,
+      "mos": -0.24178933090051236,
+      "name": "Stanbic Holdings",
+      "price": 261.25,
+      "price_date": "2026-11-11",
+      "rank": 14,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 27%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 0.68",
+            "level": "Low",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 13.2M a day",
+            "level": "Moderate",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -1.0% a year",
+            "level": "Moderate",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.4x (178.4 to 253.2)",
+            "level": "Low",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 7.4%, stable or falling",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "Moderate",
+        "summary": "Moderate risk: volatility 27%; turnover KES 13.2M a day; bear case -1.0% a year."
+      },
+      "sector": "Banking",
+      "ticker": "SBIC",
+      "tier": "Avoid"
+    },
+    {
+      "base": -0.007718283220502003,
+      "bear": -0.09519173920380047,
+      "bull": 0.01257163517112852,
+      "composite": -0.5348282109339957,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.75, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return -0.8% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.10430463576158941,
+      "driver": {
+        "contribution": -0.012344718170393749,
+        "label": "margin of safety",
+        "signal": "margin_of_safety"
+      },
+      "fair_base": 218.11027848688533,
+      "fair_high": 219.77422777184435,
+      "fair_low": 170.8304405312108,
+      "mos": -0.277780534811638,
+      "name": "Standard Chartered Bank Kenya",
+      "price": 302.0,
+      "price_date": "2026-11-11",
+      "rank": 15,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 18%",
+            "level": "Low",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 0.85",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 11.1M a day",
+            "level": "Moderate",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -9.5% a year",
+            "level": "Moderate",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.3x (170.8 to 219.8)",
+            "level": "Low",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 5.0%, stable or falling",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "Moderate",
+        "summary": "Moderate risk: beta 0.85; turnover KES 11.1M a day; bear case -9.5% a year."
+      },
+      "sector": "Banking",
+      "ticker": "SCBK",
+      "tier": "Avoid"
+    },
+    {
+      "base": -0.2021590350002116,
+      "bear": -0.2199071302626492,
+      "bull": -0.18431419286143347,
+      "composite": -0.7101933660495015,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 2 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.88, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return -20.2% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.07641196013289037,
+      "driver": {
+        "contribution": 0.033642760475190235,
+        "label": "quality",
+        "signal": "quality"
+      },
+      "fair_base": 18.102435333998177,
+      "fair_high": 18.326988444057314,
+      "fair_low": 17.87788222393904,
+      "mos": -0.5990601254928422,
+      "name": "TotalEnergies Marketing Kenya",
+      "price": 45.15,
+      "price_date": "2026-11-11",
+      "rank": 16,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 27%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 0.82",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 1.1M a day",
+            "level": "High",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -22.0% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.0x (17.9 to 18.3)",
+            "level": "Low",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "Balance sheet: not assessed",
+            "level": null,
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: turnover KES 1.1M a day; bear case -22.0% a year; volatility 27% (+1 more). Not assessed: balance sheet."
+      },
+      "sector": "Energy",
+      "ticker": "TOTL",
+      "tier": "Avoid"
+    }
+  ],
+  "rule": "A stock is flagged **High confidence undervalued** only when all four gates pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.67% hurdle (Return). Risk is rated separately from seven factors and never changes the flag, so check it before sizing a position.",
+  "tbill_net": 0.0767397,
+  "top": [
+    {
+      "base": 0.29604519598603135,
+      "bear": -0.13949839785669865,
+      "binding": "Not a Buy: only 1 of 2 valuation models show 15% or more upside, needs 2.",
+      "bull": 0.5672489612935823,
+      "composite": 1.491498948896095,
+      "conviction": {
+        "failed": [
+          "Valuation"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "1 of 2 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.86, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 29.6% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": true
+          }
+        ]
+      },
+      "dividend_yield": 0.05,
+      "driver": {
+        "contribution": 1.323881102374662,
+        "label": "margin of safety",
+        "signal": "margin_of_safety"
+      },
+      "fair_base": 34.52311830046941,
+      "fair_high": 59.02626107998005,
+      "fair_low": 10.01997552095877,
+      "mos": 0.5692326500213369,
+      "name": "Kenya Power and Lighting",
+      "price": 22.0,
+      "price_date": "2026-11-11",
+      "rank": 1,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 37%",
+            "level": "High",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.70",
+            "level": "High",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 27.5M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -13.9% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 5.9x (10.0 to 59.0)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "Balance sheet: not assessed",
+            "level": null,
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: volatility 37%; beta 1.70; bear case -13.9% a year (+1 more). Not assessed: balance sheet."
+      },
+      "sector": "Energy",
+      "ticker": "KPLC",
+      "tier": "Watch",
+      "why": "KPLC #1 (Watch): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: margin of safety (+1.32). Not a Buy: only 1 of 2 valuation models show 15% or more upside, needs 2. High risk (volatility 37%; beta 1.70)."
+    },
+    {
+      "base": 0.16928410933908872,
+      "bear": -0.06411945695914073,
+      "binding": "Not a Buy: only 2 of 5 valuation models show 15% or more upside, needs 3.",
+      "bull": 0.36294058171653126,
+      "composite": 0.9532957480232618,
+      "conviction": {
+        "failed": [
+          "Valuation"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "2 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 16.9% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": true
+          }
+        ]
+      },
+      "dividend_yield": 0.06685236768802229,
+      "driver": {
+        "contribution": 0.5967821229747637,
+        "label": "margin of safety",
+        "signal": "margin_of_safety"
+      },
+      "fair_base": 99.47312793307462,
+      "fair_high": 152.60403972015345,
+      "fair_low": 51.746425619265075,
+      "mos": 0.10833568727659748,
+      "name": "KCB Group",
+      "price": 89.75,
+      "price_date": "2026-11-11",
+      "rank": 2,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 30%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.34",
+            "level": "High",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 126.0M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -6.4% a year",
+            "level": "Moderate",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 2.9x (51.7 to 152.6)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 15.1%, stable or falling",
+            "level": "Moderate",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: beta 1.34; fair value spread 2.9x (51.7 to 152.6); volatility 30% (+2 more)."
+      },
+      "sector": "Banking",
+      "ticker": "KCB",
+      "tier": "Watch",
+      "why": "KCB #2 (Watch): 10.8% upside to base fair value KES 99.47; base return 16.9% a year beats the 12.67% hurdle. Biggest score driver: margin of safety (+0.60). Not a Buy: only 2 of 5 valuation models show 15% or more upside, needs 3. High risk (beta 1.34; fair value spread 2.9x (51.7 to 152.6))."
+    },
+    {
+      "base": 0.11289114542237813,
+      "bear": -0.1437658922114929,
+      "binding": "Avoid: only 1 of 5 valuation models show 15% or more upside, needs 3; base return 11.3% does not beat the 12.67% hurdle.",
+      "bull": 0.26391875114475394,
+      "composite": 0.8888810975262382,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "1 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 11.3% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.05778894472361809,
+      "driver": {
+        "contribution": 0.4264274493398649,
+        "label": "margin of safety",
+        "signal": "margin_of_safety"
+      },
+      "fair_base": 99.53487034241131,
+      "fair_high": 139.91149218573685,
+      "fair_low": 46.26755113116841,
+      "mos": 0.0003504557026261512,
+      "name": "Equity Group Holdings",
+      "price": 99.5,
+      "price_date": "2026-11-11",
+      "rank": 3,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 31%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.06",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 197.0M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -14.4% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 3.0x (46.3 to 139.9)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 9.5%, stable or falling",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "High",
+        "summary": "High risk: bear case -14.4% a year; fair value spread 3.0x (46.3 to 139.9); volatility 31% (+1 more)."
+      },
+      "sector": "Banking",
+      "ticker": "EQTY",
+      "tier": "Avoid",
+      "why": "EQTY #3 (Avoid): 0.0% upside to base fair value KES 99.53; base return 11.3% a year trails the 12.67% hurdle. Biggest score driver: margin of safety (+0.43). Avoid: only 1 of 5 valuation models show 15% or more upside, needs 3; base return 11.3% does not beat the 12.67% hurdle. High risk (bear case -14.4% a year; fair value spread 3.0x (46.3 to 139.9))."
+    },
+    {
+      "base": 0.025185097763056878,
+      "bear": -0.08507706558423012,
+      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 2.5% does not beat the 12.67% hurdle.",
+      "bull": 0.12298108186424961,
+      "composite": 0.43330574848163605,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 2.5% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.06747638326585695,
+      "driver": {
+        "contribution": 0.32225469714746013,
+        "label": "quality",
+        "signal": "quality"
+      },
+      "fair_base": 27.878180265700365,
+      "fair_high": 35.14726597483292,
+      "fair_low": 20.567561572239665,
+      "mos": -0.24755248945478092,
+      "name": "Co-operative Bank of Kenya",
+      "price": 37.05,
+      "price_date": "2026-11-11",
+      "rank": 4,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 29%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 0.99",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 32.3M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -8.5% a year",
+            "level": "Moderate",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.7x (20.6 to 35.1)",
+            "level": "Moderate",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 13.9%, stable or falling",
+            "level": "Moderate",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "Moderate",
+        "summary": "Moderate risk: volatility 29%; beta 0.99; bear case -8.5% a year (+2 more)."
+      },
+      "sector": "Banking",
+      "ticker": "COOP",
+      "tier": "Avoid",
+      "why": "COOP #4 (Avoid): 24.8% downside to base fair value KES 27.88; base return 2.5% a year trails the 12.67% hurdle. Biggest score driver: quality (+0.32). Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 2.5% does not beat the 12.67% hurdle. Moderate risk (volatility 29%; beta 0.99)."
+    },
+    {
+      "base": 0.022150362357851124,
+      "bear": -0.10240091545999667,
+      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 2.2% does not beat the 12.67% hurdle.",
+      "bull": 0.11344784942859182,
+      "composite": 0.2847377314096377,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 2.2% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dividend_yield": 0.0760517799352751,
+      "driver": {
+        "contribution": 0.32225469714746013,
+        "label": "quality",
+        "signal": "quality"
+      },
+      "fair_base": 23.11057296273072,
+      "fair_high": 28.624216130114014,
+      "fair_low": 16.202771466229304,
+      "mos": -0.2520850173873552,
+      "name": "Absa Bank Kenya",
+      "price": 30.9,
+      "price_date": "2026-11-11",
+      "rank": 5,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 34%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.12",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 11.1M a day",
+            "level": "Moderate",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -10.2% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.8x (16.2 to 28.6)",
+            "level": "Moderate",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 10.1%, stable or falling",
+            "level": "Moderate",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "Moderate",
+        "summary": "Moderate risk: bear case -10.2% a year; volatility 34%; beta 1.12 (+3 more)."
+      },
+      "sector": "Banking",
+      "ticker": "ABSA",
+      "tier": "Avoid",
+      "why": "ABSA #5 (Avoid): 25.2% downside to base fair value KES 23.11; base return 2.2% a year trails the 12.67% hurdle. Biggest score driver: quality (+0.32). Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 2.2% does not beat the 12.67% hurdle. Moderate risk (bear case -10.2% a year; volatility 34%)."
+    }
+  ],
+  "valued": 16
+}

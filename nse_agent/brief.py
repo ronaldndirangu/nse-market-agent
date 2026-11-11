@@ -3,10 +3,10 @@ from __future__ import annotations
 
 import logging
 import statistics
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from . import announcements, config, dividends, ledger, prices, report
+from . import announcements, config, dividends, ledger, prices, report, risk, storage
 from .engine import analyze
 from .fmt import kes, num, pct, table
 from .quality import warnings_for
@@ -37,12 +37,16 @@ def why(r: dict, result: dict) -> str:
     if pr:
         verb = "beats" if pr["base"] > result["hurdle"] else "trails"
         parts.append(f"base return {pct(pr['base'])} a year {verb} the {pct(result['hurdle'], 2)} hurdle")
-    weighted = [(n, s) for n, s in r["signals"].items() if s["weight"]]
     text = f"{r['ticker']} #{r['rank']} ({r['tier']}): " + ("; ".join(parts) or "no valuation inputs") + "."
-    if weighted:
-        name, s = max(weighted, key=lambda kv: kv[1]["contribution"])
-        text += f" Biggest score driver: {LABELS[name]} ({_signed(s['contribution'])})."
-    return f"{text} {r['binding']}"
+    d = _driver(r)
+    if d:
+        text += f" Biggest score driver: {d['label']} ({_signed(d['contribution'])})."
+    return f"{text} {r['binding']} {risk_short(r)}."
+
+
+def risk_short(r: dict) -> str:
+    rk = r["risk"]
+    return f"{rk['level']} risk" + (f" ({'; '.join(rk['drivers'][:2])})" if rk["drivers"] else "")
 
 
 def unusual_moves(result: dict, since: str | None) -> list[dict]:
@@ -123,7 +127,11 @@ def changes(result: dict, prev_date: str | None, prev: dict[str, dict]) -> dict:
 def alerts(result: dict, ch: dict, prev: dict[str, dict]) -> list[str]:
     """Material changes only: a new Buy, a dropped Buy or a new warning announcement."""
     rows = result["rows"]
-    out = [f"New Buy: {why(rows[t], result)}" for t in result["buys"] if prev.get(t, {}).get("tier") != "Buy"]
+    hc = set(result["high_confidence"])
+    out = [("New Buy, high confidence undervalued: " if t in hc else "New Buy: ") + why(rows[t], result)
+           for t in result["buys"] if prev.get(t, {}).get("tier") != "Buy"]
+    out += [f"Now high confidence undervalued: {why(rows[t], result)}" for t in result["high_confidence"]
+            if prev.get(t, {}).get("tier") == "Buy" and prev[t].get("high_confidence") not in ("True", None)]
     for t, p in prev.items():
         if p["tier"] == "Buy" and t not in result["buys"]:
             reason = rows[t]["binding"] if t in rows else "no longer ranked (missing price or fundamentals)."
@@ -178,6 +186,7 @@ def render(result: dict, ch: dict, alert_lines: list[str]) -> str:
     ]
     if alert_lines:
         out += ["## Alerts", ""] + [f"- {a}" for a in alert_lines] + [""]
+    out += risk.section_md(result)
     out += [f"## Top {TOP_N}", ""]
     for t in ranked[:TOP_N]:
         out.append(f"- {why(rows[t], result)}")
@@ -193,11 +202,12 @@ def render(result: dict, ch: dict, alert_lines: list[str]) -> str:
     body = []
     for t in ranked:
         r, pr = rows[t], rows[t]["projection"]
-        body.append([str(r["rank"]), t, r["tier"], _signed(r["composite"]), kes(r["price"]), pct(r["mos"]),
+        body.append([str(r["rank"]), t, r["tier"] + (" (high confidence)" if r["conviction"]["flag"] else ""),
+                     _signed(r["composite"]), kes(r["price"]), pct(r["mos"]),
                      f"{pct(pr['bear'])} / {pct(pr['base'])} / {pct(pr['bull'])}" if pr else "n/a",
-                     pct(r["dividend_yield"]), pct(r["volatility"]), r["binding"]])
+                     pct(r["dividend_yield"]), pct(r["volatility"]), r["risk"]["level"], r["binding"]])
     out += [table(["Rank", "Ticker", "Tier", "Composite", "Price", "MoS", "Bear / base / bull a year",
-                   "Div. yield", "Volatility", "Binding constraint"], body), ""]
+                   "Div. yield", "Volatility", "Risk", "Binding constraint"], body), ""]
     s = config.settings()
     out += [
         "## How to read this", "",
@@ -206,6 +216,13 @@ def render(result: dict, ch: dict, alert_lines: list[str]) -> str:
         f"- **Buy** clears every gate: quality passes, the screen passes, at least two valuation models agree on a "
         f"margin of safety of {pct(s['valuation']['mos_threshold'], 0)} or more, and the base return beats the "
         f"hurdle. **Watch** passes quality and misses one gate. **Avoid** misses more, or fails quality.",
+        "- **High confidence undervalued** is a stricter Buy: three or more models agree and quality scores 0.67 or "
+        "more. In the monthly backtest it fired rarely and lost money over 12 months in none of its cases, but its "
+        "excess return over the equal-weight universe was mixed, so treat it as a filter for review, not a "
+        "guarantee.",
+        "- **Risk** (Low, Moderate or High) rates volatility, beta, liquidity, bear-case return, fair value spread, "
+        "balance sheet (Altman Z'' or bank NPL) and warning announcements. It is shown beside the tier and never "
+        "changes it.",
         f"- Returns are annualised over {s['valuation']['horizon_years']} years, net of trading costs and dividend "
         "withholding tax.",
         "- Every stock's score, signals, tier and projections are appended daily to `data/rankings/live/` and never "
@@ -224,6 +241,53 @@ def write(text: str, day: str) -> Path:
     for p in (dated, daily_dir() / "latest.md"):
         p.write_text(text, encoding="utf-8", newline="\n")
     return dated
+
+
+def _driver(r: dict) -> dict | None:
+    weighted = [(n, s) for n, s in r["signals"].items() if s["weight"]]
+    if not weighted:
+        return None
+    name, s = max(weighted, key=lambda kv: kv[1]["contribution"])
+    return {"signal": name, "label": LABELS[name], "contribution": s["contribution"]}
+
+
+def snapshot(result: dict, ch: dict, alert_lines: list[str]) -> dict:
+    """Structured copy of the brief for the site dashboard."""
+    rows, ranked = result["rows"], result["ranking"]
+
+    def item(t: str) -> dict:
+        r, pr = rows[t], rows[t]["projection"] or {}
+        fv = r["fair_value"] or {}
+        return {"rank": r["rank"], "ticker": t, "name": r["name"], "sector": r["sector"], "tier": r["tier"],
+                "price": r["price"], "price_date": r["price_date"], "mos": r["mos"], "fair_low": fv.get("low"),
+                "fair_base": fv.get("base"), "fair_high": fv.get("high"), "bear": pr.get("bear"),
+                "base": pr.get("base"), "bull": pr.get("bull"), "composite": r["composite"],
+                "dividend_yield": r["dividend_yield"], "binding": r["binding"], "driver": _driver(r),
+                "risk": {"level": r["risk"]["level"], "summary": r["risk"]["summary"],
+                         "factors": [{"name": f["name"], "level": f["level"], "detail": f["detail"]}
+                                     for f in r["risk"]["factors"]]},
+                "conviction": {"flag": r["conviction"]["flag"], "failed": r["conviction"]["failed"],
+                               "gates": r["conviction"]["gates"]},
+                "why": why(r, result)}
+
+    return {"as_of": result["as_of"], "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "valued": len(ranked), "hurdle": result["hurdle"], "tbill_net": result["tbill_net"],
+            "counts": {k: sum(1 for t in ranked if rows[t]["tier"] == k) for k in ("Buy", "Watch", "Avoid")},
+            "alerts": alert_lines,
+            "high_confidence": [item(t) for t in result["high_confidence"]],
+            "near_misses": [] if result["high_confidence"] else [item(t) for t in risk.near_misses(rows, ranked)],
+            "rule": risk.rule_text(result["hurdle"]),
+            "changes": {"prev_date": ch["prev_date"], "top_in": ch["top_in"], "top_out": ch["top_out"],
+                        "tiers": len(ch["tiers"]), "crossings": len(ch["crossings"]),
+                        "announcements": len(ch["announcements"]), "moves": len(ch["moves"])},
+            "top": [item(t) for t in ranked[:TOP_N]],
+            "ranking": [{k: v for k, v in item(t).items() if k not in ("why", "binding")} for t in ranked]}
+
+
+def write_snapshot(result: dict, ch: dict, alert_lines: list[str]) -> Path:
+    p = daily_dir() / "latest.json"
+    storage.write_json(p, snapshot(result, ch, alert_lines))
+    return p
 
 
 def alert_body(result: dict, alert_lines: list[str]) -> str:
@@ -250,6 +314,7 @@ def run_brief(fetch: bool = True, alert_file: str | None = None, as_of: date | N
     alert_lines = alerts(result, ch, prev)
     path = write(render(result, ch, alert_lines), result["as_of"])
     logged = ledger.append(result)
+    write_snapshot(result, ch, alert_lines)
     report.build_site()
     if alert_file and alert_lines:
         Path(alert_file).write_text(alert_body(result, alert_lines), encoding="utf-8", newline="\n")

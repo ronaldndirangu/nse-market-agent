@@ -17,9 +17,11 @@ from .returns import SIGNALS
 BASE = ["date", "ticker", "rank", "tier", "composite"]
 SIGNAL_COLS = [f"{s}_{k}" for s in SIGNALS for k in ("value", "z", "contribution")]
 TAIL = ["price", "price_date", "mos", "agree", "agree_needed", "fair_low", "fair_base", "fair_high",
-        "bear", "base", "bull", "horizon_years", "gate", "binding", "confidence", "weights", "code_sha"]
+        "bear", "base", "bull", "horizon_years", "gate", "binding", "confidence", "risk", "high_confidence",
+        "weights", "code_sha"]
 COLUMNS = BASE + SIGNAL_COLS + TAIL
-TEXT = {"date", "ticker", "tier", "price_date", "gate", "binding", "confidence", "weights", "code_sha"}
+TEXT = {"date", "ticker", "tier", "price_date", "gate", "binding", "confidence", "risk", "high_confidence",
+        "weights", "code_sha"}
 
 
 def root() -> Path:
@@ -71,7 +73,8 @@ def rows_for(result: dict) -> list[dict]:
             "agree_needed": r["agree_needed"], "fair_low": fv.get("low"), "fair_base": fv.get("base"),
             "fair_high": fv.get("high"), "bear": pr.get("bear"), "base": pr.get("base"), "bull": pr.get("bull"),
             "horizon_years": pr.get("years"), "gate": r["quality"]["gate"], "binding": r["binding"],
-            "confidence": r["confidence"], "weights": weights, "code_sha": code_sha(),
+            "confidence": r["confidence"], "risk": (r.get("risk") or {}).get("level"),
+            "high_confidence": (r.get("conviction") or {}).get("flag"), "weights": weights, "code_sha": code_sha(),
         })
         out.append({c: _fmt(row.get(c)) for c in COLUMNS})
     return out
@@ -99,8 +102,13 @@ def _read(path: Path) -> list[dict]:
 def _write(path: Path, rows: list[dict], mode: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     new = mode == "w" or not path.exists() or path.stat().st_size == 0
+    fields = COLUMNS
+    if not new:
+        # Appends keep the file's original header, so columns added later never shift past rows.
+        with path.open(newline="", encoding="utf-8") as fh:
+            fields = next(csv.reader(fh))
     with path.open(mode, newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=COLUMNS, lineterminator="\n")
+        w = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n", extrasaction="ignore")
         if new:
             w.writeheader()
         w.writerows(rows)

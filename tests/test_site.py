@@ -1,0 +1,73 @@
+import json
+import shutil
+
+import pytest
+
+from nse_agent import DISCLAIMER, site
+
+ADVICE = f"> **Not financial advice.** {DISCLAIMER}"
+
+
+@pytest.fixture
+def tree(root):
+    yield root
+    for sub in ("reports", "site"):
+        shutil.rmtree(root / sub, ignore_errors=True)
+    (root / "data" / "retrospective.json").unlink(missing_ok=True)
+
+
+def _write(path, text):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+
+
+def test_build_without_snapshots_renders_pages_and_archive(tree):
+    _write(tree / "reports" / "daily" / "latest.md", f"# Daily brief\n\n{ADVICE}\n\n## Top 5\n\nKCB\n")
+    _write(tree / "reports" / "daily" / "2026-11-10.md", "# Daily brief 2026-11-10\n")
+    _write(tree / "reports" / "daily" / "2026-11-11.md", "# Daily brief 2026-11-11\n")
+    _write(tree / "reports" / "latest.md", "# Weekly report\n")
+    written = {p.relative_to(tree / "site").as_posix() for p in site.build()}
+    assert {"index.html", "daily.html", "weekly.html", "archive.html", "daily/2026-11-10.html",
+            "daily/2026-11-11.html"} <= written
+    assert "retrospective.html" not in written
+    assert (tree / "site" / ".nojekyll").exists()
+
+    index = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    assert "No daily snapshot yet" in index and "Panel unavailable" not in index
+    older = (tree / "site" / "daily" / "2026-11-10.html").read_text(encoding="utf-8")
+    assert 'href="2026-11-11.html"' in older and 'href="../index.html"' in older
+    archive = (tree / "site" / "archive.html").read_text(encoding="utf-8")
+    assert "November 2026" in archive and 'href="daily/2026-11-11.html"' in archive
+    for text in (index, older, archive):
+        assert "\u2014" not in text and "\u2013" not in text
+
+
+def test_dashboard_tolerates_sparse_and_broken_snapshots(tree):
+    path = tree / "reports" / "daily" / "latest.json"
+    _write(path, json.dumps({"as_of": "2026-11-11"}))
+    site.build()
+    index = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    assert "2026-11-11" in index and "Panel unavailable" not in index
+
+    _write(path, json.dumps({"as_of": "2026-11-11", "top": [None], "high_confidence": 5}))
+    site.build()
+    index = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    assert "Panel unavailable" in index and "Not financial advice" in index
+
+
+def test_render_markdown_folds_method_sections_and_dedupes_disclaimer():
+    md = (f"# Report\n\n{ADVICE}\n\n## Picks\n\n| Ticker | Tier | Risk |\n|---|---|---|\n| KCB | Watch | High |\n\n"
+          f"## Method\n\nRules.\n\n## Data gaps\n\nNone.\n\n{ADVICE}\n")
+    html = site.render_markdown(md)
+    assert html.count("Not financial advice") == 1
+    assert '<details class="fold" id="method">' in html and '<details class="fold" id="data-gaps">' in html
+    assert '<h2 id="picks">' in html and 'class="toc"' in html
+    assert "b-watch" in html and "r-high" in html
+
+
+def test_badges():
+    assert "b-buy" in site.tier_badge("Buy") and "b-flag" not in site.tier_badge("Buy")
+    assert "b-flag" in site.tier_badge("Buy", flagged=True)
+    assert "b-avoid" in site.tier_badge("Avoid")
+    assert "r-moderate" in site.risk_badge("Moderate")
+    assert "Risk n/a" in site.risk_badge(None)

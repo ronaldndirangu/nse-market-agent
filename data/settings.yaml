@@ -50,3 +50,14 @@ warning_keywords:
   - receivership
   - administration
   - delisting
+risk:
+  volatility: {moderate: 0.25, high: 0.35}
+  beta: {moderate: 0.8, high: 1.2}
+  turnover_kes: {moderate: 20000000, high: 5000000}
+  bear_return: {moderate: 0.0, high: -0.10}
+  fair_value_spread: {moderate: 1.5, high: 2.0}
+  npl: {moderate: 0.10, high: 0.17}
+
+high_confidence:
+  min_agreeing_models: 3
+  min_quality_score: 0.67

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from datetime import date
 
-from . import announcements as ann, config, dividends, fundamentals as fnd, prices, storage
+from . import announcements as ann, config, dividends, fundamentals as fnd, prices, risk, storage
 from .quality import assess, warnings_for
 from .returns import net_tbill, project, rank
 from .valuation import (agreeing, cost_of_equity, fair_value, graham_number, models, required_agreement,
@@ -100,12 +100,16 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
         r["buy"] = r["undervalued"] and base is not None and base > hurdle
         _tier(r, vals, valued, reasons, base, hurdle, s["valuation"]["mos_threshold"])
         qs = r["quality"]["score"]
-        if len(r["agree"]) >= 3 and qs is not None and qs >= 0.67 and not stale:
+        hc = s["high_confidence"]
+        if len(r["agree"]) >= hc["min_agreeing_models"] and qs is not None and qs >= hc["min_quality_score"] \
+                and not stale:
             r["confidence"] = "High"
-        elif len(r["agree"]) <= 2 or qs is None or qs < 0.5 or stale:
+        elif len(r["agree"]) < hc["min_agreeing_models"] or qs is None or qs < 0.5 or stale:
             r["confidence"] = "Low"
         else:
             r["confidence"] = "Medium"
+        r["risk"] = risk.profile(r)
+        r["conviction"] = risk.conviction(r, hurdle)
 
     ranked = rank(rows) if rows else []
     for i, t in enumerate(ranked, 1):
@@ -116,6 +120,7 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
         "ranking": ranked,
         "picks": [t for t in ranked if rows[t]["undervalued"]],
         "buys": [t for t in ranked if rows[t]["buy"]],
+        "high_confidence": [t for t in ranked if rows[t]["conviction"]["flag"]],
         "watchlist": [t for t in ranked if rows[t]["watch"]],
         "gaps": gaps,
         "tbill_net": net_tbill(),
@@ -137,8 +142,8 @@ def _tier(r: dict, vals: dict, valued: bool, screen: list[str], base: float | No
     if len(vals) < 2:
         blockers.append(f"only {len(vals)} valuation model(s) available, needs 2")
     elif not valued:
-        blockers.append(f"margin of safety under {mos_threshold:.0%} "
-                        f"({len(r['agree'])} of {len(vals)} models agree, needs {r['agree_needed']})")
+        blockers.append(f"only {len(r['agree'])} of {len(vals)} valuation models show {mos_threshold:.0%} or more "
+                        f"upside, needs {r['agree_needed']}")
     if base is not None and base <= hurdle:
         blockers.append(f"base return {base:.1%} does not beat the {hurdle:.2%} hurdle")
     r["blockers"] = blockers
