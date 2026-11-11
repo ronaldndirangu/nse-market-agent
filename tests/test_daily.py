@@ -78,8 +78,10 @@ def test_brief_flags_changes_and_material_alerts(market, outputs, tmp_path):
     body = alert.read_text(encoding="utf-8")
     assert "Warning announcement for KCB" in body
     assert "Buy dropped: KCB." in body
-    if promoted in analyze(AS_OF)["buys"]:
-        assert f"New Buy: {promoted} #" in body
+    result = analyze(AS_OF)
+    if promoted in result["buys"]:
+        label = "New Buy, high confidence undervalued" if promoted in result["high_confidence"] else "New Buy"
+        assert f"{label}: {promoted} #" in body
 
     alert.unlink()
     assert "ledger_rows=0" in brief.run_brief(fetch=False, alert_file=str(alert), as_of=AS_OF)

@@ -26,10 +26,12 @@ def screen_stocks() -> dict:
         r = rows[t]
         out.append({k: r[k] for k in ("rank", "ticker", "name", "sector", "price", "price_date", "fair_value", "mos",
                                       "agree", "agree_needed", "undervalued", "buy", "confidence", "composite",
-                                      "screen_fail", "projection")} | {"quality_gate": r["quality"]["gate"]})
+                                      "screen_fail", "projection")}
+                   | {"quality_gate": r["quality"]["gate"], "risk": r.get("risk"), "conviction": r.get("conviction")})
     unranked = [t for t in rows if t not in res["ranking"]]
     return _plain({"as_of": res["as_of"], "tbill_net": res["tbill_net"], "hurdle": res["hurdle"], "ranked": out,
-                   "unranked": unranked, "picks": res["picks"], "buys": res["buys"], "gaps": res["gaps"],
+                   "unranked": unranked, "picks": res["picks"], "buys": res["buys"],
+                   "high_confidence": res.get("high_confidence", []), "gaps": res["gaps"],
                    "disclaimer": DISCLAIMER})
 
 

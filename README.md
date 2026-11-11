@@ -4,7 +4,8 @@ An autonomous, rule-based agent that screens Nairobi Securities Exchange (Kenya)
 names, projects return ranges and tracks how its past picks performed. It runs on GitHub Actions and publishes a weekly
 report to GitHub Pages.
 
-**Live report:** https://ronaldndirangu.github.io/nse-market-agent/
+**Live dashboard:** https://ronaldndirangu.github.io/nse-market-agent/ (daily brief at `daily.html`, weekly report at
+`weekly.html`, all past reports at `archive.html`)
 
 > **Not financial advice.** This project is a research tool built from public data and fixed rules. Figures can be
 > wrong, late or incomplete. Verify everything against company filings and speak to a licensed adviser before investing.
@@ -49,6 +50,30 @@ flowchart LR
    or quality check failed.
 
 All thresholds live in [`data/settings.yaml`](data/settings.yaml).
+
+### High confidence undervalued and risk profile
+
+A stock is flagged **High confidence undervalued** only when all four gates pass:
+
+| Gate | Rule |
+|---|---|
+| Valuation | At least 3 valuation models put fair value 15% or more above the price |
+| Quality | Quality gate passes with a score of 0.67 or more |
+| Screen | Liquid, fresh price, at least 3 sourced periods, positive EPS, not suspended |
+| Return | Base-case annual return beats the Buy hurdle |
+
+When nothing qualifies, the brief lists the closest candidates and the gates they miss.
+
+Every stock also gets a **risk profile**. Seven factors are each rated Low, Moderate or High from fixed thresholds:
+volatility, beta, liquidity, downside (bear case), valuation spread (fair high over fair low), balance sheet (bank NPL
+ratio or Altman Z) and events (profit warnings, suspensions). Overall risk is High when the balance sheet or events
+factor is High or two factors are High, Moderate when one factor is High or three are Moderate, and Low otherwise.
+Risk never changes the flag; use it to size a position. Missing inputs are listed as not assessed.
+
+Point-in-time backtest of the flag since 2017: it fired 28 times, only on COOP, EQTY and KCB. At 12 months no flagged
+pick lost money, but they trailed the equal-weight universe by 3.5% on average (N=18); at 6 months they beat it by
+4.5% (N=23). The plain Buy tier did better at 12 months (+8.9%). The flag is a stricter filter, and its short record does not yet beat
+the Buy tier.
 
 ## Schedule
 
@@ -103,11 +128,19 @@ companies:
 
 ## Reports
 
-- `reports/daily/YYYY-MM-DD.md` and `reports/daily/latest.md`: the daily brief. Top 5 tiered Buy (clears every gate),
+The Pages site opens on a dashboard: high confidence flags (or near misses) with gates and risk badges, today's top 5
+as cards with a price sparkline and a bear to bull range bar, alerts, what changed, the reconstructed track record
+against the universe and NASI, the per-signal IC heat table, miss classification and a sortable full ranking. Every
+Markdown report below is also rendered as a page, with dated archives for the daily brief and weekly report.
+`reports/daily/latest.json` is the machine-readable snapshot behind the dashboard.
+
+- `reports/daily/YYYY-MM-DD.md` and `reports/daily/latest.md`: the daily brief. High confidence flags with risk
+  profiles, then the top 5 tiered Buy (clears every gate),
   Watch (passes quality, misses one threshold) or Avoid, each with its per-signal score contributions and the binding
   constraint, plus what changed since the last brief.
 - `data/rankings/live/YYYY-MM.csv`: the append-only prediction ledger. Every stock, every day: composite score, each
-  signal's value and contribution, tier, bear/base/bull projections and the code SHA. Past rows are never edited.
+  signal's value and contribution, tier, risk level, high confidence flag, bear/base/bull projections and the code SHA.
+  Past rows are never edited.
 - `data/rankings/reconstructed.csv`: the engine rerun point in time on every month start, using only prices and
   fundamentals published by that date.
 - `reports/retrospective.md`: how well past rankings predicted. The forward scorecard scores the top 5 and the full
