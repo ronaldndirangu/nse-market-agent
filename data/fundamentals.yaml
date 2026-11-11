@@ -1988,6 +1988,12 @@ companies:
     gaps:
     - H1-2026 omits total_equity (only equity including NCI was printed) and shares_outstanding
     - FY2025 deposits were later restated to 1,443,458.895
+    - FY2016-FY2018 not recorded; 2016-2019 integrated reports and CBK-format statements not found at probed equitygroupholdings.com
+      or nse.co.ke URLs (site HTML blocked by Incapsula, so listings could not be browsed)
+    - FY2019 dps omitted; the 2019 dividend (KES 9.5bn total) was declared and then withdrawn in 2020 to protect
+      core capital, and the per-share amount was not printed in the documents opened
+    - FY2019 roe, cost_to_income and core_capital_ratio come from the FY2020 investor briefing presentation, whose
+      direct PDF URL was not captured (cited via the investor relations page)
     periods:
     - period: H1-2026
       period_end: '2026-06-30'
@@ -2089,6 +2095,104 @@ companies:
         roe: 0.223
         cost_to_income: 0.523
         core_capital_ratio: 0.143
+    - period: FY2022
+      period_end: '2022-12-31'
+      published: '2023-03-27'
+      published_basis: noted
+      type: annual
+      source_url: https://equitygroupholdings.com/wp-content/uploads/2023/06/Equity-Group-Holdings-PLC-2022-Integrated-Report-and-Financial-Statements.pdf
+      source_note: Audited group financial statements in the 2022 integrated report (KES millions as printed), date
+        is board approval. Ratios from the report's FY2022 highlights page; cost-to-income excludes loan loss provisions.
+        dps is the first and final dividend of Shs 4.
+      values:
+        net_income: 44894
+        eps: 11.9
+        dps: 4.0
+        total_assets: 1447010
+        total_equity: 176195
+        shares_outstanding: 3773.674802
+        npl_ratio: 0.077
+        net_loans: 706588
+        deposits: 1052162
+        roe: 0.276
+        cost_to_income: 0.484
+        core_capital_ratio: 0.156
+    - period: FY2021
+      period_end: '2021-12-31'
+      published: '2022-03-21'
+      published_basis: noted
+      type: annual
+      source_url: https://equitygroupholdings.com/wp-content/uploads/2022/06/Equity-Group-Holdings-PLC-2021-Integrated-Report-and-Financial-Statements.pdf
+      source_note: Audited group financial statements in the 2021 integrated report (KES millions as printed, as
+        originally published), date is board approval. roe (RoAE), npl_ratio (PAR), cost_to_income (49.1% both with
+        and without provisions) and core capital from the report's financial ratio table. dps Shs 3.
+      values:
+        net_income: 39175
+        eps: 10.38
+        dps: 3.0
+        total_assets: 1304914
+        total_equity: 169168
+        shares_outstanding: 3773.674802
+        npl_ratio: 0.083
+        net_loans: 587775
+        deposits: 958977
+        roe: 0.261
+        cost_to_income: 0.491
+        core_capital_ratio: 0.129
+    - period: FY2020
+      period_end: '2020-12-31'
+      published: '2021-03-26'
+      published_basis: noted
+      type: annual
+      source_url: https://equitygroupholdings.com/wp-content/uploads/2021/05/Equity-Group-Holdings-PLC-2020-Integrated-Report-and-Financial-Statements.pdf
+      source_note: Audited group financial statements in the 2020 integrated report (KES millions as printed), date
+        is board approval. Directors recommended no dividend for FY2020 (dps 0). roe (RoAE), npl_ratio (PAR), cost_to_income
+        excluding provisions (76.4% including) and core capital as printed in the 2021 integrated report ratio table
+        and the FY2020 investor briefing.
+      field_sources:
+        roe: https://equitygroupholdings.com/wp-content/uploads/2022/06/Equity-Group-Holdings-PLC-2021-Integrated-Report-and-Financial-Statements.pdf
+        npl_ratio: https://equitygroupholdings.com/wp-content/uploads/2022/06/Equity-Group-Holdings-PLC-2021-Integrated-Report-and-Financial-Statements.pdf
+        cost_to_income: https://equitygroupholdings.com/wp-content/uploads/2022/06/Equity-Group-Holdings-PLC-2021-Integrated-Report-and-Financial-Statements.pdf
+        core_capital_ratio: https://equitygroupholdings.com/wp-content/uploads/2022/06/Equity-Group-Holdings-PLC-2021-Integrated-Report-and-Financial-Statements.pdf
+      values:
+        net_income: 19790
+        eps: 5.24
+        dps: 0.0
+        total_assets: 1015093
+        total_equity: 132176
+        shares_outstanding: 3773.674802
+        npl_ratio: 0.11
+        net_loans: 477847
+        deposits: 740801
+        roe: 0.153
+        cost_to_income: 0.485
+        core_capital_ratio: 0.148
+    - period: FY2019
+      period_end: '2019-12-31'
+      published: '2020-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://equitygroupholdings.com/wp-content/uploads/2021/05/Equity-Group-Holdings-PLC-2020-Integrated-Report-and-Financial-Statements.pdf
+      source_note: Prior-year comparative from FY2020 statements in the 2020 integrated report (group, KES millions).
+        npl_ratio (Q4 2019 group NPL 9.0%) from the 2020 integrated report NPL chart. roe (return on average equity
+        21.8%), cost_to_income excluding provisions (57.0% including) and core capital/TRWA from the Equity Group
+        FY2020 investor briefing presentation, financial ratios page. dps omitted, see gaps.
+      field_sources:
+        roe: https://equitygroupholdings.com/investor-relations/
+        cost_to_income: https://equitygroupholdings.com/investor-relations/
+        core_capital_ratio: https://equitygroupholdings.com/investor-relations/
+      values:
+        net_income: 22386
+        eps: 5.93
+        total_assets: 673682
+        total_equity: 110719
+        shares_outstanding: 3773.674802
+        npl_ratio: 0.09
+        net_loans: 366440
+        deposits: 482752
+        roe: 0.218
+        cost_to_income: 0.511
+        core_capital_ratio: 0.163
   KCB:
     name: KCB Group Plc
     gaps:
@@ -2096,6 +2200,14 @@ companies:
     - source_url values point to IR listing pages because the PDFs are signed download links
     - 'FY2023 EPS conflict: 11.26 (FY2024 comparative, used) vs 11.41 (FY2023 abridged statements)'
     - Core capital and NPL differ between financial statements and press releases; statement figures used
+    - FY2016-FY2018 not recorded; KCB IR site only hosts FY2020 and FY2022 CBK-format statements and 2020+ integrated
+      reports, older documents not found on a primary source
+    - FY2019 eps printed 8.11 in FY2020 statement comparative; 2020 integrated report restates FY2019 basic EPS
+      to 7.83 (NBK share swap, 3,213m weighted shares); 8.11 recorded as printed
+    - FY2019 npl_ratio computed from statement gross NPL 63,396m; 2020 integrated report narrative cites FY2019
+      NPLs of KES 66.2bn (11.3%), not reconciled
+    - core_capital_ratio and gross NPL taken from the CBK-format statements (group); integrated report ratios may
+      differ slightly
     periods:
     - period: H1-2026
       period_end: '2026-06-30'
@@ -2204,11 +2316,134 @@ companies:
         roe: 0.178
         cost_to_income: 0.503
         core_capital_ratio: 0.122
+    - period: FY2022
+      period_end: '2022-12-31'
+      published: '2023-03-15'
+      published_basis: noted
+      type: annual
+      source_url: https://kcbgroup.com/financial-statements?years=2022
+      source_note: KCB Group Plc audited financial statements and other disclosures for the year ended 31 December
+        2022 (CBK format, group; file labelled Q4 2022), date is board approval; KES thousands converted to millions.
+        npl_ratio computed as gross NPL 161,204m (statement) / gross loans 932,165m (2022 integrated report credit
+        risk note). cost_to_income computed as (total operating expenses 72,573m less loan loss provision 13,207m)
+        / total operating income 129,905m. roe from 2022 integrated report.
+      field_sources:
+        npl_ratio: https://kcbgroup.com/integrated-reports
+        roe: https://kcbgroup.com/integrated-reports
+        shares_outstanding: https://kcbgroup.com/integrated-reports
+      values:
+        net_income: 40613.516
+        eps: 12.71
+        dps: 2.0
+        total_assets: 1554029.968
+        total_equity: 200200.416
+        shares_outstanding: 3213.462815
+        npl_ratio: 0.173
+        net_loans: 863268.077
+        deposits: 1135417.382
+        roe: 0.23
+        cost_to_income: 0.457
+        core_capital_ratio: 0.139
+    - period: FY2021
+      period_end: '2021-12-31'
+      published: '2022-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://kcbgroup.com/financial-statements?years=2022
+      source_note: Prior-year comparative from FY2022 KCB Group audited financial statements and other disclosures
+        (CBK format, group); KES thousands converted to millions. npl_ratio, roe (return on average equity) and
+        cost_to_income as printed in the 2021 integrated report (computed check NPL 122,850m / gross loans 741,565m
+        = 16.6%). 2022 integrated report prints FY2021 EPS 10.61; statement 10.64 recorded.
+      field_sources:
+        npl_ratio: https://kcbgroup.com/integrated-reports
+        roe: https://kcbgroup.com/integrated-reports
+        cost_to_income: https://kcbgroup.com/integrated-reports
+        shares_outstanding: https://kcbgroup.com/integrated-reports
+      values:
+        net_income: 34091.049
+        eps: 10.64
+        dps: 3.0
+        total_assets: 1139672.565
+        total_equity: 171713.198
+        shares_outstanding: 3213.462815
+        npl_ratio: 0.165
+        net_loans: 675480.444
+        deposits: 837141.376
+        roe: 0.224
+        cost_to_income: 0.44
+        core_capital_ratio: 0.18
+    - period: FY2020
+      period_end: '2020-12-31'
+      published: '2021-03-17'
+      published_basis: noted
+      type: annual
+      source_url: https://kcbgroup.com/financial-statements?years=2020
+      source_note: KCB Group Plc audited financial statements and other disclosures for the year ended 31 December
+        2020 (CBK format, group), date is board approval; KES thousands converted to millions. npl_ratio, roe (return
+        on average equity) and cost_to_income as printed in the 2020 integrated report (computed check NPL 96,613m
+        / gross loans 660,172m = 14.6%).
+      field_sources:
+        npl_ratio: https://kcbgroup.com/integrated-reports
+        roe: https://kcbgroup.com/integrated-reports
+        cost_to_income: https://kcbgroup.com/integrated-reports
+        shares_outstanding: https://kcbgroup.com/integrated-reports
+      values:
+        net_income: 19603.642
+        eps: 6.1
+        dps: 1.0
+        total_assets: 987810.253
+        total_equity: 142424.283
+        shares_outstanding: 3213.462815
+        npl_ratio: 0.147
+        net_loans: 595254.297
+        deposits: 767224.467
+        roe: 0.144
+        cost_to_income: 0.454
+        core_capital_ratio: 0.182
+    - period: FY2019
+      period_end: '2019-12-31'
+      published: '2020-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://kcbgroup.com/financial-statements?years=2020
+      source_note: Prior-year comparative from FY2020 KCB Group audited financial statements and other disclosures
+        (CBK format, group); KES thousands converted to millions. npl_ratio computed as statement gross NPL 63,396m
+        / gross loans 586,173m (2020 integrated report credit risk note). roe (return on average equity) and cost_to_income
+        from 2020 integrated report highlights. Shares after the 2019 NBK share swap.
+      field_sources:
+        npl_ratio: https://kcbgroup.com/integrated-reports
+        roe: https://kcbgroup.com/integrated-reports
+        cost_to_income: https://kcbgroup.com/integrated-reports
+        shares_outstanding: https://kcbgroup.com/integrated-reports
+      values:
+        net_income: 25165.168
+        eps: 8.11
+        dps: 3.5
+        total_assets: 898572.213
+        total_equity: 129741.108
+        shares_outstanding: 3213.462815
+        npl_ratio: 0.108
+        net_loans: 539747.26
+        deposits: 686583.179
+        roe: 0.207
+        cost_to_income: 0.459
+        core_capital_ratio: 0.172
   ABSA:
     name: Absa Bank Kenya Plc
     gaps:
     - H1-2026 omits shares_outstanding
     - Core capital ratio is Bank level, not Group
+    - core_capital_ratio is Bank level (Tier 1 / total RWA), not Group
+    - FY2016-FY2018 published as Barclays Bank of Kenya Limited (ticker BBK); rebrand to Absa Bank Kenya in 2019/2020
+    - FY2017-FY2020 npl_ratio read from the Absa vs industry gross NPL ratio chart in the 2022 integrated report
+      (later publication); CBK-format cross-checks computed 7.17% (FY2017), 6.57% (FY2019), 7.59% (FY2020)
+    - FY2018 npl_ratio 6.8% (2022 IR chart) conflicts with the 2018 annual report narrative 'NPLs was 5.8%' (different
+      basis, not reconciled)
+    - cost_to_income for FY2019-FY2020 is the normalised ratio (excludes Barclays separation costs; headline 56%
+      FY2019, 58% FY2020); these match (opex less impairment) / total income computed from the CBK-format statements
+    - roe is headline; normalised ROE was 18.4% (FY2019) and 14% (FY2020)
+    - FY2020 dividend suspended (COVID-19); dps recorded as 0
+    - FY2019 CBK-format statement on the IR site is a scanned image; FY2019 taken from the 2019 integrated report
     periods:
     - period: H1-2026
       period_end: '2026-06-30'
@@ -2310,10 +2545,217 @@ companies:
         roe: 0.237
         cost_to_income: 0.397
         core_capital_ratio: 0.136
+    - period: FY2022
+      period_end: '2022-12-31'
+      published: '2023-03-14'
+      published_basis: noted
+      type: annual
+      source_url: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-financials-full-year-2022.pdf
+      source_note: Absa Bank Kenya Plc audited financial statements and other disclosures for the year ended 31
+        December 2022 (CBK format, group), date is board approval; KES thousands converted to millions; no NCI.
+        roe 23% from statement commentary and Q4 2022 earnings pack; npl_ratio and cost_to_income from Q4 2022 earnings
+        pack. dps KES 1.35 (interim 0.20 + final 1.15). core_capital_ratio is Bank.
+      field_sources:
+        npl_ratio: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/absa-bank-kenya-plc-q4-2022-earnings-pack.pdf
+        cost_to_income: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/absa-bank-kenya-plc-q4-2022-earnings-pack.pdf
+      values:
+        net_income: 14587.166
+        eps: 2.69
+        dps: 1.35
+        total_assets: 477233.937
+        total_equity: 63613.018
+        shares_outstanding: 5431.536
+        npl_ratio: 0.073
+        net_loans: 283578.543
+        deposits: 303751.003
+        roe: 0.23
+        cost_to_income: 0.41
+        core_capital_ratio: 0.146
+    - period: FY2021
+      period_end: '2021-12-31'
+      published: '2022-03-15'
+      published_basis: noted
+      type: annual
+      source_url: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-financial-statement-full-year-2021.pdf
+      source_note: Absa Bank Kenya Plc audited financial statements and other disclosures for the year ended 31
+        December 2021 (CBK format, group), date is board approval; KES thousands converted to millions. npl_ratio
+        and cost_to_income from FY2021 earnings pack (2022 IR chart shows 46% CIR); roe 19.3% from FY2022 statement
+        commentary (2021 IR rounds to 19%). dps KES 1.10. core_capital_ratio is Bank.
+      field_sources:
+        npl_ratio: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-2021-full-year-earnings-pack.pdf
+        cost_to_income: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-2021-full-year-earnings-pack.pdf
+        roe: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/abk-financials-full-year-2022.pdf
+      values:
+        net_income: 10869.969
+        eps: 2.0
+        dps: 1.1
+        total_assets: 428689.603
+        total_equity: 56447.392
+        shares_outstanding: 5431.536
+        npl_ratio: 0.077
+        net_loans: 234234.076
+        deposits: 268716.653
+        roe: 0.193
+        cost_to_income: 0.45
+        core_capital_ratio: 0.146
+    - period: FY2020
+      period_end: '2020-12-31'
+      published: '2021-03-23'
+      published_basis: noted
+      type: annual
+      source_url: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/financial-statements-2020.pdf
+      source_note: Absa Bank Kenya Plc audited financial statements and other disclosures for the year ended 31
+        December 2020 (CBK format, group), date is board approval; KES thousands converted to millions. roe 9% headline
+        from 2020 integrated report (normalised 14%); cost_to_income 48% normalised from FY2020 earnings pack (headline
+        58%); npl_ratio 7.4% from 2022 integrated report chart (statement gross NPL 17,099m / gross loans 225,294m
+        computes 7.6%). No dividend declared for FY2020 (dps 0). core_capital_ratio is Bank.
+      field_sources:
+        roe: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/integrated-report-2020.pdf
+        cost_to_income: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/earnings-pack-2020.pdf
+        npl_ratio: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/integrated-report-2022.pdf
+      values:
+        net_income: 4162.009
+        eps: 0.77
+        dps: 0.0
+        total_assets: 379440.676
+        total_equity: 46503.939
+        shares_outstanding: 5431.536
+        npl_ratio: 0.074
+        net_loans: 208854.694
+        deposits: 253630.105
+        roe: 0.09
+        cost_to_income: 0.48
+        core_capital_ratio: 0.147
+    - period: FY2019
+      period_end: '2019-12-31'
+      published: '2020-03-23'
+      published_basis: noted
+      type: annual
+      source_url: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/integrated-report-2019.pdf
+      source_note: Absa Bank Kenya Plc 2019 integrated report, audited group financial statements (KES millions
+        as printed), date is board approval. FY2020 CBK-format statement comparative restates total assets to 373,982m
+        (other lines unchanged). roe 16.5% headline (normalised 18.4%) and cost_to_income 51% normalised (headline
+        56%) from 2019 integrated report; npl_ratio 6.4% from 2022 integrated report chart (FY2020 statement comparative
+        computes 13,519m / 205,915m = 6.6%). core_capital_ratio 13.9% Bank Tier 1 / RWA (note 41.7). dps KES 1.10.
+      field_sources:
+        npl_ratio: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/integrated-report-2022.pdf
+        core_capital_ratio: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/financial-statements-2020.pdf
+      values:
+        net_income: 7456.0
+        eps: 1.37
+        dps: 1.1
+        total_assets: 374904.0
+        total_equity: 45189.0
+        shares_outstanding: 5431.536
+        npl_ratio: 0.064
+        net_loans: 194895.0
+        deposits: 237739.0
+        roe: 0.165
+        cost_to_income: 0.51
+        core_capital_ratio: 0.139
+    - period: FY2018
+      period_end: '2018-12-31'
+      published: '2019-03-08'
+      published_basis: noted
+      type: annual
+      source_url: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/2018-annual-report.pdf
+      source_note: Barclays Bank of Kenya Limited 2018 integrated report, audited group financial statements (KES
+        millions as printed), date is board approval. roe 16.8% and cost_to_income 54% (headline; normalised 53%)
+        from CFO review; core_capital_ratio 14.6% Bank Tier 1 / RWA (note 45.7). npl_ratio 6.8% from 2022 integrated
+        report chart; the 2018 report narrative cites NPLs of 5.8% (Shs 10.8bn) on a different basis. dps KES 1.10.
+      field_sources:
+        npl_ratio: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/integrated-report-2022.pdf
+      values:
+        net_income: 7416.0
+        eps: 1.37
+        dps: 1.1
+        total_assets: 325313.0
+        total_equity: 44206.0
+        shares_outstanding: 5431.536
+        npl_ratio: 0.068
+        net_loans: 177354.0
+        deposits: 207408.0
+        roe: 0.168
+        cost_to_income: 0.54
+        core_capital_ratio: 0.146
+    - period: FY2017
+      period_end: '2017-12-31'
+      published: '2018-02-28'
+      published_basis: noted
+      type: annual
+      source_url: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/BBK-2017-%20-end-year-%20financials%20PDF%20f.pdf
+      source_note: Barclays Bank of Kenya Limited audited financial statements and other disclosures for the year
+        ended 31 December 2017 (CBK format, group, pre-IFRS 9), date is board approval; KES thousands converted
+        to millions. Later reports show total assets 271,572m (restated). roe 15.7% and cost_to_income 55% (headline;
+        normalised 53%) from 2017 integrated report five-year summary; npl_ratio 7.2% from 2022 integrated report
+        chart (statement gross NPL 12,615m / gross loans 175,858m computes 7.2%). dps KES 1.00 (interim 0.20 + final
+        0.80). core_capital_ratio is Bank.
+      field_sources:
+        roe: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/Barclays-Bank-Kenya-IR-2017-Full-Report.pdf
+        cost_to_income: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/Barclays-Bank-Kenya-IR-2017-Full-Report.pdf
+        npl_ratio: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/integrated-report-2022.pdf
+      values:
+        net_income: 6926.319
+        eps: 1.28
+        dps: 1.0
+        total_assets: 271177.377
+        total_equity: 44099.136
+        shares_outstanding: 5431.536
+        npl_ratio: 0.072
+        net_loans: 168397.417
+        deposits: 185977.38
+        roe: 0.157
+        cost_to_income: 0.55
+        core_capital_ratio: 0.159
+    - period: FY2016
+      period_end: '2016-12-31'
+      published: '2017-02-22'
+      published_basis: noted
+      type: annual
+      source_url: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/BBK-2017-%20-end-year-%20financials%20PDF%20f.pdf
+      source_note: Prior-year comparative in Barclays Bank of Kenya Limited FY2017 CBK-format statement (group,
+        pre-IFRS 9); KES thousands converted to millions; date is the FY2016 results announcement (22 February 2017).
+        npl_ratio computed as gross NPL 11,472m / gross loans 175,676m (2017 integrated report), consistent with
+        6.5% on the FY2016 results announcement chart. roe 17.5% and cost_to_income 53% from 2017 integrated report
+        five-year summary. dps KES 1.00 (interim 0.20 + final 0.80) per results announcement. core_capital_ratio
+        is Bank.
+      field_sources:
+        npl_ratio: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/Barclays-Bank-Kenya-IR-2017-Full-Report.pdf
+        roe: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/Barclays-Bank-Kenya-IR-2017-Full-Report.pdf
+        cost_to_income: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Annual-Reports/Barclays-Bank-Kenya-IR-2017-Full-Report.pdf
+        dps: https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/bbk-2016-annual-results-announcement.pdf
+      values:
+        net_income: 7399.396
+        eps: 1.36
+        dps: 1.0
+        total_assets: 259692.012
+        total_equity: 42388.242
+        shares_outstanding: 5431.536
+        npl_ratio: 0.065
+        net_loans: 168509.529
+        deposits: 178179.795
+        roe: 0.175
+        cost_to_income: 0.53
+        core_capital_ratio: 0.157
   COOP:
     name: The Co-operative Bank of Kenya Ltd
     gaps:
     - FY2023 NPL is the original 16.1% (restated to 16.7%)
+    - FY2016 not recorded; only source found is the 2018/2019 annual report five-year summaries (KSh billion, one
+      decimal; PAT includes minority interest; FY2016 NPL printed 4.6% in AR 2018 vs 4.3% in AR 2019); no FY2016/FY2017
+      CBK statement or 2017 annual report found on co-opbank.co.ke
+    - FY2018 npl_ratio 11.2% as printed in FY2018 presentation; FY2019 annual report and presentation restate FY2018
+      NPL to 10.3% (IFRS 9 / definition change)
+    - FY2018 total_assets 413,670.710m per 2018 annual report; FY2019 CBK statement comparative prints 413,413.215m
+      (restated); original recorded
+    - FY2017 npl_ratio 7.1% per AR 2018 five-year summary; AR 2019 five-year summary prints 7.0%
+    - FY2020 npl_ratio printed 18.1% in IR 2020 key highlights and 18.2% (group) elsewhere in IR 2020; 18.1% recorded;
+      bank-only 16.5%
+    - FY2021 npl_ratio 14% group as printed (one decimal not available); bank-only 12.7%
+    - shares_outstanding 5,867,174,695 issued shares per 2022 integrated report shareholder profile (balance sheet
+      share capital prints KES 5,867,180k); constant over FY2017-FY2022
+    - net_income and total_equity are attributable to equity holders of the parent (non-controlling interests excluded),
+      taken from annual/integrated reports; CBK-format statements print total equity including NCI
     periods:
     - period: H1-2026
       period_end: '2026-06-30'
@@ -2418,6 +2860,177 @@ companies:
         roe: 0.21
         cost_to_income: 0.47
         core_capital_ratio: 0.182
+    - period: FY2022
+      period_end: '2022-12-31'
+      published: '2023-03-15'
+      published_basis: noted
+      type: annual
+      source_url: https://www.co-opbank.co.ke/wp-content/uploads/2023/03/Co-op-Bank-Group-Full-2022-Financials.pdf
+      source_note: Co-operative Bank group audited financial statements and other disclosures for the year ended
+        31 December 2022 (CBK format), date is board approval; KES thousands converted to millions. Profit and equity
+        attributable to parent from 2022 integrated report. npl_ratio (group 13.7%), roe (return on average equity)
+        and cost_to_income (excluding provisions) as printed in the FY2022 investor presentation. dps KES 1.50 final.
+      field_sources:
+        net_income: https://www.co-opbank.co.ke/wp-content/uploads/2023/05/CO-OP-BANK-2022-Integrated-Report.pdf
+        total_equity: https://www.co-opbank.co.ke/wp-content/uploads/2023/05/CO-OP-BANK-2022-Integrated-Report.pdf
+        npl_ratio: https://www.co-opbank.co.ke/wp-content/uploads/2023/03/Investor-Briefing-Presentation-FY2022-1.pdf
+        roe: https://www.co-opbank.co.ke/wp-content/uploads/2023/03/Investor-Briefing-Presentation-FY2022-1.pdf
+        cost_to_income: https://www.co-opbank.co.ke/wp-content/uploads/2023/03/Investor-Briefing-Presentation-FY2022-1.pdf
+        dps: https://www.co-opbank.co.ke/wp-content/uploads/2023/03/Investor-Briefing-Presentation-FY2022-1.pdf
+      values:
+        net_income: 21829.894
+        eps: 3.72
+        dps: 1.5
+        total_assets: 607197.718
+        total_equity: 107290.265
+        shares_outstanding: 5867.174695
+        npl_ratio: 0.137
+        net_loans: 339390.039
+        deposits: 423802.668
+        roe: 0.212
+        cost_to_income: 0.471
+        core_capital_ratio: 0.169
+    - period: FY2021
+      period_end: '2021-12-31'
+      published: '2022-03-16'
+      published_basis: noted
+      type: annual
+      source_url: https://www.co-opbank.co.ke/wp-content/uploads/2022/03/Co-op-Bank-Full-Year-Financial-Results-2021_Key-Highlights.pdf
+      source_note: Co-operative Bank FY2021 key highlights audited financial statements and other disclosures (CBK
+        format, group), date is board approval; KES thousands converted to millions. Parent profit and equity from
+        2021 annual report (total equity 100,339.469m less NCI 523.490m). roe and cost_to_income (excluding provisions)
+        from FY2021 investor presentation; group NPL 14% from 2021 annual report and FY2022 presentation. dps KES
+        1.00.
+      field_sources:
+        net_income: https://www.co-opbank.co.ke/wp-content/uploads/2022/05/Co-op-Bank-2021-Annual-Report-Final-Online-Version-Updated-1.pdf
+        total_equity: https://www.co-opbank.co.ke/wp-content/uploads/2022/05/Co-op-Bank-2021-Annual-Report-Final-Online-Version-Updated-1.pdf
+        npl_ratio: https://www.co-opbank.co.ke/wp-content/uploads/2022/05/Co-op-Bank-2021-Annual-Report-Final-Online-Version-Updated-1.pdf
+        roe: https://www.co-opbank.co.ke/wp-content/uploads/2022/03/Coop-Bank-FY2021-Investor-Presentation.-210322.pdf
+        cost_to_income: https://www.co-opbank.co.ke/wp-content/uploads/2022/03/Coop-Bank-FY2021-Investor-Presentation.-210322.pdf
+      values:
+        net_income: 16729.008
+        eps: 2.85
+        dps: 1.0
+        total_assets: 579771.985
+        total_equity: 99815.979
+        shares_outstanding: 5867.174695
+        npl_ratio: 0.14
+        net_loans: 310195.297
+        deposits: 407725.765
+        roe: 0.173
+        cost_to_income: 0.499
+        core_capital_ratio: 0.156
+    - period: FY2020
+      period_end: '2020-12-31'
+      published: '2021-03-17'
+      published_basis: noted
+      type: annual
+      source_url: https://www.co-opbank.co.ke/wp-content/uploads/2021/11/Co-op-Bank-2020-Integrated-Report-Final.pdf
+      source_note: Co-operative Bank 2020 integrated report (group financial statements approved 17 March 2021);
+        balance sheet lines cross-checked to prior-year comparative in FY2021 key highlights CBK statement; KES
+        thousands converted to millions. Parent equity = total equity 91,623.336m less NCI 1,322.406m. npl_ratio
+        18.1% from IR 2020 key highlights; roe and cost_to_income (excluding provisions) from FY2021 investor presentation.
+        dps KES 1.00.
+      field_sources:
+        total_assets: https://www.co-opbank.co.ke/wp-content/uploads/2022/03/Co-op-Bank-Full-Year-Financial-Results-2021_Key-Highlights.pdf
+        net_loans: https://www.co-opbank.co.ke/wp-content/uploads/2022/03/Co-op-Bank-Full-Year-Financial-Results-2021_Key-Highlights.pdf
+        deposits: https://www.co-opbank.co.ke/wp-content/uploads/2022/03/Co-op-Bank-Full-Year-Financial-Results-2021_Key-Highlights.pdf
+        core_capital_ratio: https://www.co-opbank.co.ke/wp-content/uploads/2022/03/Co-op-Bank-Full-Year-Financial-Results-2021_Key-Highlights.pdf
+        roe: https://www.co-opbank.co.ke/wp-content/uploads/2022/03/Coop-Bank-FY2021-Investor-Presentation.-210322.pdf
+        cost_to_income: https://www.co-opbank.co.ke/wp-content/uploads/2022/03/Coop-Bank-FY2021-Investor-Presentation.-210322.pdf
+      values:
+        net_income: 11594.089
+        eps: 1.98
+        dps: 1.0
+        total_assets: 536945.25
+        total_equity: 90300.93
+        shares_outstanding: 5867.174695
+        npl_ratio: 0.181
+        net_loans: 286634.192
+        deposits: 378630.453
+        roe: 0.127
+        cost_to_income: 0.581
+        core_capital_ratio: 0.154
+    - period: FY2019
+      period_end: '2019-12-31'
+      published: '2020-03-18'
+      published_basis: noted
+      type: annual
+      source_url: https://www.co-opbank.co.ke/wp-content/uploads/2021/11/Coop-Bank-Audited-Financial-statement-2019.pdf
+      source_note: Co-operative Bank audited financial statements and other disclosures for the year ended 31 December
+        2019 (CBK format, group), date is board approval; KES thousands converted to millions. Parent profit and
+        equity from 2019 annual report (total equity 80,413.477m less NCI 1,521.708m). npl_ratio, roe (ROAE) and
+        cost_to_income (excluding provisions) from FY2019 investor presentation and AR 2019 five-year summary. dps
+        KES 1.00.
+      field_sources:
+        net_income: https://www.co-opbank.co.ke/wp-content/uploads/2021/11/CO-OP-BANK-2019-ANNUAL-REPORT-updated.pdf
+        total_equity: https://www.co-opbank.co.ke/wp-content/uploads/2021/11/CO-OP-BANK-2019-ANNUAL-REPORT-updated.pdf
+        npl_ratio: https://www.co-opbank.co.ke/wp-content/uploads/2021/11/Full-Year-2019-2.pdf
+        roe: https://www.co-opbank.co.ke/wp-content/uploads/2021/11/Full-Year-2019-2.pdf
+        cost_to_income: https://www.co-opbank.co.ke/wp-content/uploads/2021/11/Full-Year-2019-2.pdf
+      values:
+        net_income: 14528.813
+        eps: 2.48
+        dps: 1.0
+        total_assets: 457008.946
+        total_equity: 78891.769
+        shares_outstanding: 5867.174695
+        npl_ratio: 0.099
+        net_loans: 266712.696
+        deposits: 332823.917
+        roe: 0.192
+        cost_to_income: 0.521
+        core_capital_ratio: 0.163
+    - period: FY2018
+      period_end: '2018-12-31'
+      published: '2019-03-20'
+      published_basis: noted
+      type: annual
+      source_url: https://www.co-opbank.co.ke/wp-content/uploads/2021/11/CO-OP-BANK-2018-ANNUAL-REPORT-compressed-1.pdf
+      source_note: Co-operative Bank 2018 annual report (group financial statements approved 20 March 2019; the
+        CBK-format FY2018 statement on the site is a scanned image); KES thousands converted to millions; parent
+        profit and equity. npl_ratio 11.2%, roe and cost_to_income (excluding provisions) from FY2018 investor presentation;
+        core_capital_ratio 16.0% from AR 2018 five-year summary (matches FY2019 CBK statement comparative). dps
+        KES 1.00.
+      field_sources:
+        npl_ratio: https://www.co-opbank.co.ke/wp-content/uploads/2021/11/Full-Year-2018.pdf
+        roe: https://www.co-opbank.co.ke/wp-content/uploads/2021/11/Full-Year-2018.pdf
+        cost_to_income: https://www.co-opbank.co.ke/wp-content/uploads/2021/11/Full-Year-2018.pdf
+      values:
+        net_income: 12788.882
+        eps: 2.18
+        dps: 1.0
+        total_assets: 413670.71
+        total_equity: 69402.118
+        shares_outstanding: 5867.174695
+        npl_ratio: 0.112
+        net_loans: 245410.302
+        deposits: 306117.046
+        roe: 0.183
+        cost_to_income: 0.546
+        core_capital_ratio: 0.16
+    - period: FY2017
+      period_end: '2017-12-31'
+      published: '2018-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.co-opbank.co.ke/wp-content/uploads/2021/11/CO-OP-BANK-2018-ANNUAL-REPORT-compressed-1.pdf
+      source_note: Prior-year comparative from 2018 annual report (group, pre-IFRS 9, not restated); KES thousands
+        converted to millions; parent profit and equity. npl_ratio, roe (ROAE), cost_to_income (excluding provisions)
+        and core_capital_ratio from AR 2018 five-year summary. dps KES 0.80 (AR 2018 directors' report, 2017 comparative).
+      values:
+        net_income: 11693.958
+        eps: 1.99
+        dps: 0.8
+        total_assets: 386857.657
+        total_equity: 69084.602
+        shares_outstanding: 5867.174695
+        npl_ratio: 0.071
+        net_loans: 253861.644
+        deposits: 287371.708
+        roe: 0.174
+        cost_to_income: 0.522
+        core_capital_ratio: 0.158
   SCBK:
     name: Standard Chartered Bank Kenya Ltd
     gaps:
@@ -2426,6 +3039,23 @@ companies:
       high
     - ROE is Cytonn-computed (the company prints none); H1-2026 NPL is press-release text quoted by media
     - H1-2026 omits shares_outstanding; core capital ratio is Bank level
+    - EPS is on ordinary profit after KES 168m preference dividends, so it differs from net_income / shares (checked,
+      (NI - 168) / shares matches EPS for every year)
+    - FY2016-FY2019 EPS and shares are as originally published on 343.511m shares (before the 2020 1-for-10 bonus);
+      AR2022 restates FY2019 EPS to 21.36 and FY2018 to 20.99
+    - roe is computed as net_income / closing total_equity (the company prints none; its "return on capital employed"
+      is a different measure)
+    - cost_to_income is computed as operating expenses (excluding impairment) / operating income from the five-year
+      summaries; the printed rounded ratio agrees
+    - npl_ratio FY2022-FY2020 is computed from stage 3 / gross loans in the credit-quality tables; FY2019-FY2016
+      are the printed five-year ratios, rounded to whole percent. The five-year table prints 15% for FY2020, which
+      conflicts with the 10.1% stage-3 computation, so the computed value is used
+    - FY2018 annual report not obtained; FY2018 values are comparatives in the FY2019 annual report, so they are
+      post-IFRS 9 transition but not necessarily as originally published, and the publication date is the deadline
+    - FY2019 dps 12.50 is the amount approved after the final dividend was cut from 15.00 to 7.50 because of COVID-19;
+      the original declaration was 20.00
+    - FY2016, FY2018 and FY2023 CBK-format statements are scanned images; annual reports used instead
+    - core_capital_ratio is Bank level
     events:
     - date: 2025-09-15
       type: profit_warning
@@ -2539,12 +3169,212 @@ companies:
         roe: 0.235
         cost_to_income: 0.448
         core_capital_ratio: 0.1777
+    - period: FY2022
+      period_end: '2022-12-31'
+      published: '2023-03-14'
+      published_basis: noted
+      type: annual
+      source_url: https://av.sc.com/ke/content/docs/ke-scb-annual-report-2022.pdf
+      source_note: Standard Chartered Bank Kenya annual report 2022, group; date is board approval of the financial
+        statements. KES thousands converted to millions. net_income is profit after tax before preference dividends.
+        net_loans is gross 148,690m less impairment 9,278m. npl_ratio computed as stage 3 13,038m / gross loans
+        148,690m (five-year summary prints 9%). roe computed as net_income / closing equity. cost_to_income computed
+        as opex 15,075m / operating income 33,093m (printed 46%). dps KES 22.00 (interim 6.00 + final 16.00). core_capital_ratio
+        is Bank (capital note).
+      values:
+        net_income: 12057.935
+        eps: 31.47
+        dps: 22.0
+        total_assets: 381260.015
+        total_equity: 56136.73
+        shares_outstanding: 377.850589
+        npl_ratio: 0.0877
+        net_loans: 139412.56
+        deposits: 278879.309
+        roe: 0.2148
+        cost_to_income: 0.4555
+        core_capital_ratio: 0.1536
+    - period: FY2021
+      period_end: '2021-12-31'
+      published: '2022-03-14'
+      published_basis: noted
+      type: annual
+      source_url: https://av.sc.com/ke/content/docs/ke-2021-standard-chartered-kenya-limited-full-year-results.pdf
+      source_note: Standard Chartered Bank Kenya CBK-format audited results for 2021 (group column), cross-checked
+        to annual report 2021; date is board approval. KES thousands converted to millions. npl_ratio computed as
+        stage 3 13,747m / gross loans 136,182m (AR2022 credit-quality table; five-year summary prints 10%). The
+        CBK-format gross NPL of 23,283m includes 9,537m interest in suspense. roe computed as net_income / closing
+        equity. cost_to_income computed as opex 14,193m / operating income 28,303m (printed 50%). dps KES 19.00
+        (interim 5.00 + final 14.00). core_capital_ratio is Bank.
+      field_sources:
+        npl_ratio: https://av.sc.com/ke/content/docs/ke-scb-annual-report-2022.pdf
+        dps: https://av.sc.com/ke/content/docs/ke-scbkl-2021-annual-report.pdf
+      values:
+        net_income: 9043.839
+        eps: 23.49
+        dps: 19.0
+        total_assets: 334871.938
+        total_equity: 53214.106
+        shares_outstanding: 377.850589
+        npl_ratio: 0.1009
+        net_loans: 125974.59
+        deposits: 265469.114
+        roe: 0.17
+        cost_to_income: 0.5015
+        core_capital_ratio: 0.1553
+    - period: FY2020
+      period_end: '2020-12-31'
+      published: '2021-03-25'
+      published_basis: noted
+      type: annual
+      source_url: https://av.sc.com/ke/content/docs/ke-2020-annual-report.pdf
+      source_note: Standard Chartered Bank Kenya annual report 2020, group; date is board approval. KES thousands
+        converted to millions. EPS on 377.851m shares after the 2020 1-for-10 bonus. net_loans is gross 130,719m
+        less impairment 9,195m. npl_ratio computed as stage 3 13,212m / gross loans 130,719m (AR2021 credit-quality
+        table); the five-year summary prints 15%, which does not reconcile. roe computed as net_income / closing
+        equity. cost_to_income computed as opex 15,686m / operating income 26,689m (printed 59%). dps KES 10.50
+        (interim 0 + final 10.50). core_capital_ratio is Bank (CBK-format FY2021 statement comparative).
+      field_sources:
+        npl_ratio: https://av.sc.com/ke/content/docs/ke-scbkl-2021-annual-report.pdf
+        core_capital_ratio: https://av.sc.com/ke/content/docs/ke-2021-standard-chartered-kenya-limited-full-year-results.pdf
+      values:
+        net_income: 5440.417
+        eps: 13.95
+        dps: 10.5
+        total_assets: 325605.07
+        total_equity: 50890.038
+        shares_outstanding: 377.850589
+        npl_ratio: 0.1011
+        net_loans: 121524.227
+        deposits: 256497.53
+        roe: 0.1069
+        cost_to_income: 0.5878
+        core_capital_ratio: 0.1587
+    - period: FY2019
+      period_end: '2019-12-31'
+      published: '2020-03-18'
+      published_basis: noted
+      type: annual
+      source_url: https://av.sc.com/ke/content/docs/ke-2019-annual-report.pdf
+      source_note: Standard Chartered Bank Kenya annual report 2019, group; date is board approval. KES thousands
+        converted to millions. EPS 23.49 as originally published on 343.511m shares (AR2022 restates to 21.36 for
+        the 2020 bonus). net_loans is gross 136,535m less impairment 7,844m. npl_ratio is the printed five-year
+        ratio (9%, rounded; the results presentation shows gross NPL KES 20.1bn including interest in suspense).
+        roe computed as net_income / closing equity. cost_to_income computed as opex 15,542m / operating income
+        27,950m (printed 56%). dps KES 12.50 (interim 5.00 + final reduced from 15.00 to 7.50 for COVID-19; 20.00
+        originally declared). core_capital_ratio is Bank (capital note).
+      field_sources:
+        npl_ratio: https://av.sc.com/ke/content/docs/ke-scb-annual-report-2022.pdf
+      values:
+        net_income: 8236.773
+        eps: 23.49
+        dps: 12.5
+        total_assets: 302139.056
+        total_equity: 47760.527
+        shares_outstanding: 343.510572
+        npl_ratio: 0.09
+        net_loans: 128690.341
+        deposits: 228433.515
+        roe: 0.1725
+        cost_to_income: 0.5561
+        core_capital_ratio: 0.147
+    - period: FY2018
+      period_end: '2018-12-31'
+      published: '2019-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://av.sc.com/ke/content/docs/ke-2019-annual-report.pdf
+      source_note: Prior-year comparatives in Standard Chartered Bank Kenya annual report 2019, group (FY2018 annual
+        report not obtained; FY2018 CBK-format statement is a scanned image). KES thousands converted to millions.
+        EPS 23.09 on 343.511m shares as shown in AR2019 (AR2022 restates to 20.99). net_loans is gross 127,860m
+        less impairment 9,208m. npl_ratio is the printed five-year ratio (11%, rounded). roe computed as net_income
+        / closing equity. cost_to_income computed as opex 14,580m / operating income 27,776m (printed 52%). dps
+        KES 19.00 per five-year summary. core_capital_ratio is Bank (AR2019 capital note comparative).
+      values:
+        net_income: 8099.193
+        eps: 23.09
+        dps: 19.0
+        total_assets: 285404.023
+        total_equity: 46639.388
+        shares_outstanding: 343.510572
+        npl_ratio: 0.11
+        net_loans: 118651.55
+        deposits: 224284.42
+        roe: 0.1737
+        cost_to_income: 0.5249
+        core_capital_ratio: 0.1652
+    - period: FY2017
+      period_end: '2017-12-31'
+      published: '2018-03-22'
+      published_basis: noted
+      type: annual
+      source_url: https://www.sc.com/global/av/ke-scb-annual-report-final-2017-online.pdf
+      source_note: Standard Chartered Bank Kenya annual report 2017, group (pre-IFRS 9); date is board approval.
+        KES thousands converted to millions. net_loans is gross 134,328m less impairment 8,034m. npl_ratio is the
+        printed five-year ratio (6%, rounded). roe computed as net_income / closing equity. cost_to_income computed
+        as opex 12,785m / operating income 26,626m (printed 48%). dps KES 17.00 (interim 4.50 + final 12.50). core_capital_ratio
+        is Bank (capital note, RWA 228,112m).
+      values:
+        net_income: 6914.098
+        eps: 19.64
+        dps: 17.0
+        total_assets: 285724.441
+        total_equity: 45664.537
+        shares_outstanding: 343.510572
+        npl_ratio: 0.06
+        net_loans: 126294.47
+        deposits: 213349.29
+        roe: 0.1514
+        cost_to_income: 0.4801
+        core_capital_ratio: 0.1562
+    - period: FY2016
+      period_end: '2016-12-31'
+      published: '2017-03-22'
+      published_basis: noted
+      type: annual
+      source_url: https://www.sc.com/global/av/ke-annual-report-2016.pdf
+      source_note: Standard Chartered Bank Kenya annual report 2016, group; date is board approval. KES thousands
+        converted to millions. Shares 343.511m after the July 2016 1-for-9 bonus. net_loans is gross 128,290m less
+        impairment 5,579m. npl_ratio is the printed five-year ratio (8%, rounded). roe computed as net_income /
+        closing equity. cost_to_income computed as opex 12,229m / operating income 27,395m (printed 45%). dps KES
+        20.00 (interim 6.00 + final 14.00). core_capital_ratio is Bank (capital note, 17.51%).
+      values:
+        net_income: 9049.307
+        eps: 25.85
+        dps: 20.0
+        total_assets: 250482.0
+        total_equity: 44603.828
+        shares_outstanding: 343.510572
+        npl_ratio: 0.08
+        net_loans: 122711.038
+        deposits: 186598.226
+        roe: 0.2029
+        cost_to_income: 0.4464
+        core_capital_ratio: 0.1751
   NCBA:
     name: NCBA Group Plc
     gaps:
     - H1-2026 net_loans uses the CBK format line, a different definition from the FY IFRS line
     - H1-2026 omits shares_outstanding; Nedbank tender offer (unconditional 2026-10-19) did not change the share
       count
+    - FY2017 and FY2016 (NIC Group) not recorded. NIC primary documents are only on the Wayback Machine (nic-bank.com
+      uploads) and downloads returned HTTP 429 repeatedly; no NSE or mirror copy found for FY2017
+    - FY2019 is the merger year under reverse-acquisition accounting. Consolidated figures are heritage CBA to 1
+      October 2019 and NCBA after; they include a KES 4,161m bargain purchase gain and about KES 1.1bn merger costs.
+      The FY2019 annual report's 2018 comparatives are CBA, so they are not used for FY2018
+    - FY2019 EPS 8.67 is as published on 902.391m weighted shares; net_income / closing shares (1,497.745m) gives
+      5.22, so the EPS check fails by construction. FY2020 report restates FY2019 EPS to 7.45 after the 2020 1-for-10
+      bonus
+    - FY2019 dps 0.25 is the interim paid by NIC; the proposed final 1.50 (total 1.75) was rescinded because of
+      COVID-19
+    - FY2018 is NIC Group from the audited 31 Dec 2018 column of the CBK-format Q1 2019 statement. net_income is
+      profit after tax including NCI (the statement does not split it); printed EPS 6.06 on 703.94m shares implies
+      attributable profit of about KES 4,266m. npl_ratio uses gross loans reconstructed as net loans + provisions
+      + interest in suspense
+    - core_capital_ratio FY2019-FY2022 is NCBA Bank Kenya (bank-level); FY2018 is NIC Group
+    - npl_ratio computed as stage 3 / gross loans (FY2019-FY2022) and gross NPL / reconstructed gross loans (FY2018)
+    - roe FY2022-FY2021 printed; FY2020, FY2019 and FY2018 computed as net_income / closing total_equity
+    - cost_to_income computed as operating expenses excluding impairment / operating income in every year
     periods:
     - period: H1-2026
       period_end: '2026-06-30'
@@ -2650,6 +3480,135 @@ companies:
         roe: 0.241
         cost_to_income: 0.457
         core_capital_ratio: 0.18
+    - period: FY2022
+      period_end: '2022-12-31'
+      published: '2023-03-28'
+      published_basis: noted
+      type: annual
+      source_url: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/01/NCBA-Group-PLC-Annual-Report-2022.pdf
+      source_note: NCBA Group annual report 2022, group, parent-attributable; date is board approval. KES thousands
+        converted to millions. npl_ratio computed as stage 3 loans 32,869m / gross loans 293,036m. roe 17.2% printed.
+        cost_to_income computed as operating expenses 25,120m / operating income 59,874m. dps KES 4.25 (interim
+        2.00 + final 2.25). core_capital_ratio is NCBA Bank Kenya.
+      values:
+        net_income: 13864.788
+        eps: 8.36
+        dps: 4.25
+        total_assets: 619661.644
+        total_equity: 82421.691
+        shares_outstanding: 1647.519
+        npl_ratio: 0.1122
+        net_loans: 276033.184
+        deposits: 502675.954
+        roe: 0.172
+        cost_to_income: 0.4195
+        core_capital_ratio: 0.1794
+    - period: FY2021
+      period_end: '2021-12-31'
+      published: '2022-03-23'
+      published_basis: noted
+      type: annual
+      source_url: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/02/NCBA-Group-Plc-Annual-2021-Integrated-Report.pdf
+      source_note: NCBA Group integrated report 2021, group, parent-attributable; date is board approval. KES thousands
+        converted to millions. npl_ratio computed as stage 3 loans 35,650m / gross loans 268,048m. roe 13.1% printed
+        (FY2022 annual report). cost_to_income computed as published, operating expenses 21,489m / operating income
+        47,645m (FY2022 report restates to 44.6%). dps KES 3.00 (interim 0.75 + final 2.25). core_capital_ratio
+        is NCBA Bank Kenya.
+      values:
+        net_income: 10299.488
+        eps: 6.21
+        dps: 3.0
+        total_assets: 591088.038
+        total_equity: 77863.095
+        shares_outstanding: 1647.519
+        npl_ratio: 0.133
+        net_loans: 241464.021
+        deposits: 469890.083
+        roe: 0.131
+        cost_to_income: 0.451
+        core_capital_ratio: 0.1835
+    - period: FY2020
+      period_end: '2020-12-31'
+      published: '2021-03-26'
+      published_basis: noted
+      type: annual
+      source_url: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/01/NCBA-INTEGRATED-REPORT-2020.pdf
+      source_note: NCBA Group integrated report 2020, group, parent-attributable; date is board approval. KES thousands
+        converted to millions. Shares 1,647.519m after the 2020 1-for-10 bonus. npl_ratio computed as stage 3 loans
+        32,109m / gross loans 273,440m (comparative column of the 2021 report). roe computed as net_income / closing
+        equity (report prints ROE 6%). cost_to_income computed as operating expenses 20,848m / operating income
+        45,766m. dps KES 1.50 (final only, no interim). core_capital_ratio is NCBA Bank Kenya.
+      field_sources:
+        npl_ratio: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/02/NCBA-Group-Plc-Annual-2021-Integrated-Report.pdf
+      values:
+        net_income: 4638.306
+        eps: 2.77
+        dps: 1.5
+        total_assets: 527868.381
+        total_equity: 72348.518
+        shares_outstanding: 1647.519
+        npl_ratio: 0.1174
+        net_loans: 247506.956
+        deposits: 421504.454
+        roe: 0.0641
+        cost_to_income: 0.4555
+        core_capital_ratio: 0.1776
+    - period: FY2019
+      period_end: '2019-12-31'
+      published: '2020-03-24'
+      published_basis: noted
+      type: annual
+      source_url: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/01/NCBA-Group-PLC-Annual-Report-2019-2-1.pdf
+      source_note: NCBA Group annual report 2019 (merger year, reverse acquisition with CBA as accounting acquirer),
+        group, parent-attributable; date is board approval. KES thousands converted to millions. net_income includes
+        a 4,161m bargain purchase gain. eps 8.67 as published on 902.391m weighted shares. shares_outstanding from
+        share capital 7,488.725m at KES 5 par. npl_ratio computed as stage 3 loans 26,962m / gross loans 266,467m.
+        roe computed as net_income / closing equity. cost_to_income computed as operating expenses 15,584m / operating
+        income 32,389m (net interest 26,754m + non-interest 5,635m), including merger costs. dps KES 0.25 is the
+        interim paid by NIC; the proposed final 1.50 was rescinded (FY2020 report, note 16). core_capital_ratio
+        is NCBA Bank Kenya.
+      values:
+        net_income: 7821.491
+        eps: 8.67
+        dps: 0.25
+        total_assets: 494717.416
+        total_equity: 66992.607
+        shares_outstanding: 1497.745
+        npl_ratio: 0.1012
+        net_loans: 248885.318
+        deposits: 378237.043
+        roe: 0.1168
+        cost_to_income: 0.4811
+        core_capital_ratio: 0.1783
+    - period: FY2018
+      period_end: '2018-12-31'
+      published: '2019-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/nic-group-plc-un-audited-financial-results-of-the-group-and-bank-for-the-period-ended-31-mar-2019.pdf
+      source_note: NIC Group Plc (pre-merger), group, from the audited 31 Dec 2018 column of the CBK-format Q1 2019
+        statement; publication date is the deadline. KES thousands converted to millions. net_income is profit after
+        tax (statement does not split NCI). total_equity excludes NCI 359.8m. shares 703.94m (NIC shares at 1 Jan
+        2019 per NCBA annual report 2019 EPS note; matches share capital 3,519.7m at KES 5 par). npl_ratio computed
+        as gross NPL 16,840m / gross loans 125,400m reconstructed as net loans 118,072m + provisions 5,161m + interest
+        in suspense 2,166m. roe computed as net_income / closing equity. cost_to_income computed as (total operating
+        expenses 9,395m less loan loss provision 2,354m) / total operating income 15,218m. dps KES 1.25 (final only,
+        no interim). core_capital_ratio is Group (Bank 16.98%).
+      field_sources:
+        shares_outstanding: https://ncbagroup.com/wp-content/uploads/securepdfs/2025/01/NCBA-Group-PLC-Annual-Report-2019-2-1.pdf
+      values:
+        net_income: 4228.37
+        eps: 6.06
+        dps: 1.25
+        total_assets: 208499.554
+        total_equity: 35425.327
+        shares_outstanding: 703.94
+        npl_ratio: 0.1343
+        net_loans: 118071.672
+        deposits: 144501.06
+        roe: 0.1194
+        cost_to_income: 0.4627
+        core_capital_ratio: 0.1953
   IMH:
     name: I&M Group Plc
     gaps:
@@ -2872,6 +3831,18 @@ companies:
     gaps:
     - H1-2026 net_loans and deposits are at KES 0.1bn precision; core capital ratio is Bank level
     - 'FY2024 DPS conflict: 20.74 (used) vs 20.83'
+    - FY2020 and FY2018 are prior-year comparatives (FY2021 integrated report and FY2019 audited financial statements);
+      the as-originally-published FY2020 and FY2018 reports were not opened, so published dates use the deadline
+      basis. FY2016 is the comparative in the FY2017 audited financial statements (same IAS 39 basis)
+    - npl_ratio computed in every year as stage 3 (IFRS 9, FY2018-FY2022) or gross non-performing loans (IAS 39,
+      FY2016-FY2017) / gross loans to customers. The annual reports' headline "NPL ratio" uses a different basis
+      (FY2022 9.07%, FY2021 9.25%); the repo FY2025 record uses the presentation ratio
+    - core_capital_ratio is Stanbic Bank Kenya Limited (bank-level) in every year. FY2017 printed 15.0%; core 30,969m
+      / RWA 207,629m computes to 14.9%
+    - FY2019 dps 7.05 is interim 1.25 + final 5.80 per the dividend note table (KShs 2,787m); the narrative text
+      quotes a final of KShs 5.82 and a total of about KShs 7
+    - FY2020 roe printed 10.4% in the five-year reviews (one FY2022 report table shows 10.3%); FY2016 roe computed
+      as net_income / closing total_equity because FY2015 equity was not opened
     periods:
     - period: H1-2026
       period_end: '2026-06-30'
@@ -2988,3 +3959,181 @@ companies:
         roe: 0.186
         cost_to_income: 0.435
         core_capital_ratio: 0.13
+    - period: FY2022
+      period_end: '2022-12-31'
+      published: '2023-03-08'
+      published_basis: noted
+      type: annual
+      source_url: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Annual%20Reports/2023/2022%20Stanbic%20Holdings%20Plc%20Annual%20Integrated%20Report.pdf
+      source_note: Stanbic Holdings Plc 2022 annual integrated report, group, KES millions; date is board approval.
+        npl_ratio computed as stage 3 loans 28,467m / gross loans 256,463m (credit quality table prints 11%). roe
+        15.3% and cost_to_income 46.7% printed. dps KES 12.60 (final only, no interim). core_capital_ratio is Stanbic
+        Bank Kenya (core capital / total RWA 13.8%).
+      values:
+        net_income: 9060
+        eps: 22.92
+        dps: 12.6
+        total_assets: 399830
+        total_equity: 62198
+        shares_outstanding: 395.322
+        npl_ratio: 0.111
+        net_loans: 235867
+        deposits: 271564
+        roe: 0.153
+        cost_to_income: 0.467
+        core_capital_ratio: 0.138
+    - period: FY2021
+      period_end: '2021-12-31'
+      published: '2022-03-02'
+      published_basis: noted
+      type: annual
+      source_url: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2022/H1/IntergratedAnnualReport2022.pdf
+      source_note: Stanbic Holdings Plc 2021 integrated annual report, group, KES millions; date is board approval.
+        npl_ratio computed as stage 3 loans 22,504m / gross loans 200,941m. roe (return on average equity 13.3%)
+        and cost_to_income (50.9%) from the five-year review. dps KES 9.00 (interim 1.70 + final 7.30). core_capital_ratio
+        is Stanbic Bank Kenya.
+      values:
+        net_income: 7208
+        eps: 18.23
+        dps: 9.0
+        total_assets: 328872
+        total_equity: 56452
+        shares_outstanding: 395.322
+        npl_ratio: 0.112
+        net_loans: 185313
+        deposits: 242345
+        roe: 0.133
+        cost_to_income: 0.509
+        core_capital_ratio: 0.153
+    - period: FY2020
+      period_end: '2020-12-31'
+      published: '2021-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2022/H1/IntergratedAnnualReport2022.pdf
+      source_note: Prior-year comparative in the Stanbic Holdings Plc 2021 integrated annual report, group, KES
+        millions (five-year review shows equity 51,731m). npl_ratio computed as stage 3 loans 25,037m / gross loans
+        176,595m. roe (return on average equity 10.4%) and cost_to_income (52.2%) from the five-year review. dps
+        KES 3.80 (final only). core_capital_ratio is Stanbic Bank Kenya.
+      values:
+        net_income: 5192
+        eps: 13.13
+        dps: 3.8
+        total_assets: 328593
+        total_equity: 51730
+        shares_outstanding: 395.322
+        npl_ratio: 0.1418
+        net_loans: 158180
+        deposits: 217444
+        roe: 0.104
+        cost_to_income: 0.522
+        core_capital_ratio: 0.16
+    - period: FY2019
+      period_end: '2019-12-31'
+      published: '2020-05-15'
+      published_basis: noted
+      type: annual
+      source_url: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/SHPlcAFStatements2019Final.pdf
+      source_note: Stanbic Holdings Plc audited financial statements 2019, group; date is approval for issue stated
+        in the statements. KES thousands converted to millions. npl_ratio computed as stage 3 loans 19,344.8m /
+        gross loans 166,987.6m. roe 13.6% (return on average equity) from the 2022 annual report five-year review.
+        cost_to_income computed as operating expenses 13,920.5m / (total income 21,630.3m + credit impairment 3,150.6m),
+        matching 56.2% in the five-year review. dps KES 7.05 (interim 1.25 + final 5.80). core_capital_ratio is
+        Stanbic Bank Kenya (core 36,156.6m / RWA 238,224.0m).
+      field_sources:
+        roe: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Annual%20Reports/2023/2022%20Stanbic%20Holdings%20Plc%20Annual%20Integrated%20Report.pdf
+      values:
+        net_income: 6380.6
+        eps: 16.14
+        dps: 7.05
+        total_assets: 303624.6
+        total_equity: 49034.8
+        shares_outstanding: 395.322
+        npl_ratio: 0.1158
+        net_loans: 152816.6
+        deposits: 194222.3
+        roe: 0.136
+        cost_to_income: 0.562
+        core_capital_ratio: 0.152
+    - period: FY2018
+      period_end: '2018-12-31'
+      published: '2019-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/SHPlcAFStatements2019Final.pdf
+      source_note: Prior-year comparative in Stanbic Holdings Plc audited financial statements 2019, group. KES
+        thousands converted to millions. npl_ratio computed as stage 3 loans 16,684.0m / gross loans 157,854.6m.
+        roe 14.3% (return on average equity) from the 2022 annual report five-year review. cost_to_income computed
+        as operating expenses 11,082.1m / (total income 20,029.9m + credit impairment 2,064.5m), matching 50.2%
+        in the five-year review. dps KES 5.80 (interim 2.25 + final 3.55). core_capital_ratio is Stanbic Bank Kenya
+        (core 33,237.2m / RWA 227,294.2m).
+      field_sources:
+        roe: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Annual%20Reports/2023/2022%20Stanbic%20Holdings%20Plc%20Annual%20Integrated%20Report.pdf
+      values:
+        net_income: 6277.2
+        eps: 15.88
+        dps: 5.8
+        total_assets: 290570.3
+        total_equity: 44623.4
+        shares_outstanding: 395.322
+        npl_ratio: 0.1057
+        net_loans: 146604.1
+        deposits: 191584.7
+        roe: 0.143
+        cost_to_income: 0.502
+        core_capital_ratio: 0.146
+    - period: FY2017
+      period_end: '2017-12-31'
+      published: '2018-03-02'
+      published_basis: noted
+      type: annual
+      source_url: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/StanbicHoldingsPlcAuditedFinancial%20Statements31December2017.pdf
+      source_note: Stanbic Holdings Plc audited financial statements 31 December 2017, group (IAS 39); date is board
+        approval. KES thousands converted to millions. npl_ratio computed as gross non-performing loans 10,391.9m
+        / gross loans to customers 135,799.8m. roe 10.4% (return on average equity) from the 2021 integrated report
+        five-year review. cost_to_income 57.2% printed in the FY2017 results presentation (equals operating expenses
+        10,901.8m / (total income 16,303.1m + credit impairment 2,761.3m)). dps KES 5.25 (interim 1.25 + final 4.00).
+        core_capital_ratio is Stanbic Bank Kenya (printed 15.0%).
+      field_sources:
+        roe: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2022/H1/IntergratedAnnualReport2022.pdf
+        cost_to_income: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/StanbicHoldingsPlc2017FullYearResultsPresentation.pdf
+      values:
+        net_income: 4309.494
+        eps: 10.9
+        dps: 5.25
+        total_assets: 248738.719
+        total_equity: 42955.687
+        shares_outstanding: 395.322
+        npl_ratio: 0.0765
+        net_loans: 130535.814
+        deposits: 154660.772
+        roe: 0.104
+        cost_to_income: 0.572
+        core_capital_ratio: 0.15
+    - period: FY2016
+      period_end: '2016-12-31'
+      published: '2017-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/StanbicHoldingsPlcAuditedFinancial%20Statements31December2017.pdf
+      source_note: Prior-year comparative in Stanbic Holdings Plc audited financial statements 31 December 2017,
+        group (IAS 39). KES thousands converted to millions. npl_ratio computed as gross non-performing loans 7,013.1m
+        / gross loans to customers 118,720.4m. roe computed as net_income / closing total_equity. cost_to_income
+        57.9% printed in the FY2017 results presentation (equals operating expenses 10,716.5m / (total income 16,765.5m
+        + credit impairment 1,751.8m)). dps KES 5.25 (interim 1.77 + final 3.48). core_capital_ratio is Stanbic
+        Bank Kenya (printed 15.90%).
+      field_sources:
+        cost_to_income: https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/StanbicHoldingsPlc2017FullYearResultsPresentation.pdf
+      values:
+        net_income: 4418.589
+        eps: 11.18
+        dps: 5.25
+        total_assets: 214682.729
+        total_equity: 40140.874
+        shares_outstanding: 395.322
+        npl_ratio: 0.0591
+        net_loans: 115587.723
+        deposits: 119328.219
+        roe: 0.1101
+        cost_to_income: 0.579
+        core_capital_ratio: 0.159
