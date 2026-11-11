@@ -25,6 +25,8 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Score logged picks against NASI
         run: python -m nse_agent score
+      - name: Retrospective (forward scorecard and reverse attribution)
+        run: python -m nse_agent retro
       - name: Commit scorecard
         run: |
           git config user.name "github-actions[bot]"

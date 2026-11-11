@@ -41,6 +41,8 @@ jobs:
         run: python -m nse_agent backtest
       - name: Score past picks
         run: python -m nse_agent score
+      - name: Retrospective (forward scorecard and reverse attribution)
+        run: python -m nse_agent retro
       - name: Commit report and data
         run: |
           git config user.name "github-actions[bot]"

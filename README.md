@@ -56,8 +56,8 @@ All thresholds live in [`data/settings.yaml`](data/settings.yaml).
 | --- | --- | --- |
 | Daily brief | 13:00 Mon to Fri (16:00 EAT) | Records closing prices, values and ranks every stock, writes the daily brief (top 5 tiered Buy, Watch or Avoid, with reasons and what changed), appends the prediction ledger in `data/rankings/`, deploys Pages, and comments on the `daily-alert` issue only on a material change |
 | Results watch | 13:30 Mon to Fri | Detects results announcements, extracts figures by rule, opens a review PR |
-| Weekly report | 14:00 Friday | Values and ranks, runs simulation, backtest and scorecard, commits `reports/`, deploys Pages, opens an issue |
-| Monthly scorecard | 15:00 on the 1st | Scores every logged pick against the market |
+| Weekly report | 14:00 Friday | Values and ranks, runs simulation, backtest, scorecard and retrospective, commits `reports/`, deploys Pages, opens an issue |
+| Monthly scorecard | 15:00 on the 1st | Scores every logged pick against the market and refreshes the retrospective |
 | CI | Every push and PR | Runs the test suite |
 
 Every workflow also runs on demand from the Actions tab. GitHub pauses schedules in a public repo after 60 days with no
@@ -101,6 +101,18 @@ companies:
 
 ## Reports
 
+- `reports/daily/YYYY-MM-DD.md` and `reports/daily/latest.md`: the daily brief. Top 5 tiered Buy (clears every gate),
+  Watch (passes quality, misses one threshold) or Avoid, each with its per-signal score contributions and the binding
+  constraint, plus what changed since the last brief.
+- `data/rankings/live/YYYY-MM.csv`: the append-only prediction ledger. Every stock, every day: composite score, each
+  signal's value and contribution, tier, bear/base/bull projections and the code SHA. Past rows are never edited.
+- `data/rankings/reconstructed.csv`: the engine rerun point in time on every month start, using only prices and
+  fundamentals published by that date.
+- `reports/retrospective.md`: how well past rankings predicted. The forward scorecard scores the top 5 and the full
+  ranking at 1, 3, 6 and 12 months on total return against the equal-weight universe and NASI (hit rate, excess
+  return, Spearman rank IC and bear-bull band calibration). Reverse attribution takes each month's actual top 5
+  performers, shows the rank the engine gave them, which signals flagged them, and classifies each miss as an event,
+  missing data, a turnaround, macro or a signal miss. A per-signal IC table shows which signals carry information.
 - `reports/latest.md`: ranked picks, fair-value ranges, bear/base/bull returns, risks, confidence and data gaps.
 - `reports/simulation.md`: Monte Carlo (block bootstrap of weekly returns) for 1, 3 and 5 years, plus replays of the
   2016 rate-cap shock, the 2020 COVID crash and the 2023 sell-off.
@@ -121,6 +133,9 @@ python -m venv .venv
 | `backfill` | One-time price history backfill (slow: AFX asks for a 60 second crawl delay) |
 | `refresh` | Refresh company pages for volume and liquidity |
 | `weekly [--no-fetch]` | Value, rank and write the report |
+| `brief [--no-fetch] [--no-prices]` | Daily brief and ledger append |
+| `reconstruct` | Rebuild the point-in-time reconstructed ledger |
+| `retro [--no-rebuild]` | Forward scorecard, per-signal IC and reverse attribution |
 | `simulate [--paths N]` | Monte Carlo projection of current picks |
 | `backtest [--top N]` | Walk-forward backtest |
 | `score` | Score logged picks |

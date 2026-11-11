@@ -22,6 +22,9 @@ def main(argv: list[str] | None = None) -> int:
     bt.add_argument("--top", type=int, default=3)
     sm = sub.add_parser("simulate", help="Monte Carlo projection of current picks")
     sm.add_argument("--paths", type=int, default=5000)
+    sub.add_parser("reconstruct", help="Rerun the engine point in time on every month start (reconstructed ledger)")
+    rt = sub.add_parser("retro", help="Forward scorecard, per-signal IC and reverse attribution")
+    rt.add_argument("--no-rebuild", action="store_true", help="Reuse the existing reconstructed ledger")
     sub.add_parser("review", help="Review portfolio.yaml holdings")
     sub.add_parser("results-watch", help="Detect new results announcements and queue them for review")
     sub.add_parser("mcp", help="Run the MCP server (needs the mcp extra)")
@@ -62,6 +65,14 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "simulate":
         from .simulate import run_simulation
         print(run_simulation(paths=args.paths))
+        return 0
+    if args.cmd == "reconstruct":
+        from .retrospective import reconstruct
+        print(f"reconstructed_rows={reconstruct()}")
+        return 0
+    if args.cmd == "retro":
+        from .retrospective import run_retro
+        print(run_retro(rebuild=not args.no_rebuild))
         return 0
     if args.cmd == "review":
         from .portfolio import run_review
