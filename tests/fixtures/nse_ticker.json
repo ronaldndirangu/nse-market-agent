@@ -1,0 +1,54 @@
+{
+ "message": [
+  {
+   "snapshot": [
+    {
+     "issuer": "SCOM",
+     "price": 35.25,
+     "ltp": 35.25,
+     "prev_price": 34.4,
+     "today_open": 34.45,
+     "today_high": 35.5,
+     "today_low": 35,
+     "turnover": 297220903.15,
+     "volume": 8481280,
+     "change": 2.47,
+     "today_close": 34.75
+    },
+    {
+     "issuer": "KCB",
+     "price": 89.75,
+     "ltp": 89.75,
+     "prev_price": 89.75,
+     "today_open": 89.5,
+     "today_high": 91,
+     "today_low": 89.5,
+     "turnover": 67420620.75,
+     "volume": 750955,
+     "change": 0,
+     "today_close": 89.75
+    },
+    {
+     "issuer": "EQTY",
+     "price": 99.75,
+     "ltp": 99.75,
+     "prev_price": 99.25,
+     "today_open": 99,
+     "today_high": 100,
+     "today_low": 99,
+     "turnover": 16564206.75,
+     "volume": 166643,
+     "change": 0.5,
+     "today_close": 99.25
+    }
+   ]
+  },
+  {
+   "updated_at": {
+    "date": "11/11/2026",
+    "time": "14:53 PM GMT+3",
+    "market_status": "open"
+   }
+  }
+ ]
+}

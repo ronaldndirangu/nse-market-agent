@@ -1,0 +1,650 @@
+# Sourced fundamentals. Every value was read from the linked primary document; nothing is estimated.
+# Units: KES millions, per-share in KES, ratios as decimals, shares in millions.
+# published: when the figures were public. published_basis says how it was set:
+#   noted     = date stated in the source
+#   deadline  = CMA filing deadline (annual: period end + 4 months; interim: period end + 2 months)
+#   retrieved = the deadline is later than the retrieval date, so the retrieval date is used
+# Backtests only use a period on or after its published date. Update this file through PRs.
+companies:
+  SCOM:
+    name: Safaricom Plc
+    gaps:
+    - Audited IFRS figures include the IAS 29 (Ethiopia hyperinflation) impact; press-release headline profit excludes
+      it
+    - H1-FY2027 is unaudited and reflects an IFRS 15 policy change, so comparatives may differ
+    - H1-FY2027 omits dps, long_term_debt and gross_profit (not printed)
+    periods:
+    - period: H1-FY2027
+      period_end: '2026-09-30'
+      published: '2026-11-11'
+      published_basis: retrieved
+      type: interim
+      source_url: https://www.nse.co.ke/wp-content/uploads/Safaricom-Plc-%E2%80%93-Condensed-Unaudited-Results-for-the-Six-Months-Ended-30-September-2026.pdf
+      source_note: NSE-hosted condensed UNAUDITED group results for six months to 30 Sep 2026 (board-approved 4
+        Nov 2026). revenue = "Total revenue" line (service revenue 226,062.9 + handsets/other 5,486.5 + other income
+        2,133.8), the same basis as the annual figures. net_income = equity holders of the parent (profit after
+        tax incl. NCI is 50,351.1). Balance sheet is the condensed group SOFP at 30 Sep 2026; total_equity = equity
+        attributable to the parent (total equity incl. NCI 236,320.4). The announcement notes a change in accounting
+        policy (deferred SIM costs and connection revenue under IFRS 15). shares_outstanding is taken from the FY2026
+        annual report because share capital is unchanged at 2,003.3 in the H1 SOFP. No interim dividend declaration
+        is printed in this announcement, so dps is omitted. Non-current borrowings and gross profit are not printed.
+      field_sources:
+        shares_outstanding: https://www.safaricom.co.ke/images/Downloads/2026_Safaricom_Annual_Report_Updated.pdf
+      values:
+        revenue: 233683.2
+        ebit: 91141.3
+        net_income: 58154.2
+        eps: 1.45
+        total_assets: 573803.1
+        total_liabilities: 337482.7
+        total_equity: 210735.8
+        current_assets: 94521.4
+        current_liabilities: 151231.4
+        retained_earnings: 224056.2
+        operating_cash_flow: 91923.5
+        shares_outstanding: 40065.4
+    - period: FY2026
+      period_end: '2026-03-31'
+      published: '2026-07-31'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.safaricom.co.ke/images/Downloads/2026_Safaricom_Annual_Report_Updated.pdf
+      source_note: Audited Safaricom FY2026 annual report, group statements. revenue = Total revenue; ebit = operating
+        profit (EBIT) per IFRS statements. Press-release headline net income (99.7bn) and EBIT (153.9bn) exclude
+        the IAS 29 impact and are NOT used. net_income = equity holders of the parent (profit for the year incl.
+        NCI is 73,676.0; equity incl. NCI is 230,921.1). dps 2.00 = interim 0.85 + final 1.15 (no special dividend),
+        AR note 15. The final 1.15 was proposed for the AGM on 31 Jul 2026. AGM approval is not shown in the AR,
+        but the H1-FY2027 SOFP shows the 46,075.2 proposed-dividend reserve cleared and 45,559.1 of dividends paid
+        in H1. The AR prints EPS to one decimal (2.4); the NSE audited-results announcement prints 2.39. No gross-profit
+        line exists in the P&L (direct costs only).
+      field_sources:
+        eps: https://www.nse.co.ke/wp-content/uploads/Safaricom-Plc-%E2%80%93Audited-Results-for-the-Year-Ended-31-March-2026.pdf
+      values:
+        revenue: 427559.1
+        ebit: 146321.9
+        net_income: 95608.6
+        eps: 2.39
+        dps: 2.0
+        total_assets: 518045.4
+        total_liabilities: 287124.3
+        total_equity: 201134.8
+        current_assets: 79946.8
+        current_liabilities: 135444.7
+        retained_earnings: 165739.6
+        long_term_debt: 83714.6
+        operating_cash_flow: 169907.8
+        shares_outstanding: 40065.4
+    - period: FY2025
+      period_end: '2025-03-31'
+      published: '2025-07-31'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.safaricom.co.ke/images/Downloads/annual-2025-report.pdf
+      source_note: Audited Safaricom FY2025 annual report, group statements, as originally reported. revenue = Total
+        revenue. net_income = equity holders of the parent (profit for the year incl. NCI is 45,757.2; equity incl.
+        NCI is 224,021.1). dps 1.20 = interim 0.55 + final 0.65 (no special dividend). The AR prints EPS to one
+        decimal (1.7); the FY2026 NSE audited-results announcement prints the FY2025 comparative as 1.74. operating_cash_flow
+        is the original 137,693.9; the FY2026 AR comparative shows a restated 137,722.8. No gross-profit line.
+      field_sources:
+        eps: https://www.nse.co.ke/wp-content/uploads/Safaricom-Plc-%E2%80%93Audited-Results-for-the-Year-Ended-31-March-2026.pdf
+      values:
+        revenue: 388688.9
+        ebit: 104050.1
+        net_income: 69798.7
+        eps: 1.74
+        dps: 1.2
+        total_assets: 515284.2
+        total_liabilities: 291263.1
+        total_equity: 177695.3
+        current_assets: 84049.2
+        current_liabilities: 155032.3
+        retained_earnings: 153881.8
+        long_term_debt: 64744.4
+        operating_cash_flow: 137693.9
+        shares_outstanding: 40065.4
+    - period: FY2024
+      period_end: '2024-03-31'
+      published: '2024-07-31'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.safaricom.co.ke/images/Downloads/2024-Annual-Report-Update.pdf
+      source_note: Audited Safaricom FY2024 annual report, group statements, as originally reported. revenue = Total
+        revenue; ebit = operating profit. net_income = equity holders of the parent (profit for the year incl. NCI
+        is 42,658.4; equity incl. NCI is 335,747.9). EPS is printed to one decimal only (1.6). dps 1.20 (interim
+        0.55 + final 0.65) is taken from the FY2025 AR dividend note, which gives the 2024 comparatives. IAS 29
+        (Ethiopia hyperinflation) later restated the FY2024 closing balances. No gross-profit line.
+      field_sources:
+        dps: https://www.safaricom.co.ke/images/Downloads/annual-2025-report.pdf
+      values:
+        revenue: 349447.2
+        ebit: 80344.8
+        net_income: 62991.7
+        eps: 1.6
+        dps: 1.2
+        total_assets: 641164.3
+        total_liabilities: 305416.4
+        total_equity: 226349.1
+        current_assets: 82541.9
+        current_liabilities: 167822.1
+        retained_earnings: 134314.0
+        long_term_debt: 63093.2
+        operating_cash_flow: 107923.6
+        shares_outstanding: 40065.4
+  EABL:
+    name: East African Breweries Plc
+    gaps:
+    - FY2026 final dividend 8.70 is proposed; AGM approval not verified
+    periods:
+    - period: FY2026
+      period_end: '2026-06-30'
+      published: '2026-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.eabl.com/~/media/Files/E/eabl/documents/investor/agm/2026/eabl-2026-integrated-annual-report-web-version.pdf
+      source_note: EABL 2026 integrated annual report, group statements, KES thousands converted to millions. total_assets
+        and total_liabilities are computed from printed subtotals; total_liabilities = non-current + current liabilities,
+        so it includes NCI (16,217.706). total_equity = owners of the parent. retained_earnings excludes the proposed-dividend
+        reserve line. dps 12.70 = interim 4.00 + final 8.70; the final is "recommended" in the AR and AGM approval
+        was not verified from a primary source.
+      values:
+        revenue: 145958.387
+        gross_profit: 62158.466
+        ebit: 32069.327
+        net_income: 15016.509
+        eps: 18.99
+        dps: 12.7
+        total_assets: 134661.874
+        total_liabilities: 84046.141
+        total_equity: 34398.027
+        current_assets: 54763.541
+        current_liabilities: 45975.85
+        retained_earnings: 24934.677
+        long_term_debt: 27905.12
+        operating_cash_flow: 28064.592
+        shares_outstanding: 790.774356
+    - period: FY2025
+      period_end: '2025-06-30'
+      published: '2025-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.eabl.com/~/media/Files/E/eabl/documents/investor/agm/2025/eabl-2025-integrated-annual-report.pdf
+      source_note: EABL 2025 integrated annual report, group, KES thousands converted to millions. total_assets
+        and total_liabilities computed from printed subtotals; total_liabilities includes NCI (15,192.203). retained_earnings
+        excludes the proposed-dividend reserve line. dps 8.00 = 2.50 interim + 5.50 final.
+      values:
+        revenue: 128790.557
+        gross_profit: 54077.489
+        ebit: 25170.777
+        net_income: 9465.826
+        eps: 11.97
+        dps: 8.0
+        total_assets: 131088.781
+        total_liabilities: 88801.571
+        total_equity: 27095.007
+        current_assets: 48652.048
+        current_liabilities: 43792.355
+        retained_earnings: 19946.869
+        long_term_debt: 34823.136
+        operating_cash_flow: 23766.665
+        shares_outstanding: 790.774356
+    - period: FY2024
+      period_end: '2024-06-30'
+      published: '2024-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.eabl.com/~/media/Files/E/eabl/documents/investor/annual-reports/2024/eabl-2024-annual-report-interactive-version.pdf
+      source_note: EABL 2024 annual report as originally reported, group, KES thousands converted to millions. The
+        2025 IAR restates FY2024 gross profit to 53,647.756 and EBIT to 24,897.934; the original figures are used
+        here. total_assets and total_liabilities computed; total_liabilities includes NCI (12,965.645). retained_earnings
+        excludes the proposed-dividend reserve line. dps 7.00 = 1.00 interim + 6.00 final.
+      values:
+        revenue: 124130.66
+        gross_profit: 53804.761
+        ebit: 24945.278
+        net_income: 8145.642
+        eps: 10.3
+        dps: 7.0
+        total_assets: 124246.554
+        total_liabilities: 87514.187
+        total_equity: 23766.722
+        current_assets: 41573.25
+        current_liabilities: 36139.02
+        retained_earnings: 16796.4
+        long_term_debt: 41426.867
+        operating_cash_flow: 22098.165
+        shares_outstanding: 790.774356
+  BAT:
+    name: British American Tobacco Kenya Plc
+    gaps:
+    - FY2025 final dividend 60 is proposed; AGM approval not verified
+    - H1-2026 omits ebit, gross_profit and retained_earnings (not comparable or not printed)
+    periods:
+    - period: H1-2026
+      period_end: '2026-06-30'
+      published: '2026-08-30'
+      published_basis: deadline
+      type: interim
+      source_url: https://africanfinancials.com/document/ke-bat-2026-ir-hy/
+      source_note: BAT Kenya H1-2026 condensed UNAUDITED results (PDF hosted on africanfinancials; batkenya.com
+        returned 403). revenue is net of excise and VAT. dps 10 = interim dividend. Retained earnings (8,940, condensed
+        basis including the proposed final dividend and the hedge reserve) is not comparable with the annual figures
+        and is omitted. gross_profit and long_term_debt are not printed on a comparable basis and are omitted. shares_outstanding
+        is from the FY2025 annual report.
+      field_sources:
+        shares_outstanding: https://africanfinancials.com/document/ke-bat-2025-ar-00/
+      values:
+        revenue: 12273
+        ebit: 4258
+        net_income: 3075
+        eps: 30.75
+        dps: 10
+        total_assets: 20332
+        total_liabilities: 7772
+        total_equity: 12560
+        current_assets: 10905
+        current_liabilities: 5852
+        operating_cash_flow: 2130
+        shares_outstanding: 100.0
+    - period: FY2025
+      period_end: '2025-12-31'
+      published: '2026-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://africanfinancials.com/document/ke-bat-2025-ar-00/
+      source_note: BAT Kenya 2025 annual report (africanfinancials-hosted PDF), KES thousands converted to millions.
+        revenue is net of excise and VAT. gross_profit, total_assets and total_liabilities are computed from printed
+        lines. long_term_debt is lease liabilities only (the company has no borrowings line). dps 70 = interim 10
+        + final 60; the final is PROPOSED for the 12 Jun 2026 AGM and approval was not verified.
+      field_sources:
+        dps: https://africanfinancials.com/document/ke-bat-2025-ab-00/
+      values:
+        revenue: 23191.945
+        gross_profit: 10819.647
+        ebit: 7474.835
+        net_income: 5245.617
+        eps: 52.46
+        dps: 70
+        total_assets: 23585.228
+        total_liabilities: 8099.797
+        total_equity: 15485.431
+        current_assets: 13898.13
+        current_liabilities: 6197.535
+        retained_earnings: 5858.344
+        long_term_debt: 52.405
+        operating_cash_flow: 6633.154
+        shares_outstanding: 100.0
+    - period: FY2024
+      period_end: '2024-12-31'
+      published: '2025-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://africanfinancials.com/document/ke-bat-2024-ar-00/
+      source_note: BAT Kenya 2024 annual report, KES thousands converted to millions. revenue net of excise and
+        VAT. gross_profit, total_assets and total_liabilities computed. long_term_debt is lease liabilities only.
+        dps 50 = interim 5 + final 45.
+      values:
+        revenue: 25715.903
+        gross_profit: 10497.21
+        ebit: 7313.038
+        net_income: 4483.37
+        eps: 44.83
+        dps: 50
+        total_assets: 23654.226
+        total_liabilities: 7921.096
+        total_equity: 15733.13
+        current_assets: 13593.457
+        current_liabilities: 6025.355
+        retained_earnings: 7571.976
+        long_term_debt: 74.902
+        operating_cash_flow: 7877.953
+        shares_outstanding: 100.0
+    - period: FY2023
+      period_end: '2023-12-31'
+      published: '2024-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://africanfinancials.com/document/ke-bat-2023-ar-00/
+      source_note: BAT Kenya 2023 annual report as originally reported, KES thousands converted to millions. operating_cash_flow
+        is the original 5,619.301; the FY2024 AR restates it to 5,557.903. gross_profit, total_assets and total_liabilities
+        computed. long_term_debt is lease liabilities only. dps 50 = interim 5 + final 45.
+      values:
+        revenue: 25557.551
+        gross_profit: 10573.374
+        ebit: 7925.783
+        net_income: 5568.017
+        eps: 55.68
+        dps: 50
+        total_assets: 24049.948
+        total_liabilities: 7800.188
+        total_equity: 16249.76
+        current_assets: 12243.243
+        current_liabilities: 5799.751
+        retained_earnings: 7988.037
+        long_term_debt: 8.813
+        operating_cash_flow: 5619.301
+        shares_outstanding: 100.0
+  KEGN:
+    name: KenGen (Kenya Electricity Generating Company Plc)
+    gaps:
+    - FY2026 dps 0.75 is the proposed final only; AGM approval not verified
+    - Company-only statements; no gross_profit line
+    periods:
+    - period: FY2026
+      period_end: '2026-06-30'
+      published: '2026-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://africanfinancials.com/document/ke-kegn-2026-ar-00/
+      source_note: KenGen FY2026 annual report; KenGen presents company statements only (no group columns), so these
+        are the company figures. Cross-checked to the abridged results https://africanfinancials.com/document/ke-kegn-2026-ab-00/.
+        ebit = operating profit before finance items. total_liabilities computed (total assets - equity). No gross-profit
+        line. dps 0.75 is the PROPOSED final only (no interim); the AGM of 29 Oct 2026 outcome was not confirmed.
+      values:
+        revenue: 59712.12
+        ebit: 14173.731
+        net_income: 10352.798
+        eps: 1.57
+        dps: 0.75
+        total_assets: 500071.909
+        total_liabilities: 209925.209
+        total_equity: 290146.7
+        current_assets: 50723.626
+        current_liabilities: 20699.646
+        retained_earnings: 136890.834
+        long_term_debt: 97066.425
+        operating_cash_flow: 30031.704
+        shares_outstanding: 6594.522
+    - period: FY2025
+      period_end: '2025-06-30'
+      published: '2025-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://africanfinancials.com/document/ke-kegn-2025-ar-00/
+      source_note: KenGen FY2025 annual report, company statements only. ebit = operating profit before finance
+        items. total_liabilities computed. dps 0.90 = final only. No gross-profit line.
+      values:
+        revenue: 56098.037
+        ebit: 13616.549
+        net_income: 10481.077
+        eps: 1.59
+        dps: 0.9
+        total_assets: 505573.128
+        total_liabilities: 221029.299
+        total_equity: 284543.829
+        current_assets: 53490.448
+        current_liabilities: 20392.343
+        retained_earnings: 129593.68
+        long_term_debt: 109271.273
+        operating_cash_flow: 30616.723
+        shares_outstanding: 6594.522
+    - period: FY2024
+      period_end: '2024-06-30'
+      published: '2024-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://africanfinancials.com/document/ke-kegn-2024-ar-00/
+      source_note: KenGen FY2024 annual report, company statements only. ebit = operating profit before finance
+        items. total_liabilities computed. dps 0.65 = final only. No gross-profit line.
+      values:
+        revenue: 56297.222
+        ebit: 9551.04
+        net_income: 6797.012
+        eps: 1.03
+        dps: 0.65
+        total_assets: 491292.755
+        total_liabilities: 213186.835
+        total_equity: 278105.92
+        current_assets: 48190.394
+        current_liabilities: 18786.814
+        retained_earnings: 120736.895
+        long_term_debt: 107748.716
+        operating_cash_flow: 36845.309
+        shares_outstanding: 6594.522
+  KPLC:
+    name: Kenya Power and Lighting Company Plc
+    gaps:
+    - FY2026 final dividend 1.20 is proposed; AGM approval not verified
+    - FY2026 omits retained_earnings, long_term_debt and shares_outstanding (one-page condensed announcement), so
+      no FY2026 BVPS
+    - Company-only statements
+    periods:
+    - period: FY2026
+      period_end: '2026-06-30'
+      published: '2026-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.nse.co.ke/wp-content/uploads/Kenya-Power-and-Lighting-Company-Plc-%E2%80%93-Audited-Financial-Results-for-the-Year-Ended-30-June-2026.pdf
+      source_note: KPLC audited results announcement for FY to 30 Jun 2026 (one-page condensed, KES millions, company
+        statements, no group columns). The full FY2026 annual report is not yet published. revenue = revenue from
+        contracts (excludes other income); ebit = printed operating profit (includes other income). total_liabilities
+        computed. dps 1.50 = interim 0.30 + final 1.20 RECOMMENDED (register closes 27 Nov 2026). retained_earnings,
+        long_term_debt and shares_outstanding are not on this announcement and are omitted.
+      values:
+        revenue: 238240
+        gross_profit: 85593
+        ebit: 38567
+        net_income: 24989
+        eps: 12.81
+        dps: 1.5
+        total_assets: 421485
+        total_liabilities: 289684
+        total_equity: 131801
+        current_assets: 121903
+        current_liabilities: 120006
+        operating_cash_flow: 38223
+    - period: FY2025
+      period_end: '2025-06-30'
+      published: '2025-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.kplc.co.ke/storage/01KB4JTB49DXJ81DG79JVEE0M3.pdf
+      source_note: KPLC FY2025 annual report, company statements (no group columns), KES thousands converted to
+        millions. revenue = revenue from contracts (excludes other income); ebit = printed operating profit (includes
+        other income). total_liabilities computed. dps 1.00 = interim 0.20 + final 0.80.
+      values:
+        revenue: 219284.568
+        gross_profit: 74620.963
+        ebit: 39466.085
+        net_income: 24466.525
+        eps: 12.54
+        dps: 1.0
+        total_assets: 389039.491
+        total_liabilities: 279703.925
+        total_equity: 109335.566
+        current_assets: 98217.033
+        current_liabilities: 117426.25
+        retained_earnings: 82435.68
+        long_term_debt: 70138.83
+        operating_cash_flow: 39767.938
+        shares_outstanding: 1951.467045
+    - period: FY2024
+      period_end: '2024-06-30'
+      published: '2024-10-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://www.kplc.co.ke/storage/01JDRPZS8NZ473CWE2XCSQ1REJ.pdf
+      source_note: KPLC FY2024 annual report, company statements (no group columns), KES thousands converted to
+        millions. revenue = revenue from contracts (excludes other income); ebit = printed operating profit (includes
+        other income). total_liabilities computed. dps 0.70 = final only.
+      values:
+        revenue: 231123.597
+        gross_profit: 80517.693
+        ebit: 41489.275
+        net_income: 30080.37
+        eps: 15.41
+        dps: 0.7
+        total_assets: 358086.199
+        total_liabilities: 270772.037
+        total_equity: 87314.162
+        current_assets: 78055.512
+        current_liabilities: 105494.418
+        retained_earnings: 60414.276
+        long_term_debt: 81895.385
+        operating_cash_flow: 28374.216
+        shares_outstanding: 1951.467045
+  TOTL:
+    name: TotalEnergies Marketing Kenya Plc
+    gaps:
+    - shares_outstanding includes 454.477m redeemable preference shares, matching the printed EPS
+    - No ebit or long_term_debt lines in the statements
+    periods:
+    - period: FY2025
+      period_end: '2025-12-31'
+      published: '2026-09-04'
+      published_basis: noted
+      type: annual
+      source_url: https://dxm.content-center.totalenergies.com/api/wedia/dam/variation/xysh7dg731ta7oeegiedu7jb3o/pdf,original?hash=gr3n6cbifh3dyctsryaucqttgy7dyqy-1794352676753&download=true
+      source_note: TotalEnergies Marketing Kenya FY2025 annual report, single-entity statements, KES thousands converted
+        to millions. revenue is net of indirect taxes. total_liabilities computed (total assets - equity). dps 3.45
+        is first and final. shares_outstanding 629.542 = 175.065 ordinary + 454.477 redeemable preference shares
+        (equity-classified); the printed EPS uses this total. No operating-profit subtotal or borrowings line exists,
+        so ebit and long_term_debt are omitted (computed EBIT would be 5,202.9). This AR was listed as published
+        2026-09-04, later than the usual window.
+      values:
+        revenue: 104019.4
+        gross_profit: 11977.8
+        net_income: 2170.9
+        eps: 3.45
+        dps: 3.45
+        total_assets: 69188.2
+        total_liabilities: 35518.7
+        total_equity: 33669.5
+        current_assets: 51203.4
+        current_liabilities: 31897.9
+        retained_earnings: 21727.3
+        operating_cash_flow: 7646.7
+        shares_outstanding: 629.542
+    - period: FY2024
+      period_end: '2024-12-31'
+      published: '2025-05-02'
+      published_basis: deadline
+      type: annual
+      source_url: https://dxm.content-center.totalenergies.com/api/wedia/dam/variation/xysh7dg731tahpohibzuk98e8h/pdf,original?hash=gr416cbzfh3dyctiryaukqt1go7dkqy-1794301693502&download=true
+      source_note: TotalEnergies Marketing Kenya FY2024 annual report, single entity, KES thousands converted to
+        millions. revenue net of indirect taxes. total_liabilities computed. dps 1.92 is first and final. shares_outstanding
+        includes 454.477 redeemable preference shares. ebit and long_term_debt omitted (no such lines).
+      values:
+        revenue: 114212.9
+        gross_profit: 8993.7
+        net_income: 1487.4
+        eps: 2.36
+        dps: 1.92
+        total_assets: 67931.6
+        total_liabilities: 35224.2
+        total_equity: 32707.4
+        current_assets: 51898.6
+        current_liabilities: 32830.7
+        retained_earnings: 20765.1
+        operating_cash_flow: 7343.0
+        shares_outstanding: 629.542
+    - period: FY2023
+      period_end: '2023-12-31'
+      published: '2024-05-01'
+      published_basis: deadline
+      type: annual
+      source_url: https://dxm.content-center.totalenergies.com/api/wedia/dam/variation/xysh7dg731tahgrhsfdmkdguto/original,default
+      source_note: TotalEnergies Marketing Kenya FY2023 annual report, single entity, KES thousands converted to
+        millions. revenue net of indirect taxes. total_liabilities computed. dps 1.92 is first and final. EPS 4.80
+        is from the FY2024 AR comparative; the FY2023 AR itself prints 4.48 on total comprehensive income. shares_outstanding
+        includes 454.477 redeemable preference shares. ebit and long_term_debt omitted.
+      field_sources:
+        eps: https://dxm.content-center.totalenergies.com/api/wedia/dam/variation/xysh7dg731tahpohibzuk98e8h/pdf,original?hash=gr416cbzfh3dyctiryaukqt1go7dkqy-1794301693502&download=true
+      values:
+        revenue: 120718.4
+        gross_profit: 12835.7
+        net_income: 3022.9
+        eps: 4.8
+        dps: 1.92
+        total_assets: 75315.5
+        total_liabilities: 43090.4
+        total_equity: 32225.0
+        current_assets: 52736.9
+        current_liabilities: 41286.6
+        retained_earnings: 20486.4
+        operating_cash_flow: 1440.6
+        shares_outstanding: 629.542
+  CARB:
+    name: Carbacid Investments Plc
+    gaps:
+    - FY2026 dps 2.00 is the proposed final only; AGM approval not verified
+    - Balance-sheet pages are image-only; some fields were read by OCR and checked by arithmetic ties
+    periods:
+    - period: FY2026
+      period_end: '2026-07-31'
+      published: '2026-11-11'
+      published_basis: retrieved
+      type: annual
+      source_url: https://carbacid.com/documents/97/2026_Annual_Report.pdf
+      source_note: Carbacid FY2026 annual report (authorised 3 Nov 2026), group, KES thousands converted to millions.
+        The balance sheet pages are image-only, so current_assets, current_liabilities, retained_earnings and long_term_debt
+        were OCR'd and cross-checked by arithmetic ties and the statement of changes in equity. ebit = printed operating
+        profit (includes other income and fair-value items). total_assets and total_liabilities computed. dps 2.00
+        is final only and PROPOSED (not confirmed as approved).
+      values:
+        revenue: 2113.472
+        gross_profit: 1353.127
+        ebit: 1472.161
+        net_income: 1125.354
+        eps: 4.42
+        dps: 2.0
+        total_assets: 7164.291
+        total_liabilities: 1407.047
+        total_equity: 5757.244
+        current_assets: 2331.764
+        current_liabilities: 592.906
+        retained_earnings: 5502.365
+        long_term_debt: 369.584
+        operating_cash_flow: 789.812
+        shares_outstanding: 254.852
+    - period: FY2025
+      period_end: '2025-07-31'
+      published: '2025-11-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://carbacid.com/documents/87/2025_Annual_Report.pdf
+      source_note: Carbacid FY2025 annual report, group, KES thousands converted to millions. Balance-sheet pages
+        are image-only (OCR'd and cross-checked by arithmetic ties and the SOCE). ebit = printed operating profit
+        incl. other income. total_assets and total_liabilities computed. dps 2.00 is final only.
+      values:
+        revenue: 2099.85
+        gross_profit: 1352.668
+        ebit: 1356.387
+        net_income: 1002.914
+        eps: 3.94
+        dps: 2.0
+        total_assets: 6679.688
+        total_liabilities: 1538.094
+        total_equity: 5141.594
+        current_assets: 1813.184
+        current_liabilities: 646.505
+        retained_earnings: 4886.715
+        long_term_debt: 500.554
+        operating_cash_flow: 920.173
+        shares_outstanding: 254.852
+    - period: FY2024
+      period_end: '2024-07-31'
+      published: '2024-11-30'
+      published_basis: deadline
+      type: annual
+      source_url: https://carbacid.com/documents/70/CIL_Annual_Report__Financial_Statements_2024.pdf
+      source_note: Carbacid FY2024 annual report as originally reported, group, KES thousands converted to millions.
+        The FY2025 AR restated FY2024 by moving 69.564 from current to non-current assets; the original is used.
+        Balance-sheet pages are image-only and OCR'd (current_assets, current_liabilities, long_term_debt), cross-checked
+        by arithmetic ties. ebit = printed operating profit incl. other income. total_assets and total_liabilities
+        computed. dps 1.70 is final only.
+      values:
+        revenue: 2066.315
+        gross_profit: 1219.52
+        ebit: 1166.874
+        net_income: 843.274
+        eps: 3.31
+        dps: 1.7
+        total_assets: 6278.323
+        total_liabilities: 1706.395
+        total_equity: 4571.928
+        current_assets: 1821.482
+        current_liabilities: 670.741
+        retained_earnings: 4306.251
+        long_term_debt: 655.496
+        operating_cash_flow: 861.477
+        shares_outstanding: 254.852

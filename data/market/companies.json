@@ -1,0 +1,480 @@
+{
+  "ABSA": {
+    "afx_stats_third_party": {
+      "Day's High Price": 31.0,
+      "Day's Low Price": 30.0,
+      "Dividend Per Share": 2.05,
+      "Dividend Yield": 0.0674,
+      "Earnings Per Share": 4.0597,
+      "Gross Turnover": 65400000.00000001,
+      "Market Capitalization": 165000000000.0,
+      "Number of Deals": 548.0,
+      "Opening Price": 30.9,
+      "Price/Earning Ratio": 7.49,
+      "Shares Outstanding": 5430000000.0,
+      "Traded Volume": 2120000.0
+    },
+    "as_of": "2026-11-11T12:18:01+00:00",
+    "avg_session_turnover": 11100000.0,
+    "avg_session_volume": 336948.0,
+    "industry": "Banking",
+    "perf": {
+      "1WK": 0.020099999999999996,
+      "1YR": 0.17600000000000002,
+      "3MO": -0.0993,
+      "4WK": -0.0788,
+      "6MO": 0.0447,
+      "YTD": 0.231
+    },
+    "sector": "Financials",
+    "stale": false
+  },
+  "BAT": {
+    "afx_stats_third_party": {
+      "Day's High Price": 544.0,
+      "Day's Low Price": 530.0,
+      "Dividend Per Share": 70.0,
+      "Dividend Yield": 0.129,
+      "Earnings Per Share": 52.4562,
+      "Gross Turnover": 31600000.0,
+      "Market Capitalization": 54400000000.0,
+      "Number of Deals": 303.0,
+      "Opening Price": 536.0,
+      "Price/Earning Ratio": 10.37,
+      "Shares Outstanding": 100000000.0,
+      "Traded Volume": 59070.0
+    },
+    "as_of": "2026-11-11T12:25:01+00:00",
+    "avg_session_turnover": 12500000.0,
+    "avg_session_volume": 22439.0,
+    "industry": "—",
+    "perf": {
+      "1WK": -0.0091,
+      "1YR": 0.209,
+      "3MO": -0.030299999999999997,
+      "4WK": -0.0286,
+      "6MO": 0.054299999999999994,
+      "YTD": 0.183
+    },
+    "sector": "Consumer Goods",
+    "stale": false
+  },
+  "CARB": {
+    "afx_stats_third_party": {
+      "Day's High Price": 44.0,
+      "Day's Low Price": 42.9,
+      "Dividend Per Share": 2.0,
+      "Dividend Yield": 0.0466,
+      "Earnings Per Share": 4.0531,
+      "Gross Turnover": 805280.85,
+      "Market Capitalization": 10900000000.0,
+      "Number of Deals": 94.0,
+      "Opening Price": 42.95,
+      "Price/Earning Ratio": 10.58,
+      "Shares Outstanding": 255000000.0,
+      "Traded Volume": 18681.0
+    },
+    "as_of": "2026-11-11T12:25:01+00:00",
+    "avg_session_turnover": 2029999.9999999998,
+    "avg_session_volume": 46485.0,
+    "industry": "—",
+    "perf": {
+      "1WK": 0.0387,
+      "1YR": 0.4,
+      "3MO": 0.0944,
+      "4WK": 0.0166,
+      "6MO": 0.45899999999999996,
+      "YTD": 0.479
+    },
+    "sector": "Basic Materials",
+    "stale": false
+  },
+  "COOP": {
+    "afx_stats_third_party": {
+      "Day's High Price": 38.0,
+      "Day's Low Price": 36.15,
+      "Dividend Per Share": 3.0,
+      "Dividend Yield": 0.083,
+      "Earnings Per Share": 5.29,
+      "Gross Turnover": 23000000.0,
+      "Market Capitalization": 212000000000.0,
+      "Number of Deals": 685.0,
+      "Opening Price": 37.05,
+      "Price/Earning Ratio": 6.83,
+      "Shares Outstanding": 5870000000.0,
+      "Traded Volume": 621775.0
+    },
+    "as_of": "2026-11-11T12:21:01+00:00",
+    "avg_session_turnover": 32299999.999999996,
+    "avg_session_volume": 874465.0,
+    "industry": "—",
+    "perf": {
+      "1WK": -0.015,
+      "1YR": 0.579,
+      "3MO": -0.0719,
+      "4WK": -0.015,
+      "6MO": 0.107,
+      "YTD": 0.509
+    },
+    "sector": "Financials",
+    "stale": false
+  },
+  "DTK": {
+    "afx_stats_third_party": {
+      "Day's High Price": 190.0,
+      "Day's Low Price": 186.5,
+      "Dividend Per Share": 9.0,
+      "Dividend Yield": 0.0483,
+      "Earnings Per Share": 36.7304,
+      "Gross Turnover": 2930000.0,
+      "Market Capitalization": 52100000000.0,
+      "Number of Deals": 85.0,
+      "Opening Price": 188.0,
+      "Price/Earning Ratio": 5.07,
+      "Shares Outstanding": 280000000.0,
+      "Traded Volume": 15603.0
+    },
+    "as_of": "2026-11-11T12:25:01+00:00",
+    "avg_session_turnover": 40100000.0,
+    "avg_session_volume": 217693.0,
+    "industry": "—",
+    "perf": {
+      "1WK": 0.0347,
+      "1YR": 0.616,
+      "3MO": 0.209,
+      "4WK": -0.0223,
+      "6MO": 0.24600000000000002,
+      "YTD": 0.645
+    },
+    "sector": "Financials",
+    "stale": false
+  },
+  "EABL": {
+    "afx_stats_third_party": {
+      "Day's High Price": 276.0,
+      "Day's Low Price": 272.0,
+      "Dividend Per Share": 9.5,
+      "Dividend Yield": 0.0349,
+      "Earnings Per Share": 15.9132,
+      "Gross Turnover": 41900000.0,
+      "Market Capitalization": 214000000000.0,
+      "Number of Deals": 140.0,
+      "Opening Price": 272.25,
+      "Price/Earning Ratio": 17.11,
+      "Shares Outstanding": 787000000.0,
+      "Traded Volume": 153965.0
+    },
+    "as_of": "2026-11-11T12:25:01+00:00",
+    "avg_session_turnover": 86400000.0,
+    "avg_session_volume": 300038.0,
+    "industry": "Beverages",
+    "perf": {
+      "1WK": -0.0009,
+      "1YR": 0.11,
+      "3MO": -0.0018,
+      "4WK": -0.061200000000000004,
+      "6MO": 0.149,
+      "YTD": 0.0254
+    },
+    "sector": "Consumer Goods",
+    "stale": false
+  },
+  "EQTY": {
+    "afx_stats_third_party": {
+      "Day's High Price": 100.0,
+      "Day's Low Price": 99.0,
+      "Dividend Per Share": 5.75,
+      "Dividend Yield": 0.0579,
+      "Earnings Per Share": 20.0053,
+      "Gross Turnover": 16600000.000000002,
+      "Market Capitalization": 375000000000.0,
+      "Number of Deals": 525.0,
+      "Opening Price": 99.5,
+      "Price/Earning Ratio": 4.96,
+      "Shares Outstanding": 3770000000.0,
+      "Traded Volume": 166895.0
+    },
+    "as_of": "2026-11-11T12:18:01+00:00",
+    "avg_session_turnover": 197000000.0,
+    "avg_session_volume": 1980000.0,
+    "industry": "Banking",
+    "perf": {
+      "1WK": 0.0366,
+      "1YR": 0.423,
+      "3MO": 0.11199999999999999,
+      "4WK": -0.0434,
+      "6MO": 0.32299999999999995,
+      "YTD": 0.48700000000000004
+    },
+    "sector": "Financials",
+    "stale": false
+  },
+  "IMH": {
+    "afx_stats_third_party": {
+      "Day's High Price": 85.5,
+      "Day's Low Price": 84.5,
+      "Dividend Per Share": 3.75,
+      "Dividend Yield": 0.0441,
+      "Earnings Per Share": 11.2502,
+      "Gross Turnover": 25700000.0,
+      "Market Capitalization": 148000000000.0,
+      "Number of Deals": 91.0,
+      "Opening Price": 84.5,
+      "Price/Earning Ratio": 7.56,
+      "Shares Outstanding": 1740000000.0,
+      "Traded Volume": 301890.0
+    },
+    "as_of": "2026-11-11T12:21:01+00:00",
+    "avg_session_turnover": 34200000.0,
+    "avg_session_volume": 408018.0,
+    "industry": "Banking",
+    "perf": {
+      "1WK": 0.0334,
+      "1YR": 0.85,
+      "3MO": 0.23600000000000002,
+      "4WK": -0.071,
+      "6MO": 0.6920000000000001,
+      "YTD": 1.0
+    },
+    "sector": "Financials",
+    "stale": false
+  },
+  "KCB": {
+    "afx_stats_third_party": {
+      "Day's High Price": 91.0,
+      "Day's Low Price": 89.5,
+      "Dividend Per Share": 6.0,
+      "Dividend Yield": 0.0669,
+      "Earnings Per Share": 20.319,
+      "Gross Turnover": 69000000.0,
+      "Market Capitalization": 288000000000.0,
+      "Number of Deals": 762.0,
+      "Opening Price": 89.75,
+      "Price/Earning Ratio": 4.42,
+      "Shares Outstanding": 3210000000.0,
+      "Traded Volume": 768131.0
+    },
+    "as_of": "2026-11-11T12:18:01+00:00",
+    "avg_session_turnover": 126000000.0,
+    "avg_session_volume": 1390000.0,
+    "industry": "Banking",
+    "perf": {
+      "1WK": 0.0346,
+      "1YR": 0.282,
+      "3MO": 0.037599999999999995,
+      "4WK": -0.0028000000000000004,
+      "6MO": 0.345,
+      "YTD": 0.365
+    },
+    "sector": "Financials",
+    "stale": false
+  },
+  "KEGN": {
+    "afx_stats_third_party": {
+      "Day's High Price": 9.8,
+      "Day's Low Price": 9.76,
+      "Dividend Per Share": 0.9,
+      "Dividend Yield": 0.09179999999999999,
+      "Earnings Per Share": 1.5894,
+      "Gross Turnover": 12100000.0,
+      "Market Capitalization": 64599999999.99999,
+      "Number of Deals": 1222.0,
+      "Opening Price": 9.8,
+      "Price/Earning Ratio": 6.17,
+      "Shares Outstanding": 6590000000.0,
+      "Traded Volume": 1230000.0
+    },
+    "as_of": "2026-11-11T12:25:02+00:00",
+    "avg_session_turnover": 18100000.0,
+    "avg_session_volume": 1660000.0,
+    "industry": "Electricity",
+    "perf": {
+      "1WK": -0.02,
+      "1YR": -0.0667,
+      "3MO": -0.129,
+      "4WK": -0.105,
+      "6MO": 0.0675,
+      "YTD": 0.0675
+    },
+    "sector": "Utilities",
+    "stale": false
+  },
+  "KPLC": {
+    "afx_stats_third_party": {
+      "Day's High Price": 22.3,
+      "Day's Low Price": 21.9,
+      "Dividend Per Share": 1.1,
+      "Dividend Yield": 0.05,
+      "Earnings Per Share": 12.7594,
+      "Gross Turnover": 10400000.0,
+      "Market Capitalization": 42900000000.0,
+      "Number of Deals": 756.0,
+      "Opening Price": 22.0,
+      "Price/Earning Ratio": 1.72,
+      "Shares Outstanding": 1950000000.0,
+      "Traded Volume": 472754.0
+    },
+    "as_of": "2026-11-11T12:25:02+00:00",
+    "avg_session_turnover": 27500000.0,
+    "avg_session_volume": 1220000.0,
+    "industry": "Electricity",
+    "perf": {
+      "1WK": 0.0023,
+      "1YR": 0.528,
+      "3MO": 0.10800000000000001,
+      "4WK": -0.0068000000000000005,
+      "6MO": 0.401,
+      "YTD": 0.618
+    },
+    "sector": "Utilities",
+    "stale": false
+  },
+  "NCBA": {
+    "afx_stats_third_party": {
+      "Day's High Price": 89.75,
+      "Day's Low Price": 87.75,
+      "Dividend Per Share": 7.1,
+      "Dividend Yield": 0.0809,
+      "Earnings Per Share": 14.4957,
+      "Gross Turnover": 1610000.0,
+      "Market Capitalization": 145000000000.0,
+      "Number of Deals": 148.0,
+      "Opening Price": 88.25,
+      "Price/Earning Ratio": 6.05,
+      "Shares Outstanding": 1650000000.0,
+      "Traded Volume": 18195.0
+    },
+    "as_of": "2026-11-11T12:21:01+00:00",
+    "avg_session_turnover": 12900000.0,
+    "avg_session_volume": 143177.0,
+    "industry": "Banking",
+    "perf": {
+      "1WK": -0.0436,
+      "1YR": 0.0446,
+      "3MO": -0.0331,
+      "4WK": -0.013999999999999999,
+      "6MO": 0.0263
+    },
+    "sector": "Financials",
+    "stale": false
+  },
+  "SBIC": {
+    "afx_stats_third_party": {
+      "Day's High Price": 269.0,
+      "Day's Low Price": 260.0,
+      "Dividend Per Share": 22.35,
+      "Dividend Yield": 0.08560000000000001,
+      "Earnings Per Share": 34.7009,
+      "Gross Turnover": 128000000.0,
+      "Market Capitalization": 103000000000.0,
+      "Number of Deals": 62.0,
+      "Opening Price": 261.25,
+      "Price/Earning Ratio": 7.53,
+      "Shares Outstanding": 395000000.0,
+      "Traded Volume": 490249.0
+    },
+    "as_of": "2026-11-11T12:25:02+00:00",
+    "avg_session_turnover": 13200000.0,
+    "avg_session_volume": 47467.0,
+    "industry": "—",
+    "perf": {
+      "1WK": -0.011399999999999999,
+      "1YR": 0.342,
+      "3MO": -0.061900000000000004,
+      "4WK": -0.051699999999999996,
+      "6MO": -0.115,
+      "YTD": 0.325
+    },
+    "sector": "Financials",
+    "stale": false
+  },
+  "SCBK": {
+    "afx_stats_third_party": {
+      "Day's High Price": 302.5,
+      "Day's Low Price": 300.0,
+      "Dividend Per Share": 31.0,
+      "Dividend Yield": 0.10300000000000001,
+      "Earnings Per Share": 29.0854,
+      "Gross Turnover": 122000000.0,
+      "Market Capitalization": 114000000000.0,
+      "Number of Deals": 149.0,
+      "Opening Price": 302.0,
+      "Price/Earning Ratio": 10.37,
+      "Shares Outstanding": 378000000.0,
+      "Traded Volume": 403314.0
+    },
+    "as_of": "2026-11-11T12:21:01+00:00",
+    "avg_session_turnover": 11100000.0,
+    "avg_session_volume": 34224.0,
+    "industry": "—",
+    "perf": {
+      "1WK": 0.0008,
+      "1YR": -0.0313,
+      "3MO": -0.11199999999999999,
+      "4WK": -0.051100000000000007,
+      "6MO": -0.109,
+      "YTD": 0.0058
+    },
+    "sector": "Financials",
+    "stale": false
+  },
+  "SCOM": {
+    "afx_stats_third_party": {
+      "Day's High Price": 35.5,
+      "Day's Low Price": 34.9,
+      "Dividend Per Share": 2.3,
+      "Dividend Yield": 0.0662,
+      "Earnings Per Share": 2.3863,
+      "Gross Turnover": 298000000.0,
+      "Market Capitalization": 1390000000000.0,
+      "Number of Deals": 1067.0,
+      "Opening Price": 35.05,
+      "Price/Earning Ratio": 14.56,
+      "Shares Outstanding": 40100000000.0,
+      "Traded Volume": 8490000.0
+    },
+    "as_of": "2026-11-11T12:25:02+00:00",
+    "avg_session_turnover": 239000000.0,
+    "avg_session_volume": 6680000.0,
+    "industry": "Mobile Telecommunications",
+    "perf": {
+      "1WK": 0.031200000000000002,
+      "1YR": 0.17800000000000002,
+      "3MO": -0.0184,
+      "4WK": -0.029300000000000003,
+      "6MO": 0.139,
+      "YTD": 0.226
+    },
+    "sector": "Telecommunications",
+    "stale": false
+  },
+  "TOTL": {
+    "afx_stats_third_party": {
+      "Day's High Price": 45.5,
+      "Day's Low Price": 44.55,
+      "Dividend Per Share": 3.45,
+      "Dividend Yield": 0.0756,
+      "Earnings Per Share": 3.4483,
+      "Gross Turnover": 270264.9,
+      "Market Capitalization": 28700000000.0,
+      "Number of Deals": 74.0,
+      "Price/Earning Ratio": 13.24,
+      "Shares Outstanding": 630000000.0,
+      "Traded Volume": 5989.0
+    },
+    "as_of": "2026-11-11T12:32:23+00:00",
+    "avg_session_turnover": 1060000.0,
+    "avg_session_volume": 22200.0,
+    "industry": "—",
+    "perf": {
+      "1WK": 0.0066,
+      "1YR": 0.0375,
+      "3MO": 0.053099999999999994,
+      "4WK": -0.0183,
+      "6MO": 0.0044,
+      "YTD": 0.21899999999999997
+    },
+    "sector": "Oil & Gas",
+    "stale": false
+  }
+}

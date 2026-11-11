@@ -1,0 +1,10 @@
+# Copy to portfolio.yaml (gitignored) and run `python -m nse_agent review`.
+# The review applies fixed rules and returns Sell, Trim, Add or Hold for each holding.
+# cost is your average purchase price per share in KES (optional).
+holdings:
+  - ticker: KCB
+    shares: 1000
+    cost: 38.50
+  - ticker: SCOM
+    shares: 2000
+    cost: 18.20

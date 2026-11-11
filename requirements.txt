@@ -1,0 +1,5 @@
+requests>=2.31
+PyYAML>=6.0
+pypdf>=4.0
+Markdown>=3.5
+pytest>=8.0

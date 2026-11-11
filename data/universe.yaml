@@ -1,0 +1,25 @@
+# Coverage universe. Insurers are excluded until insurance-specific valuation
+# (embedded value, solvency) is built; they are listed as data gaps in the report.
+stocks:
+  - {ticker: EQTY, name: Equity Group Holdings, sector: Banking, bank: true, aliases: ["Equity Group", "Equity Bank"]}
+  - {ticker: KCB, name: KCB Group, sector: Banking, bank: true, aliases: ["KCB Group", "KCB Bank"]}
+  - {ticker: ABSA, name: Absa Bank Kenya, sector: Banking, bank: true, aliases: ["Absa Bank Kenya", "Absa Kenya"]}
+  - {ticker: COOP, name: Co-operative Bank of Kenya, sector: Banking, bank: true, aliases: ["Co-operative Bank", "Co-op Bank", "Cooperative Bank"]}
+  - {ticker: SCBK, name: Standard Chartered Bank Kenya, sector: Banking, bank: true, aliases: ["Standard Chartered Bank Kenya", "Standard Chartered"]}
+  - {ticker: NCBA, name: NCBA Group, sector: Banking, bank: true, aliases: ["NCBA Group", "NCBA Bank"]}
+  - {ticker: IMH, name: I&M Group, sector: Banking, bank: true, aliases: ["I&M Group", "I&M Holdings", "I&M Bank"]}
+  - {ticker: DTK, name: Diamond Trust Bank Kenya, sector: Banking, bank: true, aliases: ["Diamond Trust Bank", "DTB Kenya"]}
+  - {ticker: SBIC, name: Stanbic Holdings, sector: Banking, bank: true, aliases: ["Stanbic Holdings", "Stanbic Bank Kenya"]}
+  - {ticker: SCOM, name: Safaricom, sector: Telecommunication, bank: false, aliases: ["Safaricom"]}
+  - {ticker: EABL, name: East African Breweries, sector: Manufacturing, bank: false, aliases: ["East African Breweries", "EABL"]}
+  - {ticker: BAT, name: British American Tobacco Kenya, sector: Manufacturing, bank: false, aliases: ["British American Tobacco Kenya", "BAT Kenya"]}
+  - {ticker: CARB, name: Carbacid Investments, sector: Manufacturing, bank: false, aliases: ["Carbacid"]}
+  - {ticker: KEGN, name: KenGen, sector: Energy, bank: false, aliases: ["KenGen", "Kenya Electricity Generating"]}
+  - {ticker: KPLC, name: Kenya Power and Lighting, sector: Energy, bank: false, aliases: ["Kenya Power"]}
+  - {ticker: TOTL, name: TotalEnergies Marketing Kenya, sector: Energy, bank: false, aliases: ["TotalEnergies Marketing Kenya", "Total Kenya", "TotalEnergies"]}
+
+excluded:
+  - {ticker: BRIT, reason: "Insurer: needs embedded-value model (not built)"}
+  - {ticker: JUB, reason: "Insurer: needs embedded-value model (not built)"}
+  - {ticker: CIC, reason: "Insurer: needs embedded-value model (not built)"}
+  - {ticker: KNRE, reason: "Insurer: needs embedded-value model (not built)"}

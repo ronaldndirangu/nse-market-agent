@@ -1,0 +1,35 @@
+# Macro inputs. Every value carries a source. Update when CBK publishes new auction results.
+as_of: "2026-11-11"
+
+risk_free:
+  tbill_91d: {value: 0.08750, source: "https://www.centralbank.go.ke/rates/government-securities/", note: "Auction 2026-11-09"}
+  tbill_182d: {value: 0.08845, source: "https://businessradar.co.ke/treasury-bill-auction-results-november-9-2026/", note: "Auction 2026-11-09"}
+  tbill_364d: {value: 0.090282, source: "https://businessradar.co.ke/treasury-bill-auction-results-november-9-2026/", note: "Auction 2026-11-09"}
+  bond_10y: {value: 0.1248, source: "https://tradingeconomics.com/kenya/government-bond-yield", note: "Third-party aggregator; approximate"}
+
+policy:
+  cbr: {value: 0.0875, source: "https://www.centralbank.go.ke/rates/government-securities/"}
+  inflation: {value: 0.073, source: "https://www.centralbank.go.ke/", note: "October 2026 CPI inflation"}
+  lending_rate: {value: 0.144, source: "https://www.centralbank.go.ke/"}
+  usd_kes: {value: 129.95, source: "https://www.centralbank.go.ke/"}
+
+# Damodaran country risk data, January 2026 update.
+equity_risk:
+  source: "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ctryprem.html"
+  rating: Caa1
+  default_spread: 0.0637
+  country_risk_premium: 0.0971
+  mature_market_erp: 0.0423
+  total_erp: 0.1394
+  tax_rate: 0.30
+
+# Cost of equity ke = (bond_10y - default_spread) + beta * mature_market_erp + country_risk_premium.
+# Using the 10-year KES yield net of the sovereign default spread avoids double counting
+# the country premium. About 20% at beta 1.
+
+taxes_and_costs:
+  source: "https://businessradar.co.ke/how-to-buy-shares-on-the-nairobi-securities-exchange/"
+  trade_cost_per_side: 0.0182   # brokerage, NSE, CMA, CDSC, ICF levies; up to 2.10% for small trades
+  dividend_wht: 0.05            # resident individuals
+  tbill_interest_wht: 0.15
+  note: "No stamp duty on listed shares. Capital gains tax is not modelled."

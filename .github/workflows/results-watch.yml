@@ -1,0 +1,85 @@
+name: Results watch
+
+on:
+  schedule:
+    - cron: "30 13 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+env:
+  QUEUE: data/results_queue.yaml
+  BRANCH: results-review
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Continue an open review PR if there is one
+        id: open
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$BRANCH" --state open --json number --jq length)
+          echo "count=$n" >> "$GITHUB_OUTPUT"
+          if [ "$n" != "0" ]; then git show "origin/$BRANCH:$QUEUE" > "$QUEUE" || true; fi
+      - name: Detect results announcements and extract figures
+        run: python -m nse_agent results-watch | tee "$RUNNER_TEMP/watch.txt"
+      - name: Commit announcement log to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$QUEUE" "$RUNNER_TEMP/queue.yaml" 2>/dev/null || true
+          git checkout HEAD -- "$QUEUE" 2>/dev/null || rm -f "$QUEUE"
+          git add data
+          if ! git diff --cached --quiet; then
+            git commit -m "Announcements $(date -u +%F)"
+            git pull --rebase
+            git push
+          fi
+      - name: Open or update the review PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OPEN_PRS: ${{ steps.open.outputs.count }}
+        run: |
+          [ -f "$RUNNER_TEMP/queue.yaml" ] || { echo "Nothing queued"; exit 0; }
+          if [ "$OPEN_PRS" != "0" ]; then
+            git checkout -B "$BRANCH" "origin/$BRANCH"
+          else
+            git checkout -B "$BRANCH"
+          fi
+          cp "$RUNNER_TEMP/queue.yaml" "$QUEUE"
+          git add "$QUEUE"
+          if git diff --cached --quiet; then echo "Queue unchanged"; exit 0; fi
+          git commit -m "Queue results for review $(date -u +%F)"
+          if [ "$OPEN_PRS" != "0" ]; then git push origin "$BRANCH"; exit 0; fi
+          git push --force origin "$BRANCH"
+          {
+            echo "New results announcements were detected. Rule-based extraction is in \`$QUEUE\`."
+            echo
+            echo "Before merging:"
+            echo "1. Open each source link and check every figure against the filing."
+            echo "2. Copy verified figures into \`data/fundamentals.yaml\` in KES millions, with \`source_url\`, \`period\` and \`published\`."
+            echo "3. Delete the reviewed entries from the queue."
+            echo
+            echo '```text'
+            cat "$RUNNER_TEMP/watch.txt"
+            echo '```'
+          } > "$RUNNER_TEMP/pr.md"
+          gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$BRANCH" \
+            --title "Review new results $(date -u +%F)" --body-file "$RUNNER_TEMP/pr.md"
