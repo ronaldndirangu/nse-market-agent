@@ -57,7 +57,7 @@ All thresholds live in [`data/settings.yaml`](data/settings.yaml).
 | Daily brief | 13:00 Mon to Fri (16:00 EAT) | Records closing prices, values and ranks every stock, writes the daily brief (top 5 tiered Buy, Watch or Avoid, with reasons and what changed), appends the prediction ledger in `data/rankings/`, deploys Pages, and comments on the `daily-alert` issue only on a material change |
 | Results watch | 13:30 Mon to Fri | Detects results announcements, extracts figures by rule, opens a review PR |
 | Weekly report | 14:00 Friday | Values and ranks, runs simulation, backtest, scorecard and retrospective, commits `reports/`, deploys Pages, opens an issue |
-| Monthly scorecard | 15:00 on the 1st | Scores every logged pick against the market and refreshes the retrospective |
+| Monthly scorecard | 15:00 on the 1st | Scores every logged pick against the market, refreshes the retrospective and the weight test, and opens a `tune-weights` PR only when new weights win out of sample. Weights never change without your merge |
 | CI | Every push and PR | Runs the test suite |
 
 Every workflow also runs on demand from the Actions tab. GitHub pauses schedules in a public repo after 60 days with no
@@ -113,6 +113,10 @@ companies:
   return, Spearman rank IC and bear-bull band calibration). Reverse attribution takes each month's actual top 5
   performers, shows the rank the engine gave them, which signals flagged them, and classifies each miss as an event,
   missing data, a turnaround, macro or a signal miss. A per-signal IC table shows which signals carry information.
+- `reports/tuning.md`: walk-forward test of the ranking weights. On each month start it picks the weights (0.1 grid over
+  margin of safety, quality, momentum and dividend yield) with the best mean 3-month IC using only windows that had
+  matured by that date, then scores the next month's top 5 out of sample at 3 and 12 months against the current
+  weights. It recommends new weights only when they beat the current ones on IC and excess return at both horizons.
 - `reports/latest.md`: ranked picks, fair-value ranges, bear/base/bull returns, risks, confidence and data gaps.
 - `reports/simulation.md`: Monte Carlo (block bootstrap of weekly returns) for 1, 3 and 5 years, plus replays of the
   2016 rate-cap shock, the 2020 COVID crash and the 2023 sell-off.
@@ -136,6 +140,8 @@ python -m venv .venv
 | `brief [--no-fetch] [--no-prices]` | Daily brief and ledger append |
 | `reconstruct` | Rebuild the point-in-time reconstructed ledger |
 | `retro [--no-rebuild]` | Forward scorecard, per-signal IC and reverse attribution |
+| `tune-weights [--proposal-file F] [--body-file F]` | Walk-forward weight test; writes a proposal only when it wins out of sample |
+| `apply-weights F` | Write a proposal's weights into `data/settings.yaml` (used on the PR branch) |
 | `simulate [--paths N]` | Monte Carlo projection of current picks |
 | `backtest [--top N]` | Walk-forward backtest |
 | `score` | Score logged picks |

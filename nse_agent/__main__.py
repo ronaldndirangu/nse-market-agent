@@ -25,6 +25,11 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("reconstruct", help="Rerun the engine point in time on every month start (reconstructed ledger)")
     rt = sub.add_parser("retro", help="Forward scorecard, per-signal IC and reverse attribution")
     rt.add_argument("--no-rebuild", action="store_true", help="Reuse the existing reconstructed ledger")
+    tw = sub.add_parser("tune-weights", help="Walk-forward weight tuning report (never edits settings)")
+    tw.add_argument("--proposal-file", help="Write proposed weights here as JSON when a change is recommended")
+    tw.add_argument("--body-file", help="Write a pull request body here when a change is recommended")
+    aw = sub.add_parser("apply-weights", help="Set ranking weights in settings.yaml from a proposal file (review branch)")
+    aw.add_argument("proposal")
     sub.add_parser("review", help="Review portfolio.yaml holdings")
     sub.add_parser("results-watch", help="Detect new results announcements and queue them for review")
     sub.add_parser("mcp", help="Run the MCP server (needs the mcp extra)")
@@ -73,6 +78,15 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "retro":
         from .retrospective import run_retro
         print(run_retro(rebuild=not args.no_rebuild))
+        return 0
+    if args.cmd == "tune-weights":
+        from .tuning import run_tuning
+        print(run_tuning(proposal_file=args.proposal_file, body_file=args.body_file))
+        return 0
+    if args.cmd == "apply-weights":
+        import json
+        from .tuning import apply
+        apply(json.loads(open(args.proposal, encoding="utf-8").read()))
         return 0
     if args.cmd == "review":
         from .portfolio import run_review
