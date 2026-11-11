@@ -35,21 +35,21 @@ No earlier brief in the ledger, so there is nothing to compare yet.
 
 | Rank | Ticker | Tier | Composite | Price | MoS | Bear / base / bull a year | Div. yield | Volatility | Binding constraint |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | KPLC | Watch | +1.53 | KES 22.00 | 56.9% | -13.9% / 29.6% / 56.7% | 6.8% | 36.7% | Not a Buy: margin of safety under 15% (1 of 2 models agree, needs 2). |
-| 2 | KCB | Watch | +0.94 | KES 89.75 | 8.1% | -6.4% / 16.0% / 36.3% | 7.8% | 30.2% | Not a Buy: margin of safety under 15% (2 of 5 models agree, needs 3). |
+| 1 | KPLC | Watch | +1.53 | KES 22.00 | 56.9% | -13.9% / 29.6% / 56.7% | 5.0% | 36.7% | Not a Buy: margin of safety under 15% (1 of 2 models agree, needs 2). |
+| 2 | KCB | Watch | +0.94 | KES 89.75 | 8.1% | -6.4% / 16.0% / 36.3% | 6.7% | 30.2% | Not a Buy: margin of safety under 15% (2 of 5 models agree, needs 3). |
 | 3 | EQTY | Avoid | +0.86 | KES 99.50 | -3.4% | -14.4% / 10.1% / 26.4% | 5.8% | 31.0% | Avoid: margin of safety under 15% (1 of 5 models agree, needs 3); base return 10.1% does not beat the 12.67% hurdle. |
 | 4 | COOP | Avoid | +0.43 | KES 37.05 | -25.8% | -8.5% / 2.1% / 12.3% | 6.7% | 29.2% | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return 2.1% does not beat the 12.67% hurdle. |
-| 5 | ABSA | Avoid | +0.30 | KES 30.90 | -25.2% | -10.2% / 2.2% / 11.3% | 6.6% | 34.5% | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return 2.2% does not beat the 12.67% hurdle. |
+| 5 | ABSA | Avoid | +0.30 | KES 30.90 | -25.2% | -10.2% / 2.2% / 11.3% | 7.6% | 34.5% | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return 2.2% does not beat the 12.67% hurdle. |
 | 6 | IMH | Avoid | +0.20 | KES 85.00 | -46.3% | -23.2% / -10.1% / 11.0% | 4.4% | 31.0% | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return -10.1% does not beat the 12.67% hurdle. |
 | 7 | BAT | Avoid | -0.20 | KES 536.00 | -38.1% | -9.9% / -3.6% / 2.4% | 13.1% | 21.8% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -3.6% does not beat the 12.67% hurdle. |
 | 8 | DTK | Avoid | -0.21 | KES 187.75 | -23.5% | -19.3% / 1.2% / 50.8% | 4.8% | 29.6% | Avoid: margin of safety under 15% (2 of 5 models agree, needs 3); base return 1.2% does not beat the 12.67% hurdle. |
 | 9 | EABL | Avoid | -0.36 | KES 272.25 | -66.1% | -29.3% / -22.1% / -15.6% | 4.7% | 34.4% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -22.1% does not beat the 12.67% hurdle. |
-| 10 | NCBA | Watch | -0.41 | KES 88.25 | 0.6% | -0.2% / 13.7% / 21.6% | 8.0% | 24.2% | Not a Buy: margin of safety under 15% (1 of 5 models agree, needs 3). |
-| 11 | KEGN | Avoid | -0.41 | KES 9.80 | -46.8% | -20.7% / -11.5% / -3.3% | 7.7% | 33.7% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -11.5% does not beat the 12.67% hurdle. |
+| 10 | NCBA | Watch | -0.41 | KES 88.25 | 0.6% | -0.2% / 13.7% / 21.6% | 9.5% | 24.2% | Not a Buy: margin of safety under 15% (1 of 5 models agree, needs 3). |
+| 11 | KEGN | Avoid | -0.41 | KES 9.80 | -46.8% | -20.7% / -11.5% / -3.3% | 16.8% | 33.7% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -11.5% does not beat the 12.67% hurdle. |
 | 12 | CARB | Avoid | -0.44 | KES 43.10 | -58.4% | -20.6% / -16.9% / -13.2% | 4.6% | 39.0% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -16.9% does not beat the 12.67% hurdle. |
 | 13 | SCOM | Avoid | -0.48 | KES 35.05 | -63.9% | -28.0% / -20.2% / -13.2% | 5.7% | 24.3% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -20.2% does not beat the 12.67% hurdle. |
-| 14 | SBIC | Avoid | -0.51 | KES 261.25 | -25.7% | -1.1% / 3.3% / 14.2% | 8.6% | 27.2% | Avoid: quality gate failed (Piotroski 2/6 below gate); margin of safety under 15% (0 of 5 models agree, needs 3) (+1 more). |
-| 15 | SCBK | Avoid | -0.54 | KES 302.00 | -28.9% | -9.6% / -1.2% / 1.2% | 10.3% | 18.4% | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return -1.2% does not beat the 12.67% hurdle. |
+| 14 | SBIC | Avoid | -0.51 | KES 261.25 | -25.7% | -1.1% / 3.3% / 14.2% | 7.7% | 27.2% | Avoid: quality gate failed (Piotroski 2/6 below gate); margin of safety under 15% (0 of 5 models agree, needs 3) (+1 more). |
+| 15 | SCBK | Avoid | -0.54 | KES 302.00 | -28.9% | -9.6% / -1.2% / 1.2% | 10.4% | 18.4% | Avoid: margin of safety under 15% (0 of 5 models agree, needs 3); base return -1.2% does not beat the 12.67% hurdle. |
 | 16 | TOTL | Avoid | -0.71 | KES 45.15 | -59.9% | -22.0% / -20.2% / -18.4% | 7.6% | 26.8% | Avoid: margin of safety under 15% (0 of 2 models agree, needs 2); base return -20.2% does not beat the 12.67% hurdle. |
 
 ## How to read this
