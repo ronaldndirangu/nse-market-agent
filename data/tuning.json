@@ -1,0 +1,290 @@
+{
+  "candidates": 286,
+  "changed": true,
+  "current": {
+    "margin_of_safety": 0.5,
+    "momentum": 0.2,
+    "quality": 0.3
+  },
+  "data_end": "2026-11-11",
+  "dates": 31,
+  "first": "2024-05-01",
+  "generated": "2026-11-11",
+  "path": [
+    {
+      "date": "2025-01-01",
+      "train": 6,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.4,
+        "momentum": 0.4,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2025-02-01",
+      "train": 7,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.4,
+        "momentum": 0.4,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2025-03-01",
+      "train": 8,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.4,
+        "momentum": 0.4,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2025-04-01",
+      "train": 9,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.4,
+        "momentum": 0.4,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2025-05-01",
+      "train": 10,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.4,
+        "momentum": 0.4,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2025-06-01",
+      "train": 11,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.4,
+        "momentum": 0.4,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2025-07-01",
+      "train": 12,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.4,
+        "momentum": 0.4,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2025-08-01",
+      "train": 13,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.4,
+        "momentum": 0.4,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2025-09-01",
+      "train": 14,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.4,
+        "momentum": 0.4,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2025-10-01",
+      "train": 15,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.4,
+        "momentum": 0.4,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2025-11-01",
+      "train": 16,
+      "weights": {
+        "dividend_yield": 0.2,
+        "margin_of_safety": 0.4,
+        "momentum": 0.4,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2025-12-01",
+      "train": 17,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.6,
+        "momentum": 0.3,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2026-01-01",
+      "train": 18,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.6,
+        "momentum": 0.3,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2026-02-01",
+      "train": 19,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.6,
+        "momentum": 0.3,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2026-03-01",
+      "train": 20,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.7,
+        "momentum": 0.2,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2026-04-01",
+      "train": 21,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.8,
+        "momentum": 0.1,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2026-05-01",
+      "train": 22,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.8,
+        "momentum": 0.1,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2026-06-01",
+      "train": 23,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.8,
+        "momentum": 0.1,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2026-07-01",
+      "train": 24,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.8,
+        "momentum": 0.1,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2026-08-01",
+      "train": 25,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.8,
+        "momentum": 0.1,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2026-09-01",
+      "train": 26,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.8,
+        "momentum": 0.1,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2026-10-01",
+      "train": 27,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.8,
+        "momentum": 0.1,
+        "quality": 0.0
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "train": 28,
+      "weights": {
+        "dividend_yield": 0.1,
+        "margin_of_safety": 0.8,
+        "momentum": 0.1,
+        "quality": 0.0
+      }
+    }
+  ],
+  "proposal": {
+    "dividend_yield": 0.1,
+    "margin_of_safety": 0.8,
+    "momentum": 0.1,
+    "quality": 0.0
+  },
+  "recommend": false,
+  "results": {
+    "12": {
+      "current": {
+        "excess": 0.1549769114164846,
+        "hit_rate": 0.7090909090909091,
+        "ic": 0.39518716577540103,
+        "n": 11,
+        "top_return": 0.8676674581191626,
+        "universe": 0.712690546702678
+      },
+      "tuned": {
+        "excess": 0.0650416028894431,
+        "hit_rate": 0.5818181818181819,
+        "ic": 0.30213903743315507,
+        "n": 11,
+        "top_return": 0.7777321495921211,
+        "universe": 0.712690546702678
+      }
+    },
+    "3": {
+      "current": {
+        "excess": 0.0308875717298362,
+        "hit_rate": 0.5,
+        "ic": 0.13397058823529412,
+        "n": 20,
+        "top_return": 0.17544250538558595,
+        "universe": 0.14455493365574973
+      },
+      "tuned": {
+        "excess": 0.03225173085576051,
+        "hit_rate": 0.52,
+        "ic": 0.16720588235294118,
+        "n": 20,
+        "top_return": 0.17680666451151025,
+        "universe": 0.14455493365574973
+      }
+    }
+  }
+}
