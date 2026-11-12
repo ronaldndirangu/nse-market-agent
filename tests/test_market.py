@@ -79,3 +79,37 @@ def test_partial_afx_listing_falls_back_to_nse(data_dir, monkeypatch):
 def test_nse_status(fixture_text):
     assert nse.parse_status(json.loads(fixture_text("nse_ticker.json"))) == "open"
     assert nse.parse_status({}) is None
+
+
+def test_nse_uses_official_close_and_keeps_unknown_volume(data_dir, monkeypatch):
+    storage.upsert_prices("AAA", [("2026-11-12", 10.5, 700.0)])
+    rows = {"AAA": {"price": 11.0, "today_close": 10.8, "turnover": 1.0}}
+    monkeypatch.setattr(afx, "fetch_listing", _afx(INTRADAY))
+    monkeypatch.setattr(nse, "fetch_snapshot", lambda: ("2026-11-12", rows, "closed"))
+    market.update_daily(["AAA"])
+    assert _closes("AAA") == [("2026-11-12", 10.8, 700.0)]
+
+
+@pytest.mark.parametrize("hour, intraday", [(11, True), (16, False)])
+def test_nse_missing_status_judged_by_clock(data_dir, monkeypatch, hour, intraday):
+    monkeypatch.setattr(afx, "fetch_listing", _afx(INTRADAY))
+    monkeypatch.setattr(nse, "fetch_snapshot", lambda: _nse()()[:2] + (None,))
+    monkeypatch.setattr(market, "_now_eat", lambda: market.datetime(2026, 11, 12, hour, tzinfo=market.EAT))
+    snap = market.update_daily(["AAA"])
+    assert snap["intraday"] is intraday
+    assert bool(_closes("AAA")) is not intraday
+
+
+def test_nse_snapshot_keeps_known_suspension(data_dir, monkeypatch):
+    storage.write_json(storage.market_path("listing.json"), {"trade_date": "2026-11-11", "rows": {
+        "CCC": {"suspended": True}, "DDD": {"suspended": True}, "BBB": {"suspended": True}}})
+    rows = {"CCC": {"price": 31.0, "volume": None}, "BBB": {"price": 21.0, "volume": 400.0}}
+    monkeypatch.setattr(afx, "fetch_listing", _afx(INTRADAY))
+    monkeypatch.setattr(nse, "fetch_snapshot", lambda: ("2026-11-12", rows, "closed"))
+    snap = market.update_daily(["BBB", "CCC", "DDD"])
+    assert snap["rows"]["CCC"]["suspended"] is True
+    assert snap["rows"]["CCC"]["suspended_as_of"] == "2026-11-11"
+    assert snap["rows"]["DDD"]["suspended"] is True
+    assert snap["rows"]["BBB"]["suspended"] is False
+    assert _closes("CCC") == []
+    assert _closes("BBB") == [("2026-11-12", 21.0, 400.0)]

@@ -27,8 +27,10 @@ def _from_afx(tickers: list[str]) -> dict:
     stamp = _eat(listing.as_of)
     if not listing.rows or stamp is None:
         raise ValueError("AFX listing returned no rows")
+    # A blank AFX volume means no trades in the session.
     rows = {
-        row.ticker: {"price": row.price, "volume": row.volume, "suspended": row.suspended, "name": row.name}
+        row.ticker: {"price": row.price, "volume": row.volume if row.volume is not None else 0.0,
+                     "suspended": row.suspended, "name": row.name}
         for row in listing.rows
     }
     covered = sum(1 for t in tickers if t in rows)
@@ -38,15 +40,46 @@ def _from_afx(tickers: list[str]) -> dict:
             "intraday": stamp.hour < MARKET_CLOSE_HOUR_EAT, "rows": rows, "nasi": listing.nasi}
 
 
+def _now_eat() -> datetime:
+    return datetime.now(EAT)
+
+
 def _from_nse() -> dict:
     trade_date, rows, status = nse.fetch_snapshot()
     if not rows or not trade_date:
         raise ValueError("NSE ticker API returned no rows")
+    if status:
+        intraday = status != "closed"
+    else:
+        now = _now_eat()
+        intraday = trade_date >= now.date().isoformat() and now.hour < MARKET_CLOSE_HOUR_EAT
+    # `today_close` is the official close; `price` is the last trade. A missing volume stays unknown.
     # The ticker API carries no suspension flag, so suspension stays unknown (None).
-    return {"source": "nse", "trade_date": trade_date, "market_status": status,
-            "intraday": status is not None and status != "closed",
-            "rows": {issuer: {"price": r.get("price"), "volume": r.get("volume"), "suspended": None,
-                              "turnover": r.get("turnover")} for issuer, r in rows.items()}}
+    return {"source": "nse", "trade_date": trade_date, "market_status": status, "intraday": intraday,
+            "rows": {issuer: {"price": r["today_close"] if r.get("today_close") is not None else r.get("price"),
+                              "volume": r.get("volume"), "suspended": None, "turnover": r.get("turnover")}
+                     for issuer, r in rows.items()}}
+
+
+def _carry_suspension(snapshot: dict, previous: dict) -> None:
+    """Keep the last known suspension flag when the new source has none, unless the stock traded today."""
+    rows = snapshot["rows"]
+    for t, old in (previous.get("rows") or {}).items():
+        if old.get("suspended") is None:
+            continue
+        new = rows.get(t)
+        if new is None:
+            if old["suspended"]:
+                rows[t] = {"price": None, "volume": None, "suspended": True,
+                           "suspended_as_of": old.get("suspended_as_of") or previous.get("trade_date")}
+            continue
+        if new.get("suspended") is not None:
+            continue
+        if new.get("volume"):
+            new["suspended"] = False
+        else:
+            new["suspended"] = old["suspended"]
+            new["suspended_as_of"] = old.get("suspended_as_of") or previous.get("trade_date")
 
 
 def update_daily(tickers: list[str] | None = None) -> dict:
@@ -79,17 +112,18 @@ def update_daily(tickers: list[str] | None = None) -> dict:
             log.error("no price source succeeded; keeping cached prices")
             snapshot["source"] = "cache"
     if snapshot["source"] in ("afx", "nse"):
+        listing_path = storage.market_path("listing.json")
+        _carry_suspension(snapshot, storage.read_json(listing_path, {}) or {})
         if not snapshot["intraday"]:
             for t in tickers:
                 r = snapshot["rows"].get(t)
                 if not r or r.get("price") is None or r.get("suspended"):
                     continue
-                # A blank volume on the listing means no trades in the session.
-                volume = r.get("volume") if r.get("volume") is not None else 0.0
-                storage.upsert_prices(t, [(snapshot["trade_date"], float(r["price"]), float(volume))])
+                volume = float(r["volume"]) if r.get("volume") is not None else None
+                storage.upsert_prices(t, [(snapshot["trade_date"], float(r["price"]), volume)])
             if snapshot.get("nasi"):
                 storage.upsert_series(storage.nasi_path(), [(snapshot["trade_date"], snapshot["nasi"])])
-        storage.write_json(storage.market_path("listing.json"), snapshot)
+        storage.write_json(listing_path, snapshot)
     return snapshot
 
 
