@@ -151,7 +151,7 @@ def _tier(r: dict, vals: dict, screen: list[str], base: float | None, hurdle: fl
     else:
         if r["dispersed"]:
             blockers.append(f"valuation models disagree (high is {r['model_spread']:.1f}x the low, limit "
-                            f"{v['max_model_spread']:.0f}x)")
+                            f"{v['max_model_spread']:.1f}x)")
         if len(r["agree"]) < r["agree_needed"]:
             blockers.append(f"only {len(r['agree'])} of {len(vals)} valuation models show {v['mos_threshold']:.0%} "
                             f"or more upside, needs {r['agree_needed']}")

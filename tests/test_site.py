@@ -89,6 +89,28 @@ def test_dashboard_beginner_layer(tree):
         dict(KPLC, fair_base=22.01, mos=0.0005), None)
 
 
+def test_dispersed_card_hides_point_estimates_and_stale_prices_warn(tree):
+    kplc = dict(KPLC, tier="Avoid", dispersed=True, model_spread=3.4, agree=1, models=2, agree_needed=2)
+    snap = {"as_of": "2026-11-12", "price_date": "2026-11-11", "hurdle": 0.1267, "tbill_net": 0.0767, "valued": 16,
+            "counts": {"Buy": 0, "Watch": 0, "Avoid": 1}, "top": [kplc], "near_misses": [kplc],
+            "high_confidence": []}
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
+    site.build()
+    index = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    assert "Fair value unclear" in index and "methods disagree" in index and "3.4x apart" in index
+    assert "KES 10,000 invested" not in index and "Looks cheap" not in index
+    assert "Prices not refreshed" in index and "Closing prices from 2026-11-11" in index
+    assert "Panel unavailable" not in index and "\u2014" not in index and "\u2013" not in index
+
+    plain = site._plain(KPLC, None, cal=0.27)
+    assert "middle case" in plain and "only 27% of 12 month results" in plain
+
+    snap["price_date"] = "2026-11-12"
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
+    site.build()
+    assert "Prices not refreshed" not in (tree / "site" / "index.html").read_text(encoding="utf-8")
+
+
 def test_render_markdown_folds_method_sections_and_dedupes_disclaimer():
     md = (f"# Report\n\n{ADVICE}\n\n## Picks\n\n| Ticker | Tier | Risk |\n|---|---|---|\n| KCB | Watch | High |\n\n"
           f"## Method\n\nRules.\n\n## Data gaps\n\nNone.\n\n{ADVICE}\n")

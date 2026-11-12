@@ -369,8 +369,9 @@ def _range_bar(bear: float | None, base: float | None, bull: float | None, hurdl
 TIPS = {
     "Upside": "How far the price would rise to reach our fair value estimate (fair value divided by price, minus 1). "
               "Bigger is cheaper.",
-    "Base return": "The likely average yearly return over the next 3 years: dividends, growth and the price moving "
-                   "toward fair value, after costs and tax.",
+    "Base return": "The middle of three estimates of the average yearly return over the next 3 years: dividends, "
+                   "growth and the price moving toward fair value, after costs and tax. Real results often land far "
+                   "from it.",
     "Fair value": "What the rules estimate one share is worth. The bracket shows the low and high estimates.",
     "Dividend yield": "Cash dividends paid in a year as a share of today's price.",
     "Top signal": "The input that added most to this stock's score.",
@@ -385,7 +386,7 @@ PLAIN = [
     (re.compile(r"valuation models disagree \(high is (\S+) the low, limit (\S+)\)"),
      r"the valuation methods disagree too much (the highest estimate is \1 the lowest, the limit is \2)"),
     (re.compile(r"base return (\S+) does not beat the (\S+) hurdle"),
-     r"its likely return of \1 a year is below the \2 a Buy must beat"),
+     r"its middle-case return of \1 a year is below the \2 a Buy must beat"),
     (re.compile(r"quality gate failed"), "the business fails a health check"),
     (re.compile(r"quality unknown \(no Piotroski, Altman or NPL data\)"), "its business health cannot be checked yet"),
     (re.compile(r"price is stale"), "the last price is out of date"),
@@ -422,10 +423,25 @@ def _weights_plain(s: dict) -> str:
                      for k, v in sorted(w.items(), key=lambda kv: -kv[1]))
 
 
-def _plain(it: dict, tbill: float | None) -> str:
+def _cal_text(cal: float | None) -> str:
+    if cal is None:
+        return "These are estimates; real results often land outside them."
+    return f"In past tests only {cal:.0%} of 12 month results landed between the bad and good case."
+
+
+def _plain(it: dict, tbill: float | None, cal: float | None = None) -> str:
     lines = []
     price, fair, mos = it.get("price"), it.get("fair_base"), it.get("mos")
-    if None not in (price, fair, mos):
+    dispersed = bool(it.get("dispersed"))
+    if dispersed:
+        lo, hi, spread = it.get("fair_low"), it.get("fair_high"), it.get("model_spread")
+        rng = f" (estimates run from {kes(lo)} to {kes(hi)}, {spread:.1f}x apart)" if None not in (lo, hi, spread) else ""
+        votes = (f" {it['agree']} of {it['models']} methods say it is at least "
+                 f"{pct(config.settings().get('valuation', {}).get('mos_threshold', 0.15), 0)} cheap."
+                 if None not in (it.get("agree"), it.get("models")) else "")
+        lines.append(f"<b>Fair value unclear:</b> the valuation methods disagree too much{rng}, so no single fair "
+                     f"value or return is shown.{votes}")
+    elif None not in (price, fair, mos):
         look = ("Looks fairly priced" if abs(mos) < 0.05 else "Looks cheap" if mos > 0 else "Looks expensive")
         gap = f" ({abs(mos):.0%} {'upside' if mos > 0 else 'downside'})" if f"{abs(mos):.0%}" != "0%" else ""
         lines.append(f"<b>{look}:</b> price {kes(price)} vs fair value estimate {kes(fair)}{gap}.")
@@ -434,7 +450,7 @@ def _plain(it: dict, tbill: float | None) -> str:
     elif reason := _plain_reason(it.get("binding")):
         lines.append(f"<b>Why it is not a Buy:</b> {E(reason)}.")
     bear, base, bull = it.get("bear"), it.get("base"), it.get("bull")
-    if None not in (bear, base, bull):
+    if None not in (bear, base, bull) and not dispersed:
         n = config.settings().get("valuation", {}).get("horizon_years", 3)
 
         def grow(r: float) -> str:
@@ -442,20 +458,26 @@ def _plain(it: dict, tbill: float | None) -> str:
 
         t = f" Rolling over a T-bill would give about {grow(tbill)}." if tbill is not None else ""
         lines.append(f"<b>KES 10,000 invested</b> today could be worth about {grow(bear)} in a bad case, "
-                     f"{grow(base)} in a typical case and {grow(bull)} in a good case after {n} years.{t} These are "
-                     "estimates; real results often land outside them.")
+                     f"{grow(base)} in a middle case and {grow(bull)} in a good case after {n} years.{t} "
+                     f"{_cal_text(cal)}")
     return f'<div class="plain">{"".join(f"<p>{x}</p>" for x in lines)}</div>' if lines else ""
 
 
 def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool = False,
-                tbill: float | None = None) -> str:
+                tbill: float | None = None, cal: float | None = None) -> str:
     conv, rk = it.get("conviction") or {}, it.get("risk") or {}
     flagged = bool(conv.get("flag"))
+    dispersed = bool(it.get("dispersed"))
     lo, hi = it.get("fair_low"), it.get("fair_high")
     span = f'<span class="muted small"> ({lo:,.0f} to {hi:,.0f})</span>' if None not in (lo, hi) else ""
-    fair = f'{kes(it.get("fair_base"))}{span}' if it.get("fair_base") is not None else "n/a"
+    if dispersed and None not in (lo, hi):
+        fair = f'{kes(lo)} to {kes(hi)}<span class="muted small"> (methods disagree)</span>'
+    else:
+        fair = f'{kes(it.get("fair_base"))}{span}' if it.get("fair_base") is not None else "n/a"
     drv = it.get("driver")
-    facts = [("Upside", _sp(it.get("mos"))), ("Base return", _sp(it.get("base"))),
+    unclear = '<span class="muted">unclear</span>'
+    facts = [("Upside", unclear if dispersed else _sp(it.get("mos"))),
+             ("Base return", unclear if dispersed else _sp(it.get("base"))),
              ("Fair value", fair), ("Dividend yield", pct(it.get("dividend_yield")))]
     extra = [("Top signal", E(drv["label"]) if drv else "n/a"),
              ("Composite", f'{it["composite"]:.2f}' if it.get("composite") is not None else "n/a")]
@@ -479,8 +501,8 @@ def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool =
             f'</span></div><div class="badges">{tier_badge(it["tier"], flagged)}{risk_badge(rk.get("level"))}</div>'
             f'</header><div class="pricebox"><div><div class="price">{kes(it.get("price"))}</div>'
             f'<div class="small muted">close {E(str(it.get("price_date") or ""))}</div></div>{_spark(it["ticker"])}'
-            f'</div>{_plain(it, tbill)}{dl(facts)}'
-            f'{_range_bar(it.get("bear"), it.get("base"), it.get("bull"), hurdle)}'
+            f'</div>{_plain(it, tbill, cal)}{dl(facts)}'
+            + ("" if dispersed else _range_bar(it.get("bear"), it.get("base"), it.get("bull"), hurdle))
             + (f'<div class="factors">{factors}</div>' if factors else "")
             + f'<details class="more"><summary>Show the details</summary>{dl(extra)}{gate_html}'
             + (f'<p class="small muted">{E(rk["summary"])}</p>' if rk.get("summary") else "")
@@ -491,14 +513,19 @@ def _hero(s: dict) -> str:
     c = s.get("counts", {})
     flagged = len(s.get("high_confidence") or [])
     chips = "".join(f'<span class="chip">{tier_badge(k)}<b>{c.get(k, 0)}</b></span>' for k in ("Buy", "Watch", "Avoid"))
+    pd = s.get("price_date")
+    when = f"Closing prices from {E(str(pd))}." if pd else ""
+    stale = (f'<div class="callout warn small"><p><b>Prices not refreshed.</b> The latest closing prices are from '
+             f'{E(str(pd))}, before this brief\'s date of {E(s["as_of"])}. The market may have been closed or the '
+             f'price source failed.</p></div>') if pd and str(pd) < str(s["as_of"]) else ""
     return (f'<section class="hero"><div><p class="eyebrow">Daily brief for {E(s["as_of"])}</p>'
             f'<h1>Undervalued NSE stocks, ranked by fixed rules</h1><p class="lead">{s.get("valued", 0)} stocks '
-            f'valued after the close. Every number comes from sourced filings and prices; no AI is used.</p>'
+            f'valued. {when} Every number comes from sourced filings and prices; no AI is used.</p>'
             f'<div class="chips">{chips}</div></div><div class="kpis">'
             f'<div class="kpi"><b>{flagged}</b><span>High confidence undervalued</span></div>'
             f'<div class="kpi"><b>{pct(s.get("hurdle"), 2)}</b><span>Buy hurdle a year</span></div>'
             f'<div class="kpi"><b>{pct(s.get("tbill_net"))}</b><span>364-day T-bill, net of tax</span></div>'
-            f'<div class="kpi"><b>{c.get("Buy", 0)}</b><span>Buy tier</span></div></div></section>'
+            f'<div class="kpi"><b>{c.get("Buy", 0)}</b><span>Buy tier</span></div></div></section>{stale}'
             f'<div class="callout warn small"><p><strong>Not financial advice.</strong> {E(DISCLAIMER)}</p></div>')
 
 
@@ -523,7 +550,7 @@ def _verdict(s: dict) -> str:
                    + (f": {E(reason)}." if reason else "."))
     tb, hurdle = s.get("tbill_net"), s.get("hurdle")
     money = (f'<p>A 364-day government T-bill pays about <b>{pct(tb)}</b> a year after tax with almost no risk. A '
-             f'stock must be likely to return more than <b>{pct(hurdle, 2)}</b> a year to be a Buy.</p>'
+             f'stock\'s middle-case return must beat <b>{pct(hurdle, 2)}</b> a year to be a Buy.</p>'
              if None not in (tb, hurdle) else "")
     return (f'<section class="card" id="verdict"><h2>Today in one sentence</h2><p class="big">{head}</p>'
             + (f"<p>{sub}</p>" if sub else "") + money
@@ -552,9 +579,9 @@ def _glossary(s: dict, retro: dict | None = None) -> str:
          f"How far the price would have to rise to reach fair value: fair value divided by price, minus 1. 25% means "
          f"you pay KES 80 for KES 100 of value. A Buy needs {mos} or more from at least half the methods that apply "
          f"(minimum two)" + (f", and the highest estimate can be at most {spread:g}x the lowest." if spread else ".")),
-        ("Bad / typical / good case (bear, base, bull)",
-         f"Three estimates of the average yearly return over the next {years} years, after trading costs and "
-         f"dividend tax.{cal_now}"),
+        ("Bad / middle / good case (bear, base, bull)",
+         f"Three scenario estimates of the average yearly return over the next {years} years, after trading costs "
+         f"and dividend tax. The middle case is not a forecast of the most likely result.{cal_now}"),
         ("Hurdle", f"The yearly return a stock must beat to be a Buy: the T-bill rate plus {prem} for taking stock "
                    "market risk."),
         ("T-bill", "A short loan to the Kenyan government. Low risk, so it is the yardstick every stock must beat."),
@@ -571,25 +598,27 @@ def _glossary(s: dict, retro: dict | None = None) -> str:
                  "prices only, so it leaves out dividends."),
         ("IC (information coefficient)", "How well the score predicted later returns. Above 0 helps, above 0.05 "
                                          "is useful, below 0 means it pointed the wrong way."),
-        ("Calibration", "How often real returns landed inside the bad to good range. The target is about 80%"
-                        + (f"; so far it is {pct(cal, 0)}." if cal is not None else ".")),
+        ("Calibration", "How often real returns landed inside the bad to good range. The ranges are scenarios, not "
+                        "statistical bands; the project checks them against a goal of about 80%"
+                        + (f", and so far it is {pct(cal, 0)}, so the ranges are too narrow." if cal is not None and
+                           cal < 0.6 else f"; so far it is {pct(cal, 0)}." if cal is not None else ".")),
     ]
     return ('<details class="fold" id="glossary"><summary><h2>Jargon buster</h2></summary><dl>'
             + "".join(f"<dt>{E(k)}</dt><dd>{E(d)}</dd>" for k, d in terms) + "</dl></details>")
 
 
-def _high_conf(s: dict) -> str:
+def _high_conf(s: dict, cal: float | None = None) -> str:
     hurdle, flagged, near = s.get("hurdle"), s.get("high_confidence") or [], s.get("near_misses") or []
     tb = s.get("tbill_net")
     out = [f'<section class="card" id="high-confidence"><h2>High confidence undervalued</h2>'
            f'<p class="small muted">{_inline(s.get("rule", ""))}</p>']
     if flagged:
-        out.append('<div class="grid">' + "".join(_stock_card(i, hurdle, gates=True, tbill=tb) for i in flagged)
-                   + "</div>")
+        out.append('<div class="grid">' + "".join(_stock_card(i, hurdle, gates=True, tbill=tb, cal=cal)
+                                                  for i in flagged) + "</div>")
     else:
         out.append('<div class="empty"><b>No stock clears all four gates today.</b> These are the closest '
                    'candidates and the gates they still fail.</div>')
-        out.append('<div class="grid">' + "".join(_stock_card(i, hurdle, gates=True, tbill=tb) for i in near)
+        out.append('<div class="grid">' + "".join(_stock_card(i, hurdle, gates=True, tbill=tb, cal=cal) for i in near)
                    + "</div>" if near else "")
     return "".join(out) + "</section>"
 
@@ -610,14 +639,14 @@ def _alerts_changes(s: dict) -> str:
               '</section></div>')
 
 
-def _top(s: dict) -> str:
+def _top(s: dict, cal: float | None = None) -> str:
     top = s.get("top") or []
     if not top:
         return ""
     return (f'<section id="top5"><h2>Top 5 today</h2><p class="small muted">Buys first, then Watch, then Avoid. Within '
-            f'each group the score orders them: {E(_weights_plain(s))}. Each card explains the score and what blocks '
-            f'a Buy.</p><div class="grid">'
-            + "".join(_stock_card(i, s.get("hurdle"), why=True, tbill=s.get("tbill_net")) for i in top)
+            f'each group the score orders them: {E(_weights_plain(s))}. A high rank is not a buy signal; only the Buy '
+            f'tier is. Each card explains the score and what blocks a Buy.</p><div class="grid">'
+            + "".join(_stock_card(i, s.get("hurdle"), why=True, tbill=s.get("tbill_net"), cal=cal) for i in top)
             + "</div></section>")
 
 
@@ -626,12 +655,16 @@ def _ranking(s: dict) -> str:
     if not rows:
         return ""
     lvl = {"High": 3, "Moderate": 2, "Low": 1}
+
+    def num(r: dict, k: str, f) -> str:
+        return '<span class="muted" title="valuation methods disagree">unclear</span>' if r.get("dispersed") else f(r.get(k))
+
     body = "".join(
         f'<tr><td>{r["rank"]}</td><td><b>{E(r["ticker"])}</b></td><td>{E(r["name"])}</td><td>{E(r["sector"])}</td>'
         f'<td data-v="{E(r["tier"])}">{tier_badge(r["tier"], (r.get("conviction") or {}).get("flag", False))}</td>'
         f'<td data-v="{lvl.get((r.get("risk") or {}).get("level"), 0)}">{risk_badge((r.get("risk") or {}).get("level"), "")}'
-        f'</td><td>{kes(r.get("price"))}</td><td>{_sp(r.get("mos"))}</td><td>{pct(r.get("bear"))}</td>'
-        f'<td>{_sp(r.get("base"))}</td><td>{pct(r.get("bull"))}</td><td>{pct(r.get("dividend_yield"))}</td>'
+        f'</td><td>{kes(r.get("price"))}</td><td>{num(r, "mos", _sp)}</td><td>{num(r, "bear", pct)}</td>'
+        f'<td>{num(r, "base", _sp)}</td><td>{num(r, "bull", pct)}</td><td>{pct(r.get("dividend_yield"))}</td>'
         f'<td>{r["composite"]:.2f}</td></tr>' if r.get("composite") is not None else "" for r in rows)
     heads = ["#", "Ticker", "Name", "Sector", "Tier", "Risk", "Price", "Upside", "Bear", "Base", "Bull",
              "Yield", "Score"]
@@ -733,11 +766,11 @@ def _track_record(r: dict) -> str:
             (pct(y12.get("universe")), "Equal-weight universe, same windows"),
             (pct(y12.get("nasi")), "NASI, same windows"), (pct(y12.get("hit_rate")), "Hit rate against the universe"),
             (f'{y12["ic"]:+.3f}' if y12.get("ic") is not None else "n/a", "Rank IC of the composite"),
-            (pct(y12.get("calibration"), 0), "Outcomes inside the bear to bull range (target 80%)")]
+            (pct(y12.get("calibration"), 0), "Outcomes inside the bear to bull range (goal about 80%)")]
     cal = y12.get("calibration")
     note = (f'<div class="callout small"><p><b>Ranges are too narrow.</b> Only {pct(cal, 0)} of 12 month outcomes '
-            f'landed inside the projected bear to bull range against an 80% target, so treat each range as a central '
-            f'estimate and size positions for wider swings.</p></div>') if cal is not None and cal < 0.6 else ""
+            f'landed inside the projected bear to bull range against a goal of about 80%, so treat each range as a '
+            f'rough scenario and size positions for wider swings.</p></div>') if cal is not None and cal < 0.6 else ""
     live = (f'<p class="small muted">Live ledger started {E(str(r.get("live_first")))} with '
             f'{r.get("live_dates", 0)} trading day(s); live scores appear once a month of outcomes exists. The figures '
             f'above are point-in-time reconstructions over {r.get("recon_dates", 0)} month-ends from '
@@ -770,7 +803,9 @@ def _report_links(present: list[tuple]) -> str:
 def dashboard(snap: dict | None, retro: dict | None, present: list[tuple]) -> str:
     parts = []
     if snap:
-        for fn in (_hero, _verdict, partial(_glossary, retro=retro), _high_conf, _top, _alerts_changes):
+        cal = (((retro or {}).get("reconstructed") or {}).get("12") or {}).get("calibration")
+        for fn in (_hero, _verdict, partial(_glossary, retro=retro), partial(_high_conf, cal=cal),
+                   partial(_top, cal=cal), _alerts_changes):
             try:
                 parts.append(fn(snap))
             except Exception as exc:  # one broken panel must not take the site down

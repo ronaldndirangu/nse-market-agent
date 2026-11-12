@@ -276,6 +276,8 @@ def snapshot(result: dict, ch: dict, alert_lines: list[str]) -> dict:
                 "fair_base": fv.get("base"), "fair_high": fv.get("high"), "bear": pr.get("bear"),
                 "base": pr.get("base"), "bull": pr.get("bull"), "composite": r["composite"],
                 "dividend_yield": r["dividend_yield"], "binding": r["binding"], "driver": _driver(r),
+                "dispersed": r["dispersed"], "model_spread": r["model_spread"], "agree": len(r["agree"]),
+                "models": len(r["models"]), "agree_needed": r["agree_needed"],
                 "risk": {"level": r["risk"]["level"], "summary": r["risk"]["summary"],
                          "factors": [{"name": f["name"], "level": f["level"], "detail": f["detail"]}
                                      for f in r["risk"]["factors"]]},
@@ -284,6 +286,7 @@ def snapshot(result: dict, ch: dict, alert_lines: list[str]) -> dict:
                 "why": why(r, result)}
 
     return {"as_of": result["as_of"], "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "price_date": max((rows[t]["price_date"] for t in ranked), default=None),
             "valued": len(ranked), "hurdle": result["hurdle"], "tbill_net": result["tbill_net"],
             "counts": {k: sum(1 for t in ranked if rows[t]["tier"] == k) for k in ("Buy", "Watch", "Avoid")},
             "alerts": alert_lines,

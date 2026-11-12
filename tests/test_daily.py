@@ -45,7 +45,7 @@ def test_disagreeing_models_force_avoid(market, monkeypatch):
     for r in dispersed:
         assert r["tier"] == "Avoid" and not r["buy"] and not r["watch"]
         assert r["confidence"] == "Low" and not r["conviction"]["flag"]
-        assert "valuation models disagree" in r["binding"]
+        assert "valuation models disagree" in r["binding"] and "limit 1.0x)" in r["binding"]
         assert r["projection"] is not None
     assert not result["buys"] and not result["watchlist"]
 
