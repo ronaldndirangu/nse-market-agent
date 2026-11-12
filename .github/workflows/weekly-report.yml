@@ -17,8 +17,12 @@ permissions:
   id-token: write
 
 concurrency:
-  group: repo-write
+  group: ${{ github.workflow }}
   cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
   report:
@@ -34,7 +38,7 @@ jobs:
       - name: Value, rank and write the report
         env:
           NO_FETCH: ${{ github.event_name == 'workflow_dispatch' && !inputs.fetch && '--no-fetch' || '' }}
-        run: python -m nse_agent weekly $NO_FETCH | tee "$RUNNER_TEMP/weekly.txt"
+        run: python -m nse_agent weekly $NO_FETCH --alert-file "$RUNNER_TEMP/changes.md" | tee "$RUNNER_TEMP/weekly.txt"
       - name: Monte Carlo simulation
         run: python -m nse_agent simulate
       - name: Walk-forward backtest
@@ -50,21 +54,24 @@ jobs:
           git add data reports
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git commit -m "Weekly report $(date -u +%F)"
-          git pull --rebase
-          git push
+          bash .github/scripts/push-main.sh
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site
-      - name: Open notification issue
+      - name: Open notification issue when the Buy or undervalued list changed
         env:
           GH_TOKEN: ${{ github.token }}
           PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/weekly.html
           REPORT_URL: ${{ github.server_url }}/${{ github.repository }}/blob/main/reports/latest.md
         run: |
+          if [ ! -s "$RUNNER_TEMP/changes.md" ]; then echo "Lists unchanged since last week; no issue"; exit 0; fi
           day=$(date -u +%F)
           {
             echo "Full report: $PAGES_URL"
             echo "Markdown: $REPORT_URL"
+            echo
+            echo "What changed since last week:"
+            cat "$RUNNER_TEMP/changes.md"
             echo
             echo '```text'
             cat "$RUNNER_TEMP/weekly.txt"

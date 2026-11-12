@@ -85,3 +85,29 @@ def test_point_in_time_hides_unpublished_results(market):
     assert set(result["rows"]) == set(BANKS)
     for r in result["rows"].values():
         assert r["latest_period"] == "FY2023"
+
+def test_weekly_changes_report_added_and_dropped_lists():
+    from nse_agent.pipeline import weekly_changes
+
+    result = {"buys": ["KCB"], "picks": ["KCB", "NCBA"]}
+    assert weekly_changes(result, None) == ["First weekly report: 1 Buy, 2 undervalued."]
+    assert weekly_changes({"buys": [], "picks": []}, None) == []
+    assert weekly_changes(result, {"buys": ["KCB"], "picks": ["KCB", "NCBA"]}) == []
+    assert weekly_changes(result, {"buys": [], "picks": ["KCB", "EQTY"]}) == [
+        "New Buy: KCB.", "New undervalued: NCBA.", "No longer undervalued: EQTY."]
+
+
+def test_previous_lists_seed_from_picks_log_then_use_saved_state():
+    from nse_agent import picks_log, pipeline
+
+    log, state = picks_log.path(), pipeline.state_path()
+    log.write_text("date,ticker,buy\n2026-10-30,KCB,yes\n2026-10-30,NCBA,no\n2026-10-23,EQTY,no\n"
+                   "2026-11-06,ABSA,no\n", encoding="utf-8")
+    try:
+        assert pipeline.previous_lists("2026-11-06") == {"buys": ["KCB"], "picks": ["KCB", "NCBA"]}
+        assert pipeline.previous_lists("2026-10-23") is None
+        storage.write_json(state, {"as_of": "2026-11-06", "buys": [], "picks": ["ABSA"]})
+        assert pipeline.previous_lists("2026-11-13")["picks"] == ["ABSA"]
+    finally:
+        log.unlink(missing_ok=True)
+        state.unlink(missing_ok=True)

@@ -12,8 +12,12 @@ permissions:
   id-token: write
 
 concurrency:
-  group: repo-write
+  group: ${{ github.workflow }}
   cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
   brief:
@@ -41,8 +45,7 @@ jobs:
           git add data reports
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git commit -m "Daily brief $(date -u +%F)"
-          git pull --rebase
-          git push
+          bash .github/scripts/push-main.sh
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site

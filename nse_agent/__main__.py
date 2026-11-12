@@ -13,6 +13,7 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("refresh", help="Refresh AFX company pages (volume history, liquidity)")
     wk = sub.add_parser("weekly", help="Value, rank and write the report")
     wk.add_argument("--no-fetch", action="store_true", help="Use cached market data only")
+    wk.add_argument("--alert-file", help="Write Buy and undervalued list changes here (only when there are any)")
     br = sub.add_parser("brief", help="Daily brief: top 5 with reasons, what changed, ledger append")
     br.add_argument("--no-fetch", action="store_true", help="Use cached market data only")
     br.add_argument("--no-prices", action="store_true", help="Refresh announcements only (prices already recorded)")
@@ -52,7 +53,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.cmd == "weekly":
         from .pipeline import run_weekly
-        out = run_weekly(fetch=not args.no_fetch)
+        out = run_weekly(fetch=not args.no_fetch, alert_file=args.alert_file)
         print(out)
         return 0
     if args.cmd == "brief":

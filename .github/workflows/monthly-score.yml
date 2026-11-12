@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: repo-write
+  group: ${{ github.workflow }}
   cancel-in-progress: false
 
 jobs:
@@ -39,8 +39,7 @@ jobs:
           git add reports data
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git commit -m "Monthly scorecard $(date -u +%F)"
-          git pull --rebase
-          git push
+          bash .github/scripts/push-main.sh
       - name: Open or update the weight proposal PR
         env:
           GH_TOKEN: ${{ github.token }}

@@ -10,8 +10,12 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: repo-write
+  group: ${{ github.workflow }}
   cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
 
 env:
   QUEUE: data/results_queue.yaml
@@ -40,18 +44,14 @@ jobs:
           if [ "$n" != "0" ]; then git show "origin/$BRANCH:$QUEUE" > "$QUEUE" || true; fi
       - name: Detect results announcements and extract figures
         run: python -m nse_agent results-watch | tee "$RUNNER_TEMP/watch.txt"
-      - name: Commit announcement log to main
+      - name: Commit announcement log locally
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           cp "$QUEUE" "$RUNNER_TEMP/queue.yaml" 2>/dev/null || true
           git checkout HEAD -- "$QUEUE" 2>/dev/null || rm -f "$QUEUE"
           git add data
-          if ! git diff --cached --quiet; then
-            git commit -m "Announcements $(date -u +%F)"
-            git pull --rebase
-            git push
-          fi
+          if ! git diff --cached --quiet; then git commit -q -m "Announcements $(date -u +%F)"; fi
       - name: Open or update the review PR
         env:
           GH_TOKEN: ${{ github.token }}
@@ -61,7 +61,7 @@ jobs:
           if [ "$OPEN_PRS" != "0" ]; then
             git checkout -B "$BRANCH" "origin/$BRANCH"
           else
-            git checkout -B "$BRANCH"
+            git checkout -B "$BRANCH" origin/main
           fi
           cp "$RUNNER_TEMP/queue.yaml" "$QUEUE"
           git add "$QUEUE"
@@ -83,3 +83,7 @@ jobs:
           } > "$RUNNER_TEMP/pr.md"
           gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$BRANCH" \
             --title "Review new results $(date -u +%F)" --body-file "$RUNNER_TEMP/pr.md"
+      - name: Push the announcement log once the review PR is safe
+        run: |
+          git checkout -q main
+          bash .github/scripts/push-main.sh
