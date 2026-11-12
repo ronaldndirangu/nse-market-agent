@@ -3,9 +3,9 @@ from __future__ import annotations
 
 import logging
 
-from . import announcements, config, market, picks_log, portfolio, report, storage
+from . import announcements, config, health, market, picks_log, portfolio, report, storage
 from .engine import analyze
-from .fmt import pct
+from .fmt import estimate_reliable, pct
 
 log = logging.getLogger(__name__)
 
@@ -52,7 +52,7 @@ def run_weekly(fetch: bool = True, alert_file: str | None = None) -> str:
                 log.warning("%s refresh failed: %s", name, exc)
     from . import prices
     prices.clear_cache()
-    result = analyze()
+    result = analyze(health.now().date(), health=health.assess())
     held = portfolio.review(result)
     path = report.write(result, portfolio.render(held) or None)
     logged = picks_log.log(result)
@@ -68,8 +68,9 @@ def run_weekly(fetch: bool = True, alert_file: str | None = None) -> str:
     for t in result["ranking"]:
         r = result["rows"][t]
         pr = r["projection"]
-        rng = f"{pct(pr['bear'])}/{pct(pr['base'])}/{pct(pr['bull'])}" if pr else "n/a"
+        rng = f"{pct(pr['bear'])}/{pct(pr['base'])}/{pct(pr['bull'])}" if pr and estimate_reliable(r) else "unclear"
+        mos = pct(r["mos"]) if estimate_reliable(r) else "unclear"
         flag = "BUY" if r["buy"] else "PICK" if r["undervalued"] else "WATCH" if r["watch"] else "-"
-        lines.append(f"{r['rank']:>2} {t:<5} {flag:<5} price={r['price']:.2f} mos={pct(r['mos'])} "
+        lines.append(f"{r['rank']:>2} {t:<5} {flag:<5} price={r['price']:.2f} mos={mos} "
                      f"returns={rng} gate={r['quality']['gate']} conf={r['confidence']}")
     return "\n".join(lines)

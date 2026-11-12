@@ -74,7 +74,7 @@ def test_dashboard_beginner_layer(tree):
     _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
     site.build()
     index = (tree / "site" / "index.html").read_text(encoding="utf-8")
-    for text in ("No stock is a Buy today", "Closest is <b>KPLC</b>", "KES 10,000 invested", "KES 21,768",
+    for text in ("No stock is a Buy today", "Watch only: <b>KPLC</b>", "Illustrative KES 10,000 scenario", "KES 21,768",
                  "after 3 years", "Jargon buster", "Show the details", "Not financial advice"):
         assert text in index
     assert "Panel unavailable" not in index and "\u2014" not in index and "\u2013" not in index
@@ -97,7 +97,9 @@ def test_dispersed_card_hides_point_estimates_and_stale_prices_warn(tree):
     _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
     site.build()
     index = (tree / "site" / "index.html").read_text(encoding="utf-8")
-    assert "Fair value unclear" in index and "methods disagree" in index and "3.4x apart" in index
+    detail = (tree / "site" / "stocks" / "KPLC.html").read_text(encoding="utf-8")
+    assert "Fair value unclear" in detail and "methods disagree" in detail and "3.4x apart" in detail
+    assert "Candidates for review" not in index
     assert "KES 10,000 invested" not in index and "Looks cheap" not in index
     assert "Prices not refreshed" in index and "Closing prices from 2026-11-11" in index
     assert "Panel unavailable" not in index and "\u2014" not in index and "\u2013" not in index
@@ -127,3 +129,76 @@ def test_badges():
     assert "b-avoid" in site.tier_badge("Avoid")
     assert "r-moderate" in site.risk_badge("Moderate")
     assert "Risk n/a" in site.risk_badge(None)
+
+
+def test_validator_rejects_broken_links_and_generated_error_panels(tree):
+    _write(tree / "reports" / "daily" / "latest.md", "# Brief\n\n[Missing](missing.html)\n")
+    site.build()
+    with pytest.raises(ValueError, match="Broken internal link"):
+        site.check()
+    _write(tree / "reports" / "daily" / "latest.md", "# Brief\n\nPanel unavailable: TypeError\n")
+    site.build()
+    with pytest.raises(ValueError, match="Invalid generated content"):
+        site.check()
+
+
+def test_watch_is_prominent_and_avoid_stays_in_research(tree):
+    avoid = dict(KPLC, ticker="KCB", tier="Avoid")
+    snapshot = {"as_of": "2026-11-12", "top": [KPLC, avoid], "near_misses": [avoid],
+                "counts": {"Buy": 0, "Watch": 1, "Avoid": 1}, "ranking": [KPLC, avoid]}
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps(snapshot))
+    site.build()
+    text = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    assert "Watch only: <b>KPLC</b>" in text and "Closest is" not in text
+    assert text.count('<article class="stock') == 1
+    assert 'id="all-stocks"' in text and 'href="stocks/KCB.html"' in text
+    assert 'href="#candidates">Review candidates' in text
+    assert 'class="decision-layout"' in text and 'class="brief-side"' in text
+    assert site.check() > 0
+
+
+def test_stock_explorer_links_accessible_controls_to_searchable_rows(tree):
+    row = dict(KPLC, name="Kenya Power & Lighting", models=2)
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps({
+        "as_of": "2026-11-12", "counts": {"Buy": 0, "Watch": 1, "Avoid": 0},
+        "top": [row], "ranking": [row], "high_confidence": [], "near_misses": [],
+    }))
+    site.build()
+    text = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    assert '<label for="stock-search">Find a stock</label>' in text
+    assert 'id="stock-search" type="search"' in text and 'id="stock-table"' in text
+    assert 'data-tier="Watch" data-search="kplc kenya power &amp; lighting energy"' in text
+    for tier in ("all", "Buy", "Watch", "Avoid"):
+        assert f'data-tier-filter="{tier}"' in text
+    assert 'data-result-count role="status" aria-live="polite"' in text
+    assert 'data-no-results hidden' in text and '<th scope="col">Ticker</th>' in text
+    assert site.check() > 0
+
+
+def test_mobile_navigation_keeps_nested_page_links_relative(tree):
+    _write(tree / "reports" / "latest.md", "# Weekly report\n")
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps({
+        "as_of": "2026-11-12", "top": [KPLC], "high_confidence": [], "near_misses": [], "ranking": [KPLC],
+    }))
+    site.build()
+    text = (tree / "site" / "stocks" / "KPLC.html").read_text(encoding="utf-8")
+    mobile = text.split('<details class="mobile-nav">', 1)[1].split("</details>", 1)[0]
+    assert '<nav aria-label="Mobile">' in mobile and 'href="../weekly.html"' in mobile
+    assert 'href="../index.html#data-health"' in mobile and 'href="../archive.html"' in mobile
+    assert site.check() > 0
+
+
+@pytest.mark.parametrize("tier,health,held,state,label", [
+    ("Buy", {"critical_ok": True}, [], "buy", "Buy rules passed"),
+    ("Watch", {"critical_ok": True}, [], "no-buy", "No qualifying Buy"),
+    ("Buy", {"critical_ok": True}, ["Balance sheet not assessed"], "verify", "Verify first"),
+    ("Buy", {"critical_ok": False}, [], "unverified", "Data unverified"),
+    ("Avoid", None, [], "unverified", "Data unverified"),
+])
+def test_verdict_color_state_respects_qualification_and_evidence(tier, health, held, state, label):
+    row = dict(KPLC, tier=tier, conviction=KPLC["conviction"] | {"held_back": held})
+    rendered = site._verdict({"top": [row], "counts": {"Buy": int(tier == "Buy")}, "health": health})
+    assert f'data-verdict="{state}"' in rendered
+    assert f'<span class="decision-status">{label}</span>' in rendered
+    if state != "buy":
+        assert 'data-verdict="buy"' not in rendered

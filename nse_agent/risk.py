@@ -6,7 +6,7 @@ so a flagged stock can still carry High risk.
 from __future__ import annotations
 
 from . import config
-from .fmt import kes, pct, table
+from .fmt import estimate_reliable, kes, pct, table
 
 LEVELS = ("Low", "Moderate", "High")
 GATES = ("Valuation", "Quality", "Screen", "Return")
@@ -46,16 +46,20 @@ def _balance_sheet(r: dict, s: dict) -> dict:
     return _factor("Balance sheet", level, z, f"Altman Z'' {z:.2f}, {zone}")
 
 
-def _events(r: dict) -> dict:
+def _events(r: dict, health: dict | None = None) -> dict:
     warns = [f for f in r["quality"]["fails"] if f.startswith("Warning announcement")]
     if warns:
         return _factor("Events", "High", len(warns), warns[0])
     if "suspended" in r.get("screen_fail", []):
         return _factor("Events", "High", 1, "trading suspended")
+    if health is not None and health["announcements"]["status"] != "Current":
+        return _factor("Events", None, None, "")
+    if health is not None and not (health["tickers"].get(r.get("ticker")) or {}).get("suspension_known"):
+        return _factor("Events", None, None, "")
     return _factor("Events", "Low", 0, "no profit warning or suspension on file")
 
 
-def factors(r: dict) -> list[dict]:
+def factors(r: dict, health: dict | None = None) -> list[dict]:
     s = config.settings()
     k = s["risk"]
     out = []
@@ -78,12 +82,12 @@ def factors(r: dict) -> list[dict]:
                        f"fair value spread {spread:.1f}x ({fv.get('low', 0):,.1f} to {fv.get('high', 0):,.1f})"
                        if spread is not None else ""))
     out.append(_balance_sheet(r, s))
-    out.append(_events(r))
+    out.append(_events(r, health))
     return out
 
 
-def profile(r: dict) -> dict:
-    fs = factors(r)
+def profile(r: dict, health: dict | None = None) -> dict:
+    fs = factors(r, health)
     high = [f for f in fs if f["level"] == "High"]
     moderate = [f for f in fs if f["level"] == "Moderate"]
     severe = any(f["name"] in ("Balance sheet", "Events") for f in high)
@@ -93,19 +97,24 @@ def profile(r: dict) -> dict:
         level = "Moderate"
     else:
         level = "Low"
-    drivers = [f["detail"] for f in high + moderate]
+    reliable = estimate_reliable(r)
+    drivers = [f["detail"] for f in high + moderate if reliable or f["name"] != "Downside"]
     missing = [f["name"] for f in fs if f["level"] is None]
-    summary = f"{level} risk"
+    if not reliable and "Downside" not in missing:
+        missing.append("Downside")
+    label = "Insufficient data" if missing and level == "Low" else level + (" (incomplete)" if missing else "")
+    summary = f"{label} risk"
     if drivers:
         summary += ": " + "; ".join(drivers[:3]) + (f" (+{len(drivers) - 3} more)" if len(drivers) > 3 else "")
     else:
         summary += ": no factor above Low"
     if missing:
         summary += ". Not assessed: " + ", ".join(missing).lower()
-    return {"level": level, "factors": fs, "drivers": drivers, "missing": missing, "summary": summary + "."}
+    return {"level": level, "label": label, "complete": not missing, "factors": fs, "drivers": drivers,
+            "missing": missing, "summary": summary + "."}
 
 
-def conviction(r: dict, hurdle: float) -> dict:
+def conviction(r: dict, hurdle: float, evidence_issues: list[str] | None = None) -> dict:
     """High confidence undervalued: broad model agreement, strong quality, a clean screen and a return edge."""
     s = config.settings()
     hc = s["high_confidence"]
@@ -132,12 +141,15 @@ def conviction(r: dict, hurdle: float) -> dict:
         {"name": "Screen", "passed": not r["screen_fail"],
          "detail": "liquid, fresh price and results, enough history, positive EPS" if not r["screen_fail"]
          else "; ".join(r["screen_fail"])},
-        {"name": "Return", "passed": base is not None and base > hurdle,
+        {"name": "Return", "passed": estimate_reliable(r) and base is not None and base > hurdle,
          "detail": (f"base return {base:.1%} against the {hurdle:.2%} hurdle" if base is not None
-                    else "no projection")},
+                    else "no projection") if estimate_reliable(r) else "unclear while valuation evidence disagrees"},
     ]
     failed = [g["name"] for g in gates if not g["passed"]]
-    return {"flag": not failed, "gates": gates, "failed": failed}
+    return {"flag": not failed and not evidence_issues, "gates": gates, "failed": failed,
+            "evidence": "not assessed historically" if evidence_issues is None else
+                        "incomplete" if evidence_issues else "current",
+            "held_back": evidence_issues or []}
 
 
 def near_misses(rows: dict, ranking: list[str], n: int = 3) -> list[str]:
@@ -171,7 +183,9 @@ FACTORS = ("Volatility", "Beta", "Liquidity", "Downside", "Valuation spread", "B
 
 
 def matrix_md(rows: dict, tickers: list[str]) -> str:
-    body = [[t, rows[t]["risk"]["level"]] + [_short(f) for f in rows[t]["risk"]["factors"]] for t in tickers]
+    body = [[t, rows[t]["risk"].get("label", rows[t]["risk"]["level"])]
+            + ["unclear" if f["name"] == "Downside" and not estimate_reliable(rows[t]) else _short(f)
+               for f in rows[t]["risk"]["factors"]] for t in tickers]
     return table(["Ticker", "Risk"] + list(FACTORS), body)
 
 
@@ -182,8 +196,9 @@ def rule_text(hurdle: float) -> str:
             f"{hc['min_agreeing_models']} valuation models agree on {pct(s['valuation']['mos_threshold'], 0)} or "
             f"more upside (Valuation), the quality gate passes with a score of {hc['min_quality_score']:.2f} or more "
             f"(Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the "
-            f"{pct(hurdle, 2)} hurdle (Return). Risk is rated separately from seven factors and never changes the "
-            f"flag, so check it before sizing a position.")
+            f"{pct(hurdle, 2)} hurdle (Return). Risk level is rated separately from seven factors and never changes "
+            f"the valuation or return thresholds. Strong-confidence flags also require current critical "
+            f"live evidence. Agreement of methods is not a probability of profit.")
 
 
 def section_md(result: dict, heading: str = "##") -> list[str]:
@@ -195,7 +210,7 @@ def section_md(result: dict, heading: str = "##") -> list[str]:
             r, pr, fv = rows[t], rows[t]["projection"], rows[t]["fair_value"]
             body.append([t, kes(r["price"]), f"{kes(fv['low'])} / {kes(fv['base'])} / {kes(fv['high'])}",
                          pct(r["mos"]), f"{pct(pr['bear'])} / {pct(pr['base'])} / {pct(pr['bull'])}",
-                         r["risk"]["level"], "; ".join(r["risk"]["drivers"][:3]) or "none above Low"])
+                         r["risk"].get("label", r["risk"]["level"]), "; ".join(r["risk"]["drivers"][:3]) or "none above Low"])
         out += [table(["Ticker", "Price", "Fair value low / base / high", "MoS", "Bear / base / bull a year",
                        "Risk", "Risk drivers"], body), ""]
         shown = flagged
@@ -203,8 +218,9 @@ def section_md(result: dict, heading: str = "##") -> list[str]:
         near = near_misses(rows, ranked)
         out += [f"No stock qualifies on {result['as_of']}. The closest candidates and the gates they miss:", ""]
         body = [[t, rows[t]["tier"], f"{4 - len(rows[t]['conviction']['failed'])} of 4",
-                 "; ".join(f"{g['name']}: {g['detail']}" for g in rows[t]["conviction"]["gates"] if not g["passed"]),
-                 rows[t]["risk"]["level"]] for t in near]
+                 "; ".join([f"{g['name']}: {g['detail']}" for g in rows[t]["conviction"]["gates"] if not g["passed"]]
+                           + rows[t]["conviction"].get("held_back", [])),
+                 rows[t]["risk"].get("label", rows[t]["risk"]["level"])] for t in near]
         out += [table(["Ticker", "Tier", "Gates passed", "Missing", "Risk"], body), ""]
         shown = near
     out += [f"{heading}# Risk profile", "",

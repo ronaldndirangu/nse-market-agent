@@ -124,6 +124,8 @@ def append(result: dict) -> int:
     Writes nothing when the date is already logged or when no price is newer than the previous snapshot
     (holidays, failed price sources), so stale days never count twice in the scorecard.
     """
+    if result.get("health") is not None and not result["health"]["ledger_ready"]:
+        return 0
     path = live_path(result["as_of"])
     if any(r["date"] == result["as_of"] for r in _read(path)):
         return 0

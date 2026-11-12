@@ -55,6 +55,14 @@ def test_missing_inputs_are_not_assessed():
     p = risk.profile(_row(beta=None, quality={"gate": "pass", "score": 0.8, "fails": []}))
     assert p["missing"] == ["Beta", "Balance sheet"]
     assert "Not assessed: beta, balance sheet." in p["summary"]
+    assert p["label"] == "Insufficient data" and not p["complete"]
+
+
+def test_completely_missing_evidence_never_presents_as_low_risk():
+    p = risk.profile({"bank": False, "quality": {"fails": []}})
+    assert len(p["missing"]) == 6
+    assert p["label"] == "Insufficient data"
+    assert "Low risk" not in p["summary"]
 
 
 def test_conviction_needs_every_gate():

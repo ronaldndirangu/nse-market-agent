@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import os
+import random
 import time
+from email.utils import parsedate_to_datetime
 from urllib.parse import urlparse
 
 import requests
@@ -27,10 +29,21 @@ def _delay_for(host: str) -> float:
     return HOST_DELAYS.get(host, 2.0)
 
 
-def _backoff(attempt: int) -> float:
+def _backoff(attempt: int, retry_after: str | None = None) -> float:
     override = os.environ.get("NSE_AGENT_DELAY")
-    base = float(override) if override is not None else SERVER_ERROR_BACKOFF
-    return base * (attempt + 1)
+    if override is not None:
+        return float(override) * (attempt + 1)
+    wait = SERVER_ERROR_BACKOFF * (attempt + 1)
+    if retry_after:
+        try:
+            delay = float(retry_after)
+        except ValueError:
+            try:
+                delay = parsedate_to_datetime(retry_after).timestamp() - time.time()
+            except (ValueError, TypeError, OverflowError):
+                delay = 0.0
+        wait = max(wait, delay)
+    return min(60.0, wait + random.uniform(0, 1))
 
 
 def session() -> requests.Session:
@@ -60,12 +73,14 @@ def request(method: str, url: str, *, retries: int = 2, timeout: float = 45, **k
             resp = session().request(method, url, timeout=(CONNECT_TIMEOUT, timeout), **kwargs)
             if resp.status_code in (429, 500, 502, 503, 504) and attempt < retries:
                 last_error = requests.HTTPError(f"{resp.status_code} for {url}")
-                time.sleep(_backoff(attempt))
+                time.sleep(_backoff(attempt, getattr(resp, "headers", {}).get("Retry-After")))
                 continue
             resp.raise_for_status()
             return resp
         except (requests.ConnectionError, requests.Timeout) as exc:
             last_error = exc
+            if attempt < retries:
+                time.sleep(_backoff(attempt))
     assert last_error is not None
     if isinstance(last_error, (requests.ConnectionError, requests.Timeout)):
         _down_hosts.add(host)

@@ -113,3 +113,17 @@ def test_nse_snapshot_keeps_known_suspension(data_dir, monkeypatch):
     assert snap["rows"]["BBB"]["suspended"] is False
     assert _closes("CCC") == []
     assert _closes("BBB") == [("2026-11-12", 21.0, 400.0)]
+
+
+def test_actions_prefers_nse_and_rejects_partial_responses(data_dir, monkeypatch):
+    monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    monkeypatch.setattr(nse, "fetch_snapshot", _nse("closed"))
+    monkeypatch.setattr(afx, "fetch_listing", lambda: pytest.fail("AFX should not run when NSE answers"))
+    assert market.update_daily(["AAA", "BBB"])["source"] == "nse"
+    monkeypatch.setattr(nse, "fetch_snapshot", lambda: ("2026-11-12", {"AAA": {"price": 11.0}}, "closed"))
+    monkeypatch.setattr(afx, "fetch_listing", lambda: (_ for _ in ()).throw(ValueError("unavailable")))
+    snapshot = market.update_daily(["AAA", "BBB", "CCC"])
+    assert snapshot["source"] == "cache"
+    recorded = storage.read_json(storage.market_path("health.json"), {})["prices"]
+    assert not recorded["successful"] and recorded["last_success"]
+    assert recorded["consecutive_failures"] == 1

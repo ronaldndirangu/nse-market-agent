@@ -7,6 +7,33 @@ report to GitHub Pages.
 **Live dashboard:** https://ronaldndirangu.github.io/nse-market-agent/ (daily brief at `daily.html`, weekly report at
 `weekly.html`, all past reports at `archive.html`)
 
+**Reading routine:** check Data health, read today's conclusion, then scan changes and the Buy/Watch candidates.
+Open a stock for its risk drivers, failed checks and source filing. Use the weekly report for a deeper review.
+Avoid means failing this model's entry checks; it is not an automatic instruction to sell existing holdings.
+Subscribe through `feed.xml` for daily briefs and material changes, or follow the `daily-alert` issue on GitHub.
+
+The interface combines Airbnb-inspired spacing and neutral surfaces with Fluent-style blue actions.
+Green and amber highlight meaningful status, while risk and comparison data retain their semantic colors, consistent with
+[Fluent's neutral and semantic color guidance](https://fluent2.microsoft.design/color).
+The main verdict pairs color with text and an icon: green means Buy rules passed, red means no qualifying Buy,
+amber means verify an incomplete assessment, and gray means live evidence is unverified. Watch stocks use amber.
+Green does not imply low risk or guaranteed profit; red is not an automatic instruction to sell.
+It uses original assets and system fonts, not Airbnb logos or proprietary typography.
+Explicit `?scoutTheme=light` and `?scoutTheme=dark` selections carry through internal page navigation.
+
+The dashboard separates the daily decision from advanced research. It includes a compact benchmark comparison,
+summary counts, stock review cards, a changes sidebar and a searchable, tier-filtered stock table. Mobile navigation,
+native keyboard controls, visible focus indicators and touch-sized primary actions work across the report pages.
+The numerical rules, entry tiers and projections are unchanged by these interface controls.
+
+The interface follows [GOV.UK mobile-first layout guidance](https://design-system.service.gov.uk/styles/layout/),
+[progressive disclosure](https://www.nngroup.com/articles/progressive-disclosure/) and the W3C guidance for
+[320 CSS-pixel reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html),
+[visible keyboard focus](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html) and
+[pointer target sizes](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html).
+Primary controls target 44 pixels; compact sorting controls meet the 24-pixel minimum. Detailed data tables scroll
+within their own containers rather than widening the page.
+
 > **Not financial advice.** This project is a research tool built from public data and fixed rules. Figures can be
 > wrong, late or incomplete. Verify everything against company filings and speak to a licensed adviser before investing.
 
@@ -17,7 +44,7 @@ rendered from a template.
 
 ```mermaid
 flowchart LR
-    A[Daily prices<br/>AFX, NSE fallback] --> D[Screen]
+    A[Daily prices<br/>NSE first on Actions, AFX first locally] --> D[Screen]
     B[Sourced fundamentals<br/>data/fundamentals.yaml] --> D
     C[CBK yields, Damodaran ERP<br/>data/macro.yaml] --> E
     D --> E[Value by sector]
@@ -70,11 +97,17 @@ A stock is flagged **High confidence undervalued** only when all four gates pass
 
 When nothing qualifies, the brief lists the closest candidates and the gates they miss.
 
+Live flags also require current critical evidence and assessed risk inputs. Missing information is shown as
+**Insufficient data** or an **incomplete** assessment, never as an unqualified Low risk. Historical reconstructions
+do not apply today's feed health because historical fetch-health records do not exist. Agreement of methods is not
+a measured probability of profit.
+
 Every stock also gets a **risk profile**. Seven factors are each rated Low, Moderate or High from fixed thresholds:
 volatility, beta, liquidity, downside (bear case), valuation spread (fair high over fair low), balance sheet (bank NPL
 ratio or Altman Z) and events (profit warnings, suspensions). Overall risk is High when the balance sheet or events
 factor is High or two factors are High, Moderate when one factor is High or three are Moderate, and Low otherwise.
-Risk never changes the flag; use it to size a position. Missing inputs are listed as not assessed.
+The numerical risk level never changes the flag; incomplete evidence can hold a live flag back.
+Missing inputs are listed as not assessed.
 
 Point-in-time backtest of the flag since 2017: it fired 28 times, only on COOP, EQTY and KCB. At 12 months no flagged
 pick lost money, but they trailed the equal-weight universe by 3.5% on average (N=18); at 6 months they beat it by
@@ -85,14 +118,39 @@ the Buy tier.
 
 | Workflow | When (UTC) | What it does |
 | --- | --- | --- |
-| Daily brief | 13:00 Mon to Fri (16:00 EAT) | Records closing prices, values and ranks every stock, writes the daily brief (top 5 tiered Buy, Watch or Avoid, with reasons and what changed), appends the prediction ledger in `data/rankings/`, deploys Pages, and comments on the `daily-alert` issue only on a material change |
+| Daily brief | 13:07 Mon to Fri (16:07 EAT) | Records closing prices, writes Buy/Watch candidates and changes, logs the first verified daily prediction, publishes Pages, and alerts only on a material change |
 | Results watch | 13:30 Mon to Fri | Detects results announcements, extracts figures by rule, opens a review PR |
-| Weekly report | 14:00 Friday | Values and ranks, runs simulation, backtest, scorecard and retrospective, commits `reports/`, deploys Pages, opens an issue |
+| Weekly report | 14:07 Friday | Saves and publishes the core report first. Simulation, backtest, scorecard and retrospective run separately; failed analytics or notifications remain visible without blocking the core publication |
 | Monthly scorecard | 15:00 on the 1st | Scores every logged pick against the market, refreshes the retrospective and the weight test, and opens a `tune-weights` PR only when new weights win out of sample. Weights never change without your merge |
-| CI | Every push and PR | Runs the test suite |
+| Publish site | Called after saved reports, or on demand | Checks out current main, rebuilds and validates the committed snapshot, then deploys through one shared Pages concurrency group |
+| Publication freshness | 14:37 Mon to Fri (17:37 EAT) | Checks the deployed report for a missed update or stale critical evidence |
+| CI | Every code push and PR | Runs tests and validates the generated site |
 
 Every workflow also runs on demand from the Actions tab. GitHub pauses schedules in a public repo after 60 days with no
 activity; the daily and weekly commits keep it active.
+Schedules are best effort and can be delayed by GitHub. The freshness monitor shares that scheduling service, so it
+does not provide an independent uptime guarantee. Notifications are separate from successful site publication.
+
+### Publication and evidence health
+
+- Actions tries NSE first; local collection keeps AFX first. A response covering less than half the universe is
+  rejected. Official prediction logging requires verified current closing prices for every non-suspended counter,
+  so a partial response cannot freeze the day's first prediction.
+- `data/market/health.json` records fetch attempts, failures and last successes. An empty announcement parse is a
+  failed check and does not advance the successful-check date.
+- The expected session is the last weekday whose close plus a one-hour buffer has passed, in EAT. A lag of one to
+  three weekdays is Delayed (public holiday or source lag); longer lags are Stale. No holiday calendar is assumed.
+- Announcement checks have a one-weekday freshness budget. Macro inputs need review after 14 calendar days.
+  Fundamentals retain the existing 540-day annual-period screen. Per-stock dates remain visible.
+- A browser warning appears after the next expected update time, even if a workflow never starts. It does not
+  refresh data. `status.json` exposes the same dated assessment for the publication monitor.
+- Each new daily report has an immutable JSON revision under `reports/daily/snapshots/` and a `manifest.json`.
+  The manifest links to the first official ledger rows by checksum. Same-day revisions show differences without
+  rewriting or duplicating prediction rows. Existing historical predictions remain unchanged.
+  Older archived reports retain their original wording and should not be read as current assessments.
+- The publisher rebuilds from main after data pushes and rejects broken panels, internal links, anchors or revision
+  checksums. A failed data push cannot deploy its uncommitted artifact. Concurrent data writes can still conflict;
+  that failure remains visible and requires a rerun rather than overwriting another workflow's data.
 
 ## Data and integrity
 
@@ -134,16 +192,18 @@ companies:
 
 ## Reports
 
-The Pages site opens on a dashboard: high confidence flags (or near misses) with gates and risk badges, today's top 5
-as cards with a price sparkline and a bear to bull range bar, alerts, what changed, the reconstructed track record
-against the universe and NASI, the per-signal IC heat table, miss classification and a sortable full ranking. Every
+The Pages site opens on a daily decision brief: evidence health, today's conclusion, changes, and Buy/Watch cards.
+Avoid stocks stay in collapsed research views. Each stock opens a detail page with its source filing, gates and risk
+profile. The reconstructed track record, signal evidence and full ranking remain available under expandable sections. Every
 Markdown report below is also rendered as a page, with dated archives for the daily brief and weekly report.
 `reports/daily/latest.json` is the machine-readable snapshot behind the dashboard.
+Disagreeing or insufficient valuation methods suppress point estimates in consumer reports and alerts. Raw outputs
+remain in the ledger and MCP tools with `estimate_reliable` metadata. Returns are illustrative scenarios, not loss
+limits or probability bands; the T-bill rollover example assumes today's rate stays unchanged.
 
 - `reports/daily/YYYY-MM-DD.md` and `reports/daily/latest.md`: the daily brief. High confidence flags with risk
-  profiles, then the top 5 tiered Buy (clears every gate),
-  Watch (passes quality, misses one threshold) or Avoid, each with its per-signal score contributions and the binding
-  constraint, plus what changed since the last brief.
+  profiles, then up to five Buy/Watch candidates with score contributions and the binding constraint.
+  Avoid stocks remain in the full research ranking.
 - `data/rankings/live/YYYY-MM.csv`: the append-only prediction ledger. Every stock, every day: composite score, each
   signal's value and contribution, tier, risk level, high confidence flag, bear/base/bull projections and the code SHA.
   Past rows are never edited.
@@ -188,6 +248,8 @@ python -m venv .venv
 | `score` | Score logged picks |
 | `review` | Review your own holdings |
 | `results-watch` | Queue new results for review |
+| `site [--check]` | Rebuild static pages and optionally validate links, panels and revision provenance without fetching data |
+| `check-published [--url URL]` | Check deployed report freshness and critical evidence |
 | `mcp` | Run the MCP server |
 
 ### Review your holdings
@@ -217,9 +279,10 @@ Tools: `screen_stocks`, `run_valuation`, `get_fundamentals`, `get_announcements`
 - NASI history is month-end only before the daily runs began, so NASI comparisons use the last month-end close on or
   before each window's start and end dates.
 - AFX is unreachable from GitHub-hosted runners (IPv4 connections time out), so scheduled runs take prices and volume
-  from the NSE ticker API, record no NASI level, and keep AFX company stats from the last local `refresh`. The HTTP
-  client stops calling a host for the rest of a run once it fails every retry. The daily job fails visibly when both
-  price sources fail.
+  from the NSE ticker API, record no NASI level, and keep AFX company stats from the last local `refresh`. There is
+  still no independent runner-reachable price provider. The HTTP client honours Retry-After with bounded jittered
+  backoff (up to 60 seconds) and skips unreachable hosts for the rest of a process. The daily job fails visibly when
+  no closing snapshot is available, while saved degraded reports can still publish with explicit health warnings.
 - Capital gains tax is not modelled.
 - The cost of equity is high (about 20% at beta 1: the 10-year Kenyan bond yield less the default spread, plus beta x
   ERP plus the country risk premium). Gordon and earnings-power values are conservative as a result, so most counters

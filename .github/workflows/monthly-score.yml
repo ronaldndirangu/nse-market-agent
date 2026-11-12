@@ -8,6 +8,8 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: ${{ github.workflow }}
@@ -17,6 +19,8 @@ jobs:
   score:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    outputs:
+      persisted: ${{ steps.commit.outputs.persisted }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -33,13 +37,16 @@ jobs:
       - name: Walk-forward weight tuning (report only, never edits settings on main)
         run: python -m nse_agent tune-weights --proposal-file "$RUNNER_TEMP/weights.json" --body-file "$RUNNER_TEMP/tune.md"
       - name: Commit scorecard
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add reports data
-          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
-          git commit -m "Monthly scorecard $(date -u +%F)"
-          bash .github/scripts/push-main.sh
+          if ! git diff --cached --quiet; then
+            git commit -m "Monthly scorecard $(date -u +%F)"
+            bash .github/scripts/push-main.sh
+          fi
+          echo "persisted=true" >> "$GITHUB_OUTPUT"
       - name: Open or update the weight proposal PR
         env:
           GH_TOKEN: ${{ github.token }}
@@ -69,3 +76,8 @@ jobs:
             gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$BRANCH" \
               --title "Review proposed ranking weights $(date -u +%F)" --body-file "$RUNNER_TEMP/tune.md"
           fi
+
+  deploy:
+    needs: score
+    if: ${{ !cancelled() && needs.score.outputs.persisted == 'true' }}
+    uses: ./.github/workflows/publish.yml

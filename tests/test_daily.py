@@ -88,10 +88,10 @@ def test_brief_flags_changes_and_material_alerts(market, outputs, tmp_path):
 
     alert = tmp_path / "alert.md"
     out = brief.run_brief(fetch=False, alert_file=str(alert), as_of=AS_OF)
-    assert f"ledger_rows={len(BANKS)}" in out and "prev=2026-11-05" in out
+    assert "ledger_rows=0" in out and "prev=2026-11-05" in out
 
     text = (outputs / "reports" / "daily" / f"{AS_OF.isoformat()}.md").read_text(encoding="utf-8")
-    for heading in ("## Alerts", "## Top 5", "### Score breakdown", "## What changed", "## Full ranking",
+    for heading in ("## Alerts", "## Candidates for review", "### Score breakdown", "## What changed", "## Full ranking",
                     "## Data gaps"):
         assert heading in text
     assert "Compared with the brief for 2026-11-05." in text
@@ -109,10 +109,7 @@ def test_brief_flags_changes_and_material_alerts(market, outputs, tmp_path):
     body = alert.read_text(encoding="utf-8")
     assert "Warning announcement for KCB" in body
     assert "Buy dropped: KCB." in body
-    result = analyze(AS_OF)
-    if promoted in result["buys"]:
-        label = "New Buy, high confidence undervalued" if promoted in result["high_confidence"] else "New Buy"
-        assert f"{label}: {promoted} #" in body
+    assert "New Buy:" not in body
 
     alert.unlink()
     assert "ledger_rows=0" in brief.run_brief(fetch=False, alert_file=str(alert), as_of=AS_OF)
@@ -132,7 +129,7 @@ def test_top_list_puts_buys_before_higher_scored_watch_and_avoid():
     rows = {"AAA": {"tier": "Avoid", "rank": "1"}, "BBB": {"tier": "Watch", "rank": "2"},
             "CCC": {"tier": "Buy", "rank": "10"}, "DDD": {"tier": "Watch", "rank": "3"},
             "EEE": {"tier": "Avoid", "rank": "4"}, "FFF": {"tier": "Buy", "rank": "9"}}
-    assert brief.top_list(rows) == ["FFF", "CCC", "BBB", "DDD", "AAA"]
+    assert brief.top_list(rows) == ["FFF", "CCC", "BBB", "DDD"]
 
 
 def test_dividends_adjust_for_splits_and_withholding(outputs):

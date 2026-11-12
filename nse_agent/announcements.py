@@ -55,7 +55,15 @@ def update(today: date | None = None) -> dict:
     existing = data.get("items", [])
     known = {i["url"] for i in existing}
     new = []
-    for a in nse.fetch_announcements():
+    from . import health
+    try:
+        fetched = nse.fetch_announcements()
+        if not fetched:
+            raise ValueError("NSE announcements returned no documents; keeping the last successful check")
+    except Exception as exc:
+        health.record_announcements(False, str(exc))
+        raise
+    for a in fetched:
         if a["url"] in known:
             continue
         known.add(a["url"])
@@ -68,4 +76,5 @@ def update(today: date | None = None) -> dict:
     data["items"] = sorted(existing + new, key=lambda i: (i["date"], i["title"]), reverse=True)
     data["updated"] = today.isoformat()
     storage.write_json(path(), data)
+    health.record_announcements(True)
     return {"new": new, "total": len(data["items"])}

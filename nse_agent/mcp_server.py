@@ -19,12 +19,12 @@ def _analysis():
     """Recompute at most every CACHE_SECONDS so a long-lived server picks up new prices and results."""
     if _cache and time.monotonic() - _cache["at"] < CACHE_SECONDS:
         return _cache["res"]
-    from . import dividends, prices
+    from . import dividends, health, prices
     from .engine import analyze
     prices.clear_cache()
     dividends.clear_cache()
     fnd._load.cache_clear()
-    _cache.update(at=time.monotonic(), res=analyze())
+    _cache.update(at=time.monotonic(), res=analyze(health=health.assess()))
     return _cache["res"]
 
 
@@ -36,7 +36,7 @@ def screen_stocks() -> dict:
         r = rows[t]
         out.append({k: r[k] for k in ("rank", "ticker", "name", "sector", "price", "price_date", "fair_value", "mos",
                                       "agree", "agree_needed", "undervalued", "buy", "confidence", "composite",
-                                      "screen_fail", "projection")}
+                                      "screen_fail", "projection", "estimate_reliable")}
                    | {"quality_gate": r["quality"]["gate"], "risk": r.get("risk"), "conviction": r.get("conviction")})
     unranked = [t for t in rows if t not in res["ranking"]]
     return _plain({"as_of": res["as_of"], "tbill_net": res["tbill_net"], "hurdle": res["hurdle"], "ranked": out,

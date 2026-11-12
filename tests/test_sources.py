@@ -120,7 +120,21 @@ def test_server_error_backs_off_before_retrying(monkeypatch):
     monkeypatch.setattr(http, "_last_hit", {})
     monkeypatch.setattr(http, "session", lambda: FlakySession())
     monkeypatch.setattr(http.time, "sleep", sleeps.append)
+    monkeypatch.setattr(http.random, "uniform", lambda lo, hi: 0)
 
     assert http.get_text("https://flaky.example/ticker") == "ok"
     assert http.SERVER_ERROR_BACKOFF in sleeps
     assert 2 * http.SERVER_ERROR_BACKOFF in sleeps
+
+
+def test_retry_after_is_bounded_and_test_override_skips_waits(monkeypatch):
+    from nse_agent import http
+
+    assert http._backoff(0, "120") == 0
+    monkeypatch.delenv("NSE_AGENT_DELAY")
+    monkeypatch.setattr(http.random, "uniform", lambda lo, hi: 0)
+    monkeypatch.setattr(http.time, "time", lambda: 0)
+    assert http._backoff(0, "40") == 40
+    assert http._backoff(0, "Thu, 01 Jan 1970 00:00:45 GMT") == 45
+    assert http._backoff(0, "120") == 60
+    assert http._backoff(0, "invalid") == http.SERVER_ERROR_BACKOFF

@@ -34,10 +34,24 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("review", help="Review portfolio.yaml holdings")
     sub.add_parser("results-watch", help="Detect new results announcements and queue them for review")
     sub.add_parser("mcp", help="Run the MCP server (needs the mcp extra)")
+    st = sub.add_parser("site", help="Build the static site without refreshing data")
+    st.add_argument("--check", action="store_true", help="Validate pages and publication provenance")
+    published = sub.add_parser("check-published", help="Check the deployed report for missed updates")
+    published.add_argument("--url", default="https://ronaldndirangu.github.io/nse-market-agent/")
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s", stream=sys.stderr)
 
+    if args.cmd == "check-published":
+        from .publication import check_published
+        print(check_published(args.url))
+        return 0
+    if args.cmd == "site":
+        from . import site
+        written = site.build()
+        checked = site.check() if args.check else 0
+        print(f"site_pages={len(written)} checked={checked}")
+        return 0
     if args.cmd == "daily":
         from .market import update_daily
         snap = update_daily()

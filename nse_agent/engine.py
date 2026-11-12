@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from datetime import date
 
-from . import announcements as ann, config, dividends, fundamentals as fnd, prices, risk, storage
+from . import announcements as ann, config, dividends, fundamentals as fnd, health as health_data, prices, risk, storage
 from .quality import assess, warnings_for
 from .returns import net_tbill, project, rank
 from .valuation import (agreeing, cost_of_equity, fair_value, graham_number, models, required_agreement,
@@ -11,7 +11,7 @@ from .valuation import (agreeing, cost_of_equity, fair_value, graham_number, mod
 
 
 def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquidity: bool = True,
-            check_suspension: bool = True) -> dict:
+            check_suspension: bool = True, health: dict | None = None) -> dict:
     """point_in_time=True only uses fundamentals published on or before as_of (backtests)."""
     as_of = as_of or date.today()
     s = config.settings()
@@ -67,6 +67,7 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
         fv = r["fair_value"]
         r["model_spread"] = fv["high"] / fv["low"] if fv and len(vals) >= 2 and fv["low"] > 0 else None
         r["dispersed"] = r["model_spread"] is not None and r["model_spread"] > s["valuation"]["max_model_spread"]
+        r["estimate_reliable"] = len(vals) >= 2 and not r["dispersed"]
         r["momentum"] = prices.momentum(t, as_of)
         r["volatility"] = prices.volatility(t, as_of)
         r["dividend_yield"] = dividends.trailing_yield(t, as_of, r["price"], r["dps"])
@@ -114,8 +115,13 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
             r["confidence"] = "Low"
         else:
             r["confidence"] = "Medium"
-        r["risk"] = risk.profile(r)
-        r["conviction"] = risk.conviction(r, hurdle)
+        r["risk"] = risk.profile(r, health)
+        issues = health_data.evidence(health, t) if health is not None else None
+        if issues is not None:
+            issues += [f"{name}: not assessed" for name in r["risk"]["missing"]]
+        r["conviction"] = risk.conviction(r, hurdle, issues)
+        if issues:
+            r["confidence"] = "Low"
 
     ranked = rank(rows) if rows else []
     for i, t in enumerate(ranked, 1):
@@ -132,6 +138,7 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
         "tbill_net": net_tbill(),
         "hurdle": hurdle,
         "ke_at_beta_1": cost_of_equity(1.0),
+        "health": health,
     }
 
 

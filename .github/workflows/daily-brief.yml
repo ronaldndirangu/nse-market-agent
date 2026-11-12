@@ -2,7 +2,7 @@ name: Daily brief
 
 on:
   schedule:
-    - cron: "0 13 * * 1-5" # 16:00 EAT, one hour after the NSE close
+    - cron: "7 13 * * 1-5" # 16:07 EAT, after the NSE close
   workflow_dispatch:
 
 permissions:
@@ -23,6 +23,8 @@ jobs:
   brief:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    outputs:
+      persisted: ${{ steps.commit.outputs.persisted }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
@@ -39,17 +41,19 @@ jobs:
           python -m nse_agent brief --no-prices --alert-file "$RUNNER_TEMP/alert.md" | tee "$RUNNER_TEMP/brief.txt"
           cat "$RUNNER_TEMP/brief.txt" >> "$GITHUB_STEP_SUMMARY"
       - name: Commit brief, ledger and data
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data reports
-          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
-          git commit -m "Daily brief $(date -u +%F)"
-          bash .github/scripts/push-main.sh
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: site
+          if ! git diff --cached --quiet; then
+            git commit -m "Daily brief $(date -u +%F)"
+            bash .github/scripts/push-main.sh
+          fi
+          echo "persisted=true" >> "$GITHUB_OUTPUT"
       - name: Alert on material change
+        id: notify
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
           PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/daily.html
@@ -57,27 +61,33 @@ jobs:
           alert="$RUNNER_TEMP/alert.md"
           if [ ! -s "$alert" ]; then echo "No material change"; exit 0; fi
           printf '\nFull brief: %s\n' "$PAGES_URL" >> "$alert"
+          marker="nse-alert:$(sha256sum "$alert" | cut -d' ' -f1)"
+          printf '\n<!-- %s -->\n' "$marker" >> "$alert"
           gh label create daily-alert --repo "$GITHUB_REPOSITORY" --color D93F0B \
             --description "Material change in the daily brief" --force
           issue=$(gh issue list --repo "$GITHUB_REPOSITORY" --label daily-alert --state open --limit 1 --json number --jq '.[0].number // empty')
           if [ -n "$issue" ]; then
+            gh issue view "$issue" --repo "$GITHUB_REPOSITORY" --json body --jq .body > "$RUNNER_TEMP/sent-alerts.txt"
+            gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$issue/comments" --jq '.[].body' >> "$RUNNER_TEMP/sent-alerts.txt"
+            if grep -F "$marker" "$RUNNER_TEMP/sent-alerts.txt" > /dev/null; then
+              echo "This alert was already delivered"; exit 0
+            fi
             gh issue comment "$issue" --repo "$GITHUB_REPOSITORY" --body-file "$alert"
           else
             gh issue create --repo "$GITHUB_REPOSITORY" --title "NSE daily alerts" --label daily-alert --body-file "$alert"
           fi
-      - name: Fail if no price source answered
+      - name: Report unavailable closing prices
         if: steps.prices.outcome == 'failure'
         run: |
-          echo "::error::Every price source failed; the brief used cached prices."
+          echo "::error::No verified closing snapshot was available; check source errors or intraday status."
+          exit 1
+      - name: Report failed notification
+        if: always() && steps.notify.outcome == 'failure'
+        run: |
+          echo "::error::The report was saved, but its GitHub alert was not delivered."
           exit 1
 
   deploy:
     needs: brief
-    if: ${{ !cancelled() }}
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5
+    if: ${{ !cancelled() && needs.brief.outputs.persisted == 'true' }}
+    uses: ./.github/workflows/publish.yml

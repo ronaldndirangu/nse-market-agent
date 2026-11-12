@@ -3,8 +3,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from . import DISCLAIMER, __version__, config, fundamentals as fnd, risk
-from .fmt import kes, num, pct, table
+from . import DISCLAIMER, __version__, config, fundamentals as fnd, health, risk
+from .fmt import estimate_reliable, kes, num, pct, table
 from .returns import weights_text
 
 MODEL_NAMES = {
@@ -70,7 +70,7 @@ def _risks(r: dict, result: dict) -> list[str]:
         risks.append(f"Thin liquidity: average turnover {kes(r['avg_turnover'], 0)} per session.")
     if len(r["models"]) < 3:
         risks.append(f"Only {len(r['models'])} valuation models had inputs, so the fair value range is narrow evidence.")
-    if r["projection"] and r["projection"]["bear"] < result["tbill_net"]:
+    if estimate_reliable(r) and r["projection"] and r["projection"]["bear"] < result["tbill_net"]:
         risks.append(f"Bear case ({pct(r['projection']['bear'])}) trails the net T-bill yield ({pct(result['tbill_net'])}).")
     if r["fair_value"] and r["fair_value"]["high"] > 2 * r["fair_value"]["low"]:
         risks.append("Models disagree widely (high fair value is more than twice the low).")
@@ -83,7 +83,7 @@ def _thesis(r: dict, result: dict) -> str:
     s = config.settings()
     lines = [
         f"### {r['rank']}. {r['name']} ({r['ticker']}): {_status(r)}, {r['confidence']} confidence, "
-        f"{r['risk']['level']} risk" + (", high confidence undervalued" if r["conviction"]["flag"] else ""),
+        f"{r['risk'].get('label', r['risk']['level'])} risk" + (", high confidence undervalued" if r["conviction"]["flag"] else ""),
         "",
         f"- **Valuation:** last close {kes(r['price'])} on {r['price_date']}. Fair value range "
         f"{kes(fv['low'])} to {kes(fv['high'])}, base {kes(fv['base'])}, a margin of safety of {pct(r['mos'])}. "
@@ -99,9 +99,13 @@ def _thesis(r: dict, result: dict) -> str:
         f"{pct(result['hurdle'])}.",
         f"- **Quality:** {_quality_line(r['quality'])}.",
         f"- **Momentum (average of 6 and 12 month returns, skipping the last month):** {pct(r['momentum'])}.",
-        f"- **Risk profile: {r['risk']['level']}.** {r['risk']['summary']}",
+        f"- **Risk profile: {r['risk'].get('label', r['risk']['level'])}.** {r['risk']['summary']}",
         "- **Risks:**",
     ]
+    if not estimate_reliable(r):
+        lines = [line for line in lines if not line.startswith(("- **Valuation:**", "- **Projected annual return"))]
+        lines.insert(2, "- **Valuation and projected return:** unclear. The methods disagree or there is "
+                        "insufficient valuation evidence; no point estimate is presented.")
     lines += [f"  - {x}" for x in _risks(r, result)]
     lines.append(f"- **Source:** [{r['latest_period']} results]({r['source_url']})")
     return "\n".join(lines)
@@ -171,6 +175,7 @@ def render(result: dict, portfolio_md: str | None = None) -> str:
         "",
     ]
 
+    out += health.markdown(result.get("health"))
     out += ["## Ranked results", ""]
     if ranked:
         trs = []
@@ -179,11 +184,11 @@ def render(result: dict, portfolio_md: str | None = None) -> str:
             fv, pr = r["fair_value"], r["projection"]
             trs.append([
                 str(r["rank"]), t, kes(r["price"]),
-                f"{num(fv['low'])} / {num(fv['base'])} / {num(fv['high'])}" if fv else "n/a",
-                pct(r["mos"]), f"{len(r['agree'])}/{len(r['models'])}",
-                f"{pct(pr['bear'])} / {pct(pr['base'])} / {pct(pr['bull'])}" if pr else "n/a",
+                f"{num(fv['low'])} / {num(fv['base'])} / {num(fv['high'])}" if fv and estimate_reliable(r) else "unclear",
+                pct(r["mos"]) if estimate_reliable(r) else "unclear", f"{len(r['agree'])}/{len(r['models'])}",
+                f"{pct(pr['bear'])} / {pct(pr['base'])} / {pct(pr['bull'])}" if pr and estimate_reliable(r) else "unclear",
                 r["quality"]["gate"], pct(r["momentum"]), num(r["composite"]), _status(r), r["confidence"],
-                r["risk"]["level"],
+                r["risk"].get("label", r["risk"]["level"]),
             ])
         out.append(table(["#", "Ticker", "Price", "Fair value low / base / high", "MoS", "Agree", "Return p.a. bear / base / bull",
                           "Quality", "Momentum", "Composite", "Status", "Confidence", "Risk"], trs))
@@ -251,8 +256,8 @@ def render(result: dict, portfolio_md: str | None = None) -> str:
         "sheet and warning announcements) rated Low, Moderate or High from fixed thresholds. Shown beside the status; "
         "it never changes it.",
         "- **High confidence undervalued:** a Buy candidate where at least three models agree and the quality score "
-        "is 0.67 or more. Sector P/E and P/B need enough sourced peers, so most non-banks have only two models and "
-        "cannot be flagged yet.",
+        "is 0.67 or more, with current critical live evidence. Agreement of methods is not a probability of profit. "
+        "Sector P/E and P/B need enough sourced peers, so most non-banks have only two models and cannot be flagged yet.",
         f"- **AI:** {AI_NOTE}",
         f"- Generated by nse-market-agent {__version__}.",
         "",

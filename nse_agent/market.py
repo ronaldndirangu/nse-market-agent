@@ -1,10 +1,12 @@
-"""Price collection: AFX listing first, official NSE ticker API as fallback, cache last."""
+"""Price collection with source fallback and persisted attempt health."""
 from __future__ import annotations
 
 import logging
+import math
+import os
 from datetime import datetime, timedelta, timezone
 
-from . import config, storage
+from . import config, health, storage
 from .sources import afx, nse
 
 log = logging.getLogger(__name__)
@@ -91,9 +93,24 @@ def update_daily(tickers: list[str] | None = None) -> dict:
     tickers = tickers or [s["ticker"] for s in config.universe()]
     snapshot: dict = {"source": None, "trade_date": None, "intraday": None, "rows": {}, "errors": []}
     intraday_snap = None
-    for name, fetch in (("afx", lambda: _from_afx(tickers)), ("nse", _from_nse)):
+    sources = [("afx", lambda: _from_afx(tickers)), ("nse", _from_nse)]
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        sources.reverse()
+    for name, fetch in sources:
         try:
             got = fetch()
+            covered = 0
+            for ticker in tickers:
+                row = got["rows"].get(ticker) or {}
+                price = row.get("price")
+                if price is not None:
+                    if not math.isfinite(price) or price <= 0:
+                        raise ValueError(f"{name} returned an invalid price for {ticker}")
+                    covered += 1
+            if tickers and covered < MIN_AFX_COVERAGE * len(tickers):
+                raise ValueError(f"{name} listing covers only {covered} of {len(tickers)} universe tickers")
+            if datetime.fromisoformat(got["trade_date"]).date() > _now_eat().date():
+                raise ValueError(f"{name} returned a future trade date")
         except Exception as exc:  # noqa: BLE001 - any source failure triggers the next source
             log.warning("%s price source failed: %s", name, exc)
             snapshot["errors"].append(f"{name}: {exc}")
@@ -124,6 +141,7 @@ def update_daily(tickers: list[str] | None = None) -> dict:
             if snapshot.get("nasi"):
                 storage.upsert_series(storage.nasi_path(), [(snapshot["trade_date"], snapshot["nasi"])])
         storage.write_json(listing_path, snapshot)
+    health.record_market(snapshot)
     return snapshot
 
 
