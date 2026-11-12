@@ -130,7 +130,7 @@ def conviction(r: dict, hurdle: float) -> dict:
          "detail": (f"quality gate {q['gate']}, score " + (f"{qs:.2f}" if qs is not None else "n/a")
                     + f", needs pass and {hc['min_quality_score']:.2f}")},
         {"name": "Screen", "passed": not r["screen_fail"],
-         "detail": "liquid, fresh price, enough history, positive EPS" if not r["screen_fail"]
+         "detail": "liquid, fresh price and results, enough history, positive EPS" if not r["screen_fail"]
          else "; ".join(r["screen_fail"])},
         {"name": "Return", "passed": base is not None and base > hurdle,
          "detail": (f"base return {base:.1%} against the {hurdle:.2%} hurdle" if base is not None

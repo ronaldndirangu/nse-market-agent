@@ -22,7 +22,7 @@ def _sessions(n):
 
 def _bank_periods(scale):
     periods = []
-    for i, year in enumerate((2022, 2023, 2024)):
+    for i, year in enumerate((2023, 2024, 2025)):
         equity = 200_000 * scale * (1 + 0.1 * i)
         income = 0.22 * equity
         periods.append({
@@ -81,10 +81,28 @@ def test_analyze_render_and_review(market):
 
 
 def test_point_in_time_hides_unpublished_results(market):
-    result = analyze(date(2025, 3, 1), point_in_time=True, check_liquidity=False)
+    result = analyze(date(2026, 3, 1), point_in_time=True, check_liquidity=False)
     assert set(result["rows"]) == set(BANKS)
     for r in result["rows"].values():
-        assert r["latest_period"] == "FY2023"
+        assert r["latest_period"] == "FY2024"
+        assert not any("overdue" in f for f in r["screen_fail"])
+
+
+def test_overdue_annual_results_fail_the_screen(market):
+    result = analyze(date(2027, 7, 1), check_liquidity=False)
+    for r in result["rows"].values():
+        assert "latest annual results are overdue (last period ended 2025-12-31)" in r["screen_fail"]
+        assert r["tier"] != "Buy"
+
+
+def test_data_gaps_flag_sectors_too_thin_for_high_confidence(market):
+    result = {"gaps": [], "ranking": ["KEGN", "KPLC", "EQTY"], "rows": {
+        "KEGN": {"sector": "Energy", "quality": {"gate": "pass"}, "momentum": 0.1, "models": {"a": 1, "b": 2}},
+        "KPLC": {"sector": "Energy", "quality": {"gate": "pass"}, "momentum": 0.1, "models": {"a": 1, "b": 2}},
+        "EQTY": {"sector": "Banking", "quality": {"gate": "pass"}, "momentum": 0.1,
+                 "models": {"a": 1, "b": 2, "c": 3}}}}
+    gaps = [g for g in report._data_gaps(result) if "High confidence" in g]
+    assert len(gaps) == 1 and gaps[0].startswith("Energy (KEGN, KPLC): fewer than 3 sourced peers")
 
 def test_weekly_changes_report_added_and_dropped_lists():
     from nse_agent.pipeline import weekly_changes

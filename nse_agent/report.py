@@ -120,6 +120,17 @@ def _data_gaps(result: dict) -> list[str]:
             gaps.append(f"{t}: not enough sourced line items for Piotroski, Altman Z'' or NPL checks")
         if r["momentum"] is None:
             gaps.append(f"{t}: under 12 months of prices, so no momentum score")
+    need = config.settings()["high_confidence"]["min_agreeing_models"]
+    short: dict[str, list[str]] = {}
+    for t in result["ranking"]:
+        r = result["rows"][t]
+        if len(r["models"]) < need:
+            short.setdefault(r["sector"], []).append(t)
+    peers = config.settings()["valuation"]["min_sector_peers"]
+    for sector, ts in short.items():
+        gaps.append(f"{sector} ({', '.join(ts)}): fewer than {peers} sourced peers, so no sector P/E or P/B model. "
+                    f"These stocks get under {need} valuation models and cannot reach High confidence until more "
+                    "peers are sourced")
     return gaps
 
 
@@ -214,11 +225,13 @@ def render(result: dict, portfolio_md: str | None = None) -> str:
         "",
         f"- **Screen:** average turnover of at least {kes(s['screen']['min_avg_daily_turnover_kes'], 0)} per session, "
         f"at least {s['screen']['min_annual_periods']} sourced annual periods, positive EPS, not suspended, price no "
-        f"older than {s['screen']['max_price_age_days']} days.",
+        f"older than {s['screen']['max_price_age_days']} days, latest annual period ended no more than "
+        f"{s['screen']['max_fundamentals_age_days']} days ago (results are due within 4 months of year end).",
         "- **Models:** banks use justified P/B = BVPS x (ROE - g) / (ke - g). Dividend payers use Gordon "
         "V = DPS x (1 + g) / (ke - g). Every counter gets earnings power value (3-year average EPS / ke), and sector "
         f"median P/E and P/B when at least {s['valuation']['min_sector_peers']} peers have them. The Graham number is "
-        "shown for reference only. When the highest model value is more than "
+        "left out: its fixed 22.5 multiple assumes far lower interest rates than Kenya's, so it overstates value "
+        "here. When the highest model value is more than "
         f"{s['valuation']['max_model_spread']:.0f}x the lowest, the models disagree too much to trust and the stock "
         "is rated Avoid.",
         f"- **Cost of equity:** ke = (10-year bond - default spread) + beta x {pct(m['equity_risk']['mature_market_erp'], 2)} "

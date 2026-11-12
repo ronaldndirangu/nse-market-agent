@@ -45,6 +45,7 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
             "ticker": t, "name": u["name"], "sector": u["sector"], "bank": bool(u.get("bank")),
             "price": price, "price_date": price_date, "beta": b, "ke": ke, "g": g, "roe": avg_roe,
             "eps": eps, "bvps": bvps, "dps": last.get("dps"), "latest_period": last.period,
+            "period_end": last.period_end.isoformat(),
             "periods": len(periods), "source_url": last.source_url,
             "pe": price / eps if eps and eps > 0 else None,
             "pb": price / bvps if bvps and bvps > 0 else None,
@@ -91,6 +92,8 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
                 reasons.append(f"illiquid (avg turnover KES {turnover:,.0f})")
         if r["periods"] < s["screen"]["min_annual_periods"]:
             reasons.append(f"only {r['periods']} annual periods sourced")
+        if (as_of - date.fromisoformat(r["period_end"])).days > s["screen"].get("max_fundamentals_age_days", 540):
+            reasons.append(f"latest annual results are overdue (last period ended {r['period_end']})")
         if not r["eps"] or r["eps"] <= 0:
             reasons.append("latest EPS not positive")
         r["screen_fail"] = reasons

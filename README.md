@@ -28,7 +28,7 @@ flowchart LR
 ```
 
 1. **Screen.** A stock needs a fresh price, average daily turnover of at least KES 1m, at least 3 sourced annual
-   periods, positive EPS and no suspension.
+   periods, positive EPS, no suspension and no overdue annual results (latest period ended within 540 days).
 2. **Value.** Cost of equity is `ke = (10y KES yield - sovereign default spread) + beta x mature ERP + country risk
    premium`, which is about 20% at beta 1. Beta comes from 3 years of weekly returns against an equal-weight index of
    the universe. Models:
@@ -59,7 +59,7 @@ A stock is flagged **High confidence undervalued** only when all four gates pass
 |---|---|
 | Valuation | At least 3 valuation models put fair value 15% or more above the price |
 | Quality | Quality gate passes with a score of 0.67 or more |
-| Screen | Liquid, fresh price, at least 3 sourced periods, positive EPS, not suspended |
+| Screen | Liquid, fresh price, at least 3 sourced periods, results not overdue, positive EPS, not suspended |
 | Return | Base-case annual return beats the Buy hurdle |
 
 When nothing qualifies, the brief lists the closest candidates and the gates they miss.

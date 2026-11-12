@@ -3,6 +3,8 @@ screen:
   min_avg_daily_turnover_kes: 1000000
   min_annual_periods: 3
   max_price_age_days: 7
+  # Annual results are due within 4 months of year end, so a period end older than this means overdue results.
+  max_fundamentals_age_days: 540
 
 valuation:
   horizon_years: 3
