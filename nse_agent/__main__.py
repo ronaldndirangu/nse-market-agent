@@ -41,8 +41,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "daily":
         from .market import update_daily
         snap = update_daily()
-        print(f"source={snap['source']} trade_date={snap['trade_date']} errors={snap['errors']}")
-        return 0 if snap["source"] != "cache" else 1
+        print(f"source={snap['source']} trade_date={snap['trade_date']} intraday={snap['intraday']} "
+              f"errors={snap['errors']}")
+        return 0 if snap["source"] != "cache" and not snap["intraday"] else 1
     if args.cmd == "backfill":
         from .market import backfill
         backfill()

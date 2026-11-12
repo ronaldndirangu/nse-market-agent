@@ -37,9 +37,21 @@ def parse_snapshot(payload: dict) -> tuple[str | None, dict[str, dict]]:
     return trade_date, rows
 
 
-def fetch_snapshot() -> tuple[str | None, dict[str, dict]]:
+def parse_status(payload: dict) -> str | None:
+    """Return the market status the ticker reports ("open", "closed"), lowercased."""
+    for part in (payload.get("message") or [])[1:]:
+        upd = part.get("updated_at") if isinstance(part, dict) else None
+        if upd and upd.get("market_status"):
+            return str(upd["market_status"]).strip().lower()
+    return None
+
+
+def fetch_snapshot() -> tuple[str | None, dict[str, dict], str | None]:
+    """Return (trade date ISO, {issuer: row}, market status)."""
     resp = http.request("POST", TICKER_URL, json={"nopage": "true", "isinno": "KE3000009674"}, headers=_HEADERS)
-    return parse_snapshot(resp.json())
+    payload = resp.json()
+    trade_date, rows = parse_snapshot(payload)
+    return trade_date, rows, parse_status(payload)
 
 
 def parse_announcements(page: str) -> list[dict]:

@@ -10,6 +10,7 @@ from .sources import afx, nse
 log = logging.getLogger(__name__)
 EAT = timezone(timedelta(hours=3))
 MARKET_CLOSE_HOUR_EAT = 15
+MIN_AFX_COVERAGE = 0.5
 
 
 def _eat(ts: str | None) -> datetime | None:
@@ -21,48 +22,73 @@ def _eat(ts: str | None) -> datetime | None:
         return None
 
 
+def _from_afx(tickers: list[str]) -> dict:
+    listing = afx.fetch_listing()
+    stamp = _eat(listing.as_of)
+    if not listing.rows or stamp is None:
+        raise ValueError("AFX listing returned no rows")
+    rows = {
+        row.ticker: {"price": row.price, "volume": row.volume, "suspended": row.suspended, "name": row.name}
+        for row in listing.rows
+    }
+    covered = sum(1 for t in tickers if t in rows)
+    if tickers and covered < MIN_AFX_COVERAGE * len(tickers):
+        raise ValueError(f"AFX listing covers only {covered} of {len(tickers)} universe tickers")
+    return {"source": "afx", "trade_date": stamp.date().isoformat(), "as_of": listing.as_of,
+            "intraday": stamp.hour < MARKET_CLOSE_HOUR_EAT, "rows": rows, "nasi": listing.nasi}
+
+
+def _from_nse() -> dict:
+    trade_date, rows, status = nse.fetch_snapshot()
+    if not rows or not trade_date:
+        raise ValueError("NSE ticker API returned no rows")
+    # The ticker API carries no suspension flag, so suspension stays unknown (None).
+    return {"source": "nse", "trade_date": trade_date, "market_status": status,
+            "intraday": status is not None and status != "closed",
+            "rows": {issuer: {"price": r.get("price"), "volume": r.get("volume"), "suspended": None,
+                              "turnover": r.get("turnover")} for issuer, r in rows.items()}}
+
+
 def update_daily(tickers: list[str] | None = None) -> dict:
-    """Record today's close and volume for the universe plus the NASI level."""
+    """Record today's close and volume for the universe plus the NASI level.
+
+    Tries AFX, then the NSE ticker API. An intraday snapshot never overwrites stored closes;
+    it only refreshes listing.json (suspension flags) when no closing snapshot is available.
+    """
     tickers = tickers or [s["ticker"] for s in config.universe()]
     snapshot: dict = {"source": None, "trade_date": None, "intraday": None, "rows": {}, "errors": []}
-    try:
-        listing = afx.fetch_listing()
-        stamp = _eat(listing.as_of)
-        if not listing.rows or stamp is None:
-            raise ValueError("AFX listing returned no rows")
-        snapshot.update(source="afx", trade_date=stamp.date().isoformat(),
-                        intraday=stamp.hour < MARKET_CLOSE_HOUR_EAT, as_of=listing.as_of)
-        for row in listing.rows:
-            snapshot["rows"][row.ticker] = {
-                "price": row.price, "volume": row.volume, "suspended": row.suspended, "name": row.name,
-            }
-        if listing.nasi:
-            snapshot["nasi"] = listing.nasi
-            storage.upsert_series(storage.nasi_path(), [(snapshot["trade_date"], listing.nasi)])
-    except Exception as exc:  # noqa: BLE001 - any source failure triggers the fallback
-        log.warning("AFX listing failed: %s; trying NSE ticker API", exc)
-        snapshot["errors"].append(f"afx: {exc}")
+    intraday_snap = None
+    for name, fetch in (("afx", lambda: _from_afx(tickers)), ("nse", _from_nse)):
         try:
-            trade_date, rows = nse.fetch_snapshot()
-            if not rows or not trade_date:
-                raise ValueError("NSE ticker API returned no rows")
-            snapshot.update(source="nse", trade_date=trade_date, intraday=None)
-            for issuer, r in rows.items():
-                snapshot["rows"][issuer] = {
-                    "price": r.get("price"), "volume": r.get("volume"), "suspended": False,
-                    "turnover": r.get("turnover"),
-                }
-        except Exception as exc2:  # noqa: BLE001
-            log.error("NSE ticker API failed: %s; keeping cached prices", exc2)
-            snapshot["errors"].append(f"nse: {exc2}")
+            got = fetch()
+        except Exception as exc:  # noqa: BLE001 - any source failure triggers the next source
+            log.warning("%s price source failed: %s", name, exc)
+            snapshot["errors"].append(f"{name}: {exc}")
+            continue
+        if got["intraday"]:
+            log.warning("%s snapshot for %s is intraday; trying the next source", name, got["trade_date"])
+            snapshot["errors"].append(f"{name}: intraday snapshot for {got['trade_date']}")
+            intraday_snap = intraday_snap or got
+            continue
+        snapshot.update(got)
+        break
+    else:
+        if intraday_snap:
+            snapshot.update(intraday_snap)
+        else:
+            log.error("no price source succeeded; keeping cached prices")
             snapshot["source"] = "cache"
     if snapshot["source"] in ("afx", "nse"):
-        for t in tickers:
-            r = snapshot["rows"].get(t)
-            if not r or r.get("price") is None or r.get("suspended"):
-                continue
-            volume = r.get("volume") if r.get("volume") is not None else 0.0
-            storage.upsert_prices(t, [(snapshot["trade_date"], float(r["price"]), float(volume))])
+        if not snapshot["intraday"]:
+            for t in tickers:
+                r = snapshot["rows"].get(t)
+                if not r or r.get("price") is None or r.get("suspended"):
+                    continue
+                # A blank volume on the listing means no trades in the session.
+                volume = r.get("volume") if r.get("volume") is not None else 0.0
+                storage.upsert_prices(t, [(snapshot["trade_date"], float(r["price"]), float(volume))])
+            if snapshot.get("nasi"):
+                storage.upsert_series(storage.nasi_path(), [(snapshot["trade_date"], snapshot["nasi"])])
         storage.write_json(storage.market_path("listing.json"), snapshot)
     return snapshot
 
