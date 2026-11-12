@@ -76,6 +76,10 @@ def test_brief_flags_changes_and_material_alerts(market, outputs, tmp_path):
     assert f"Unusual move: EQTY {pct(eqty[-1]['close'] / eqty[-2]['close'] - 1)} on {AS_OF}" in text
     assert "Tier: KCB moved from Buy to Avoid." in text
     assert "\u2014" not in text and "\u2013" not in text
+    weights = config.settings()["ranking"]["weights"]
+    formula = next(ln for ln in text.splitlines() if ln.startswith("- Composite score = "))
+    note = formula.rsplit(").", 1)[-1].lower()
+    assert not [n for n, w in weights.items() if w and brief.LABELS[n] in note]
     assert (outputs / "site" / "daily.html").exists() and (outputs / "site" / "daily" / f"{AS_OF}.html").exists()
 
     body = alert.read_text(encoding="utf-8")

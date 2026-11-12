@@ -209,10 +209,14 @@ def render(result: dict, ch: dict, alert_lines: list[str]) -> str:
     out += [table(["Rank", "Ticker", "Tier", "Composite", "Price", "MoS", "Bear / base / bull a year",
                    "Div. yield", "Volatility", "Risk", "Binding constraint"], body), ""]
     s = config.settings()
+    unweighted = [LABELS[n] for n in LABELS if n not in weighted]
+    one = len(unweighted) == 1
+    note = (f" {' and '.join(unweighted).capitalize()} {'is' if one else 'are'} logged for research but "
+            f"{'carries' if one else 'carry'} no weight until a reviewed tuning PR changes the weights."
+            if unweighted else "")
     out += [
         "## How to read this", "",
-        f"- Composite score = {weights_text()}. Dividend yield and volatility are logged for research but carry "
-        "no weight until a reviewed tuning PR changes the weights.",
+        f"- Composite score = {weights_text()}.{note}",
         f"- **Buy** clears every gate: quality passes, the screen passes, at least two valuation models agree on a "
         f"margin of safety of {pct(s['valuation']['mos_threshold'], 0)} or more, and the base return beats the "
         f"hurdle. **Watch** passes quality and misses one gate. **Avoid** misses more, or fails quality.",
