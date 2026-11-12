@@ -55,6 +55,40 @@ def test_dashboard_tolerates_sparse_and_broken_snapshots(tree):
     assert "Panel unavailable" in index and "Not financial advice" in index
 
 
+KPLC = {
+    "rank": 1, "ticker": "KPLC", "name": "Kenya Power", "sector": "Energy", "tier": "Watch", "price": 22.0,
+    "price_date": "2026-11-11", "fair_base": 34.52, "fair_low": 28.0, "fair_high": 41.0, "mos": 0.569,
+    "bear": -0.139, "base": 0.296, "bull": 0.567, "dividend_yield": 0.045, "composite": 1.21,
+    "binding": "Not a Buy: only 1 of 2 valuation models show 15% or more upside, needs 2.", "why": "KPLC #1.",
+    "driver": {"signal": "momentum", "label": "Momentum", "contribution": 0.8},
+    "conviction": {"flag": False, "failed": ["Value"],
+                   "gates": [{"name": "Value", "passed": False, "detail": "1 of 2 models"}]},
+    "risk": {"level": "High", "summary": "High risk.", "factors": [{"name": "Volatility", "level": "High",
+                                                                   "detail": "Large swings"}]},
+}
+
+
+def test_dashboard_beginner_layer(tree):
+    snap = {"as_of": "2026-11-11", "hurdle": 0.1267, "tbill_net": 0.0767, "valued": 16,
+            "counts": {"Buy": 0, "Watch": 1, "Avoid": 0}, "top": [KPLC], "near_misses": [KPLC], "high_confidence": []}
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
+    site.build()
+    index = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    for text in ("No stock is a Buy today", "Closest is <b>KPLC</b>", "KES 10,000 invested", "KES 12,960",
+                 "Jargon buster", "Show the details", "Not financial advice"):
+        assert text in index
+    assert "Panel unavailable" not in index and "\u2014" not in index and "\u2013" not in index
+    assert site._plain_reason(KPLC["binding"]) == "only 1 of 2 valuation methods say it is at least 15% cheap (needs 2)"
+
+    snap["top"] = [dict(KPLC, tier="Buy", binding="Clears every gate.")]
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
+    site.build()
+    index = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    assert "Buy today: KPLC." in index and "Passes every check" in index
+    assert "Looks fairly priced:</b> price KES 22.00 vs fair value estimate KES 22.01." in site._plain(
+        dict(KPLC, fair_base=22.01, mos=0.0005), None)
+
+
 def test_render_markdown_folds_method_sections_and_dedupes_disclaimer():
     md = (f"# Report\n\n{ADVICE}\n\n## Picks\n\n| Ticker | Tier | Risk |\n|---|---|---|\n| KCB | Watch | High |\n\n"
           f"## Method\n\nRules.\n\n## Data gaps\n\nNone.\n\n{ADVICE}\n")

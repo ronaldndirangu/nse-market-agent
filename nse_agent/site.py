@@ -152,6 +152,13 @@ color:var(--fg)}.links a:hover{border-color:var(--brand);text-decoration:none}
 .months h3{margin:1rem 0 .4rem;font-size:.95rem;color:var(--muted)}.months .chips a{color:var(--fg)}
 .foot{border-top:1px solid var(--line);color:var(--muted);font-size:.84rem;padding:1.4rem 0 2rem}
 .foot p{margin:.25rem 0}
+.plain{background:var(--brand-soft);border-radius:10px;padding:.55rem .8rem;margin:0;font-size:.9rem}
+.plain p{margin:.2rem 0}.plain b{color:var(--fg)}
+#verdict .big{font-size:1.15rem;font-weight:650;margin:.2rem 0 .5rem}#verdict ol{margin:.4rem 0 0;padding-left:1.2rem}
+#verdict li{margin:.25rem 0}.facts dt[title]{cursor:help;text-decoration:underline dotted}
+details.more summary{cursor:pointer;color:var(--brand);font-size:.88rem;font-weight:600}
+details.more[open] summary{margin-bottom:.5rem}details.more>*+*{margin-top:.5rem}
+#glossary dl{margin:0 0 1rem}#glossary dt{font-weight:650;margin-top:.6rem}#glossary dd{margin:.1rem 0 0;color:var(--muted)}
 @media (max-width:820px){.hero,.two{grid-template-columns:1fr}.bar{flex-direction:column;align-items:stretch;gap:0;
 padding-top:.5rem}.nav{margin:0 -1.1rem;padding:.4rem 1.1rem}h1{font-size:1.45rem}
 .prose{padding:1rem}.bars .row{grid-template-columns:120px 1fr 86px}}
@@ -358,7 +365,71 @@ def _range_bar(bear: float | None, base: float | None, bull: float | None, hurdl
             f'{pct(hurdle, 2) if hurdle is not None else "hurdle"} hurdle.</span></div></div>')
 
 
-def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool = False) -> str:
+TIPS = {
+    "Margin of safety": "How far the price sits below our fair value estimate. Bigger is cheaper.",
+    "Base return": "The likely yearly return over the next 3 years: dividends, growth and the price moving toward "
+                   "fair value, after costs and tax.",
+    "Fair value": "What the rules estimate one share is worth. The bracket shows the low and high estimates.",
+    "Dividend yield": "Cash dividends paid in a year as a share of today's price.",
+    "Top signal": "The input that added most to this stock's score.",
+    "Composite": "The overall score used to rank stocks. Higher ranks first.",
+}
+
+PLAIN = [
+    (re.compile(r"only (\d+) of (\d+) valuation models show (\S+) or more upside, needs (\d+)"),
+     r"only \1 of \2 valuation methods say it is at least \3 cheap (needs \4)"),
+    (re.compile(r"only (\d+) valuation model\(s\) available, needs (\d+)"),
+     r"only \1 valuation method has enough data (needs \2)"),
+    (re.compile(r"base return (\S+) does not beat the (\S+) hurdle"),
+     r"its likely return of \1 a year is below the \2 a Buy must beat"),
+    (re.compile(r"quality gate failed"), "the business fails a health check"),
+    (re.compile(r"quality unknown \(no Piotroski, Altman or NPL data\)"), "its business health cannot be checked yet"),
+    (re.compile(r"price is stale"), "the last price is out of date"),
+    (re.compile(r"(^|; )suspended\b"), r"\1trading is suspended"),
+    (re.compile(r"no turnover data"), "there is no trading volume data"),
+    (re.compile(r"illiquid \(avg turnover"), "it trades too rarely to buy and sell easily (average daily trading"),
+    (re.compile(r"only (\d+) annual periods sourced"), r"only \1 years of results are on file"),
+    (re.compile(r"latest EPS not positive"), "the company made a loss in its latest year"),
+    (re.compile(r"\(\+(\d+) more\)"), r"(and \1 more)"),
+]
+
+
+def _plain_reason(binding: str | None) -> str:
+    """Rewrite the engine's blocker text in everyday words."""
+    s = re.sub(r"^(Not a Buy|Avoid):\s*", "", (binding or "").strip()).rstrip(".")
+    if s == "Clears every gate":
+        return ""
+    for pat, rep in PLAIN:
+        s = pat.sub(rep, s)
+    return s
+
+
+def _money(v: float) -> str:
+    return f"KES {v:,.0f}"
+
+
+def _plain(it: dict, tbill: float | None) -> str:
+    lines = []
+    price, fair, mos = it.get("price"), it.get("fair_base"), it.get("mos")
+    if None not in (price, fair, mos):
+        look = ("Looks fairly priced" if abs(mos) < 0.05 else "Looks cheap" if mos > 0 else "Looks expensive")
+        gap = f" ({abs(mos):.0%} {'below' if mos > 0 else 'above'})" if f"{abs(mos):.0%}" != "0%" else ""
+        lines.append(f"<b>{look}:</b> price {kes(price)} vs fair value estimate {kes(fair)}{gap}.")
+    if it.get("tier") == "Buy":
+        lines.append("<b>Passes every check.</b>")
+    elif reason := _plain_reason(it.get("binding")):
+        lines.append(f"<b>Why it is not a Buy:</b> {E(reason)}.")
+    bear, base, bull = it.get("bear"), it.get("base"), it.get("bull")
+    if None not in (bear, base, bull):
+        t = f"; in a T-bill, about {_money(10000 * (1 + tbill))}" if tbill is not None else ""
+        lines.append(f"<b>KES 10,000 invested</b> could be worth about {_money(10000 * (1 + bear))} after a bad year, "
+                     f"{_money(10000 * (1 + base))} in a typical year and {_money(10000 * (1 + bull))} in a good "
+                     f"year{t}.")
+    return f'<div class="plain">{"".join(f"<p>{x}</p>" for x in lines)}</div>' if lines else ""
+
+
+def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool = False,
+                tbill: float | None = None) -> str:
     conv, rk = it.get("conviction") or {}, it.get("risk") or {}
     flagged = bool(conv.get("flag"))
     lo, hi = it.get("fair_low"), it.get("fair_high")
@@ -366,9 +437,14 @@ def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool =
     fair = f'{kes(it.get("fair_base"))}{span}' if it.get("fair_base") is not None else "n/a"
     drv = it.get("driver")
     facts = [("Margin of safety", _sp(it.get("mos"))), ("Base return", _sp(it.get("base"))),
-             ("Fair value", fair), ("Dividend yield", pct(it.get("dividend_yield"))),
-             ("Top signal", E(drv["label"]) if drv else "n/a"),
+             ("Fair value", fair), ("Dividend yield", pct(it.get("dividend_yield")))]
+    extra = [("Top signal", E(drv["label"]) if drv else "n/a"),
              ("Composite", f'{it["composite"]:.2f}' if it.get("composite") is not None else "n/a")]
+
+    def dl(rows: list[tuple[str, str]]) -> str:
+        return ('<dl class="facts">' + "".join(f'<div><dt title="{E(TIPS.get(k, ""))}">{k}</dt><dd>{v}</dd></div>'
+                                               for k, v in rows) + "</dl>")
+
     gate_html = ""
     if gates and conv.get("gates"):
         passed = sum(1 for g in conv["gates"] if g["passed"])
@@ -384,11 +460,12 @@ def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool =
             f'</span></div><div class="badges">{tier_badge(it["tier"], flagged)}{risk_badge(rk.get("level"))}</div>'
             f'</header><div class="pricebox"><div><div class="price">{kes(it.get("price"))}</div>'
             f'<div class="small muted">close {E(str(it.get("price_date") or ""))}</div></div>{_spark(it["ticker"])}'
-            f'</div><dl class="facts">' + "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in facts)
-            + f'</dl>{_range_bar(it.get("bear"), it.get("base"), it.get("bull"), hurdle)}{gate_html}'
+            f'</div>{_plain(it, tbill)}{dl(facts)}'
+            f'{_range_bar(it.get("bear"), it.get("base"), it.get("bull"), hurdle)}'
             + (f'<div class="factors">{factors}</div>' if factors else "")
-            + (f'<p class="small muted">{E(rk["summary"])}</p>' if rk.get("summary") and not why else "")
-            + (f'<p class="why">{_inline(it["why"])}</p>' if why and it.get("why") else "") + "</article>")
+            + f'<details class="more"><summary>Show the details</summary>{dl(extra)}{gate_html}'
+            + (f'<p class="small muted">{E(rk["summary"])}</p>' if rk.get("summary") else "")
+            + (f'<p class="why">{_inline(it["why"])}</p>' if why and it.get("why") else "") + "</details></article>")
 
 
 def _hero(s: dict) -> str:
@@ -406,17 +483,86 @@ def _hero(s: dict) -> str:
             f'<div class="callout warn small"><p><strong>Not financial advice.</strong> {E(DISCLAIMER)}</p></div>')
 
 
+def _verdict(s: dict) -> str:
+    def dicts(key: str) -> list[dict]:
+        v = s.get(key)
+        return [i for i in v if isinstance(i, dict)] if isinstance(v, list) else []
+
+    items = dicts("top") + dicts("high_confidence")
+    buys = list(dict.fromkeys(i.get("ticker") for i in items if i.get("tier") == "Buy" and i.get("ticker")))
+    if buys:
+        head = f'Buy today: {E(", ".join(buys))}.'
+        sub = "These pass every check. Read each card below before acting."
+    else:
+        n = (s.get("counts") or {}).get("Buy", 0)
+        head = "No stock is a Buy today." if not n else f"{n} stock{'s' if n > 1 else ''} rated Buy today."
+        near = next(iter(dicts("near_misses") + dicts("top")), None)
+        sub = ""
+        if near and near.get("ticker"):
+            reason = _plain_reason(near.get("binding"))
+            sub = (f'Closest is <b>{E(near["ticker"])}</b> ({E(str(near.get("tier", "")))})'
+                   + (f": {E(reason)}." if reason else "."))
+    tb, hurdle = s.get("tbill_net"), s.get("hurdle")
+    money = (f'<p>A 364-day government T-bill pays about <b>{pct(tb)}</b> a year after tax with almost no risk. A '
+             f'stock must be likely to return more than <b>{pct(hurdle, 2)}</b> a year to be a Buy.</p>'
+             if None not in (tb, hurdle) else "")
+    return (f'<section class="card" id="verdict"><h2>Today in one sentence</h2><p class="big">{head}</p>'
+            + (f"<p>{sub}</p>" if sub else "") + money
+            + '<p class="small muted"><b>How to use this page</b></p><ol class="small">'
+              "<li>Read the sentence above. Most days the answer is to wait.</li>"
+              f'<li>Scan the cards: {tier_badge("Buy")} passes every check, {tier_badge("Watch")} misses one, '
+              f'{tier_badge("Avoid")} misses more. The risk badge says how bumpy the ride could be.</li>'
+              '<li>Unsure about a word? Open the <a href="#glossary">Jargon buster</a> or a card\'s '
+              "<b>Show the details</b>.</li></ol></section>")
+
+
+def _glossary(s: dict) -> str:
+    cfg = config.settings()
+    v, hc = cfg.get("valuation", {}), cfg.get("high_confidence", {})
+    mos, years = pct(v.get("mos_threshold", 0.15), 0), v.get("horizon_years", 3)
+    prem = pct(cfg.get("buy", {}).get("hurdle_premium_over_tbill", 0.05), 0)
+    terms = [
+        ("Fair value", "What the rules estimate one share is worth, from the company's own reported profits, "
+                       "dividends and book value."),
+        ("Margin of safety", f"How far the price sits below fair value. 20% means you pay KES 80 for KES 100 of value. "
+                             f"A Buy needs {mos} or more from at least half the methods that apply (minimum two)."),
+        ("Bad / typical / good year (bear, base, bull)",
+         f"Three estimates of the yearly return over the next {years} years, after trading costs and dividend tax. "
+         "About 8 in 10 outcomes should land between bad and good."),
+        ("Hurdle", f"The yearly return a stock must beat to be a Buy: the T-bill rate plus {prem} for taking stock "
+                   "market risk."),
+        ("T-bill", "A short loan to the Kenyan government. Low risk, so it is the yardstick every stock must beat."),
+        ("Buy, Watch, Avoid", "Buy passes every check. Watch is healthy but misses one check. Avoid misses more or "
+                              "fails the business health check."),
+        ("High confidence", f"A stricter Buy: {hc.get('min_agreeing_models', 3)} or more valuation methods agree and "
+                            "the business scores well on health checks."),
+        ("Risk level", "Low, Moderate or High, from price swings, how easily it trades, debt or bad loans and "
+                       "company warnings. It never changes the tier; it tells you how bumpy the ride could be."),
+        ("Score (composite)", "The number that sets the ranking. It mixes price trend, dividend yield, business "
+                              "health and margin of safety."),
+        ("Gates", "The pass or fail checks a stock must clear to be a Buy."),
+        ("NASI", "The index of all shares on the Nairobi Securities Exchange. Picks are judged against it."),
+        ("IC (information coefficient)", "How well the score predicted later returns. Above 0 helps, above 0.05 "
+                                         "is useful, below 0 means it pointed the wrong way."),
+        ("Calibration", "How often real returns landed inside the bad to good range. The target is about 80%."),
+    ]
+    return ('<details class="fold" id="glossary"><summary><h2>Jargon buster</h2></summary><dl>'
+            + "".join(f"<dt>{E(k)}</dt><dd>{E(d)}</dd>" for k, d in terms) + "</dl></details>")
+
+
 def _high_conf(s: dict) -> str:
     hurdle, flagged, near = s.get("hurdle"), s.get("high_confidence") or [], s.get("near_misses") or []
+    tb = s.get("tbill_net")
     out = [f'<section class="card" id="high-confidence"><h2>High confidence undervalued</h2>'
            f'<p class="small muted">{_inline(s.get("rule", ""))}</p>']
     if flagged:
-        out.append('<div class="grid">' + "".join(_stock_card(i, hurdle, gates=True) for i in flagged) + "</div>")
+        out.append('<div class="grid">' + "".join(_stock_card(i, hurdle, gates=True, tbill=tb) for i in flagged)
+                   + "</div>")
     else:
         out.append('<div class="empty"><b>No stock clears all four gates today.</b> These are the closest '
                    'candidates and the gates they still fail.</div>')
-        out.append('<div class="grid">' + "".join(_stock_card(i, hurdle, gates=True) for i in near) + "</div>"
-                   if near else "")
+        out.append('<div class="grid">' + "".join(_stock_card(i, hurdle, gates=True, tbill=tb) for i in near)
+                   + "</div>" if near else "")
     return "".join(out) + "</section>"
 
 
@@ -442,8 +588,8 @@ def _top(s: dict) -> str:
         return ""
     return ('<section id="top5"><h2>Top 5 today</h2><p class="small muted">Ranked by the weighted composite of '
             'margin of safety, quality and momentum. Each card explains the score and what blocks a Buy.</p>'
-            '<div class="grid">' + "".join(_stock_card(i, s.get("hurdle"), why=True) for i in top)
-            + "</div></section>")
+            '<div class="grid">' + "".join(_stock_card(i, s.get("hurdle"), why=True, tbill=s.get("tbill_net"))
+                                           for i in top) + "</div></section>")
 
 
 def _ranking(s: dict) -> str:
@@ -592,7 +738,7 @@ def _report_links(present: list[tuple]) -> str:
 def dashboard(snap: dict | None, retro: dict | None, present: list[tuple]) -> str:
     parts = []
     if snap:
-        for fn in (_hero, _high_conf, _top, _alerts_changes):
+        for fn in (_hero, _verdict, _glossary, _high_conf, _top, _alerts_changes):
             try:
                 parts.append(fn(snap))
             except Exception as exc:  # one broken panel must not take the site down

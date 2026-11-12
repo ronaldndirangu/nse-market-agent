@@ -217,7 +217,8 @@ def render(result: dict, ch: dict, alert_lines: list[str]) -> str:
     out += [
         "## How to read this", "",
         f"- Composite score = {weights_text()}.{note}",
-        f"- **Buy** clears every gate: quality passes, the screen passes, at least two valuation models agree on a "
+        f"- **Buy** clears every gate: quality passes, the screen passes, at least half the valuation models that "
+        f"apply (minimum two) agree on a "
         f"margin of safety of {pct(s['valuation']['mos_threshold'], 0)} or more, and the base return beats the "
         f"hurdle. **Watch** passes quality and misses one gate. **Avoid** misses more, or fails quality.",
         "- **High confidence undervalued** is a stricter Buy: three or more models agree and quality scores 0.67 or "
