@@ -21,16 +21,18 @@
     "Buy": 0,
     "Watch": 1
   },
-  "generated": "2026-11-12T14:03:25+00:00",
+  "generated": "2026-11-12T14:22:58+00:00",
   "high_confidence": [],
   "hurdle": 0.1267397,
   "near_misses": [
     {
+      "agree": 1,
+      "agree_needed": 2,
       "base": 0.29603318606990286,
       "bear": -0.13950894213188142,
-      "binding": "Avoid: valuation models disagree (high is 5.9x the low, limit 3x); only 1 of 2 valuation models show 15% or more upside, needs 2.",
+      "binding": "Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2.",
       "bull": 0.5672352042753546,
-      "composite": 0.4966819257756212,
+      "composite": 0.49676315487644673,
       "conviction": {
         "failed": [
           "Valuation"
@@ -59,6 +61,7 @@
           }
         ]
       },
+      "dispersed": true,
       "dividend_yield": 0.05,
       "driver": {
         "contribution": 0.45701749338696757,
@@ -68,6 +71,8 @@
       "fair_base": 34.52211794543685,
       "fair_high": 59.02465270910033,
       "fair_low": 10.019583181773365,
+      "model_spread": 5.890928957650868,
+      "models": 2,
       "mos": 0.5691871793380385,
       "name": "Kenya Power and Lighting",
       "price": 22.0,
@@ -117,14 +122,16 @@
       "sector": "Energy",
       "ticker": "KPLC",
       "tier": "Avoid",
-      "why": "KPLC #3 (Avoid): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: momentum (+0.46). Avoid: valuation models disagree (high is 5.9x the low, limit 3x); only 1 of 2 valuation models show 15% or more upside, needs 2. High risk (volatility 37%; beta 1.70)."
+      "why": "KPLC #3 (Avoid): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: momentum (+0.46). Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. High risk (volatility 37%; beta 1.70)."
     },
     {
+      "agree": 2,
+      "agree_needed": 3,
       "base": 0.13862936599690817,
       "bear": -0.2438308820766905,
-      "binding": "Avoid: valuation models disagree (high is 5.3x the low, limit 3x); only 2 of 5 valuation models show 15% or more upside, needs 3.",
+      "binding": "Avoid: valuation models disagree (high is 5.3x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3.",
       "bull": 0.33991934591294143,
-      "composite": 0.22357308139144247,
+      "composite": 0.22012314354317244,
       "conviction": {
         "failed": [
           "Valuation"
@@ -153,15 +160,18 @@
           }
         ]
       },
+      "dispersed": true,
       "dividend_yield": 0.055865921787709494,
       "driver": {
-        "contribution": 0.21483646476497342,
+        "contribution": 0.21138652691670337,
         "label": "quality",
         "signal": "quality"
       },
       "fair_base": 99.46014960013812,
       "fair_high": 155.22231175819823,
       "fair_low": 29.565528128373217,
+      "model_spread": 5.250111247268257,
+      "models": 5,
       "mos": 0.1112865877110405,
       "name": "KCB Group",
       "price": 89.5,
@@ -211,14 +221,16 @@
       "sector": "Banking",
       "ticker": "KCB",
       "tier": "Avoid",
-      "why": "KCB #7 (Avoid): 11.1% upside to base fair value KES 99.46; base return 13.9% a year beats the 12.67% hurdle. Biggest score driver: quality (+0.21). Avoid: valuation models disagree (high is 5.3x the low, limit 3x); only 2 of 5 valuation models show 15% or more upside, needs 3. High risk (beta 1.34; bear case -24.4% a year)."
+      "why": "KCB #7 (Avoid): 11.1% upside to base fair value KES 99.46; base return 13.9% a year beats the 12.67% hurdle. Biggest score driver: quality (+0.21). Avoid: valuation models disagree (high is 5.3x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3. High risk (beta 1.34; bear case -24.4% a year)."
     },
     {
+      "agree": 0,
+      "agree_needed": 3,
       "base": -0.09664583679103435,
       "bear": -0.228295792572063,
       "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle.",
       "bull": 0.11710629280357632,
-      "composite": 0.6687550520269148,
+      "composite": 0.6189399591656419,
       "conviction": {
         "failed": [
           "Valuation",
@@ -232,7 +244,7 @@
             "passed": false
           },
           {
-            "detail": "quality gate pass, score 0.83, needs pass and 0.67",
+            "detail": "quality gate pass, score 0.80, needs pass and 0.67",
             "name": "Quality",
             "passed": true
           },
@@ -248,6 +260,7 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.044642857142857144,
       "driver": {
         "contribution": 1.0371896497679403,
@@ -257,6 +270,8 @@
       "fair_base": 45.63365666111616,
       "fair_high": 83.26899849464493,
       "fair_low": 29.574422711281038,
+      "model_spread": 2.815574772415839,
+      "models": 5,
       "mos": -0.45674218260575994,
       "name": "I&M Group",
       "price": 84.0,
@@ -309,12 +324,15 @@
       "why": "IMH #1 (Avoid): 45.7% downside to base fair value KES 45.63; base return -9.7% a year trails the 12.67% hurdle. Biggest score driver: momentum (+1.04). Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle. High risk (bear case -22.8% a year; fair value spread 2.8x (29.6 to 83.3))."
     }
   ],
+  "price_date": "2026-11-12",
   "ranking": [
     {
+      "agree": 0,
+      "agree_needed": 3,
       "base": -0.09664583679103435,
       "bear": -0.228295792572063,
       "bull": 0.11710629280357632,
-      "composite": 0.6687550520269148,
+      "composite": 0.6189399591656419,
       "conviction": {
         "failed": [
           "Valuation",
@@ -328,7 +346,7 @@
             "passed": false
           },
           {
-            "detail": "quality gate pass, score 0.83, needs pass and 0.67",
+            "detail": "quality gate pass, score 0.80, needs pass and 0.67",
             "name": "Quality",
             "passed": true
           },
@@ -344,6 +362,7 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.044642857142857144,
       "driver": {
         "contribution": 1.0371896497679403,
@@ -353,6 +372,8 @@
       "fair_base": 45.63365666111616,
       "fair_high": 83.26899849464493,
       "fair_low": 29.574422711281038,
+      "model_spread": 2.815574772415839,
+      "models": 5,
       "mos": -0.45674218260575994,
       "name": "I&M Group",
       "price": 84.0,
@@ -404,10 +425,12 @@
       "tier": "Avoid"
     },
     {
+      "agree": 0,
+      "agree_needed": 2,
       "base": -0.113640936124437,
       "bear": -0.20551913817622885,
       "bull": -0.031197986722891168,
-      "composite": 0.5044952745960021,
+      "composite": 0.5041351078281906,
       "conviction": {
         "failed": [
           "Valuation",
@@ -437,6 +460,7 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.16905737704918034,
       "driver": {
         "contribution": 0.8403587190612567,
@@ -446,6 +470,8 @@
       "fair_base": 5.218751952109219,
       "fair_high": 6.549681215749891,
       "fair_low": 3.887822688468546,
+      "model_spread": 1.6846656189276674,
+      "models": 2,
       "mos": -0.46529180818553084,
       "name": "KenGen",
       "price": 9.76,
@@ -497,10 +523,12 @@
       "tier": "Avoid"
     },
     {
+      "agree": 1,
+      "agree_needed": 2,
       "base": 0.29603318606990286,
       "bear": -0.13950894213188142,
       "bull": 0.5672352042753546,
-      "composite": 0.4966819257756212,
+      "composite": 0.49676315487644673,
       "conviction": {
         "failed": [
           "Valuation"
@@ -529,6 +557,7 @@
           }
         ]
       },
+      "dispersed": true,
       "dividend_yield": 0.05,
       "driver": {
         "contribution": 0.45701749338696757,
@@ -538,6 +567,8 @@
       "fair_base": 34.52211794543685,
       "fair_high": 59.02465270910033,
       "fair_low": 10.019583181773365,
+      "model_spread": 5.890928957650868,
+      "models": 2,
       "mos": 0.5691871793380385,
       "name": "Kenya Power and Lighting",
       "price": 22.0,
@@ -589,10 +620,12 @@
       "tier": "Avoid"
     },
     {
+      "agree": 1,
+      "agree_needed": 3,
       "base": 0.11080622513600655,
       "bear": -0.14541660363387868,
       "bull": 0.2685383298678928,
-      "composite": 0.4633271396189352,
+      "composite": 0.459877201770665,
       "conviction": {
         "failed": [
           "Valuation",
@@ -622,6 +655,7 @@
           }
         ]
       },
+      "dispersed": true,
       "dividend_yield": 0.0575,
       "driver": {
         "contribution": 0.31798402014144583,
@@ -631,6 +665,8 @@
       "fair_base": 99.52819026564842,
       "fair_high": 142.31199448215577,
       "fair_low": 46.26444598025874,
+      "model_spread": 3.0760553048204873,
+      "models": 5,
       "mos": -0.0047180973435158036,
       "name": "Equity Group Holdings",
       "price": 100.0,
@@ -682,10 +718,12 @@
       "tier": "Avoid"
     },
     {
+      "agree": 0,
+      "agree_needed": 2,
       "base": -0.03818211530894789,
       "bear": -0.1013598844813608,
       "bull": 0.02207630677619154,
-      "composite": 0.3022954332589153,
+      "composite": 0.30159195859327514,
       "conviction": {
         "failed": [
           "Valuation",
@@ -715,6 +753,7 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.12987012987012986,
       "driver": {
         "contribution": 0.49102595679421496,
@@ -724,6 +763,8 @@
       "fair_base": 331.6851177608768,
       "fair_high": 383.79962382447104,
       "fair_low": 279.5706116972826,
+      "model_spread": 1.3728181996469895,
+      "models": 2,
       "mos": -0.3846287240057945,
       "name": "British American Tobacco Kenya",
       "price": 539.0,
@@ -775,10 +816,12 @@
       "tier": "Avoid"
     },
     {
+      "agree": 0,
+      "agree_needed": 3,
       "base": 0.0031729281698774665,
       "bear": -0.10500240484839118,
       "bull": 0.09772622660033548,
-      "composite": 0.2649888179061909,
+      "composite": 0.26153888005792086,
       "conviction": {
         "failed": [
           "Valuation",
@@ -808,15 +851,18 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.06369426751592357,
       "driver": {
-        "contribution": 0.21483646476497342,
+        "contribution": 0.21138652691670337,
         "label": "quality",
         "signal": "quality"
       },
       "fair_base": 27.88823735383813,
       "fair_high": 35.02041393165539,
       "fair_low": 20.574981345608638,
+      "model_spread": 1.7020872749967217,
+      "models": 5,
       "mos": -0.2894716597748247,
       "name": "Co-operative Bank of Kenya",
       "price": 39.25,
@@ -868,10 +914,12 @@
       "tier": "Avoid"
     },
     {
+      "agree": 2,
+      "agree_needed": 3,
       "base": 0.13862936599690817,
       "bear": -0.2438308820766905,
       "bull": 0.33991934591294143,
-      "composite": 0.22357308139144247,
+      "composite": 0.22012314354317244,
       "conviction": {
         "failed": [
           "Valuation"
@@ -900,15 +948,18 @@
           }
         ]
       },
+      "dispersed": true,
       "dividend_yield": 0.055865921787709494,
       "driver": {
-        "contribution": 0.21483646476497342,
+        "contribution": 0.21138652691670337,
         "label": "quality",
         "signal": "quality"
       },
       "fair_base": 99.46014960013812,
       "fair_high": 155.22231175819823,
       "fair_low": 29.565528128373217,
+      "model_spread": 5.250111247268257,
+      "models": 5,
       "mos": 0.1112865877110405,
       "name": "KCB Group",
       "price": 89.5,
@@ -960,10 +1011,12 @@
       "tier": "Avoid"
     },
     {
+      "agree": 0,
+      "agree_needed": 3,
       "base": 0.01973294118961149,
       "bear": -0.10353131122347264,
       "bull": 0.11756134048892292,
-      "composite": 0.10798380327692365,
+      "composite": 0.1045338654286536,
       "conviction": {
         "failed": [
           "Valuation",
@@ -993,15 +1046,18 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.07580645161290323,
       "driver": {
-        "contribution": 0.21483646476497342,
+        "contribution": 0.21138652691670337,
         "label": "quality",
         "signal": "quality"
       },
       "fair_base": 23.027163248830785,
       "fair_high": 29.06827535820108,
       "fair_low": 16.201871000268767,
+      "model_spread": 1.7941307740148578,
+      "models": 5,
       "mos": -0.25718828229578117,
       "name": "Absa Bank Kenya",
       "price": 31.0,
@@ -1053,10 +1109,12 @@
       "tier": "Avoid"
     },
     {
+      "agree": 2,
+      "agree_needed": 3,
       "base": 0.012693615738909614,
       "bear": -0.19307875096422863,
       "bull": 0.5078253056118495,
-      "composite": -0.14298897566060947,
+      "composite": -0.16344194885446378,
       "conviction": {
         "failed": [
           "Valuation",
@@ -1071,7 +1129,7 @@
             "passed": false
           },
           {
-            "detail": "quality gate pass, score 0.67, needs pass and 0.67",
+            "detail": "quality gate pass, score 0.65, needs pass and 0.67",
             "name": "Quality",
             "passed": false
           },
@@ -1087,6 +1145,7 @@
           }
         ]
       },
+      "dispersed": true,
       "dividend_yield": 0.048,
       "driver": {
         "contribution": 0.38163417594124316,
@@ -1096,6 +1155,8 @@
       "fair_base": 143.71430872809844,
       "fair_high": 464.0141183371277,
       "fair_low": 74.94416500636228,
+      "model_spread": 6.191464249388005,
+      "models": 5,
       "mos": -0.23352368678347502,
       "name": "Diamond Trust Bank Kenya",
       "price": 187.5,
@@ -1147,10 +1208,12 @@
       "tier": "Avoid"
     },
     {
+      "agree": 0,
+      "agree_needed": 2,
       "base": -0.1687392782043927,
       "bear": -0.20611171484521526,
       "bull": -0.13177323162606544,
-      "composite": -0.19498760626656453,
+      "composite": -0.1943178493408897,
       "conviction": {
         "failed": [
           "Valuation",
@@ -1180,6 +1243,7 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.04645760743321719,
       "driver": {
         "contribution": 0.19717337398235116,
@@ -1189,6 +1253,8 @@
       "fair_base": 17.94258298204351,
       "fair_high": 19.438541998696117,
       "fair_low": 16.446623965390906,
+      "model_spread": 1.1819168505099398,
+      "models": 2,
       "mos": -0.5832152617411495,
       "name": "Carbacid Investments",
       "price": 43.05,
@@ -1240,10 +1306,12 @@
       "tier": "Avoid"
     },
     {
+      "agree": 0,
+      "agree_needed": 2,
       "base": -0.19920590252499637,
       "bear": -0.2785874591941764,
       "bull": -0.1274482802667506,
-      "composite": -0.3124339763556423,
+      "composite": -0.314339028663683,
       "conviction": {
         "failed": [
           "Valuation",
@@ -1273,15 +1341,18 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.05714285714285714,
       "driver": {
-        "contribution": 0.1186324858742168,
+        "contribution": 0.11672743356617606,
         "label": "quality",
         "signal": "quality"
       },
       "fair_base": 12.729699893039877,
       "fair_high": 15.786250293082022,
       "fair_low": 9.673149492997732,
+      "model_spread": 1.6319659180817463,
+      "models": 2,
       "mos": -0.6362942887702892,
       "name": "Safaricom",
       "price": 35.0,
@@ -1333,10 +1404,12 @@
       "tier": "Avoid"
     },
     {
+      "agree": 0,
+      "agree_needed": 2,
       "base": -0.22175498393988446,
       "bear": -0.2936515875130816,
       "bull": -0.15591107238705948,
-      "composite": -0.3186232606119108,
+      "composite": -0.3220731984601809,
       "conviction": {
         "failed": [
           "Valuation",
@@ -1366,15 +1439,18 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.046788990825688076,
       "driver": {
-        "contribution": 0.21483646476497342,
+        "contribution": 0.21138652691670337,
         "label": "quality",
         "signal": "quality"
       },
       "fair_base": 92.38718656754772,
       "fair_high": 112.63415571530948,
       "fair_low": 72.14021741978596,
+      "model_spread": 1.5613226539072949,
+      "models": 2,
       "mos": -0.6609644529631277,
       "name": "East African Breweries",
       "price": 272.5,
@@ -1426,104 +1502,12 @@
       "tier": "Avoid"
     },
     {
-      "base": 0.03813450167333699,
-      "bear": -0.012635172212966608,
-      "bull": 0.13922493619383236,
-      "composite": -0.46826259366019607,
-      "conviction": {
-        "failed": [
-          "Valuation",
-          "Quality",
-          "Return"
-        ],
-        "flag": false,
-        "gates": [
-          {
-            "detail": "0 of 5 models show at least 15% upside, needs 3",
-            "name": "Valuation",
-            "passed": false
-          },
-          {
-            "detail": "quality gate fail, score 0.67, needs pass and 0.67",
-            "name": "Quality",
-            "passed": false
-          },
-          {
-            "detail": "liquid, fresh price and results, enough history, positive EPS",
-            "name": "Screen",
-            "passed": true
-          },
-          {
-            "detail": "base return 3.8% against the 12.67% hurdle",
-            "name": "Return",
-            "passed": false
-          }
-        ]
-      },
-      "dividend_yield": 0.07676806083650191,
-      "driver": {
-        "contribution": 0.017650208483693426,
-        "label": "dividend yield",
-        "signal": "dividend_yield"
-      },
-      "fair_base": 198.0942814494921,
-      "fair_high": 252.2708204181761,
-      "fair_low": 178.43554381776087,
-      "mos": -0.24678980437455478,
-      "name": "Stanbic Holdings",
-      "price": 263.0,
-      "price_date": "2026-11-12",
-      "rank": 13,
-      "risk": {
-        "factors": [
-          {
-            "detail": "volatility 27%",
-            "level": "Moderate",
-            "name": "Volatility"
-          },
-          {
-            "detail": "beta 0.68",
-            "level": "Low",
-            "name": "Beta"
-          },
-          {
-            "detail": "turnover KES 13.2M a day",
-            "level": "Moderate",
-            "name": "Liquidity"
-          },
-          {
-            "detail": "bear case -1.3% a year",
-            "level": "Moderate",
-            "name": "Downside"
-          },
-          {
-            "detail": "fair value spread 1.4x (178.4 to 252.3)",
-            "level": "Low",
-            "name": "Valuation spread"
-          },
-          {
-            "detail": "NPL ratio 7.4%, stable or falling",
-            "level": "Low",
-            "name": "Balance sheet"
-          },
-          {
-            "detail": "no profit warning or suspension on file",
-            "level": "Low",
-            "name": "Events"
-          }
-        ],
-        "level": "Moderate",
-        "summary": "Moderate risk: volatility 27%; turnover KES 13.2M a day; bear case -1.3% a year."
-      },
-      "sector": "Banking",
-      "ticker": "SBIC",
-      "tier": "Avoid"
-    },
-    {
+      "agree": 0,
+      "agree_needed": 3,
       "base": -0.007720080387753242,
       "bear": -0.09519336302813458,
       "bull": 0.01271067819811394,
-      "composite": -0.48449879942580987,
+      "composite": -0.4060419204327407,
       "conviction": {
         "failed": [
           "Valuation",
@@ -1537,7 +1521,7 @@
             "passed": false
           },
           {
-            "detail": "quality gate pass, score 0.75, needs pass and 0.67",
+            "detail": "quality gate pass, score 0.80, needs pass and 0.67",
             "name": "Quality",
             "passed": true
           },
@@ -1553,6 +1537,7 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.10430463576158941,
       "driver": {
         "contribution": 0.26312363349877654,
@@ -1562,11 +1547,13 @@
       "fair_base": 218.10898182620434,
       "fair_high": 219.87311594686605,
       "fair_low": 170.82942494809893,
+      "model_spread": 1.2870915886631795,
+      "models": 5,
       "mos": -0.2777848283900518,
       "name": "Standard Chartered Bank Kenya",
       "price": 302.0,
       "price_date": "2026-11-12",
-      "rank": 14,
+      "rank": 13,
       "risk": {
         "factors": [
           {
@@ -1613,10 +1600,111 @@
       "tier": "Avoid"
     },
     {
+      "agree": 0,
+      "agree_needed": 3,
+      "base": 0.03813450167333699,
+      "bear": -0.012635172212966608,
+      "bull": 0.13922493619383236,
+      "composite": -0.4129882921736285,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Quality",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate fail, score 0.70, needs pass and 0.67",
+            "name": "Quality",
+            "passed": false
+          },
+          {
+            "detail": "liquid, fresh price and results, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return 3.8% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ]
+      },
+      "dispersed": false,
+      "dividend_yield": 0.07676806083650191,
+      "driver": {
+        "contribution": 0.017650208483693426,
+        "label": "dividend yield",
+        "signal": "dividend_yield"
+      },
+      "fair_base": 198.0942814494921,
+      "fair_high": 252.2708204181761,
+      "fair_low": 178.43554381776087,
+      "model_spread": 1.4137924262210022,
+      "models": 5,
+      "mos": -0.24678980437455478,
+      "name": "Stanbic Holdings",
+      "price": 263.0,
+      "price_date": "2026-11-12",
+      "rank": 14,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 27%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 0.68",
+            "level": "Low",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 13.2M a day",
+            "level": "Moderate",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -1.3% a year",
+            "level": "Moderate",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.4x (178.4 to 252.3)",
+            "level": "Low",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 7.4%, stable or falling",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "level": "Moderate",
+        "summary": "Moderate risk: volatility 27%; turnover KES 13.2M a day; bear case -1.3% a year."
+      },
+      "sector": "Banking",
+      "ticker": "SBIC",
+      "tier": "Avoid"
+    },
+    {
+      "agree": 0,
+      "agree_needed": 2,
       "base": -0.20457188889702516,
       "bear": -0.22227534912671487,
       "bull": -0.18677192510161122,
-      "composite": -0.5283813915126996,
+      "composite": -0.528741558280511,
       "conviction": {
         "failed": [
           "Valuation",
@@ -1646,15 +1734,18 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.07582417582417583,
       "driver": {
-        "contribution": 0.022428506983460158,
+        "contribution": 0.022068340215648755,
         "label": "quality",
         "signal": "quality"
       },
       "fair_base": 18.105472889781737,
       "fair_high": 18.33006367944506,
       "fair_low": 17.880882100118416,
+      "model_spread": 1.0251207729468599,
+      "models": 2,
       "mos": -0.6020775189058959,
       "name": "TotalEnergies Marketing Kenya",
       "price": 45.5,
@@ -1706,10 +1797,12 @@
       "tier": "Avoid"
     },
     {
+      "agree": 1,
+      "agree_needed": 3,
       "base": 0.15258441397529562,
       "bear": -0.0006648840990748691,
       "bull": 0.22416010499439018,
-      "composite": -0.5819239243575134,
+      "composite": -0.625559475057869,
       "conviction": {
         "failed": [
           "Valuation",
@@ -1723,7 +1816,7 @@
             "passed": false
           },
           {
-            "detail": "quality gate pass, score 0.58, needs pass and 0.67",
+            "detail": "quality gate pass, score 0.55, needs pass and 0.67",
             "name": "Quality",
             "passed": false
           },
@@ -1739,6 +1832,7 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.09488636363636363,
       "driver": {
         "contribution": 0.17916491595337322,
@@ -1748,6 +1842,8 @@
       "fair_base": 92.53411414520203,
       "fair_high": 105.96907821953917,
       "fair_low": 62.10116781037271,
+      "model_spread": 1.7063942910561376,
+      "models": 5,
       "mos": 0.05152402437729564,
       "name": "NCBA Group",
       "price": 88.0,
@@ -1803,11 +1899,13 @@
   "tbill_net": 0.0767397,
   "top": [
     {
+      "agree": 1,
+      "agree_needed": 3,
       "base": 0.15258441397529562,
       "bear": -0.0006648840990748691,
       "binding": "Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3.",
       "bull": 0.22416010499439018,
-      "composite": -0.5819239243575134,
+      "composite": -0.625559475057869,
       "conviction": {
         "failed": [
           "Valuation",
@@ -1821,7 +1919,7 @@
             "passed": false
           },
           {
-            "detail": "quality gate pass, score 0.58, needs pass and 0.67",
+            "detail": "quality gate pass, score 0.55, needs pass and 0.67",
             "name": "Quality",
             "passed": false
           },
@@ -1837,6 +1935,7 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.09488636363636363,
       "driver": {
         "contribution": 0.17916491595337322,
@@ -1846,6 +1945,8 @@
       "fair_base": 92.53411414520203,
       "fair_high": 105.96907821953917,
       "fair_low": 62.10116781037271,
+      "model_spread": 1.7063942910561376,
+      "models": 5,
       "mos": 0.05152402437729564,
       "name": "NCBA Group",
       "price": 88.0,
@@ -1898,11 +1999,13 @@
       "why": "NCBA #16 (Watch): 5.2% upside to base fair value KES 92.53; base return 15.3% a year beats the 12.67% hurdle. Biggest score driver: dividend yield (+0.18). Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3. Moderate risk (beta 0.81; turnover KES 12.9M a day)."
     },
     {
+      "agree": 0,
+      "agree_needed": 3,
       "base": -0.09664583679103435,
       "bear": -0.228295792572063,
       "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle.",
       "bull": 0.11710629280357632,
-      "composite": 0.6687550520269148,
+      "composite": 0.6189399591656419,
       "conviction": {
         "failed": [
           "Valuation",
@@ -1916,7 +2019,7 @@
             "passed": false
           },
           {
-            "detail": "quality gate pass, score 0.83, needs pass and 0.67",
+            "detail": "quality gate pass, score 0.80, needs pass and 0.67",
             "name": "Quality",
             "passed": true
           },
@@ -1932,6 +2035,7 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.044642857142857144,
       "driver": {
         "contribution": 1.0371896497679403,
@@ -1941,6 +2045,8 @@
       "fair_base": 45.63365666111616,
       "fair_high": 83.26899849464493,
       "fair_low": 29.574422711281038,
+      "model_spread": 2.815574772415839,
+      "models": 5,
       "mos": -0.45674218260575994,
       "name": "I&M Group",
       "price": 84.0,
@@ -1993,11 +2099,13 @@
       "why": "IMH #1 (Avoid): 45.7% downside to base fair value KES 45.63; base return -9.7% a year trails the 12.67% hurdle. Biggest score driver: momentum (+1.04). Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle. High risk (bear case -22.8% a year; fair value spread 2.8x (29.6 to 83.3))."
     },
     {
+      "agree": 0,
+      "agree_needed": 2,
       "base": -0.113640936124437,
       "bear": -0.20551913817622885,
       "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -11.4% does not beat the 12.67% hurdle.",
       "bull": -0.031197986722891168,
-      "composite": 0.5044952745960021,
+      "composite": 0.5041351078281906,
       "conviction": {
         "failed": [
           "Valuation",
@@ -2027,6 +2135,7 @@
           }
         ]
       },
+      "dispersed": false,
       "dividend_yield": 0.16905737704918034,
       "driver": {
         "contribution": 0.8403587190612567,
@@ -2036,6 +2145,8 @@
       "fair_base": 5.218751952109219,
       "fair_high": 6.549681215749891,
       "fair_low": 3.887822688468546,
+      "model_spread": 1.6846656189276674,
+      "models": 2,
       "mos": -0.46529180818553084,
       "name": "KenGen",
       "price": 9.76,
@@ -2088,11 +2199,13 @@
       "why": "KEGN #2 (Avoid): 46.5% downside to base fair value KES 5.22; base return -11.4% a year trails the 12.67% hurdle. Biggest score driver: dividend yield (+0.84). Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -11.4% does not beat the 12.67% hurdle. High risk (beta 1.30; bear case -20.6% a year)."
     },
     {
+      "agree": 1,
+      "agree_needed": 2,
       "base": 0.29603318606990286,
       "bear": -0.13950894213188142,
-      "binding": "Avoid: valuation models disagree (high is 5.9x the low, limit 3x); only 1 of 2 valuation models show 15% or more upside, needs 2.",
+      "binding": "Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2.",
       "bull": 0.5672352042753546,
-      "composite": 0.4966819257756212,
+      "composite": 0.49676315487644673,
       "conviction": {
         "failed": [
           "Valuation"
@@ -2121,6 +2234,7 @@
           }
         ]
       },
+      "dispersed": true,
       "dividend_yield": 0.05,
       "driver": {
         "contribution": 0.45701749338696757,
@@ -2130,6 +2244,8 @@
       "fair_base": 34.52211794543685,
       "fair_high": 59.02465270910033,
       "fair_low": 10.019583181773365,
+      "model_spread": 5.890928957650868,
+      "models": 2,
       "mos": 0.5691871793380385,
       "name": "Kenya Power and Lighting",
       "price": 22.0,
@@ -2179,14 +2295,16 @@
       "sector": "Energy",
       "ticker": "KPLC",
       "tier": "Avoid",
-      "why": "KPLC #3 (Avoid): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: momentum (+0.46). Avoid: valuation models disagree (high is 5.9x the low, limit 3x); only 1 of 2 valuation models show 15% or more upside, needs 2. High risk (volatility 37%; beta 1.70)."
+      "why": "KPLC #3 (Avoid): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: momentum (+0.46). Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. High risk (volatility 37%; beta 1.70)."
     },
     {
+      "agree": 1,
+      "agree_needed": 3,
       "base": 0.11080622513600655,
       "bear": -0.14541660363387868,
-      "binding": "Avoid: valuation models disagree (high is 3.1x the low, limit 3x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more).",
+      "binding": "Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more).",
       "bull": 0.2685383298678928,
-      "composite": 0.4633271396189352,
+      "composite": 0.459877201770665,
       "conviction": {
         "failed": [
           "Valuation",
@@ -2216,6 +2334,7 @@
           }
         ]
       },
+      "dispersed": true,
       "dividend_yield": 0.0575,
       "driver": {
         "contribution": 0.31798402014144583,
@@ -2225,6 +2344,8 @@
       "fair_base": 99.52819026564842,
       "fair_high": 142.31199448215577,
       "fair_low": 46.26444598025874,
+      "model_spread": 3.0760553048204873,
+      "models": 5,
       "mos": -0.0047180973435158036,
       "name": "Equity Group Holdings",
       "price": 100.0,
@@ -2274,7 +2395,7 @@
       "sector": "Banking",
       "ticker": "EQTY",
       "tier": "Avoid",
-      "why": "EQTY #4 (Avoid): 0.5% downside to base fair value KES 99.53; base return 11.1% a year trails the 12.67% hurdle. Biggest score driver: momentum (+0.32). Avoid: valuation models disagree (high is 3.1x the low, limit 3x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more). High risk (bear case -14.5% a year; fair value spread 3.1x (46.3 to 142.3))."
+      "why": "EQTY #4 (Avoid): 0.5% downside to base fair value KES 99.53; base return 11.1% a year trails the 12.67% hurdle. Biggest score driver: momentum (+0.32). Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more). High risk (bear case -14.5% a year; fair value spread 3.1x (46.3 to 142.3))."
     }
   ],
   "valued": 16,

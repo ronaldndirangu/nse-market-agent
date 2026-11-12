@@ -36,8 +36,8 @@ Buys first, then Watch, then Avoid; the composite rank (#) orders stocks within 
 - NCBA #16 (Watch): 5.2% upside to base fair value KES 92.53; base return 15.3% a year beats the 12.67% hurdle. Biggest score driver: dividend yield (+0.18). Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3. Moderate risk (beta 0.81; turnover KES 12.9M a day).
 - IMH #1 (Avoid): 45.7% downside to base fair value KES 45.63; base return -9.7% a year trails the 12.67% hurdle. Biggest score driver: momentum (+1.04). Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle. High risk (bear case -22.8% a year; fair value spread 2.8x (29.6 to 83.3)).
 - KEGN #2 (Avoid): 46.5% downside to base fair value KES 5.22; base return -11.4% a year trails the 12.67% hurdle. Biggest score driver: dividend yield (+0.84). Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -11.4% does not beat the 12.67% hurdle. High risk (beta 1.30; bear case -20.6% a year).
-- KPLC #3 (Avoid): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: momentum (+0.46). Avoid: valuation models disagree (high is 5.9x the low, limit 3x); only 1 of 2 valuation models show 15% or more upside, needs 2. High risk (volatility 37%; beta 1.70).
-- EQTY #4 (Avoid): 0.5% downside to base fair value KES 99.53; base return 11.1% a year trails the 12.67% hurdle. Biggest score driver: momentum (+0.32). Avoid: valuation models disagree (high is 3.1x the low, limit 3x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more). High risk (bear case -14.5% a year; fair value spread 3.1x (46.3 to 142.3)).
+- KPLC #3 (Avoid): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: momentum (+0.46). Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. High risk (volatility 37%; beta 1.70).
+- EQTY #4 (Avoid): 0.5% downside to base fair value KES 99.53; base return 11.1% a year trails the 12.67% hurdle. Biggest score driver: momentum (+0.32). Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more). High risk (bear case -14.5% a year; fair value spread 3.1x (46.3 to 142.3)).
 
 ### Score breakdown
 
@@ -45,10 +45,10 @@ Each cell is the signal's contribution to the composite (weight x z-score), with
 
 | Rank | Ticker | Tier | Composite | Dividend yield | Margin of safety | Momentum | Quality |
 |---|---|---|---|---|---|---|---|
-| 16 | NCBA | Watch | -0.58 | +0.18 (9.5%) | +0.10 (5.2%) | -0.44 (5.0%) | -0.43 (0.58) |
-| 1 | IMH | Avoid | +0.67 | -0.27 (4.5%) | -0.06 (-45.7%) | +1.04 (79.7%) | -0.04 (0.83) |
+| 16 | NCBA | Watch | -0.63 | +0.18 (9.5%) | +0.10 (5.2%) | -0.44 (5.0%) | -0.47 (0.55) |
+| 1 | IMH | Avoid | +0.62 | -0.27 (4.5%) | -0.06 (-45.7%) | +1.04 (79.7%) | -0.09 (0.80) |
 | 2 | KEGN | Avoid | +0.50 | +0.84 (16.9%) | -0.06 (-46.5%) | -0.30 (12.0%) | +0.02 (0.88) |
-| 3 | KPLC | Avoid | +0.50 | -0.22 (5.0%) | +0.27 (56.9%) | +0.46 (50.3%) | -0.01 (0.86) |
+| 3 | KPLC | Avoid | +0.50 | -0.22 (5.0%) | +0.27 (56.9%) | +0.46 (50.3%) | -0.00 (0.86) |
 | 4 | EQTY | Avoid | +0.46 | -0.15 (5.8%) | +0.08 (-0.5%) | +0.32 (43.2%) | +0.21 (1.00) |
 
 ## What changed
@@ -68,6 +68,7 @@ Compared with the brief for 2026-11-11.
 - Rank: CARB moved from #12 to #10.
 - Rank: SCOM moved from #13 to #11.
 - Rank: EABL moved from #9 to #12.
+- Rank: SCBK moved from #15 to #13.
 - Rank: NCBA moved from #10 to #16.
 - Unusual move: COOP 5.9% on 2026-11-12 (threshold 5.4%).
 
@@ -75,22 +76,22 @@ Compared with the brief for 2026-11-11.
 
 | Rank | Ticker | Tier | Composite | Price | MoS | Bear / base / bull a year | Div. yield | Volatility | Risk | Binding constraint |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1 | IMH | Avoid | +0.67 | KES 84.00 | -45.7% | -22.8% / -9.7% / 11.7% | 4.5% | 31.1% | High | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle. |
+| 1 | IMH | Avoid | +0.62 | KES 84.00 | -45.7% | -22.8% / -9.7% / 11.7% | 4.5% | 31.1% | High | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle. |
 | 2 | KEGN | Avoid | +0.50 | KES 9.76 | -46.5% | -20.6% / -11.4% / -3.1% | 16.9% | 33.7% | High | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -11.4% does not beat the 12.67% hurdle. |
-| 3 | KPLC | Avoid | +0.50 | KES 22.00 | 56.9% | -14.0% / 29.6% / 56.7% | 5.0% | 36.7% | High | Avoid: valuation models disagree (high is 5.9x the low, limit 3x); only 1 of 2 valuation models show 15% or more upside, needs 2. |
-| 4 | EQTY | Avoid | +0.46 | KES 100.00 | -0.5% | -14.5% / 11.1% / 26.9% | 5.8% | 31.0% | High | Avoid: valuation models disagree (high is 3.1x the low, limit 3x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
+| 3 | KPLC | Avoid | +0.50 | KES 22.00 | 56.9% | -14.0% / 29.6% / 56.7% | 5.0% | 36.7% | High | Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. |
+| 4 | EQTY | Avoid | +0.46 | KES 100.00 | -0.5% | -14.5% / 11.1% / 26.9% | 5.8% | 31.0% | High | Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
 | 5 | BAT | Avoid | +0.30 | KES 539.00 | -38.5% | -10.1% / -3.8% / 2.2% | 13.0% | 21.7% | Moderate | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -3.8% does not beat the 12.67% hurdle. |
 | 6 | COOP | Avoid | +0.26 | KES 39.25 | -28.9% | -10.5% / 0.3% / 9.8% | 6.4% | 30.2% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 0.3% does not beat the 12.67% hurdle. |
-| 7 | KCB | Avoid | +0.22 | KES 89.50 | 11.1% | -24.4% / 13.9% / 34.0% | 5.6% | 30.3% | High | Avoid: valuation models disagree (high is 5.3x the low, limit 3x); only 2 of 5 valuation models show 15% or more upside, needs 3. |
-| 8 | ABSA | Avoid | +0.11 | KES 31.00 | -25.7% | -10.4% / 2.0% / 11.8% | 7.6% | 34.5% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 2.0% does not beat the 12.67% hurdle. |
-| 9 | DTK | Avoid | -0.14 | KES 187.50 | -23.4% | -19.3% / 1.3% / 50.8% | 4.8% | 29.6% | High | Avoid: valuation models disagree (high is 6.2x the low, limit 3x); only 2 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
+| 7 | KCB | Avoid | +0.22 | KES 89.50 | 11.1% | -24.4% / 13.9% / 34.0% | 5.6% | 30.3% | High | Avoid: valuation models disagree (high is 5.3x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3. |
+| 8 | ABSA | Avoid | +0.10 | KES 31.00 | -25.7% | -10.4% / 2.0% / 11.8% | 7.6% | 34.5% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 2.0% does not beat the 12.67% hurdle. |
+| 9 | DTK | Avoid | -0.16 | KES 187.50 | -23.4% | -19.3% / 1.3% / 50.8% | 4.8% | 29.6% | High | Avoid: valuation models disagree (high is 6.2x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
 | 10 | CARB | Avoid | -0.19 | KES 43.05 | -58.3% | -20.6% / -16.9% / -13.2% | 4.6% | 39.0% | High | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -16.9% does not beat the 12.67% hurdle. |
 | 11 | SCOM | Avoid | -0.31 | KES 35.00 | -63.6% | -27.9% / -19.9% / -12.7% | 5.7% | 24.3% | Moderate | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -19.9% does not beat the 12.67% hurdle. |
 | 12 | EABL | Avoid | -0.32 | KES 272.50 | -66.1% | -29.4% / -22.2% / -15.6% | 4.7% | 34.4% | Moderate | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -22.2% does not beat the 12.67% hurdle. |
-| 13 | SBIC | Avoid | -0.47 | KES 263.00 | -24.7% | -1.3% / 3.8% / 13.9% | 7.7% | 27.2% | Moderate | Avoid: quality gate failed (Piotroski 2/6 below gate); only 0 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
-| 14 | SCBK | Avoid | -0.48 | KES 302.00 | -27.8% | -9.5% / -0.8% / 1.3% | 10.4% | 18.4% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -0.8% does not beat the 12.67% hurdle. |
+| 13 | SCBK | Avoid | -0.41 | KES 302.00 | -27.8% | -9.5% / -0.8% / 1.3% | 10.4% | 18.4% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -0.8% does not beat the 12.67% hurdle. |
+| 14 | SBIC | Avoid | -0.41 | KES 263.00 | -24.7% | -1.3% / 3.8% / 13.9% | 7.7% | 27.2% | Moderate | Avoid: quality gate failed (Piotroski 2/5 below gate); only 0 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
 | 15 | TOTL | Avoid | -0.53 | KES 45.50 | -60.2% | -22.2% / -20.5% / -18.7% | 7.6% | 26.7% | High | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -20.5% does not beat the 12.67% hurdle. |
-| 16 | NCBA | Watch | -0.58 | KES 88.00 | 5.2% | -0.1% / 15.3% / 22.4% | 9.5% | 24.2% | Moderate | Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3. |
+| 16 | NCBA | Watch | -0.63 | KES 88.00 | 5.2% | -0.1% / 15.3% / 22.4% | 9.5% | 24.2% | Moderate | Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3. |
 
 ## How to read this
 
