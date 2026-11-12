@@ -1,0 +1,21 @@
+{
+  "issue_date": "2026-11-16",
+  "observed_on": "2026-11-12",
+  "rates": {
+    "182": {
+      "issue": 2682,
+      "value": 0.08837199999999999
+    },
+    "364": {
+      "issue": 2637,
+      "value": 0.090098
+    },
+    "91": {
+      "issue": 2708,
+      "value": 0.087448
+    }
+  },
+  "released": "2026-11-12",
+  "sha256": "cf34872291309594a7606e9e5864ecf9f1292044aa5ec729d2170cb4bd2b62b1",
+  "source": "https://www.centralbank.go.ke/uploads/91_day_historical_treasury_bill_results/171143691_RESULTS%202708-091%202682-182%202637-364%20DATED%2016-11-2026.pdf"
+}

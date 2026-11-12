@@ -1,4 +1,5 @@
 from datetime import datetime
+from copy import deepcopy
 
 import pytest
 
@@ -12,7 +13,7 @@ def live(market, monkeypatch):
     stocks = [s for s in config.universe() if s["ticker"] in BANKS]
     monkeypatch.setattr(config, "universe", lambda: stocks)
     macro = config.macro() | {"as_of": AS_OF.isoformat()}
-    monkeypatch.setattr(config, "macro", lambda: macro)
+    monkeypatch.setattr(config, "macro", lambda as_of=None: macro)
     storage.write_json(storage.market_path("listing.json"), {
         "trade_date": AS_OF.isoformat(), "intraday": False, "source": "nse",
         "rows": {t: {"volume": 1000, "suspended": None} for t in BANKS},
@@ -76,3 +77,31 @@ def test_empty_announcements_do_not_refresh_the_success_date(live, monkeypatch):
     assert announcements.path().read_bytes() == before
     assert health.assess(live)["announcements"]["status"] == "Delayed"
     assert storage.read_json(storage.market_path("health.json"), {})["announcements"]["successful"] is False
+
+
+@pytest.mark.parametrize("curated,bill", [("2026-10-01", "2026-11-05"), ("2026-11-06", "2026-10-01")])
+def test_fresh_bill_and_curated_dates_cannot_mask_each_other(live, monkeypatch, curated, bill):
+    macro = deepcopy(config.macro())
+    macro["as_of"] = curated
+    macro["risk_free"]["tbill_364d"]["as_of"] = bill
+    monkeypatch.setattr(config, "macro", lambda as_of=None: macro)
+    result = health.assess(live)
+    assert not result["critical_ok"] and result["macro"]["status"] != "Current"
+
+
+def test_optional_cpi_failure_does_not_invalidate_current_critical_data(live):
+    storage.write_json(storage.market_path("health.json"), {"official": {"knbs": {"successful": False}}})
+    assert health.assess(live)["critical_ok"]
+
+
+def test_pending_results_uses_main_announcements_and_known_periods(live):
+    notice = {"ticker": "KCB", "results": True, "status": "queued", "date": "2026-11-06",
+              "first_seen": "2026-11-06", "url": "https://example.test/interim.pdf",
+              "title": "Unaudited results for 30 June 2026"}
+    storage.write_json(announcements.path(), {"updated": "2026-11-06", "items": [notice]})
+    assessed = health.assess(live)
+    assert assessed["tickers"]["KCB"]["pending_results"]
+    assert any("human review" in issue for issue in health.evidence(assessed, "KCB"))
+    notice["title"] = "Annual results FY2025"
+    storage.write_json(announcements.path(), {"updated": "2026-11-06", "items": [notice]})
+    assert not health.assess(live)["tickers"]["KCB"]["pending_results"]

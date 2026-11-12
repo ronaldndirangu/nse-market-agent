@@ -140,7 +140,8 @@ does not provide an independent uptime guarantee. Notifications are separate fro
   failed check and does not advance the successful-check date.
 - The expected session is the last weekday whose close plus a one-hour buffer has passed, in EAT. A lag of one to
   three weekdays is Delayed (public holiday or source lag); longer lags are Stale. No holiday calendar is assumed.
-- Announcement checks have a one-weekday freshness budget. Macro inputs need review after 14 calendar days.
+- Announcement checks have a one-weekday freshness budget. Bill rates have a 9-calendar-day budget;
+  curated bond, premium and tax assumptions need review after 14 calendar days.
   Fundamentals retain the existing 540-day annual-period screen. Per-stock dates remain visible.
 - A browser warning appears after the next expected update time, even if a workflow never starts. It does not
   refresh data. `status.json` exposes the same dated assessment for the publication monitor.
@@ -161,7 +162,9 @@ does not provide an independent uptime guarantee. Notifications are separate fro
 | Dividends | Company notices, CMA bulletins and annual reports, from 2016 | `data/dividends.yaml` |
 | Bonus issues, splits, rights, mergers | NSE and company notices | `data/corporate_actions.yaml` |
 | Fundamentals | Company annual and interim reports | `data/fundamentals.yaml` |
-| T-bills, CBR, inflation | [Central Bank of Kenya](https://www.centralbank.go.ke/) | `data/macro.yaml` |
+| T-bill accepted-bid rates | [CBK results](https://www.centralbank.go.ke/bills-bonds/treasury-bills/) | Automatic `data/official/cbk/`, curated fallback in `data/macro.yaml` |
+| Observed CPI inflation | [KNBS monthly releases](https://www.knbs.or.ke/) | Automatic `data/official/knbs/`, dated reviewed fallback |
+| Bond yield, CBR and other assumptions | Sources recorded per input | Curated `data/macro.yaml`; never refreshed by a bill auction |
 | Equity and country risk premium | [Damodaran](https://pages.stern.nyu.edu/~adamodar/) | `data/macro.yaml` |
 | Announcements | NSE announcements feed | `data/market/` |
 
@@ -200,6 +203,8 @@ The track record starts with the extra historical return over an equal-weight co
 beat rate, and scenario coverage. The beat rate is stock-level outperformance, not a probability of profit.
 Historical 12-month holding tests, the separate monthly-rotation chart, and actual live outcomes are labelled separately.
 The dedicated Track record page starts with this same plain-language summary and keeps the full technical report collapsed.
+Candidate cards use the available width. Changes, alerts and the reading guide form a separate responsive row rather
+than a tall sidebar. Rates and inflation use a full-width summary with expandable sources and assumptions.
 `reports/daily/latest.json` is the machine-readable snapshot behind the dashboard.
 Disagreeing or insufficient valuation methods suppress point estimates in consumer reports and alerts. Raw outputs
 remain in the ledger and MCP tools with `estimate_reliable` metadata. Returns are illustrative scenarios, not loss
@@ -275,6 +280,30 @@ Tools: `screen_stocks`, `run_valuation`, `get_fundamentals`, `get_announcements`
 ```powershell
 .\.venv\Scripts\python -m pytest -q
 ```
+
+## Official-source enrichment
+
+Daily briefs and fetched weekly reports collect accepted-bid Treasury-bill rates directly from CBK result PDFs and
+observed CPI inflation from the dated KNBS monthly release. `python -m nse_agent enrich` refreshes these independently.
+Validated facts are saved under `data/official/`, one immutable record per release; attempt status and errors go in
+`data/market/health.json`. Raw PDFs are not committed. Changed releases require human review.
+
+The 364-day rate feeds the after-tax T-bill comparison and Buy hurdle. Inflation adds purchasing-power context using
+the Fisher calculation, with an explicit unchanged-inflation assumption; it does not change ranking weights.
+Reports and daily JSON snapshots retain the exact macro inputs used, source URLs and dates.
+CBK's signed release date is separate from the future issue date. Missing accepted tenors retain their previous
+dated value. Critical health checks distinguish bill rates (9 days) from curated assumptions (14 days).
+Collecting a bill rate never refreshes the 10-year bond, equity premium or tax assumptions.
+
+`--no-fetch`, analysis and site builds make no source requests. Reconstructed backtests still deliberately use current
+rates, as disclosed; date-bounded live analyses cannot use newly collected releases from a future observation date.
+Reviewed company figures stay in `data/fundamentals.yaml`. Results notices, including same-host HTML-to-PDF links,
+produce review candidates only. A pending notice is checked against known periods and source documents before it
+holds back strong-confidence flags; `queued` alone is not proof of unreviewed figures. Mark resolved ambiguous or
+restated notices `reviewed` after checking their source. Company discovery dates are not historical publication dates.
+
+The dashboard's Rates and inflation panel explains the inputs and remaining assumptions. Licensed ICE pricing is
+not connected: access credentials and public raw/derived-data redistribution rights must be confirmed first.
 
 ## Limits
 

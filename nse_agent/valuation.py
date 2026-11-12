@@ -8,8 +8,8 @@ from . import config
 from .fundamentals import Period, avg, roe
 
 
-def cost_of_equity(beta: float | None) -> float:
-    m = config.macro()
+def cost_of_equity(beta: float | None, macro: dict | None = None) -> float:
+    m = macro if macro is not None else config.macro()
     er = m["equity_risk"]
     rf = m["risk_free"]["bond_10y"]["value"] - er["default_spread"]
     b = beta if beta is not None else config.settings()["valuation"]["default_beta"]

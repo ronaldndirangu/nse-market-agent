@@ -160,3 +160,13 @@ def test_publications_use_distinct_retry_safe_artifacts():
     deploy = next(s for s in steps if s.get("uses", "").startswith("actions/deploy-pages"))
     assert upload["with"]["name"] == deploy["with"]["artifact_name"]
     assert "github.run_attempt" in upload["with"]["name"]
+
+
+def test_report_uses_captured_inputs_after_configuration_changes(market, monkeypatch):
+    result = analyze(AS_OF)
+    expected = report.render(result)
+
+    def unavailable(*args):
+        raise AssertionError("Rendering must not reread mutable macro inputs")
+    monkeypatch.setattr(config, "macro", unavailable)
+    assert report.render(result) == expected

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+from datetime import date, datetime, timedelta, timezone
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -12,6 +13,7 @@ DATA = ROOT / "data"
 PRICES_DIR = DATA / "prices"
 REPORTS = ROOT / "reports"
 SITE = ROOT / "site"
+EAT = timezone(timedelta(hours=3))
 
 USER_AGENT = "nse-market-agent/0.1 (+https://github.com/ronaldndirangu/nse-market-agent)"
 
@@ -27,8 +29,9 @@ def settings() -> dict:
 
 
 @lru_cache(maxsize=None)
-def macro() -> dict:
-    return load_yaml(DATA / "macro.yaml")
+def macro(as_of: date | None = None) -> dict:
+    from . import official
+    return official.apply(load_yaml(DATA / "macro.yaml"), as_of or datetime.now(EAT).date())
 
 
 @lru_cache(maxsize=None)

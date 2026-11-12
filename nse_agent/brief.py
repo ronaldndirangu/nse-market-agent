@@ -6,7 +6,7 @@ import statistics
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from . import announcements, config, dividends, health, ledger, prices, publication, report, risk, storage
+from . import announcements, config, dividends, health, ledger, official, prices, publication, report, risk, storage
 from .engine import analyze
 from .fmt import consumer_binding, estimate_reliable, kes, num, pct, table
 from .quality import warnings_for
@@ -198,6 +198,7 @@ def render(result: dict, ch: dict, alert_lines: list[str]) -> str:
     if alert_lines:
         out += ["## Alerts", ""] + [f"- {a}" for a in alert_lines] + [""]
     out += health.markdown(result.get("health"))
+    out += official.markdown(result["macro"], result["tbill_net"]) if result.get("macro") else []
     out += _changes_md(result, ch)
     out += risk.section_md(result)
     top = top_list(rows)
@@ -299,6 +300,7 @@ def snapshot(result: dict, ch: dict, alert_lines: list[str]) -> dict:
             "price_date": max((rows[t]["price_date"] for t in ranked), default=None),
             "valued": len(ranked), "hurdle": result["hurdle"], "tbill_net": result["tbill_net"],
             "health": result.get("health"),
+            "macro": result.get("macro"),
             "counts": {k: sum(1 for t in ranked if rows[t]["tier"] == k) for k in ("Buy", "Watch", "Avoid")},
             "alerts": alert_lines,
             "high_confidence": [item(t) for t in result["high_confidence"]],
@@ -327,6 +329,7 @@ def alert_body(result: dict, alert_lines: list[str]) -> str:
 def run_brief(fetch: bool = True, alert_file: str | None = None, as_of: date | None = None,
               fetch_prices: bool = True) -> str:
     if fetch:
+        official.refresh()
         from . import market
         steps = (("daily", market.update_daily),) if fetch_prices else ()
         for name, step in steps + (("announcements", announcements.update),):

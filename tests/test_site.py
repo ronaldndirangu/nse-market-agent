@@ -181,6 +181,36 @@ def test_badges():
     assert "Risk n/a" in site.risk_badge(None)
 
 
+def test_economic_context_shows_provenance_and_illustrative_inflation(tree):
+    from nse_agent import config
+    from nse_agent.returns import net_tbill
+    macro = config.macro()
+    html = site._economic_context({"macro": macro, "tbill_net": net_tbill(macro)})
+    for text in ("Rates and inflation", "2026-10", "Purchasing power", "not a forecast",
+                 "ranking weights", "not connected", "centralbank.go.ke", "knbs.or.ke"):
+        assert text in html
+    assert site._economic_context({}) == ""
+
+
+def test_source_details_follow_the_primary_content_instead_of_extending_a_sidebar(tree):
+    from nse_agent import config
+    from nse_agent.returns import net_tbill
+    macro = config.macro()
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps({
+        "as_of": "2026-11-12", "top": [KPLC], "ranking": [KPLC], "macro": macro,
+        "tbill_net": net_tbill(macro), "hurdle": net_tbill(macro) + 0.05,
+        "counts": {"Buy": 0, "Watch": 1, "Avoid": 0},
+    }))
+    site.build()
+    text = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    sidebar = text.split('<aside class="brief-side"', 1)[1].split("</aside>", 1)[0]
+    assert "economic-context" not in sidebar
+    assert text.index('id="economic-context"') > text.index("</aside>")
+    assert "Sources, assumptions and purchasing power</summary>" in text
+    assert "other Buy checks still apply" in text
+    assert site.check() > 0
+
+
 def test_validator_rejects_broken_links_and_generated_error_panels(tree):
     _write(tree / "reports" / "daily" / "latest.md", "# Brief\n\n[Missing](missing.html)\n")
     site.build()

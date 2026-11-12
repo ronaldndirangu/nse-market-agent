@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from datetime import date
+from copy import deepcopy
 
 from . import announcements as ann, config, dividends, fundamentals as fnd, health as health_data, prices, risk, storage
 from .quality import assess, warnings_for
@@ -15,6 +16,7 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
     """point_in_time=True only uses fundamentals published on or before as_of (backtests)."""
     as_of = as_of or date.today()
     s = config.settings()
+    macro = deepcopy(config.macro() if point_in_time else config.macro(as_of))
     uni = config.universe()
     tickers = [u["ticker"] for u in uni]
     listing = storage.read_json(storage.market_path("listing.json"), {}) or {}
@@ -37,7 +39,7 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
             gaps.append(f"{t}: no sourced annual fundamentals")
             continue
         b = prices.beta(t, index, as_of, s["valuation"]["beta_weeks"])
-        ke = cost_of_equity(b)
+        ke = cost_of_equity(b, macro)
         g, avg_roe = sustainable_growth(periods, ke)
         last = periods[-1]
         eps, bvps = last.get("eps"), last.get("bvps")
@@ -53,7 +55,7 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
         }
 
     multiples = sector_multiples(rows, s["valuation"]["min_sector_peers"])
-    hurdle = net_tbill() + s["buy"]["hurdle_premium_over_tbill"]
+    hurdle = net_tbill(macro) + s["buy"]["hurdle_premium_over_tbill"]
     for t, r in rows.items():
         periods = r.pop("_periods")
         aliases = r.pop("_aliases")
@@ -74,7 +76,7 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
         interim = fnd.latest_interim(t, pit)
         warns = warnings_for(t, aliases, anns, as_of)
         r["quality"] = assess(periods, r["bank"], interim, warns)
-        r["projection"] = project(r["price"], r["dps"], r["fair_value"], r["g"]) if r["fair_value"] else None
+        r["projection"] = project(r["price"], r["dps"], r["fair_value"], r["g"], macro=macro) if r["fair_value"] else None
 
         reasons = []
         stale = (as_of - date.fromisoformat(r["price_date"])).days > s["screen"]["max_price_age_days"]
@@ -135,9 +137,10 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
         "high_confidence": [t for t in ranked if rows[t]["conviction"]["flag"]],
         "watchlist": [t for t in ranked if rows[t]["watch"]],
         "gaps": gaps,
-        "tbill_net": net_tbill(),
+        "tbill_net": net_tbill(macro),
         "hurdle": hurdle,
-        "ke_at_beta_1": cost_of_equity(1.0),
+        "ke_at_beta_1": cost_of_equity(1.0, macro),
+        "macro": macro,
         "health": health,
     }
 

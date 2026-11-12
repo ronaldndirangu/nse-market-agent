@@ -1,11 +1,11 @@
 """Live evidence health, separate from valuation rules and historical reconstructions."""
 from __future__ import annotations
 
-from datetime import date, datetime, time, timedelta, timezone
+from datetime import date, datetime, time, timedelta
 
 from . import announcements, config, fundamentals, prices, storage
 
-EAT = timezone(timedelta(hours=3))
+EAT = config.EAT
 
 
 def now() -> datetime:
@@ -82,8 +82,14 @@ def assess(stamp: datetime | None = None) -> dict:
     ann_status = _age(ann.get("updated") if ann.get("items") else None, expected, 1, latest_allowed=stamp.date())
     if (attempts.get("announcements") or {}).get("successful") is False:
         ann_status = "Delayed" if ann_status == "Current" else ann_status
-    macro = config.macro()
-    macro_status = _age(macro.get("as_of"), stamp.date(), 14, business=False)
+    macro = config.macro(stamp.date())
+    curated_status = _age(macro.get("as_of"), stamp.date(), 14, business=False)
+    bill_date = macro["risk_free"]["tbill_364d"].get("as_of", macro.get("as_of"))
+    bill_status = _age(bill_date, stamp.date(), 9, business=False)
+    macro_status = max((curated_status, bill_status),
+                       key=lambda s: {"Current": 0, "Delayed": 1, "Stale": 2, "Unknown": 3}[s])
+    if ((attempts.get("official") or {}).get("cbk") or {}).get("successful") is False:
+        macro_status = "Delayed" if macro_status == "Current" else macro_status
     tickers = {}
     for stock in config.universe():
         ticker = stock["ticker"]
@@ -101,6 +107,7 @@ def assess(stamp: datetime | None = None) -> dict:
             "suspension_known": suspension_known, "period": last.period if last else None,
             "fundamentals_status": _age(last.period_end.isoformat() if last else None, stamp.date(),
                                       config.settings()["screen"]["max_fundamentals_age_days"], business=False),
+            "pending_results": announcements.unreviewed_results(ticker, stamp.date()),
         }
     active = [r for r in tickers.values() if not r["suspended"]]
     current = sum(r["status"] == "Current" and r["verified"] for r in active)
@@ -124,7 +131,8 @@ def assess(stamp: datetime | None = None) -> dict:
                    "source": listing.get("source"), "fetch": fetch},
         "announcements": {"status": ann_status, "last_success": ann.get("updated"),
                           "fetch": attempts.get("announcements") or {}},
-        "macro": {"status": macro_status, "as_of": macro.get("as_of")},
+        "macro": {"status": macro_status, "as_of": macro.get("as_of"), "tbill_as_of": bill_date,
+                  "curated_status": curated_status, "tbill_status": bill_status},
         "tickers": tickers,
         "session_note": "Weekdays only; a delayed session can mean a public holiday or source lag.",
     }
@@ -139,6 +147,8 @@ def evidence(live: dict, ticker: str) -> list[str]:
         issues.append("Trading or suspension status unknown")
     if row.get("fundamentals_status") != "Current":
         issues.append("Annual fundamentals missing or overdue")
+    if row.get("pending_results"):
+        issues.append("Results notice awaits human review; newer figures or publication dates need verification")
     return list(dict.fromkeys(issues))
 
 
@@ -149,6 +159,10 @@ def markdown(live: dict | None) -> list[str]:
     return ["## Data health", "", f"**{live['status']}**. Expected closing session: {live['expected_session']}. "
             f"Verified prices: {p['current']}/{p['total']}. Announcements: {a['status'].lower()} "
             f"(last successful check {a['last_success'] or 'unknown'}). Macro rates: {m['status'].lower()} "
-            f"(dated {m['as_of'] or 'unknown'}).", "", live["session_note"], "",
+            f"(curated assumptions {m['as_of'] or 'unknown'}; T-bill results {m.get('tbill_as_of') or 'unknown'}).",
+            "", live["session_note"], "",
             "Strong-confidence flags require current critical evidence. A rule-based Buy with incomplete "
-            "evidence still needs verification.", ""]
+            "evidence still needs verification.", ""] + [
+                f"- {ticker}: [results notice awaiting review]({item['url']}). "
+                "The announcement status alone does not establish whether the figures have been reviewed."
+                for ticker, row in live["tickers"].items() for item in row.get("pending_results", [])] + [""]

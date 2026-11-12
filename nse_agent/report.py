@@ -139,7 +139,7 @@ def _data_gaps(result: dict) -> list[str]:
 
 
 def render(result: dict, portfolio_md: str | None = None) -> str:
-    m = config.macro()
+    m = result.get("macro") or config.macro()
     s = config.settings()
     rows = result["rows"]
     ranked = result["ranking"]
@@ -170,12 +170,14 @@ def render(result: dict, portfolio_md: str | None = None) -> str:
             ["Buy hurdle (net T-bill + premium)", pct(result["hurdle"], 2), "settings.yaml"],
             ["10-year government bond", pct(m["risk_free"]["bond_10y"]["value"], 2), m["risk_free"]["bond_10y"]["source"]],
             ["Cost of equity at beta 1", pct(result["ke_at_beta_1"], 2), "rf less default spread + beta x ERP + CRP"],
-            ["Macro inputs as of", str(m["as_of"]), "data/macro.yaml"],
+            ["Curated assumptions reviewed", str(m["as_of"]), "data/macro.yaml; separate from collected rates"],
         ]),
         "",
     ]
 
     out += health.markdown(result.get("health"))
+    from . import official
+    out += official.markdown(m, result["tbill_net"])
     out += ["## Ranked results", ""]
     if ranked:
         trs = []

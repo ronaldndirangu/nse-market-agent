@@ -280,9 +280,11 @@ font-size:.88rem;font-weight:600;text-decoration:none}
 gap:12px;padding:14px 0;border-bottom:1px solid var(--cp-border)}
 .benchmark dt{color:var(--cp-text-muted);font-size:.85rem}.benchmark dd{margin:0;font-size:1.4rem;font-weight:650}
 .benchmark p{font-size:.8rem;color:var(--cp-text-muted);margin:16px 0 0;max-width:55ch}
-.brief-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);align-items:start;gap:24px;margin:32px 0}
+.brief-layout{margin:32px 0}
+.brief-side{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start;margin-top:24px}
 .brief-layout>*{min-width:0}.brief-main>section:first-child h2,.brief-side>section:first-child h2{margin-top:0}
-.candidate-stack{display:grid;gap:16px}
+.candidate-stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:16px}
+.candidate-stack>.stock:last-child:nth-child(odd){grid-column:1/-1}
 .section-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:16px}
 .section-heading h2{margin:0}.section-heading p{margin:6px 0 0;font-size:.85rem;color:var(--cp-text-muted)}
 .count-label{white-space:nowrap;font-size:.8rem;padding:4px 10px;border-radius:10px;background:var(--cp-surface-soft);
@@ -305,7 +307,7 @@ background:var(--cp-surface-soft);color:var(--cp-text);font-size:.85rem;font-wei
 .risk-list{list-style:none;padding:0;margin:16px 0;display:grid;gap:12px}
 .risk-list li{display:flex;justify-content:space-between;align-items:start;gap:16px;font-size:.85rem}
 .risk-list .risk-explanation{display:block;font-size:.78rem;color:var(--cp-text-muted);margin-top:3px;max-width:60ch}
-.brief-side .card{margin:0 0 16px}.brief-side h2{font-size:1.05rem}
+.brief-side .card,.brief-side>.fold{margin:0}.brief-side h2{font-size:1.05rem}
 .change-list{margin:16px 0 0;display:grid;gap:0}
 .change-list>div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--cp-border)}
 .change-list dt{font-size:.85rem;color:var(--cp-text-muted)}.change-list dd{margin:0;font-size:.85rem;font-weight:600;text-align:right}
@@ -355,7 +357,7 @@ table.data tbody tr:hover .muted{color:var(--cp-text)}
 padding-top:.5rem}.nav{padding:.4rem 0}.nav details div{position:static}h1{font-size:1.45rem}
 .prose{padding:1rem}.bars .row{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 76px}}
 @media(max-width:380px){.pricebox{flex-wrap:wrap}.stock header{flex-direction:column}.badges{justify-content:flex-start}}
-@media(max-width:960px){.decision-layout,.brief-layout{grid-template-columns:minmax(0,1fr)}
+@media(max-width:960px){.decision-layout{grid-template-columns:minmax(0,1fr)}
 .benchmark dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.benchmark p{max-width:75ch}
 .brief-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.brief-side>.card{margin:0}
 .subscribe-panel{align-items:flex-start;flex-direction:column}}
@@ -856,6 +858,26 @@ def _hero(s: dict) -> str:
             + f'<p class="small muted">{s.get("valued", 0)} stocks checked. {when}</p>{stale}')
 
 
+def _economic_context(s: dict) -> str:
+    if not s.get("macro"):
+        return ""
+    from . import official
+    m = s["macro"]
+    bill, inflation = m["risk_free"]["tbill_364d"], m["policy"]["inflation"]
+    metrics = [(pct(s["tbill_net"], 2), "T-bill per year, after tax"),
+               (pct(s.get("hurdle"), 2), "Minimum projected return for a Buy"),
+               (pct(inflation["value"]), "Observed inflation, year-on-year")]
+    return ('<section class="card prose" id="economic-context"><h2>Rates and inflation</h2>'
+            f'<p class="small muted">CBK results: {E(str(bill.get("as_of") or "date unknown"))}. '
+            f'KNBS CPI period: {E(str(inflation.get("period") or "unknown"))}.</p>'
+            '<div class="kpis">' + "".join(f'<div class="kpi"><b>{value}</b><span>{E(label)}</span></div>'
+                                         for value, label in metrics) + '</div>'
+            '<p class="small">The hurdle uses CBK rates; other Buy checks still apply. '
+            'Inflation describes the past year, not a forecast.</p>'
+            '<details class="more"><summary>Sources, assumptions and purchasing power</summary>'
+            + _md("\n".join(official.markdown(m, s["tbill_net"])[2:])) + "</details></section>")
+
+
 def _overview_stats(s: dict) -> str:
     c = s.get("counts") or {}
     stats = [
@@ -878,7 +900,9 @@ def _health_panel(s: dict) -> str:
     p, a, m = h["prices"], h["announcements"], h["macro"]
     rows = "".join(f'<tr><td>{E(t)}</td><td>{E(str(r.get("price_date") or "unknown"))}</td>'
                    f'<td>{E(r["status"])}</td><td>{E(str(r.get("period") or "unknown"))}</td>'
-                   f'<td>{E(r["fundamentals_status"])}</td></tr>' for t, r in h["tickers"].items())
+                   f'<td>{E(r["fundamentals_status"])}'
+                   f'{"; results review pending" if r.get("pending_results") else ""}</td></tr>'
+                   for t, r in h["tickers"].items())
     ledger = s.get("ledger") or {}
     revised = ledger.get("differences") or []
     provenance = (f'Revision {E(s["revision"])}. ' if s.get("revision") else "")
@@ -904,7 +928,8 @@ def _health_panel(s: dict) -> str:
             f'This report has passed its next expected update time. Recheck freshness before acting.</p>'
             f'<details class="more"><summary>Check sources and freshness</summary>'
             f'<p>Announcements: {E(a["status"])}. Last successful check: {E(str(a["last_success"] or "unknown"))}. '
-            f'Macro rates: {E(m["status"])}, dated {E(str(m["as_of"] or "unknown"))}.</p>'
+            f'Macro rates: {E(m["status"])}. Curated assumptions: {E(str(m["as_of"] or "unknown"))}; '
+            f'T-bill results: {E(str(m.get("tbill_as_of") or "unknown"))}.</p>'
             f'<p>{E(h["session_note"])} Next update due: {E(h["next_update_due"])} (EAT).</p>'
             f'{attempts}<div class="table-wrap" tabindex="0" role="region" aria-label="Source freshness by stock">'
             f'<table class="data"><thead><tr><th scope="col">Stock</th><th scope="col">Price date</th>'
@@ -1054,7 +1079,7 @@ def _alerts_changes(s: dict) -> str:
 
 
 def _reading_guide() -> str:
-    return ('<section class="card"><h2>A one-minute reading guide</h2><ol class="guide-steps">'
+    return ('<details class="fold"><summary><h2>A one-minute reading guide</h2></summary><ol class="guide-steps">'
             '<li><b>Check the evidence.</b> Confirm prices and sources are current.</li>'
             '<li><b>Read the conclusion.</b> Buy passes the entry rules. Watch still misses a check.</li>'
             '<li><b>Open a stock review.</b> Understand its risks and verify the source filing.</li></ol>'
@@ -1065,7 +1090,7 @@ def _reading_guide() -> str:
             '<span class="badge b-muted">Gray: Unverified data</span></div>'
             '<p class="small muted">Green is not a guarantee of profit. Red and Avoid are not automatic '
             'instructions to sell existing holdings.</p><a class="back-link" href="#glossary">Jargon buster '
-            + _icon("arrow") + '</a></section>')
+            + _icon("arrow") + '</a></details>')
 
 
 def _top(s: dict, cal: float | None = None) -> str:
@@ -1298,7 +1323,8 @@ def dashboard(snap: dict | None, retro: dict | None, present: list[tuple]) -> st
         cal = (((retro or {}).get("reconstructed") or {}).get("12") or {}).get("calibration")
         panels = {}
         for name, fn in (("hero", _hero), ("health", _health_panel), ("verdict", _verdict),
-                         ("stats", _overview_stats), ("changes", _alerts_changes), ("candidates", partial(_top, cal=cal)),
+                         ("stats", _overview_stats), ("context", _economic_context),
+                         ("changes", _alerts_changes), ("candidates", partial(_top, cal=cal)),
                          ("confidence", partial(_high_conf, cal=cal)), ("glossary", partial(_glossary, retro=retro))):
             try:
                 panels[name] = fn(snap)
@@ -1308,6 +1334,7 @@ def dashboard(snap: dict | None, retro: dict | None, present: list[tuple]) -> st
         parts.append('<div class="brief-layout"><div class="brief-main">' + panels["candidates"]
                      + panels["confidence"] + '</div><aside class="brief-side" aria-label="Changes and reading guide">'
                      + panels["changes"] + _reading_guide() + '</aside></div>')
+        parts.append(panels["context"])
         parts.append('<div class="research-heading"><p class="eyebrow">Go deeper</p>'
                      '<h2>Explore the evidence</h2><p class="small muted">'
                      'Search all stocks, check past performance or look up a term.</p></div>')

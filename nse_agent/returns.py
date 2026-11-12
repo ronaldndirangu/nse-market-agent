@@ -6,18 +6,19 @@ from statistics import fmean, pstdev
 from . import config
 
 
-def net_tbill() -> float:
-    m = config.macro()
+def net_tbill(macro: dict | None = None) -> float:
+    m = macro if macro is not None else config.macro()
     return m["risk_free"]["tbill_364d"]["value"] * (1 - m["taxes_and_costs"]["tbill_interest_wht"])
 
 
-def project(price: float, dps: float | None, fv: dict, g: float, years: int | None = None) -> dict:
+def project(price: float, dps: float | None, fv: dict, g: float, years: int | None = None,
+            macro: dict | None = None) -> dict:
     """Annual total return = net dividend yield + (1+g)(V/P)^(1/N) - 1 - round-trip costs / N.
 
     Every model value scales with book value or earnings, which compound at g = ROE x retention, so g applies
     to all of them: at P = V an EPV or sector-multiple stock still returns D/V + g = ke when ROE = ke.
     """
-    m, s = config.macro(), config.settings()
+    m, s = macro if macro is not None else config.macro(), config.settings()
     n = years or s["valuation"]["horizon_years"]
     shift = s["scenarios"]["growth_shift"]
     costs = 2 * m["taxes_and_costs"]["trade_cost_per_side"] / n

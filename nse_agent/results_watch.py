@@ -5,10 +5,12 @@ check each figure against the source PDF before copying it across.
 """
 from __future__ import annotations
 
-import io
 import logging
 import re
 from datetime import date, timedelta
+
+import requests
+from pypdf.errors import PdfReadError
 
 from . import announcements, config, http, storage
 
@@ -55,12 +57,19 @@ def extract(text: str) -> dict[str, list[list[float]]]:
 
 
 def pdf_text(url: str) -> str:
-    from pypdf import PdfReader
+    return http.pdf_document(url)["text"]
 
-    logging.getLogger("pypdf").setLevel(logging.ERROR)
-    data = http.request("GET", url, timeout=90).content
-    reader = PdfReader(io.BytesIO(data))
-    return "\n".join((page.extract_text() or "") for page in reader.pages[:12])
+
+def document_url(url: str) -> str:
+    from urllib.parse import urlsplit
+    if urlsplit(url).path.lower().endswith(".pdf"):
+        return url
+    links = http.Page(http.get_text(url, allow_redirects=False)).links
+    candidates = {http.trusted_link(url, link) for link in links
+                  if urlsplit(link).path.lower().endswith(".pdf")}
+    if len(candidates) != 1:
+        raise ValueError("Notice must link exactly one same-host PDF; verify the document manually")
+    return candidates.pop()
 
 
 def queue_path():
@@ -93,16 +102,14 @@ def run_results_watch(today: date | None = None) -> str:
             continue
         entry = {"ticker": item["ticker"], "title": item["title"], "url": item["url"], "date": item["date"],
                  "detected": {}, "status": "needs review"}
-        if item["url"].lower().endswith(".pdf"):
-            try:
-                entry["detected"] = extract(pdf_text(item["url"]))
-                entry["units"] = "as printed in the source, usually KES thousands; convert to KES millions"
-            except Exception as exc:
-                log.warning("%s: PDF parse failed: %s", item["url"], exc)
-                entry["error"] = f"PDF parse failed: {type(exc).__name__}"
-                failed += 1
-        else:
-            entry["error"] = "not a PDF link; open the announcement and transcribe manually"
+        try:
+            entry["document_url"] = document_url(item["url"])
+            entry["detected"] = extract(pdf_text(entry["document_url"]))
+            entry["units"] = "as printed in the source, usually KES thousands; convert to KES millions"
+        except (ValueError, requests.RequestException, PdfReadError) as exc:
+            log.warning("%s: document parse failed: %s", item["url"], exc)
+            entry["error"] = f"Document needs manual review: {exc}"
+            failed += 1
         queue["items"].append(entry)
         item["status"] = "queued"
         queued.append(item["ticker"])

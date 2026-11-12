@@ -16,7 +16,8 @@ def main(argv: list[str] | None = None) -> int:
     wk.add_argument("--alert-file", help="Write Buy and undervalued list changes here (only when there are any)")
     br = sub.add_parser("brief", help="Daily brief: top 5 with reasons, what changed, ledger append")
     br.add_argument("--no-fetch", action="store_true", help="Use cached market data only")
-    br.add_argument("--no-prices", action="store_true", help="Refresh announcements only (prices already recorded)")
+    br.add_argument("--no-prices", action="store_true",
+                    help="Refresh announcements and official inputs without collecting prices")
     br.add_argument("--alert-file", help="Write material-change alerts here (only when there are any)")
     sub.add_parser("score", help="Score logged picks against the market")
     bt = sub.add_parser("backtest", help="Point-in-time walk-forward backtest")
@@ -33,6 +34,7 @@ def main(argv: list[str] | None = None) -> int:
     aw.add_argument("proposal")
     sub.add_parser("review", help="Review portfolio.yaml holdings")
     sub.add_parser("results-watch", help="Detect new results announcements and queue them for review")
+    sub.add_parser("enrich", help="Collect official CBK rates and KNBS inflation with dated provenance")
     sub.add_parser("mcp", help="Run the MCP server (needs the mcp extra)")
     st = sub.add_parser("site", help="Build the static site without refreshing data")
     st.add_argument("--check", action="store_true", help="Validate pages and publication provenance")
@@ -42,6 +44,11 @@ def main(argv: list[str] | None = None) -> int:
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s", stream=sys.stderr)
 
+    if args.cmd == "enrich":
+        from . import official
+        outcomes = official.refresh()
+        print(" ".join(f"{name}={status}" for name, status in outcomes.items()))
+        return int(outcomes.get("cbk") == "failed")
     if args.cmd == "check-published":
         from .publication import check_published
         print(check_published(args.url))

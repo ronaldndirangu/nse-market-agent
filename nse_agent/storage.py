@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import json
+import tempfile
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -97,6 +98,15 @@ def read_json(path: Path, default: Any = None) -> Any:
 
 def write_json(path: Path, obj: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8", newline="\n") as fh:
-        json.dump(obj, fh, indent=2, sort_keys=True, ensure_ascii=False)
-        fh.write("\n")
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", dir=path.parent, encoding="utf-8", newline="\n",
+                                         delete=False, suffix=".tmp") as fh:
+            temporary = Path(fh.name)
+            json.dump(obj, fh, indent=2, sort_keys=True, ensure_ascii=False)
+            fh.write("\n")
+        temporary.chmod(path.stat().st_mode & 0o777 if path.exists() else 0o644)
+        temporary.replace(path)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)

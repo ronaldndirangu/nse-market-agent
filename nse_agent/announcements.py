@@ -2,10 +2,12 @@
 from __future__ import annotations
 
 import re
-from datetime import date
+import logging
+from datetime import date, timedelta
 
 from . import config, storage
 from .sources import nse
+log = logging.getLogger(__name__)
 
 RESULTS_PATTERN = re.compile(
     r"\b(financial (statements|results)|results for|audited|unaudited|half[- ]year|interim results|"
@@ -47,6 +49,48 @@ def date_for(url: str, first_seen: date) -> str:
 
 def items() -> list[dict]:
     return (storage.read_json(path(), {}) or {}).get("items", [])
+
+
+def unreviewed_results(ticker: str, as_of: date) -> list[dict]:
+    from . import fundamentals
+    known = fundamentals.annuals(ticker, as_of)
+    if not known:
+        return []
+    interim = fundamentals.latest_interim(ticker, as_of)
+    if interim:
+        known = known + [interim]
+    latest = max(p.period_end for p in known)
+    sources = {p.source_url for p in known}
+    pending = []
+    for item in items():
+        if item.get("ticker") != ticker or not item.get("results") or item.get("status") == "reviewed":
+            continue
+        if item["first_seen"] > as_of.isoformat():
+            continue
+        restated = bool(re.search(r"\b(restated|revised|restatement)\b", item["title"], re.I))
+        if item["url"] in sources and not restated:
+            continue
+        period = re.search(r"\b(\d{1,2})(?:st|nd|rd|th)?\s+"
+                           r"(January|February|March|April|May|June|July|August|September|October|November|December)"
+                           r"\s+(20\d{2})\b", item["title"], re.I)
+        if period:
+            from datetime import datetime
+            try:
+                ended = datetime.strptime(f"{period[1]} {period[2]} {period[3]}", "%d %B %Y").date()
+            except ValueError:
+                log.warning("Results period needs verification: %s", item["url"])
+                pending.append(item)
+                continue
+            if ended <= latest and not restated:
+                continue
+        else:
+            annual = re.search(r"\b(?:FY\s*|annual\D{0,30}|full.year\D{0,30})(20\d{2})\b", item["title"], re.I)
+            if annual and int(annual[1]) <= max(p.period_end.year for p in known if p.type == "annual") and not restated:
+                continue
+            if item["date"] < (as_of - timedelta(days=180)).isoformat() and not restated:
+                continue
+        pending.append(item)
+    return pending[:3]
 
 
 def update(today: date | None = None) -> dict:

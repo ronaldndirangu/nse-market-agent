@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import logging
 
-from . import announcements, config, health, market, picks_log, portfolio, report, storage
+from . import announcements, config, health, market, official, picks_log, portfolio, report, storage
 from .engine import analyze
 from .fmt import estimate_reliable, pct
 
@@ -44,6 +44,7 @@ def weekly_changes(result: dict, previous: dict | None) -> list[str]:
 
 def run_weekly(fetch: bool = True, alert_file: str | None = None) -> str:
     if fetch:
+        official.refresh()
         for name, step in (("companies", market.refresh_companies), ("daily", market.update_daily),
                            ("announcements", announcements.update)):
             try:
