@@ -13,13 +13,13 @@
       "KCB"
     ]
   },
-  "code_sha": "c7201124feb7",
+  "code_sha": "31f442c2f37b",
   "counts": {
     "Avoid": 15,
     "Buy": 0,
     "Watch": 1
   },
-  "generated": "2026-11-12T17:42:50+00:00",
+  "generated": "2026-11-12T18:07:29+00:00",
   "health": {
     "announcements": {
       "fetch": {
@@ -31,7 +31,7 @@
       "last_success": "2026-11-12",
       "status": "Current"
     },
-    "checked_at": "2026-11-12T20:42:49+03:00",
+    "checked_at": "2026-11-12T21:07:28+03:00",
     "critical_ok": true,
     "expected_session": "2026-11-12",
     "issues": [],
@@ -2276,7 +2276,7 @@
       "why": "NCBA #16 (Watch): 5.2% upside to base fair value KES 92.53; base return 15.3% a year beats the 12.67% hurdle. Biggest score driver: dividend yield (+0.18). Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3. Moderate risk (beta 0.81; turnover KES 12.9M a day)."
     }
   ],
-  "revision": "215ceed17ac8227a6452",
+  "revision": "b3d640d4963390ee8724",
   "rule": "A stock is flagged **High confidence undervalued** only when all four gates pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.67% hurdle (Return). Risk level is rated separately from seven factors and never changes the valuation or return thresholds. Strong-confidence flags also require current critical live evidence. Agreement of methods is not a probability of profit.",
   "tbill_net": 0.0767397,
   "top": [
