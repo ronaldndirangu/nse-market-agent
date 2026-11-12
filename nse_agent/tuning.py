@@ -22,6 +22,9 @@ STEP = 0.1
 SELECT_H = 3
 EVAL_H = (3, 12)
 MIN_TRAIN = 6
+MIN_OOS = 24
+MIN_IC_GAIN = 0.02
+MIN_WIN_SHARE = 0.5
 WEIGHTS_LINE = re.compile(r"^(\s*weights:\s*)\{[^}]*\}(.*)$", re.M)
 
 
@@ -71,6 +74,19 @@ def _summary(ws: list[dict]) -> dict:
     return {k: _mean(w[k] for w in ws) for k in ("top_return", "universe", "excess", "hit_rate", "ic")} | {"n": len(ws)}
 
 
+def _win_share(tuned: list[dict], current: list[dict]) -> float | None:
+    pairs = [(t["ic"], c["ic"]) for t, c in zip(tuned, current) if t["ic"] is not None and c["ic"] is not None]
+    return sum(t > c for t, c in pairs) / len(pairs) if pairs else None
+
+
+def passes(r: dict) -> bool:
+    """One horizon clears the gate: enough windows, a material IC gain, more windows won than not, higher excess."""
+    t, c = r["tuned"], r["current"]
+    return (t["n"] >= MIN_OOS and t["ic"] is not None and c["ic"] is not None and t["ic"] >= c["ic"] + MIN_IC_GAIN
+            and (r["ic_win_share"] or 0) > MIN_WIN_SHARE and t["excess"] is not None and c["excess"] is not None
+            and t["excess"] > c["excess"])
+
+
 def compute(end: date | None = None) -> dict:
     end = end or data_end()
     snaps = {date.fromisoformat(d): s for d, s in ledger.by_date(ledger.read("reconstructed")).items()}
@@ -104,11 +120,9 @@ def compute(end: date | None = None) -> dict:
 
     final_train = [x for x in days if add_months(x, SELECT_H) <= end]
     proposal = cands[select(perf, final_train, cands, current)] if len(final_train) >= MIN_TRAIN else current
-    results = {h: {k: _summary(v) for k, v in oos[h].items()} for h in EVAL_H}
-    better = all(results[h]["tuned"]["n"] and results[h]["tuned"]["ic"] is not None
-                 and results[h]["current"]["ic"] is not None
-                 and results[h]["tuned"]["ic"] > results[h]["current"]["ic"]
-                 and results[h]["tuned"]["excess"] > results[h]["current"]["excess"] for h in EVAL_H)
+    results = {h: {k: _summary(v) for k, v in oos[h].items()}
+               | {"ic_win_share": _win_share(oos[h]["tuned"], oos[h]["current"])} for h in EVAL_H}
+    better = all(passes(results[h]) for h in EVAL_H)
     return {
         "generated": date.today().isoformat(), "data_end": end.isoformat(),
         "first": days[0].isoformat() if days else None, "dates": len(days), "candidates": len(cands),
@@ -123,21 +137,27 @@ def _results_table(res: dict) -> str:
     for h in EVAL_H:
         for name in ("current", "tuned"):
             r = res["results"][h][name]
+            won = res["results"][h].get("ic_win_share") if name == "tuned" else None
             rows.append([f"{h}m", "walk-forward" if name == "tuned" else "current weights", r["n"],
                          pct(r["top_return"]), pct(r["universe"]), pct(r["excess"]), pct(r["hit_rate"], 0),
-                         "n/a" if r["ic"] is None else f"{r['ic']:+.3f}"])
-    return table(["Horizon", "Weights", "Windows", "Top 5", "Universe (EW)", "Excess", "Hit rate", "Rank IC"], rows)
+                         "n/a" if r["ic"] is None else f"{r['ic']:+.3f}", "" if won is None else pct(won, 0)])
+    return table(["Horizon", "Weights", "Windows", "Top 5", "Universe (EW)", "Excess", "Hit rate", "Rank IC",
+                  "Windows won on IC"], rows)
+
+
+GATE = (f"at every evaluated horizon, walk-forward selection must have at least {MIN_OOS} out-of-sample windows, "
+        f"beat the current weights' mean rank IC by at least {MIN_IC_GAIN:.2f}, win on IC in more than "
+        f"{MIN_WIN_SHARE:.0%} of windows, and earn a higher top-5 excess return")
 
 
 def verdict(res: dict) -> str:
     if not res["changed"]:
         return "Keep the current weights: the tuner selects them on all matured data."
     if res["recommend"]:
-        return (f"Proposed weights: {label(res['proposal'])}. Walk-forward selection beat the current weights out "
-                f"of sample on both rank IC and top-5 excess return at every evaluated horizon.")
+        return (f"Proposed weights: {label(res['proposal'])}. Walk-forward selection cleared the review gate: "
+                f"{GATE}.")
     return (f"Keep the current weights. The tuner would pick {label(res['proposal'])} on all matured data, but "
-            f"walk-forward selection did not beat the current weights out of sample on both rank IC and excess "
-            f"return at every horizon, so the evidence does not support a change.")
+            f"the evidence does not clear the review gate: {GATE}.")
 
 
 def render(res: dict) -> str:
@@ -154,8 +174,9 @@ def render(res: dict) -> str:
         f"{SELECT_H}-month rank IC over windows that had fully ended by that date (at least {MIN_TRAIN}), then ranks "
         "that month's stored point-in-time z-scores with it. Ties go to the candidate closest to the current weights. "
         "Every result below is out of sample: the weights were chosen before the window started.", "",
-        "The weights change only through a reviewed pull request, and only when walk-forward selection beats the "
-        "current weights on both rank IC and top-5 excess return at every evaluated horizon.", "",
+        "The weights change only through a reviewed pull request, and the tuner proposes one only when it clears "
+        f"this gate: {GATE}. Overlapping monthly windows are not independent, so the gate asks for a clear, "
+        "consistent gain before a change is worth reviewing.", "",
         "## Out-of-sample results", "", _results_table(res), "",
         "## Weights chosen over time", "",
     ]
@@ -186,7 +207,7 @@ def pr_body(res: dict) -> str:
         f"Walk-forward weight tuning proposes new composite weights: **{label(res['proposal'])}** "
         f"(current: {label(res['current'])}).", "",
         "Results are out of sample: on each month start the weights were chosen only from windows that had already "
-        "ended.", "", _results_table(res), "",
+        f"ended. The proposal cleared this gate: {GATE}.", "", _results_table(res), "",
         "Before merging, check the full report in `reports/tuning.md`, especially the limitations. "
         "Merging changes the ranking for every later brief and report.", "", report.DISCLAIMER_LINE,
     ])

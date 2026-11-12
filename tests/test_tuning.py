@@ -29,6 +29,7 @@ def world(monkeypatch):
     monkeypatch.setattr(tuning, "window", window)
     monkeypatch.setattr(tuning, "_tickers", lambda: [])
     monkeypatch.setattr(tuning, "data_end", lambda: END)
+    monkeypatch.setattr(tuning, "MIN_OOS", 6)
 
 
 def test_walk_forward_selects_only_from_matured_windows(world):
@@ -74,3 +75,17 @@ def test_proposal_written_only_when_it_wins_out_of_sample(world, outputs, tmp_pa
     assert tuning.run_tuning(str(proposal), str(body)).startswith("recommend=True")
     assert yaml.safe_load(proposal.read_text(encoding="utf-8")) == MOS
     assert DISCLAIMER in body.read_text(encoding="utf-8") and settings.read_bytes() == before
+
+
+@pytest.mark.parametrize("gain, min_oos", [(0.01, 6), (1.0, 24)])
+def test_gate_rejects_small_or_thin_gains(world, monkeypatch, gain, min_oos):
+    def window(snap, a, h, w, universe):
+        sign = {tuning.key(MOM): -1, tuning.key(MOS): 1}.get(tuning.key(w), 0)
+        return {"top": [], "top_return": 0.1, "universe": 0.1, "excess": 0.05 * sign, "hit_rate": 0.5,
+                "ic": gain * sign}
+
+    monkeypatch.setattr(tuning, "window", window)
+    monkeypatch.setattr(tuning, "MIN_OOS", min_oos)
+    res = tuning.compute(END)
+    assert res["changed"] and res["results"][12]["ic_win_share"] == 1.0
+    assert not res["recommend"]
