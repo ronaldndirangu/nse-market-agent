@@ -34,20 +34,26 @@ flowchart LR
    the universe. Models:
    - Banks: justified P/B `(ROE - g) / (ke - g)`.
    - Dividend payers: Gordon growth `D1 / (ke - g)`.
-   - Everyone: sector-relative P/E and P/B (when at least 3 peers exist) and the Graham number.
+   - Positive earners: earnings power `3-year average EPS / ke`.
+   - Everyone: sector-relative P/E and P/B when at least 3 peers exist.
    - Growth `g` is sustainable growth `ROE x retention`, capped at 7%.
+   - The Graham number is shown for reference only. It does not count toward fair value or the vote.
 3. **Agree.** A stock counts as undervalued only when at least half of its models (and at least 2) put fair value 15%
-   or more above the price.
+   or more above the price. When the highest model value is more than 3 times the lowest, the models disagree too much
+   to trust, and the stock is Avoid.
 4. **Quality gate.** Piotroski F-score (banks swap the margin and liquidity signals for cost-to-income and core
    capital trends and skip leverage, since deposits dominate bank liabilities), Altman Z'' for non-financials,
    NPL ratio level and trend for banks, and profit-warning keywords in NSE announcements over the last 180 days.
 5. **Project.** Annual return `= net dividend yield + (1 + g) x (V/P)^(1/3) - 1 - round-trip costs / 3`, using 1.82%
    trading costs per side and 5% dividend withholding tax. Bear and bull cases use the low and high fair values and
    shift growth by 2 points.
-6. **Rank.** A weighted composite of z-scores: 50% margin of safety, 30% quality, 20% momentum.
-7. **Buy rule.** `BUY` means undervalued, passes quality, and the base-case return beats the net 91-day T-bill yield
-   by at least 5 points. `PICK` is undervalued without clearing that hurdle. `WATCH` means the models agree but a screen
-   or quality check failed.
+6. **Rank.** A weighted composite of z-scores: 40% momentum, 30% dividend yield, 20% quality and 10% margin of
+   safety. A stock missing a signal has its other weights scaled up to the same total. The rank orders stocks by these
+   signals and is not a buy order: a stock ranked #1 can still be Avoid. Only the tier says whether to buy.
+7. **Tier.** `Buy` means undervalued (enough models agree and they are not dispersed), passes the screen and the
+   quality gate, and the base-case return beats the hurdle: the net 364-day T-bill yield plus 5 points. `Watch` passes
+   quality and misses exactly one other threshold. Everything else is `Avoid`. The CLI table also marks `PICK` for a
+   stock that is undervalued but misses the hurdle.
 
 All thresholds live in [`data/settings.yaml`](data/settings.yaml).
 
@@ -222,9 +228,9 @@ Tools: `screen_stocks`, `run_valuation`, `get_fundamentals`, `get_announcements`
 
 ### Known data issues
 
-- AFX price history is not adjusted for corporate actions. Total returns in the scorecard, retrospective and tuning
-  apply the bonus factors in `data/corporate_actions.yaml` and add net dividends. Momentum and volatility still use raw
-  closes, so bonus issues (for example I&M on 2019-05-13 and 2021-05-11) show as one-day drops in those signals.
+- AFX price history is not adjusted for corporate actions. The engine applies the bonus and split factors in
+  `data/corporate_actions.yaml` (for example I&M on 2019-05-13 and 2021-05-11) before computing momentum, volatility,
+  beta and every return. Backtest, scorecard, retrospective and tuning returns also add net dividends.
 - Dividends announced before mid-2019 often lack a sourced book-closure or payment date. For those rows the engine uses
   the `announced` date as the ex date, which can be up to about two months early. Dividends between mid-2019 and early
   2021 are mostly unsourced; when a trailing 12-month window has no sourced dividend, the yield falls back to the
