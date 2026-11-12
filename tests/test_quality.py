@@ -22,11 +22,17 @@ def test_piotroski_needs_two_periods_and_four_signals():
     assert quality.piotroski([period(year=2023, eps=1), period(year=2024, eps=2)], bank=False) is None
 
 
-def test_piotroski_bank_uses_total_liabilities():
-    prev = dict(net_income=10, total_assets=100, total_liabilities=90, shares_outstanding=10, revenue=20)
+def test_piotroski_bank_skips_deposit_driven_leverage():
+    prev = dict(net_income=10, total_assets=100, total_liabilities=80, shares_outstanding=10, revenue=20)
     cur = dict(net_income=12, total_assets=110, total_liabilities=95, shares_outstanding=10, revenue=23)
     f = quality.piotroski([period(year=2023, **prev), period(year=2024, **cur)], bank=True)
-    assert "leverage_falling" in f["signals"] and "gross_margin_improving" not in f["signals"]
+    assert "leverage_falling" not in f["signals"] and "gross_margin_improving" not in f["signals"]
+    assert f["passed"] == f["available"] == 4
+
+
+def test_piotroski_needs_both_roa_signals():
+    prev = {k: v for k, v in PREV.items() if k != "net_income"}
+    assert quality.piotroski([period(year=2023, **prev), period(year=2024, **GOOD)], bank=False) is None
 
 
 def test_piotroski_bank_signals_from_sourced_bank_fields():
@@ -35,9 +41,8 @@ def test_piotroski_bank_signals_from_sourced_bank_fields():
     cur = dict(net_income=12, total_assets=110, total_equity=14, shares_outstanding=10, cost_to_income=0.45,
                core_capital_ratio=0.15)
     f = quality.piotroski([period(year=2023, **prev), period(year=2024, **cur)], bank=True)
-    assert f["signals"] == {"roa_positive": True, "roa_improving": True, "leverage_falling": True,
-                            "cost_to_income_improving": True, "capital_ratio_improving": False,
-                            "no_dilution": True}
+    assert f["signals"] == {"roa_positive": True, "roa_improving": True, "cost_to_income_improving": True,
+                            "capital_ratio_improving": False, "no_dilution": True}
 
 
 def test_altman_z2():

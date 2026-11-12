@@ -13,10 +13,10 @@ def _ratio(a: float | None, b: float | None) -> float | None:
 
 
 def piotroski(periods: list[Period], bank: bool) -> dict | None:
-    """Share of available F-score signals that pass.
+    """Share of available F-score signals that pass, or None without both ROA signals and at least 4 in total.
 
-    Banks swap gross margin and current ratio for cost-to-income and core capital trends, and derive
-    liabilities as assets less equity when the statement total is not sourced.
+    Banks swap gross margin and current ratio for cost-to-income and core capital trends, and skip leverage:
+    bank liabilities are mostly deposits, so deposit growth would read as rising leverage.
     """
     if len(periods) < 2:
         return None
@@ -34,18 +34,11 @@ def piotroski(periods: list[Period], bank: bool) -> dict | None:
         signals["roa_improving"] = roa_c > roa_p
     if cfo is not None and g(cur, "net_income") is not None:
         signals["cfo_exceeds_income"] = cfo > g(cur, "net_income")
-    def debt(p: Period) -> float | None:
-        if not bank:
-            return g(p, "long_term_debt")
-        if g(p, "total_liabilities") is not None:
-            return g(p, "total_liabilities")
-        ta, eq = g(p, "total_assets"), g(p, "total_equity")
-        return ta - eq if ta is not None and eq is not None else None
-
-    lev_c = _ratio(debt(cur), g(cur, "total_assets"))
-    lev_p = _ratio(debt(prev), g(prev, "total_assets"))
-    if lev_c is not None and lev_p is not None:
-        signals["leverage_falling"] = lev_c <= lev_p
+    if not bank:
+        lev_c = _ratio(g(cur, "long_term_debt"), g(cur, "total_assets"))
+        lev_p = _ratio(g(prev, "long_term_debt"), g(prev, "total_assets"))
+        if lev_c is not None and lev_p is not None:
+            signals["leverage_falling"] = lev_c <= lev_p
     if bank:
         ci_c, ci_p = g(cur, "cost_to_income"), g(prev, "cost_to_income")
         if ci_c is not None and ci_p is not None:
@@ -69,7 +62,7 @@ def piotroski(periods: list[Period], bank: bool) -> dict | None:
     at_p = _ratio(g(prev, "revenue"), g(prev, "total_assets"))
     if at_c is not None and at_p is not None:
         signals["asset_turnover_improving"] = at_c > at_p
-    if len(signals) < 4:
+    if len(signals) < 4 or "roa_positive" not in signals or "roa_improving" not in signals:
         return None
     passed = sum(signals.values())
     return {"score": passed / len(signals), "passed": passed, "available": len(signals), "signals": signals}

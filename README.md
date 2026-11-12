@@ -39,7 +39,7 @@ flowchart LR
 3. **Agree.** A stock counts as undervalued only when at least half of its models (and at least 2) put fair value 15%
    or more above the price.
 4. **Quality gate.** Piotroski F-score (banks swap the margin and liquidity signals for cost-to-income and core
-   capital trends), Altman Z'' for non-financials,
+   capital trends and skip leverage, since deposits dominate bank liabilities), Altman Z'' for non-financials,
    NPL ratio level and trend for banks, and profit-warning keywords in NSE announcements over the last 180 days.
 5. **Project.** Annual return `= net dividend yield + (1 + g) x (V/P)^(1/3) - 1 - round-trip costs / 3`, using 1.82%
    trading costs per side and 5% dividend withholding tax. Bear and bull cases use the low and high fair values and
