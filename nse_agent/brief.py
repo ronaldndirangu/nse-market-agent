@@ -17,6 +17,12 @@ log = logging.getLogger(__name__)
 LABELS = {"margin_of_safety": "margin of safety", "quality": "quality", "momentum": "momentum",
           "dividend_yield": "dividend yield", "low_volatility": "low volatility"}
 TOP_N = 5
+TIER_ORDER = {"Buy": 0, "Watch": 1, "Avoid": 2}
+
+
+def top_list(rows: dict[str, dict]) -> list[str]:
+    """Top N shown to readers: every Buy before any Watch before any Avoid, composite rank within a tier."""
+    return sorted(rows, key=lambda t: (TIER_ORDER.get(rows[t]["tier"], 3), int(rows[t]["rank"])))[:TOP_N]
 
 
 def daily_dir() -> Path:
@@ -55,10 +61,10 @@ def unusual_moves(result: dict, since: str | None) -> list[dict]:
     max_age = config.settings()["screen"]["max_price_age_days"]
     out = []
     for t in result["ranking"]:
-        rs = prices.rows(t, as_of)[-62:]
+        rs = prices.adj_rows(t, as_of)[-62:]
         if len(rs) < 22:
             continue
-        closes = [c * dividends.factor(t, date.fromisoformat(d)) for d, c, _ in rs]
+        closes = [c for _, c, _ in rs]
         rets = [b / a - 1 for a, b in zip(closes, closes[1:]) if a > 0]
         day = rs[-1][0]
         if (since and day <= since) or (as_of - date.fromisoformat(day)).days > max_age:
@@ -99,9 +105,9 @@ def changes(result: dict, prev_date: str | None, prev: dict[str, dict]) -> dict:
           "crossings": []}
     if not prev_date:
         return ch
-    prev_top = [t for t, p in sorted(prev.items(), key=lambda kv: kv[1]["rank"])][:TOP_N]
-    ch["top_in"] = [t for t in ranked[:TOP_N] if t not in prev_top]
-    ch["top_out"] = [t for t in prev_top if t not in ranked[:TOP_N]]
+    prev_top, top = top_list(prev), top_list(rows)
+    ch["top_in"] = [t for t in top if t not in prev_top]
+    ch["top_out"] = [t for t in prev_top if t not in top]
     for t in ranked:
         r, p = rows[t], prev.get(t)
         if not p:
@@ -187,15 +193,17 @@ def render(result: dict, ch: dict, alert_lines: list[str]) -> str:
     if alert_lines:
         out += ["## Alerts", ""] + [f"- {a}" for a in alert_lines] + [""]
     out += risk.section_md(result)
-    out += [f"## Top {TOP_N}", ""]
-    for t in ranked[:TOP_N]:
+    top = top_list(rows)
+    out += [f"## Top {TOP_N}", "",
+            "Buys first, then Watch, then Avoid; the composite rank (#) orders stocks within each tier.", ""]
+    for t in top:
         out.append(f"- {why(rows[t], result)}")
     out += ["", "### Score breakdown", "",
             "Each cell is the signal's contribution to the composite (weight x z-score), with the raw value in "
             "brackets.", ""]
     hdr = ["Rank", "Ticker", "Tier", "Composite"] + [LABELS[n].capitalize() for n in weighted]
     body = [[str(rows[t]["rank"]), t, rows[t]["tier"], _signed(rows[t]["composite"])]
-            + [_contrib(rows[t]["signals"][n], _value_fmt(n)) for n in weighted] for t in ranked[:TOP_N]]
+            + [_contrib(rows[t]["signals"][n], _value_fmt(n)) for n in weighted] for t in top]
     out += [table(hdr, body), ""]
     out += _changes_md(result, ch)
     out += ["## Full ranking", ""]
@@ -285,7 +293,8 @@ def snapshot(result: dict, ch: dict, alert_lines: list[str]) -> dict:
             "changes": {"prev_date": ch["prev_date"], "top_in": ch["top_in"], "top_out": ch["top_out"],
                         "tiers": len(ch["tiers"]), "crossings": len(ch["crossings"]),
                         "announcements": len(ch["announcements"]), "moves": len(ch["moves"])},
-            "top": [item(t) for t in ranked[:TOP_N]],
+            "top": [item(t) for t in top_list(rows)],
+            "weights": {n: w for n, w in config.settings()["ranking"]["weights"].items() if w},
             "ranking": [{k: v for k, v in item(t).items() if k not in ("why", "binding")} for t in ranked]}
 
 
@@ -325,5 +334,5 @@ def run_brief(fetch: bool = True, alert_file: str | None = None, as_of: date | N
         Path(alert_file).write_text(alert_body(result, alert_lines), encoding="utf-8", newline="\n")
     lines = [f"brief={path.relative_to(config.ROOT).as_posix()} valued={len(result['ranking'])} "
              f"buys={len(result['buys'])} ledger_rows={logged} alerts={len(alert_lines)} prev={prev_date}"]
-    lines += [why(result["rows"][t], result) for t in result["ranking"][:TOP_N]]
+    lines += [why(result["rows"][t], result) for t in top_list(result["rows"])]
     return "\n".join(lines)

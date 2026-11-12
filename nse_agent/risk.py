@@ -115,9 +115,17 @@ def conviction(r: dict, hurdle: float) -> dict:
     q = r["quality"]
     qs = q["score"]
     base = (r.get("projection") or {}).get("base")
+    if r.get("dispersed"):
+        vdetail = (f"models disagree: the high fair value is {r['model_spread']:.1f}x the low, limit "
+                   f"{s['valuation']['max_model_spread']:.0f}x")
+    elif n_models < need:
+        vdetail = (f"only {n_models} models apply to this company and the flag needs {need} to agree (sector "
+                   f"P/E and P/B need {s['valuation']['min_sector_peers']} sourced peers)")
+    else:
+        vdetail = f"{n_agree} of {n_models} models show at least {mos:.0%} upside, needs {need}"
     gates = [
-        {"name": "Valuation", "passed": n_agree >= need and n_models >= 2,
-         "detail": f"{n_agree} of {n_models} models show at least {mos:.0%} upside, needs {need}"},
+        {"name": "Valuation", "passed": n_agree >= need and n_models >= 2 and not r.get("dispersed"),
+         "detail": vdetail},
         {"name": "Quality", "passed": q["gate"] == "pass" and qs is not None and qs >= hc["min_quality_score"],
          "detail": (f"quality gate {q['gate']}, score " + (f"{qs:.2f}" if qs is not None else "n/a")
                     + f", needs pass and {hc['min_quality_score']:.2f}")},

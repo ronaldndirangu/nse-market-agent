@@ -170,7 +170,7 @@ def price_panel(day: date) -> dict[str, dict[str, float | None]]:
         if not lc:
             continue
         vol = prices.volatility(t, day)
-        annual = fnd.annuals(t, day)
+        annual = dividends.comparable(t, fnd.annuals(t, day)[-1:], day)
         dps = annual[-1].get("dps") if annual else None
         out["momentum"][t] = prices.momentum(t, day)
         out["low_volatility"][t] = -vol if vol is not None else None

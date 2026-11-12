@@ -13,6 +13,7 @@ valuation:
   default_beta: 1.0
   beta_weeks: 156
   min_sector_peers: 3
+  max_model_spread: 3.0
 
 buy:
   hurdle_premium_over_tbill: 0.05

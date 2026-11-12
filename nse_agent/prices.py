@@ -1,12 +1,68 @@
-"""Price-derived measures: last close, liquidity, momentum, weekly returns and beta."""
+"""Price-derived measures: last close, liquidity, momentum, weekly returns and beta.
+
+Return-based measures use closes adjusted for bonus issues and splits, so a 1:1 bonus is not read as a 50% drop.
+Valuation and turnover use the raw close.
+"""
 from __future__ import annotations
 
+import logging
 from bisect import bisect_right
 from datetime import date
 from functools import lru_cache
 from statistics import fmean, pvariance
 
-from . import storage
+from . import config, storage
+
+log = logging.getLogger(__name__)
+
+
+def _d(v) -> date | None:
+    if v is None or v == "":
+        return None
+    return v if isinstance(v, date) else date.fromisoformat(str(v)[:10])
+
+
+@lru_cache(maxsize=1)
+def _raw_actions() -> tuple:
+    path = config.DATA / "corporate_actions.yaml"
+    return tuple(((config.load_yaml(path) or {}) if path.exists() else {}).get("actions") or [])
+
+
+@lru_cache(maxsize=1)
+def actions() -> dict[str, list[tuple[date, float]]]:
+    """Ticker -> [(ex date, factor)]; factor multiplies closes dated before the ex date."""
+    out: dict[str, list[tuple[date, float]]] = {}
+    for a in _raw_actions():
+        ex, f = _d(a.get("ex_date")), a.get("factor")
+        if ex and f:
+            out.setdefault(a["ticker"], []).append((ex, float(f)))
+    return {t: sorted(v) for t, v in out.items()}
+
+
+@lru_cache(maxsize=1)
+def action_gaps() -> tuple[str, ...]:
+    """Actions inside a ticker's price history that cannot be applied because the ex date or factor is missing."""
+    out = []
+    for a in _raw_actions():
+        if _d(a.get("ex_date")) and a.get("factor"):
+            continue
+        when = _d(a.get("ex_date")) or _d(a.get("book_closure")) or _d(a.get("announced"))
+        first = _dates(a["ticker"])[:1]
+        if when is None or (first and when.isoformat() >= first[0]):
+            missing = " and ".join(k for k in ("ex_date", "factor") if not a.get(k))
+            out.append(f"{a['ticker']}: {a.get('type', 'corporate action')} {when or 'undated'} has no {missing}; "
+                       "prices around it are unadjusted")
+    for g in out:
+        log.warning(g)
+    return tuple(out)
+
+
+def factor(ticker: str, d: date) -> float:
+    f = 1.0
+    for ex, k in actions().get(ticker, []):
+        if ex > d:
+            f *= k
+    return f
 
 
 @lru_cache(maxsize=64)
@@ -15,17 +71,34 @@ def _rows(ticker: str) -> tuple:
 
 
 @lru_cache(maxsize=64)
+def _adj(ticker: str) -> tuple:
+    acts = actions().get(ticker, [])
+    if not acts:
+        return _rows(ticker)
+    return tuple((d, c * factor(ticker, date.fromisoformat(d)) if c is not None else c, v)
+                 for d, c, v in _rows(ticker))
+
+
+@lru_cache(maxsize=64)
 def _dates(ticker: str) -> tuple:
     return tuple(d for d, _, _ in _rows(ticker))
 
 
 def clear_cache() -> None:
-    _rows.cache_clear()
-    _dates.cache_clear()
+    for f in (_rows, _adj, _dates, _raw_actions, actions, action_gaps):
+        f.cache_clear()
 
 
 def rows(ticker: str, as_of: date | None = None) -> list[tuple[str, float, float | None]]:
     data = _rows(ticker)
+    if as_of is None:
+        return list(data)
+    return list(data[:bisect_right(_dates(ticker), as_of.isoformat())])
+
+
+def adj_rows(ticker: str, as_of: date | None = None) -> list[tuple[str, float, float | None]]:
+    """Rows with closes adjusted for corporate actions, comparable with the latest close."""
+    data = _adj(ticker)
     if as_of is None:
         return list(data)
     return list(data[:bisect_right(_dates(ticker), as_of.isoformat())])
@@ -47,7 +120,7 @@ def avg_turnover(ticker: str, as_of: date | None = None, sessions: int = 60) -> 
 
 def momentum(ticker: str, as_of: date | None = None) -> float | None:
     """Average of 12-1 and 6-1 month price returns (skip the latest month)."""
-    closes = [c for _, c, _ in rows(ticker, as_of)]
+    closes = [c for _, c, _ in adj_rows(ticker, as_of)]
     if len(closes) < 253:
         return None
     skip = closes[-22]
@@ -64,9 +137,9 @@ def volatility(ticker: str, as_of: date | None = None, weeks: int = 52) -> float
 
 
 def weekly_closes(ticker: str, as_of: date | None = None) -> dict[str, float]:
-    """Last close per ISO week, keyed by 'YYYY-Www'."""
+    """Last adjusted close per ISO week, keyed by 'YYYY-Www'."""
     out: dict[str, float] = {}
-    for d, c, _ in rows(ticker, as_of):
+    for d, c, _ in adj_rows(ticker, as_of):
         y, w, _ = date.fromisoformat(d).isocalendar()
         out[f"{y}-W{w:02d}"] = c
     return out

@@ -24,10 +24,10 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
     pit = as_of if point_in_time else None
 
     rows: dict[str, dict] = {}
-    gaps: list[str] = []
+    gaps: list[str] = list(prices.action_gaps())
     for u in uni:
         t = u["ticker"]
-        periods = fnd.annuals(t, pit)
+        periods = dividends.comparable(t, fnd.annuals(t, pit), as_of)
         lc = prices.last_close(t, as_of)
         if not lc:
             gaps.append(f"{t}: no price history")
@@ -63,6 +63,9 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
         r["mos"] = r["fair_value"]["base"] / r["price"] - 1 if r["fair_value"] else None
         r["agree"] = agreeing(vals, r["price"], s["valuation"]["mos_threshold"])
         r["agree_needed"] = required_agreement(len(vals))
+        fv = r["fair_value"]
+        r["model_spread"] = fv["high"] / fv["low"] if fv and len(vals) >= 2 and fv["low"] > 0 else None
+        r["dispersed"] = r["model_spread"] is not None and r["model_spread"] > s["valuation"]["max_model_spread"]
         r["momentum"] = prices.momentum(t, as_of)
         r["volatility"] = prices.volatility(t, as_of)
         r["dividend_yield"] = dividends.trailing_yield(t, as_of, r["price"], r["dps"])
@@ -93,18 +96,18 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
         r["screen_fail"] = reasons
         r["stale"] = stale
 
-        valued = len(r["agree"]) >= r["agree_needed"] and len(vals) >= 2
+        valued = len(r["agree"]) >= r["agree_needed"] and len(vals) >= 2 and not r["dispersed"]
         r["undervalued"] = valued and not reasons and r["quality"]["gate"] == "pass"
-        r["watch"] = valued and not r["undervalued"]
         base = r["projection"]["base"] if r["projection"] else None
         r["buy"] = r["undervalued"] and base is not None and base > hurdle
-        _tier(r, vals, valued, reasons, base, hurdle, s["valuation"]["mos_threshold"])
+        _tier(r, vals, reasons, base, hurdle, s["valuation"])
+        r["watch"] = r["tier"] == "Watch"
         qs = r["quality"]["score"]
         hc = s["high_confidence"]
         if len(r["agree"]) >= hc["min_agreeing_models"] and qs is not None and qs >= hc["min_quality_score"] \
-                and not stale:
+                and not stale and not r["dispersed"]:
             r["confidence"] = "High"
-        elif len(r["agree"]) < hc["min_agreeing_models"] or qs is None or qs < 0.5 or stale:
+        elif len(r["agree"]) < hc["min_agreeing_models"] or qs is None or qs < 0.5 or stale or r["dispersed"]:
             r["confidence"] = "Low"
         else:
             r["confidence"] = "Medium"
@@ -129,9 +132,10 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
     }
 
 
-def _tier(r: dict, vals: dict, valued: bool, screen: list[str], base: float | None, hurdle: float,
-          mos_threshold: float) -> None:
-    """Buy clears every gate. Watch passes quality and misses exactly one other threshold. Otherwise Avoid."""
+def _tier(r: dict, vals: dict, screen: list[str], base: float | None, hurdle: float, v: dict) -> None:
+    """Buy clears every gate. Watch passes quality and misses exactly one other threshold. Otherwise Avoid.
+
+    Widely disagreeing models make the fair value unreliable, so a dispersed stock is always Avoid."""
     gate = r["quality"]["gate"]
     blockers: list[str] = []
     if gate == "fail":
@@ -141,15 +145,19 @@ def _tier(r: dict, vals: dict, valued: bool, screen: list[str], base: float | No
     blockers += screen
     if len(vals) < 2:
         blockers.append(f"only {len(vals)} valuation model(s) available, needs 2")
-    elif not valued:
-        blockers.append(f"only {len(r['agree'])} of {len(vals)} valuation models show {mos_threshold:.0%} or more "
-                        f"upside, needs {r['agree_needed']}")
+    else:
+        if r["dispersed"]:
+            blockers.append(f"valuation models disagree (high is {r['model_spread']:.1f}x the low, limit "
+                            f"{v['max_model_spread']:.0f}x)")
+        if len(r["agree"]) < r["agree_needed"]:
+            blockers.append(f"only {len(r['agree'])} of {len(vals)} valuation models show {v['mos_threshold']:.0%} "
+                            f"or more upside, needs {r['agree_needed']}")
     if base is not None and base <= hurdle:
         blockers.append(f"base return {base:.1%} does not beat the {hurdle:.2%} hurdle")
     r["blockers"] = blockers
     if r["buy"]:
         r["tier"], r["binding"] = "Buy", "Clears every gate."
-    elif gate == "pass" and len(blockers) == 1:
+    elif gate == "pass" and len(blockers) == 1 and not r["dispersed"]:
         r["tier"], r["binding"] = "Watch", f"Not a Buy: {blockers[0]}."
     else:
         r["tier"] = "Avoid"

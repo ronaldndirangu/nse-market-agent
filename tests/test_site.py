@@ -74,8 +74,8 @@ def test_dashboard_beginner_layer(tree):
     _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
     site.build()
     index = (tree / "site" / "index.html").read_text(encoding="utf-8")
-    for text in ("No stock is a Buy today", "Closest is <b>KPLC</b>", "KES 10,000 invested", "KES 12,960",
-                 "Jargon buster", "Show the details", "Not financial advice"):
+    for text in ("No stock is a Buy today", "Closest is <b>KPLC</b>", "KES 10,000 invested", "KES 21,768",
+                 "after 3 years", "Jargon buster", "Show the details", "Not financial advice"):
         assert text in index
     assert "Panel unavailable" not in index and "\u2014" not in index and "\u2013" not in index
     assert site._plain_reason(KPLC["binding"]) == "only 1 of 2 valuation methods say it is at least 15% cheap (needs 2)"

@@ -4,7 +4,8 @@ from __future__ import annotations
 import html
 import json
 import re
-from datetime import date, datetime, timezone
+from datetime import datetime, timezone
+from functools import partial
 from pathlib import Path
 from urllib.parse import quote
 
@@ -322,8 +323,8 @@ def render_markdown(text: str) -> str:
 
 def _spark(ticker: str, n: int = 260) -> str:
     try:
-        from . import dividends, prices
-        pts = [c * dividends.factor(ticker, date.fromisoformat(d)) for d, c, _ in prices.rows(ticker)[-n:] if c]
+        from . import prices
+        pts = [c for _, c, _ in prices.adj_rows(ticker)[-n:] if c]
     except Exception:
         return ""
     if len(pts) < 2:
@@ -366,9 +367,10 @@ def _range_bar(bear: float | None, base: float | None, bull: float | None, hurdl
 
 
 TIPS = {
-    "Margin of safety": "How far the price sits below our fair value estimate. Bigger is cheaper.",
-    "Base return": "The likely yearly return over the next 3 years: dividends, growth and the price moving toward "
-                   "fair value, after costs and tax.",
+    "Upside": "How far the price would rise to reach our fair value estimate (fair value divided by price, minus 1). "
+              "Bigger is cheaper.",
+    "Base return": "The likely average yearly return over the next 3 years: dividends, growth and the price moving "
+                   "toward fair value, after costs and tax.",
     "Fair value": "What the rules estimate one share is worth. The bracket shows the low and high estimates.",
     "Dividend yield": "Cash dividends paid in a year as a share of today's price.",
     "Top signal": "The input that added most to this stock's score.",
@@ -380,6 +382,8 @@ PLAIN = [
      r"only \1 of \2 valuation methods say it is at least \3 cheap (needs \4)"),
     (re.compile(r"only (\d+) valuation model\(s\) available, needs (\d+)"),
      r"only \1 valuation method has enough data (needs \2)"),
+    (re.compile(r"valuation models disagree \(high is (\S+) the low, limit (\S+)\)"),
+     r"the valuation methods disagree too much (the highest estimate is \1 the lowest, the limit is \2)"),
     (re.compile(r"base return (\S+) does not beat the (\S+) hurdle"),
      r"its likely return of \1 a year is below the \2 a Buy must beat"),
     (re.compile(r"quality gate failed"), "the business fails a health check"),
@@ -408,12 +412,22 @@ def _money(v: float) -> str:
     return f"KES {v:,.0f}"
 
 
+SIGNAL_WORDS = {"momentum": "price trend", "dividend_yield": "dividend yield", "quality": "business health",
+                "margin_of_safety": "upside to fair value", "low_volatility": "steady price"}
+
+
+def _weights_plain(s: dict) -> str:
+    w = s.get("weights") or {k: v for k, v in config.settings().get("ranking", {}).get("weights", {}).items() if v}
+    return ", ".join(f"{SIGNAL_WORDS.get(k, k.replace('_', ' '))} {v:.0%}"
+                     for k, v in sorted(w.items(), key=lambda kv: -kv[1]))
+
+
 def _plain(it: dict, tbill: float | None) -> str:
     lines = []
     price, fair, mos = it.get("price"), it.get("fair_base"), it.get("mos")
     if None not in (price, fair, mos):
         look = ("Looks fairly priced" if abs(mos) < 0.05 else "Looks cheap" if mos > 0 else "Looks expensive")
-        gap = f" ({abs(mos):.0%} {'below' if mos > 0 else 'above'})" if f"{abs(mos):.0%}" != "0%" else ""
+        gap = f" ({abs(mos):.0%} {'upside' if mos > 0 else 'downside'})" if f"{abs(mos):.0%}" != "0%" else ""
         lines.append(f"<b>{look}:</b> price {kes(price)} vs fair value estimate {kes(fair)}{gap}.")
     if it.get("tier") == "Buy":
         lines.append("<b>Passes every check.</b>")
@@ -421,10 +435,15 @@ def _plain(it: dict, tbill: float | None) -> str:
         lines.append(f"<b>Why it is not a Buy:</b> {E(reason)}.")
     bear, base, bull = it.get("bear"), it.get("base"), it.get("bull")
     if None not in (bear, base, bull):
-        t = f"; in a T-bill, about {_money(10000 * (1 + tbill))}" if tbill is not None else ""
-        lines.append(f"<b>KES 10,000 invested</b> could be worth about {_money(10000 * (1 + bear))} after a bad year, "
-                     f"{_money(10000 * (1 + base))} in a typical year and {_money(10000 * (1 + bull))} in a good "
-                     f"year{t}.")
+        n = config.settings().get("valuation", {}).get("horizon_years", 3)
+
+        def grow(r: float) -> str:
+            return _money(10000 * max(1 + r, 0.0) ** n)
+
+        t = f" Rolling over a T-bill would give about {grow(tbill)}." if tbill is not None else ""
+        lines.append(f"<b>KES 10,000 invested</b> today could be worth about {grow(bear)} in a bad case, "
+                     f"{grow(base)} in a typical case and {grow(bull)} in a good case after {n} years.{t} These are "
+                     "estimates; real results often land outside them.")
     return f'<div class="plain">{"".join(f"<p>{x}</p>" for x in lines)}</div>' if lines else ""
 
 
@@ -436,7 +455,7 @@ def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool =
     span = f'<span class="muted small"> ({lo:,.0f} to {hi:,.0f})</span>' if None not in (lo, hi) else ""
     fair = f'{kes(it.get("fair_base"))}{span}' if it.get("fair_base") is not None else "n/a"
     drv = it.get("driver")
-    facts = [("Margin of safety", _sp(it.get("mos"))), ("Base return", _sp(it.get("base"))),
+    facts = [("Upside", _sp(it.get("mos"))), ("Base return", _sp(it.get("base"))),
              ("Fair value", fair), ("Dividend yield", pct(it.get("dividend_yield")))]
     extra = [("Top signal", E(drv["label"]) if drv else "n/a"),
              ("Composite", f'{it["composite"]:.2f}' if it.get("composite") is not None else "n/a")]
@@ -516,35 +535,44 @@ def _verdict(s: dict) -> str:
               "<b>Show the details</b>.</li></ol></section>")
 
 
-def _glossary(s: dict) -> str:
+def _glossary(s: dict, retro: dict | None = None) -> str:
     cfg = config.settings()
     v, hc = cfg.get("valuation", {}), cfg.get("high_confidence", {})
     mos, years = pct(v.get("mos_threshold", 0.15), 0), v.get("horizon_years", 3)
     prem = pct(cfg.get("buy", {}).get("hurdle_premium_over_tbill", 0.05), 0)
+    spread = v.get("max_model_spread")
+    cal = (((retro or {}).get("reconstructed") or {}).get("12") or {}).get("calibration")
+    cal_now = (f" In past tests only {pct(cal, 0)} of 12 month outcomes landed between bad and good, so real "
+               "results often fall outside these ranges." if cal is not None else
+               " Real results often fall outside these ranges.")
     terms = [
         ("Fair value", "What the rules estimate one share is worth, from the company's own reported profits, "
                        "dividends and book value."),
-        ("Margin of safety", f"How far the price sits below fair value. 20% means you pay KES 80 for KES 100 of value. "
-                             f"A Buy needs {mos} or more from at least half the methods that apply (minimum two)."),
-        ("Bad / typical / good year (bear, base, bull)",
-         f"Three estimates of the yearly return over the next {years} years, after trading costs and dividend tax. "
-         "About 8 in 10 outcomes should land between bad and good."),
+        ("Upside (margin of safety)",
+         f"How far the price would have to rise to reach fair value: fair value divided by price, minus 1. 25% means "
+         f"you pay KES 80 for KES 100 of value. A Buy needs {mos} or more from at least half the methods that apply "
+         f"(minimum two)" + (f", and the highest estimate can be at most {spread:g}x the lowest." if spread else ".")),
+        ("Bad / typical / good case (bear, base, bull)",
+         f"Three estimates of the average yearly return over the next {years} years, after trading costs and "
+         f"dividend tax.{cal_now}"),
         ("Hurdle", f"The yearly return a stock must beat to be a Buy: the T-bill rate plus {prem} for taking stock "
                    "market risk."),
         ("T-bill", "A short loan to the Kenyan government. Low risk, so it is the yardstick every stock must beat."),
-        ("Buy, Watch, Avoid", "Buy passes every check. Watch is healthy but misses one check. Avoid misses more or "
-                              "fails the business health check."),
+        ("Buy, Watch, Avoid", "Buy passes every check. Watch passes the business health check but misses one other "
+                              "check. Avoid misses more, fails the health check or its valuation methods disagree too "
+                              "much."),
         ("High confidence", f"A stricter Buy: {hc.get('min_agreeing_models', 3)} or more valuation methods agree and "
                             "the business scores well on health checks."),
         ("Risk level", "Low, Moderate or High, from price swings, how easily it trades, debt or bad loans and "
                        "company warnings. It never changes the tier; it tells you how bumpy the ride could be."),
-        ("Score (composite)", "The number that sets the ranking. It mixes price trend, dividend yield, business "
-                              "health and margin of safety."),
+        ("Score (composite)", f"The number that orders stocks within each tier. Today's mix: {_weights_plain(s)}."),
         ("Gates", "The pass or fail checks a stock must clear to be a Buy."),
-        ("NASI", "The index of all shares on the Nairobi Securities Exchange. Picks are judged against it."),
+        ("NASI", "The index of all shares on the Nairobi Securities Exchange. Picks are judged against it. It tracks "
+                 "prices only, so it leaves out dividends."),
         ("IC (information coefficient)", "How well the score predicted later returns. Above 0 helps, above 0.05 "
                                          "is useful, below 0 means it pointed the wrong way."),
-        ("Calibration", "How often real returns landed inside the bad to good range. The target is about 80%."),
+        ("Calibration", "How often real returns landed inside the bad to good range. The target is about 80%"
+                        + (f"; so far it is {pct(cal, 0)}." if cal is not None else ".")),
     ]
     return ('<details class="fold" id="glossary"><summary><h2>Jargon buster</h2></summary><dl>'
             + "".join(f"<dt>{E(k)}</dt><dd>{E(d)}</dd>" for k, d in terms) + "</dl></details>")
@@ -586,10 +614,11 @@ def _top(s: dict) -> str:
     top = s.get("top") or []
     if not top:
         return ""
-    return ('<section id="top5"><h2>Top 5 today</h2><p class="small muted">Ranked by the weighted composite of '
-            'margin of safety, quality and momentum. Each card explains the score and what blocks a Buy.</p>'
-            '<div class="grid">' + "".join(_stock_card(i, s.get("hurdle"), why=True, tbill=s.get("tbill_net"))
-                                           for i in top) + "</div></section>")
+    return (f'<section id="top5"><h2>Top 5 today</h2><p class="small muted">Buys first, then Watch, then Avoid. Within '
+            f'each group the score orders them: {E(_weights_plain(s))}. Each card explains the score and what blocks '
+            f'a Buy.</p><div class="grid">'
+            + "".join(_stock_card(i, s.get("hurdle"), why=True, tbill=s.get("tbill_net")) for i in top)
+            + "</div></section>")
 
 
 def _ranking(s: dict) -> str:
@@ -604,7 +633,7 @@ def _ranking(s: dict) -> str:
         f'</td><td>{kes(r.get("price"))}</td><td>{_sp(r.get("mos"))}</td><td>{pct(r.get("bear"))}</td>'
         f'<td>{_sp(r.get("base"))}</td><td>{pct(r.get("bull"))}</td><td>{pct(r.get("dividend_yield"))}</td>'
         f'<td>{r["composite"]:.2f}</td></tr>' if r.get("composite") is not None else "" for r in rows)
-    heads = ["#", "Ticker", "Name", "Sector", "Tier", "Risk", "Price", "Margin of safety", "Bear", "Base", "Bull",
+    heads = ["#", "Ticker", "Name", "Sector", "Tier", "Risk", "Price", "Upside", "Bear", "Base", "Bull",
              "Yield", "Score"]
     return ('<section class="card" id="ranking"><h2>Full ranking</h2><p class="small muted">Click a column to sort. '
             'Returns are a year, net of costs and withholding tax.</p><div class="table-wrap"><table class="data '
@@ -713,7 +742,10 @@ def _track_record(r: dict) -> str:
             f'{r.get("live_dates", 0)} trading day(s); live scores appear once a month of outcomes exists. The figures '
             f'above are point-in-time reconstructions over {r.get("recon_dates", 0)} month-ends from '
             f'{E(str(r.get("recon_first")))}.</p>') if r.get("live_first") else ""
-    return ('<section class="card" id="track-record"><h2>Track record</h2><div class="kpis">'
+    caveat = ('<p class="small muted"><b>Backtest, in-sample.</b> The current weights were chosen on this same history '
+              "and every month uses today's interest rates, so these figures flatter the method. Treat them as an "
+              "upper bound until the live record builds up.</p>")
+    return ('<section class="card" id="track-record"><h2>Track record (backtest)</h2>' + caveat + '<div class="kpis">'
             + "".join(f'<div class="kpi"><b>{v}</b><span>{E(k)}</span></div>' for v, k in kpis) + "</div>"
             + _growth_chart((rec.get("1") or {}).get("detail") or []) + note + live + "</section>")
 
@@ -738,7 +770,7 @@ def _report_links(present: list[tuple]) -> str:
 def dashboard(snap: dict | None, retro: dict | None, present: list[tuple]) -> str:
     parts = []
     if snap:
-        for fn in (_hero, _verdict, _glossary, _high_conf, _top, _alerts_changes):
+        for fn in (_hero, _verdict, partial(_glossary, retro=retro), _high_conf, _top, _alerts_changes):
             try:
                 parts.append(fn(snap))
             except Exception as exc:  # one broken panel must not take the site down

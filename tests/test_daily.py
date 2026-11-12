@@ -4,9 +4,10 @@ from datetime import date
 import pytest
 import yaml
 
-from nse_agent import announcements, brief, config, dividends, ledger, storage
+from nse_agent import announcements, brief, config, dividends, ledger, prices, storage
 from nse_agent.engine import analyze
 from nse_agent.fmt import pct
+from nse_agent.fundamentals import Period
 from nse_agent.returns import SIGNALS
 from tests.test_pipeline import AS_OF, BANKS, market  # noqa: F401
 
@@ -35,6 +36,18 @@ def test_tiers_binding_and_signal_breakdown(market):
             assert s["contribution"] == pytest.approx(s["weight"] * s["z"])
         assert r["volatility"] > 0
 
+
+def test_disagreeing_models_force_avoid(market, monkeypatch):
+    monkeypatch.setitem(config.settings()["valuation"], "max_model_spread", 1.0)
+    result = analyze(AS_OF)
+    dispersed = [r for r in result["rows"].values() if r["dispersed"]]
+    assert dispersed
+    for r in dispersed:
+        assert r["tier"] == "Avoid" and not r["buy"] and not r["watch"]
+        assert r["confidence"] == "Low" and not r["conviction"]["flag"]
+        assert "valuation models disagree" in r["binding"]
+        assert r["projection"] is not None
+    assert not result["buys"] and not result["watchlist"]
 
 def test_ledger_is_append_only(market, outputs):
     result = analyze(AS_OF)
@@ -104,6 +117,13 @@ def test_alerts_flag_dropped_buys(market):
     assert brief.alerts(result, ch, {t: {"tier": "Buy"} for t in result["buys"]}) == []
 
 
+def test_top_list_puts_buys_before_higher_scored_watch_and_avoid():
+    rows = {"AAA": {"tier": "Avoid", "rank": "1"}, "BBB": {"tier": "Watch", "rank": "2"},
+            "CCC": {"tier": "Buy", "rank": "10"}, "DDD": {"tier": "Watch", "rank": "3"},
+            "EEE": {"tier": "Avoid", "rank": "4"}, "FFF": {"tier": "Buy", "rank": "9"}}
+    assert brief.top_list(rows) == ["FFF", "CCC", "BBB", "DDD", "AAA"]
+
+
 def test_dividends_adjust_for_splits_and_withholding(outputs):
     data = outputs / "data"
     (data / "dividends.yaml").write_text(yaml.safe_dump({"dividends": {"TST": [
@@ -126,3 +146,59 @@ def test_dividends_adjust_for_splits_and_withholding(outputs):
         assert dividends.trailing_yield("TST", date(2027, 3, 1), 55.0, dps=3.0) == pytest.approx(3 / 55)
     finally:
         storage.price_path("TST").unlink(missing_ok=True)
+
+
+def _write(root, name, data):
+    (root / "data" / name).write_text(yaml.safe_dump(data), encoding="utf-8")
+    dividends.clear_cache()
+
+
+def test_adjusted_prices_remove_split_jumps(outputs):
+    _write(outputs, "corporate_actions.yaml", {"actions": [
+        {"ticker": "TST", "type": "split", "ratio": "2:1", "factor": 0.5, "ex_date": "2026-01-05",
+         "source_url": "https://example.test/split.pdf"}]})
+    days = [date.fromordinal(date(2025, 3, 3).toordinal() + i) for i in range(440)]
+    days = [d for d in days if d.weekday() < 5][:300]
+    storage.upsert_prices("TST", [(d.isoformat(), 100.0 if d < date(2026, 1, 5) else 50.0, 1000.0) for d in days])
+    try:
+        assert prices.rows("TST")[0][1] == 100.0 and prices.adj_rows("TST")[0][1] == 50.0
+        assert all(abs(r) < 1e-9 for r in prices.weekly_returns("TST").values())
+        assert prices.momentum("TST") == pytest.approx(0.0)
+        assert prices.volatility("TST") == pytest.approx(0.0)
+        assert prices.last_close("TST")[1] == 50.0
+    finally:
+        storage.price_path("TST").unlink(missing_ok=True)
+
+
+def test_special_dividends_are_not_recurring(outputs):
+    _write(outputs, "dividends.yaml", {"dividends": {"TST": [
+        {"fiscal_period": "FY2025", "type": "final", "amount": 2.0, "book_closure": "2026-03-01",
+         "source_url": "https://example.test/div.pdf"},
+        {"fiscal_period": "FY2025", "type": "special", "amount": 3.0, "book_closure": "2026-03-01",
+         "source_url": "https://example.test/special.pdf"}]}})
+    storage.upsert_prices("TST", [("2026-01-02", 50.0, 1.0), ("2026-12-01", 50.0, 1.0)])
+    try:
+        assert dividends.regular_dps("TST", "FY2025", 5.0) == 2.0
+        assert dividends.regular_dps("TST", "FY2025", 2.0) == 2.0
+        assert dividends.regular_dps("TST", "FY2024", 5.0) == 5.0
+        assert dividends.trailing_yield("TST", date(2026, 12, 1), 50.0) == pytest.approx(2 / 50)
+        assert dividends.total_return("TST", date(2026, 1, 2), date(2026, 12, 1), net=False) == pytest.approx(0.1)
+    finally:
+        storage.price_path("TST").unlink(missing_ok=True)
+
+
+def test_per_share_figures_rebased_after_bonus_issue(outputs):
+    _write(outputs, "corporate_actions.yaml", {"actions": [
+        {"ticker": "TST", "type": "bonus", "ratio": "1:1", "factor": 0.5, "ex_date": "2026-06-01",
+         "source_url": "https://example.test/bonus.pdf"}]})
+    before = Period("TST", "FY2025", date(2025, 12, 31), date(2026, 3, 1), "annual", "https://example.test/fy25",
+                    {"net_income": 1000.0, "total_equity": 5000.0, "shares_outstanding": 100.0, "dps": 4.0})
+    after = Period("TST", "FY2026", date(2026, 12, 31), date(2027, 3, 1), "annual", "https://example.test/fy26",
+                   {"net_income": 1000.0, "total_equity": 5000.0, "shares_outstanding": 200.0, "dps": 2.0})
+    old, new = dividends.comparable("TST", [before, after], date(2027, 3, 2))
+    assert (old.get("eps"), old.get("bvps"), old.get("dps")) == (5.0, 25.0, 2.0)
+    assert old.get("shares_outstanding") == new.get("shares_outstanding") == 200.0
+    assert (new.get("eps"), new.get("dps")) == (5.0, 2.0)
+    assert before.get("eps") == 10.0
+    pit, = dividends.comparable("TST", [before], date(2026, 3, 2))
+    assert pit.get("eps") == 10.0
