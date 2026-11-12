@@ -49,16 +49,22 @@ SIGNALS = {
 def rank(rows: dict[str, dict], weights: dict[str, float] | None = None) -> list[str]:
     """Composite = weighted z-scores of the signals (margin of safety, quality, momentum by default).
 
-    Missing values count as z = 0. Every row gets signals[name] = {value, z, weight, contribution} for all
-    SIGNALS, with weight 0 for signals outside the weights, so the ledger can study unweighted signals too.
+    A stock missing a weighted signal gets weight 0 for it, and its other weights scale up to the same total,
+    so missing data neither rewards nor penalises it. Every row gets signals[name] = {value, z, weight,
+    contribution} for all SIGNALS, with weight 0 for signals outside the weights, so the ledger can study
+    unweighted signals too.
     """
     w = weights or config.settings()["ranking"]["weights"]
+    total = sum(float(w.get(name, 0.0)) for name in SIGNALS)
     z = {name: zscores({t: f(r) for t, r in rows.items()}) for name, f in SIGNALS.items()}
     for t, r in rows.items():
+        values = {name: f(r) for name, f in SIGNALS.items()}
+        present = sum(float(w.get(name, 0.0)) for name, v in values.items() if v is not None)
+        scale = total / present if present else 0.0
         r["signals"] = {}
-        for name, f in SIGNALS.items():
-            wt = float(w.get(name, 0.0))
-            r["signals"][name] = {"value": f(r), "z": z[name][t], "weight": wt, "contribution": wt * z[name][t]}
+        for name, v in values.items():
+            wt = float(w.get(name, 0.0)) * scale if v is not None else 0.0
+            r["signals"][name] = {"value": v, "z": z[name][t], "weight": wt, "contribution": wt * z[name][t]}
         r["composite"] = sum(s["contribution"] for s in r["signals"].values())
     return sorted(rows, key=lambda t: rows[t]["composite"], reverse=True)
 

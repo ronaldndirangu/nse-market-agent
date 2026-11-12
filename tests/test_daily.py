@@ -62,11 +62,22 @@ def test_ledger_is_append_only(market, outputs):
     assert prev_date == AS_OF.isoformat() and set(snap) == set(BANKS)
 
 
+def test_ledger_skips_days_without_new_prices(market, outputs):
+    first = analyze(AS_OF)
+    assert ledger.append(first) == len(BANKS)
+    holiday = analyze(AS_OF)
+    holiday["as_of"] = "2026-11-12"
+    assert ledger.append(holiday) == 0
+    assert {r["date"] for r in ledger.read()} == {AS_OF.isoformat()}
+
+
 def test_brief_flags_changes_and_material_alerts(market, outputs, tmp_path):
     earlier = analyze(AS_OF)
     promoted = earlier["buys"][0]
     earlier["as_of"] = "2026-11-05"
     earlier["rows"][promoted]["tier"] = "Watch"
+    for r in earlier["rows"].values():
+        r["price_date"] = "2026-11-05"
     ledger.append(earlier)
 
     last = storage.read_prices("EQTY")[-1]

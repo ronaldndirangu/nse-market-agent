@@ -40,3 +40,18 @@ def test_rank_prefers_cheap_quality_momentum():
     }
     assert returns.rank(rows) == ["CHEAP", "MID", "DEAR"]
     assert rows["CHEAP"]["composite"] > 0 > rows["DEAR"]["composite"]
+
+
+def test_rank_renormalises_weights_over_present_signals():
+    w = {"margin_of_safety": 0.5, "quality": 0.5}
+    rows = {
+        "A": {"mos": 0.4, "quality": {"score": 0.8}},
+        "B": {"mos": 0.0, "quality": {"score": 0.2}},
+        "GAP": {"mos": 0.4},
+    }
+    returns.rank(rows, w)
+    gap = rows["GAP"]["signals"]
+    assert gap["quality"]["weight"] == 0.0 and gap["quality"]["contribution"] == 0.0
+    assert gap["margin_of_safety"]["weight"] == pytest.approx(1.0)
+    assert rows["GAP"]["composite"] == pytest.approx(gap["margin_of_safety"]["z"])
+    assert sum(s["weight"] for s in rows["A"]["signals"].values()) == pytest.approx(1.0)

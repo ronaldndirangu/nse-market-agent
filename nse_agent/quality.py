@@ -88,9 +88,12 @@ def altman_z2(periods: list[Period]) -> float | None:
 
 
 def npl_trend(periods: list[Period], interim: Period | None = None) -> dict | None:
-    series = [(p.period, p.get("npl_ratio")) for p in periods if p.get("npl_ratio") is not None]
-    if interim is not None and interim.get("npl_ratio") is not None and (not series or interim.period != series[-1][0]):
-        series.append((interim.period, interim.get("npl_ratio")))
+    dated = sorted(((p.period_end, p.period, p.get("npl_ratio")) for p in periods
+                    if p.get("npl_ratio") is not None), key=lambda x: x[0])
+    if interim is not None and interim.get("npl_ratio") is not None and (
+            not dated or interim.period_end > dated[-1][0]):
+        dated.append((interim.period_end, interim.period, interim.get("npl_ratio")))
+    series = [(label, v) for _, label, v in dated]
     if not series:
         return None
     q = config.settings()["quality"]

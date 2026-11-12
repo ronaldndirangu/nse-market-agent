@@ -114,12 +114,23 @@ def _write(path: Path, rows: list[dict], mode: str) -> None:
         w.writerows(rows)
 
 
+def _latest_price_date(rows) -> str:
+    return max((str(r.get("price_date") or "") for r in rows), default="")
+
+
 def append(result: dict) -> int:
-    """Append today's ranking to the live ledger. Returns rows written (0 if the date is already logged)."""
+    """Append today's ranking to the live ledger. Returns rows written.
+
+    Writes nothing when the date is already logged or when no price is newer than the previous snapshot
+    (holidays, failed price sources), so stale days never count twice in the scorecard.
+    """
     path = live_path(result["as_of"])
     if any(r["date"] == result["as_of"] for r in _read(path)):
         return 0
     rows = rows_for(result)
+    _, prev = previous(result["as_of"])
+    if prev and _latest_price_date(rows) <= _latest_price_date(prev.values()):
+        return 0
     if rows:
         _write(path, rows, "a")
     return len(rows)
