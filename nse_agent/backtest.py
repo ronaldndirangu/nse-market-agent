@@ -36,13 +36,10 @@ def _basket(tickers: list[str], a: date, b: date) -> float | None:
 
 
 def _turnover(old: list[str], new: list[str]) -> float:
-    """Fraction of an equal-weight book that is sold plus bought when moving from old to new."""
-    if not old and not new:
-        return 0.0
-    if not old or not new:
-        return 1.0
-    keep = len(set(old) & set(new))
-    return (1 - keep / len(old)) + (1 - keep / len(new))
+    """Fraction of the book traded (sold plus bought) when rebalancing equal weights from old to new."""
+    w_old = {t: 1 / len(old) for t in old} if old else {}
+    w_new = {t: 1 / len(new) for t in new} if new else {}
+    return sum(abs(w_new.get(t, 0.0) - w_old.get(t, 0.0)) for t in set(w_old) | set(w_new))
 
 
 def stats(monthly: list[float]) -> dict:

@@ -2,20 +2,30 @@
 from __future__ import annotations
 
 import json
+import time
 from dataclasses import asdict
-from functools import lru_cache
 
 from . import DISCLAIMER, announcements, fundamentals as fnd
+
+CACHE_SECONDS = 900
+_cache: dict = {}
 
 
 def _plain(obj):
     return json.loads(json.dumps(obj, default=str))
 
 
-@lru_cache(maxsize=1)
 def _analysis():
+    """Recompute at most every CACHE_SECONDS so a long-lived server picks up new prices and results."""
+    if _cache and time.monotonic() - _cache["at"] < CACHE_SECONDS:
+        return _cache["res"]
+    from . import dividends, prices
     from .engine import analyze
-    return analyze()
+    prices.clear_cache()
+    dividends.clear_cache()
+    fnd._load.cache_clear()
+    _cache.update(at=time.monotonic(), res=analyze())
+    return _cache["res"]
 
 
 def screen_stocks() -> dict:
@@ -44,6 +54,7 @@ def run_valuation(ticker: str) -> dict:
 
 
 def get_fundamentals(ticker: str) -> dict:
+    _analysis()
     comp = fnd.load().get(ticker.upper())
     if not comp:
         return {"error": f"no sourced fundamentals for {ticker}"}

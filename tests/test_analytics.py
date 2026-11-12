@@ -33,6 +33,7 @@ def test_month_starts():
 @pytest.mark.parametrize("old, new, expected", [
     ([], [], 0.0), ([], ["A"], 1.0), (["A", "B"], ["A", "B"], 0.0),
     (["A", "B"], ["C", "D"], 2.0), (["A", "B"], ["A", "C"], 1.0),
+    (["A", "B"], ["A", "B", "C"], 2 / 3), (["A", "B", "C"], ["A"], 4 / 3),
 ])
 def test_turnover(old, new, expected):
     assert backtest._turnover(old, new) == pytest.approx(expected)
