@@ -6,18 +6,19 @@ Monthly rebalance from 2019-06-01 to 2026-11-01 (89 months). At each date the en
 
 | Strategy | CAGR | Volatility | Max drawdown | Total return |
 |---|---|---|---|---|
-| Top 3 by composite rank | 6.5% | 25.6% | -68.5% | 59.4% |
-| Undervalued picks only (cash at net T-bill otherwise) | 20.9% | 14.2% | -6.4% | 309.3% |
-| Equal-weight universe | 13.8% | 17.6% | -31.7% | 161.6% |
+| Top 3 by composite rank | 17.0% | 23.8% | -51.9% | 219.6% |
+| Undervalued picks only (cash at net T-bill otherwise) | 11.5% | 7.5% | -8.2% | 124.9% |
+| Equal-weight universe | 21.7% | 17.5% | -24.9% | 329.4% |
 
-- Months the top 3 beat the universe: **44.9%**.
-- Months with at least one undervalued pick: **26 of 89**.
+- Months the top 3 beat the universe: **43.8%**.
+- Months with at least one undervalued pick: **15 of 89**.
 
 ## Limitations
 
-- Returns are price-only. Dividends are excluded from every line, which understates high-yield names.
+- Returns adjust for sourced bonus issues and splits and add sourced dividends net of withholding tax, without reinvestment. Dividends missing from `data/dividends.yaml` understate high-yield names.
 - The universe is today's coverage list, so delisted and failed counters are missing (survivorship bias).
 - Macro inputs (bond yield, risk premiums) are today's values, not the values known at each date.
+- 89 of 144 fundamentals periods use the CMA filing deadline as their publication date. That is later than the real release for companies that report early, but it is look-ahead for any company that filed late. 53 period(s) with a stated release date, including known late filings, use that date instead.
 - Liquidity and suspension screens are off because historical volume and suspension data are not stored.
 - Trading costs use the current per-side rate on names that change at each rebalance.
 - Short samples and a small universe make these numbers noisy. Treat them as a sanity check.
@@ -26,92 +27,92 @@ Monthly rebalance from 2019-06-01 to 2026-11-01 (89 months). At each date the en
 
 | Month | Valued | Top 3 | Picks | Top return | Picks return | Universe |
 |---|---|---|---|---|---|---|
-| 2026-10-01 | 16 | KCB, EQTY, COOP | cash | -6.6% | 0.6% | -5.1% |
-| 2026-09-01 | 16 | EQTY, KCB, COOP | cash | 1.8% | 0.6% | -1.0% |
-| 2026-08-01 | 16 | EQTY, KCB, COOP | cash | 8.1% | -1.2% | 7.8% |
-| 2026-07-01 | 16 | EQTY, KCB, DTK | EQTY, KCB | 5.3% | 7.2% | 4.6% |
-| 2026-06-01 | 16 | KCB, EQTY, COOP | KCB, EQTY | 9.6% | 13.6% | 9.0% |
-| 2026-05-01 | 16 | KPLC, DTK, KCB | KCB | -0.9% | -0.4% | -1.1% |
-| 2026-04-01 | 16 | KPLC, DTK, KCB | KCB | -2.7% | -4.4% | 3.8% |
-| 2026-03-01 | 16 | NCBA, DTK, KPLC | cash | -7.0% | -1.2% | -6.5% |
-| 2026-02-01 | 16 | DTK, KPLC, KCB | KCB | 20.9% | 20.7% | 12.4% |
-| 2026-01-01 | 16 | KPLC, DTK, KCB | KCB | 8.8% | 1.1% | 5.7% |
-| 2025-12-01 | 16 | KPLC, DTK, KCB | KCB | 6.1% | 11.9% | 4.5% |
-| 2025-11-01 | 16 | KPLC, DTK, KCB | KCB | -2.5% | -4.5% | -3.6% |
-| 2025-10-01 | 16 | DTK, KCB, SCBK | KCB | 4.0% | 8.8% | 8.6% |
-| 2025-09-01 | 16 | DTK, KCB, NCBA | KCB | 8.0% | 3.2% | 3.6% |
-| 2025-08-01 | 16 | DTK, KCB, KPLC | KCB, COOP | 18.0% | 9.7% | 12.2% |
-| 2025-07-01 | 16 | DTK, KCB, KPLC | KCB | 1.7% | 1.2% | 3.6% |
-| 2025-06-01 | 16 | KPLC, DTK, KCB | KCB, COOP | 16.8% | 10.7% | 13.2% |
-| 2025-05-01 | 16 | KPLC, DTK, IMH | COOP | 9.5% | 5.8% | 2.9% |
-| 2025-04-01 | 16 | KPLC, DTK, KEGN | cash | -4.3% | 0.6% | -2.8% |
-| 2025-03-01 | 16 | KPLC, DTK, KCB | cash | -5.1% | 0.6% | -1.7% |
-| 2025-02-01 | 16 | KPLC, DTK, IMH | cash | 2.1% | 0.6% | 5.5% |
-| 2025-01-01 | 16 | KPLC, DTK, KEGN | cash | 24.8% | 0.6% | 4.6% |
-| 2024-12-01 | 16 | KPLC, DTK, KEGN | cash | 13.5% | 0.6% | 11.8% |
-| 2024-11-01 | 16 | KPLC, DTK, KEGN | cash | -5.5% | 0.6% | -3.0% |
-| 2024-10-01 | 16 | DTK, KCB, IMH | cash | 12.7% | 0.6% | 10.4% |
-| 2024-09-01 | 16 | DTK, KCB, IMH | cash | 8.3% | 0.6% | 10.1% |
-| 2024-08-01 | 16 | DTK, KCB, IMH | cash | 2.9% | 0.6% | 3.8% |
-| 2024-07-01 | 16 | DTK, KCB, IMH | cash | -2.5% | -1.2% | -1.1% |
-| 2024-06-01 | 16 | DTK, IMH, KCB | SBIC | -1.3% | 2.0% | -1.9% |
-| 2024-05-01 | 16 | DTK, IMH, KCB | cash | 4.5% | 0.6% | 3.0% |
-| 2024-04-01 | 14 | COOP, KCB, BAT | cash | -7.4% | 0.6% | -4.1% |
-| 2024-03-01 | 14 | KCB, COOP, CARB | cash | 19.3% | -1.2% | 15.7% |
-| 2024-02-01 | 14 | KCB, COOP, BAT | COOP | 3.0% | 6.9% | 4.4% |
-| 2024-01-01 | 14 | COOP, KCB, EQTY | COOP, EQTY | 1.9% | 8.2% | 0.4% |
-| 2023-12-01 | 14 | KCB, COOP, CARB | COOP | 3.9% | 0.0% | 1.2% |
-| 2023-11-01 | 14 | KCB, COOP, ABSA | COOP | -1.4% | -3.1% | -1.6% |
-| 2023-10-01 | 14 | KPLC, KEGN, COOP | COOP, EQTY | 0.5% | 0.8% | -2.7% |
-| 2023-09-01 | 14 | KPLC, KEGN, COOP | COOP | -1.8% | -0.4% | -1.9% |
-| 2023-08-01 | 14 | KPLC, COOP, KEGN | COOP | -1.4% | -0.8% | -4.8% |
-| 2023-07-01 | 14 | KPLC, COOP, KEGN | COOP | -0.9% | -2.0% | 2.2% |
-| 2023-06-01 | 14 | KPLC, COOP, KEGN | COOP | 0.9% | -1.0% | 2.5% |
-| 2023-05-01 | 14 | KPLC, COOP, KEGN | cash | -2.0% | 0.6% | -5.1% |
-| 2023-04-01 | 14 | COOP, KPLC, KEGN | cash | 1.4% | 0.6% | -2.1% |
-| 2023-03-01 | 14 | KPLC, COOP, KEGN | cash | -1.3% | 0.6% | 0.3% |
-| 2023-02-01 | 14 | KPLC, KEGN, COOP | cash | -5.1% | 0.6% | -1.0% |
-| 2023-01-01 | 14 | COOP, KPLC, KEGN | cash | -3.6% | 0.6% | -0.1% |
-| 2022-12-01 | 14 | KPLC, COOP, KEGN | cash | 2.0% | 0.6% | 3.1% |
-| 2022-11-01 | 14 | KPLC, COOP, KEGN | cash | -7.2% | 0.6% | -2.0% |
-| 2022-10-01 | 14 | KEGN, COOP, SBIC | cash | -2.7% | 0.6% | 1.3% |
-| 2022-09-01 | 14 | KEGN, COOP, SBIC | cash | -3.3% | -1.2% | -0.7% |
-| 2022-08-01 | 14 | KEGN, COOP, SBIC | NCBA | 5.0% | 20.1% | 3.6% |
-| 2022-07-01 | 14 | KEGN, COOP, SBIC | NCBA | 1.1% | 2.2% | 4.4% |
-| 2022-06-01 | 14 | COOP, KEGN, SCBK | cash | -2.9% | 0.6% | -2.5% |
-| 2022-05-01 | 14 | COOP, KEGN, NCBA | cash | -6.0% | 0.6% | -3.5% |
-| 2022-04-01 | 14 | COOP, KEGN, SBIC | cash | -2.5% | 0.6% | -4.6% |
-| 2022-03-01 | 14 | KEGN, NCBA, BAT | cash | -1.5% | 0.6% | -0.1% |
-| 2022-02-01 | 14 | KEGN, BAT, TOTL | cash | 1.2% | 0.6% | -0.0% |
-| 2022-01-01 | 14 | KEGN, SBIC, BAT | cash | 0.0% | 0.6% | -1.0% |
-| 2021-12-01 | 14 | KEGN, BAT, SBIC | cash | -3.7% | 0.6% | 3.2% |
-| 2021-11-01 | 14 | KEGN, BAT, CARB | cash | -4.6% | 0.6% | -3.4% |
-| 2021-10-01 | 14 | KEGN, BAT, NCBA | cash | -6.1% | 0.6% | -2.6% |
-| 2021-09-01 | 14 | KEGN, BAT, SBIC | cash | -0.9% | 0.6% | -0.1% |
-| 2021-08-01 | 14 | KEGN, BAT, SBIC | cash | 4.9% | 0.6% | 2.8% |
-| 2021-07-01 | 14 | KEGN, BAT, SBIC | cash | 6.4% | 0.6% | 3.9% |
-| 2021-06-01 | 14 | KEGN, BAT, SBIC | cash | -1.7% | 0.6% | 2.2% |
-| 2021-05-01 | 14 | KEGN, CARB, BAT | cash | -3.7% | 0.6% | -2.5% |
-| 2021-04-01 | 14 | KEGN, CARB, TOTL | cash | -4.7% | 0.6% | -0.9% |
-| 2021-03-01 | 14 | KEGN, NCBA, KCB | cash | -1.2% | 0.6% | -1.7% |
-| 2021-02-01 | 14 | KPLC, CARB, COOP | cash | -1.1% | 0.6% | 3.0% |
-| 2021-01-01 | 14 | KPLC, CARB, KCB | cash | -6.2% | 0.6% | -1.1% |
-| 2020-12-01 | 14 | KPLC, KCB, SCOM | cash | 9.0% | 0.6% | 5.7% |
-| 2020-11-01 | 14 | KPLC, KCB, COOP | cash | -6.1% | 0.6% | 2.5% |
-| 2020-10-01 | 14 | KPLC, KCB, EQTY | cash | -6.2% | 0.6% | -1.8% |
-| 2020-09-01 | 14 | KPLC, COOP, KCB | cash | -1.8% | 0.6% | -1.0% |
-| 2020-08-01 | 14 | KPLC, COOP, KCB | cash | 6.5% | 0.6% | 2.6% |
-| 2020-07-01 | 14 | KPLC, COOP, KCB | cash | -5.4% | 0.6% | -4.4% |
-| 2020-06-01 | 14 | KPLC, COOP, KCB | cash | 3.5% | 0.6% | 1.0% |
-| 2020-05-01 | 14 | COOP, KPLC, KCB | cash | -7.6% | 0.6% | -4.6% |
-| 2020-04-01 | 12 | KPLC, COOP, BAT | cash | -4.2% | 0.6% | 2.5% |
-| 2020-03-01 | 12 | KPLC, NCBA, ABSA | cash | -21.6% | 0.6% | -13.5% |
-| 2020-02-01 | 12 | KPLC, NCBA, SCOM | cash | -11.0% | 0.6% | -6.6% |
-| 2020-01-01 | 12 | KPLC, NCBA, SCOM | cash | -3.1% | 0.6% | -0.6% |
-| 2019-12-01 | 12 | KPLC, NCBA, ABSA | cash | 0.8% | 0.6% | 1.5% |
-| 2019-11-01 | 12 | KPLC, NCBA, BAT | cash | -7.1% | 0.6% | -4.3% |
-| 2019-10-01 | 12 | KPLC, NCBA, SCOM | cash | 14.7% | 0.6% | 14.5% |
-| 2019-09-01 | 12 | KPLC, NCBA, SBIC | cash | -7.0% | 0.6% | -0.7% |
-| 2019-08-01 | 12 | KPLC, NCBA, SCOM | cash | -3.4% | 0.6% | -2.4% |
-| 2019-07-01 | 12 | KPLC, NCBA, TOTL | cash | 0.3% | 0.6% | -0.1% |
-| 2019-06-01 | 12 | KPLC, NCBA, SCOM | cash | 4.0% | 0.6% | 0.9% |
+| 2026-10-01 | 16 | KCB, EQTY, COOP | cash | -7.8% | 0.6% | -4.5% |
+| 2026-09-01 | 16 | COOP, IMH, EQTY | cash | 2.6% | 0.6% | -0.6% |
+| 2026-08-01 | 16 | COOP, BAT, IMH | cash | 6.5% | -1.2% | 8.4% |
+| 2026-07-01 | 16 | COOP, DTK, BAT | EQTY | 1.5% | 5.2% | 4.6% |
+| 2026-06-01 | 16 | COOP, BAT, SBIC | EQTY | 3.3% | 9.3% | 9.4% |
+| 2026-05-01 | 16 | KPLC, DTK, KEGN | cash | -0.7% | 0.6% | 2.0% |
+| 2026-04-01 | 16 | KPLC, SCBK, KEGN | cash | -0.6% | 0.6% | 4.3% |
+| 2026-03-01 | 16 | KEGN, NCBA, COOP | cash | -6.6% | 0.6% | -6.5% |
+| 2026-02-01 | 16 | KEGN, DTK, SBIC | cash | 14.6% | 0.6% | 12.8% |
+| 2026-01-01 | 16 | KEGN, KPLC, SCBK | cash | 6.7% | 0.6% | 5.7% |
+| 2025-12-01 | 16 | KEGN, SCBK, KPLC | cash | 5.1% | 0.6% | 5.6% |
+| 2025-11-01 | 16 | KPLC, SCBK, KEGN | cash | -4.3% | 0.6% | -2.9% |
+| 2025-10-01 | 16 | KEGN, SCBK, KPLC | cash | 6.7% | 0.6% | 8.6% |
+| 2025-09-01 | 16 | KPLC, SCBK, KEGN | cash | -3.8% | -1.2% | 4.7% |
+| 2025-08-01 | 16 | KPLC, SCBK, KEGN | COOP | 17.9% | 4.8% | 12.3% |
+| 2025-07-01 | 16 | KPLC, SCBK, KEGN | cash | 5.9% | -1.2% | 3.8% |
+| 2025-06-01 | 16 | KPLC, SCBK, KEGN | COOP | 26.7% | 13.2% | 13.6% |
+| 2025-05-01 | 16 | KPLC, KEGN, IMH | COOP | 12.1% | 5.8% | 7.0% |
+| 2025-04-01 | 16 | KPLC, KEGN, IMH | cash | -3.8% | 0.6% | -1.7% |
+| 2025-03-01 | 16 | KPLC, KEGN, IMH | cash | -2.4% | 0.6% | -1.3% |
+| 2025-02-01 | 16 | KPLC, KEGN, IMH | cash | 5.4% | 0.6% | 5.6% |
+| 2025-01-01 | 16 | KPLC, KEGN, IMH | cash | 20.7% | 0.6% | 4.6% |
+| 2024-12-01 | 16 | KPLC, KEGN, SCBK | cash | 12.5% | 0.6% | 13.0% |
+| 2024-11-01 | 16 | KPLC, SCBK, IMH | cash | 2.6% | 0.6% | -1.6% |
+| 2024-10-01 | 16 | SCBK, IMH, KCB | cash | 13.5% | 0.6% | 10.4% |
+| 2024-09-01 | 16 | IMH, SCBK, KCB | cash | 9.4% | 0.6% | 11.4% |
+| 2024-08-01 | 16 | IMH, SCBK, KCB | cash | 5.9% | 0.6% | 3.8% |
+| 2024-07-01 | 16 | KCB, IMH, SCBK | cash | -6.7% | -1.2% | -0.9% |
+| 2024-06-01 | 16 | SBIC, ABSA, DTK | SBIC | -1.2% | 2.0% | -1.4% |
+| 2024-05-01 | 16 | IMH, COOP, SCBK | cash | 7.6% | 0.6% | 6.6% |
+| 2024-04-01 | 14 | CARB, COOP, BAT | cash | -4.3% | 0.6% | -2.1% |
+| 2024-03-01 | 14 | CARB, COOP, SCBK | cash | 12.6% | -1.2% | 16.0% |
+| 2024-02-01 | 14 | SCBK, BAT, CARB | COOP | -1.2% | 6.0% | 4.5% |
+| 2024-01-01 | 14 | CARB, KEGN, SCBK | COOP, EQTY | -0.7% | 7.3% | 0.4% |
+| 2023-12-01 | 14 | CARB, KEGN, SBIC | COOP | -2.2% | 0.0% | 1.5% |
+| 2023-11-01 | 14 | SCBK, SBIC, ABSA | COOP | -5.8% | -4.0% | -0.2% |
+| 2023-10-01 | 14 | CARB, NCBA, SCBK | COOP, EQTY | 2.8% | -0.1% | -2.7% |
+| 2023-09-01 | 14 | CARB, SCBK, NCBA | COOP | 2.7% | -0.4% | -1.4% |
+| 2023-08-01 | 14 | NCBA, SCBK, CARB | COOP | -4.5% | -0.8% | -4.7% |
+| 2023-07-01 | 14 | SCBK, NCBA, COOP | COOP | -1.5% | -2.0% | 2.4% |
+| 2023-06-01 | 14 | NCBA, BAT, COOP | COOP | 4.2% | -1.0% | 2.9% |
+| 2023-05-01 | 14 | SCBK, NCBA, COOP | cash | 0.5% | 0.6% | -1.1% |
+| 2023-04-01 | 14 | NCBA, SCBK, CARB | cash | 3.4% | 0.6% | -0.7% |
+| 2023-03-01 | 14 | NCBA, SCBK, CARB | cash | 2.5% | 0.6% | 0.4% |
+| 2023-02-01 | 14 | NCBA, SCBK, CARB | cash | 2.6% | 0.6% | -0.9% |
+| 2023-01-01 | 14 | NCBA, SCBK, CARB | cash | 0.5% | 0.6% | 0.3% |
+| 2022-12-01 | 14 | NCBA, CARB, SCBK | cash | 8.2% | 0.6% | 3.5% |
+| 2022-11-01 | 14 | NCBA, SCBK, BAT | cash | 2.9% | 0.6% | -1.3% |
+| 2022-10-01 | 14 | NCBA, SCBK, BAT | cash | -0.1% | 0.6% | 1.3% |
+| 2022-09-01 | 14 | SCBK, SBIC, NCBA | cash | 3.1% | 0.6% | 0.1% |
+| 2022-08-01 | 14 | SBIC, SCBK, NCBA | cash | 7.9% | 0.6% | 3.6% |
+| 2022-07-01 | 14 | SBIC, SCBK, NCBA | cash | 3.7% | 0.6% | 4.6% |
+| 2022-06-01 | 14 | SCBK, SBIC, NCBA | cash | -6.6% | 0.6% | -1.9% |
+| 2022-05-01 | 14 | ABSA, SCBK, BAT | cash | -3.8% | 0.6% | -1.8% |
+| 2022-04-01 | 14 | ABSA, EQTY, COOP | cash | -6.0% | 0.6% | -2.2% |
+| 2022-03-01 | 14 | ABSA, KEGN, TOTL | cash | 0.1% | 0.6% | -0.0% |
+| 2022-02-01 | 14 | TOTL, ABSA, KEGN | cash | -1.9% | 0.6% | 0.1% |
+| 2022-01-01 | 14 | KEGN, TOTL, EQTY | cash | -5.9% | 0.6% | -1.0% |
+| 2021-12-01 | 14 | KEGN, KPLC, CARB | cash | -0.8% | 0.6% | 4.0% |
+| 2021-11-01 | 14 | CARB, EQTY, KEGN | cash | -1.3% | 0.6% | -2.6% |
+| 2021-10-01 | 14 | CARB, SCOM, EQTY | cash | -2.8% | 0.6% | -2.6% |
+| 2021-09-01 | 14 | CARB, TOTL, SCOM | cash | 0.8% | 0.6% | 0.2% |
+| 2021-08-01 | 14 | CARB, SCOM, COOP | cash | -1.5% | 0.6% | 2.9% |
+| 2021-07-01 | 14 | BAT, SCOM, CARB | cash | 1.6% | 0.6% | 4.0% |
+| 2021-06-01 | 14 | BAT, SCOM, CARB | cash | 3.9% | 0.6% | 2.5% |
+| 2021-05-01 | 14 | BAT, CARB, SCOM | cash | 0.2% | 0.6% | 0.5% |
+| 2021-04-01 | 14 | CARB, BAT, SCOM | cash | -1.3% | 0.6% | -0.8% |
+| 2021-03-01 | 14 | CARB, COOP, SCOM | cash | -6.4% | 0.6% | -1.7% |
+| 2021-02-01 | 14 | CARB, COOP, SCOM | cash | 4.4% | 0.6% | 3.0% |
+| 2021-01-01 | 14 | CARB, BAT, ABSA | cash | -2.4% | 0.6% | -1.1% |
+| 2020-12-01 | 14 | SCOM, TOTL, KEGN | cash | 3.6% | 0.6% | 5.7% |
+| 2020-11-01 | 14 | COOP, KEGN, SCOM | cash | -2.5% | 0.6% | 2.5% |
+| 2020-10-01 | 14 | EQTY, SCOM, KEGN | cash | -3.9% | 0.6% | -1.8% |
+| 2020-09-01 | 14 | CARB, KEGN, COOP | cash | -4.5% | 0.6% | -1.0% |
+| 2020-08-01 | 14 | CARB, COOP, ABSA | cash | 8.2% | 0.6% | 2.8% |
+| 2020-07-01 | 14 | CARB, ABSA, COOP | cash | -12.5% | 0.6% | -4.4% |
+| 2020-06-01 | 14 | COOP, CARB, ABSA | cash | -2.3% | 0.6% | 1.0% |
+| 2020-05-01 | 14 | COOP, CARB, ABSA | cash | -2.2% | 0.6% | -4.0% |
+| 2020-04-01 | 12 | ABSA, COOP, SBIC | cash | -0.9% | 0.6% | 3.9% |
+| 2020-03-01 | 12 | ABSA, COOP, CARB | cash | -11.5% | 0.6% | -13.5% |
+| 2020-02-01 | 12 | ABSA, NCBA, SCOM | cash | -5.8% | 0.6% | -6.6% |
+| 2020-01-01 | 12 | ABSA, NCBA, SCOM | cash | -2.5% | 0.6% | -0.6% |
+| 2019-12-01 | 12 | NCBA, ABSA, SCOM | cash | 5.6% | 0.6% | 1.5% |
+| 2019-11-01 | 12 | NCBA, ABSA, BAT | cash | -8.1% | 0.6% | -4.3% |
+| 2019-10-01 | 12 | SCOM, ABSA, NCBA | cash | 18.5% | 0.6% | 14.5% |
+| 2019-09-01 | 12 | ABSA, SCOM, SBIC | cash | -0.9% | 0.6% | -0.7% |
+| 2019-08-01 | 12 | SCOM, ABSA, SBIC | cash | 0.4% | 0.6% | -2.4% |
+| 2019-07-01 | 12 | ABSA, SCOM, TOTL | cash | 0.6% | 0.6% | -0.1% |
+| 2019-06-01 | 12 | NCBA, SCOM, ABSA | cash | 0.6% | 0.6% | 1.2% |
