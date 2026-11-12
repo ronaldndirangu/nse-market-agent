@@ -4,7 +4,7 @@ from datetime import date
 import pytest
 import yaml
 
-from nse_agent import announcements, brief, config, dividends, ledger, prices, storage
+from nse_agent import announcements, backtest, brief, config, dividends, ledger, picks_log, prices, score, simulate, storage
 from nse_agent.engine import analyze
 from nse_agent.fmt import pct
 from nse_agent.fundamentals import Period
@@ -208,6 +208,23 @@ def test_special_dividends_are_not_recurring(outputs):
         assert dividends.regular_dps("TST", "FY2024", 5.0) == 5.0
         assert dividends.trailing_yield("TST", date(2026, 12, 1), 50.0) == pytest.approx(2 / 50)
         assert dividends.total_return("TST", date(2026, 1, 2), date(2026, 12, 1), net=False) == pytest.approx(0.1)
+    finally:
+        storage.price_path("TST").unlink(missing_ok=True)
+
+
+def test_bonus_issue_is_not_scored_as_a_loss(outputs, monkeypatch):
+    _write(outputs, "corporate_actions.yaml", {"actions": [
+        {"ticker": "TST", "type": "bonus", "ratio": "1:1", "factor": 0.5, "ex_date": "2026-06-01",
+         "source_url": "https://example.test/bonus.pdf"}]})
+    storage.upsert_prices("TST", [("2026-01-02", 100.0, 1.0), ("2026-12-01", 55.0, 1.0)])
+    monkeypatch.setattr(picks_log, "read", lambda: [
+        {"date": "2026-01-02", "ticker": "TST", "price": "100.00", "fair_base": "105.00"}])
+    try:
+        assert backtest._basket(["TST"], date(2026, 1, 2), date(2026, 12, 1)) == pytest.approx(0.1)
+        assert simulate.window_return(["TST"], "2026-01-02", "2026-12-01") == pytest.approx(0.1)
+        row, = score.score(date(2026, 12, 1))["rows"]
+        assert row["return"] == pytest.approx(0.1)
+        assert row["hit_fair"] is True
     finally:
         storage.price_path("TST").unlink(missing_ok=True)
 

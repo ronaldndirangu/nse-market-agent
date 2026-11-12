@@ -6,7 +6,7 @@ import math
 from datetime import date
 from statistics import fmean, pstdev
 
-from . import config, fundamentals as fnd, prices, report, storage
+from . import config, dividends, fundamentals as fnd, report, storage
 from .engine import analyze
 from .fmt import pct, table
 from .returns import net_tbill
@@ -23,15 +23,8 @@ def month_starts(start: date, end: date) -> list[date]:
     return out
 
 
-def _ret(ticker: str, a: date, b: date) -> float | None:
-    p0, p1 = prices.last_close(ticker, a), prices.last_close(ticker, b)
-    if not p0 or not p1 or p0[1] <= 0:
-        return None
-    return p1[1] / p0[1] - 1
-
-
 def _basket(tickers: list[str], a: date, b: date) -> float | None:
-    rets = [r for r in (_ret(t, a, b) for t in tickers) if r is not None]
+    rets = [r for r in (dividends.total_return(t, a, b) for t in tickers) if r is not None]
     return fmean(rets) if rets else None
 
 
@@ -129,7 +122,8 @@ def render(bt: dict) -> str:
         f"- Months the top {bt['top']} beat the universe: **{pct(bt['hit_rate'])}**.",
         f"- Months with at least one undervalued pick: **{bt['pick_months']} of {len(ms)}**.", "",
         "## Limitations", "",
-        "- Returns are price-only. Dividends are excluded from every line, which understates high-yield names.",
+        "- Returns adjust for sourced bonus issues and splits and add sourced dividends net of withholding tax, "
+        "without reinvestment. Dividends missing from `data/dividends.yaml` understate high-yield names.",
         "- The universe is today's coverage list, so delisted and failed counters are missing (survivorship bias).",
         "- Macro inputs (bond yield, risk premiums) are today's values, not the values known at each date.",
         "- Liquidity and suspension screens are off because historical volume and suspension data are not stored.",

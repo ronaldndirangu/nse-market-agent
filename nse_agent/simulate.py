@@ -6,7 +6,7 @@ import random
 from datetime import date
 from statistics import fmean
 
-from . import config, prices, report
+from . import config, dividends, prices, report
 from .engine import analyze
 from .fmt import pct, table
 
@@ -59,10 +59,12 @@ def percentile(xs: list[float], q: float) -> float:
 
 def window_return(tickers: list[str], start: str, end: str) -> float | None:
     rets = []
+    a_day, b_day = date.fromisoformat(start), date.fromisoformat(end)
     for t in tickers:
-        a, b = prices.last_close(t, date.fromisoformat(start)), prices.last_close(t, date.fromisoformat(end))
-        if a and b and a[1] > 0 and a[0] < b[0]:
-            rets.append(b[1] / a[1] - 1)
+        a, b = prices.last_close(t, a_day), prices.last_close(t, b_day)
+        r = dividends.total_return(t, a_day, b_day) if a and b and a[0] < b[0] else None
+        if r is not None:
+            rets.append(r)
     return fmean(rets) if rets else None
 
 
@@ -148,12 +150,13 @@ def render(sim: dict) -> str:
                   [[w["name"], f"{w['start']} to {w['end']}", pct(w["basket"]), pct(w["universe"])]
                    for w in sim["stress"]]), ""]
     if sim.get("worst"):
-        out += ["Worst historical stretches for this basket (price-only):", ""]
+        out += ["Worst historical stretches for this basket (split-adjusted prices, dividends excluded):", ""]
         out += [f"- {span} weeks starting {wk}: {pct(r)}" for span, (wk, r) in sim["worst"].items()]
         out.append("")
     out += ["## Limitations", "",
             "- The past is resampled, so regimes that never happened in the sample cannot appear.",
-            "- Stress returns are price-only and use today's basket, not what the engine would have picked then.",
+            "- Stress returns add dividends net of withholding tax and use today's basket, not what the engine "
+            "would have picked then.",
             "- Dividends are assumed constant at the current net yield."]
     return "\n".join(out) + "\n"
 
