@@ -46,15 +46,26 @@ jobs:
           BRANCH: tune-weights
         run: |
           [ -f "$RUNNER_TEMP/weights.json" ] || { echo "Tuner keeps the current weights"; exit 0; }
-          git checkout -B "$BRANCH"
-          python -m nse_agent apply-weights "$RUNNER_TEMP/weights.json"
-          git add data/settings.yaml
-          git commit -m "Propose ranking weights $(date -u +%F)"
-          git push --force origin "$BRANCH"
           n=$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$BRANCH" --state open --json number --jq length)
           if [ "$n" != "0" ]; then
+            # A PR is under review: add a commit so its history stays intact instead of rewriting the branch.
+            git fetch -q origin "$BRANCH"
+            git checkout -B "$BRANCH" "origin/$BRANCH"
+            python -m nse_agent apply-weights "$RUNNER_TEMP/weights.json"
+            git add data/settings.yaml
+            if git diff --cached --quiet; then
+              echo "The open PR already proposes these weights"
+            else
+              git commit -m "Update proposed ranking weights $(date -u +%F)"
+              git push origin "$BRANCH"
+            fi
             gh pr edit "$BRANCH" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/tune.md"
           else
+            git checkout -B "$BRANCH"
+            python -m nse_agent apply-weights "$RUNNER_TEMP/weights.json"
+            git add data/settings.yaml
+            git commit -m "Propose ranking weights $(date -u +%F)"
+            git push --force origin "$BRANCH"
             gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$BRANCH" \
               --title "Review proposed ranking weights $(date -u +%F)" --body-file "$RUNNER_TEMP/tune.md"
           fi
