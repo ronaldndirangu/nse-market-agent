@@ -16,6 +16,8 @@ _session: requests.Session | None = None
 HOST_DELAYS = {"afx.kwayisi.org": 60.0}
 # Applies per resolved address, so a host with several A records that drops packets fails in seconds.
 CONNECT_TIMEOUT = 10.0
+# Base wait before retrying a 429 or 5xx, growing with each attempt, so a brief upstream outage is ridden out.
+SERVER_ERROR_BACKOFF = 15.0
 
 
 def _delay_for(host: str) -> float:
@@ -23,6 +25,12 @@ def _delay_for(host: str) -> float:
     if override is not None:
         return float(override)
     return HOST_DELAYS.get(host, 2.0)
+
+
+def _backoff(attempt: int) -> float:
+    override = os.environ.get("NSE_AGENT_DELAY")
+    base = float(override) if override is not None else SERVER_ERROR_BACKOFF
+    return base * (attempt + 1)
 
 
 def session() -> requests.Session:
@@ -52,6 +60,7 @@ def request(method: str, url: str, *, retries: int = 2, timeout: float = 45, **k
             resp = session().request(method, url, timeout=(CONNECT_TIMEOUT, timeout), **kwargs)
             if resp.status_code in (429, 500, 502, 503, 504) and attempt < retries:
                 last_error = requests.HTTPError(f"{resp.status_code} for {url}")
+                time.sleep(_backoff(attempt))
                 continue
             resp.raise_for_status()
             return resp

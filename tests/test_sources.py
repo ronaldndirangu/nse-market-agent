@@ -100,3 +100,27 @@ def test_unreachable_host_is_skipped_after_retries(monkeypatch):
     with pytest.raises(requests.ConnectionError):
         http.get_text("https://other.example/c")
     assert len(calls) == 6
+
+
+def test_server_error_backs_off_before_retrying(monkeypatch):
+    from nse_agent import http
+
+    statuses = iter([500, 503, 200])
+
+    class FlakySession:
+        def request(self, method, url, **kwargs):
+            resp = type("Resp", (), {})()
+            resp.status_code = next(statuses)
+            resp.text = "ok"
+            resp.raise_for_status = lambda: None
+            return resp
+
+    sleeps = []
+    monkeypatch.delenv("NSE_AGENT_DELAY")
+    monkeypatch.setattr(http, "_last_hit", {})
+    monkeypatch.setattr(http, "session", lambda: FlakySession())
+    monkeypatch.setattr(http.time, "sleep", sleeps.append)
+
+    assert http.get_text("https://flaky.example/ticker") == "ok"
+    assert http.SERVER_ERROR_BACKOFF in sleeps
+    assert 2 * http.SERVER_ERROR_BACKOFF in sleeps
