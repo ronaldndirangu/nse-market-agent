@@ -84,9 +84,9 @@ flowchart LR
 
 All thresholds live in [`data/settings.yaml`](data/settings.yaml).
 
-### High confidence undervalued and risk profile
+### Strict checks and risk profile
 
-A stock is flagged **High confidence undervalued** only when all four gates pass:
+A stock is marked **Strict checks passed** only when all four stricter gates pass:
 
 | Gate | Rule |
 |---|---|
@@ -205,12 +205,23 @@ Historical 12-month holding tests, the separate monthly-rotation chart, and actu
 The dedicated Track record page starts with this same plain-language summary and keeps the full technical report collapsed.
 Candidate cards use the available width. Changes, alerts and the reading guide form a separate responsive row rather
 than a tall sidebar. Rates and inflation use a full-width summary with expandable sources and assumptions.
+Stock search is available at the top of every page. Stock reviews follow **Verdict, Why, What would change it,
+What to verify next**, with recorded company notices and filing caveats beside the decision.
+The conditional price is the valuation-cushion threshold with every model estimate held fixed, not a price target
+or an automatic Buy. Missing or disagreeing valuations do not produce a price trigger. Return drivers explain
+regular dividends after tax, assumed business growth, closing the valuation gap (including the growth interaction),
+and annualised trading costs. They sum to the unchanged middle-case return.
+The research score ranks every stock independently of Buy/Watch/Avoid. The main table groups stocks by entry verdict;
+research-score order is a separate expandable view. Its historical track record does not validate the entry rules.
+Strict checks are explicitly separate from entry checks and are not a probability of profit. Risk labels remain
+visible in neutral styling, with incomplete assessments identified separately. Stored ledger fields and tier rules
+are unchanged; older reports retain their original wording.
 `reports/daily/latest.json` is the machine-readable snapshot behind the dashboard.
 Disagreeing or insufficient valuation methods suppress point estimates in consumer reports and alerts. Raw outputs
 remain in the ledger and MCP tools with `estimate_reliable` metadata. Returns are illustrative scenarios, not loss
 limits or probability bands; the T-bill rollover example assumes today's rate stays unchanged.
 
-- `reports/daily/YYYY-MM-DD.md` and `reports/daily/latest.md`: the daily brief. High confidence flags with risk
+- `reports/daily/YYYY-MM-DD.md` and `reports/daily/latest.md`: the daily brief. Strict-rule flags with risk
   profiles, then up to five Buy/Watch candidates with score contributions and the binding constraint.
   Avoid stocks remain in the full research ranking.
 - `data/rankings/live/YYYY-MM.csv`: the append-only prediction ledger. Every stock, every day: composite score, each

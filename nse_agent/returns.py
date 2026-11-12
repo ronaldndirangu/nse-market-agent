@@ -27,6 +27,8 @@ def project(price: float, dps: float | None, fv: dict, g: float, years: int | No
     for name, v, gg in (("bear", fv["low"], g - shift), ("base", fv["base"], g), ("bull", fv["high"], g + shift)):
         price_ret = (1 + gg) * (v / price) ** (1 / n) - 1
         out[name] = div + price_ret - costs
+    out["drivers"] = {"dividends": div, "growth": g,
+                      "repricing": (1 + g) * ((fv["base"] / price) ** (1 / n) - 1), "costs": -costs}
     return out
 
 

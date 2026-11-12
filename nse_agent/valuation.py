@@ -7,6 +7,14 @@ from statistics import median
 from . import config
 from .fundamentals import Period, avg, roe
 
+MODEL_NAMES = {
+    "justified_pb": "Bank book-value model",
+    "gordon_ddm": "Dividend model",
+    "earnings_power": "Earnings power",
+    "sector_pe": "Peer earnings multiple",
+    "sector_pb": "Peer book-value multiple",
+}
+
 
 def cost_of_equity(beta: float | None, macro: dict | None = None) -> float:
     m = macro if macro is not None else config.macro()
@@ -84,3 +92,16 @@ def agreeing(values: dict[str, float], price: float, threshold: float) -> list[s
 
 def required_agreement(n_models: int) -> int:
     return max(2, math.ceil(n_models / 2))
+
+
+def cushion_price(values: dict[str, float], threshold: float) -> float | None:
+    """Conservative cent price for the agreement rule, holding every model estimate fixed."""
+    need = required_agreement(len(values))
+    if len(values) < need:
+        return None
+    price = math.floor(sorted(values.values(), reverse=True)[need - 1] / (1 + threshold) * 100) / 100
+    if price <= 0:
+        return None
+    if len(agreeing(values, price, threshold)) < need:
+        price = round(price - 0.01, 2)
+    return price if price > 0 else None

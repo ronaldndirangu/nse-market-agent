@@ -3,17 +3,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from . import DISCLAIMER, __version__, config, fundamentals as fnd, health, risk
+from . import DISCLAIMER, __version__, config, decision, fundamentals as fnd, health, risk
 from .fmt import estimate_reliable, kes, num, pct, table
 from .returns import weights_text
-
-MODEL_NAMES = {
-    "justified_pb": "justified P/B",
-    "gordon_ddm": "Gordon dividend model",
-    "earnings_power": "earnings power value",
-    "sector_pe": "sector P/E",
-    "sector_pb": "sector P/B",
-}
+from .valuation import MODEL_NAMES
 
 AI_NOTE = (
     "No AI is used anywhere in this pipeline. Screening, valuation, quality checks, projected returns, "
@@ -82,8 +75,8 @@ def _thesis(r: dict, result: dict) -> str:
     fv, pr = r["fair_value"], r["projection"]
     s = config.settings()
     lines = [
-        f"### {r['rank']}. {r['name']} ({r['ticker']}): {_status(r)}, {r['confidence']} confidence, "
-        f"{r['risk'].get('label', r['risk']['level'])} risk" + (", high confidence undervalued" if r["conviction"]["flag"] else ""),
+        f"### {r['name']} ({r['ticker']}): {r['tier']}, "
+        f"{r['risk'].get('label', r['risk']['level'])} risk" + (", strict checks passed" if r["conviction"]["flag"] else ""),
         "",
         f"- **Valuation:** last close {kes(r['price'])} on {r['price_date']}. Fair value range "
         f"{kes(fv['low'])} to {kes(fv['high'])}, base {kes(fv['base'])}, a margin of safety of {pct(r['mos'])}. "
@@ -102,6 +95,7 @@ def _thesis(r: dict, result: dict) -> str:
         f"- **Risk profile: {r['risk'].get('label', r['risk']['level'])}.** {r['risk']['summary']}",
         "- **Risks:**",
     ]
+    lines[2:2] = decision.markdown(r)
     if not estimate_reliable(r):
         lines = [line for line in lines if not line.startswith(("- **Valuation:**", "- **Projected annual return"))]
         lines.insert(2, "- **Valuation and projected return:** unclear. The methods disagree or there is "
@@ -133,7 +127,7 @@ def _data_gaps(result: dict) -> list[str]:
     peers = config.settings()["valuation"]["min_sector_peers"]
     for sector, ts in short.items():
         gaps.append(f"{sector} ({', '.join(ts)}): fewer than {peers} sourced peers, so no sector P/E or P/B model. "
-                    f"These stocks get under {need} valuation models and cannot reach High confidence until more "
+                    f"These stocks get under {need} valuation models and cannot pass the strict checks until more "
                     "peers are sourced")
     return gaps
 
@@ -159,7 +153,7 @@ def render(result: dict, portfolio_md: str | None = None) -> str:
         + (f" ({', '.join(result['buys'])})" if result["buys"] else "") + ".",
         f"- Watchlist (passes quality and misses exactly one gate): "
         f"{', '.join(result['watchlist']) or 'none'}.",
-        f"- High confidence undervalued (all four gates pass): **{len(result['high_confidence'])}**"
+        f"- Strict checks passed (separate from entry rules): **{len(result['high_confidence'])}**"
         + (f" ({', '.join(result['high_confidence'])})" if result["high_confidence"] else "") + ".",
         "",
         "## Market context",
@@ -189,14 +183,16 @@ def render(result: dict, portfolio_md: str | None = None) -> str:
                 f"{num(fv['low'])} / {num(fv['base'])} / {num(fv['high'])}" if fv and estimate_reliable(r) else "unclear",
                 pct(r["mos"]) if estimate_reliable(r) else "unclear", f"{len(r['agree'])}/{len(r['models'])}",
                 f"{pct(pr['bear'])} / {pct(pr['base'])} / {pct(pr['bull'])}" if pr and estimate_reliable(r) else "unclear",
-                r["quality"]["gate"], pct(r["momentum"]), num(r["composite"]), _status(r), r["confidence"],
+                r["quality"]["gate"], pct(r["momentum"]), num(r["composite"]), r["tier"],
+                r.get("decision", {}).get("reason", ""),
                 r["risk"].get("label", r["risk"]["level"]),
             ])
         out.append(table(["#", "Ticker", "Price", "Fair value low / base / high", "MoS", "Agree", "Return p.a. bear / base / bull",
-                          "Quality", "Momentum", "Composite", "Status", "Confidence", "Risk"], trs))
+                          "Quality", "Momentum", "Research score", "Verdict", "Reason", "Risk"], trs))
     else:
         out.append("No counters could be valued. See data gaps.")
-    out += ["", f"Composite rank = {weights_text()}.", ""]
+    out += ["", f"Independent research rank = {weights_text()}. It ranks all stocks, including Avoids, "
+            "and does not set entry verdicts. The ranking track record tests this score, not the Buy rules.", ""]
     if ranked:
         out += risk.section_md(result)
 
@@ -257,7 +253,7 @@ def render(result: dict, portfolio_md: str | None = None) -> str:
         "- **Risk profile:** seven factors (volatility, beta, liquidity, bear-case return, fair value spread, balance "
         "sheet and warning announcements) rated Low, Moderate or High from fixed thresholds. Shown beside the status; "
         "it never changes it.",
-        "- **High confidence undervalued:** a Buy candidate where at least three models agree and the quality score "
+        "- **Strict checks passed:** a Buy candidate where at least three models agree and the quality score "
         "is 0.67 or more, with current critical live evidence. Agreement of methods is not a probability of profit. "
         "Sector P/E and P/B need enough sourced peers, so most non-banks have only two models and cannot be flagged yet.",
         f"- **AI:** {AI_NOTE}",

@@ -153,9 +153,11 @@ def conviction(r: dict, hurdle: float, evidence_issues: list[str] | None = None)
 
 
 def near_misses(rows: dict, ranking: list[str], n: int = 3) -> list[str]:
-    """Unflagged stocks closest to the flag: fewest failed gates, then rank."""
+    """Entry candidates first, then fewest strict-rule failures and research rank."""
+    from .decision import TIER_ORDER
     cands = [t for t in ranking if not rows[t]["conviction"]["flag"]]
-    return sorted(cands, key=lambda t: (len(rows[t]["conviction"]["failed"]), rows[t]["rank"]))[:n]
+    return sorted(cands, key=lambda t: (TIER_ORDER.get(rows[t].get("tier"), 2),
+                                       len(rows[t]["conviction"]["failed"]), rows[t]["rank"]))[:n]
 
 
 def _short(f: dict) -> str:
@@ -192,18 +194,18 @@ def matrix_md(rows: dict, tickers: list[str]) -> str:
 def rule_text(hurdle: float) -> str:
     s = config.settings()
     hc = s["high_confidence"]
-    return (f"A stock is flagged **High confidence undervalued** only when all four gates pass: at least "
+    return (f"A stock is marked **Strict checks passed** only when all four stricter checks pass: at least "
             f"{hc['min_agreeing_models']} valuation models agree on {pct(s['valuation']['mos_threshold'], 0)} or "
             f"more upside (Valuation), the quality gate passes with a score of {hc['min_quality_score']:.2f} or more "
             f"(Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the "
             f"{pct(hurdle, 2)} hurdle (Return). Risk level is rated separately from seven factors and never changes "
-            f"the valuation or return thresholds. Strong-confidence flags also require current critical "
+            f"the valuation or return thresholds. These flags also require current critical "
             f"live evidence. Agreement of methods is not a probability of profit.")
 
 
 def section_md(result: dict, heading: str = "##") -> list[str]:
     rows, ranked, flagged = result["rows"], result["ranking"], result["high_confidence"]
-    out = [f"{heading} High confidence undervalued", "", rule_text(result["hurdle"]), ""]
+    out = [f"{heading} Strict checks (separate from Buy)", "", rule_text(result["hurdle"]), ""]
     if flagged:
         body = []
         for t in flagged:

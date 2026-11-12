@@ -161,7 +161,7 @@ def markdown(live: dict | None) -> list[str]:
             f"(last successful check {a['last_success'] or 'unknown'}). Macro rates: {m['status'].lower()} "
             f"(curated assumptions {m['as_of'] or 'unknown'}; T-bill results {m.get('tbill_as_of') or 'unknown'}).",
             "", live["session_note"], "",
-            "Strong-confidence flags require current critical evidence. A rule-based Buy with incomplete "
+            "Strict-rule flags require current critical evidence. A rule-based Buy with incomplete "
             "evidence still needs verification.", ""] + [
                 f"- {ticker}: [results notice awaiting review]({item['url']}). "
                 "The announcement status alone does not establish whether the figures have been reviewed."

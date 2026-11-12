@@ -74,18 +74,18 @@ def test_dashboard_beginner_layer(tree):
     _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
     site.build()
     index = (tree / "site" / "index.html").read_text(encoding="utf-8")
-    for text in ("No stock is a Buy today", "Watch only: <b>KPLC</b>", "Illustrative KES 10,000 scenario", "KES 21,768",
-                 "after 3 years", "Jargon buster", "Show the details", "Not financial advice"):
+    for text in ("No stock meets the Buy rules today", "Watch only: <b>KPLC</b>", "Illustrative KES 10,000 scenario", "KES 21,768",
+                 "after 3 years", "Jargon buster", "Checks, assumptions and sources", "Not financial advice"):
         assert text in index
     assert "Panel unavailable" not in index and "\u2014" not in index and "\u2013" not in index
-    assert site._plain_reason(KPLC["binding"]) == "only 1 of 2 valuation methods say it is at least 15% cheap (needs 2)"
+    assert site._plain_reason(KPLC["binding"]) == "only 1 of 2 valuation methods shows the required 15% cushion (needs 2)"
 
     snap["top"] = [dict(KPLC, tier="Buy", binding="Clears every gate.")]
     _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
     site.build()
     index = (tree / "site" / "index.html").read_text(encoding="utf-8")
-    assert "Buy today: KPLC." in index and "Passes every check" in index
-    assert "Looks fairly priced:</b> price KES 22.00 vs fair value estimate KES 22.01." in site._plain(
+    assert "Meets the Buy rules: KPLC." in index and "Passes every check" not in index
+    assert "Price vs middle estimate:</b> KES 22.00 vs KES 22.01." in site._plain(
         dict(KPLC, fair_base=22.01, mos=0.0005), None)
 
 
@@ -105,7 +105,7 @@ def test_dispersed_card_hides_point_estimates_and_stale_prices_warn(tree):
     assert "Panel unavailable" not in index and "\u2014" not in index and "\u2013" not in index
 
     plain = site._plain(KPLC, None, cal=0.27)
-    assert "middle case" in plain and "only 27% of 12 month results" in plain
+    assert "middle case" in plain and "73% of stock outcomes fell outside" in plain
 
     snap["price_date"] = "2026-11-12"
     _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
@@ -209,6 +209,32 @@ def test_source_details_follow_the_primary_content_instead_of_extending_a_sideba
     assert "Sources, assumptions and purchasing power</summary>" in text
     assert "other Buy checks still apply" in text
     assert site.check() > 0
+
+
+def test_search_is_available_before_verdict_and_on_nested_stock_pages(tree):
+    avoid = dict(KPLC, ticker="SCOM", name="Safaricom", tier="Avoid", rank=1)
+    watch = dict(KPLC, ticker="NCBA", name="NCBA Group", rank=16)
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps({
+        "as_of": "2026-11-13", "top": [watch], "ranking": [avoid, watch],
+        "counts": {"Buy": 0, "Watch": 1, "Avoid": 1},
+    }))
+    site.build()
+    index = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    stock = (tree / "site" / "stocks" / "NCBA.html").read_text(encoding="utf-8")
+    assert index.index('id="quick-stock"') < index.index('id="verdict"')
+    finder = stock.split('<section class="stock-finder"', 1)[1].split("</section>", 1)[0]
+    assert 'href="../stocks/SCOM.html"' in finder and "Safaricom" in finder
+    listing = index.split('id="stock-table"', 1)[1].split("</table>", 1)[0]
+    assert listing.index(">NCBA<") < listing.index(">SCOM<")
+    assert "Independent research-score order" in index and "overview-stats" not in index.split("</style>", 1)[1]
+    assert site.check() > 0
+
+
+def test_known_risk_is_retained_and_incompleteness_does_not_become_a_verdict_color():
+    text = site.risk_badge("High (incomplete)")
+    assert "High risk; assessment incomplete" in text and "risk-badge" in text
+    assert "Risk not fully assessed" in site.risk_badge("Insufficient data")
+    assert "Strict checks passed" in site.tier_badge("Buy", True)
 
 
 def test_validator_rejects_broken_links_and_generated_error_panels(tree):

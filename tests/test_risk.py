@@ -93,7 +93,7 @@ def test_engine_attaches_risk_and_flag(market):
         if r["conviction"]["flag"]:
             assert r["tier"] == "Buy"
     text = "\n".join(risk.section_md(result))
-    assert "## High confidence undervalued" in text and "### Risk profile" in text
+    assert "## Strict checks (separate from Buy)" in text and "### Risk profile" in text
 
 
 def test_ledger_keeps_old_header_when_columns_are_added(market, root):

@@ -6,7 +6,7 @@ import statistics
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from . import announcements, config, dividends, health, ledger, official, prices, publication, report, risk, storage
+from . import announcements, config, decision, dividends, health, ledger, official, prices, publication, report, risk, storage
 from .engine import analyze
 from .fmt import consumer_binding, estimate_reliable, kes, num, pct, table
 from .quality import warnings_for
@@ -17,7 +17,7 @@ log = logging.getLogger(__name__)
 LABELS = {"margin_of_safety": "margin of safety", "quality": "quality", "momentum": "momentum",
           "dividend_yield": "dividend yield", "low_volatility": "low volatility"}
 TOP_N = 5
-TIER_ORDER = {"Buy": 0, "Watch": 1, "Avoid": 2}
+TIER_ORDER = decision.TIER_ORDER
 
 
 def top_list(rows: dict[str, dict]) -> list[str]:
@@ -47,11 +47,9 @@ def why(r: dict, result: dict) -> str:
     if pr and reliable:
         verb = "beats" if pr["base"] > result["hurdle"] else "trails"
         parts.append(f"base return {pct(pr['base'])} a year {verb} the {pct(result['hurdle'], 2)} hurdle")
-    text = f"{r['ticker']} #{r['rank']} ({r['tier']}): " + ("; ".join(parts) or "no valuation inputs") + "."
-    d = _driver(r)
-    if d:
-        text += f" Biggest score driver: {d['label']} ({_signed(d['contribution'])})."
-    return f"{text} {consumer_binding(r)} {risk_short(r)}."
+    text = f"{r['ticker']} ({r['tier']}): " + ("; ".join(parts) or "no valuation inputs") + "."
+    reason = r.get("decision", {}).get("reason") or consumer_binding(r)
+    return f"{text} {reason}. {risk_short(r)}."
 
 
 def risk_short(r: dict) -> str:
@@ -139,9 +137,9 @@ def alerts(result: dict, ch: dict, prev: dict[str, dict]) -> list[str]:
     rows = result["rows"]
     hc = set(result["high_confidence"])
     ready = result.get("health") is None or result["health"]["critical_ok"]
-    out = [("New Buy, high confidence undervalued: " if t in hc else "New Buy: ") + why(rows[t], result)
+    out = [("New Buy rules met, strict checks passed: " if t in hc else "New Buy rules met: ") + why(rows[t], result)
            for t in result["buys"] if ready and prev.get(t, {}).get("tier") != "Buy"]
-    out += [f"Now high confidence undervalued: {why(rows[t], result)}" for t in result["high_confidence"]
+    out += [f"Strict checks now pass: {why(rows[t], result)}" for t in result["high_confidence"]
             if prev.get(t, {}).get("tier") == "Buy" and prev[t].get("high_confidence") not in ("True", None)]
     for t, p in prev.items():
         if p["tier"] == "Buy" and t not in result["buys"]:
@@ -209,6 +207,7 @@ def render(result: dict, ch: dict, alert_lines: list[str]) -> str:
         out += ["No stock qualifies for Buy or Watch today.", ""]
     for t in top:
         out.append(f"- {why(rows[t], result)}")
+        out += decision.markdown(rows[t]) + [""]
     out += ["", "### Score breakdown", "",
             "Each cell is the signal's contribution to the composite (weight x z-score), with the raw value in "
             "brackets.", ""]
@@ -220,7 +219,7 @@ def render(result: dict, ch: dict, alert_lines: list[str]) -> str:
     body = []
     for t in ranked:
         r, pr = rows[t], rows[t]["projection"]
-        body.append([str(r["rank"]), t, r["tier"] + (" (high confidence)" if r["conviction"]["flag"] else ""),
+        body.append([str(r["rank"]), t, r["tier"] + (" (strict checks passed)" if r["conviction"]["flag"] else ""),
                      _signed(r["composite"]), kes(r["price"]), pct(r["mos"]) if estimate_reliable(r) else "unclear",
                      f"{pct(pr['bear'])} / {pct(pr['base'])} / {pct(pr['bull'])}" if pr and estimate_reliable(r) else "unclear",
                      pct(r["dividend_yield"]), pct(r["volatility"]), r["risk"].get("label", r["risk"]["level"]), consumer_binding(r)])
@@ -239,7 +238,7 @@ def render(result: dict, ch: dict, alert_lines: list[str]) -> str:
         f"apply (minimum two) agree on a "
         f"margin of safety of {pct(s['valuation']['mos_threshold'], 0)} or more, and the base return beats the "
         f"hurdle. **Watch** passes quality and misses one gate. **Avoid** misses more, or fails quality.",
-        "- **High confidence undervalued** is a stricter Buy: three or more models agree and quality scores 0.67 or "
+        "- **Strict checks passed** is a stricter Buy: three or more models agree and quality scores 0.67 or "
         "more, with current critical live evidence. Agreement of methods is not a probability of profit.",
         "- **Risk** (Low, Moderate or High) rates volatility, beta, liquidity, bear-case return, fair value spread, "
         "balance sheet (Altman Z'' or bank NPL) and warning announcements. It is shown beside the tier and never "
@@ -288,6 +287,9 @@ def snapshot(result: dict, ch: dict, alert_lines: list[str]) -> dict:
                 "estimate_reliable": estimate_reliable(r), "latest_period": r["latest_period"],
                 "source_url": r["source_url"],
                 "models": len(r["models"]), "agree_needed": r["agree_needed"],
+                "decision": r.get("decision"), "projection": pr, "model_values": r["models"],
+                "dividend_context": r.get("dividend_context"), "company_notes": r.get("company_notes", []),
+                "filings": r.get("filings", []), "notices": r.get("notices", []),
                 "risk": {"level": r["risk"]["level"], "label": r["risk"].get("label", r["risk"]["level"]),
                          "missing": r["risk"]["missing"], "summary": r["risk"]["summary"],
                          "factors": [{"name": f["name"], "level": f["level"], "detail": f["detail"]}
@@ -308,6 +310,10 @@ def snapshot(result: dict, ch: dict, alert_lines: list[str]) -> dict:
             "rule": risk.rule_text(result["hurdle"]),
             "changes": {"prev_date": ch["prev_date"], "top_in": ch["top_in"], "top_out": ch["top_out"],
                         "tiers": len(ch["tiers"]), "crossings": len(ch["crossings"]),
+                        "verdict_details": [{"ticker": t, "before": before, "after": after,
+                                             "reason": rows.get(t, {}).get("decision", {}).get("reason",
+                                                        "Price or fundamentals no longer available")}
+                                            for t, before, after in ch["tiers"]],
                         "announcements": len(ch["announcements"]), "moves": len(ch["moves"])},
             "top": [item(t) for t in top_list(rows)],
             "weights": {n: w for n, w in config.settings()["ranking"]["weights"].items() if w},

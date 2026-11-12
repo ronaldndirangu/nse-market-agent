@@ -119,7 +119,7 @@ def test_data_gaps_flag_sectors_too_thin_for_high_confidence(market):
         "KPLC": {"sector": "Energy", "quality": {"gate": "pass"}, "momentum": 0.1, "models": {"a": 1, "b": 2}},
         "EQTY": {"sector": "Banking", "quality": {"gate": "pass"}, "momentum": 0.1,
                  "models": {"a": 1, "b": 2, "c": 3}}}}
-    gaps = [g for g in report._data_gaps(result) if "High confidence" in g]
+    gaps = [g for g in report._data_gaps(result) if "strict checks" in g]
     assert len(gaps) == 1 and gaps[0].startswith("Energy (KEGN, KPLC): fewer than 3 sourced peers")
 
 def test_weekly_changes_report_added_and_dropped_lists():

@@ -116,14 +116,20 @@ def trailing_yield(ticker: str, as_of: date, price: float | None, dps: float | N
     Uses sourced dividends in the window; when the window has none (history not started or a sourcing gap),
     falls back to the latest reported regular DPS, which is 0 for a company that skipped its dividend.
     """
+    return yield_context(ticker, as_of, price, dps)["value"]
+
+
+def yield_context(ticker: str, as_of: date, price: float | None, dps: float | None = None) -> dict:
     if not price:
-        return None
+        return {"value": None, "basis": "Unavailable"}
     start = as_of - timedelta(days=365)
     paid = [amt * factor(ticker, ex) / factor(ticker, as_of)
             for ex, amt, kind, _ in _records().get(ticker, []) if ex and start < ex <= as_of and kind != "special"]
     if paid:
-        return sum(paid) / price
-    return dps / price if dps is not None else None
+        return {"value": sum(paid) / price, "basis": "Trailing regular dividends, before tax",
+                "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded."}
+    return {"value": dps / price if dps is not None else None, "basis": "Latest annual regular DPS, before tax",
+            "note": "No regular dividends sourced in the trailing window; annual DPS is used as a fallback."}
 
 
 def adj_close(ticker: str, as_of: date) -> tuple[date, float] | None:

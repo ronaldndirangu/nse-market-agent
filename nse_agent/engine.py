@@ -1,10 +1,10 @@
 """Core analysis: screen, value, quality-check, project and rank the universe as of a date."""
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, timedelta
 from copy import deepcopy
 
-from . import announcements as ann, config, dividends, fundamentals as fnd, health as health_data, prices, risk, storage
+from . import announcements as ann, config, decision, dividends, fundamentals as fnd, health as health_data, prices, risk, storage
 from .quality import assess, warnings_for
 from .returns import net_tbill, project, rank
 from .valuation import (agreeing, cost_of_equity, fair_value, graham_number, models, required_agreement,
@@ -72,7 +72,8 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
         r["estimate_reliable"] = len(vals) >= 2 and not r["dispersed"]
         r["momentum"] = prices.momentum(t, as_of)
         r["volatility"] = prices.volatility(t, as_of)
-        r["dividend_yield"] = dividends.trailing_yield(t, as_of, r["price"], r["dps"])
+        r["dividend_context"] = dividends.yield_context(t, as_of, r["price"], r["dps"])
+        r["dividend_yield"] = r["dividend_context"]["value"]
         interim = fnd.latest_interim(t, pit)
         warns = warnings_for(t, aliases, anns, as_of)
         r["quality"] = assess(periods, r["bank"], interim, warns)
@@ -124,6 +125,13 @@ def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquid
         r["conviction"] = risk.conviction(r, hurdle, issues)
         if issues:
             r["confidence"] = "Low"
+        r["decision"] = decision.explain(r, hurdle)
+        r["company_notes"] = [] if point_in_time else fnd.load().get(t, {}).get("meta", {}).get("gaps", [])
+        r["filings"] = [{"period": last.period, "url": last.source_url, "published": last.published.isoformat()}
+                        for last in ([periods[-1], interim] if interim else [periods[-1]])]
+        r["notices"] = [{"title": a["title"], "url": a["url"], "first_seen": a["first_seen"]}
+                        for a in anns if a.get("ticker") == t and a.get("first_seen", "") <= as_of.isoformat()
+                        and a.get("first_seen") and a.get("date", "") >= (as_of - timedelta(days=180)).isoformat()][:3]
 
     ranked = rank(rows) if rows else []
     for i, t in enumerate(ranked, 1):
