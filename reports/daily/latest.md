@@ -10,7 +10,7 @@
 
 Weekdays only; a delayed session can mean a public holiday or source lag.
 
-Strong-confidence flags require current critical evidence. A rule-based Buy with incomplete evidence still needs verification.
+Strict-rule flags require current critical evidence. A rule-based Buy with incomplete evidence still needs verification.
 
 - TOTL: [results notice awaiting review](https://www.nse.co.ke/wp-content/uploads/TotalEnergies-Marketing-Kenya-PLC-Audited-Financial-Results-for-the-Year-Ended-31-Dec-2025.pdf). The announcement status alone does not establish whether the figures have been reviewed.
 
@@ -30,17 +30,17 @@ Compared with the brief for 2026-11-12.
 
 No rank, tier, threshold, announcement or price changes worth flagging.
 
-## High confidence undervalued
+## Strict checks (separate from Buy)
 
-A stock is flagged **High confidence undervalued** only when all four gates pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.66% hurdle (Return). Risk level is rated separately from seven factors and never changes the valuation or return thresholds. Strong-confidence flags also require current critical live evidence. Agreement of methods is not a probability of profit.
+A stock is marked **Strict checks passed** only when all four stricter checks pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.66% hurdle (Return). Risk level is rated separately from seven factors and never changes the valuation or return thresholds. These flags also require current critical live evidence. Agreement of methods is not a probability of profit.
 
 No stock qualifies on 2026-11-13. The closest candidates and the gates they miss:
 
 | Ticker | Tier | Gates passed | Missing | Risk |
 |---|---|---|---|---|
+| NCBA | Watch | 2 of 4 | Valuation: 1 of 5 models show at least 15% upside, needs 3; Quality: quality gate pass, score 0.55, needs pass and 0.67 | Moderate |
 | IMH | Avoid | 2 of 4 | Valuation: 0 of 5 models show at least 15% upside, needs 3; Return: base return -9.7% against the 12.66% hurdle | High |
 | KEGN | Avoid | 2 of 4 | Valuation: only 2 models apply to this company and the flag needs 3 to agree (sector P/E and P/B need 3 sourced peers); Return: base return -11.4% against the 12.66% hurdle | High |
-| KPLC | Avoid | 2 of 4 | Valuation: models disagree: the high fair value is 5.9x the low, limit 3x; Return: unclear while valuation evidence disagrees; Balance sheet: not assessed; Downside: not assessed | High (incomplete) |
 
 ### Risk profile
 
@@ -48,6 +48,7 @@ Each factor is rated Low, Moderate or High from fixed thresholds in `data/settin
 
 | Ticker | Risk | Volatility | Beta | Liquidity | Downside | Valuation spread | Balance sheet | Events |
 |---|---|---|---|---|---|---|---|---|
+| NCBA | Moderate | Low (24%) | Moderate (0.81) | Moderate (KES 12.9M) | Moderate (-0.1%) | Moderate (1.7x) | Moderate (NPL 10.5%) | Low (none) |
 | IMH | High | Moderate (31%) | Moderate (1.12) | Low (KES 34.2M) | High (-22.8%) | High (2.8x) | Low (NPL 9.0%) | Low (none) |
 | KEGN | High | Moderate (34%) | High (1.30) | Moderate (KES 18.1M) | High (-20.6%) | Moderate (1.7x) | Low (Z'' 2.93) | Low (none) |
 | KPLC | High (incomplete) | High (37%) | High (1.70) | Low (KES 27.5M) | unclear | High (5.9x) | n/a | Low (none) |
@@ -58,7 +59,13 @@ Each factor is rated Low, Moderate or High from fixed thresholds in `data/settin
 
 Buy candidates first, then Watch. Avoid stocks remain in the full research ranking. The score rank is not a buy signal.
 
-- NCBA #16 (Watch): 5.2% upside to base fair value KES 92.53; base return 15.3% a year beats the 12.66% hurdle. Biggest score driver: dividend yield (+0.18). Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3. Moderate risk (beta 0.81; turnover KES 12.9M a day).
+- NCBA (Watch): 5.2% upside to base fair value KES 92.53; base return 15.3% a year beats the 12.66% hurdle. Insufficient valuation cushion. Moderate risk (beta 0.81; turnover KES 12.9M a day).
+- **Verdict: Watch. Insufficient valuation cushion.**
+- **Why:** The middle case is 15.3% a year over 3 years, above the 12.66% return hurdle. Clearing this hurdle alone does not qualify a stock. 1 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.
+- **What would change it:** With every estimate held fixed, the valuation cushion rule passes at KES 80.46 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.
+- **What to verify:** Read the annual filing and any more recent interim results; verify earnings, dividends and share changes. Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy.
+- **Already own it?** These entry rules do not decide whether to sell an existing holding.
+
 
 ### Score breakdown
 
@@ -93,7 +100,7 @@ Each cell is the signal's contribution to the composite (weight x z-score), with
 
 - Composite score = 0.3 z(dividend yield) + 0.1 z(margin of safety) + 0.4 z(momentum) + 0.2 z(quality). Low volatility is logged for research but carries no weight until a reviewed tuning PR changes the weights.
 - **Buy** clears every gate: quality passes, the screen passes, at least half the valuation models that apply (minimum two) agree on a margin of safety of 15% or more, and the base return beats the hurdle. **Watch** passes quality and misses one gate. **Avoid** misses more, or fails quality.
-- **High confidence undervalued** is a stricter Buy: three or more models agree and quality scores 0.67 or more, with current critical live evidence. Agreement of methods is not a probability of profit.
+- **Strict checks passed** is a stricter Buy: three or more models agree and quality scores 0.67 or more, with current critical live evidence. Agreement of methods is not a probability of profit.
 - **Risk** (Low, Moderate or High) rates volatility, beta, liquidity, bear-case return, fair value spread, balance sheet (Altman Z'' or bank NPL) and warning announcements. It is shown beside the tier and never changes it.
 - Returns are annualised over 3 years, net of trading costs and dividend withholding tax.
 - Every stock's score, signals, tier and projections are appended daily to `data/rankings/live/` and never edited, so the retrospective can score these calls later.
@@ -233,8 +240,8 @@ Each cell is the signal's contribution to the composite (weight x z-score), with
 - TOTL: FY2018 is partial: no FY2018 or FY2019 annual results announcement is on nse.co.ke (media API searched for 'total kenya', 'total kenya plc audited' and '2018'). The balance sheet comes from the 31 Dec 2018 comparative column of the HY June 2019 unaudited report (dated 29 Aug 2019). revenue, gross_profit, net_income, eps and operating_cash_flow omitted; net income is not back-derived from the retained-earnings movement because IFRS 9 opening adjustments in 2018 could distort it. FY2018 dps 1.30 derived from 'Dividends declared - 2018' of 818,405 in the HY June 2019 equity statement / 629.542m.
 - TOTL: FY2019 and FY2022 are prior-year comparatives (FY2020 and FY2023 annual reports respectively); the original FY2019 and FY2022 announcements are not on nse.co.ke.
 - TOTL: Most pre-2022 NSE files are scanned images; values were read from rendered page images (FY2016, FY2017, FY2018, FY2019, FY2020, FY2021) and cross-checked by the balance-sheet identity and EPS = profit / 629.542m.
-- Energy (KEGN, KPLC, TOTL): fewer than 3 sourced peers, so no sector P/E or P/B model. These stocks get under 3 valuation models and cannot reach High confidence until more peers are sourced
-- Manufacturing (BAT, CARB, EABL): fewer than 3 sourced peers, so no sector P/E or P/B model. These stocks get under 3 valuation models and cannot reach High confidence until more peers are sourced
-- Telecommunication (SCOM): fewer than 3 sourced peers, so no sector P/E or P/B model. These stocks get under 3 valuation models and cannot reach High confidence until more peers are sourced
+- Energy (KEGN, KPLC, TOTL): fewer than 3 sourced peers, so no sector P/E or P/B model. These stocks get under 3 valuation models and cannot pass the strict checks until more peers are sourced
+- Manufacturing (BAT, CARB, EABL): fewer than 3 sourced peers, so no sector P/E or P/B model. These stocks get under 3 valuation models and cannot pass the strict checks until more peers are sourced
+- Telecommunication (SCOM): fewer than 3 sourced peers, so no sector P/E or P/B model. These stocks get under 3 valuation models and cannot pass the strict checks until more peers are sourced
 
 > **Not financial advice.** This report is generated automatically from public data and fixed rules. It is not financial advice, an offer, or a recommendation to buy or sell any security. Figures can be wrong or stale. Verify everything against company filings and consult a licensed adviser before investing.
