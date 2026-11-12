@@ -197,16 +197,26 @@ companies:
 
 The Pages site opens on a daily decision brief: evidence health, today's conclusion, changes, and Buy/Watch cards.
 Avoid stocks stay in collapsed research views. Each stock opens a detail page with its source filing, gates and risk
-profile. The reconstructed track record, signal evidence and full ranking remain available under expandable sections. Every
+profile. The reconstructed track record and signal evidence live on the Track record page; the full stock table remains
+available under an expandable section. Every
 Markdown report below is also rendered as a page, with dated archives for the daily brief and weekly report.
 The track record starts with the extra historical return over an equal-weight covered-stock basket, the selected-stock
 beat rate, and scenario coverage. The beat rate is stock-level outperformance, not a probability of profit.
 Historical 12-month holding tests, the separate monthly-rotation chart, and actual live outcomes are labelled separately.
 The dedicated Track record page starts with this same plain-language summary and keeps the full technical report collapsed.
-Candidate cards use the available width. Changes, alerts and the reading guide form a separate responsive row rather
-than a tall sidebar. Rates and inflation use a full-width summary with expandable sources and assumptions.
-Stock search is available at the top of every page. Stock reviews follow **Verdict, Why, What would change it,
+Candidate cards summarize the blocker, price, valuation and scenario range without repeating the detailed stock report.
+Quiet updates and rates use compact disclosures; material alerts open automatically. Full source and risk information
+remains available in stock reviews. Feed and GitHub subscription promotions are hidden from the site for now;
+background report generation and the Atom endpoint remain unchanged.
+Stock search is integrated into the header of every page. Stock reviews follow **Verdict, Why, What would change it,
 What to verify next**, with recorded company notices and filing caveats beside the decision.
+The Stocks directory supports company/sector search, shareable verdict filters and a link to the numerical comparison
+table. Coverage counts and entry-check checkpoints link to real filtered views or the exact stock evidence.
+Stock reviews include a valuation map: each model estimate is plotted against the current price and the estimate
+required to clear the cushion. This explains model agreement without adding a forecast or changing the rules.
+The original interface uses familiar company-snapshot and research-navigation patterns from
+[Stock Analysis](https://stockanalysis.com/stocks/aapl/) and [Koyfin](https://www.koyfin.com/features/company-snapshots/);
+no third-party UI code, logos, charts or market data are embedded.
 The conditional price is the valuation-cushion threshold with every model estimate held fixed, not a price target
 or an automatic Buy. Missing or disagreeing valuations do not produce a price trigger. Return drivers explain
 regular dividends after tax, assumed business growth, closing the valuation gap (including the growth interaction),

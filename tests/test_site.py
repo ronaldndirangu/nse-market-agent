@@ -1,4 +1,5 @@
 import json
+import re
 import shutil
 
 import pytest
@@ -74,9 +75,13 @@ def test_dashboard_beginner_layer(tree):
     _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
     site.build()
     index = (tree / "site" / "index.html").read_text(encoding="utf-8")
-    for text in ("No stock meets the Buy rules today", "Watch only: <b>KPLC</b>", "Illustrative KES 10,000 scenario", "KES 21,768",
-                 "after 3 years", "Jargon buster", "Checks, assumptions and sources", "Not financial advice"):
+    for text in ("No stock meets the Buy rules today", "Watch only: <b>KPLC</b>", "Scenarios / year over 3 years",
+                 "Jargon buster", "Review KPLC", "Not financial advice"):
         assert text in index
+    detail = (tree / "site" / "stocks" / "KPLC.html").read_text(encoding="utf-8")
+    assert "Illustrative KES 10,000 scenario" in detail and "KES 21,768" in detail
+    assert "Return drivers and scenarios</summary>" in detail
+    assert "Illustrative KES 10,000 scenario" not in index
     assert "Panel unavailable" not in index and "\u2014" not in index and "\u2013" not in index
     assert site._plain_reason(KPLC["binding"]) == "only 1 of 2 valuation methods shows the required 15% cushion (needs 2)"
 
@@ -141,6 +146,11 @@ def test_track_record_separates_historical_windows_live_results_and_monthly_rota
     site.build()
     for path in ("index.html", "retrospective.html"):
         html = (tree / "site" / path).read_text(encoding="utf-8")
+        if path == "index.html":
+            assert 'href="retrospective.html"' in html
+            assert "Historical simulation and a live record still building." in html
+            assert "Rank IC of the composite" not in html
+            continue
         for text in ("Do the rankings add value?", "+3.9 percentage points", "24.2%", "20.3%", "54.6%",
                      "Selected stocks that beat the basket", "105 overlapping historical holding windows",
                      "Calculated 2026-11-12; outcomes evaluated through 2026-11-11",
@@ -203,10 +213,10 @@ def test_source_details_follow_the_primary_content_instead_of_extending_a_sideba
     }))
     site.build()
     text = (tree / "site" / "index.html").read_text(encoding="utf-8")
-    sidebar = text.split('<aside class="brief-side"', 1)[1].split("</aside>", 1)[0]
-    assert "economic-context" not in sidebar
-    assert text.index('id="economic-context"') > text.index("</aside>")
-    assert "Sources, assumptions and purchasing power</summary>" in text
+    assert '<aside class="brief-side"' not in text
+    assert text.index('id="economic-context"') > text.index('id="candidates"')
+    assert '<details class="fold" id="economic-context"><summary>' in text
+    assert "Purchasing power" in text
     assert "other Buy checks still apply" in text
     assert site.check() > 0
 
@@ -237,6 +247,61 @@ def test_known_risk_is_retained_and_incompleteness_does_not_become_a_verdict_col
     assert "Strict checks passed" in site.tier_badge("Buy", True)
 
 
+def test_directory_and_verdict_shortcuts_open_real_stock_reviews(tree):
+    avoid = dict(KPLC, ticker="SCOM", name="Safaricom", tier="Avoid", rank=1)
+    watch = dict(KPLC, ticker="NCBA", name="NCBA Group", rank=16)
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps({
+        "as_of": "2026-11-13", "price_date": "2026-11-12", "top": [watch],
+        "ranking": [avoid, watch], "counts": {"Buy": 0, "Watch": 1, "Avoid": 1},
+    }))
+    site.build()
+    home = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    directory = (tree / "site" / "stocks.html").read_text(encoding="utf-8")
+    assert 'href="stocks.html?tier=Watch"' in home
+    for text in ('data-share-filters', 'id="stock-list"', 'aria-controls="stock-list"',
+                 'href="stocks/NCBA.html"', 'href="stocks/SCOM.html"', "These are not live quotes"):
+        assert text in directory
+    cards = directory.split('id="stock-list"', 1)[1]
+    assert cards.index(">NCBA<") < cards.index(">SCOM<")
+    assert 'href="index.html#all-stocks" data-table-view' in directory
+    assert site.check() > 0
+
+
+def test_visual_valuation_maps_preserve_the_exact_price_and_cushion_rule():
+    from nse_agent import decision
+    from tests.test_decision import example
+    row = example()
+    row["decision"] = decision.explain(row, 0.1266)
+    rendered = site._valuation_map(row)
+    assert "Current price KES 88.00" in rendered and "Estimate needed KES 101.20" in rendered
+    assert rendered.count('class="value-row"') == 5
+    assert rendered.count('class="value-dot pass"') == 1
+    for index, chunk in enumerate(rendered.split('class="value-row"')[1:]):
+        price, cushion, dot = map(float, re.findall(r'left:([\d.]+)%', chunk)[:3])
+        assert 0 < price < cushion < 100 and 0 < dot < 100
+        assert (dot > cushion) == (index == 0)
+    assert "Neither line is a forecast or a price target" in rendered
+
+
+def test_entry_check_links_reveal_the_matching_stock_evidence(tree):
+    from nse_agent import decision
+    from tests.test_decision import example
+    row = example()
+    stock = dict(KPLC, ticker="NCBA", name="NCBA Group", price=88, decision=decision.explain(row, .1266),
+                 models=len(row["models"]), agree=len(row["agree"]), agree_needed=row["agree_needed"])
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps({
+        "as_of": "2026-11-13", "top": [stock], "ranking": [stock], "counts": {"Watch": 1},
+    }))
+    site.build()
+    home = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    detail = (tree / "site" / "stocks" / "NCBA.html").read_text(encoding="utf-8")
+    assert 'href="stocks/NCBA.html#stock-valuations"' in home
+    assert 'id="stock-checks"' in detail and 'id="stock-valuations"' in detail
+    assert 'id="stock-returns"' in detail and 'id="stock-risk"' in detail and 'id="stock-sources"' in detail
+    assert 'aria-label="Stock review sections"' in detail
+    assert site.check() > 0
+
+
 def test_validator_rejects_broken_links_and_generated_error_panels(tree):
     _write(tree / "reports" / "daily" / "latest.md", "# Brief\n\n[Missing](missing.html)\n")
     site.build()
@@ -259,8 +324,40 @@ def test_watch_is_prominent_and_avoid_stays_in_research(tree):
     assert text.count('<article class="stock') == 1
     assert 'id="all-stocks"' in text and 'href="stocks/KCB.html"' in text
     assert 'href="#candidates">Review candidates' in text
-    assert 'class="decision-layout"' in text and 'class="brief-side"' in text
+    assert 'class="decision-layout"' in text and 'class="candidate-overview"' in text
     assert site.check() > 0
+
+
+def test_subscription_promotions_are_removed_and_alerts_remain_visible(tree):
+    snap = {"as_of": "2026-11-13", "top": [KPLC], "ranking": [KPLC],
+            "counts": {"Buy": 0, "Watch": 1, "Avoid": 0}, "alerts": ["Profit warning: verify the filing."]}
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
+    site.build()
+    text = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    for removed in ("Keep up with the market", "Daily RSS/Atom feed", "GitHub alerts", 'id="subscribe"'):
+        assert removed not in text
+    assert 'id="latest-changes" open' in text and "1 alert to review" in text
+    assert text.index('id="latest-changes"') < text.index('id="candidates"')
+    assert (tree / "site" / "feed.xml").exists()
+    snap["alerts"] = []
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
+    site.build()
+    quiet = (tree / "site" / "index.html").read_text(encoding="utf-8")
+    assert 'id="latest-changes"><summary>' in quiet and "No material changes" in quiet
+    assert site.check() > 0
+
+
+def test_compact_candidate_keeps_risk_gaps_and_uncertainty_visible():
+    row = dict(KPLC, decision={
+        "reason": "Insufficient cushion", "why": ["More agreement needed."],
+        "checks": [{"name": "Valuation cushion", "passed": False}], "cushion_fraction": 0.15,
+    }, agree=1, models=5, agree_needed=3,
+        conviction={"flag": False, "held_back": ["Annual filing overdue", "Suspension status unknown"]})
+    rendered = site._candidate_card(row, 0.1266, 0.27)
+    for evidence in ("High risk", "Annual filing overdue", "1 other gap", "not loss limits",
+                     "coverage: 27%", "1 of 5 methods meet the 15% cushion; 3 required"):
+        assert evidence in rendered
+    assert "<details" not in rendered and 'href="stocks/KPLC.html"' in rendered
 
 
 def test_stock_explorer_links_accessible_controls_to_searchable_rows(tree):

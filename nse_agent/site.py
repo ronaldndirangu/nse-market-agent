@@ -95,7 +95,7 @@ html[data-theme="dark"] {
   --cp-highlight: rgba(253, 142, 161, 0.12);
 }
 *{box-sizing:border-box}html{scroll-padding-top:5rem}
-body{margin:0;background:var(--cp-surface);color:var(--cp-text);
+body{margin:0;background:var(--cp-surface-soft);color:var(--cp-text);
 font:16px/1.55 "Segoe UI",Aptos,Calibri,-apple-system,BlinkMacSystemFont,sans-serif}
 a{color:color-mix(in srgb,var(--cp-link) 90%,var(--cp-text));text-decoration:none}a:hover{text-decoration:underline}
 .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
@@ -106,10 +106,10 @@ button,input{font:inherit}button{cursor:pointer}
 .skip:focus{left:.5rem}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .top{position:sticky;top:0;z-index:5;background:var(--cp-surface);border-bottom:1px solid var(--cp-border)}
-.bar{display:flex;align-items:center;gap:32px;min-height:76px}
+.bar{display:flex;align-items:center;gap:24px;min-height:76px}
 .brand{display:flex;align-items:center;gap:.6rem;color:var(--cp-text);font-weight:700;white-space:nowrap}
 .brand:hover{text-decoration:none}.brand small{display:block;font-weight:500;font-size:.72rem;color:var(--cp-text-muted)}
-.nav{display:flex;flex-wrap:wrap;gap:.25rem;flex:1;padding:.4rem 0;align-items:center;min-width:0}
+.nav{display:flex;gap:.25rem;padding:.4rem 0;align-items:center;min-width:0}
 .nav a,.nav summary{white-space:nowrap;padding:10px 12px;min-height:44px;border-radius:10px;color:var(--cp-text-muted);
 font-weight:550;font-size:.9rem;cursor:pointer}
 .nav a:hover,.nav summary:hover{background:var(--cp-surface-soft);color:var(--cp-text);text-decoration:none}
@@ -118,8 +118,8 @@ font-weight:550;font-size:.9rem;cursor:pointer}
 .nav details{position:relative}.nav details div{position:absolute;right:0;background:var(--cp-surface);
 border:1px solid var(--cp-border);border-radius:10px;min-width:180px;padding:.5rem;z-index:6}
 .nav details div a{display:block}
-main.wrap{padding-top:32px;padding-bottom:48px}
-h1{font-size:clamp(2rem,4vw,2.5rem);line-height:1.14;letter-spacing:-.025em;margin:8px 0 12px}
+main.wrap{padding-top:28px;padding-bottom:48px}
+h1{font-size:clamp(1.7rem,3vw,2.2rem);line-height:1.14;letter-spacing:-.025em;margin:8px 0 12px}
 h2{font-size:1.25rem;line-height:1.3;letter-spacing:-.015em;margin:32px 0 12px}
 h3{font-size:1.02rem;margin:1.4rem 0 .5rem}
 .muted{color:var(--cp-text-muted)}.small{font-size:.85rem}.pos,.neg{color:var(--cp-text);font-weight:600}
@@ -192,11 +192,12 @@ border-radius:5px;font: .88em Consolas,"Courier New",Courier,monospace}
 .prose>p,.prose>ul,.prose>ol{max-width:75ch}
 .toc{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0 1rem}
 .toc a{background:var(--cp-surface-soft);border-radius:10px;padding:.25rem .7rem;font-size:.82rem;color:var(--cp-text)}
-details.fold{border:1px solid var(--cp-border);border-radius:10px;margin:1rem 0;padding:0 1rem;min-width:0}
-details.fold summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:.5rem}
-details.fold summary::-webkit-details-marker{display:none}
-details.fold summary:before{content:"\\25B8";color:var(--cp-text-muted)}details.fold[open] summary:before{content:"\\25BE"}
-details.fold summary h2{margin:.75rem 0;font-size:1.05rem}
+details.fold{border:1px solid var(--cp-border);border-radius:10px;margin:1rem 0;padding:0 1rem;min-width:0;
+background:var(--cp-surface)}
+details.fold>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:.5rem}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold>summary:before{content:"\\25B8";color:var(--cp-text-muted)}details.fold[open]>summary:before{content:"\\25BE"}
+details.fold>summary h2{margin:.75rem 0;font-size:1.05rem}
 details.fold>summary{min-height:56px}
 .heat td.ic{text-align:center;font-weight:650}
 .bars{display:grid;gap:.45rem}.bars .row{display:grid;grid-template-columns:210px 1fr 92px;gap:.6rem;
@@ -219,43 +220,32 @@ color:var(--cp-text)}.links a:hover{border-color:var(--cp-text);text-decoration:
 .plain p{margin:.2rem 0}.plain b{color:var(--cp-text)}
 #verdict .big{font-size:1.15rem;font-weight:650;margin:.2rem 0 .5rem}#verdict ol{margin:.4rem 0 0;padding-left:1.2rem}
 #verdict li{margin:.25rem 0}.facts dt[title]{cursor:help;text-decoration:underline dotted}
-details.more summary{cursor:pointer;color:var(--cp-text);font-size:.88rem;font-weight:600;min-height:44px;
+details.more>summary{cursor:pointer;color:var(--cp-text);font-size:.88rem;font-weight:600;min-height:44px;
 display:flex;align-items:center;gap:8px}
-details.more summary:after{content:"";width:7px;height:7px;flex-shrink:0;margin-left:auto;margin-right:4px;
+details.more>summary:after{content:"";width:7px;height:7px;flex-shrink:0;margin-left:auto;margin-right:4px;
 border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg)}
 details.more[open]>summary:after{transform:rotate(225deg)}
-details.more summary>.icon{display:none}
-details.more[open] summary{margin-bottom:.5rem}details.more>*+*{margin-top:.5rem}
+details.more>summary>.icon{display:none}
+details.more[open]>summary{margin-bottom:.5rem}details.more>*+*{margin-top:.5rem}
 #glossary dl{margin:0 0 1rem}#glossary dt{font-weight:650;margin-top:.6rem}#glossary dd{margin:.1rem 0 0;color:var(--cp-text-muted)}
 [hidden]{display:none!important}.stock p,.stock dd,.gates span{overflow-wrap:anywhere}
 .health-line{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}.health-line p{margin:.2rem 0}
 .icon{width:20px;height:20px;flex-shrink:0;vertical-align:middle}
 .mobile-nav{display:none}
-.brief-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:24px}
+.brief-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:20px}
 .brief-heading .lead{max-width:60ch;margin-bottom:0}
-.brief-heading .eyebrow{margin-bottom:16px}
+.brief-heading .eyebrow{margin-bottom:12px}
 .brief-heading h1{margin-top:0}
 .edition{text-align:right;font-size:.85rem;color:var(--cp-text-muted);padding-top:8px}
 .edition time{display:block;color:var(--cp-text);font-weight:600}
-.overview-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0 0 24px;
-border-top:1px solid var(--cp-border);border-bottom:1px solid var(--cp-border)}
-.overview-stats>div{border-right:1px solid var(--cp-border);padding:20px 24px}
-.overview-stats>div:first-child{padding-left:0}.overview-stats>div:last-child{border-right:0}
-.overview-stats dt{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--cp-text-muted);font-size:.85rem}
-.overview-stats dt .icon{color:var(--cp-text-soft)}
-.overview-stats .metric-buy .icon{color:var(--cp-success)}
-.overview-stats .metric-watch .icon{color:color-mix(in srgb,var(--cp-warning) 65%,var(--cp-text))}
-.overview-stats .metric-confidence .icon{color:var(--cp-link)}
-.overview-stats dd{margin:8px 0 0;font-size:2rem;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
-.overview-stats .metric-note{font-size:.78rem;line-height:1.5;font-weight:400;color:var(--cp-text-muted);margin-top:8px}
-.decision-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:24px;margin:24px 0}
+.decision-layout{margin:20px 0 12px}
 .decision-layout>*{min-width:0;margin:0}
-#verdict{padding:28px;--cp-verdict:var(--cp-text-soft);border-left:4px solid var(--cp-verdict)}
+#verdict{padding:24px;--cp-verdict:var(--cp-text-soft);border-left:3px solid var(--cp-verdict)}
 #verdict[data-verdict=buy]{--cp-verdict:color-mix(in srgb,var(--cp-success) 75%,var(--cp-text))}
 #verdict[data-verdict=no-buy]{--cp-verdict:color-mix(in srgb,var(--cp-danger) 80%,var(--cp-text))}
 #verdict[data-verdict=verify]{--cp-verdict:color-mix(in srgb,var(--cp-warning) 55%,var(--cp-text))}
-#verdict .big{font-size:clamp(1.45rem,2.5vw,2rem);line-height:1.2;letter-spacing:-.025em;margin:16px 0 12px;
-color:var(--cp-verdict)}
+#verdict .big{font-size:clamp(1.35rem,2.5vw,1.8rem);line-height:1.2;letter-spacing:-.025em;margin:12px 0 8px;
+color:var(--cp-text)}
 #verdict .section-label .icon{color:var(--cp-verdict)}
 .verdict-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .decision-status{display:inline-flex;align-items:center;min-height:28px;padding:4px 10px;border-radius:999px;
@@ -263,7 +253,13 @@ border:1px solid color-mix(in srgb,var(--cp-verdict) 40%,var(--cp-border));
 background:color-mix(in srgb,var(--cp-verdict) 10%,var(--cp-surface));color:var(--cp-text);
 font-size:.75rem;font-weight:650}
 .verdict-legend{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
-#verdict .decision-copy{max-width:65ch;color:var(--cp-text-muted);margin:0 0 20px}
+#verdict .decision-copy{max-width:65ch;color:var(--cp-text-muted);margin:0}
+.decision-body{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.decision-body>div{min-width:0}.decision-body .button{flex-shrink:0}
+.benchmark-strip{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin:20px 0 0;padding-top:16px;
+border-top:1px solid var(--cp-border);font-size:.85rem}
+.benchmark-strip span{color:var(--cp-text-muted)}.benchmark-strip b{color:var(--cp-text);margin-left:6px}
+.benchmark-strip a{margin-left:auto;display:inline-flex;align-items:center;min-height:32px}
 .section-label{display:flex;align-items:center;gap:8px;color:var(--cp-text-muted);font-size:.8rem;
 font-weight:650;margin:0}
 .section-label .icon{color:var(--cp-text)}
@@ -274,15 +270,8 @@ font-size:.88rem;font-weight:600;text-decoration:none}
 .button:hover{text-decoration:none;border-color:var(--cp-text);background:var(--cp-surface-soft)}
 .button.primary{background:var(--cp-link);border-color:var(--cp-link);color:var(--cp-surface)}
 .button.primary:hover{background:color-mix(in srgb,var(--cp-link) 90%,var(--cp-text))}
-.benchmark{background:var(--cp-surface-soft)}
-.benchmark h2{font-size:1rem;margin:0 0 20px}
-.benchmark dl{margin:0}.benchmark dl>div{display:flex;align-items:center;justify-content:space-between;
-gap:12px;padding:14px 0;border-bottom:1px solid var(--cp-border)}
-.benchmark dt{color:var(--cp-text-muted);font-size:.85rem}.benchmark dd{margin:0;font-size:1.4rem;font-weight:650}
-.benchmark p{font-size:.8rem;color:var(--cp-text-muted);margin:16px 0 0;max-width:55ch}
-.brief-layout{margin:32px 0}
-.brief-side{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start;margin-top:24px}
-.brief-layout>*{min-width:0}.brief-main>section:first-child h2,.brief-side>section:first-child h2{margin-top:0}
+.brief-layout{margin:28px 0}
+.brief-layout>*{min-width:0}.brief-main>section:first-child h2{margin-top:0}
 .candidate-stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:16px}
 .candidate-stack>.stock:last-child:nth-child(odd){grid-column:1/-1}
 .section-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:16px}
@@ -307,11 +296,10 @@ background:var(--cp-surface-soft);color:var(--cp-text);font-size:.85rem;font-wei
 .risk-list{list-style:none;padding:0;margin:16px 0;display:grid;gap:12px}
 .risk-list li{display:flex;justify-content:space-between;align-items:start;gap:16px;font-size:.85rem}
 .risk-list .risk-explanation{display:block;font-size:.78rem;color:var(--cp-text-muted);margin-top:3px;max-width:60ch}
-.brief-side .card,.brief-side>.fold{margin:0}.brief-side h2{font-size:1.05rem}
-.stock-finder{margin:0 0 20px;position:relative;max-width:640px}
+.stock-finder{margin:0 0 0 auto;position:relative;width:300px;min-width:200px}
 .stock-finder label{display:block;font-weight:600;font-size:.85rem;margin-bottom:6px}
-.stock-finder input{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--cp-border-strong);
-border-radius:10px;background:var(--cp-surface);color:var(--cp-text);font:inherit}
+.stock-finder input{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--cp-border);
+border-radius:10px;background:var(--cp-surface-soft);color:var(--cp-text);font:inherit;font-size:.88rem}
 .stock-matches{position:absolute;top:100%;left:0;right:0;z-index:5;max-height:360px;overflow:auto;
 background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:10px;padding:8px}
 .stock-matches ul{list-style:none;padding:0;margin:0}.stock-matches a{display:block;padding:10px;min-height:44px}
@@ -322,6 +310,71 @@ background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:10p
 .return-drivers{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin:16px 0}
 .return-drivers dt{font-size:.8rem;color:var(--cp-text-muted)}.return-drivers dd{margin:4px 0;font-weight:650}
 .confidence-panel>summary h2{font-size:1rem}
+.candidate-card{gap:16px}
+.candidate-overview{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;align-items:center}
+.candidate-reason{font-size:.9rem}.candidate-reason p{margin:6px 0;max-width:75ch}
+.candidate-card .facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;
+padding-left:24px;border-left:1px solid var(--cp-border)}
+.candidate-card .stock-footer{padding-top:12px;border-top:1px solid var(--cp-border)}
+.candidate-card .stock-footer p{margin:0;max-width:80ch;font-size:.78rem}
+.candidate-card .stock-footer a{flex-shrink:0}
+.next-step-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.next-step-grid>section{min-width:0}.next-step-grid .decision-explanation{max-width:none}
+.stock-review{gap:16px}.stock-review>.review-summary{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+gap:24px;align-items:start}
+.stock-review .review-summary>.facts{grid-template-columns:repeat(2,minmax(0,1fr));
+padding:20px;border-radius:10px;background:var(--cp-surface-soft)}
+.stock-review .review-summary h3{margin-top:0}.review-disclosures{border-top:1px solid var(--cp-border)}
+.review-disclosures>.more{padding:4px 0}.review-disclosures>.more:first-child{border-top:0}
+.review-caution{font-size:.8rem;color:var(--cp-text-muted);margin:0}
+.research-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:16px}
+.research-links a{padding:20px;border:1px solid var(--cp-border);border-radius:12px;background:var(--cp-surface);
+display:block;color:var(--cp-text);min-height:100px}
+.research-links a:hover{border-color:var(--cp-link);text-decoration:none}
+.research-links b{display:block;margin-bottom:8px}.research-links span{font-size:.85rem;color:var(--cp-text-muted)}
+.updates-summary{margin-left:auto;font-size:.8rem;font-weight:400;color:var(--cp-text-muted)}
+.economic-sources{font-size:.88rem;overflow-wrap:anywhere}
+.coverage-summary{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.coverage-summary a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 14px;
+border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface);font-size:.85rem;color:var(--cp-text)}
+.coverage-summary b{font-size:1.05rem;font-variant-numeric:tabular-nums}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--cp-text-soft);display:inline-block;flex-shrink:0}
+.status-dot.buy{background:var(--cp-success)}.status-dot.watch{background:var(--cp-warning)}
+.entry-path{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0}
+.entry-path a{display:flex;align-items:center;gap:8px;min-height:52px;padding:10px 12px;border:1px solid var(--cp-border);
+border-radius:10px;background:var(--cp-surface-soft);color:var(--cp-text);font-size:.8rem}
+.entry-path strong{font-size:.82rem}.entry-path small{display:block;color:var(--cp-text-muted);font-size:.75rem}
+.entry-icon{font-size:1rem;font-weight:700;color:var(--cp-text-soft)}
+.check-pass .entry-icon{color:color-mix(in srgb,var(--cp-success) 70%,var(--cp-text))}
+.check-miss a{border-color:color-mix(in srgb,var(--cp-warning) 50%,var(--cp-border))}
+.check-miss .entry-icon{color:color-mix(in srgb,var(--cp-warning) 50%,var(--cp-text))}
+.section-nav{display:flex;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--cp-border);margin:8px 0 24px}
+.section-nav a{min-height:44px;display:inline-flex;align-items:center;padding:8px 0;font-size:.85rem;color:var(--cp-text-muted)}
+.section-nav a[aria-current=page]{color:var(--cp-link);border-bottom:2px solid var(--cp-link);font-weight:650}
+.directory-heading{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.directory-heading p{max-width:70ch;margin:8px 0;color:var(--cp-text-muted);font-size:.9rem}
+.stock-directory{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(270px,100%),1fr));gap:16px}
+.stock-mini{padding:20px;border:1px solid var(--cp-border);border-radius:14px;background:var(--cp-surface)}
+.stock-mini header{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.stock-mini h2{margin:0;font-size:1.1rem}.stock-mini .nm{margin:4px 0 16px}
+.mini-quote{display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-bottom:16px}
+.mini-quote b{font-size:1.2rem;font-variant-numeric:tabular-nums}
+.stock-mini p{margin:0 0 12px;font-size:.85rem;min-height:2.6em}
+.mini-link{display:flex;justify-content:space-between;align-items:center;min-height:44px;border-top:1px solid var(--cp-border);
+padding-top:12px;font-size:.85rem;font-weight:600}
+.value-map{margin:16px 0}.value-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;margin:12px 0}
+.value-legend i{display:inline-block;width:3px;height:12px;margin-right:6px;vertical-align:middle;background:var(--cp-link)}
+.value-legend i.cushion{background:color-mix(in srgb,var(--cp-warning) 55%,var(--cp-text))}
+.value-row{display:grid;grid-template-columns:160px minmax(0,1fr) 120px;gap:16px;align-items:center;min-height:52px;
+border-top:1px solid var(--cp-border);font-size:.85rem}
+.value-track{position:relative;height:28px;background:var(--cp-surface-soft);border-radius:6px}
+.value-marker{position:absolute;height:100%;width:2px;top:0;background:var(--cp-link)}
+.value-marker.cushion{background:color-mix(in srgb,var(--cp-warning) 55%,var(--cp-text))}
+.value-dot{position:absolute;top:50%;width:10px;height:10px;border-radius:50%;transform:translate(-50%,-50%);
+background:var(--cp-text-muted);border:2px solid var(--cp-surface)}
+.value-dot.pass{background:var(--cp-success)}.value-result{text-align:right;font-variant-numeric:tabular-nums}
+.value-result small{display:block;color:var(--cp-text-muted);font-size:.72rem}
+.value-axis{display:flex;justify-content:space-between;font-size:.72rem;color:var(--cp-text-muted);margin:8px 0}
 .change-list{margin:16px 0 0;display:grid;gap:0}
 .change-list>div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--cp-border)}
 .change-list dt{font-size:.85rem;color:var(--cp-text-muted)}.change-list dd{margin:0;font-size:.85rem;font-weight:600;text-align:right}
@@ -329,14 +382,15 @@ background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:10p
 .quiet-state p{margin:0}.quiet-state .icon{color:var(--cp-text-soft);margin-top:3px}
 .guide-steps{padding-left:20px;margin:16px 0 0;font-size:.85rem;color:var(--cp-text-muted)}
 .guide-steps li{padding-left:4px;margin:12px 0}.guide-steps b{display:block;color:var(--cp-text)}
-.health-panel{margin:0;padding:16px 20px;border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface);
+.health-panel{margin:0;padding:4px 16px;border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface);
 overflow-wrap:anywhere}
 .health-panel .health-line{gap:12px 20px;font-size:.8rem;align-items:center}
 .health-panel .health-line>b{display:inline-flex;align-items:center;gap:8px;font-size:.85rem}
 .health-panel[data-health-state=current]{border-left:3px solid var(--cp-success)}
 .health-panel[data-health-state=current] .health-line .icon{color:var(--cp-success)}
 .health-panel[data-health-state=attention]{border-left:3px solid var(--cp-warning)}
-.health-panel details{font-size:.85rem}.health-panel details>summary{font-size:.8rem}
+.health-panel details{font-size:.85rem}.health-panel details>summary{font-size:.8rem;flex-wrap:wrap}
+.health-summary{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .health-panel [data-update-due]{padding:12px;border-radius:10px;background:var(--cp-surface-soft);
 border-left:3px solid var(--cp-warning);font-size:.85rem}
 .confidence-panel{margin-top:24px;background:var(--cp-surface)}
@@ -345,10 +399,7 @@ border-left:3px solid var(--cp-warning);font-size:.85rem}
 .confidence-panel h2{font-size:1.05rem;margin:0 0 8px}
 .confidence-panel p{max-width:65ch;font-size:.85rem;color:var(--cp-text-muted);margin:0}
 .research-heading{margin-top:40px;margin-bottom:16px}
-.subscribe-panel{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:32px 0;
-background:var(--cp-surface-soft)}
-.subscribe-panel h2{margin:0 0 8px}.subscribe-panel p{max-width:60ch;margin:0;font-size:.85rem;color:var(--cp-text-muted)}
-.subscribe-panel .actions{flex-shrink:0}
+.research-heading h2{margin:8px 0}.research-heading p{margin:8px 0}
 .table-controls{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin:20px 0}
 .stock-search{flex:1;min-width:min(100%,240px);max-width:360px}.stock-search label{display:block;font-size:.85rem;
 font-weight:600;margin-bottom:8px}
@@ -360,9 +411,9 @@ border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface
 .result-count{font-size:.8rem;color:var(--cp-text-muted)}
 .page-note{font-size:.8rem;color:var(--cp-text-muted);max-width:75ch;margin:24px 0}
 .back-link{display:inline-flex;align-items:center;min-height:44px;gap:8px;margin-bottom:12px;font-size:.85rem}
-.muted,.lead,.edition,.page-note,.benchmark p,.benchmark dt,.confidence-panel p,.subscribe-panel p,
+.muted,.lead,.edition,.page-note,.confidence-panel p,
 .section-heading p,.section-label,.count-label,.stock-footer,.risk-explanation,.change-list dt,
-.quiet-state,.guide-steps,.foot,.b-avoid,.b-muted,.c-low,.overview-stats dt,.overview-stats .metric-note,
+.quiet-state,.guide-steps,.foot,.b-avoid,.b-muted,.c-low,
 .result-count,.nm,.facts dt,.rangebar .cap,.why,.links span,.months h3,#glossary dd,.kpi span,
 table.data thead th{color:var(--cp-text-soft)}
 table.data tbody tr:hover .muted{color:var(--cp-text)}
@@ -371,10 +422,10 @@ table.data tbody tr:hover .muted{color:var(--cp-text)}
 padding-top:.5rem}.nav{padding:.4rem 0}.nav details div{position:static}h1{font-size:1.45rem}
 .prose{padding:1rem}.bars .row{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 76px}}
 @media(max-width:380px){.pricebox{flex-wrap:wrap}.stock header{flex-direction:column}.badges{justify-content:flex-start}}
-@media(max-width:960px){.decision-layout{grid-template-columns:minmax(0,1fr)}
-.benchmark dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.benchmark p{max-width:75ch}
-.brief-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.brief-side>.card{margin:0}
-.subscribe-panel{align-items:flex-start;flex-direction:column}}
+@media(max-width:960px){
+.candidate-overview,.stock-review>.review-summary{grid-template-columns:minmax(0,1fr)}
+.candidate-card .facts{padding:16px 0 0;border-left:0;border-top:1px solid var(--cp-border)}
+}
 @media(max-width:820px){.wrap{padding:0 16px}.bar{flex-direction:row;align-items:center;justify-content:space-between;
 min-height:68px;padding-top:0;gap:12px}.nav{display:none}.mobile-nav{display:block}
 .mobile-nav>summary{display:flex;align-items:center;gap:8px;cursor:pointer;min-height:44px;padding:8px 12px;
@@ -384,18 +435,27 @@ border-bottom:1px solid var(--cp-border);display:grid;gap:4px;max-height:70vh;ov
 .mobile-nav nav a{padding:10px 12px;min-height:44px;border-radius:10px;color:var(--cp-text)}
 .mobile-nav nav a[aria-current=page]{background:var(--cp-surface-soft);color:var(--cp-text);font-weight:650}
 .brand{font-size:.85rem}.brand small{font-size:.67rem}
-main.wrap{padding-top:24px}.brief-heading{gap:12px}.brief-heading h1{font-size:2rem}.edition{display:none}
-.overview-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-.overview-stats>div,.overview-stats>div:first-child{padding:16px}.overview-stats>div:nth-child(2n){border-right:0}
-.overview-stats>div:nth-child(-n+2){border-bottom:1px solid var(--cp-border)}.overview-stats dd{font-size:1.75rem}
+main.wrap{padding-top:20px}.brief-heading{gap:12px}.brief-heading h1{font-size:1.7rem}.edition{display:none}
 .decision-layout{gap:16px;margin:20px 0}.card,#verdict{padding:20px}.brief-layout{margin:24px 0}
 .stock .facts{grid-template-columns:repeat(2,minmax(0,1fr))}.stock{padding:20px;gap:16px}
-.brief-side{grid-template-columns:minmax(0,1fr)}.health-panel{padding:12px 16px}
+.health-panel{padding:4px 12px}.decision-body{align-items:flex-start;flex-direction:column;gap:16px}
+.verdict-header .section-label{display:none}#verdict .big{font-size:1.25rem}
+.next-step-grid{grid-template-columns:minmax(0,1fr);gap:16px}
+.entry-path{grid-template-columns:repeat(2,minmax(0,1fr))}
+.directory-heading{display:block}.section-nav{gap:16px}
+.value-row{grid-template-columns:minmax(0,1fr) 100px;gap:8px;padding:12px 0}
+.value-row>.value-name{grid-column:1/-1}.value-track{height:24px}
+.benchmark-strip{gap:8px 20px}.benchmark-strip a{margin-left:0}
 .section-heading{align-items:flex-start}.health-panel .health-line{gap:8px 16px}
+.section-heading h2{font-size:1.1rem}
 .stock .plain{background:var(--cp-surface-soft)}.stock-footer{flex-wrap:wrap}}
 @media(max-width:380px){.stock-identity{gap:8px}.company-mark{width:36px;height:36px}
-.benchmark dl{grid-template-columns:minmax(0,1fr);gap:0}.overview-stats dt{font-size:.78rem}
-.overview-stats dt .icon{width:16px;height:16px}.actions .button{width:100%}}
+.actions .button{width:100%}}
+@media(min-width:821px) and (max-width:1100px){.bar{gap:16px}.nav a,.nav summary{padding:10px 8px}
+.stock-finder{width:240px}}
+@media(max-width:820px){.bar{flex-wrap:wrap;padding-top:12px;padding-bottom:12px;gap:12px}
+.stock-finder{order:3;flex:1 0 100%;width:100%;margin:0}.mobile-nav{margin-left:auto}
+html{scroll-padding-top:140px}.stock-matches{max-height:50vh}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 """
 
@@ -453,23 +513,36 @@ document.querySelectorAll('table.sortable').forEach(function(t){
 });
 document.querySelectorAll('[data-stock-explorer]').forEach(function(section){
   var input=section.querySelector('input[type=search]'),buttons=section.querySelectorAll('[data-tier-filter]');
-  var rows=section.querySelectorAll('tbody tr[data-tier]'),tier='all';
+  var rows=section.querySelectorAll('[data-tier][data-search]'),params=new URLSearchParams(location.search);
+  var requested=params.get('tier'),tier=['Buy','Watch','Avoid'].includes(requested)?requested:'all';
+  input.value=params.get('q')||'';
   function filter(){
     var query=input.value.trim().toLowerCase(),visible=0;
     rows.forEach(function(row){var match=(tier==='all'||row.dataset.tier===tier)&&row.dataset.search.includes(query);
       row.hidden=!match;if(match)visible++;});
     section.querySelector('[data-result-count]').textContent=visible+' of '+rows.length+' stocks shown';
     section.querySelector('[data-no-results]').hidden=visible!==0;
+    buttons.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.tierFilter===tier));});
+    if(section.hasAttribute('data-share-filters')){
+      var url=new URL(location.href);
+      if(tier==='all')url.searchParams.delete('tier');else url.searchParams.set('tier',tier);
+      if(query)url.searchParams.set('q',input.value.trim());else url.searchParams.delete('q');
+      history.replaceState(null,'',url);
+      document.querySelectorAll('[data-table-view]').forEach(function(a){
+        var target=new URL(a.href);target.search=url.search;a.href=target.href;
+      });
+    }
   }
   input.addEventListener('input',filter);
   buttons.forEach(function(button){button.addEventListener('click',function(){
     tier=button.dataset.tierFilter;
-    buttons.forEach(function(b){b.setAttribute('aria-pressed',String(b===button));});filter();
+    filter();
   });});
   filter();section.querySelector('.table-controls').hidden=false;
 });
 document.querySelectorAll('[data-stock-finder]').forEach(function(section){
   var input=section.querySelector('input'),panel=section.querySelector('.stock-matches');
+  input.disabled=false;
   var rows=section.querySelectorAll('[data-find-stock]'),status=section.querySelector('[data-find-status]');
   function filter(){
     var query=input.value.trim().toLowerCase(),count=0;
@@ -834,9 +907,11 @@ def _decision_next(it: dict) -> str:
                       for p in it.get("notices", []))
     notes = it.get("company_notes") or []
     material = [n for n in notes if re.search(r"\btender|rights issue|proposed|takeover|delist|suspension\b", n, re.I)]
-    return ('<div class="decision-explanation"><h3>What would change it?</h3>'
+    return ('<div class="next-step-grid"><section class="decision-explanation"><h3>What would change it?</h3>'
             + "".join(f'<p>{E(text)}</p>' for text in d["changes"])
-            + '<h3>What to verify next</h3><ul>' + "".join(f'<li>{E(text)}</li>' for text in d["verify"])
+            + f'<p class="small muted"><b>Already own it?</b> {E(d["holder_note"])}</p></section>'
+            + '<section class="decision-explanation" id="stock-sources"><h3>What to verify next</h3><ul>'
+            + "".join(f'<li>{E(text)}</li>' for text in d["verify"])
             + filing + "</ul>"
             + ('<p><b>Recorded company caveats:</b> verify these before relying on the model.</p><ul>'
                + "".join(f"<li>{E(n)}</li>" for n in material[:2]) + "</ul>" if material else "")
@@ -844,7 +919,7 @@ def _decision_next(it: dict) -> str:
                + notices + "".join(f"<li>{E(n)}</li>" for n in notes)
                + '</ul><p class="small muted">These notes are context, not a complete corporate-event feed.</p></details>'
                if notes or notices else "")
-            + f'<p class="small muted"><b>Already own it?</b> {E(d["holder_note"])}</p></div>')
+            + '</section></div>')
 
 
 def _return_explanation(it: dict) -> str:
@@ -863,8 +938,105 @@ def _return_explanation(it: dict) -> str:
               'The separate dividend-yield figure may use a different trailing window and is before tax.</p>')
 
 
+def _entry_path(it: dict, detail: bool = False) -> str:
+    checks = (it.get("decision") or {}).get("checks") or []
+    if not checks:
+        return ""
+    destinations = {"Trading and data screen": ("Trading", "stock-checks"),
+                    "Business health": ("Health", "stock-checks"),
+                    "Valuation cushion": ("Value", "stock-valuations"),
+                    "Return hurdle": ("Return", "stock-returns")}
+    prefix = "" if detail else f'stocks/{E(it["ticker"])}.html'
+    parts = []
+    for check in checks:
+        label, target = destinations[check["name"]]
+        if target == "stock-valuations" and not (it.get("decision") or {}).get("models"):
+            target = "stock-checks"
+        state = "pass" if check["passed"] else "unknown" if check["passed"] is None else "miss"
+        word, icon = {"pass": ("Passes", "&#10003;"), "unknown": ("Unassessed", "?"),
+                      "miss": ("Falls short", "&#215;")}[state]
+        parts.append(f'<li class="check-{state}"><a href="{prefix}#{target}" '
+                     f'aria-label="{E(check["name"])}: {word}. Read the evidence.">'
+                     f'<span class="entry-icon" aria-hidden="true">{icon}</span>'
+                     f'<span><strong>{label}</strong><small>{word}</small></span></a></li>')
+    return '<ol class="entry-path" aria-label="Entry checks, separate from strict checks">' + "".join(parts) + "</ol>"
+
+
+def _valuation_map(it: dict) -> str:
+    d = it.get("decision") or {}
+    models, price = d.get("models") or [], it.get("price")
+    if not models or not price:
+        return ""
+    threshold = price * (1 + d["cushion_fraction"])
+    values = [price, threshold] + [m["value"] for m in models]
+    lo, hi = min(values) * 0.9, max(values) * 1.1
+
+    def position(value: float) -> str:
+        return f"{100 * (value - lo) / (hi - lo):.2f}%"
+
+    rows = "".join(
+        f'<div class="value-row"><span class="value-name">{E(m["name"])}</span>'
+        f'<div class="value-track" aria-hidden="true">'
+        f'<i class="value-marker" style="left:{position(price)}"></i>'
+        f'<i class="value-marker cushion" style="left:{position(threshold)}"></i>'
+        f'<i class="value-dot{" pass" if m["passes"] else ""}" style="left:{position(m["value"])}"></i></div>'
+        f'<span class="value-result"><b>{kes(m["value"])}</b>'
+        f'<small>{"Passes" if m["passes"] else "Below"} required cushion</small></span></div>' for m in models)
+    return ('<section class="value-map" id="stock-valuations"><h3>Price versus the valuation methods</h3>'
+            f'<p class="small">{E(d["agreement"])}</p>'
+            f'<div class="value-legend"><span><i></i>Current price {kes(price)}</span>'
+            f'<span><i class="cushion"></i>Estimate needed {kes(threshold)}</span></div>'
+            + rows + f'<div class="value-axis"><span>Scale starts at {kes(lo)}</span><span>{kes(hi)}</span></div>'
+            '<p class="small muted">Each dot is a model estimate. The amber line is the estimate needed to clear '
+            'the cushion at today\'s price. Neither line is a forecast or a price target.</p></section>')
+
+
+def _candidate_card(it: dict, hurdle: float | None, cal: float | None) -> str:
+    d, conv = it.get("decision") or {}, it.get("conviction") or {}
+    reliable = estimate_reliable(it)
+    reason = d.get("reason") or _plain_reason(consumer_binding(it)) or "Entry rules pass"
+    checks = {c["name"]: c for c in d.get("checks", [])}
+    cushion = checks.get("Valuation cushion")
+    explanation = (f'{it["agree"]} of {it["models"]} methods meet the {pct(d["cushion_fraction"], 0)} cushion; '
+                   f'{it["agree_needed"]} required.'
+                   if reliable and cushion and not cushion["passed"] else
+                   " ".join(d.get("why", [])[:1]) or _plain_reason(consumer_binding(it)))
+    years = (it.get("projection") or {}).get("years", config.settings()["valuation"]["horizon_years"])
+    comparison = ""
+    if reliable and it.get("base") is not None and hurdle is not None:
+        comparison = (f'Middle case {pct(it["base"])} / year over {years} years; '
+                      f'{"clears" if it["base"] > hurdle else "does not clear"} the {pct(hurdle, 2)} return hurdle.')
+    fair = kes(it.get("fair_base")) if reliable else "Unclear"
+    scenarios = (f'{pct(it["bear"])} to {pct(it["bull"])}'
+                 if reliable and None not in (it.get("bear"), it.get("bull")) else "Unclear")
+    caution = (f'Scenarios are not loss limits. Historical one-year range coverage: {pct(cal, 0)}.'
+               if reliable and cal is not None else "Scenarios are not forecasts or loss limits.")
+    if not reliable:
+        caution = "Valuation evidence is insufficient or disagrees; no point return estimate is shown."
+    missing = conv.get("held_back") or []
+    evidence = (f'<p class="small"><b>Verification needed:</b> {E(missing[0])}'
+                + (f' and {len(missing) - 1} other {"gap" if len(missing) == 2 else "gaps"}.'
+                   if len(missing) > 1 else ".") + "</p>") if missing else ""
+    return ('<article class="stock candidate-card"><header><div class="stock-identity">'
+            f'<span class="company-mark" aria-hidden="true">{E(it["ticker"][:2])}</span>'
+            f'<div><a class="tk" href="stocks/{E(it["ticker"])}.html">{E(it["ticker"])}</a>'
+            f'<span class="nm">{E(it["name"])} &middot; {E(it["sector"])}</span></div></div>'
+            f'<div class="badges">{tier_badge(it["tier"], bool(conv.get("flag")))}'
+            f'{risk_badge((it.get("risk") or {}).get("label") or (it.get("risk") or {}).get("level"))}</div></header>'
+            f'<div class="candidate-overview"><div class="candidate-reason"><b>{E(reason)}</b>'
+            f'<p>{E(explanation)}</p>' + (f'<p class="small muted">{E(comparison)}</p>' if comparison else "")
+            + evidence + '</div><dl class="facts">'
+            f'<div><dt>Closing price</dt><dd>{kes(it.get("price"))}</dd></div>'
+            f'<div><dt>Middle valuation</dt><dd>{fair}</dd></div>'
+            f'<div style="grid-column:1/-1"><dt>Scenarios / year over {years} years</dt><dd>{scenarios}</dd></div>'
+            f'</dl></div>{_entry_path(it)}<footer class="stock-footer"><p>{E(caution)}</p>'
+            f'<a href="stocks/{E(it["ticker"])}.html">Review {E(it["ticker"])} {_icon("arrow")}</a></footer></article>')
+
+
 def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool = False,
                 tbill: float | None = None, cal: float | None = None, detail: bool = False) -> str:
+    if not detail:
+        return _candidate_card(it, hurdle, cal)
     conv, rk = it.get("conviction") or {}, it.get("risk") or {}
     flagged = bool(conv.get("flag"))
     dispersed = not estimate_reliable(it)
@@ -915,16 +1087,9 @@ def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool =
     entry_html = ('<h3>Entry checks</h3><ul class="gates">' + "".join(
         f'<li><b>{E(c["name"])}: {"passes" if c["passed"] else "not assessed" if c["passed"] is None else "fails"}.</b> '
         f'{E(c["detail"])}</li>' for c in checks) + "</ul>") if checks else ""
-    model_rows = (it.get("decision") or {}).get("models") or []
-    models_html = ('<h3>Valuation methods at this price</h3><div class="table-wrap"><table class="data">'
-                   '<thead><tr><th>Method</th><th>Estimate</th><th>Required cushion</th></tr></thead><tbody>'
-                   + "".join(f'<tr><td>{E(m["name"])}</td><td>{kes(m["value"])}</td>'
-                             f'<td>{"Passes" if m["passes"] else "Falls short"}</td></tr>' for m in model_rows)
-                   + "</tbody></table></div>") if model_rows else ""
-    footer = (f'<footer class="stock-footer"><span>Estimates, not guaranteed returns</span>'
-              f'<a href="stocks/{E(it["ticker"])}.html">Full stock review {_icon("arrow")}</a></footer>'
-              if not detail else "")
-    return (f'<article class="stock{" flagged" if flagged else ""}"><header><div class="stock-identity">'
+    models_html = _valuation_map(it)
+    return (f'<article class="stock stock-review{" flagged" if flagged else ""}" id="stock-overview">'
+            '<header><div class="stock-identity">'
             f'<span class="company-mark" aria-hidden="true">{E(it["ticker"][:2])}</span>'
             f'<div><span class="tk">{ticker}</span>'
             f'<span class="nm">{E(it["name"])} &middot; {E(it["sector"])}'
@@ -932,21 +1097,25 @@ def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool =
             f'{risk_badge(rk.get("label") or rk.get("level"))}</div>'
             f'</header><div class="pricebox"><div><div class="price">{kes(it.get("price"))}</div>'
             f'<div class="small muted">close {E(str(it.get("price_date") or ""))}</div></div>{_spark(it["ticker"])}'
-            f'</div>{explanation}{evidence}{dl(facts)}'
-            + (f'<p class="small muted">{E(_cal_text(cal))}</p>' if not dispersed else "")
+            f'</div>{_entry_path(it, detail=True)}'
+            f'<div class="review-summary"><div>{explanation}{evidence}</div>{dl(facts)}</div>'
+            + (f'<p class="review-caution">{E(_cal_text(cal))}</p>' if not dispersed else "")
             + (_decision_next(it) if detail else "")
-            + '<details class="more"><summary>Checks, assumptions and sources</summary>'
-            + ("" if detail else _decision_next(it))
-            + _return_explanation(it) + entry_html + models_html
+            + '<div class="review-disclosures"><details class="more" id="stock-checks">'
+              '<summary>Entry checks and valuation methods</summary>'
+            + entry_html + models_html + gate_html + '</details>'
+            + '<details class="more" id="stock-returns"><summary>Return drivers and scenarios</summary>'
+            + _return_explanation(it)
+            + ('<p class="small">Return scenarios are withheld while valuation evidence is unreliable.</p>' if dispersed else "")
             + f'<p class="small"><b>Dividend yield:</b> {pct(it.get("dividend_yield"))}. '
               f'{E(div_context.get("basis", "Historical dividends or annual DPS fallback, before tax"))}. '
               f'{E(div_context.get("note", ""))}</p>'
             + ("" if dispersed else _range_bar(it.get("bear"), it.get("base"), it.get("bull"), hurdle))
-            + (f'<ul class="risk-list">{factors}</ul>' if factors else "")
-            + gate_html
             + _scenario(it, tbill, cal)
+            + '</details><details class="more" id="stock-risk"><summary>Risk assessment</summary>'
+            + (f'<ul class="risk-list">{factors}</ul>' if factors else "")
             + (f'<p class="small muted">{E(rk["summary"])}</p>' if rk.get("summary") else "")
-            + f"</details>{footer}</article>")
+            + "</details></div></article>")
 
 
 def _hero(s: dict) -> str:
@@ -959,11 +1128,20 @@ def _hero(s: dict) -> str:
     day = datetime.fromisoformat(s["as_of"]).strftime("%A, %d %B %Y")
     updated = (datetime.fromisoformat(s["generated"]).astimezone(EAT).strftime("%H:%M EAT")
                if s.get("generated") else None)
-    return (f'<section class="brief-heading"><div><p class="eyebrow">Nairobi Securities Exchange</p>'
-            f'<h1>Your daily NSE brief</h1><p class="lead">Value, risk and what deserves your attention.</p></div>'
+    return (f'<section class="brief-heading"><div><h1>Your NSE research desk</h1>'
+            f'<p class="lead">{s.get("valued", 0)} stocks checked. {when}</p></div>'
             f'<div class="edition"><time datetime="{E(s["as_of"])}">{E(day)}</time>'
             + (f'Updated {E(updated)}' if updated else "Daily closing assessment") + '</div></section>'
-            + f'<p class="small muted">{s.get("valued", 0)} stocks checked. {when}</p>{stale}')
+            + stale + _coverage_summary(s))
+
+
+def _coverage_summary(s: dict) -> str:
+    counts = s.get("counts") or {}
+    return ('<nav class="coverage-summary" aria-label="Covered stocks by entry verdict">'
+            + "".join(f'<a href="stocks.html?tier={tier}"><span class="status-dot {tier.lower()}" aria-hidden="true"></span>'
+                      f'<b>{counts.get(tier, 0)}</b> {label}</a>'
+                      for tier, label in (("Buy", "Buy rules met"), ("Watch", "Watch"), ("Avoid", "Not qualifying")))
+            + "</nav>")
 
 
 def _economic_context(s: dict) -> str:
@@ -975,15 +1153,16 @@ def _economic_context(s: dict) -> str:
     metrics = [(pct(s["tbill_net"], 2), "T-bill per year, after tax"),
                (pct(s.get("hurdle"), 2), "Minimum projected return for a Buy"),
                (pct(inflation["value"]), "Observed inflation, year-on-year")]
-    return ('<section class="card prose" id="economic-context"><h2>Rates and inflation</h2>'
+    return ('<details class="fold" id="economic-context"><summary><h2>Rates and inflation</h2>'
+            f'<span class="updates-summary">Observed CPI {pct(inflation["value"])}</span></summary>'
             f'<p class="small muted">CBK results: {E(str(bill.get("as_of") or "date unknown"))}. '
             f'KNBS CPI period: {E(str(inflation.get("period") or "unknown"))}.</p>'
             '<div class="kpis">' + "".join(f'<div class="kpi"><b>{value}</b><span>{E(label)}</span></div>'
                                          for value, label in metrics) + '</div>'
-            '<p class="small">The hurdle uses CBK rates; other Buy checks still apply. '
+            '<p class="small muted">The hurdle uses CBK rates; other Buy checks still apply. '
             'Inflation describes the past year, not a forecast.</p>'
-            '<details class="more"><summary>Sources, assumptions and purchasing power</summary>'
-            + _md("\n".join(official.markdown(m, s["tbill_net"])[2:])) + "</details></section>")
+            '<div class="economic-sources">' + _md("\n".join(official.markdown(m, s["tbill_net"])[2:]))
+            + "</div></details>")
 
 
 def _health_panel(s: dict) -> str:
@@ -1013,15 +1192,14 @@ def _health_panel(s: dict) -> str:
         if fetch.get("errors"):
             attempts += "<ul>" + "".join(f"<li>{E(error)}</li>" for error in fetch["errors"]) + "</ul>"
     return (f'<section class="health-panel" id="data-health" '
-            f'data-health-state="{"current" if h["critical_ok"] else "attention"}"><div class="health-line">'
-            f'<b>{_icon("check" if h["critical_ok"] else "clock")}Evidence freshness: {E(h["status"])}</b>'
-            f'<span>Current closing prices {p["current"]}/{p["total"]}</span>'
-            f'<span>Source: {E(str(p.get("source") or "unknown"))}</span>'
-            f'<span>Expected session: {E(h["expected_session"])}</span></div>'
+            f'data-health-state="{"current" if h["critical_ok"] else "attention"}">'
             f'<p hidden data-update-due="{E(h["next_update_due"])}" role="status"><b>Update overdue.</b> '
             f'This report has passed its next expected update time. Recheck freshness before acting.</p>'
-            f'<details class="more"><summary>Check sources and freshness</summary>'
+            f'<details class="more"><summary><span class="health-summary">'
+            f'<b>{_icon("check" if h["critical_ok"] else "clock")}Freshness: {E(h["status"])}</b>'
+            f'<span>{p["current"]}/{p["total"]} prices current</span></span></summary>'
             '<p>Freshness checks confirm timing and coverage, not the accuracy of the figures or valuation.</p>'
+            f'<p>Expected session: {E(h["expected_session"])}. Price source: {E(str(p.get("source") or "unknown"))}.</p>'
             f'<p>Announcements: {E(a["status"])}. Last successful check: {E(str(a["last_success"] or "unknown"))}. '
             f'Macro rates: {E(m["status"])}. Curated assumptions: {E(str(m["as_of"] or "unknown"))}; '
             f'T-bill results: {E(str(m.get("tbill_as_of") or "unknown"))}.</p>'
@@ -1070,23 +1248,20 @@ def _verdict(s: dict) -> str:
     tb, hurdle = s.get("tbill_net"), s.get("hurdle")
     candidates = {i.get("ticker") for i in items if i.get("tier") in ("Buy", "Watch") and i.get("ticker")}
     action = ('<a class="button primary" href="#candidates">Review candidates ' + _icon("arrow") + '</a>'
-              if candidates else '<a class="button primary" href="#all-stocks">Explore covered stocks '
+              if candidates else '<a class="button primary" href="stocks.html">Explore covered stocks '
               + _icon("arrow") + '</a>')
-    money = ('<aside class="card benchmark" aria-label="Return comparison"><h2>The benchmark to beat</h2><dl>'
-             f'<div><dt>364-day T-bill, net</dt><dd>{pct(tb)}</dd></div>'
-             f'<div><dt>Buy hurdle, per year</dt><dd>{pct(hurdle, 2)}</dd></div></dl>'
-             '<p>The middle-case stock return must exceed the T-bill rate plus a premium for stock market risk. '
-             'Rates and scenarios can change.</p></aside>') if None not in (tb, hurdle) else (
-                 '<aside class="card benchmark"><h2>Return comparison unavailable</h2>'
-                 '<p>Check source data before relying on a projected return.</p></aside>')
+    money = ('<div class="benchmark-strip" aria-label="Return comparison">'
+             f'<span>T-bill after tax <b>{pct(tb, 2)}</b></span>'
+             f'<span>Return hurdle <b>{pct(hurdle, 2)}</b> / year</span>'
+             f'<a href="{"#economic-context" if s.get("macro") else "#glossary"}">Rates and assumptions</a></div>'
+             ) if None not in (tb, hurdle) else (
+                 '<p class="small muted">Return comparison unavailable. Verify inputs before relying on projections.</p>')
     return (f'<div class="decision-layout"><section class="card" id="verdict" data-verdict="{state}">'
-            f'<div class="verdict-header"><h2 class="section-label">{_icon(icon)}Today in one sentence</h2>'
+            f'<div class="verdict-header"><h2 class="section-label">{_icon(icon)}Today\'s assessment</h2>'
             f'<span class="decision-status">{status}</span></div><p class="big">{head}</p>'
-            + (f'<p class="decision-copy">{sub}</p>' if sub else
+            + '<div class="decision-body"><div>' + (f'<p class="decision-copy">{sub}</p>' if sub else
                '<p class="decision-copy">The screen is selective. Review the evidence before making an investment decision.</p>')
-            + f'<div class="actions">{action}<a class="button" href="#glossary">Understand the ratings</a></div>'
-            + '</section>' + money + '</div><p class="page-note"><b>Not financial advice.</b> '
-              'Fixed rules and public data. Verify filings before investing.</p>')
+            + f'</div>{action}</div>{money}</section></div>')
 
 
 def _glossary(s: dict, retro: dict | None = None) -> str:
@@ -1133,7 +1308,8 @@ def _glossary(s: dict, retro: dict | None = None) -> str:
                         + (f", and so far it is {pct(cal, 0)}, so the ranges are too narrow." if cal is not None and
                            cal < 0.6 else f"; so far it is {pct(cal, 0)}." if cal is not None else ".")),
     ]
-    return ('<details class="fold" id="glossary"><summary><h2>Jargon buster</h2></summary><dl>'
+    return ('<details class="fold" id="glossary"><summary><h2>Reading guide &amp; terms</h2></summary>'
+            + _reading_guide() + '<h3>Jargon buster</h3><dl>'
             + "".join(f"<dt>{E(k)}</dt><dd>{E(d)}</dd>" for k, d in terms) + "</dl></details>")
 
 
@@ -1175,12 +1351,15 @@ def _alerts_changes(s: dict) -> str:
         f'<li><b>{E(c["ticker"])}:</b> {E(c["before"])} to {E(c["after"])}. '
         f'Current reason: {E(c["reason"])}.</li>' for c in ch.get("verdict_details", [])) + "</ul>"
         if ch.get("verdict_details") else "")
-    return (f'<section class="card"><h2>What changed</h2><p class="small muted">Changes {since}.</p>'
-            f'{change_list}{more}</section><section class="card"><h2>Alerts</h2>{al}</section>')
+    status = (f"{len(alerts)} {'alert' if len(alerts) == 1 else 'alerts'} to review"
+              if alerts else "Changes recorded" if changed else "No material changes")
+    return (f'<details class="fold updates-panel" id="latest-changes"{" open" if alerts else ""}>'
+            f'<summary><h2>Latest changes</h2><span class="updates-summary">{status}</span></summary>'
+            f'<p class="small muted">Changes {since}.</p>{change_list}{al if alerts else ""}{more}</details>')
 
 
 def _reading_guide() -> str:
-    return ('<details class="fold"><summary><h2>A one-minute reading guide</h2></summary><ol class="guide-steps">'
+    return ('<div class="reading-guide"><h3>A one-minute reading guide</h3><ol class="guide-steps">'
             '<li><b>Check the evidence.</b> Confirm prices and sources are current.</li>'
             '<li><b>Read the conclusion.</b> Buy passes the entry rules. Watch still misses a check.</li>'
             '<li><b>Open a stock review.</b> Understand its risks and verify the source filing.</li></ol>'
@@ -1190,8 +1369,7 @@ def _reading_guide() -> str:
             '<span class="badge" style="color:var(--cp-danger)">Red: No qualifying Buy</span>'
             '<span class="badge b-muted">Gray: Unverified data</span></div>'
             '<p class="small muted">Green is not a guarantee of profit. Red and Avoid are not automatic '
-            'instructions to sell existing holdings.</p><a class="back-link" href="#glossary">Jargon buster '
-            + _icon("arrow") + '</a></details>')
+            'instructions to sell existing holdings.</p></div>')
 
 
 def _top(s: dict, cal: float | None = None) -> str:
@@ -1201,10 +1379,56 @@ def _top(s: dict, cal: float | None = None) -> str:
                 '<h2>No entry candidates today</h2><p>No Buy or Watch cards are available in this brief. '
                 'Explore the full ranking for the recorded assessments.</p></div></div></section>')
     return (f'<section id="candidates"><div class="section-heading"><div><h2>Candidates for review</h2>'
-            f'<p>{len(top)} to review. Buy candidates first, then Watch.</p></div>'
-            f'<a class="button" href="#all-stocks">All stocks {_icon("arrow")}</a></div><div class="candidate-stack">'
+            f'<p>{len(top)} to review.</p></div>'
+            f'<a class="button" href="stocks.html">All stocks {_icon("arrow")}</a></div><div class="candidate-stack">'
             + "".join(_stock_card(i, s.get("hurdle"), why=True, tbill=s.get("tbill_net"), cal=cal) for i in top)
             + "</div></section>")
+
+
+def _tier_buttons(target: str, counts: dict | None = None) -> str:
+    return "".join(
+        f'<button type="button" data-tier-filter="{tier}" aria-pressed="{"true" if tier == "all" else "false"}" '
+        f'aria-controls="{target}">{label}'
+        + (f' {sum(counts.values()) if tier == "all" else counts.get(tier, 0)}' if counts is not None else "")
+        + '</button>' for tier, label in (("all", "All"), ("Buy", "Buy"), ("Watch", "Watch"), ("Avoid", "Avoid")))
+
+
+def _directory(s: dict) -> str:
+    from .decision import display_order
+    rows = sorted([r for r in (s.get("ranking") or s.get("top") or []) if isinstance(r, dict)], key=display_order)
+    cards = []
+    counts = {tier: sum(r["tier"] == tier for r in rows) for tier in ("Buy", "Watch", "Avoid")}
+    for r in rows:
+        ticker = E(r["ticker"])
+        reason = (r.get("decision") or {}).get("reason") or _plain_reason(consumer_binding(r))
+        risk = r.get("risk") or {}
+        cards.append(f'<article class="stock-mini" data-tier="{E(r["tier"])}" '
+                     f'data-search="{E((r["ticker"] + " " + r["name"] + " " + r["sector"]).lower())}">'
+                     f'<header><h2><a href="stocks/{ticker}.html">{ticker}</a></h2>{tier_badge(r["tier"])}</header>'
+                     f'<span class="nm">{E(r["name"])} &middot; {E(r["sector"])}</span>'
+                     f'<div class="mini-quote"><b>{kes(r.get("price"))}</b>'
+                     f'{risk_badge(risk.get("label") or risk.get("level"))}</div>'
+                     f'<p>{E(reason or "Review the recorded evidence.")}</p>'
+                     f'<a class="mini-link" href="stocks/{ticker}.html">Read the decision {_icon("arrow")}</a></article>')
+    return ('<div class="directory-heading"><div><p class="eyebrow">The covered universe</p><h1>Explore stocks</h1>'
+            '<p>Start with the verdict. Open a company to see the evidence, assumptions and what would change it. '
+            'Avoid is an entry assessment, not an instruction to sell.</p></div></div>'
+            f'<p class="small muted">Recorded closing prices'
+            + (f' through {E(str(s["price_date"]))}' if s.get("price_date") else "")
+            + '. These are not live quotes.</p>'
+            '<nav class="section-nav" aria-label="Stock views"><a href="stocks.html" aria-current="page">Company cards</a>'
+            '<a href="index.html#all-stocks" data-table-view>Compare numbers</a></nav>'
+            '<section data-stock-explorer data-share-filters>'
+            '<noscript><p>Filters require JavaScript. All covered stocks are shown below.</p></noscript>'
+            '<div class="table-controls" hidden><div class="stock-search">'
+            '<label for="stock-search">Filter companies</label>'
+            '<input id="stock-search" type="search" placeholder="Ticker, company or sector" '
+            'aria-controls="stock-list" autocomplete="off"></div>'
+            '<div class="table-filters" role="group" aria-label="Filter by entry tier">'
+            + _tier_buttons("stock-list", counts) + '</div></div>'
+            f'<p class="result-count" data-result-count role="status" aria-live="polite">{len(rows)} stocks shown</p>'
+            '<p class="small muted" data-no-results hidden>No matching stocks. Change the company name or verdict filter.</p>'
+            '<div class="stock-directory" id="stock-list">' + "".join(cards) + "</div></section>")
 
 
 def _ranking(s: dict) -> str:
@@ -1232,10 +1456,7 @@ def _ranking(s: dict) -> str:
         f'</tr>' for r in rows)
     heads = ["Ticker", "Name", "Sector", "Verdict", "Reason", "Risk", "Price", "Value gap", "Lower / yr",
              "Middle / yr", "Upper / yr", "Dividend before tax"]
-    filters = "".join(
-        f'<button type="button" data-tier-filter="{tier}" aria-pressed="{"true" if tier == "all" else "false"}" '
-        f'aria-controls="stock-table">{label}</button>' for tier, label in
-        (("all", "All"), ("Buy", "Buy"), ("Watch", "Watch"), ("Avoid", "Avoid")))
+    filters = _tier_buttons("stock-table")
     research = ('<details class="more"><summary>Independent research-score order</summary>'
                 '<p class="small muted">This score ranks every stock, including Avoids. It does not set the verdict. '
                 f'The mix is {E(_weights_plain(s))}.</p><div class="table-wrap"><table class="data sortable">'
@@ -1447,18 +1668,21 @@ def dashboard(snap: dict | None, retro: dict | None, present: list[tuple]) -> st
             except Exception as exc:  # one broken panel must not take the site down
                 panels[name] = f'<div class="empty small">Panel unavailable: {E(type(exc).__name__)}</div>'
         parts.extend(panels[name] for name in ("hero", "verdict", "health"))
-        parts.append('<div class="brief-layout"><div class="brief-main">' + panels["candidates"]
-                     + panels["confidence"] + '</div><aside class="brief-side" aria-label="Changes and reading guide">'
-                     + panels["changes"] + _reading_guide() + '</aside></div>')
+        if snap.get("alerts"):
+            parts.append(panels["changes"])
+        parts.append('<div class="brief-layout"><div class="brief-main">' + panels["candidates"] + '</div></div>')
+        if not snap.get("alerts"):
+            parts.append(panels["changes"])
         parts.append(panels["context"])
         parts.append('<div class="research-heading"><p class="eyebrow">Go deeper</p>'
                      '<h2>Explore the evidence</h2><p class="small muted">'
-                     'Search all stocks, check past performance or look up a term.</p></div>')
+                     'Compare stocks, review past results or check the source reports.</p></div>')
         try:
             parts.append('<details class="fold" id="all-stocks"><summary><h2>All stocks by verdict</h2>'
                          '</summary>' + _ranking(snap) + "</details>")
         except Exception as exc:
             parts.append(f'<div class="empty small">Ranking unavailable: {E(type(exc).__name__)}</div>')
+        parts.append(panels["confidence"])
         parts.append(panels["glossary"])
     else:
         parts.append('<section class="hero"><div><p class="eyebrow">NSE Value Agent</p><h1>Undervalued NSE stocks, '
@@ -1466,7 +1690,7 @@ def dashboard(snap: dict | None, retro: dict | None, present: list[tuple]) -> st
                      f'dashboard.</p></div></section><div class="callout warn small"><p><strong>Not financial advice.'
                      f'</strong> {E(DISCLAIMER)}</p></div>')
         parts.append(_health_panel({}))
-    if retro:
+    if retro and not any(dst == "retrospective.html" for _, dst, _, _ in present):
         for fn in (_track_record, _evidence):
             try:
                 parts.append('<details class="fold"><summary><h2>'
@@ -1474,15 +1698,17 @@ def dashboard(snap: dict | None, retro: dict | None, present: list[tuple]) -> st
                              + "</h2></summary>" + fn(retro) + "</details>")
             except Exception as exc:
                 parts.append(f'<div class="empty small">Panel unavailable: {E(type(exc).__name__)}</div>')
-    parts.append('<section class="card subscribe-panel" id="subscribe"><div><h2>Keep up with the market</h2><p>'
-                 'Follow the daily brief in your feed reader, or subscribe to material-change alerts on GitHub. '
-                 'No account or personal holdings are required for the site.</p></div><div class="actions">'
-                 f'<a class="button primary" href="feed.xml">{_icon("bell")}Daily RSS/Atom feed</a>'
-                 f'<a class="button" href="{REPO}/issues?q=is%3Aissue%20is%3Aopen%20label%3Adaily-alert">'
-                 'GitHub alerts</a></div></section><p class="page-note">To receive GitHub alerts, open the active '
-                 'daily-alert issue and choose Subscribe. If no alert issue exists yet, check back after the first '
-                 'material change.</p>')
-    parts.append('<details class="fold"><summary><h2>All reports</h2></summary>' + _report_links(present) + "</details>")
+    research_links = [(dst, label, desc) for _, dst, label, desc in present
+                      if dst in ("retrospective.html", "weekly.html")]
+    if research_links:
+        parts.append('<nav class="research-links" aria-label="Further research">'
+                     + "".join(f'<a href="{dst}"><b>{E(label)} {_icon("arrow")}</b><span>'
+                               f'{E("Historical simulation and a live record still building." if dst == "retrospective.html" else desc)}'
+                               '</span></a>' for dst, label, desc in research_links) + "</nav>")
+    parts.append('<details class="fold"><summary><h2>More reports and archives</h2></summary>'
+                 + _report_links(present) + "</details>")
+    parts.append('<p class="page-note"><b>Not financial advice.</b> Use the evidence to guide research, '
+                 'verify company filings and understand the assumptions before investing.</p>')
     return "".join(parts)
 
 
@@ -1533,25 +1759,40 @@ def _stock_finder(snapshot: dict | None, up: str) -> str:
         f'<small>{E(r["tier"])}: {E((r.get("decision") or {}).get("reason") or "Open the recorded assessment")}'
         '</small></a></li>' for r in sorted(rows.values(), key=lambda r: r["ticker"]))
     return ('<section class="stock-finder" data-stock-finder aria-label="Find a stock">'
-            '<label for="quick-stock">Find a stock</label><input id="quick-stock" type="search" '
-            'placeholder="Company or ticker, e.g. Safaricom or SCOM" autocomplete="off" '
+            '<label class="sr" for="quick-stock">Find a stock</label><input id="quick-stock" type="search" '
+            'placeholder="Find a stock or company" autocomplete="off" disabled '
             'aria-controls="stock-matches" aria-expanded="false">'
             '<div class="stock-matches" id="stock-matches" hidden><p data-find-status role="status" '
             f'aria-live="polite"></p><ul>{links}</ul></div>'
-            f'<noscript><a href="{up}index.html#all-stocks">Browse all covered stocks</a></noscript></section>')
+            f'<noscript><a href="{up}stocks.html">Browse all covered stocks</a></noscript></section>')
+
+
+def _stock_sections(item: dict) -> str:
+    links = [("stock-overview", "Decision")]
+    if (item.get("decision") or {}).get("models"):
+        links.append(("stock-valuations", "Valuation"))
+    links += [("stock-returns", "Returns"), ("stock-risk", "Risk")]
+    if item.get("decision"):
+        links.append(("stock-sources", "Sources"))
+    return ('<nav class="section-nav" aria-label="Stock review sections">'
+            + "".join(f'<a href="#{target}">{label}</a>' for target, label in links) + '</nav>')
 
 
 def build() -> list[Path]:
     """Render the dashboard, reports and archive into config.SITE for GitHub Pages."""
     site, reports = config.SITE, config.REPORTS
     site.mkdir(parents=True, exist_ok=True)
+    snapshot = _load_json(reports / "daily" / "latest.json")
+    retro = _load_json(config.DATA / "retrospective.json")
     present = [p for p in PAGES if (reports / p[0]).exists()]
     destinations = {dst for _, dst, _, _ in present}
-    nav = [("index.html", "Today")]
-    nav += [(dst, label) for dst, label in (("weekly.html", "Weekly"), ("retrospective.html", "Track record"))
+    nav = [("index.html", "Today")] + ([("stocks.html", "Stocks")] if snapshot else [])
+    nav += [(dst, label) for dst, label in (("retrospective.html", "Track record"),)
             if dst in destinations]
-    nav += [("index.html#data-health", "Data health"), ("archive.html", "Archive")]
-    research = [(dst, label) for _, dst, label, _ in present if dst not in ("weekly.html", "retrospective.html")]
+    research = [(dst, label) for _, dst, label, _ in present if dst != "retrospective.html"]
+    research += [("index.html#data-health", "Data health"), ("archive.html", "Archive")]
+    if snapshot:
+        research.append(("index.html#glossary", "Reading guide"))
     stamp = datetime.now(EAT).strftime("%d %b %Y %H:%M EAT")
     written: list[Path] = []
 
@@ -1560,7 +1801,7 @@ def build() -> list[Path]:
         links = "".join(f'<a href="{up}{dst}"{" aria-current=page" if dst == active else ""}>{E(label)}</a>'
                         for dst, label in nav)
         if research:
-            links += ('<details><summary>Research</summary><div>'
+            links += ('<details><summary>More</summary><div>'
                       + "".join(f'<a href="{up}{dst}">{E(label)}</a>' for dst, label in research) + "</div></details>")
         mobile = ''.join(f'<a href="{up}{dst}"{" aria-current=page" if dst == active else ""}>{E(label)}</a>'
                          for dst, label in nav + research)
@@ -1576,9 +1817,10 @@ def build() -> list[Path]:
                f'</head><body><a class="skip" href="#main">Skip to content</a><header class="top"><div class="wrap '
                f'bar"><a class="brand" href="{up}index.html">{LOGO}<span>NSE Value Agent<small>Nairobi Securities '
                f'Exchange</small></span></a><nav class="nav" aria-label="Main">{links}</nav>'
+               f'{_stock_finder(snapshot, up)}'
                f'<details class="mobile-nav"><summary>{_icon("menu")}Menu</summary>'
                f'<nav aria-label="Mobile">{mobile}</nav></details></div></header>'
-               f'<main id="main" class="wrap">{_stock_finder(snapshot, up)}{body}</main>'
+               f'<main id="main" class="wrap">{body}</main>'
                f'<footer class="foot"><div class="wrap"><p><b>Rule-based, '
                f'no AI.</b> Fundamentals come from sourced company filings, prices from public NSE data and rates '
                f'from CBK.</p><p><b>Not financial advice.</b> {E(DISCLAIMER)}</p><p>Version {__version__}. Built '
@@ -1589,10 +1831,9 @@ def build() -> list[Path]:
         p.write_text(doc, encoding="utf-8", newline="\n")
         written.append(p)
 
-    snapshot = _load_json(reports / "daily" / "latest.json")
-    retro = _load_json(config.DATA / "retrospective.json")
     page("index.html", "Dashboard", dashboard(snapshot, retro, present), "index.html")
     if snapshot:
+        page("stocks.html", "Explore stocks", _directory(snapshot), "stocks.html")
         stocks = {}
         for key in ("ranking", "top", "high_confidence", "near_misses"):
             items = snapshot.get(key)
@@ -1611,11 +1852,12 @@ def build() -> list[Path]:
                     "tickers": {t: r for t, r in snapshot["health"]["tickers"].items() if t == ticker}}}
             cal = (((retro or {}).get("reconstructed") or {}).get("12") or {}).get("calibration")
             page(f"stocks/{ticker}.html", item["name"],
-                 f'<a class="back-link" href="../index.html">Back to today</a>'
+                 f'<a class="back-link" href="../stocks.html">All stocks</a>'
                  f'<p class="eyebrow">Stock review &middot; {E(snapshot["as_of"])}</p><h1>{E(item["name"])}</h1>'
+                 + _stock_sections(item)
                  + _stock_card(item, snapshot.get("hurdle"), gates=True, why=True, tbill=snapshot.get("tbill_net"),
                                cal=cal, detail=True)
-                 + filing + _health_panel(stock_health), "index.html")
+                 + (filing if not item.get("filings") else "") + _health_panel(stock_health), "stocks.html")
     for src, dst, label, _ in present:
         body = render_markdown((reports / src).read_text(encoding="utf-8"))
         if dst == "retrospective.html" and retro:
