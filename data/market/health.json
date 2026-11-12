@@ -1,0 +1,16 @@
+{
+  "announcements": {
+    "error": null,
+    "last_attempt": "2026-11-12T20:42:48+03:00",
+    "last_success": "2026-11-12T20:42:48+03:00",
+    "successful": true
+  },
+  "prices": {
+    "consecutive_failures": 0,
+    "errors": [],
+    "last_attempt": "2026-11-12T20:42:46+03:00",
+    "last_success": "2026-11-12T20:42:46+03:00",
+    "source": "nse",
+    "successful": true
+  }
+}

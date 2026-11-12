@@ -7,222 +7,227 @@
     "moves": 1,
     "prev_date": "2026-11-11",
     "tiers": 2,
-    "top_in": [
-      "IMH",
-      "KEGN"
-    ],
+    "top_in": [],
     "top_out": [
-      "KCB",
-      "COOP"
+      "KPLC",
+      "KCB"
     ]
   },
+  "code_sha": "c7201124feb7",
   "counts": {
     "Avoid": 15,
     "Buy": 0,
     "Watch": 1
   },
-  "generated": "2026-11-12T14:28:34+00:00",
+  "generated": "2026-11-12T17:42:50+00:00",
+  "health": {
+    "announcements": {
+      "fetch": {
+        "error": null,
+        "last_attempt": "2026-11-12T20:42:48+03:00",
+        "last_success": "2026-11-12T20:42:48+03:00",
+        "successful": true
+      },
+      "last_success": "2026-11-12",
+      "status": "Current"
+    },
+    "checked_at": "2026-11-12T20:42:49+03:00",
+    "critical_ok": true,
+    "expected_session": "2026-11-12",
+    "issues": [],
+    "ledger_ready": true,
+    "macro": {
+      "as_of": "2026-11-11",
+      "status": "Current"
+    },
+    "next_update_due": "2026-11-13T17:00:00+03:00",
+    "prices": {
+      "current": 16,
+      "fetch": {
+        "consecutive_failures": 0,
+        "errors": [],
+        "last_attempt": "2026-11-12T20:42:46+03:00",
+        "last_success": "2026-11-12T20:42:46+03:00",
+        "source": "nse",
+        "successful": true
+      },
+      "source": "nse",
+      "status": "Current",
+      "total": 16
+    },
+    "session_note": "Weekdays only; a delayed session can mean a public holiday or source lag.",
+    "status": "Current",
+    "tickers": {
+      "ABSA": {
+        "fundamentals_status": "Current",
+        "period": "FY2025",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "BAT": {
+        "fundamentals_status": "Current",
+        "period": "FY2025",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "CARB": {
+        "fundamentals_status": "Current",
+        "period": "FY2026",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "COOP": {
+        "fundamentals_status": "Current",
+        "period": "FY2025",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "DTK": {
+        "fundamentals_status": "Current",
+        "period": "FY2025",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "EABL": {
+        "fundamentals_status": "Current",
+        "period": "FY2026",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "EQTY": {
+        "fundamentals_status": "Current",
+        "period": "FY2025",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "IMH": {
+        "fundamentals_status": "Current",
+        "period": "FY2025",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "KCB": {
+        "fundamentals_status": "Current",
+        "period": "FY2025",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "KEGN": {
+        "fundamentals_status": "Current",
+        "period": "FY2026",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "KPLC": {
+        "fundamentals_status": "Current",
+        "period": "FY2026",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "NCBA": {
+        "fundamentals_status": "Current",
+        "period": "FY2025",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "SBIC": {
+        "fundamentals_status": "Current",
+        "period": "FY2025",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "SCBK": {
+        "fundamentals_status": "Current",
+        "period": "FY2025",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "SCOM": {
+        "fundamentals_status": "Current",
+        "period": "FY2026",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      },
+      "TOTL": {
+        "fundamentals_status": "Current",
+        "period": "FY2025",
+        "price_date": "2026-11-12",
+        "status": "Current",
+        "suspended": false,
+        "suspension_known": true,
+        "verified": true
+      }
+    }
+  },
   "high_confidence": [],
   "hurdle": 0.1267397,
+  "ledger": {
+    "code_sha": "0e1ba9adbbc7",
+    "date": "2026-11-12",
+    "differences": [
+      {
+        "fields": [
+          "rank"
+        ],
+        "ticker": "SBIC"
+      },
+      {
+        "fields": [
+          "rank"
+        ],
+        "ticker": "SCBK"
+      }
+    ],
+    "path": "data/rankings/live/2026-11.csv",
+    "rows": 16,
+    "sha256": "98abbf04545d9f65f90109e44aaa34204ab497dec139d19a5762ecbaa853a688"
+  },
   "near_misses": [
-    {
-      "agree": 1,
-      "agree_needed": 2,
-      "base": 0.29603318606990286,
-      "bear": -0.13950894213188142,
-      "binding": "Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2.",
-      "bull": 0.5672352042753546,
-      "composite": 0.49676315487644673,
-      "conviction": {
-        "failed": [
-          "Valuation"
-        ],
-        "flag": false,
-        "gates": [
-          {
-            "detail": "models disagree: the high fair value is 5.9x the low, limit 3x",
-            "name": "Valuation",
-            "passed": false
-          },
-          {
-            "detail": "quality gate pass, score 0.86, needs pass and 0.67",
-            "name": "Quality",
-            "passed": true
-          },
-          {
-            "detail": "liquid, fresh price and results, enough history, positive EPS",
-            "name": "Screen",
-            "passed": true
-          },
-          {
-            "detail": "base return 29.6% against the 12.67% hurdle",
-            "name": "Return",
-            "passed": true
-          }
-        ]
-      },
-      "dispersed": true,
-      "dividend_yield": 0.05,
-      "driver": {
-        "contribution": 0.45701749338696757,
-        "label": "momentum",
-        "signal": "momentum"
-      },
-      "fair_base": 34.52211794543685,
-      "fair_high": 59.02465270910033,
-      "fair_low": 10.019583181773365,
-      "model_spread": 5.890928957650868,
-      "models": 2,
-      "mos": 0.5691871793380385,
-      "name": "Kenya Power and Lighting",
-      "price": 22.0,
-      "price_date": "2026-11-12",
-      "rank": 3,
-      "risk": {
-        "factors": [
-          {
-            "detail": "volatility 37%",
-            "level": "High",
-            "name": "Volatility"
-          },
-          {
-            "detail": "beta 1.70",
-            "level": "High",
-            "name": "Beta"
-          },
-          {
-            "detail": "turnover KES 27.5M a day",
-            "level": "Low",
-            "name": "Liquidity"
-          },
-          {
-            "detail": "bear case -14.0% a year",
-            "level": "High",
-            "name": "Downside"
-          },
-          {
-            "detail": "fair value spread 5.9x (10.0 to 59.0)",
-            "level": "High",
-            "name": "Valuation spread"
-          },
-          {
-            "detail": "Balance sheet: not assessed",
-            "level": null,
-            "name": "Balance sheet"
-          },
-          {
-            "detail": "no profit warning or suspension on file",
-            "level": "Low",
-            "name": "Events"
-          }
-        ],
-        "level": "High",
-        "summary": "High risk: volatility 37%; beta 1.70; bear case -14.0% a year (+1 more). Not assessed: balance sheet."
-      },
-      "sector": "Energy",
-      "ticker": "KPLC",
-      "tier": "Avoid",
-      "why": "KPLC #3 (Avoid): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: momentum (+0.46). Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. High risk (volatility 37%; beta 1.70)."
-    },
-    {
-      "agree": 2,
-      "agree_needed": 3,
-      "base": 0.13862936599690817,
-      "bear": -0.2438308820766905,
-      "binding": "Avoid: valuation models disagree (high is 5.3x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3.",
-      "bull": 0.33991934591294143,
-      "composite": 0.22012314354317244,
-      "conviction": {
-        "failed": [
-          "Valuation"
-        ],
-        "flag": false,
-        "gates": [
-          {
-            "detail": "models disagree: the high fair value is 5.3x the low, limit 3x",
-            "name": "Valuation",
-            "passed": false
-          },
-          {
-            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
-            "name": "Quality",
-            "passed": true
-          },
-          {
-            "detail": "liquid, fresh price and results, enough history, positive EPS",
-            "name": "Screen",
-            "passed": true
-          },
-          {
-            "detail": "base return 13.9% against the 12.67% hurdle",
-            "name": "Return",
-            "passed": true
-          }
-        ]
-      },
-      "dispersed": true,
-      "dividend_yield": 0.055865921787709494,
-      "driver": {
-        "contribution": 0.21138652691670337,
-        "label": "quality",
-        "signal": "quality"
-      },
-      "fair_base": 99.46014960013812,
-      "fair_high": 155.22231175819823,
-      "fair_low": 29.565528128373217,
-      "model_spread": 5.250111247268257,
-      "models": 5,
-      "mos": 0.1112865877110405,
-      "name": "KCB Group",
-      "price": 89.5,
-      "price_date": "2026-11-12",
-      "rank": 7,
-      "risk": {
-        "factors": [
-          {
-            "detail": "volatility 30%",
-            "level": "Moderate",
-            "name": "Volatility"
-          },
-          {
-            "detail": "beta 1.34",
-            "level": "High",
-            "name": "Beta"
-          },
-          {
-            "detail": "turnover KES 126.0M a day",
-            "level": "Low",
-            "name": "Liquidity"
-          },
-          {
-            "detail": "bear case -24.4% a year",
-            "level": "High",
-            "name": "Downside"
-          },
-          {
-            "detail": "fair value spread 5.3x (29.6 to 155.2)",
-            "level": "High",
-            "name": "Valuation spread"
-          },
-          {
-            "detail": "NPL ratio 15.1%, stable or falling",
-            "level": "Moderate",
-            "name": "Balance sheet"
-          },
-          {
-            "detail": "no profit warning or suspension on file",
-            "level": "Low",
-            "name": "Events"
-          }
-        ],
-        "level": "High",
-        "summary": "High risk: beta 1.34; bear case -24.4% a year; fair value spread 5.3x (29.6 to 155.2) (+2 more)."
-      },
-      "sector": "Banking",
-      "ticker": "KCB",
-      "tier": "Avoid",
-      "why": "KCB #7 (Avoid): 11.1% upside to base fair value KES 99.46; base return 13.9% a year beats the 12.67% hurdle. Biggest score driver: quality (+0.21). Avoid: valuation models disagree (high is 5.3x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3. High risk (beta 1.34; bear case -24.4% a year)."
-    },
     {
       "agree": 0,
       "agree_needed": 3,
@@ -258,7 +263,8 @@
             "name": "Return",
             "passed": false
           }
-        ]
+        ],
+        "held_back": []
       },
       "dispersed": false,
       "dividend_yield": 0.044642857142857144,
@@ -267,9 +273,11 @@
         "label": "momentum",
         "signal": "momentum"
       },
+      "estimate_reliable": true,
       "fair_base": 45.63365666111616,
       "fair_high": 83.26899849464493,
       "fair_low": 29.574422711281038,
+      "latest_period": "FY2025",
       "model_spread": 2.815574772415839,
       "models": 5,
       "mos": -0.45674218260575994,
@@ -315,120 +323,23 @@
             "name": "Events"
           }
         ],
+        "label": "High",
         "level": "High",
+        "missing": [],
         "summary": "High risk: bear case -22.8% a year; fair value spread 2.8x (29.6 to 83.3); volatility 31% (+1 more)."
       },
       "sector": "Banking",
+      "source_url": "https://www.imbankgroup.com/wp-content/uploads/2026/03/im-bank-group-financials.pdf",
       "ticker": "IMH",
       "tier": "Avoid",
       "why": "IMH #1 (Avoid): 45.7% downside to base fair value KES 45.63; base return -9.7% a year trails the 12.67% hurdle. Biggest score driver: momentum (+1.04). Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle. High risk (bear case -22.8% a year; fair value spread 2.8x (29.6 to 83.3))."
-    }
-  ],
-  "price_date": "2026-11-12",
-  "ranking": [
-    {
-      "agree": 0,
-      "agree_needed": 3,
-      "base": -0.09664583679103435,
-      "bear": -0.228295792572063,
-      "bull": 0.11710629280357632,
-      "composite": 0.6189399591656419,
-      "conviction": {
-        "failed": [
-          "Valuation",
-          "Return"
-        ],
-        "flag": false,
-        "gates": [
-          {
-            "detail": "0 of 5 models show at least 15% upside, needs 3",
-            "name": "Valuation",
-            "passed": false
-          },
-          {
-            "detail": "quality gate pass, score 0.80, needs pass and 0.67",
-            "name": "Quality",
-            "passed": true
-          },
-          {
-            "detail": "liquid, fresh price and results, enough history, positive EPS",
-            "name": "Screen",
-            "passed": true
-          },
-          {
-            "detail": "base return -9.7% against the 12.67% hurdle",
-            "name": "Return",
-            "passed": false
-          }
-        ]
-      },
-      "dispersed": false,
-      "dividend_yield": 0.044642857142857144,
-      "driver": {
-        "contribution": 1.0371896497679403,
-        "label": "momentum",
-        "signal": "momentum"
-      },
-      "fair_base": 45.63365666111616,
-      "fair_high": 83.26899849464493,
-      "fair_low": 29.574422711281038,
-      "model_spread": 2.815574772415839,
-      "models": 5,
-      "mos": -0.45674218260575994,
-      "name": "I&M Group",
-      "price": 84.0,
-      "price_date": "2026-11-12",
-      "rank": 1,
-      "risk": {
-        "factors": [
-          {
-            "detail": "volatility 31%",
-            "level": "Moderate",
-            "name": "Volatility"
-          },
-          {
-            "detail": "beta 1.12",
-            "level": "Moderate",
-            "name": "Beta"
-          },
-          {
-            "detail": "turnover KES 34.2M a day",
-            "level": "Low",
-            "name": "Liquidity"
-          },
-          {
-            "detail": "bear case -22.8% a year",
-            "level": "High",
-            "name": "Downside"
-          },
-          {
-            "detail": "fair value spread 2.8x (29.6 to 83.3)",
-            "level": "High",
-            "name": "Valuation spread"
-          },
-          {
-            "detail": "NPL ratio 9.0%, stable or falling",
-            "level": "Low",
-            "name": "Balance sheet"
-          },
-          {
-            "detail": "no profit warning or suspension on file",
-            "level": "Low",
-            "name": "Events"
-          }
-        ],
-        "level": "High",
-        "summary": "High risk: bear case -22.8% a year; fair value spread 2.8x (29.6 to 83.3); volatility 31% (+1 more)."
-      },
-      "sector": "Banking",
-      "ticker": "IMH",
-      "tier": "Avoid"
     },
     {
       "agree": 0,
       "agree_needed": 2,
       "base": -0.113640936124437,
       "bear": -0.20551913817622885,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -11.4% does not beat the 12.67% hurdle.",
       "bull": -0.031197986722891168,
       "composite": 0.5041351078281906,
       "conviction": {
@@ -458,7 +369,8 @@
             "name": "Return",
             "passed": false
           }
-        ]
+        ],
+        "held_back": []
       },
       "dispersed": false,
       "dividend_yield": 0.16905737704918034,
@@ -467,9 +379,11 @@
         "label": "dividend yield",
         "signal": "dividend_yield"
       },
+      "estimate_reliable": true,
       "fair_base": 5.218751952109219,
       "fair_high": 6.549681215749891,
       "fair_low": 3.887822688468546,
+      "latest_period": "FY2026",
       "model_spread": 1.6846656189276674,
       "models": 2,
       "mos": -0.46529180818553084,
@@ -515,23 +429,29 @@
             "name": "Events"
           }
         ],
+        "label": "High",
         "level": "High",
+        "missing": [],
         "summary": "High risk: beta 1.30; bear case -20.6% a year; volatility 34% (+2 more)."
       },
       "sector": "Energy",
+      "source_url": "https://africanfinancials.com/document/ke-kegn-2026-ar-00/",
       "ticker": "KEGN",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "KEGN #2 (Avoid): 46.5% downside to base fair value KES 5.22; base return -11.4% a year trails the 12.67% hurdle. Biggest score driver: dividend yield (+0.84). Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -11.4% does not beat the 12.67% hurdle. High risk (beta 1.30; bear case -20.6% a year)."
     },
     {
       "agree": 1,
       "agree_needed": 2,
       "base": 0.29603318606990286,
       "bear": -0.13950894213188142,
+      "binding": "Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2.",
       "bull": 0.5672352042753546,
       "composite": 0.49676315487644673,
       "conviction": {
         "failed": [
-          "Valuation"
+          "Valuation",
+          "Return"
         ],
         "flag": false,
         "gates": [
@@ -551,10 +471,14 @@
             "passed": true
           },
           {
-            "detail": "base return 29.6% against the 12.67% hurdle",
+            "detail": "unclear while valuation evidence disagrees",
             "name": "Return",
-            "passed": true
+            "passed": false
           }
+        ],
+        "held_back": [
+          "Balance sheet: not assessed",
+          "Downside: not assessed"
         ]
       },
       "dispersed": true,
@@ -564,9 +488,11 @@
         "label": "momentum",
         "signal": "momentum"
       },
+      "estimate_reliable": false,
       "fair_base": 34.52211794543685,
       "fair_high": 59.02465270910033,
       "fair_low": 10.019583181773365,
+      "latest_period": "FY2026",
       "model_spread": 5.890928957650868,
       "models": 2,
       "mos": 0.5691871793380385,
@@ -612,18 +538,353 @@
             "name": "Events"
           }
         ],
+        "label": "High (incomplete)",
         "level": "High",
-        "summary": "High risk: volatility 37%; beta 1.70; bear case -14.0% a year (+1 more). Not assessed: balance sheet."
+        "missing": [
+          "Balance sheet",
+          "Downside"
+        ],
+        "summary": "High (incomplete) risk: volatility 37%; beta 1.70; fair value spread 5.9x (10.0 to 59.0). Not assessed: balance sheet, downside."
       },
       "sector": "Energy",
+      "source_url": "https://www.nse.co.ke/wp-content/uploads/Kenya-Power-and-Lighting-Company-Plc-%E2%80%93-Audited-Financial-Results-for-the-Year-Ended-30-June-2026.pdf",
       "ticker": "KPLC",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "KPLC #3 (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Biggest score driver: momentum (+0.46). Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. High (incomplete) risk (volatility 37%; beta 1.70)."
+    }
+  ],
+  "price_date": "2026-11-12",
+  "ranking": [
+    {
+      "agree": 0,
+      "agree_needed": 3,
+      "base": -0.09664583679103435,
+      "bear": -0.228295792572063,
+      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle.",
+      "bull": 0.11710629280357632,
+      "composite": 0.6189399591656419,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.80, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price and results, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return -9.7% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ],
+        "held_back": []
+      },
+      "dispersed": false,
+      "dividend_yield": 0.044642857142857144,
+      "driver": {
+        "contribution": 1.0371896497679403,
+        "label": "momentum",
+        "signal": "momentum"
+      },
+      "estimate_reliable": true,
+      "fair_base": 45.63365666111616,
+      "fair_high": 83.26899849464493,
+      "fair_low": 29.574422711281038,
+      "latest_period": "FY2025",
+      "model_spread": 2.815574772415839,
+      "models": 5,
+      "mos": -0.45674218260575994,
+      "name": "I&M Group",
+      "price": 84.0,
+      "price_date": "2026-11-12",
+      "rank": 1,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 31%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.12",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 34.2M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -22.8% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 2.8x (29.6 to 83.3)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 9.0%, stable or falling",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "label": "High",
+        "level": "High",
+        "missing": [],
+        "summary": "High risk: bear case -22.8% a year; fair value spread 2.8x (29.6 to 83.3); volatility 31% (+1 more)."
+      },
+      "sector": "Banking",
+      "source_url": "https://www.imbankgroup.com/wp-content/uploads/2026/03/im-bank-group-financials.pdf",
+      "ticker": "IMH",
+      "tier": "Avoid",
+      "why": "IMH #1 (Avoid): 45.7% downside to base fair value KES 45.63; base return -9.7% a year trails the 12.67% hurdle. Biggest score driver: momentum (+1.04). Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle. High risk (bear case -22.8% a year; fair value spread 2.8x (29.6 to 83.3))."
+    },
+    {
+      "agree": 0,
+      "agree_needed": 2,
+      "base": -0.113640936124437,
+      "bear": -0.20551913817622885,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -11.4% does not beat the 12.67% hurdle.",
+      "bull": -0.031197986722891168,
+      "composite": 0.5041351078281906,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "only 2 models apply to this company and the flag needs 3 to agree (sector P/E and P/B need 3 sourced peers)",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.88, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price and results, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return -11.4% against the 12.67% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ],
+        "held_back": []
+      },
+      "dispersed": false,
+      "dividend_yield": 0.16905737704918034,
+      "driver": {
+        "contribution": 0.8403587190612567,
+        "label": "dividend yield",
+        "signal": "dividend_yield"
+      },
+      "estimate_reliable": true,
+      "fair_base": 5.218751952109219,
+      "fair_high": 6.549681215749891,
+      "fair_low": 3.887822688468546,
+      "latest_period": "FY2026",
+      "model_spread": 1.6846656189276674,
+      "models": 2,
+      "mos": -0.46529180818553084,
+      "name": "KenGen",
+      "price": 9.76,
+      "price_date": "2026-11-12",
+      "rank": 2,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 34%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.30",
+            "level": "High",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 18.1M a day",
+            "level": "Moderate",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -20.6% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.7x (3.9 to 6.5)",
+            "level": "Moderate",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "Altman Z'' 2.93, safe zone",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "label": "High",
+        "level": "High",
+        "missing": [],
+        "summary": "High risk: beta 1.30; bear case -20.6% a year; volatility 34% (+2 more)."
+      },
+      "sector": "Energy",
+      "source_url": "https://africanfinancials.com/document/ke-kegn-2026-ar-00/",
+      "ticker": "KEGN",
+      "tier": "Avoid",
+      "why": "KEGN #2 (Avoid): 46.5% downside to base fair value KES 5.22; base return -11.4% a year trails the 12.67% hurdle. Biggest score driver: dividend yield (+0.84). Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -11.4% does not beat the 12.67% hurdle. High risk (beta 1.30; bear case -20.6% a year)."
+    },
+    {
+      "agree": 1,
+      "agree_needed": 2,
+      "base": 0.29603318606990286,
+      "bear": -0.13950894213188142,
+      "binding": "Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2.",
+      "bull": 0.5672352042753546,
+      "composite": 0.49676315487644673,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "models disagree: the high fair value is 5.9x the low, limit 3x",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.86, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price and results, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "unclear while valuation evidence disagrees",
+            "name": "Return",
+            "passed": false
+          }
+        ],
+        "held_back": [
+          "Balance sheet: not assessed",
+          "Downside: not assessed"
+        ]
+      },
+      "dispersed": true,
+      "dividend_yield": 0.05,
+      "driver": {
+        "contribution": 0.45701749338696757,
+        "label": "momentum",
+        "signal": "momentum"
+      },
+      "estimate_reliable": false,
+      "fair_base": 34.52211794543685,
+      "fair_high": 59.02465270910033,
+      "fair_low": 10.019583181773365,
+      "latest_period": "FY2026",
+      "model_spread": 5.890928957650868,
+      "models": 2,
+      "mos": 0.5691871793380385,
+      "name": "Kenya Power and Lighting",
+      "price": 22.0,
+      "price_date": "2026-11-12",
+      "rank": 3,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 37%",
+            "level": "High",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.70",
+            "level": "High",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 27.5M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -14.0% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 5.9x (10.0 to 59.0)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "Balance sheet: not assessed",
+            "level": null,
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "label": "High (incomplete)",
+        "level": "High",
+        "missing": [
+          "Balance sheet",
+          "Downside"
+        ],
+        "summary": "High (incomplete) risk: volatility 37%; beta 1.70; fair value spread 5.9x (10.0 to 59.0). Not assessed: balance sheet, downside."
+      },
+      "sector": "Energy",
+      "source_url": "https://www.nse.co.ke/wp-content/uploads/Kenya-Power-and-Lighting-Company-Plc-%E2%80%93-Audited-Financial-Results-for-the-Year-Ended-30-June-2026.pdf",
+      "ticker": "KPLC",
+      "tier": "Avoid",
+      "why": "KPLC #3 (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Biggest score driver: momentum (+0.46). Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. High (incomplete) risk (volatility 37%; beta 1.70)."
     },
     {
       "agree": 1,
       "agree_needed": 3,
       "base": 0.11080622513600655,
       "bear": -0.14541660363387868,
+      "binding": "Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more).",
       "bull": 0.2685383298678928,
       "composite": 0.459877201770665,
       "conviction": {
@@ -649,10 +910,13 @@
             "passed": true
           },
           {
-            "detail": "base return 11.1% against the 12.67% hurdle",
+            "detail": "unclear while valuation evidence disagrees",
             "name": "Return",
             "passed": false
           }
+        ],
+        "held_back": [
+          "Downside: not assessed"
         ]
       },
       "dispersed": true,
@@ -662,9 +926,11 @@
         "label": "momentum",
         "signal": "momentum"
       },
+      "estimate_reliable": false,
       "fair_base": 99.52819026564842,
       "fair_high": 142.31199448215577,
       "fair_low": 46.26444598025874,
+      "latest_period": "FY2025",
       "model_spread": 3.0760553048204873,
       "models": 5,
       "mos": -0.0047180973435158036,
@@ -710,18 +976,25 @@
             "name": "Events"
           }
         ],
+        "label": "High (incomplete)",
         "level": "High",
-        "summary": "High risk: bear case -14.5% a year; fair value spread 3.1x (46.3 to 142.3); volatility 31% (+1 more)."
+        "missing": [
+          "Downside"
+        ],
+        "summary": "High (incomplete) risk: fair value spread 3.1x (46.3 to 142.3); volatility 31%; beta 1.06. Not assessed: downside."
       },
       "sector": "Banking",
+      "source_url": "https://www.use.or.ug/uploads/46d239d2-356e-4c5c-a297-7ed44d72f790.pdf",
       "ticker": "EQTY",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "EQTY #4 (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Biggest score driver: momentum (+0.32). Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more). High (incomplete) risk (fair value spread 3.1x (46.3 to 142.3); volatility 31%)."
     },
     {
       "agree": 0,
       "agree_needed": 2,
       "base": -0.03818211530894789,
       "bear": -0.1013598844813608,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -3.8% does not beat the 12.67% hurdle.",
       "bull": 0.02207630677619154,
       "composite": 0.30159195859327514,
       "conviction": {
@@ -751,7 +1024,8 @@
             "name": "Return",
             "passed": false
           }
-        ]
+        ],
+        "held_back": []
       },
       "dispersed": false,
       "dividend_yield": 0.12987012987012986,
@@ -760,9 +1034,11 @@
         "label": "dividend yield",
         "signal": "dividend_yield"
       },
+      "estimate_reliable": true,
       "fair_base": 331.6851177608768,
       "fair_high": 383.79962382447104,
       "fair_low": 279.5706116972826,
+      "latest_period": "FY2025",
       "model_spread": 1.3728181996469895,
       "models": 2,
       "mos": -0.3846287240057945,
@@ -808,18 +1084,23 @@
             "name": "Events"
           }
         ],
+        "label": "Moderate",
         "level": "Moderate",
+        "missing": [],
         "summary": "Moderate risk: bear case -10.1% a year; turnover KES 12.5M a day."
       },
       "sector": "Manufacturing",
+      "source_url": "https://africanfinancials.com/document/ke-bat-2025-ar-00/",
       "ticker": "BAT",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "BAT #5 (Avoid): 38.5% downside to base fair value KES 331.69; base return -3.8% a year trails the 12.67% hurdle. Biggest score driver: dividend yield (+0.49). Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -3.8% does not beat the 12.67% hurdle. Moderate risk (bear case -10.1% a year; turnover KES 12.5M a day)."
     },
     {
       "agree": 0,
       "agree_needed": 3,
       "base": 0.0031729281698774665,
       "bear": -0.10500240484839118,
+      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 0.3% does not beat the 12.67% hurdle.",
       "bull": 0.09772622660033548,
       "composite": 0.26153888005792086,
       "conviction": {
@@ -849,7 +1130,8 @@
             "name": "Return",
             "passed": false
           }
-        ]
+        ],
+        "held_back": []
       },
       "dispersed": false,
       "dividend_yield": 0.06369426751592357,
@@ -858,9 +1140,11 @@
         "label": "quality",
         "signal": "quality"
       },
+      "estimate_reliable": true,
       "fair_base": 27.88823735383813,
       "fair_high": 35.02041393165539,
       "fair_low": 20.574981345608638,
+      "latest_period": "FY2025",
       "model_spread": 1.7020872749967217,
       "models": 5,
       "mos": -0.2894716597748247,
@@ -906,23 +1190,29 @@
             "name": "Events"
           }
         ],
+        "label": "Moderate",
         "level": "Moderate",
+        "missing": [],
         "summary": "Moderate risk: bear case -10.5% a year; volatility 30%; beta 0.99 (+2 more)."
       },
       "sector": "Banking",
+      "source_url": "https://www.co-opbank.co.ke/wp-content/uploads/2026/03/CO-OP-Bank-Financials-2025.pdf",
       "ticker": "COOP",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "COOP #6 (Avoid): 28.9% downside to base fair value KES 27.89; base return 0.3% a year trails the 12.67% hurdle. Biggest score driver: quality (+0.21). Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 0.3% does not beat the 12.67% hurdle. Moderate risk (bear case -10.5% a year; volatility 30%)."
     },
     {
       "agree": 2,
       "agree_needed": 3,
       "base": 0.13862936599690817,
       "bear": -0.2438308820766905,
+      "binding": "Avoid: valuation models disagree (high is 5.3x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3.",
       "bull": 0.33991934591294143,
       "composite": 0.22012314354317244,
       "conviction": {
         "failed": [
-          "Valuation"
+          "Valuation",
+          "Return"
         ],
         "flag": false,
         "gates": [
@@ -942,10 +1232,13 @@
             "passed": true
           },
           {
-            "detail": "base return 13.9% against the 12.67% hurdle",
+            "detail": "unclear while valuation evidence disagrees",
             "name": "Return",
-            "passed": true
+            "passed": false
           }
+        ],
+        "held_back": [
+          "Downside: not assessed"
         ]
       },
       "dispersed": true,
@@ -955,9 +1248,11 @@
         "label": "quality",
         "signal": "quality"
       },
+      "estimate_reliable": false,
       "fair_base": 99.46014960013812,
       "fair_high": 155.22231175819823,
       "fair_low": 29.565528128373217,
+      "latest_period": "FY2025",
       "model_spread": 5.250111247268257,
       "models": 5,
       "mos": 0.1112865877110405,
@@ -1003,18 +1298,25 @@
             "name": "Events"
           }
         ],
+        "label": "High (incomplete)",
         "level": "High",
-        "summary": "High risk: beta 1.34; bear case -24.4% a year; fair value spread 5.3x (29.6 to 155.2) (+2 more)."
+        "missing": [
+          "Downside"
+        ],
+        "summary": "High (incomplete) risk: beta 1.34; fair value spread 5.3x (29.6 to 155.2); volatility 30% (+1 more). Not assessed: downside."
       },
       "sector": "Banking",
+      "source_url": "https://kcbgroup.com/financial-statements?years=2025",
       "ticker": "KCB",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "KCB #7 (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Biggest score driver: quality (+0.21). Avoid: valuation models disagree (high is 5.3x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3. High (incomplete) risk (beta 1.34; fair value spread 5.3x (29.6 to 155.2))."
     },
     {
       "agree": 0,
       "agree_needed": 3,
       "base": 0.01973294118961149,
       "bear": -0.10353131122347264,
+      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 2.0% does not beat the 12.67% hurdle.",
       "bull": 0.11756134048892292,
       "composite": 0.1045338654286536,
       "conviction": {
@@ -1044,7 +1346,8 @@
             "name": "Return",
             "passed": false
           }
-        ]
+        ],
+        "held_back": []
       },
       "dispersed": false,
       "dividend_yield": 0.07580645161290323,
@@ -1053,9 +1356,11 @@
         "label": "quality",
         "signal": "quality"
       },
+      "estimate_reliable": true,
       "fair_base": 23.027163248830785,
       "fair_high": 29.06827535820108,
       "fair_low": 16.201871000268767,
+      "latest_period": "FY2025",
       "model_spread": 1.7941307740148578,
       "models": 5,
       "mos": -0.25718828229578117,
@@ -1101,18 +1406,23 @@
             "name": "Events"
           }
         ],
+        "label": "Moderate",
         "level": "Moderate",
+        "missing": [],
         "summary": "Moderate risk: bear case -10.4% a year; volatility 34%; beta 1.12 (+3 more)."
       },
       "sector": "Banking",
+      "source_url": "https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/financial-results-2025.pdf",
       "ticker": "ABSA",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "ABSA #8 (Avoid): 25.7% downside to base fair value KES 23.03; base return 2.0% a year trails the 12.67% hurdle. Biggest score driver: quality (+0.21). Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 2.0% does not beat the 12.67% hurdle. Moderate risk (bear case -10.4% a year; volatility 34%)."
     },
     {
       "agree": 2,
       "agree_needed": 3,
       "base": 0.012693615738909614,
       "bear": -0.19307875096422863,
+      "binding": "Avoid: valuation models disagree (high is 6.2x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3 (+1 more).",
       "bull": 0.5078253056118495,
       "composite": -0.16344194885446378,
       "conviction": {
@@ -1139,10 +1449,13 @@
             "passed": true
           },
           {
-            "detail": "base return 1.3% against the 12.67% hurdle",
+            "detail": "unclear while valuation evidence disagrees",
             "name": "Return",
             "passed": false
           }
+        ],
+        "held_back": [
+          "Downside: not assessed"
         ]
       },
       "dispersed": true,
@@ -1152,9 +1465,11 @@
         "label": "momentum",
         "signal": "momentum"
       },
+      "estimate_reliable": false,
       "fair_base": 143.71430872809844,
       "fair_high": 464.0141183371277,
       "fair_low": 74.94416500636228,
+      "latest_period": "FY2025",
       "model_spread": 6.191464249388005,
       "models": 5,
       "mos": -0.23352368678347502,
@@ -1200,18 +1515,25 @@
             "name": "Events"
           }
         ],
+        "label": "High (incomplete)",
         "level": "High",
-        "summary": "High risk: bear case -19.3% a year; fair value spread 6.2x (74.9 to 464.0); volatility 30% (+2 more)."
+        "missing": [
+          "Downside"
+        ],
+        "summary": "High (incomplete) risk: fair value spread 6.2x (74.9 to 464.0); volatility 30%; beta 0.95 (+1 more). Not assessed: downside."
       },
       "sector": "Banking",
+      "source_url": "https://dtbk.dtbafrica.com/storage/uploads/c37e106d-9829-44ac-ae50-05d797e66b64/DTB-Intergrated-Report-2025---digital.pdf",
       "ticker": "DTK",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "DTK #9 (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Biggest score driver: momentum (+0.38). Avoid: valuation models disagree (high is 6.2x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3 (+1 more). High (incomplete) risk (fair value spread 6.2x (74.9 to 464.0); volatility 30%)."
     },
     {
       "agree": 0,
       "agree_needed": 2,
       "base": -0.1687392782043927,
       "bear": -0.20611171484521526,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -16.9% does not beat the 12.67% hurdle.",
       "bull": -0.13177323162606544,
       "composite": -0.1943178493408897,
       "conviction": {
@@ -1241,7 +1563,8 @@
             "name": "Return",
             "passed": false
           }
-        ]
+        ],
+        "held_back": []
       },
       "dispersed": false,
       "dividend_yield": 0.04645760743321719,
@@ -1250,9 +1573,11 @@
         "label": "momentum",
         "signal": "momentum"
       },
+      "estimate_reliable": true,
       "fair_base": 17.94258298204351,
       "fair_high": 19.438541998696117,
       "fair_low": 16.446623965390906,
+      "latest_period": "FY2026",
       "model_spread": 1.1819168505099398,
       "models": 2,
       "mos": -0.5832152617411495,
@@ -1298,18 +1623,23 @@
             "name": "Events"
           }
         ],
+        "label": "High",
         "level": "High",
+        "missing": [],
         "summary": "High risk: volatility 39%; turnover KES 2.0M a day; bear case -20.6% a year (+1 more)."
       },
       "sector": "Manufacturing",
+      "source_url": "https://carbacid.com/documents/97/2026_Annual_Report.pdf",
       "ticker": "CARB",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "CARB #10 (Avoid): 58.3% downside to base fair value KES 17.94; base return -16.9% a year trails the 12.67% hurdle. Biggest score driver: momentum (+0.20). Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -16.9% does not beat the 12.67% hurdle. High risk (volatility 39%; turnover KES 2.0M a day)."
     },
     {
       "agree": 0,
       "agree_needed": 2,
       "base": -0.19920590252499637,
       "bear": -0.2785874591941764,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -19.9% does not beat the 12.67% hurdle.",
       "bull": -0.1274482802667506,
       "composite": -0.314339028663683,
       "conviction": {
@@ -1339,7 +1669,8 @@
             "name": "Return",
             "passed": false
           }
-        ]
+        ],
+        "held_back": []
       },
       "dispersed": false,
       "dividend_yield": 0.05714285714285714,
@@ -1348,9 +1679,11 @@
         "label": "quality",
         "signal": "quality"
       },
+      "estimate_reliable": true,
       "fair_base": 12.729699893039877,
       "fair_high": 15.786250293082022,
       "fair_low": 9.673149492997732,
+      "latest_period": "FY2026",
       "model_spread": 1.6319659180817463,
       "models": 2,
       "mos": -0.6362942887702892,
@@ -1396,18 +1729,23 @@
             "name": "Events"
           }
         ],
+        "label": "Moderate",
         "level": "Moderate",
+        "missing": [],
         "summary": "Moderate risk: bear case -27.9% a year; beta 0.93; fair value spread 1.6x (9.7 to 15.8)."
       },
       "sector": "Telecommunication",
+      "source_url": "https://www.safaricom.co.ke/images/Downloads/2026_Safaricom_Annual_Report_Updated.pdf",
       "ticker": "SCOM",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "SCOM #11 (Avoid): 63.6% downside to base fair value KES 12.73; base return -19.9% a year trails the 12.67% hurdle. Biggest score driver: quality (+0.12). Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -19.9% does not beat the 12.67% hurdle. Moderate risk (bear case -27.9% a year; beta 0.93)."
     },
     {
       "agree": 0,
       "agree_needed": 2,
       "base": -0.22175498393988446,
       "bear": -0.2936515875130816,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -22.2% does not beat the 12.67% hurdle.",
       "bull": -0.15591107238705948,
       "composite": -0.3220731984601809,
       "conviction": {
@@ -1437,7 +1775,8 @@
             "name": "Return",
             "passed": false
           }
-        ]
+        ],
+        "held_back": []
       },
       "dispersed": false,
       "dividend_yield": 0.046788990825688076,
@@ -1446,9 +1785,11 @@
         "label": "quality",
         "signal": "quality"
       },
+      "estimate_reliable": true,
       "fair_base": 92.38718656754772,
       "fair_high": 112.63415571530948,
       "fair_low": 72.14021741978596,
+      "latest_period": "FY2026",
       "model_spread": 1.5613226539072949,
       "models": 2,
       "mos": -0.6609644529631277,
@@ -1494,18 +1835,23 @@
             "name": "Events"
           }
         ],
+        "label": "Moderate",
         "level": "Moderate",
+        "missing": [],
         "summary": "Moderate risk: bear case -29.4% a year; volatility 34%; fair value spread 1.6x (72.1 to 112.6)."
       },
       "sector": "Manufacturing",
+      "source_url": "https://www.eabl.com/~/media/Files/E/eabl/documents/investor/agm/2026/eabl-2026-integrated-annual-report-web-version.pdf",
       "ticker": "EABL",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "EABL #12 (Avoid): 66.1% downside to base fair value KES 92.39; base return -22.2% a year trails the 12.67% hurdle. Biggest score driver: quality (+0.21). Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -22.2% does not beat the 12.67% hurdle. Moderate risk (bear case -29.4% a year; volatility 34%)."
     },
     {
       "agree": 0,
       "agree_needed": 3,
       "base": -0.007720080387753242,
       "bear": -0.09519336302813458,
+      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -0.8% does not beat the 12.67% hurdle.",
       "bull": 0.01271067819811394,
       "composite": -0.4060419204327407,
       "conviction": {
@@ -1535,7 +1881,8 @@
             "name": "Return",
             "passed": false
           }
-        ]
+        ],
+        "held_back": []
       },
       "dispersed": false,
       "dividend_yield": 0.10430463576158941,
@@ -1544,9 +1891,11 @@
         "label": "dividend yield",
         "signal": "dividend_yield"
       },
+      "estimate_reliable": true,
       "fair_base": 218.10898182620434,
       "fair_high": 219.87311594686605,
       "fair_low": 170.82942494809893,
+      "latest_period": "FY2025",
       "model_spread": 1.2870915886631795,
       "models": 5,
       "mos": -0.2777848283900518,
@@ -1592,18 +1941,23 @@
             "name": "Events"
           }
         ],
+        "label": "Moderate",
         "level": "Moderate",
+        "missing": [],
         "summary": "Moderate risk: beta 0.85; turnover KES 11.1M a day; bear case -9.5% a year."
       },
       "sector": "Banking",
+      "source_url": "https://www.nse.co.ke/wp-content/uploads/Standard-Chartered-Bank-Ltd-Financial-Results-for-the-Year-Ended-31-Dec-2025.pdf",
       "ticker": "SCBK",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "SCBK #13 (Avoid): 27.8% downside to base fair value KES 218.11; base return -0.8% a year trails the 12.67% hurdle. Biggest score driver: dividend yield (+0.26). Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -0.8% does not beat the 12.67% hurdle. Moderate risk (beta 0.85; turnover KES 11.1M a day)."
     },
     {
       "agree": 0,
       "agree_needed": 3,
       "base": 0.03813450167333699,
       "bear": -0.012635172212966608,
+      "binding": "Avoid: quality gate failed (Piotroski 2/5 below gate); only 0 of 5 valuation models show 15% or more upside, needs 3 (+1 more).",
       "bull": 0.13922493619383236,
       "composite": -0.4129882921736285,
       "conviction": {
@@ -1634,7 +1988,8 @@
             "name": "Return",
             "passed": false
           }
-        ]
+        ],
+        "held_back": []
       },
       "dispersed": false,
       "dividend_yield": 0.07676806083650191,
@@ -1643,9 +1998,11 @@
         "label": "dividend yield",
         "signal": "dividend_yield"
       },
+      "estimate_reliable": true,
       "fair_base": 198.0942814494921,
       "fair_high": 252.2708204181761,
       "fair_low": 178.43554381776087,
+      "latest_period": "FY2025",
       "model_spread": 1.4137924262210022,
       "models": 5,
       "mos": -0.24678980437455478,
@@ -1691,18 +2048,23 @@
             "name": "Events"
           }
         ],
+        "label": "Moderate",
         "level": "Moderate",
+        "missing": [],
         "summary": "Moderate risk: volatility 27%; turnover KES 13.2M a day; bear case -1.3% a year."
       },
       "sector": "Banking",
+      "source_url": "https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2026/Stanbic%20Holdings%20Plc%202025%20Full%20Year%20Financial%20Results.pdf",
       "ticker": "SBIC",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "SBIC #14 (Avoid): 24.7% downside to base fair value KES 198.09; base return 3.8% a year trails the 12.67% hurdle. Biggest score driver: dividend yield (+0.02). Avoid: quality gate failed (Piotroski 2/5 below gate); only 0 of 5 valuation models show 15% or more upside, needs 3 (+1 more). Moderate risk (volatility 27%; turnover KES 13.2M a day)."
     },
     {
       "agree": 0,
       "agree_needed": 2,
       "base": -0.20457188889702516,
       "bear": -0.22227534912671487,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -20.5% does not beat the 12.67% hurdle.",
       "bull": -0.18677192510161122,
       "composite": -0.528741558280511,
       "conviction": {
@@ -1732,6 +2094,9 @@
             "name": "Return",
             "passed": false
           }
+        ],
+        "held_back": [
+          "Balance sheet: not assessed"
         ]
       },
       "dispersed": false,
@@ -1741,9 +2106,11 @@
         "label": "quality",
         "signal": "quality"
       },
+      "estimate_reliable": true,
       "fair_base": 18.105472889781737,
       "fair_high": 18.33006367944506,
       "fair_low": 17.880882100118416,
+      "latest_period": "FY2025",
       "model_spread": 1.0251207729468599,
       "models": 2,
       "mos": -0.6020775189058959,
@@ -1789,18 +2156,25 @@
             "name": "Events"
           }
         ],
+        "label": "High (incomplete)",
         "level": "High",
-        "summary": "High risk: turnover KES 1.1M a day; bear case -22.2% a year; volatility 27% (+1 more). Not assessed: balance sheet."
+        "missing": [
+          "Balance sheet"
+        ],
+        "summary": "High (incomplete) risk: turnover KES 1.1M a day; bear case -22.2% a year; volatility 27% (+1 more). Not assessed: balance sheet."
       },
       "sector": "Energy",
+      "source_url": "https://dxm.content-center.totalenergies.com/api/wedia/dam/variation/xysh7dg731ta7oeegiedu7jb3o/pdf,original?hash=gr3n6cbifh3dyctsryaucqttgy7dyqy-1794352676753&download=true",
       "ticker": "TOTL",
-      "tier": "Avoid"
+      "tier": "Avoid",
+      "why": "TOTL #15 (Avoid): 60.2% downside to base fair value KES 18.11; base return -20.5% a year trails the 12.67% hurdle. Biggest score driver: quality (+0.02). Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -20.5% does not beat the 12.67% hurdle. High (incomplete) risk (turnover KES 1.1M a day; bear case -22.2% a year)."
     },
     {
       "agree": 1,
       "agree_needed": 3,
       "base": 0.15258441397529562,
       "bear": -0.0006648840990748691,
+      "binding": "Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3.",
       "bull": 0.22416010499439018,
       "composite": -0.625559475057869,
       "conviction": {
@@ -1830,7 +2204,8 @@
             "name": "Return",
             "passed": true
           }
-        ]
+        ],
+        "held_back": []
       },
       "dispersed": false,
       "dividend_yield": 0.09488636363636363,
@@ -1839,9 +2214,11 @@
         "label": "dividend yield",
         "signal": "dividend_yield"
       },
+      "estimate_reliable": true,
       "fair_base": 92.53411414520203,
       "fair_high": 105.96907821953917,
       "fair_low": 62.10116781037271,
+      "latest_period": "FY2025",
       "model_spread": 1.7063942910561376,
       "models": 5,
       "mos": 0.05152402437729564,
@@ -1887,15 +2264,20 @@
             "name": "Events"
           }
         ],
+        "label": "Moderate",
         "level": "Moderate",
+        "missing": [],
         "summary": "Moderate risk: beta 0.81; turnover KES 12.9M a day; bear case -0.1% a year (+2 more)."
       },
       "sector": "Banking",
+      "source_url": "https://ncbagroup.com/wp-content/uploads/2026/06/NCBA-Group-Plc-Annual-2025-Integrated-Report.pdf",
       "ticker": "NCBA",
-      "tier": "Watch"
+      "tier": "Watch",
+      "why": "NCBA #16 (Watch): 5.2% upside to base fair value KES 92.53; base return 15.3% a year beats the 12.67% hurdle. Biggest score driver: dividend yield (+0.18). Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3. Moderate risk (beta 0.81; turnover KES 12.9M a day)."
     }
   ],
-  "rule": "A stock is flagged **High confidence undervalued** only when all four gates pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.67% hurdle (Return). Risk is rated separately from seven factors and never changes the flag, so check it before sizing a position.",
+  "revision": "215ceed17ac8227a6452",
+  "rule": "A stock is flagged **High confidence undervalued** only when all four gates pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.67% hurdle (Return). Risk level is rated separately from seven factors and never changes the valuation or return thresholds. Strong-confidence flags also require current critical live evidence. Agreement of methods is not a probability of profit.",
   "tbill_net": 0.0767397,
   "top": [
     {
@@ -1933,7 +2315,8 @@
             "name": "Return",
             "passed": true
           }
-        ]
+        ],
+        "held_back": []
       },
       "dispersed": false,
       "dividend_yield": 0.09488636363636363,
@@ -1942,9 +2325,11 @@
         "label": "dividend yield",
         "signal": "dividend_yield"
       },
+      "estimate_reliable": true,
       "fair_base": 92.53411414520203,
       "fair_high": 105.96907821953917,
       "fair_low": 62.10116781037271,
+      "latest_period": "FY2025",
       "model_spread": 1.7063942910561376,
       "models": 5,
       "mos": 0.05152402437729564,
@@ -1990,412 +2375,16 @@
             "name": "Events"
           }
         ],
+        "label": "Moderate",
         "level": "Moderate",
+        "missing": [],
         "summary": "Moderate risk: beta 0.81; turnover KES 12.9M a day; bear case -0.1% a year (+2 more)."
       },
       "sector": "Banking",
+      "source_url": "https://ncbagroup.com/wp-content/uploads/2026/06/NCBA-Group-Plc-Annual-2025-Integrated-Report.pdf",
       "ticker": "NCBA",
       "tier": "Watch",
       "why": "NCBA #16 (Watch): 5.2% upside to base fair value KES 92.53; base return 15.3% a year beats the 12.67% hurdle. Biggest score driver: dividend yield (+0.18). Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3. Moderate risk (beta 0.81; turnover KES 12.9M a day)."
-    },
-    {
-      "agree": 0,
-      "agree_needed": 3,
-      "base": -0.09664583679103435,
-      "bear": -0.228295792572063,
-      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle.",
-      "bull": 0.11710629280357632,
-      "composite": 0.6189399591656419,
-      "conviction": {
-        "failed": [
-          "Valuation",
-          "Return"
-        ],
-        "flag": false,
-        "gates": [
-          {
-            "detail": "0 of 5 models show at least 15% upside, needs 3",
-            "name": "Valuation",
-            "passed": false
-          },
-          {
-            "detail": "quality gate pass, score 0.80, needs pass and 0.67",
-            "name": "Quality",
-            "passed": true
-          },
-          {
-            "detail": "liquid, fresh price and results, enough history, positive EPS",
-            "name": "Screen",
-            "passed": true
-          },
-          {
-            "detail": "base return -9.7% against the 12.67% hurdle",
-            "name": "Return",
-            "passed": false
-          }
-        ]
-      },
-      "dispersed": false,
-      "dividend_yield": 0.044642857142857144,
-      "driver": {
-        "contribution": 1.0371896497679403,
-        "label": "momentum",
-        "signal": "momentum"
-      },
-      "fair_base": 45.63365666111616,
-      "fair_high": 83.26899849464493,
-      "fair_low": 29.574422711281038,
-      "model_spread": 2.815574772415839,
-      "models": 5,
-      "mos": -0.45674218260575994,
-      "name": "I&M Group",
-      "price": 84.0,
-      "price_date": "2026-11-12",
-      "rank": 1,
-      "risk": {
-        "factors": [
-          {
-            "detail": "volatility 31%",
-            "level": "Moderate",
-            "name": "Volatility"
-          },
-          {
-            "detail": "beta 1.12",
-            "level": "Moderate",
-            "name": "Beta"
-          },
-          {
-            "detail": "turnover KES 34.2M a day",
-            "level": "Low",
-            "name": "Liquidity"
-          },
-          {
-            "detail": "bear case -22.8% a year",
-            "level": "High",
-            "name": "Downside"
-          },
-          {
-            "detail": "fair value spread 2.8x (29.6 to 83.3)",
-            "level": "High",
-            "name": "Valuation spread"
-          },
-          {
-            "detail": "NPL ratio 9.0%, stable or falling",
-            "level": "Low",
-            "name": "Balance sheet"
-          },
-          {
-            "detail": "no profit warning or suspension on file",
-            "level": "Low",
-            "name": "Events"
-          }
-        ],
-        "level": "High",
-        "summary": "High risk: bear case -22.8% a year; fair value spread 2.8x (29.6 to 83.3); volatility 31% (+1 more)."
-      },
-      "sector": "Banking",
-      "ticker": "IMH",
-      "tier": "Avoid",
-      "why": "IMH #1 (Avoid): 45.7% downside to base fair value KES 45.63; base return -9.7% a year trails the 12.67% hurdle. Biggest score driver: momentum (+1.04). Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle. High risk (bear case -22.8% a year; fair value spread 2.8x (29.6 to 83.3))."
-    },
-    {
-      "agree": 0,
-      "agree_needed": 2,
-      "base": -0.113640936124437,
-      "bear": -0.20551913817622885,
-      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -11.4% does not beat the 12.67% hurdle.",
-      "bull": -0.031197986722891168,
-      "composite": 0.5041351078281906,
-      "conviction": {
-        "failed": [
-          "Valuation",
-          "Return"
-        ],
-        "flag": false,
-        "gates": [
-          {
-            "detail": "only 2 models apply to this company and the flag needs 3 to agree (sector P/E and P/B need 3 sourced peers)",
-            "name": "Valuation",
-            "passed": false
-          },
-          {
-            "detail": "quality gate pass, score 0.88, needs pass and 0.67",
-            "name": "Quality",
-            "passed": true
-          },
-          {
-            "detail": "liquid, fresh price and results, enough history, positive EPS",
-            "name": "Screen",
-            "passed": true
-          },
-          {
-            "detail": "base return -11.4% against the 12.67% hurdle",
-            "name": "Return",
-            "passed": false
-          }
-        ]
-      },
-      "dispersed": false,
-      "dividend_yield": 0.16905737704918034,
-      "driver": {
-        "contribution": 0.8403587190612567,
-        "label": "dividend yield",
-        "signal": "dividend_yield"
-      },
-      "fair_base": 5.218751952109219,
-      "fair_high": 6.549681215749891,
-      "fair_low": 3.887822688468546,
-      "model_spread": 1.6846656189276674,
-      "models": 2,
-      "mos": -0.46529180818553084,
-      "name": "KenGen",
-      "price": 9.76,
-      "price_date": "2026-11-12",
-      "rank": 2,
-      "risk": {
-        "factors": [
-          {
-            "detail": "volatility 34%",
-            "level": "Moderate",
-            "name": "Volatility"
-          },
-          {
-            "detail": "beta 1.30",
-            "level": "High",
-            "name": "Beta"
-          },
-          {
-            "detail": "turnover KES 18.1M a day",
-            "level": "Moderate",
-            "name": "Liquidity"
-          },
-          {
-            "detail": "bear case -20.6% a year",
-            "level": "High",
-            "name": "Downside"
-          },
-          {
-            "detail": "fair value spread 1.7x (3.9 to 6.5)",
-            "level": "Moderate",
-            "name": "Valuation spread"
-          },
-          {
-            "detail": "Altman Z'' 2.93, safe zone",
-            "level": "Low",
-            "name": "Balance sheet"
-          },
-          {
-            "detail": "no profit warning or suspension on file",
-            "level": "Low",
-            "name": "Events"
-          }
-        ],
-        "level": "High",
-        "summary": "High risk: beta 1.30; bear case -20.6% a year; volatility 34% (+2 more)."
-      },
-      "sector": "Energy",
-      "ticker": "KEGN",
-      "tier": "Avoid",
-      "why": "KEGN #2 (Avoid): 46.5% downside to base fair value KES 5.22; base return -11.4% a year trails the 12.67% hurdle. Biggest score driver: dividend yield (+0.84). Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -11.4% does not beat the 12.67% hurdle. High risk (beta 1.30; bear case -20.6% a year)."
-    },
-    {
-      "agree": 1,
-      "agree_needed": 2,
-      "base": 0.29603318606990286,
-      "bear": -0.13950894213188142,
-      "binding": "Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2.",
-      "bull": 0.5672352042753546,
-      "composite": 0.49676315487644673,
-      "conviction": {
-        "failed": [
-          "Valuation"
-        ],
-        "flag": false,
-        "gates": [
-          {
-            "detail": "models disagree: the high fair value is 5.9x the low, limit 3x",
-            "name": "Valuation",
-            "passed": false
-          },
-          {
-            "detail": "quality gate pass, score 0.86, needs pass and 0.67",
-            "name": "Quality",
-            "passed": true
-          },
-          {
-            "detail": "liquid, fresh price and results, enough history, positive EPS",
-            "name": "Screen",
-            "passed": true
-          },
-          {
-            "detail": "base return 29.6% against the 12.67% hurdle",
-            "name": "Return",
-            "passed": true
-          }
-        ]
-      },
-      "dispersed": true,
-      "dividend_yield": 0.05,
-      "driver": {
-        "contribution": 0.45701749338696757,
-        "label": "momentum",
-        "signal": "momentum"
-      },
-      "fair_base": 34.52211794543685,
-      "fair_high": 59.02465270910033,
-      "fair_low": 10.019583181773365,
-      "model_spread": 5.890928957650868,
-      "models": 2,
-      "mos": 0.5691871793380385,
-      "name": "Kenya Power and Lighting",
-      "price": 22.0,
-      "price_date": "2026-11-12",
-      "rank": 3,
-      "risk": {
-        "factors": [
-          {
-            "detail": "volatility 37%",
-            "level": "High",
-            "name": "Volatility"
-          },
-          {
-            "detail": "beta 1.70",
-            "level": "High",
-            "name": "Beta"
-          },
-          {
-            "detail": "turnover KES 27.5M a day",
-            "level": "Low",
-            "name": "Liquidity"
-          },
-          {
-            "detail": "bear case -14.0% a year",
-            "level": "High",
-            "name": "Downside"
-          },
-          {
-            "detail": "fair value spread 5.9x (10.0 to 59.0)",
-            "level": "High",
-            "name": "Valuation spread"
-          },
-          {
-            "detail": "Balance sheet: not assessed",
-            "level": null,
-            "name": "Balance sheet"
-          },
-          {
-            "detail": "no profit warning or suspension on file",
-            "level": "Low",
-            "name": "Events"
-          }
-        ],
-        "level": "High",
-        "summary": "High risk: volatility 37%; beta 1.70; bear case -14.0% a year (+1 more). Not assessed: balance sheet."
-      },
-      "sector": "Energy",
-      "ticker": "KPLC",
-      "tier": "Avoid",
-      "why": "KPLC #3 (Avoid): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: momentum (+0.46). Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. High risk (volatility 37%; beta 1.70)."
-    },
-    {
-      "agree": 1,
-      "agree_needed": 3,
-      "base": 0.11080622513600655,
-      "bear": -0.14541660363387868,
-      "binding": "Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more).",
-      "bull": 0.2685383298678928,
-      "composite": 0.459877201770665,
-      "conviction": {
-        "failed": [
-          "Valuation",
-          "Return"
-        ],
-        "flag": false,
-        "gates": [
-          {
-            "detail": "models disagree: the high fair value is 3.1x the low, limit 3x",
-            "name": "Valuation",
-            "passed": false
-          },
-          {
-            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
-            "name": "Quality",
-            "passed": true
-          },
-          {
-            "detail": "liquid, fresh price and results, enough history, positive EPS",
-            "name": "Screen",
-            "passed": true
-          },
-          {
-            "detail": "base return 11.1% against the 12.67% hurdle",
-            "name": "Return",
-            "passed": false
-          }
-        ]
-      },
-      "dispersed": true,
-      "dividend_yield": 0.0575,
-      "driver": {
-        "contribution": 0.31798402014144583,
-        "label": "momentum",
-        "signal": "momentum"
-      },
-      "fair_base": 99.52819026564842,
-      "fair_high": 142.31199448215577,
-      "fair_low": 46.26444598025874,
-      "model_spread": 3.0760553048204873,
-      "models": 5,
-      "mos": -0.0047180973435158036,
-      "name": "Equity Group Holdings",
-      "price": 100.0,
-      "price_date": "2026-11-12",
-      "rank": 4,
-      "risk": {
-        "factors": [
-          {
-            "detail": "volatility 31%",
-            "level": "Moderate",
-            "name": "Volatility"
-          },
-          {
-            "detail": "beta 1.06",
-            "level": "Moderate",
-            "name": "Beta"
-          },
-          {
-            "detail": "turnover KES 197.0M a day",
-            "level": "Low",
-            "name": "Liquidity"
-          },
-          {
-            "detail": "bear case -14.5% a year",
-            "level": "High",
-            "name": "Downside"
-          },
-          {
-            "detail": "fair value spread 3.1x (46.3 to 142.3)",
-            "level": "High",
-            "name": "Valuation spread"
-          },
-          {
-            "detail": "NPL ratio 9.5%, stable or falling",
-            "level": "Low",
-            "name": "Balance sheet"
-          },
-          {
-            "detail": "no profit warning or suspension on file",
-            "level": "Low",
-            "name": "Events"
-          }
-        ],
-        "level": "High",
-        "summary": "High risk: bear case -14.5% a year; fair value spread 3.1x (46.3 to 142.3); volatility 31% (+1 more)."
-      },
-      "sector": "Banking",
-      "ticker": "EQTY",
-      "tier": "Avoid",
-      "why": "EQTY #4 (Avoid): 0.5% downside to base fair value KES 99.53; base return 11.1% a year trails the 12.67% hurdle. Biggest score driver: momentum (+0.32). Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more). High risk (bear case -14.5% a year; fair value spread 3.1x (46.3 to 142.3))."
     }
   ],
   "valued": 16,

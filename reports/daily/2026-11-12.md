@@ -4,58 +4,19 @@
 
 16 stocks valued. Buy 0, Watch 1, Avoid 15. The 364-day T-bill nets 7.7% after withholding tax; the buy hurdle is 12.67%.
 
-## High confidence undervalued
+## Data health
 
-A stock is flagged **High confidence undervalued** only when all four gates pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.67% hurdle (Return). Risk is rated separately from seven factors and never changes the flag, so check it before sizing a position.
+**Current**. Expected closing session: 2026-11-12. Verified prices: 16/16. Announcements: current (last successful check 2026-11-12). Macro rates: current (dated 2026-11-11).
 
-No stock qualifies on 2026-11-12. The closest candidates and the gates they miss:
+Weekdays only; a delayed session can mean a public holiday or source lag.
 
-| Ticker | Tier | Gates passed | Missing | Risk |
-|---|---|---|---|---|
-| KPLC | Avoid | 3 of 4 | Valuation: models disagree: the high fair value is 5.9x the low, limit 3x | High |
-| KCB | Avoid | 3 of 4 | Valuation: models disagree: the high fair value is 5.3x the low, limit 3x | High |
-| IMH | Avoid | 2 of 4 | Valuation: 0 of 5 models show at least 15% upside, needs 3; Return: base return -9.7% against the 12.67% hurdle | High |
-
-### Risk profile
-
-Each factor is rated Low, Moderate or High from fixed thresholds in `data/settings.yaml`. Overall risk is High when the balance sheet or events factor is High or two factors are High, and Moderate when one factor is High or three are Moderate.
-
-| Ticker | Risk | Volatility | Beta | Liquidity | Downside | Valuation spread | Balance sheet | Events |
-|---|---|---|---|---|---|---|---|---|
-| KPLC | High | High (37%) | High (1.70) | Low (KES 27.5M) | High (-14.0%) | High (5.9x) | n/a | Low (none) |
-| KCB | High | Moderate (30%) | High (1.34) | Low (KES 126.0M) | High (-24.4%) | High (5.3x) | Moderate (NPL 15.1%) | Low (none) |
-| IMH | High | Moderate (31%) | Moderate (1.12) | Low (KES 34.2M) | High (-22.8%) | High (2.8x) | Low (NPL 9.0%) | Low (none) |
-| KEGN | High | Moderate (34%) | High (1.30) | Moderate (KES 18.1M) | High (-20.6%) | Moderate (1.7x) | Low (Z'' 2.93) | Low (none) |
-| EQTY | High | Moderate (31%) | Moderate (1.06) | Low (KES 197.0M) | High (-14.5%) | High (3.1x) | Low (NPL 9.5%) | Low (none) |
-| BAT | Moderate | Low (22%) | Low (0.57) | Moderate (KES 12.5M) | High (-10.1%) | Low (1.4x) | Low (Z'' 7.09) | Low (none) |
-
-## Top 5
-
-Buys first, then Watch, then Avoid; the composite rank (#) orders stocks within each tier.
-
-- NCBA #16 (Watch): 5.2% upside to base fair value KES 92.53; base return 15.3% a year beats the 12.67% hurdle. Biggest score driver: dividend yield (+0.18). Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3. Moderate risk (beta 0.81; turnover KES 12.9M a day).
-- IMH #1 (Avoid): 45.7% downside to base fair value KES 45.63; base return -9.7% a year trails the 12.67% hurdle. Biggest score driver: momentum (+1.04). Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle. High risk (bear case -22.8% a year; fair value spread 2.8x (29.6 to 83.3)).
-- KEGN #2 (Avoid): 46.5% downside to base fair value KES 5.22; base return -11.4% a year trails the 12.67% hurdle. Biggest score driver: dividend yield (+0.84). Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -11.4% does not beat the 12.67% hurdle. High risk (beta 1.30; bear case -20.6% a year).
-- KPLC #3 (Avoid): 56.9% upside to base fair value KES 34.52; base return 29.6% a year beats the 12.67% hurdle. Biggest score driver: momentum (+0.46). Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. High risk (volatility 37%; beta 1.70).
-- EQTY #4 (Avoid): 0.5% downside to base fair value KES 99.53; base return 11.1% a year trails the 12.67% hurdle. Biggest score driver: momentum (+0.32). Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more). High risk (bear case -14.5% a year; fair value spread 3.1x (46.3 to 142.3)).
-
-### Score breakdown
-
-Each cell is the signal's contribution to the composite (weight x z-score), with the raw value in brackets.
-
-| Rank | Ticker | Tier | Composite | Dividend yield | Margin of safety | Momentum | Quality |
-|---|---|---|---|---|---|---|---|
-| 16 | NCBA | Watch | -0.63 | +0.18 (9.5%) | +0.10 (5.2%) | -0.44 (5.0%) | -0.47 (0.55) |
-| 1 | IMH | Avoid | +0.62 | -0.27 (4.5%) | -0.06 (-45.7%) | +1.04 (79.7%) | -0.09 (0.80) |
-| 2 | KEGN | Avoid | +0.50 | +0.84 (16.9%) | -0.06 (-46.5%) | -0.30 (12.0%) | +0.02 (0.88) |
-| 3 | KPLC | Avoid | +0.50 | -0.22 (5.0%) | +0.27 (56.9%) | +0.46 (50.3%) | -0.00 (0.86) |
-| 4 | EQTY | Avoid | +0.46 | -0.15 (5.8%) | +0.08 (-0.5%) | +0.32 (43.2%) | +0.21 (1.00) |
+Strong-confidence flags require current critical evidence. A rule-based Buy with incomplete evidence still needs verification.
 
 ## What changed
 
 Compared with the brief for 2026-11-11.
 
-- Top 5: entered IMH, KEGN; left KCB, COOP.
+- Top 5: entered none; left KPLC, KCB.
 - Tier: KPLC moved from Watch to Avoid.
 - Tier: KCB moved from Watch to Avoid.
 - Rank: IMH moved from #6 to #1.
@@ -72,32 +33,70 @@ Compared with the brief for 2026-11-11.
 - Rank: NCBA moved from #10 to #16.
 - Unusual move: COOP 5.9% on 2026-11-12 (threshold 5.4%).
 
+## High confidence undervalued
+
+A stock is flagged **High confidence undervalued** only when all four gates pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.67% hurdle (Return). Risk level is rated separately from seven factors and never changes the valuation or return thresholds. Strong-confidence flags also require current critical live evidence. Agreement of methods is not a probability of profit.
+
+No stock qualifies on 2026-11-12. The closest candidates and the gates they miss:
+
+| Ticker | Tier | Gates passed | Missing | Risk |
+|---|---|---|---|---|
+| IMH | Avoid | 2 of 4 | Valuation: 0 of 5 models show at least 15% upside, needs 3; Return: base return -9.7% against the 12.67% hurdle | High |
+| KEGN | Avoid | 2 of 4 | Valuation: only 2 models apply to this company and the flag needs 3 to agree (sector P/E and P/B need 3 sourced peers); Return: base return -11.4% against the 12.67% hurdle | High |
+| KPLC | Avoid | 2 of 4 | Valuation: models disagree: the high fair value is 5.9x the low, limit 3x; Return: unclear while valuation evidence disagrees; Balance sheet: not assessed; Downside: not assessed | High (incomplete) |
+
+### Risk profile
+
+Each factor is rated Low, Moderate or High from fixed thresholds in `data/settings.yaml`. Overall risk is High when the balance sheet or events factor is High or two factors are High, and Moderate when one factor is High or three are Moderate.
+
+| Ticker | Risk | Volatility | Beta | Liquidity | Downside | Valuation spread | Balance sheet | Events |
+|---|---|---|---|---|---|---|---|---|
+| IMH | High | Moderate (31%) | Moderate (1.12) | Low (KES 34.2M) | High (-22.8%) | High (2.8x) | Low (NPL 9.0%) | Low (none) |
+| KEGN | High | Moderate (34%) | High (1.30) | Moderate (KES 18.1M) | High (-20.6%) | Moderate (1.7x) | Low (Z'' 2.93) | Low (none) |
+| KPLC | High (incomplete) | High (37%) | High (1.70) | Low (KES 27.5M) | unclear | High (5.9x) | n/a | Low (none) |
+| EQTY | High (incomplete) | Moderate (31%) | Moderate (1.06) | Low (KES 197.0M) | unclear | High (3.1x) | Low (NPL 9.5%) | Low (none) |
+| BAT | Moderate | Low (22%) | Low (0.57) | Moderate (KES 12.5M) | High (-10.1%) | Low (1.4x) | Low (Z'' 7.09) | Low (none) |
+
+## Candidates for review
+
+Buy candidates first, then Watch. Avoid stocks remain in the full research ranking. The score rank is not a buy signal.
+
+- NCBA #16 (Watch): 5.2% upside to base fair value KES 92.53; base return 15.3% a year beats the 12.67% hurdle. Biggest score driver: dividend yield (+0.18). Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3. Moderate risk (beta 0.81; turnover KES 12.9M a day).
+
+### Score breakdown
+
+Each cell is the signal's contribution to the composite (weight x z-score), with the raw value in brackets.
+
+| Rank | Ticker | Tier | Composite | Dividend yield | Margin of safety | Momentum | Quality |
+|---|---|---|---|---|---|---|---|
+| 16 | NCBA | Watch | -0.63 | +0.18 (9.5%) | +0.10 (5.2%) | -0.44 (5.0%) | -0.47 (0.55) |
+
 ## Full ranking
 
 | Rank | Ticker | Tier | Composite | Price | MoS | Bear / base / bull a year | Div. yield | Volatility | Risk | Binding constraint |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1 | IMH | Avoid | +0.62 | KES 84.00 | -45.7% | -22.8% / -9.7% / 11.7% | 4.5% | 31.1% | High | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.7% does not beat the 12.67% hurdle. |
 | 2 | KEGN | Avoid | +0.50 | KES 9.76 | -46.5% | -20.6% / -11.4% / -3.1% | 16.9% | 33.7% | High | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -11.4% does not beat the 12.67% hurdle. |
-| 3 | KPLC | Avoid | +0.50 | KES 22.00 | 56.9% | -14.0% / 29.6% / 56.7% | 5.0% | 36.7% | High | Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. |
-| 4 | EQTY | Avoid | +0.46 | KES 100.00 | -0.5% | -14.5% / 11.1% / 26.9% | 5.8% | 31.0% | High | Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
+| 3 | KPLC | Avoid | +0.50 | KES 22.00 | unclear | unclear | 5.0% | 36.7% | High (incomplete) | Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. |
+| 4 | EQTY | Avoid | +0.46 | KES 100.00 | unclear | unclear | 5.8% | 31.0% | High (incomplete) | Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
 | 5 | BAT | Avoid | +0.30 | KES 539.00 | -38.5% | -10.1% / -3.8% / 2.2% | 13.0% | 21.7% | Moderate | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -3.8% does not beat the 12.67% hurdle. |
 | 6 | COOP | Avoid | +0.26 | KES 39.25 | -28.9% | -10.5% / 0.3% / 9.8% | 6.4% | 30.2% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 0.3% does not beat the 12.67% hurdle. |
-| 7 | KCB | Avoid | +0.22 | KES 89.50 | 11.1% | -24.4% / 13.9% / 34.0% | 5.6% | 30.3% | High | Avoid: valuation models disagree (high is 5.3x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3. |
+| 7 | KCB | Avoid | +0.22 | KES 89.50 | unclear | unclear | 5.6% | 30.3% | High (incomplete) | Avoid: valuation models disagree (high is 5.3x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3. |
 | 8 | ABSA | Avoid | +0.10 | KES 31.00 | -25.7% | -10.4% / 2.0% / 11.8% | 7.6% | 34.5% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 2.0% does not beat the 12.67% hurdle. |
-| 9 | DTK | Avoid | -0.16 | KES 187.50 | -23.4% | -19.3% / 1.3% / 50.8% | 4.8% | 29.6% | High | Avoid: valuation models disagree (high is 6.2x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
+| 9 | DTK | Avoid | -0.16 | KES 187.50 | unclear | unclear | 4.8% | 29.6% | High (incomplete) | Avoid: valuation models disagree (high is 6.2x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
 | 10 | CARB | Avoid | -0.19 | KES 43.05 | -58.3% | -20.6% / -16.9% / -13.2% | 4.6% | 39.0% | High | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -16.9% does not beat the 12.67% hurdle. |
 | 11 | SCOM | Avoid | -0.31 | KES 35.00 | -63.6% | -27.9% / -19.9% / -12.7% | 5.7% | 24.3% | Moderate | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -19.9% does not beat the 12.67% hurdle. |
 | 12 | EABL | Avoid | -0.32 | KES 272.50 | -66.1% | -29.4% / -22.2% / -15.6% | 4.7% | 34.4% | Moderate | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -22.2% does not beat the 12.67% hurdle. |
 | 13 | SCBK | Avoid | -0.41 | KES 302.00 | -27.8% | -9.5% / -0.8% / 1.3% | 10.4% | 18.4% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -0.8% does not beat the 12.67% hurdle. |
 | 14 | SBIC | Avoid | -0.41 | KES 263.00 | -24.7% | -1.3% / 3.8% / 13.9% | 7.7% | 27.2% | Moderate | Avoid: quality gate failed (Piotroski 2/5 below gate); only 0 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
-| 15 | TOTL | Avoid | -0.53 | KES 45.50 | -60.2% | -22.2% / -20.5% / -18.7% | 7.6% | 26.7% | High | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -20.5% does not beat the 12.67% hurdle. |
+| 15 | TOTL | Avoid | -0.53 | KES 45.50 | -60.2% | -22.2% / -20.5% / -18.7% | 7.6% | 26.7% | High (incomplete) | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -20.5% does not beat the 12.67% hurdle. |
 | 16 | NCBA | Watch | -0.63 | KES 88.00 | 5.2% | -0.1% / 15.3% / 22.4% | 9.5% | 24.2% | Moderate | Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3. |
 
 ## How to read this
 
 - Composite score = 0.3 z(dividend yield) + 0.1 z(margin of safety) + 0.4 z(momentum) + 0.2 z(quality). Low volatility is logged for research but carries no weight until a reviewed tuning PR changes the weights.
 - **Buy** clears every gate: quality passes, the screen passes, at least half the valuation models that apply (minimum two) agree on a margin of safety of 15% or more, and the base return beats the hurdle. **Watch** passes quality and misses one gate. **Avoid** misses more, or fails quality.
-- **High confidence undervalued** is a stricter Buy: three or more models agree and quality scores 0.67 or more. In the monthly backtest it fired rarely and lost money over 12 months in none of its cases, but its excess return over the equal-weight universe was mixed, so treat it as a filter for review, not a guarantee.
+- **High confidence undervalued** is a stricter Buy: three or more models agree and quality scores 0.67 or more, with current critical live evidence. Agreement of methods is not a probability of profit.
 - **Risk** (Low, Moderate or High) rates volatility, beta, liquidity, bear-case return, fair value spread, balance sheet (Altman Z'' or bank NPL) and warning announcements. It is shown beside the tier and never changes it.
 - Returns are annualised over 3 years, net of trading costs and dividend withholding tax.
 - Every stock's score, signals, tier and projections are appended daily to `data/rankings/live/` and never edited, so the retrospective can score these calls later.
