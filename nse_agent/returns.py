@@ -12,7 +12,11 @@ def net_tbill() -> float:
 
 
 def project(price: float, dps: float | None, fv: dict, g: float, years: int | None = None) -> dict:
-    """Annual total return = net dividend yield + (1+g)(V/P)^(1/N) - 1 - round-trip costs / N."""
+    """Annual total return = net dividend yield + (1+g)(V/P)^(1/N) - 1 - round-trip costs / N.
+
+    Every model value scales with book value or earnings, which compound at g = ROE x retention, so g applies
+    to all of them: at P = V an EPV or sector-multiple stock still returns D/V + g = ke when ROE = ke.
+    """
     m, s = config.macro(), config.settings()
     n = years or s["valuation"]["horizon_years"]
     shift = s["scenarios"]["growth_shift"]
