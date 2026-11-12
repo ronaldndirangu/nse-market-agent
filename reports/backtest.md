@@ -7,7 +7,7 @@ Monthly rebalance from 2019-06-01 to 2026-11-01 (89 months). At each date the en
 | Strategy | CAGR | Volatility | Max drawdown | Total return |
 |---|---|---|---|---|
 | Top 3 by composite rank | 17.0% | 23.8% | -51.9% | 219.6% |
-| Undervalued picks only (cash at net T-bill otherwise) | 11.5% | 7.5% | -8.2% | 124.9% |
+| Undervalued picks only (cash at net T-bill otherwise) | 11.5% | 7.5% | -8.2% | 124.7% |
 | Equal-weight universe | 21.7% | 17.5% | -24.9% | 329.4% |
 
 - Months the top 3 beat the universe: **43.8%**.

@@ -8,7 +8,7 @@ Weekly basket returns from 2016-W48 to 2026-W46 (520 weeks) are resampled in 4-w
 
 - **History:** repeats the basket's own past drift and volatility.
 - **Valuation-anchored:** keeps the historical volatility but centres the drift on the engine's base projection (2.9% a year).
-- Net 364-day T-bill: 7.67%.
+- Net 364-day T-bill: 7.66%.
 
 | Model | Horizon | P5 | P25 | Median | P75 | P95 | P(beat T-bill) | P(loss) |
 |---|---|---|---|---|---|---|---|---|
