@@ -21,7 +21,7 @@ DATED = re.compile(r"\d{4}-\d{2}-\d{2}\.md")
 PAGES = [  # (source under reports/, output page, nav label, description)
     ("daily/latest.md", "daily.html", "Daily brief", "Today's top 5, tiers, risk profile and what changed."),
     ("latest.md", "weekly.html", "Weekly report", "Fair value ranges, theses and data gaps for every stock."),
-    ("retrospective.md", "retrospective.html", "Retrospective",
+    ("retrospective.md", "retrospective.html", "Track record",
      "How past rankings performed, per-signal IC and why winners were missed."),
     ("scorecard.md", "scorecard.html", "Scorecard", "Logged picks scored against NASI."),
     ("backtest.md", "backtest.html", "Backtest", "Walk-forward backtest of the ranking rules."),
@@ -1164,7 +1164,8 @@ def _growth_chart(detail: list[dict]) -> str:
             f'{pts[-1][3]:.2f}x"><g class="grid">{grid}</g>{"".join(years)}{lines}</svg><p class="small muted">'
             f'Growth of KES 1 from {E(pts[0][0])} to {E(pts[-1][0])}, rebalanced monthly into the top 5 the engine '
             f'ranked with data published by each date and today\'s interest rates. '
-            f'Before trading costs; dividends added without reinvestment; NASI is price only.</p></div>')
+            f'Before trading costs. Dividends are included in each monthly return, and those returns are compounded '
+            f'at monthly rebalancing. NASI excludes dividends.</p></div>')
 
 
 def _ic_table(ic: dict) -> str:
@@ -1211,25 +1212,67 @@ def _track_record(r: dict) -> str:
     y12 = rec.get("12") or {}
     if not y12:
         return ""
-    kpis = [(pct(y12.get("top_return")), "Top 5, average 12 month total return"),
-            (pct(y12.get("universe")), "Equal-weight universe, same windows"),
-            (pct(y12.get("nasi")), "NASI, same windows"), (pct(y12.get("hit_rate")), "Hit rate against the universe"),
-            (f'{y12["ic"]:+.3f}' if y12.get("ic") is not None else "n/a", "Rank IC of the composite"),
-            (pct(y12.get("calibration"), 0), "Outcomes inside the bear to bull range (goal about 80%)")]
+    top, basket = y12.get("top_return"), y12.get("universe")
+    edge = y12.get("excess")
+    if edge is None and top is not None and basket is not None:
+        edge = top - basket
+    conclusion = ("The rankings beat the stock basket on average in this simulation."
+                  if edge is not None and edge > 0 else
+                  "This simulation did not beat the simple stock basket." if edge is not None else
+                  "There is not enough historical data to compare the rankings.")
+    kpis = [
+        (f"{edge * 100:+.1f} percentage points" if edge is not None else "Not available",
+         "Average extra return over the comparison basket"),
+        (pct(y12.get("hit_rate")), "Selected stocks that beat the basket, averaged across test windows"),
+        (pct(y12.get("calibration"), 0), "Actual one-year returns inside the scenario range (all ranked stocks)"),
+    ]
     cal = y12.get("calibration")
-    note = (f'<div class="callout small"><p><b>Ranges are too narrow.</b> Only {pct(cal, 0)} of 12 month outcomes '
-            f'landed inside the projected bear to bull range against a goal of about 80%, so treat each range as a '
-            f'rough scenario and size positions for wider swings.</p></div>') if cal is not None and cal < 0.6 else ""
-    live = (f'<p class="small muted">Live ledger started {E(str(r.get("live_first")))} with '
-            f'{r.get("live_dates", 0)} trading day(s); live scores appear once a month of outcomes exists. The figures '
-            f'above are reconstructions over {r.get("recon_dates", 0)} month-ends from '
-            f'{E(str(r.get("recon_first")))}.</p>') if r.get("live_first") else ""
-    caveat = ('<p class="small muted"><b>Backtest, in-sample.</b> The current weights were chosen on this same history '
-              "and every month uses today's interest rates, so these figures flatter the method. Treat them as an "
-              "upper bound until the live record builds up.</p>")
-    return ('<section class="card" id="track-record"><h2>Track record (backtest)</h2>' + caveat + '<div class="kpis">'
+    note = (f'<div class="callout warn small"><p><b>The scenarios are poor guides to one-year risk.</b> '
+            f'Only {pct(cal, 0)} of checked one-year stock outcomes stayed between the lower and upper scenarios. '
+            f'These are valuation scenarios, not probability bands. A bear case is not a worst-case loss limit.'
+            f'</p></div>') if cal is not None and cal < 0.6 else ""
+    live_windows = ((r.get("live") or {}).get("12") or {}).get("windows", 0)
+    if r.get("live_first"):
+        days = r.get("live_dates", 0)
+        live = (f'<p class="small"><b>Live record:</b> {days} trading {"day" if days == 1 else "days"} tracked since '
+                f'{E(str(r["live_first"]))}. ' + (
+                    f'Completed 12-month live holding periods: {live_windows}. See the full results.'
+                    if live_windows else 'No completed 12-month live outcomes yet.') + '</p>')
+    else:
+        live = '<p class="small"><b>Live record:</b> no live predictions have been logged yet.</p>'
+    comparison = (f'<p class="small"><b>Historical simulation:</b> the top-five basket returned an average '
+                  f'{pct(top)} over 12 months, versus {pct(basket)} for the comparison basket, which splits money '
+                  f'equally across the stocks we track. '
+                  f'These are averages of '
+                  f'{y12.get("windows", 0)} overlapping historical holding windows, before trading costs.</p>'
+                  if top is not None and basket is not None else "")
+    caveat = ('<p class="small muted">This tests the five highest-ranked stocks, including stocks that may fail '
+              "the Buy rules. It is not a live record of Buy recommendations. Today's interest rates and the current "
+              "covered-stock universe are reused throughout the history. Neighbouring 12-month tests share much of "
+              "their history, so the windows are not independent. Fees could reduce or erase the edge.</p>")
+    chart = _growth_chart((rec.get("1") or {}).get("detail") or [])
+    if chart:
+        chart = ('<h3>A separate test: monthly portfolio rotation</h3><p class="small">This chart holds each '
+                 "month's top five for one month, then rebalances. It is a different experiment from the "
+                 '12-month holding averages above.</p>' + chart)
+    link = ('<a class="back-link" href="retrospective.html#forward-scorecard">Full methodology and results</a>'
+            if (config.REPORTS / "retrospective.md").exists() else "")
+    ic = f'{y12["ic"]:+.3f}' if y12.get("ic") is not None else "Not available"
+    stamp = (f'<p class="small muted">Calculated {E(str(r["generated"]))}; outcomes evaluated through '
+             f'{E(str(r["data_end"]))}.</p>') if r.get("generated") and r.get("data_end") else ""
+    return ('<section class="card" id="track-record"><h2>Do the rankings add value?</h2>'
+            f'<p><b>{conclusion}</b></p>{stamp}{live}{comparison}'
+            '<p class="small muted">The ranking method was chosen using this same history. This is not an '
+            'independent test or a forecast.</p><div class="kpis">'
             + "".join(f'<div class="kpi"><b>{v}</b><span>{E(k)}</span></div>' for v, k in kpis) + "</div>"
-            + _growth_chart((rec.get("1") or {}).get("detail") or []) + note + live + "</section>")
+            + '<p class="small muted">The selected-stock beat rate is not the probability of making a profit.</p>'
+            + note + '<details class="more"><summary>How to interpret this evidence</summary>' + caveat
+            + '<dl class="facts"><div><dt>NASI price return (excludes dividends)</dt>'
+            f'<dd>{pct(y12.get("nasi"))}</dd></div><div><dt>Ranking association (IC)</dt>'
+            f'<dd>{ic}</dd></div></dl><p class="small muted">A positive IC means higher ranks tended to '
+            'outperform. It is not a return or a probability. NASI excludes dividends, so it is not directly '
+            'comparable with the stock baskets, which include dividends.</p>'
+            + chart + link + "</details></section>")
 
 
 def _evidence(r: dict) -> str:
@@ -1283,8 +1326,8 @@ def dashboard(snap: dict | None, retro: dict | None, present: list[tuple]) -> st
     if retro:
         for fn in (_track_record, _evidence):
             try:
-                parts.append('<details class="fold"><summary><h2>Research: '
-                             + ("past performance" if fn == _track_record else "ranking evidence")
+                parts.append('<details class="fold"><summary><h2>'
+                             + ("Track record, explained" if fn == _track_record else "Research: ranking evidence")
                              + "</h2></summary>" + fn(retro) + "</details>")
             except Exception as exc:
                 parts.append(f'<div class="empty small">Panel unavailable: {E(type(exc).__name__)}</div>')
@@ -1382,8 +1425,8 @@ def build() -> list[Path]:
         written.append(p)
 
     snapshot = _load_json(reports / "daily" / "latest.json")
-    page("index.html", "Dashboard", dashboard(snapshot,
-                                              _load_json(config.DATA / "retrospective.json"), present), "index.html")
+    retro = _load_json(config.DATA / "retrospective.json")
+    page("index.html", "Dashboard", dashboard(snapshot, retro, present), "index.html")
     if snapshot:
         stocks = {}
         for key in ("ranking", "top", "high_confidence", "near_misses"):
@@ -1403,7 +1446,13 @@ def build() -> list[Path]:
                  + _stock_card(item, snapshot.get("hurdle"), gates=True, why=True, tbill=snapshot.get("tbill_net"), detail=True)
                  + filing + _health_panel(snapshot), "index.html")
     for src, dst, label, _ in present:
-        page(dst, label, render_markdown((reports / src).read_text(encoding="utf-8")), dst)
+        body = render_markdown((reports / src).read_text(encoding="utf-8"))
+        if dst == "retrospective.html" and retro:
+            body = re.sub(r"<h1>.*?</h1>", "", body, count=1, flags=re.S)
+            body = ('<h1>Track record, explained</h1>' + _track_record(retro)
+                    + '<details class="fold" id="technical-results"><summary><h2>Full technical report</h2></summary>'
+                    + body + "</details>")
+        page(dst, label, body, dst)
 
     sections = []
     for sub, src_dir, label, latest in (("daily", reports / "daily", "Daily briefs", "daily.html"),

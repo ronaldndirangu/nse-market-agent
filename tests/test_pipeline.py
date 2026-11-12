@@ -1,5 +1,6 @@
 import math
 from datetime import date, timedelta
+from pathlib import Path
 
 import pytest
 import yaml
@@ -146,3 +147,16 @@ def test_previous_lists_seed_from_picks_log_then_use_saved_state():
     finally:
         log.unlink(missing_ok=True)
         state.unlink(missing_ok=True)
+
+
+def test_publications_use_distinct_retry_safe_artifacts():
+    workflows = Path(__file__).resolve().parents[1] / ".github" / "workflows"
+    weekly = yaml.load((workflows / "weekly-report.yml").read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
+    prefixes = [weekly["jobs"][job]["with"]["artifact_name"] for job in ("deploy", "publish-analytics")]
+    assert len(set(prefixes)) == 2
+    publish = yaml.load((workflows / "publish.yml").read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
+    steps = publish["jobs"]["publish"]["steps"]
+    upload = next(s for s in steps if s.get("uses", "").startswith("actions/upload-pages-artifact"))
+    deploy = next(s for s in steps if s.get("uses", "").startswith("actions/deploy-pages"))
+    assert upload["with"]["name"] == deploy["with"]["artifact_name"]
+    assert "github.run_attempt" in upload["with"]["name"]

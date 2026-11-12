@@ -196,6 +196,10 @@ The Pages site opens on a daily decision brief: evidence health, today's conclus
 Avoid stocks stay in collapsed research views. Each stock opens a detail page with its source filing, gates and risk
 profile. The reconstructed track record, signal evidence and full ranking remain available under expandable sections. Every
 Markdown report below is also rendered as a page, with dated archives for the daily brief and weekly report.
+The track record starts with the extra historical return over an equal-weight covered-stock basket, the selected-stock
+beat rate, and scenario coverage. The beat rate is stock-level outperformance, not a probability of profit.
+Historical 12-month holding tests, the separate monthly-rotation chart, and actual live outcomes are labelled separately.
+The dedicated Track record page starts with this same plain-language summary and keeps the full technical report collapsed.
 `reports/daily/latest.json` is the machine-readable snapshot behind the dashboard.
 Disagreeing or insufficient valuation methods suppress point estimates in consumer reports and alerts. Raw outputs
 remain in the ledger and MCP tools with `estimate_reliable` metadata. Returns are illustrative scenarios, not loss

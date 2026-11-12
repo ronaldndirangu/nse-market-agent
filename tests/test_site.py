@@ -123,6 +123,56 @@ def test_render_markdown_folds_method_sections_and_dedupes_disclaimer():
     assert "b-watch" in html and "r-high" in html
 
 
+def test_track_record_separates_historical_windows_live_results_and_monthly_rotation(tree):
+    retro = {
+        "generated": "2026-11-12", "data_end": "2026-11-11",
+        "live_first": "2026-11-11", "live_dates": 2, "live": {"12": {"windows": 0}},
+        "reconstructed": {
+            "12": {"top_return": 0.242, "universe": 0.203, "excess": 0.039, "hit_rate": 0.546,
+                   "calibration": 0.27, "ic": 0.094, "nasi": 0.072, "windows": 105},
+            "1": {"detail": [
+                {"start": "2020-01-01", "end": "2020-02-01", "top_return": 0.01, "universe": 0.005, "nasi": 0.002},
+                {"start": "2020-02-01", "end": "2020-03-01", "top_return": 0.02, "universe": 0.015, "nasi": 0.003},
+            ]},
+        },
+    }
+    _write(tree / "data" / "retrospective.json", json.dumps(retro))
+    _write(tree / "reports" / "retrospective.md", "# Ranking retrospective\n\n## Forward scorecard\n\nResults.\n")
+    site.build()
+    for path in ("index.html", "retrospective.html"):
+        html = (tree / "site" / path).read_text(encoding="utf-8")
+        for text in ("Do the rankings add value?", "+3.9 percentage points", "24.2%", "20.3%", "54.6%",
+                     "Selected stocks that beat the basket", "105 overlapping historical holding windows",
+                     "Calculated 2026-11-12; outcomes evaluated through 2026-11-11",
+                     "No completed 12-month live outcomes yet", "A bear case is not a worst-case loss limit",
+                     "not a live record of Buy recommendations", "not the probability of making a profit",
+                     "A separate test: monthly portfolio rotation", "different experiment"):
+            assert text in html
+        summary = html.split('<section class="card" id="track-record">', 1)[1]
+        assert summary.index("How to interpret this evidence") < summary.index("Ranking association (IC)")
+        assert summary.index("How to interpret this evidence") < summary.index('class="chart"')
+        assert "upper bound" not in summary
+        assert "at monthly rebalancing" in summary and "without reinvestment" not in summary
+        if path == "retrospective.html":
+            assert '<details class="fold" id="technical-results"><summary><h2>Full technical report</h2>' in html
+            assert html.count("<h1>") == 1
+    assert site.check() > 0
+
+
+@pytest.mark.parametrize("historical,expected", [
+    ({"top_return": 0.1, "universe": 0.2}, "This simulation did not beat the simple stock basket."),
+    ({"calibration": None}, "There is not enough historical data to compare the rankings."),
+])
+def test_track_record_does_not_invent_an_advantage_or_call_mature_live_results_pending(historical, expected):
+    html = site._track_record({"reconstructed": {"12": historical},
+                               "live_first": "2025-01-01", "live_dates": 260, "live": {"12": {"windows": 3}}})
+    assert expected in html
+    assert "Completed 12-month live holding periods: 3" in html
+    assert "No completed 12-month live outcomes yet" not in html
+    if "top_return" not in historical:
+        assert "Not available" in html and "+0.0" not in html
+
+
 def test_badges():
     assert "b-buy" in site.tier_badge("Buy") and "b-flag" not in site.tier_badge("Buy")
     assert "b-flag" in site.tier_badge("Buy", flagged=True)

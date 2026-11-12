@@ -11,6 +11,7 @@ INTRADAY = "2026-11-12T08:30:00+00:00"
 
 @pytest.fixture
 def data_dir(tmp_path, monkeypatch):
+    monkeypatch.delenv("GITHUB_ACTIONS", raising=False)
     monkeypatch.setattr(config, "DATA", tmp_path)
     monkeypatch.setattr(config, "PRICES_DIR", tmp_path / "prices")
     return tmp_path

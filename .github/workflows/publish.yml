@@ -2,7 +2,16 @@ name: Publish site
 
 on:
   workflow_call:
+    inputs:
+      artifact_name:
+        type: string
+        default: github-pages
   workflow_dispatch:
+    inputs:
+      artifact_name:
+        description: "Artifact name prefix"
+        type: string
+        default: github-pages
 
 permissions:
   contents: read
@@ -33,6 +42,9 @@ jobs:
         run: python -m nse_agent site --check
       - uses: actions/upload-pages-artifact@v5
         with:
+          name: ${{ inputs.artifact_name }}-${{ github.run_attempt }}
           path: site
       - id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          artifact_name: ${{ inputs.artifact_name }}-${{ github.run_attempt }}

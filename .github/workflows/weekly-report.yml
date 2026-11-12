@@ -74,6 +74,8 @@ jobs:
     needs: report
     if: ${{ !cancelled() && needs.report.outputs.persisted == 'true' }}
     uses: ./.github/workflows/publish.yml
+    with:
+      artifact_name: weekly-report
 
   analytics:
     needs: report
@@ -125,6 +127,8 @@ jobs:
     needs: analytics
     if: ${{ !cancelled() && needs.analytics.outputs.persisted == 'true' }}
     uses: ./.github/workflows/publish.yml
+    with:
+      artifact_name: weekly-analytics
 
   notify:
     needs: [report, deploy]
