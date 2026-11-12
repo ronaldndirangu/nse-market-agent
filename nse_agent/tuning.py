@@ -187,6 +187,8 @@ def render(res: dict) -> str:
               "- Monthly windows overlap at the 3 and 12-month horizons, so they are not independent observations.",
               "- Point-in-time fundamentals are short until the backfill PRs are merged, so the sample is small and "
               "covers one market regime. Rerun after merging them.",
+              "- Stored z-scores were computed with today's T-bill and cost of equity, so the margin of safety signal "
+              "in early months is not what the engine would have seen then. Price signals are unaffected.",
               "- The universe is 16 stocks; one month's IC is noisy.", ""]
     return "\n".join(lines)
 

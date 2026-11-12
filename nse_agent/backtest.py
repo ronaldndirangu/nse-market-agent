@@ -126,6 +126,7 @@ def render(bt: dict) -> str:
         "without reinvestment. Dividends missing from `data/dividends.yaml` understate high-yield names.",
         "- The universe is today's coverage list, so delisted and failed counters are missing (survivorship bias).",
         "- Macro inputs (bond yield, risk premiums) are today's values, not the values known at each date.",
+        *([f"- {fnd.timing_note()}"] if fnd.timing_note() else []),
         "- Liquidity and suspension screens are off because historical volume and suspension data are not stored.",
         "- Trading costs use the current per-side rate on names that change at each rebalance.",
         "- Short samples and a small universe make these numbers noisy. Treat them as a sanity check.", "",

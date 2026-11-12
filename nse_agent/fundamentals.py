@@ -27,6 +27,7 @@ class Period:
     source_url: str
     values: dict = field(default_factory=dict)
     source_note: str = ""
+    published_basis: str = ""
 
     def get(self, key: str) -> float | None:
         v = self.values.get(key)
@@ -60,6 +61,7 @@ def _load(p: str) -> dict[str, dict]:
                 ticker=ticker, period=str(rec["period"]), period_end=_date(rec["period_end"]),
                 published=_date(rec["published"]), type=rec.get("type", "annual"),
                 source_url=rec.get("source_url", ""), values=vals, source_note=rec.get("source_note", ""),
+                published_basis=str(rec.get("published_basis") or ""),
             ))
         periods.sort(key=lambda x: x.period_end)
         out[ticker] = {"meta": {k: v for k, v in comp.items() if k != "periods"}, "periods": periods}
@@ -99,3 +101,26 @@ def roe(periods: list[Period], idx: int) -> float | None:
 def avg(values: list[float | None]) -> float | None:
     vals = [v for v in values if v is not None]
     return sum(vals) / len(vals) if vals else None
+
+
+def basis_counts() -> dict[str, int]:
+    """How many periods set `published` from a stated date, the CMA deadline or the retrieval date."""
+    out: dict[str, int] = {}
+    for comp in load().values():
+        for p in comp["periods"]:
+            k = p.published_basis or "unstated"
+            out[k] = out.get(k, 0) + 1
+    return out
+
+
+def timing_note() -> str:
+    """Disclose that deadline-dated periods are conservative for early filers and look-ahead for late ones."""
+    c = basis_counts()
+    total = sum(c.values())
+    if not total or not c.get("deadline"):
+        return ""
+    noted = c.get("noted", 0)
+    return (f"{c['deadline']} of {total} fundamentals periods use the CMA filing deadline as their publication date. "
+            "That is later than the real release for companies that report early, but it is look-ahead for any company "
+            f"that filed late. {noted} period(s) with a stated release date, including known late filings, use that "
+            "date instead.")

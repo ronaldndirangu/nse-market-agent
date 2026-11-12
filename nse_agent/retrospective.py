@@ -1,8 +1,9 @@
 """Retrospective: forward scorecard, per-signal rank IC and reverse attribution of the actual winners.
 
-Everything is point in time: rankings come from the live ledger or from `reconstruct`, which reruns the engine on
-each month start using only fundamentals published by then. Forward returns are total returns (split-adjusted
-price plus dividends net of withholding tax, no reinvestment).
+Rankings come from the live ledger or from `reconstruct`, which reruns the engine on each month start using only
+prices and fundamentals published by then. Interest rates are not point in time: every month uses today's T-bill and
+cost of equity. Forward returns are total returns (split-adjusted price plus dividends net of withholding tax, no
+reinvestment).
 """
 from __future__ import annotations
 
@@ -104,7 +105,7 @@ def _mean(vals) -> float | None:
 # Reconstruction -------------------------------------------------------------------------------------------------
 
 def reconstruct(end: date | None = None, start: date = START) -> int:
-    """Rerun the engine point in time on every month start and overwrite the reconstructed ledger."""
+    """Rerun the engine on every month start with data published by then, and overwrite the reconstructed ledger."""
     end = end or date.today()
     results = []
     for d in month_starts(start, end):
@@ -330,7 +331,7 @@ def render(res: dict) -> str:
     else:
         due = add_months(date.fromisoformat(res["live_first"]), 1).isoformat() if res["live_first"] else "n/a"
         lines += [f"No live window has matured yet. The first 1-month results are due on {due}.", ""]
-    lines += ["### Reconstructed (monthly, point in time)", "", _scorecard_table(recon), "",
+    lines += ["### Reconstructed (monthly, point-in-time data, today's rates)", "", _scorecard_table(recon), "",
               "## Per-signal rank IC", "",
               "Mean monthly Spearman IC between each signal and the forward total return, with the share of months "
               "where IC was positive. Price signals use the full price history; valuation and quality signals need "
@@ -363,9 +364,15 @@ def render(res: dict) -> str:
                         [[r["start"], r["ticker"], pct(r["return"]),
                           f"{r['rank']} of {r['ranked']}" if r["rank"] else "unranked",
                           ", ".join(r["signals"]) or "none", r["class"], r["why"]] for r in recent]), ""]
+    timing = fnd.timing_note()
     lines += ["## Limitations", "",
-              "- Fundamentals are point in time, but sourced history is short until the backfill lands, so early "
-              "months rank few stocks and most early misses are missing data.",
+              "- Prices and fundamentals are point in time, but sourced history is short until the backfill lands, so "
+              "early months rank few stocks and most early misses are missing data.",
+              "- Interest rates are not point in time. Every month uses today's T-bill, cost of equity and hurdle, so "
+              "fair values, margins of safety and tiers in past months differ from what the engine would have said "
+              "then. Kenyan yields ranged widely over the decade, so treat valuation signals in early months with "
+              "care; price signals are unaffected.",
+              *([f"- {timing}"] if timing else []),
               "- Total return adds dividends net of withholding tax without reinvestment and ignores trading costs. "
               "Prices are adjusted only for corporate actions recorded in data/corporate_actions.yaml.",
               "- The universe is today's 16 counters, so delisted stocks are missing (survivorship bias).",

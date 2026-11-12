@@ -56,6 +56,7 @@ def test_reconstruct_and_retro_report(market, outputs, monkeypatch):
     assert summary.startswith(f"reconstructed_dates={len(recon)} live_dates=0")
     text = (config.REPORTS / "retrospective.md").read_text(encoding="utf-8")
     assert DISCLAIMER in text and "No live window has matured yet" in text
+    assert "Interest rates are not point in time" in text
     res = json.loads((config.DATA / "retrospective.json").read_text(encoding="utf-8"))
     one = res["reconstructed"]["1"]
     assert one["windows"] > 0 and one["calibration_n"] > 0

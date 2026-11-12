@@ -714,7 +714,8 @@ def _growth_chart(detail: list[dict]) -> str:
     return (f'<div class="chart"><div class="legend">{legend}</div><svg viewBox="0 0 {W} {H}" role="img" '
             f'aria-label="Growth of 1 shilling: top 5 {pts[-1][1]:.2f}x, universe {pts[-1][2]:.2f}x, NASI '
             f'{pts[-1][3]:.2f}x"><g class="grid">{grid}</g>{"".join(years)}{lines}</svg><p class="small muted">'
-            f'Growth of KES 1 from {E(pts[0][0])} to {E(pts[-1][0])}, rebalanced monthly into the point-in-time top 5. '
+            f'Growth of KES 1 from {E(pts[0][0])} to {E(pts[-1][0])}, rebalanced monthly into the top 5 the engine '
+            f'ranked with data published by each date and today\'s interest rates. '
             f'Before trading costs; dividends added without reinvestment; NASI is price only.</p></div>')
 
 
@@ -773,7 +774,7 @@ def _track_record(r: dict) -> str:
             f'rough scenario and size positions for wider swings.</p></div>') if cal is not None and cal < 0.6 else ""
     live = (f'<p class="small muted">Live ledger started {E(str(r.get("live_first")))} with '
             f'{r.get("live_dates", 0)} trading day(s); live scores appear once a month of outcomes exists. The figures '
-            f'above are point-in-time reconstructions over {r.get("recon_dates", 0)} month-ends from '
+            f'above are reconstructions over {r.get("recon_dates", 0)} month-ends from '
             f'{E(str(r.get("recon_first")))}.</p>') if r.get("live_first") else ""
     caveat = ('<p class="small muted"><b>Backtest, in-sample.</b> The current weights were chosen on this same history '
               "and every month uses today's interest rates, so these figures flatter the method. Treat them as an "

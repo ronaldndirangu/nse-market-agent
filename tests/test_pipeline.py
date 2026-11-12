@@ -95,6 +95,23 @@ def test_overdue_annual_results_fail_the_screen(market):
         assert r["tier"] != "Buy"
 
 
+def test_timing_note_counts_deadline_dated_periods(root):
+    from nse_agent import fundamentals as fnd
+
+    periods = _bank_periods(1)
+    for p, basis in zip(periods, ("deadline", "deadline", "noted")):
+        p["published_basis"] = basis
+    fund = root / "data" / "fundamentals.yaml"
+    fund.write_text(yaml.safe_dump({"companies": {"EQTY": {"periods": periods}}}), encoding="utf-8")
+    try:
+        assert [p.published_basis for p in fnd.annuals("EQTY")] == ["deadline", "deadline", "noted"]
+        note = fnd.timing_note()
+        assert note.startswith("2 of 3 fundamentals periods use the CMA filing deadline")
+        assert "look-ahead" in note and "1 period(s) with a stated release date" in note
+    finally:
+        fund.unlink(missing_ok=True)
+
+
 def test_data_gaps_flag_sectors_too_thin_for_high_confidence(market):
     result = {"gaps": [], "ranking": ["KEGN", "KPLC", "EQTY"], "rows": {
         "KEGN": {"sector": "Energy", "quality": {"gate": "pass"}, "momentum": 0.1, "models": {"a": 1, "b": 2}},
