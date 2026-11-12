@@ -21,19 +21,32 @@ def _yaml_or_empty(name: str) -> dict:
     return (config.load_yaml(path) or {}) if path.exists() else {}
 
 
+def _next_weekday(d: date) -> date:
+    d += timedelta(days=1)
+    while d.weekday() >= 5:
+        d += timedelta(days=1)
+    return d
+
+
+def ex_date(r: dict) -> date | None:
+    """Sourced ex date, else the weekday after book closure (when NSE prices drop), else payment or announcement."""
+    if _d(r.get("ex_date")):
+        return _d(r.get("ex_date"))
+    if _d(r.get("book_closure")):
+        return _next_weekday(_d(r.get("book_closure")))
+    return _d(r.get("payment")) or _d(r.get("announced"))
+
+
 @lru_cache(maxsize=1)
 def _records() -> dict[str, list[tuple[date | None, float, str, str]]]:
-    """Ticker -> [(approximate ex date, KES per share, type, fiscal period)].
-
-    The ex date is approximate: book closure, else payment, else announcement date.
-    """
+    """Ticker -> [(ex date, KES per share, type, fiscal period)]. Payment or announcement dates are early proxies."""
     raw = _yaml_or_empty("dividends.yaml").get("dividends") or {}
     out: dict[str, list] = {}
     for t, recs in raw.items():
         rows = []
         for r in recs or []:
             if r.get("amount"):
-                ex = _d(r.get("book_closure")) or _d(r.get("payment")) or _d(r.get("announced"))
+                ex = ex_date(r)
                 rows.append((ex, float(r["amount"]), str(r.get("type", "")), str(r.get("fiscal_period", ""))))
         out[t] = sorted(rows, key=lambda x: (x[0] or date.min, x[1]))
     return out

@@ -1,5 +1,5 @@
 # Sourced dividend history. Every row carries source_url.
-# Ex date used by the engine: book_closure, else payment, else announced (an early proxy, up to about 2 months before the true ex date).
+# Ex date used by the engine: ex_date, else the weekday after book_closure, else payment or announced (early proxies, up to about 2 months before the true ex date).
 gaps:
 - 'General: CMA bulletins report no new corporate actions for 2019 Q3 to 2021 Q1, and the NSE announcements site was unreachable, so most FY2019 finals, FY2019/FY2020 interims and FY2020 finals announced in that window are missing for most tickers.'
 - 'General: pre-2021 book closure dates are missing except the NSE FY2018 batch (ABSA, DTK, EQTY, SCBK, COOP, TOTL), NIC FY2017, KCB FY2019 final and SCBK FY2019 final.'
@@ -127,6 +127,7 @@ dividends:
     book_closure: '2022-05-20'
     payment: '2022-06-30'
     source_url: https://stockanalysis.com/quote/nase/EQTY/dividend/
+    ex_date: '2022-05-23'
     note: Ex-date 2022-05-23 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: final
@@ -134,6 +135,7 @@ dividends:
     book_closure: '2023-05-19'
     payment: '2023-06-30'
     source_url: https://stockanalysis.com/quote/nase/EQTY/dividend/
+    ex_date: '2023-05-22'
     note: Ex-date 2023-05-22 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -141,6 +143,7 @@ dividends:
     book_closure: '2024-05-24'
     payment: '2024-06-29'
     source_url: https://stockanalysis.com/quote/nase/EQTY/dividend/
+    ex_date: '2024-05-27'
     note: Ex-date 2024-05-27 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: final
@@ -148,6 +151,7 @@ dividends:
     book_closure: '2025-05-23'
     payment: '2025-06-30'
     source_url: https://stockanalysis.com/quote/nase/EQTY/dividend/
+    ex_date: '2025-05-26'
     note: Ex-date 2025-05-26 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -155,6 +159,7 @@ dividends:
     book_closure: '2026-05-22'
     payment: '2026-06-30'
     source_url: https://stockanalysis.com/quote/nase/EQTY/dividend/
+    ex_date: '2026-05-25'
     note: Ex-date 2026-05-25 per stockanalysis.com (secondary source).
   KCB:
   - fiscal_period: FY2015
@@ -325,6 +330,7 @@ dividends:
     book_closure: '2022-04-25'
     payment: '2022-05-26'
     source_url: https://stockanalysis.com/quote/nase/ABSA/dividend/
+    ex_date: '2022-04-26'
     note: Ex-date 2022-04-26 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: interim
@@ -332,6 +338,7 @@ dividends:
     book_closure: '2022-09-21'
     payment: '2022-10-12'
     source_url: https://stockanalysis.com/quote/nase/ABSA/dividend/
+    ex_date: '2022-09-22'
     note: Ex-date 2022-09-22 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: final
@@ -339,6 +346,7 @@ dividends:
     book_closure: '2023-04-28'
     payment: '2023-05-25'
     source_url: https://stockanalysis.com/quote/nase/ABSA/dividend/
+    ex_date: '2023-05-02'
     note: Ex-date 2023-05-02 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: interim
@@ -346,6 +354,7 @@ dividends:
     book_closure: '2023-09-21'
     payment: '2023-10-12'
     source_url: https://stockanalysis.com/quote/nase/ABSA/dividend/
+    ex_date: '2023-09-22'
     note: Ex-date 2023-09-22 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -353,6 +362,7 @@ dividends:
     book_closure: '2024-04-30'
     payment: '2024-05-23'
     source_url: https://stockanalysis.com/quote/nase/ABSA/dividend/
+    ex_date: '2024-05-02'
     note: Ex-date 2024-05-02 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: interim
@@ -360,6 +370,7 @@ dividends:
     book_closure: '2024-09-20'
     payment: '2024-10-15'
     source_url: https://stockanalysis.com/quote/nase/ABSA/dividend/
+    ex_date: '2024-09-23'
     note: Ex-date 2024-09-23 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: final
@@ -367,6 +378,7 @@ dividends:
     book_closure: '2025-04-30'
     payment: '2025-05-22'
     source_url: https://stockanalysis.com/quote/nase/ABSA/dividend/
+    ex_date: '2025-05-02'
     note: Ex-date 2025-05-02 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: interim
@@ -374,6 +386,7 @@ dividends:
     book_closure: '2025-09-19'
     payment: '2025-10-15'
     source_url: https://stockanalysis.com/quote/nase/ABSA/dividend/
+    ex_date: '2025-09-22'
     note: Ex-date 2025-09-22 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -381,6 +394,7 @@ dividends:
     book_closure: '2026-04-30'
     payment: '2026-05-19'
     source_url: https://stockanalysis.com/quote/nase/ABSA/dividend/
+    ex_date: '2026-05-04'
     note: Ex-date 2026-05-04 per stockanalysis.com (secondary source).
   - fiscal_period: FY2026
     type: interim
@@ -388,6 +402,7 @@ dividends:
     book_closure: '2026-09-18'
     payment: '2026-10-15'
     source_url: https://stockanalysis.com/quote/nase/ABSA/dividend/
+    ex_date: '2026-09-21'
     note: Ex-date 2026-09-21 per stockanalysis.com (secondary source).
   COOP:
   - fiscal_period: FY2015
@@ -421,6 +436,7 @@ dividends:
     book_closure: '2022-05-30'
     payment: '2022-06-17'
     source_url: https://stockanalysis.com/quote/nase/COOP/dividend/
+    ex_date: '2022-05-31'
     note: Ex-date 2022-05-31 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: final
@@ -428,6 +444,7 @@ dividends:
     book_closure: '2023-05-24'
     payment: '2023-06-09'
     source_url: https://stockanalysis.com/quote/nase/COOP/dividend/
+    ex_date: '2023-05-25'
     note: Ex-date 2023-05-25 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -435,6 +452,7 @@ dividends:
     book_closure: '2024-04-29'
     payment: '2024-06-10'
     source_url: https://stockanalysis.com/quote/nase/COOP/dividend/
+    ex_date: '2024-04-30'
     note: Ex-date 2024-04-30 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: final
@@ -442,6 +460,7 @@ dividends:
     book_closure: '2025-04-28'
     payment: '2025-06-10'
     source_url: https://stockanalysis.com/quote/nase/COOP/dividend/
+    ex_date: '2025-04-29'
     note: Ex-date 2025-04-29 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: interim
@@ -456,6 +475,7 @@ dividends:
     book_closure: '2026-04-30'
     payment: '2026-06-05'
     source_url: https://stockanalysis.com/quote/nase/COOP/dividend/
+    ex_date: '2026-05-04'
     note: Ex-date 2026-05-04 per stockanalysis.com (secondary source).
   SCBK:
   - fiscal_period: FY2015
@@ -518,6 +538,7 @@ dividends:
     book_closure: '2021-12-07'
     payment: '2021-12-29'
     source_url: https://stockanalysis.com/quote/nase/SCBK/dividend/
+    ex_date: '2021-12-08'
     note: Ex-date 2021-12-08 per stockanalysis.com (secondary source).
   - fiscal_period: FY2021
     type: final
@@ -525,6 +546,7 @@ dividends:
     book_closure: '2022-04-27'
     payment: '2022-05-25'
     source_url: https://stockanalysis.com/quote/nase/SCBK/dividend/
+    ex_date: '2022-04-28'
     note: Ex-date 2022-04-28 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: interim
@@ -532,6 +554,7 @@ dividends:
     book_closure: '2022-12-15'
     payment: '2022-12-29'
     source_url: https://stockanalysis.com/quote/nase/SCBK/dividend/
+    ex_date: '2022-12-16'
     note: Ex-date 2022-12-16 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: final
@@ -539,6 +562,7 @@ dividends:
     book_closure: '2023-04-21'
     payment: '2023-05-25'
     source_url: https://stockanalysis.com/quote/nase/SCBK/dividend/
+    ex_date: '2023-04-24'
     note: Ex-date 2023-04-24 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: interim
@@ -546,6 +570,7 @@ dividends:
     book_closure: '2023-12-14'
     payment: '2023-12-28'
     source_url: https://stockanalysis.com/quote/nase/SCBK/dividend/
+    ex_date: '2023-12-15'
     note: Ex-date 2023-12-15 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -553,6 +578,7 @@ dividends:
     book_closure: '2024-04-19'
     payment: '2024-05-30'
     source_url: https://stockanalysis.com/quote/nase/SCBK/dividend/
+    ex_date: '2024-04-22'
     note: Ex-date 2024-04-22 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: interim
@@ -560,6 +586,7 @@ dividends:
     book_closure: '2024-09-18'
     payment: '2024-10-08'
     source_url: https://stockanalysis.com/quote/nase/SCBK/dividend/
+    ex_date: '2024-09-19'
     note: Ex-date 2024-09-19 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: final
@@ -567,6 +594,7 @@ dividends:
     book_closure: '2025-04-30'
     payment: '2025-05-28'
     source_url: https://stockanalysis.com/quote/nase/SCBK/dividend/
+    ex_date: '2025-05-02'
     note: Ex-date 2025-05-02 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: interim
@@ -574,6 +602,7 @@ dividends:
     book_closure: '2025-09-11'
     payment: '2025-10-07'
     source_url: https://stockanalysis.com/quote/nase/SCBK/dividend/
+    ex_date: '2025-09-12'
     note: Ex-date 2025-09-12 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -581,6 +610,7 @@ dividends:
     book_closure: '2026-04-30'
     payment: '2026-05-21'
     source_url: https://stockanalysis.com/quote/nase/SCBK/dividend/
+    ex_date: '2026-05-04'
     note: Ex-date 2026-05-04 per stockanalysis.com (secondary source).
   - fiscal_period: FY2026
     type: interim
@@ -588,6 +618,7 @@ dividends:
     book_closure: '2026-09-10'
     payment: '2026-09-24'
     source_url: https://stockanalysis.com/quote/nase/SCBK/dividend/
+    ex_date: '2026-09-11'
     note: Ex-date 2026-09-11 per stockanalysis.com (secondary source).
   NCBA:
   - fiscal_period: FY2015
@@ -631,6 +662,7 @@ dividends:
     book_closure: '2021-09-28'
     payment: '2021-10-12'
     source_url: https://stockanalysis.com/quote/nase/NCBA/dividend/
+    ex_date: '2021-09-29'
     note: Ex-date 2021-09-29 per stockanalysis.com (secondary source).
   - fiscal_period: FY2021
     type: final
@@ -638,6 +670,7 @@ dividends:
     book_closure: '2022-04-29'
     payment: '2022-05-05'
     source_url: https://stockanalysis.com/quote/nase/NCBA/dividend/
+    ex_date: '2022-05-04'
     note: Ex-date 2022-05-04 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: interim
@@ -645,6 +678,7 @@ dividends:
     book_closure: '2022-09-15'
     payment: '2022-09-30'
     source_url: https://stockanalysis.com/quote/nase/NCBA/dividend/
+    ex_date: '2022-09-16'
     note: Ex-date 2022-09-16 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: final
@@ -652,6 +686,7 @@ dividends:
     book_closure: '2023-04-28'
     payment: '2023-05-31'
     source_url: https://stockanalysis.com/quote/nase/NCBA/dividend/
+    ex_date: '2023-05-02'
     note: Ex-date 2023-05-02 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: interim
@@ -659,6 +694,7 @@ dividends:
     book_closure: '2023-09-14'
     payment: '2023-09-28'
     source_url: https://stockanalysis.com/quote/nase/NCBA/dividend/
+    ex_date: '2023-09-15'
     note: Ex-date 2023-09-15 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -666,6 +702,7 @@ dividends:
     book_closure: '2024-04-30'
     payment: '2024-05-29'
     source_url: https://stockanalysis.com/quote/nase/NCBA/dividend/
+    ex_date: '2024-05-02'
     note: Ex-date 2024-05-02 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: interim
@@ -680,6 +717,7 @@ dividends:
     book_closure: '2025-04-30'
     payment: '2025-05-28'
     source_url: https://stockanalysis.com/quote/nase/NCBA/dividend/
+    ex_date: '2025-05-02'
     note: Ex-date 2025-05-02 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: interim
@@ -687,6 +725,7 @@ dividends:
     book_closure: '2025-09-18'
     payment: '2025-10-02'
     source_url: https://stockanalysis.com/quote/nase/NCBA/dividend/
+    ex_date: '2025-09-19'
     note: Ex-date 2025-09-19 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -694,6 +733,7 @@ dividends:
     book_closure: '2026-04-30'
     payment: '2026-05-26'
     source_url: https://stockanalysis.com/quote/nase/NCBA/dividend/
+    ex_date: '2026-05-04'
     note: Ex-date 2026-05-04 per stockanalysis.com (secondary source).
   - fiscal_period: FY2026
     type: interim
@@ -701,6 +741,7 @@ dividends:
     book_closure: '2026-08-28'
     payment: '2026-09-08'
     source_url: https://stockanalysis.com/quote/nase/NCBA/dividend/
+    ex_date: '2026-08-31'
     note: Ex-date 2026-08-31 per stockanalysis.com (secondary source).
   IMH:
   - fiscal_period: FY2015
@@ -738,6 +779,7 @@ dividends:
     book_closure: '2022-04-21'
     payment: '2022-05-26'
     source_url: https://stockanalysis.com/quote/nase/IMH/dividend/
+    ex_date: '2022-04-22'
     note: Ex-date 2022-04-22 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: final
@@ -745,6 +787,7 @@ dividends:
     book_closure: '2023-04-20'
     payment: '2023-05-25'
     source_url: https://stockanalysis.com/quote/nase/IMH/dividend/
+    ex_date: '2023-04-21'
     note: Ex-date 2023-04-21 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -752,6 +795,7 @@ dividends:
     book_closure: '2024-04-18'
     payment: '2024-05-24'
     source_url: https://stockanalysis.com/quote/nase/IMH/dividend/
+    ex_date: '2024-04-19'
     note: Ex-date 2024-04-19 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: interim
@@ -759,6 +803,7 @@ dividends:
     book_closure: '2024-12-16'
     payment: '2025-01-14'
     source_url: https://stockanalysis.com/quote/nase/IMH/dividend/
+    ex_date: '2024-12-17'
     note: Ex-date 2024-12-17 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: final
@@ -766,6 +811,7 @@ dividends:
     book_closure: '2025-04-16'
     payment: '2025-05-22'
     source_url: https://stockanalysis.com/quote/nase/IMH/dividend/
+    ex_date: '2025-04-17'
     note: Ex-date 2025-04-17 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: interim
@@ -773,6 +819,7 @@ dividends:
     book_closure: '2025-12-15'
     payment: '2026-01-14'
     source_url: https://stockanalysis.com/quote/nase/IMH/dividend/
+    ex_date: '2025-12-16'
     note: Ex-date 2025-12-16 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -780,6 +827,7 @@ dividends:
     book_closure: '2026-04-16'
     payment: '2026-05-21'
     source_url: https://stockanalysis.com/quote/nase/IMH/dividend/
+    ex_date: '2026-04-17'
     note: Ex-date 2026-04-17 per stockanalysis.com (secondary source).
   DTK:
   - fiscal_period: FY2015
@@ -813,6 +861,7 @@ dividends:
     book_closure: '2022-06-30'
     payment: '2022-07-28'
     source_url: https://stockanalysis.com/quote/nase/DTK/dividend/
+    ex_date: '2022-07-01'
     note: Ex-date 2022-07-01 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: final
@@ -820,6 +869,7 @@ dividends:
     book_closure: '2023-05-12'
     payment: '2023-06-15'
     source_url: https://stockanalysis.com/quote/nase/DTK/dividend/
+    ex_date: '2023-05-15'
     note: Ex-date 2023-05-15 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -827,6 +877,7 @@ dividends:
     book_closure: '2024-05-24'
     payment: '2024-06-28'
     source_url: https://stockanalysis.com/quote/nase/DTK/dividend/
+    ex_date: '2024-05-27'
     note: Ex-date 2024-05-27 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: final
@@ -834,6 +885,7 @@ dividends:
     book_closure: '2025-05-23'
     payment: '2025-06-27'
     source_url: https://stockanalysis.com/quote/nase/DTK/dividend/
+    ex_date: '2025-05-26'
     note: Ex-date 2025-05-26 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -841,6 +893,7 @@ dividends:
     book_closure: '2026-05-22'
     payment: '2026-06-26'
     source_url: https://stockanalysis.com/quote/nase/DTK/dividend/
+    ex_date: '2026-05-25'
     note: Ex-date 2026-05-25 per stockanalysis.com (secondary source).
   SBIC:
   - fiscal_period: FY2016
@@ -879,6 +932,7 @@ dividends:
     book_closure: '2021-09-06'
     payment: '2021-09-27'
     source_url: https://stockanalysis.com/quote/nase/SBIC/dividend/
+    ex_date: '2021-09-07'
     note: Ex-date 2021-09-07 per stockanalysis.com (secondary source).
   - fiscal_period: FY2021
     type: final
@@ -886,6 +940,7 @@ dividends:
     book_closure: '2022-05-20'
     payment: '2022-06-03'
     source_url: https://stockanalysis.com/quote/nase/SBIC/dividend/
+    ex_date: '2022-05-23'
     note: Ex-date 2022-05-23 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: final
@@ -893,6 +948,7 @@ dividends:
     book_closure: '2023-05-19'
     payment: '2023-06-06'
     source_url: https://stockanalysis.com/quote/nase/SBIC/dividend/
+    ex_date: '2023-05-22'
     note: Ex-date 2023-05-22 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: interim
@@ -900,6 +956,7 @@ dividends:
     book_closure: '2023-09-04'
     payment: '2023-09-27'
     source_url: https://stockanalysis.com/quote/nase/SBIC/dividend/
+    ex_date: '2023-09-05'
     note: Ex-date 2023-09-05 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -907,6 +964,7 @@ dividends:
     book_closure: '2024-05-17'
     payment: '2024-06-06'
     source_url: https://stockanalysis.com/quote/nase/SBIC/dividend/
+    ex_date: '2024-05-20'
     note: Ex-date 2024-05-20 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: interim
@@ -914,6 +972,7 @@ dividends:
     book_closure: '2024-09-02'
     payment: '2024-09-27'
     source_url: https://stockanalysis.com/quote/nase/SBIC/dividend/
+    ex_date: '2024-09-03'
     note: Ex-date 2024-09-03 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: final
@@ -921,6 +980,7 @@ dividends:
     book_closure: '2025-05-16'
     payment: '2025-06-05'
     source_url: https://stockanalysis.com/quote/nase/SBIC/dividend/
+    ex_date: '2025-05-19'
     note: Ex-date 2025-05-19 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: interim
@@ -928,6 +988,7 @@ dividends:
     book_closure: '2025-09-02'
     payment: '2025-09-29'
     source_url: https://stockanalysis.com/quote/nase/SBIC/dividend/
+    ex_date: '2025-09-03'
     note: Ex-date 2025-09-03 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -935,6 +996,7 @@ dividends:
     book_closure: '2026-05-15'
     payment: '2026-06-04'
     source_url: https://stockanalysis.com/quote/nase/SBIC/dividend/
+    ex_date: '2026-05-18'
     note: Ex-date 2026-05-18 per stockanalysis.com (secondary source).
   - fiscal_period: FY2026
     type: interim
@@ -942,6 +1004,7 @@ dividends:
     book_closure: '2026-09-01'
     payment: '2026-10-05'
     source_url: https://stockanalysis.com/quote/nase/SBIC/dividend/
+    ex_date: '2026-09-02'
     note: Ex-date 2026-09-02 per stockanalysis.com (secondary source).
   SCOM:
   - fiscal_period: FY2016
@@ -979,18 +1042,21 @@ dividends:
     amount: 1.4
     payment: '2020-08-31'
     source_url: https://www.marketcapwatch.com/company/nase-scom-dividends
+    ex_date: '2020-08-03'
     note: Ex-date 2020-08-03 per marketcapwatch (secondary); book closure date not confirmed.
   - fiscal_period: FY2021
     type: interim
     amount: 0.45
     payment: '2021-03-31'
     source_url: https://www.marketcapwatch.com/company/nase-scom-dividends
+    ex_date: '2021-03-08'
     note: Ex-date 2021-03-08 per marketcapwatch (secondary); book closure date not confirmed.
   - fiscal_period: FY2021
     type: final
     amount: 0.92
     payment: '2021-08-31'
     source_url: https://www.marketcapwatch.com/company/nase-scom-dividends
+    ex_date: '2021-08-02'
     note: Ex-date 2021-08-02 per marketcapwatch (secondary); also CMA Q2-2021 (announced 13-May-2021, https://www.cma.or.ke/download/54/2021/5247/cma-quarterly-statistical-bulletin-q2-2021.pdf); book closure date not confirmed.
   - fiscal_period: FY2022
     type: interim
@@ -998,6 +1064,7 @@ dividends:
     book_closure: '2022-03-17'
     payment: '2022-03-31'
     source_url: https://stockanalysis.com/quote/nase/SCOM/dividend/
+    ex_date: '2022-03-18'
     note: Ex-date 2022-03-18 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: final
@@ -1005,6 +1072,7 @@ dividends:
     book_closure: '2022-07-29'
     payment: '2022-08-31'
     source_url: https://stockanalysis.com/quote/nase/SCOM/dividend/
+    ex_date: '2022-08-01'
     note: Ex-date 2022-08-01 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: interim
@@ -1012,6 +1080,7 @@ dividends:
     book_closure: '2023-03-15'
     payment: '2023-03-31'
     source_url: https://stockanalysis.com/quote/nase/SCOM/dividend/
+    ex_date: '2023-03-16'
     note: Ex-date 2023-03-16 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -1019,6 +1088,7 @@ dividends:
     book_closure: '2023-07-28'
     payment: '2023-08-31'
     source_url: https://stockanalysis.com/quote/nase/SCOM/dividend/
+    ex_date: '2023-07-31'
     note: Ex-date 2023-07-31 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: interim
@@ -1026,6 +1096,7 @@ dividends:
     book_closure: '2024-03-15'
     payment: '2024-03-31'
     source_url: https://stockanalysis.com/quote/nase/SCOM/dividend/
+    ex_date: '2024-03-18'
     note: Ex-date 2024-03-18 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: final
@@ -1033,6 +1104,7 @@ dividends:
     book_closure: '2024-07-31'
     payment: '2024-08-31'
     source_url: https://stockanalysis.com/quote/nase/SCOM/dividend/
+    ex_date: '2024-08-01'
     note: Ex-date 2024-08-01 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: interim
@@ -1040,6 +1112,7 @@ dividends:
     book_closure: '2025-03-03'
     payment: '2025-03-31'
     source_url: https://stockanalysis.com/quote/nase/SCOM/dividend/
+    ex_date: '2025-03-04'
     note: Ex-date 2025-03-04 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -1047,6 +1120,7 @@ dividends:
     book_closure: '2025-07-31'
     payment: '2025-08-31'
     source_url: https://stockanalysis.com/quote/nase/SCOM/dividend/
+    ex_date: '2025-08-01'
     note: Ex-date 2025-08-01 per stockanalysis.com (secondary source).
   - fiscal_period: FY2026
     type: interim
@@ -1054,6 +1128,7 @@ dividends:
     book_closure: '2026-02-25'
     payment: '2026-03-31'
     source_url: https://stockanalysis.com/quote/nase/SCOM/dividend/
+    ex_date: '2026-02-26'
     note: Ex-date 2026-02-26 per stockanalysis.com (secondary source).
   - fiscal_period: FY2026
     type: final
@@ -1061,6 +1136,7 @@ dividends:
     book_closure: '2026-08-04'
     payment: '2026-09-04'
     source_url: https://stockanalysis.com/quote/nase/SCOM/dividend/
+    ex_date: '2026-08-05'
     note: Ex-date 2026-08-05 per stockanalysis.com (secondary source).
   EABL:
   - fiscal_period: FY2016
@@ -1117,6 +1193,7 @@ dividends:
     book_closure: '2022-02-28'
     payment: '2022-04-27'
     source_url: https://stockanalysis.com/quote/nase/EABL/dividend/
+    ex_date: '2022-03-01'
     note: Ex-date 2022-03-01 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: final
@@ -1124,6 +1201,7 @@ dividends:
     book_closure: '2022-09-15'
     payment: '2022-10-30'
     source_url: https://stockanalysis.com/quote/nase/EABL/dividend/
+    ex_date: '2022-09-16'
     note: Ex-date 2022-09-16 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: interim
@@ -1131,6 +1209,7 @@ dividends:
     book_closure: '2023-02-16'
     payment: '2023-04-28'
     source_url: https://stockanalysis.com/quote/nase/EABL/dividend/
+    ex_date: '2023-02-17'
     note: Ex-date 2023-02-17 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -1138,6 +1217,7 @@ dividends:
     book_closure: '2023-09-14'
     payment: '2023-10-27'
     source_url: https://stockanalysis.com/quote/nase/EABL/dividend/
+    ex_date: '2023-09-15'
     note: Ex-date 2023-09-15 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: interim
@@ -1145,6 +1225,7 @@ dividends:
     book_closure: '2024-02-16'
     payment: '2024-04-28'
     source_url: https://stockanalysis.com/quote/nase/EABL/dividend/
+    ex_date: '2024-02-19'
     note: Ex-date 2024-02-19 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: final
@@ -1152,6 +1233,7 @@ dividends:
     book_closure: '2024-09-16'
     payment: '2024-10-28'
     source_url: https://stockanalysis.com/quote/nase/EABL/dividend/
+    ex_date: '2024-09-17'
     note: Ex-date 2024-09-17 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: interim
@@ -1159,6 +1241,7 @@ dividends:
     book_closure: '2025-02-21'
     payment: '2025-04-30'
     source_url: https://stockanalysis.com/quote/nase/EABL/dividend/
+    ex_date: '2025-02-24'
     note: Ex-date 2025-02-24 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -1166,6 +1249,7 @@ dividends:
     book_closure: '2025-09-16'
     payment: '2025-10-28'
     source_url: https://stockanalysis.com/quote/nase/EABL/dividend/
+    ex_date: '2025-09-17'
     note: Ex-date 2025-09-17 per stockanalysis.com (secondary source).
   - fiscal_period: FY2026
     type: interim
@@ -1173,6 +1257,7 @@ dividends:
     book_closure: '2026-02-20'
     payment: '2026-04-30'
     source_url: https://stockanalysis.com/quote/nase/EABL/dividend/
+    ex_date: '2026-02-23'
     note: Ex-date 2026-02-23 per stockanalysis.com (secondary source).
   - fiscal_period: FY2026
     type: final
@@ -1230,6 +1315,7 @@ dividends:
     book_closure: '2022-04-22'
     payment: '2022-05-24'
     source_url: https://stockanalysis.com/quote/nase/BAT/dividend/
+    ex_date: '2022-04-25'
     note: Ex-date 2022-04-25 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: interim
@@ -1237,6 +1323,7 @@ dividends:
     book_closure: '2022-08-12'
     payment: '2022-09-16'
     source_url: https://stockanalysis.com/quote/nase/BAT/dividend/
+    ex_date: '2022-08-15'
     note: Ex-date 2022-08-15 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: final
@@ -1244,6 +1331,7 @@ dividends:
     book_closure: '2023-05-26'
     payment: '2023-06-15'
     source_url: https://stockanalysis.com/quote/nase/BAT/dividend/
+    ex_date: '2023-05-29'
     note: Ex-date 2023-05-29 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: interim
@@ -1251,6 +1339,7 @@ dividends:
     book_closure: '2023-08-18'
     payment: '2023-09-22'
     source_url: https://stockanalysis.com/quote/nase/BAT/dividend/
+    ex_date: '2023-08-21'
     note: Ex-date 2023-08-21 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -1258,6 +1347,7 @@ dividends:
     book_closure: '2024-05-24'
     payment: '2024-06-26'
     source_url: https://stockanalysis.com/quote/nase/BAT/dividend/
+    ex_date: '2024-05-27'
     note: Ex-date 2024-05-27 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: interim
@@ -1265,6 +1355,7 @@ dividends:
     book_closure: '2024-08-30'
     payment: '2024-09-27'
     source_url: https://stockanalysis.com/quote/nase/BAT/dividend/
+    ex_date: '2024-09-02'
     note: Ex-date 2024-09-02 per stockanalysis.com (secondary source). Also CMA Q3-2024 (announced 25-Jul-2024, book closure 30-Aug-2024, payment 27-Sep-2024).
   - fiscal_period: FY2024
     type: final
@@ -1272,6 +1363,7 @@ dividends:
     book_closure: '2025-05-23'
     payment: '2025-06-25'
     source_url: https://stockanalysis.com/quote/nase/BAT/dividend/
+    ex_date: '2025-05-26'
     note: Ex-date 2025-05-26 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: interim
@@ -1279,6 +1371,7 @@ dividends:
     book_closure: '2025-08-29'
     payment: '2025-09-26'
     source_url: https://stockanalysis.com/quote/nase/BAT/dividend/
+    ex_date: '2025-09-01'
     note: Ex-date 2025-09-01 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -1286,6 +1379,7 @@ dividends:
     book_closure: '2026-05-08'
     payment: '2026-06-12'
     source_url: https://stockanalysis.com/quote/nase/BAT/dividend/
+    ex_date: '2026-05-11'
     note: Ex-date 2026-05-11 per stockanalysis.com (secondary source).
   - fiscal_period: FY2026
     type: interim
@@ -1293,6 +1387,7 @@ dividends:
     book_closure: '2026-08-28'
     payment: '2026-09-25'
     source_url: https://stockanalysis.com/quote/nase/BAT/dividend/
+    ex_date: '2026-08-31'
     note: Ex-date 2026-08-31 per stockanalysis.com (secondary source).
   CARB:
   - fiscal_period: FY2016
@@ -1325,6 +1420,7 @@ dividends:
     book_closure: '2022-11-25'
     payment: '2022-12-16'
     source_url: https://stockanalysis.com/quote/nase/CARB/dividend/
+    ex_date: '2022-11-28'
     note: Ex-date 2022-11-28 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -1332,6 +1428,7 @@ dividends:
     book_closure: '2023-11-24'
     payment: '2023-12-15'
     source_url: https://stockanalysis.com/quote/nase/CARB/dividend/
+    ex_date: '2023-11-27'
     note: Ex-date 2023-11-27 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: final
@@ -1339,6 +1436,7 @@ dividends:
     book_closure: '2024-11-26'
     payment: '2024-12-18'
     source_url: https://stockanalysis.com/quote/nase/CARB/dividend/
+    ex_date: '2024-11-27'
     note: Ex-date 2024-11-27 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -1346,6 +1444,7 @@ dividends:
     book_closure: '2025-11-26'
     payment: '2025-12-18'
     source_url: https://stockanalysis.com/quote/nase/CARB/dividend/
+    ex_date: '2025-11-27'
     note: Ex-date 2025-11-27 per stockanalysis.com (secondary source).
   KEGN:
   - fiscal_period: FY2018
@@ -1360,6 +1459,7 @@ dividends:
     book_closure: '2021-12-16'
     payment: '2022-02-10'
     source_url: https://stockanalysis.com/quote/nase/KEGN/dividend/
+    ex_date: '2021-12-17'
     note: Ex-date 2021-12-17 per stockanalysis.com (secondary source). CMA Q4-2021 lists First & Final 0.30 announced 01-Nov-2021.
   - fiscal_period: FY2022
     type: final
@@ -1367,6 +1467,7 @@ dividends:
     book_closure: '2023-01-26'
     payment: '2023-03-30'
     source_url: https://stockanalysis.com/quote/nase/KEGN/dividend/
+    ex_date: '2023-01-27'
     note: Ex-date 2023-01-27 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -1374,6 +1475,7 @@ dividends:
     book_closure: '2023-11-30'
     payment: '2024-02-15'
     source_url: https://stockanalysis.com/quote/nase/KEGN/dividend/
+    ex_date: '2023-12-01'
     note: Ex-date 2023-12-01 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: final
@@ -1381,6 +1483,7 @@ dividends:
     book_closure: '2024-11-28'
     payment: '2025-02-13'
     source_url: https://stockanalysis.com/quote/nase/KEGN/dividend/
+    ex_date: '2024-11-29'
     note: Ex-date 2024-11-29 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -1388,6 +1491,7 @@ dividends:
     book_closure: '2025-12-04'
     payment: '2026-02-12'
     source_url: https://stockanalysis.com/quote/nase/KEGN/dividend/
+    ex_date: '2025-12-05'
     note: Ex-date 2025-12-05 per stockanalysis.com (secondary source).
   - fiscal_period: FY2026
     type: interim
@@ -1428,6 +1532,7 @@ dividends:
     book_closure: '2025-02-28'
     payment: '2025-04-11'
     source_url: https://stockanalysis.com/quote/nase/KPLC/dividend/
+    ex_date: '2025-03-03'
     note: Ex-date 2025-03-03 per stockanalysis.com (secondary source). CMA Q1-2025 confirms the interim (announced 30-Jan-2025, book closure 28-Feb-2025, payment 11-Apr-2025) but its amount column is garbled ("KES 1"), so the stockanalysis amount is used.
   - fiscal_period: FY2025
     type: final
@@ -1435,6 +1540,7 @@ dividends:
     book_closure: '2025-12-02'
     payment: '2026-01-30'
     source_url: https://stockanalysis.com/quote/nase/KPLC/dividend/
+    ex_date: '2025-12-03'
     note: Ex-date 2025-12-03 per stockanalysis.com (secondary source).
   - fiscal_period: FY2026
     type: interim
@@ -1442,6 +1548,7 @@ dividends:
     book_closure: '2026-02-23'
     payment: '2026-03-27'
     source_url: https://stockanalysis.com/quote/nase/KPLC/dividend/
+    ex_date: '2026-02-24'
     note: Ex-date 2026-02-24 per stockanalysis.com (secondary source).
   TOTL:
   - fiscal_period: FY2015
@@ -1475,6 +1582,7 @@ dividends:
     book_closure: '2021-06-25'
     payment: '2021-07-31'
     source_url: https://stockanalysis.com/quote/nase/TOTL/dividend/
+    ex_date: '2021-06-28'
     note: Ex-date 2021-06-28 per stockanalysis.com (secondary source). CMA Q2-2021 lists First & Final 1.57 announced 06-Apr-2021.
   - fiscal_period: FY2021
     type: final
@@ -1482,6 +1590,7 @@ dividends:
     book_closure: '2022-06-30'
     payment: '2022-07-31'
     source_url: https://stockanalysis.com/quote/nase/TOTL/dividend/
+    ex_date: '2022-07-01'
     note: Ex-date 2022-07-01 per stockanalysis.com (secondary source).
   - fiscal_period: FY2022
     type: final
@@ -1489,6 +1598,7 @@ dividends:
     book_closure: '2023-06-15'
     payment: '2023-07-31'
     source_url: https://stockanalysis.com/quote/nase/TOTL/dividend/
+    ex_date: '2023-06-16'
     note: Ex-date 2023-06-16 per stockanalysis.com (secondary source).
   - fiscal_period: FY2023
     type: final
@@ -1496,6 +1606,7 @@ dividends:
     book_closure: '2024-06-24'
     payment: '2024-07-31'
     source_url: https://stockanalysis.com/quote/nase/TOTL/dividend/
+    ex_date: '2024-06-25'
     note: Ex-date 2024-06-25 per stockanalysis.com (secondary source).
   - fiscal_period: FY2024
     type: final
@@ -1503,6 +1614,7 @@ dividends:
     book_closure: '2025-06-27'
     payment: '2025-07-31'
     source_url: https://stockanalysis.com/quote/nase/TOTL/dividend/
+    ex_date: '2025-06-30'
     note: Ex-date 2025-06-30 per stockanalysis.com (secondary source).
   - fiscal_period: FY2025
     type: final
@@ -1510,4 +1622,5 @@ dividends:
     book_closure: '2026-06-24'
     payment: '2026-07-31'
     source_url: https://stockanalysis.com/quote/nase/TOTL/dividend/
+    ex_date: '2026-06-25'
     note: Ex-date 2026-06-25 per stockanalysis.com (secondary source).
