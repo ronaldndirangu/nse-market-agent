@@ -1,4 +1,4 @@
-# NSE value report: 2026-11-12
+# NSE value report: 2026-11-13
 
 > **Not financial advice.** This report is generated automatically from public data and fixed rules. It is not financial advice, an offer, or a recommendation to buy or sell any security. Figures can be wrong or stale. Verify everything against company filings and consult a licensed adviser before investing.
 
@@ -14,20 +14,32 @@
 
 | Input | Value | Source |
 |---|---|---|
-| 364-day T-bill (gross) | 9.03% | https://businessradar.co.ke/treasury-bill-auction-results-november-9-2026/ |
-| 364-day T-bill (net of 15% WHT) | 7.67% | computed |
-| Buy hurdle (net T-bill + premium) | 12.67% | settings.yaml |
+| 364-day T-bill (gross) | 9.01% | https://www.centralbank.go.ke/uploads/91_day_historical_treasury_bill_results/171143691_RESULTS%202708-091%202682-182%202637-364%20DATED%2016-11-2026.pdf |
+| 364-day T-bill (net of 15% WHT) | 7.66% | computed |
+| Buy hurdle (net T-bill + premium) | 12.66% | settings.yaml |
 | 10-year government bond | 12.48% | https://tradingeconomics.com/kenya/government-bond-yield |
 | Cost of equity at beta 1 | 20.05% | rf less default spread + beta x ERP + CRP |
-| Macro inputs as of | 2026-11-11 | data/macro.yaml |
+| Curated assumptions reviewed | 2026-11-11 | data/macro.yaml; separate from collected rates |
 
 ## Data health
 
-**Current**. Expected closing session: 2026-11-12. Verified prices: 16/16. Announcements: current (last successful check 2026-11-12). Macro rates: current (dated 2026-11-11).
+**Current**. Expected closing session: 2026-11-12. Verified prices: 16/16. Announcements: current (last successful check 2026-11-12). Macro rates: current (curated assumptions 2026-11-11; T-bill results 2026-11-12).
 
 Weekdays only; a delayed session can mean a public holiday or source lag.
 
 Strong-confidence flags require current critical evidence. A rule-based Buy with incomplete evidence still needs verification.
+
+- TOTL: [results notice awaiting review](https://www.nse.co.ke/wp-content/uploads/TotalEnergies-Marketing-Kenya-PLC-Audited-Financial-Results-for-the-Year-Ended-31-Dec-2025.pdf). The announcement status alone does not establish whether the figures have been reviewed.
+
+## Rates and inflation
+
+- **T-bill source:** [CBK results](https://www.centralbank.go.ke/uploads/91_day_historical_treasury_bill_results/171143691_RESULTS%202708-091%202682-182%202637-364%20DATED%2016-11-2026.pdf), released 2026-11-12. The accepted 364-day rate is 9.0098% gross. This feeds the net T-bill comparison and Buy hurdle; it does not change the ranking weights.
+- **Inflation:** 7.3% year-on-year for 2026-10 ([source](https://www.knbs.or.ke/reports/consumer-price-indices-and-inflation-rates-october-2026/)). This describes past price increases, not a forecast.
+- **Purchasing power:** if inflation stayed at that rate, the net T-bill return would be about 0.3% after inflation. This is an illustration, comparing a future investment term with observed inflation. Stock projections remain nominal KES.
+- **Separate assumptions:** the 10-year bond yield remains 12.48%, from an [approximate third-party source](https://tradingeconomics.com/kenya/government-bond-yield); curated assumptions were reviewed 2026-11-11. A new bill auction does not update bond yields, equity premiums or taxes.
+- **Price feed:** existing NSE/AFX sources. A licensed ICE feed is not connected; credentials and public redistribution rights are still required.
+
+- **KNBS refresh failed:** HTTPSConnectionPool(host=&#x27;www.knbs.or.ke&#x27;, port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, &#x27;[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1018)&#x27;))). Retained dated inputs are shown above.
 
 ## Ranked results
 
@@ -54,14 +66,14 @@ Composite rank = 0.3 z(dividend yield) + 0.1 z(margin of safety) + 0.4 z(momentu
 
 ## High confidence undervalued
 
-A stock is flagged **High confidence undervalued** only when all four gates pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.67% hurdle (Return). Risk level is rated separately from seven factors and never changes the valuation or return thresholds. Strong-confidence flags also require current critical live evidence. Agreement of methods is not a probability of profit.
+A stock is flagged **High confidence undervalued** only when all four gates pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.66% hurdle (Return). Risk level is rated separately from seven factors and never changes the valuation or return thresholds. Strong-confidence flags also require current critical live evidence. Agreement of methods is not a probability of profit.
 
-No stock qualifies on 2026-11-12. The closest candidates and the gates they miss:
+No stock qualifies on 2026-11-13. The closest candidates and the gates they miss:
 
 | Ticker | Tier | Gates passed | Missing | Risk |
 |---|---|---|---|---|
-| IMH | Avoid | 2 of 4 | Valuation: 0 of 5 models show at least 15% upside, needs 3; Return: base return -9.7% against the 12.67% hurdle | High |
-| KEGN | Avoid | 2 of 4 | Valuation: only 2 models apply to this company and the flag needs 3 to agree (sector P/E and P/B need 3 sourced peers); Return: base return -11.4% against the 12.67% hurdle | High |
+| IMH | Avoid | 2 of 4 | Valuation: 0 of 5 models show at least 15% upside, needs 3; Return: base return -9.7% against the 12.66% hurdle | High |
+| KEGN | Avoid | 2 of 4 | Valuation: only 2 models apply to this company and the flag needs 3 to agree (sector P/E and P/B need 3 sourced peers); Return: base return -11.4% against the 12.66% hurdle | High |
 | KPLC | Avoid | 2 of 4 | Valuation: models disagree: the high fair value is 5.9x the low, limit 3x; Return: unclear while valuation evidence disagrees; Balance sheet: not assessed; Downside: not assessed | High (incomplete) |
 
 ### Risk profile
