@@ -2,22 +2,22 @@
 
 > **Not financial advice.** This report is generated automatically from public data and fixed rules. It is not financial advice, an offer, or a recommendation to buy or sell any security. Figures can be wrong or stale. Verify everything against company filings and consult a licensed adviser before investing.
 
-Basket (top 3 ranked (no undervalued picks this week)): **IMH, KEGN, KPLC**, equal weight, as of 2026-11-12.
+Basket (top 3 ranked (no undervalued picks this week)): **IMH, KPLC, KEGN**, equal weight, as of 2026-11-13.
 
 Weekly basket returns from 2016-W48 to 2026-W46 (520 weeks) are resampled in 4-week blocks to keep short-term momentum and volatility clustering. Each path adds the basket's net dividend yield (6.0%) and one round trip of trading costs. Results are annualised.
 
 - **History:** repeats the basket's own past drift and volatility.
-- **Valuation-anchored:** keeps the historical volatility but centres the drift on the engine's base projection (2.9% a year).
+- **Valuation-anchored:** keeps the historical volatility but centres the drift on the engine's base projection (3.0% a year).
 - Net 364-day T-bill: 7.66%.
 
 | Model | Horizon | P5 | P25 | Median | P75 | P95 | P(beat T-bill) | P(loss) |
 |---|---|---|---|---|---|---|---|---|
-| History | 1y | -25.1% | -4.2% | 13.8% | 37.7% | 83.0% | 58% | 31% |
-| History | 3y | -7.8% | 6.9% | 18.1% | 31.5% | 53.2% | 73% | 14% |
-| History | 5y | -2.2% | 9.6% | 19.1% | 29.0% | 45.8% | 79% | 7% |
-| Valuation-anchored | 1y | -34.9% | -16.6% | -1.0% | 19.8% | 59.3% | 38% | 52% |
-| Valuation-anchored | 3y | -19.8% | -7.0% | 2.7% | 14.4% | 33.3% | 38% | 43% |
-| Valuation-anchored | 5y | -14.9% | -4.6% | 3.6% | 12.2% | 26.8% | 36% | 38% |
+| History | 1y | -25.1% | -4.1% | 13.8% | 37.8% | 83.1% | 58% | 31% |
+| History | 3y | -7.8% | 6.9% | 18.1% | 31.5% | 53.2% | 74% | 14% |
+| History | 5y | -2.2% | 9.7% | 19.1% | 29.0% | 45.8% | 79% | 7% |
+| Valuation-anchored | 1y | -34.7% | -16.5% | -0.8% | 20.0% | 59.5% | 38% | 51% |
+| Valuation-anchored | 3y | -19.6% | -6.8% | 2.9% | 14.6% | 33.5% | 38% | 43% |
+| Valuation-anchored | 5y | -14.8% | -4.4% | 3.8% | 12.4% | 27.1% | 37% | 38% |
 
 ## Stress tests
 

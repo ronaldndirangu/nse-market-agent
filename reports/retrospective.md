@@ -2,7 +2,7 @@
 
 > **Not financial advice.** This report is generated automatically from public data and fixed rules. It is not financial advice, an offer, or a recommendation to buy or sell any security. Figures can be wrong or stale. Verify everything against company filings and consult a licensed adviser before investing.
 
-Generated 2026-11-12. Prices through 2026-11-12. Reconstructed rankings cover 117 month starts (first 2017-03-01); the live ledger covers 2 days (first 2026-11-11).
+Generated 2026-11-13. Prices through 2026-11-13. Reconstructed rankings cover 117 month starts (first 2017-03-01); the live ledger covers 3 days (first 2026-11-11).
 
 ## Forward scorecard
 

@@ -24135,8 +24135,8 @@
       "winners": 570
     }
   },
-  "data_end": "2026-11-12",
-  "generated": "2026-11-12",
+  "data_end": "2026-11-13",
+  "generated": "2026-11-13",
   "ic": {
     "composite": {
       "1": {
@@ -24335,7 +24335,7 @@
       "windows": 0
     }
   },
-  "live_dates": 2,
+  "live_dates": 3,
   "live_first": "2026-11-11",
   "recon_dates": 117,
   "recon_first": "2017-03-01",
