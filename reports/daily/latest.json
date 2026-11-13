@@ -11,25 +11,25 @@
     "top_out": [],
     "verdict_details": []
   },
-  "code_sha": "4901c33c7b36",
+  "code_sha": "cc60151cc299",
   "counts": {
     "Avoid": 15,
     "Buy": 0,
     "Watch": 1
   },
-  "generated": "2026-11-13T20:28:31+00:00",
+  "generated": "2026-11-13T20:55:42+00:00",
   "health": {
     "announcements": {
       "fetch": {
         "error": null,
-        "last_attempt": "2026-11-13T23:28:30+03:00",
-        "last_success": "2026-11-13T23:28:30+03:00",
+        "last_attempt": "2026-11-13T23:55:41+03:00",
+        "last_success": "2026-11-13T23:55:41+03:00",
         "successful": true
       },
       "last_success": "2026-11-13",
       "status": "Current"
     },
-    "checked_at": "2026-11-13T23:28:30+03:00",
+    "checked_at": "2026-11-13T23:55:42+03:00",
     "critical_ok": true,
     "expected_session": "2026-11-13",
     "issues": [],
@@ -47,8 +47,8 @@
       "fetch": {
         "consecutive_failures": 0,
         "errors": [],
-        "last_attempt": "2026-11-13T23:28:13+03:00",
-        "last_success": "2026-11-13T23:28:13+03:00",
+        "last_attempt": "2026-11-13T23:55:39+03:00",
+        "last_success": "2026-11-13T23:55:39+03:00",
         "source": "nse",
         "successful": true
       },
@@ -244,13 +244,13 @@
   "macro": {
     "_source_status": {
       "cbk": {
-        "last_attempt": "2026-11-13T23:28:14+03:00",
-        "last_success": "2026-11-13T23:28:14+03:00",
+        "last_attempt": "2026-11-13T23:52:54+03:00",
+        "last_success": "2026-11-13T23:52:54+03:00",
         "successful": true
       },
       "knbs": {
         "error": "HTTPSConnectionPool(host='www.knbs.or.ke', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1018)')))",
-        "last_attempt": "2026-11-13T23:28:25+03:00",
+        "last_attempt": "2026-11-13T23:53:05+03:00",
         "last_success": "2026-11-12T23:59:55+03:00",
         "successful": false
       }
@@ -4463,7 +4463,7 @@
       "why": "NCBA (Watch): 4.3% upside to base fair value KES 92.56; base return 14.9% a year beats the 12.66% hurdle. Insufficient valuation cushion. Moderate risk (beta 0.81; turnover KES 12.9M a day)."
     }
   ],
-  "revision": "48628045c3159681a5de",
+  "revision": "a63b0ea3892e2f4a216d",
   "rule": "A stock is marked **Strict checks passed** only when all four stricter checks pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.66% hurdle (Return). Risk level is rated separately from seven factors and never changes the valuation or return thresholds. These flags also require current critical live evidence. Agreement of methods is not a probability of profit.",
   "tbill_net": 0.07658329999999999,
   "top": [
