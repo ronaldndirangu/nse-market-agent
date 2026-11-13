@@ -56,6 +56,20 @@ def test_dashboard_tolerates_sparse_and_broken_snapshots(tree):
     assert "Panel unavailable" in index and "Not financial advice" in index
 
 
+def test_generated_views_use_light_only_without_device_or_url_theme_switching(tree):
+    _write(tree / "reports" / "daily" / "latest.json", json.dumps({
+        "as_of": "2026-11-13", "top": [KPLC], "ranking": [KPLC], "counts": {"Watch": 1},
+    }))
+    _write(tree / "reports" / "latest.md", "# Weekly report\n")
+    for path in site.build():
+        html = path.read_text(encoding="utf-8")
+        assert '<meta name="color-scheme" content="light">' in html
+        assert "color-scheme: only light;" in html
+        assert "prefers-color-scheme" not in html and "scoutTheme" not in html
+        assert 'html[data-theme="dark"]' not in html
+    assert site.check() > 0
+
+
 KPLC = {
     "rank": 1, "ticker": "KPLC", "name": "Kenya Power", "sector": "Energy", "tier": "Watch", "price": 22.0,
     "price_date": "2026-11-11", "fair_base": 34.52, "fair_low": 28.0, "fair_high": 41.0, "mos": 0.569,

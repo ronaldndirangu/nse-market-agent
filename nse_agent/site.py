@@ -43,7 +43,7 @@ FAVICON = "data:image/svg+xml," + quote('<svg xmlns="http://www.w3.org/2000/svg"
 
 CSS = """
 :root {
-  color-scheme: light;
+  color-scheme: only light;
   --cp-bg: #f7f4ef;
   --cp-bg-elevated: #fcfbf8;
   --cp-surface: #ffffff;
@@ -67,32 +67,6 @@ CSS = """
   --cp-panel-strong: rgba(255, 255, 255, 0.96);
   --cp-sheen: rgba(255, 255, 255, 0.55);
   --cp-highlight: rgba(177, 31, 75, 0.12);
-}
-html[data-theme="dark"] {
-  color-scheme: dark;
-  --cp-bg: #3d3b3a;
-  --cp-bg-elevated: #343231;
-  --cp-surface: #292929;
-  --cp-surface-soft: #2e2e2e;
-  --cp-border: #474747;
-  --cp-border-strong: #5f5f5f;
-  --cp-text: #dedede;
-  --cp-text-muted: #919191;
-  --cp-text-soft: #b0b0b0;
-  --cp-accent: #fd8ea1;
-  --cp-accent-hover: #fb7b91;
-  --cp-accent-soft: rgba(253, 142, 161, 0.14);
-  --cp-accent-fg: #1a1a1a;
-  --cp-success: #4ade80;
-  --cp-danger: #f87171;
-  --cp-warning: #fbbf24;
-  --cp-link: #4da6ff;
-  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
-  --cp-overlay: rgba(41, 41, 41, 0.88);
-  --cp-panel: rgba(41, 41, 41, 0.72);
-  --cp-panel-strong: rgba(41, 41, 41, 0.96);
-  --cp-sheen: rgba(255, 255, 255, 0.04);
-  --cp-highlight: rgba(253, 142, 161, 0.12);
 }
 *{box-sizing:border-box}html{scroll-padding-top:5rem}
 body{margin:0;background:var(--cp-surface-soft);color:var(--cp-text);
@@ -459,15 +433,6 @@ html{scroll-padding-top:140px}.stock-matches{max-height:50vh}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 """
 
-THEME_SCRIPT = """
-(() => {
-  const param = new URLSearchParams(window.location.search).get("scoutTheme");
-  const theme =
-    param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  document.documentElement.setAttribute("data-theme", theme);
-})();
-"""
-
 JS = """
 function openHash(){
   var e=document.getElementById(decodeURIComponent(location.hash.slice(1)));
@@ -485,15 +450,6 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
     if(target&&target.tagName==='DETAILS')target.open=true;
   });
 });
-const explicitTheme=new URLSearchParams(location.search).get('scoutTheme');
-if(explicitTheme==='light'||explicitTheme==='dark'){
-  document.querySelectorAll('a[href]').forEach(function(a){
-    const url=new URL(a.href,location.href);
-    if(url.origin===location.origin&&(url.pathname.endsWith('.html')||url.pathname.endsWith('/'))){
-      url.searchParams.set('scoutTheme',explicitTheme);a.href=url.href;
-    }
-  });
-}
 document.querySelectorAll('table.sortable').forEach(function(t){
   var ths=t.querySelectorAll('thead th');
   ths.forEach(function(th,i){
@@ -1806,10 +1762,10 @@ def build() -> list[Path]:
         mobile = ''.join(f'<a href="{up}{dst}"{" aria-current=page" if dst == active else ""}>{E(label)}</a>'
                          for dst, label in nav + research)
         doc = (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" '
-               f'content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark">'
+               f'content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">'
                f'<meta name="description" content="Rule-based value agent for the Nairobi Securities Exchange: '
                f'undervalued stocks, risk profiles and projected returns.">'
-               f'<script>{THEME_SCRIPT}</script><title>{E(title)} | NSE Value Agent</title>'
+               f'<title>{E(title)} | NSE Value Agent</title>'
                + (f'<meta name="nse-daily-revision" content="{E(snapshot["revision"])}">'
                   if snapshot and snapshot.get("revision") else "")
                + f'<link rel="icon" href="{FAVICON}"><link rel="alternate" type="application/atom+xml" '

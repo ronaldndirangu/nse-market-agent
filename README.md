@@ -19,7 +19,8 @@ The main verdict pairs color with text and an icon: green means Buy rules passed
 amber means verify an incomplete assessment, and gray means live evidence is unverified. Watch stocks use amber.
 Green does not imply low risk or guaranteed profit; red is not an automatic instruction to sell.
 It uses original assets and system fonts, not Airbnb logos or proprietary typography.
-Explicit `?scoutTheme=light` and `?scoutTheme=dark` selections carry through internal page navigation.
+The site uses a single light theme, independent of device preferences. Older `scoutTheme` links still open,
+but no longer change the appearance.
 
 The dashboard separates the daily decision from advanced research. It includes a compact benchmark comparison,
 summary counts, stock review cards, a changes sidebar and a searchable, tier-filtered stock table. Mobile navigation,
