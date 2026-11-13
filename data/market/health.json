@@ -1,19 +1,19 @@
 {
   "announcements": {
     "error": null,
-    "last_attempt": "2026-11-13T00:41:33+03:00",
-    "last_success": "2026-11-13T00:41:33+03:00",
+    "last_attempt": "2026-11-13T23:28:30+03:00",
+    "last_success": "2026-11-13T23:28:30+03:00",
     "successful": true
   },
   "official": {
     "cbk": {
-      "last_attempt": "2026-11-13T00:38:55+03:00",
-      "last_success": "2026-11-13T00:38:55+03:00",
+      "last_attempt": "2026-11-13T23:28:14+03:00",
+      "last_success": "2026-11-13T23:28:14+03:00",
       "successful": true
     },
     "knbs": {
       "error": "HTTPSConnectionPool(host='www.knbs.or.ke', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1018)')))",
-      "last_attempt": "2026-11-13T00:38:57+03:00",
+      "last_attempt": "2026-11-13T23:28:25+03:00",
       "last_success": "2026-11-12T23:59:55+03:00",
       "successful": false
     }
@@ -21,8 +21,8 @@
   "prices": {
     "consecutive_failures": 0,
     "errors": [],
-    "last_attempt": "2026-11-13T00:41:31+03:00",
-    "last_success": "2026-11-13T00:41:31+03:00",
+    "last_attempt": "2026-11-13T23:28:13+03:00",
+    "last_success": "2026-11-13T23:28:13+03:00",
     "source": "nse",
     "successful": true
   }
