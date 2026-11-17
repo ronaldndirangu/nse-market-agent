@@ -23,17 +23,13 @@ PAGES = [  # (source under reports/, output page, nav label, description)
     ("daily/latest.md", "daily.html", "Daily brief", "Today's top 5, tiers, risk profile and what changed."),
     ("latest.md", "weekly.html", "Weekly report", "Fair value ranges, theses and data gaps for every stock."),
     ("retrospective.md", "retrospective.html", "Track record",
-     "How past rankings performed, per-signal IC and why winners were missed."),
+     "Did the Buy rule and the research ranking pay off in the past?"),
     ("scorecard.md", "scorecard.html", "Scorecard", "Logged picks scored against NASI."),
-    ("backtest.md", "backtest.html", "Backtest", "Did the Buy rule pay off? Tested month by month against the market."),
+    ("backtest.md", "backtest.html", "Backtest", "Month-by-month results, benchmark check and every holding."),
     ("simulation.md", "simulation.html", "Simulation", "Monte Carlo return ranges and stress tests."),
     ("tuning.md", "tuning.html", "Weight tuning", "Out-of-sample weight selection, proposed for review."),
 ]
 COLLAPSE = ("how to read", "method", "limitations", "data gaps", "exclusions", "holdings by month")
-SIGNALS = {"composite": "Composite score", "margin_of_safety": "Margin of safety", "quality": "Quality",
-           "momentum": "Momentum", "dividend_yield": "Dividend yield", "low_volatility": "Low volatility"}
-MISSES = {"caught": "Caught (ranked in top 5)", "signal miss": "Signal miss", "missing data": "Missing data",
-          "macro": "Macro", "event": "Event (takeover, rights issue)", "turnaround": "Turnaround from losses"}
 
 LOGO = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">'
         '<rect width="32" height="32" rx="8" fill="var(--cp-link)"/><path d="M7 22l6-6 4 4 8-9" fill="none" stroke="var(--cp-surface)" '
@@ -207,12 +203,6 @@ details.more[open]>summary{margin-bottom:.5rem}details.more>*+*{margin-top:.5rem
 .health-line{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}.health-line p{margin:.2rem 0}
 .icon{width:20px;height:20px;flex-shrink:0;vertical-align:middle}
 .mobile-nav{display:none}
-.brief-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:20px}
-.brief-heading .lead{max-width:60ch;margin-bottom:0}
-.brief-heading .eyebrow{margin-bottom:12px}
-.brief-heading h1{margin-top:0}
-.edition{text-align:right;font-size:.85rem;color:var(--cp-text-muted);padding-top:8px}
-.edition time{display:block;color:var(--cp-text);font-weight:600}
 .decision-layout{margin:20px 0 12px}
 .decision-layout>*{min-width:0;margin:0}
 #verdict{padding:24px;--cp-verdict:var(--cp-text-soft);border-left:3px solid var(--cp-verdict)}
@@ -302,11 +292,6 @@ padding:20px;border-radius:10px;background:var(--cp-surface-soft)}
 .stock-review .review-summary h3{margin-top:0}.review-disclosures{border-top:1px solid var(--cp-border)}
 .review-disclosures>.more{padding:4px 0}.review-disclosures>.more:first-child{border-top:0}
 .review-caution{font-size:.8rem;color:var(--cp-text-muted);margin:0}
-.research-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:16px}
-.research-links a{padding:20px;border:1px solid var(--cp-border);border-radius:12px;background:var(--cp-surface);
-display:block;color:var(--cp-text);min-height:100px}
-.research-links a:hover{border-color:var(--cp-link);text-decoration:none}
-.research-links b{display:block;margin-bottom:8px}.research-links span{font-size:.85rem;color:var(--cp-text-muted)}
 .updates-summary{margin-left:auto;font-size:.8rem;font-weight:400;color:var(--cp-text-muted)}
 .economic-sources{font-size:.88rem;overflow-wrap:anywhere}
 .coverage-summary{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
@@ -332,11 +317,6 @@ border-radius:10px;background:var(--cp-surface-soft);color:var(--cp-text);font-s
 .stock-mini{padding:20px;border:1px solid var(--cp-border);border-radius:14px;background:var(--cp-surface)}
 .stock-mini header{display:flex;justify-content:space-between;gap:12px;align-items:start}
 .stock-mini h2{margin:0;font-size:1.1rem}.stock-mini .nm{margin:4px 0 16px}
-.mini-quote{display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-bottom:16px}
-.mini-quote b{font-size:1.2rem;font-variant-numeric:tabular-nums}
-.stock-mini p{margin:0 0 12px;font-size:.85rem;min-height:2.6em}
-.mini-link{display:flex;justify-content:space-between;align-items:center;min-height:44px;border-top:1px solid var(--cp-border);
-padding-top:12px;font-size:.85rem;font-weight:600}
 .value-map{margin:16px 0}.value-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;margin:12px 0}
 .value-legend i{display:inline-block;width:3px;height:12px;margin-right:6px;vertical-align:middle;background:var(--cp-link)}
 .value-legend i.cushion{background:color-mix(in srgb,var(--cp-warning) 55%,var(--cp-text))}
@@ -355,8 +335,6 @@ background:var(--cp-text-muted);border:2px solid var(--cp-surface)}
 .change-list dt{font-size:.85rem;color:var(--cp-text-muted)}.change-list dd{margin:0;font-size:.85rem;font-weight:600;text-align:right}
 .quiet-state{display:flex;align-items:start;gap:12px;color:var(--cp-text-muted);font-size:.85rem;line-height:1.6}
 .quiet-state p{margin:0}.quiet-state .icon{color:var(--cp-text-soft);margin-top:3px}
-.guide-steps{padding-left:20px;margin:16px 0 0;font-size:.85rem;color:var(--cp-text-muted)}
-.guide-steps li{padding-left:4px;margin:12px 0}.guide-steps b{display:block;color:var(--cp-text)}
 .health-panel{margin:0;padding:4px 16px;border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface);
 overflow-wrap:anywhere}
 .health-panel .health-line{gap:12px 20px;font-size:.8rem;align-items:center}
@@ -373,8 +351,6 @@ border-left:3px solid var(--cp-warning);font-size:.85rem}
 .confidence-panel .confidence-summary>.icon{color:var(--cp-text);width:28px;height:28px;margin-top:2px}
 .confidence-panel h2{font-size:1.05rem;margin:0 0 8px}
 .confidence-panel p{max-width:65ch;font-size:.85rem;color:var(--cp-text-muted);margin:0}
-.research-heading{margin-top:40px;margin-bottom:16px}
-.research-heading h2{margin:8px 0}.research-heading p{margin:8px 0}
 .table-controls{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin:20px 0}
 .stock-search{flex:1;min-width:min(100%,240px);max-width:360px}.stock-search label{display:block;font-size:.85rem;
 font-weight:600;margin-bottom:8px}
@@ -386,7 +362,7 @@ border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface
 .result-count{font-size:.8rem;color:var(--cp-text-muted)}
 .page-note{font-size:.8rem;color:var(--cp-text-muted);max-width:75ch;margin:24px 0}
 .back-link{display:inline-flex;align-items:center;min-height:44px;gap:8px;margin-bottom:12px;font-size:.85rem}
-.muted,.lead,.edition,.page-note,.confidence-panel p,
+.muted,.lead,.page-note,.confidence-panel p,
 .section-heading p,.section-label,.count-label,.stock-footer,.risk-explanation,.change-list dt,
 .quiet-state,.guide-steps,.foot,.b-avoid,.b-muted,.c-low,
 .result-count,.nm,.facts dt,.rangebar .cap,.why,.links span,.months h3,#glossary dd,.kpi span,
@@ -410,11 +386,11 @@ border-bottom:1px solid var(--cp-border);display:grid;gap:4px;max-height:70vh;ov
 .mobile-nav nav a{padding:10px 12px;min-height:44px;border-radius:10px;color:var(--cp-text)}
 .mobile-nav nav a[aria-current=page]{background:var(--cp-surface-soft);color:var(--cp-text);font-weight:650}
 .brand{font-size:.85rem}.brand small{font-size:.67rem}
-main.wrap{padding-top:20px}.brief-heading{gap:12px}.brief-heading h1{font-size:1.7rem}.edition{display:none}
+main.wrap{padding-top:20px}
 .decision-layout{gap:16px;margin:20px 0}.card,#verdict{padding:20px}.brief-layout{margin:24px 0}
 .stock .facts{grid-template-columns:repeat(2,minmax(0,1fr))}.stock{padding:20px;gap:16px}
 .health-panel{padding:4px 12px}.decision-body{align-items:flex-start;flex-direction:column;gap:16px}
-.verdict-header .section-label{display:none}#verdict .big{font-size:1.25rem}
+#verdict .big{font-size:1.35rem}
 .next-step-grid{grid-template-columns:minmax(0,1fr);gap:16px}
 .entry-path{grid-template-columns:repeat(2,minmax(0,1fr))}
 .directory-heading{display:block}.section-nav{gap:16px}
@@ -434,6 +410,37 @@ html{scroll-padding-top:140px}.stock-matches{max-height:50vh}}
 .kpis.trio{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:600px){.kpis.trio{gap:.4rem}.kpis.trio .kpi{padding:.55rem .6rem}.kpis.trio .kpi b{font-size:1.1rem}
 .plot{overflow-x:auto;direction:rtl}.plot svg{direction:ltr;min-width:540px}}
+.status-line{display:flex;flex-wrap:wrap;gap:4px 18px;margin:16px 0 0;font-size:.82rem;color:var(--cp-text-soft)}
+.status-line a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.overdue{padding:10px 12px;border-radius:10px;background:var(--cp-surface-soft);border-left:3px solid var(--cp-warning);
+font-size:.85rem;margin:12px 0 0}
+#verdict .coverage-summary{margin-top:20px}
+#candidates{margin:28px 0}.quiet-card{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.quiet-card h2{margin:0 0 6px;font-size:1.05rem;color:var(--cp-text)}
+.teaser{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.teaser h2{margin:0 0 6px;font-size:1.05rem}.teaser p{margin:0;max-width:78ch;font-size:.9rem}
+.teaser .button,.quiet-card .button,.section-heading .button{flex-shrink:0;white-space:nowrap}
+.stock-mini{position:relative;display:flex;flex-direction:column;gap:6px;transition:border-color .15s}
+.stock-mini:hover{border-color:var(--cp-text)}
+.stock-mini h2 a{color:var(--cp-text)}.stock-mini h2 a:after{content:"";position:absolute;inset:0;border-radius:14px}
+.stock-mini .nm{margin:0}
+.mini-quote{margin:8px 0 0}.mini-quote b{font-size:1.15rem;font-variant-numeric:tabular-nums}
+.mini-reason{margin:0;font-size:.85rem;color:var(--cp-text)}.mini-risk{margin:auto 0 0;font-size:.78rem;color:var(--cp-text-soft)}
+.stock-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin:0 0 12px}
+.stock-head h1{margin:0 0 2px}.stock-head .badges{justify-content:flex-start;margin-top:10px}
+.stock-head .pricebox{flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+.stock-head .price{font-size:1.7rem;letter-spacing:-.025em}
+.check-steps{list-style:none;padding:0;margin:16px 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.check-steps li{background:var(--cp-surface-soft);border-radius:10px;padding:14px 16px;font-size:.85rem}
+.check-steps b{display:block;margin-bottom:6px;font-size:.95rem}
+.verdict-key{display:grid;gap:10px;margin:20px 0 12px}.verdict-key div{display:flex;gap:12px;align-items:center}
+.verdict-key dt{min-width:64px}.verdict-key dd{margin:0;font-size:.88rem}
+.foot-links a{margin:0 2px}
+@media(max-width:820px){.check-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+.teaser,.quiet-card{flex-direction:column;align-items:flex-start}
+.stock-head{flex-direction:column;gap:12px}.stock-head .pricebox{align-items:flex-start;text-align:left;width:100%}
+.stock-head .spark{text-align:left}}
+@media(max-width:480px){.check-steps{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 """
 
@@ -474,28 +481,35 @@ document.querySelectorAll('table.sortable').forEach(function(t){
 document.querySelectorAll('[data-stock-explorer]').forEach(function(section){
   var input=section.querySelector('input[type=search]'),buttons=section.querySelectorAll('[data-tier-filter]');
   var rows=section.querySelectorAll('[data-tier][data-search]'),params=new URLSearchParams(location.search);
+  var views=section.querySelectorAll('[data-view]'),toggles=section.querySelectorAll('[data-view-toggle]');
   var requested=params.get('tier'),tier=['Buy','Watch','Avoid'].includes(requested)?requested:'all';
+  var view=params.get('view')==='table'?'table':'cards';
   input.value=params.get('q')||'';
+  function shown(row){var v=row.closest('[data-view]');return !v||v.dataset.view===view;}
   function filter(){
-    var query=input.value.trim().toLowerCase(),visible=0;
+    var query=input.value.trim().toLowerCase(),visible=0,total=0;
+    views.forEach(function(v){v.hidden=v.dataset.view!==view;});
+    toggles.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.viewToggle===view));});
     rows.forEach(function(row){var match=(tier==='all'||row.dataset.tier===tier)&&row.dataset.search.includes(query);
-      row.hidden=!match;if(match)visible++;});
-    section.querySelector('[data-result-count]').textContent=visible+' of '+rows.length+' stocks shown';
+      row.hidden=!match;if(shown(row)){total++;if(match)visible++;}});
+    section.querySelector('[data-result-count]').textContent=visible+' of '+total+' stocks shown';
     section.querySelector('[data-no-results]').hidden=visible!==0;
     buttons.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.tierFilter===tier));});
     if(section.hasAttribute('data-share-filters')){
       var url=new URL(location.href);
       if(tier==='all')url.searchParams.delete('tier');else url.searchParams.set('tier',tier);
       if(query)url.searchParams.set('q',input.value.trim());else url.searchParams.delete('q');
+      if(view==='table')url.searchParams.set('view','table');else url.searchParams.delete('view');
       history.replaceState(null,'',url);
-      document.querySelectorAll('[data-table-view]').forEach(function(a){
-        var target=new URL(a.href);target.search=url.search;a.href=target.href;
-      });
     }
   }
   input.addEventListener('input',filter);
   buttons.forEach(function(button){button.addEventListener('click',function(){
     tier=button.dataset.tierFilter;
+    filter();
+  });});
+  toggles.forEach(function(button){button.addEventListener('click',function(){
+    view=button.dataset.viewToggle;
     filter();
   });});
   filter();section.querySelector('.table-controls').hidden=false;
@@ -594,14 +608,19 @@ def tier_badge(tier: str, flagged: bool = False) -> str:
                   if flagged else "")
 
 
+def _risk_text(level: str | None, label: str = " risk") -> str:
+    if not level:
+        return "Risk n/a"
+    return (f"{level.split(' ', 1)[0]}{label}; assessment incomplete" if "(incomplete)" in level else
+            "Risk not fully assessed" if level == "Insufficient data" else level + label)
+
+
 def risk_badge(level: str | None, label: str = " risk") -> str:
     if not level:
         return '<span class="badge b-muted">Risk n/a</span>'
     base = level.split(" ", 1)[0].lower()
     cls = f"r-{base}" if base in ("high", "moderate", "low") else "b-muted"
-    text = (f"{level.split(' ', 1)[0]}{label}; assessment incomplete" if "(incomplete)" in level else
-            "Risk not fully assessed" if level == "Insufficient data" else level + label)
-    return f'<span class="badge {cls} risk-badge">{E(text)}</span>'
+    return f'<span class="badge {cls} risk-badge">{E(_risk_text(level, label))}</span>'
 
 
 def _cell(header: str, content: str) -> str:
@@ -1038,7 +1057,6 @@ def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool =
         for f in rk.get("factors", []))
     held = conv.get("held_back") or []
     evidence = (f'<p class="small"><b>Evidence needs verification:</b> {E("; ".join(held))}.</p>' if held else "")
-    ticker = E(it["ticker"]) if detail else f'<a href="stocks/{E(it["ticker"])}.html">{E(it["ticker"])}</a>'
     explanation = _decision_why(it) if it.get("decision") else (
         _plain(it, tbill, cal, include_scenario=False) if detail else
         f'<p class="stock-reason"><b>Why {E(it["tier"])}?</b>'
@@ -1049,15 +1067,7 @@ def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool =
         f'{E(c["detail"])}</li>' for c in checks) + "</ul>") if checks else ""
     models_html = _valuation_map(it)
     return (f'<article class="stock stock-review{" flagged" if flagged else ""}" id="stock-overview">'
-            '<header><div class="stock-identity">'
-            f'<span class="company-mark" aria-hidden="true">{E(it["ticker"][:2])}</span>'
-            f'<div><span class="tk">{ticker}</span>'
-            f'<span class="nm">{E(it["name"])} &middot; {E(it["sector"])}'
-            f'</span></div></div><div class="badges">{tier_badge(it["tier"], flagged)}'
-            f'{risk_badge(rk.get("label") or rk.get("level"))}</div>'
-            f'</header><div class="pricebox"><div><div class="price">{kes(it.get("price"))}</div>'
-            f'<div class="small muted">close {E(str(it.get("price_date") or ""))}</div></div>{_spark(it["ticker"])}'
-            f'</div>{_entry_path(it, detail=True)}'
+            f'{_entry_path(it, detail=True)}'
             f'<div class="review-summary"><div>{explanation}{evidence}</div>{dl(facts)}</div>'
             + (f'<p class="review-caution">{E(_cal_text(cal))}</p>' if not dispersed else "")
             + (_decision_next(it) if detail else "")
@@ -1079,29 +1089,53 @@ def _stock_card(it: dict, hurdle: float | None, gates: bool = False, why: bool =
 
 
 def _hero(s: dict) -> str:
+    """Warn above the answer when the latest closing prices predate the brief."""
     pd = s.get("price_date")
-    when = f"Closing prices from {E(str(pd))}." if pd else ""
     current_session = (((s.get("health") or {}).get("prices") or {}).get("status") == "Current")
-    stale = (f'<div class="callout warn small"><p><b>Prices not refreshed.</b> The latest closing prices are from '
-             f'{E(str(pd))}, before this brief\'s date of {E(s["as_of"])}. The market may have been closed or the '
-             f'price source failed.</p></div>') if pd and str(pd) < str(s["as_of"]) and not current_session else ""
-    day = datetime.fromisoformat(s["as_of"]).strftime("%A, %d %B %Y")
-    updated = (datetime.fromisoformat(s["generated"]).astimezone(EAT).strftime("%H:%M EAT")
-               if s.get("generated") else None)
-    return (f'<section class="brief-heading"><div><h1>Your NSE research desk</h1>'
-            f'<p class="lead">{s.get("valued", 0)} stocks checked. {when}</p></div>'
-            f'<div class="edition"><time datetime="{E(s["as_of"])}">{E(day)}</time>'
-            + (f'Updated {E(updated)}' if updated else "Daily closing assessment") + '</div></section>'
-            + stale + _coverage_summary(s))
+    if pd and str(pd) < str(s["as_of"]) and not current_session:
+        return (f'<div class="callout warn small"><p><b>Prices not refreshed.</b> The latest closing prices are from '
+                f'{E(str(pd))}, before this brief\'s date of {E(s["as_of"])}. The market may have been closed or the '
+                f'price source failed.</p></div>')
+    return ""
 
 
 def _coverage_summary(s: dict) -> str:
     counts = s.get("counts") or {}
-    return ('<nav class="coverage-summary" aria-label="Covered stocks by entry verdict">'
-            + "".join(f'<a href="stocks.html?tier={tier}"><span class="status-dot {tier.lower()}" aria-hidden="true"></span>'
-                      f'<b>{counts.get(tier, 0)}</b> {label}</a>'
-                      for tier, label in (("Buy", "Buy rules met"), ("Watch", "Watch"), ("Avoid", "Not qualifying")))
+    return ('<nav class="coverage-summary" aria-label="Covered stocks by verdict">'
+            + "".join(f'<a href="stocks.html?tier={tier}"><span class="status-dot {tier.lower()}" aria-hidden="true">'
+                      f'</span><b>{counts.get(tier, 0)}</b> {tier}</a>' for tier in ("Buy", "Watch", "Avoid"))
             + "</nav>")
+
+
+def _change_items(s: dict) -> list[tuple[str, str]]:
+    ch = s.get("changes") or {}
+    items = [("New candidates", ", ".join(ch.get("top_in") or [])),
+             ("Left candidates", ", ".join(ch.get("top_out") or [])), ("Tier changes", ch.get("tiers", 0)),
+             ("Threshold crossings", ch.get("crossings", 0)), ("New announcements", ch.get("announcements", 0)),
+             ("Unusual price moves", ch.get("moves", 0))]
+    return [(label, str(value)) for label, value in items if value]
+
+
+def _status_line(s: dict) -> str:
+    """Coverage, price date, freshness and changes in one line under the answer."""
+    parts = [f'{s.get("valued", 0)} stocks checked']
+    if s.get("price_date"):
+        parts.append(f'Closing prices from {E(str(s["price_date"]))}')
+    if s.get("generated"):
+        parts.append("Updated " + E(datetime.fromisoformat(s["generated"]).astimezone(EAT).strftime("%H:%M EAT")))
+    h = s.get("health") or {}
+    prices = h.get("prices") or {}
+    fresh = (f'Data {E(str(h["status"]).lower())}: {prices.get("current", 0)}/{prices.get("total", 0)} prices current'
+             if h.get("status") else "Data health unknown")
+    parts.append(f'<a href="method.html#data-health">{fresh}</a>')
+    ch = s.get("changes") or {}
+    if not s.get("alerts") and not _change_items(s) and not ch.get("verdict_details"):
+        parts.append(f'No material changes since {E(ch["prev_date"])}' if ch.get("prev_date") else
+                     "No material changes")
+    overdue = (f'<p class="overdue" hidden data-update-due="{E(h["next_update_due"])}" role="status"><b>Update '
+               'overdue.</b> This report has passed its next expected update time. Recheck freshness before '
+               'acting.</p>' if h.get("next_update_due") else "")
+    return '<p class="status-line"><span>' + "</span><span>".join(parts) + "</span></p>" + overdue
 
 
 def _economic_context(s: dict) -> str:
@@ -1113,16 +1147,15 @@ def _economic_context(s: dict) -> str:
     metrics = [(pct(s["tbill_net"], 2), "T-bill per year, after tax"),
                (pct(s.get("hurdle"), 2), "Minimum projected return for a Buy"),
                (pct(inflation["value"]), "Observed inflation, year-on-year")]
-    return ('<details class="fold" id="economic-context"><summary><h2>Rates and inflation</h2>'
-            f'<span class="updates-summary">Observed CPI {pct(inflation["value"])}</span></summary>'
+    return ('<section class="card" id="economic-context"><h2>Rates and inflation</h2>'
             f'<p class="small muted">CBK results: {E(str(bill.get("as_of") or "date unknown"))}. '
             f'KNBS CPI period: {E(str(inflation.get("period") or "unknown"))}.</p>'
-            '<div class="kpis">' + "".join(f'<div class="kpi"><b>{value}</b><span>{E(label)}</span></div>'
-                                         for value, label in metrics) + '</div>'
+            '<div class="kpis trio">' + "".join(f'<div class="kpi"><b>{value}</b><span>{E(label)}</span></div>'
+                                              for value, label in metrics) + '</div>'
             '<p class="small muted">The hurdle uses CBK rates; other Buy checks still apply. '
             'Inflation describes the past year, not a forecast.</p>'
-            '<div class="economic-sources">' + _md("\n".join(official.markdown(m, s["tbill_net"])[2:]))
-            + "</div></details>")
+            '<details class="more"><summary>Sources and assumptions</summary><div class="economic-sources">'
+            + _md("\n".join(official.markdown(m, s["tbill_net"])[2:])) + "</div></details></section>")
 
 
 def _health_panel(s: dict) -> str:
@@ -1205,23 +1238,25 @@ def _verdict(s: dict) -> str:
         state, status, icon = "buy", "Buy rules passed", "check"
     else:
         state, status, icon = "no-buy", "No qualifying Buy", "stop"
+    day = "Today"
+    if s.get("as_of"):
+        try:
+            day = datetime.fromisoformat(str(s["as_of"])).strftime("%A, %d %B %Y")
+        except ValueError:
+            day = str(s["as_of"])
+        day = f'<time datetime="{E(str(s["as_of"]))}">{E(day)}</time>'
     tb, hurdle = s.get("tbill_net"), s.get("hurdle")
-    candidates = {i.get("ticker") for i in items if i.get("tier") in ("Buy", "Watch") and i.get("ticker")}
-    action = ('<a class="button primary" href="#candidates">Review candidates ' + _icon("arrow") + '</a>'
-              if candidates else '<a class="button primary" href="stocks.html">Explore covered stocks '
-              + _icon("arrow") + '</a>')
     money = ('<div class="benchmark-strip" aria-label="Return comparison">'
-             f'<span>T-bill after tax <b>{pct(tb, 2)}</b></span>'
-             f'<span>Return hurdle <b>{pct(hurdle, 2)}</b> / year</span>'
-             f'<a href="{"#economic-context" if s.get("macro") else "#glossary"}">Rates and assumptions</a></div>'
+             f'<span>T-bill after tax <b>{pct(tb, 2)}</b> a year</span>'
+             f'<span>Buy hurdle <b>{pct(hurdle, 2)}</b> a year</span>'
+             '<a href="method.html#how-verdicts">How verdicts work</a></div>'
              ) if None not in (tb, hurdle) else (
                  '<p class="small muted">Return comparison unavailable. Verify inputs before relying on projections.</p>')
     return (f'<div class="decision-layout"><section class="card" id="verdict" data-verdict="{state}">'
-            f'<div class="verdict-header"><h2 class="section-label">{_icon(icon)}Today\'s assessment</h2>'
-            f'<span class="decision-status">{status}</span></div><p class="big">{head}</p>'
-            + '<div class="decision-body"><div>' + (f'<p class="decision-copy">{sub}</p>' if sub else
-               '<p class="decision-copy">The screen is selective. Review the evidence before making an investment decision.</p>')
-            + f'</div>{action}</div>{money}</section></div>')
+            f'<div class="verdict-header"><p class="section-label">{_icon(icon)}{day}</p>'
+            f'<span class="decision-status">{status}</span></div><h1 class="big">{head}</h1>'
+            + (f'<p class="decision-copy">{sub}</p>' if sub else "")
+            + _coverage_summary(s) + _status_line(s) + money + '</section></div>')
 
 
 def _glossary(s: dict, retro: dict | None = None) -> str:
@@ -1247,20 +1282,15 @@ def _glossary(s: dict, retro: dict | None = None) -> str:
         ("Hurdle", f"The yearly return a stock must beat to be a Buy: the T-bill rate plus {prem} for taking stock "
                    "market risk."),
         ("T-bill", "A short loan to the Kenyan government. Low risk, so it is the yardstick every stock must beat."),
-        ("Buy, Watch, Avoid", "Buy passes the entry checks. Watch passes the business health check but misses one other "
-                              "check. Avoid misses more, fails the health check or its valuation methods disagree too "
-                              "much. These are entry rules, not instructions to sell existing holdings."),
-        ("Strict checks passed", f"A stricter Buy: {hc.get('min_agreeing_models', 3)} or more valuation methods agree and "
-                            "the business scores well on health checks, with current critical evidence. This is "
-                            "agreement of rules, not a measured probability of profit."),
+        ("Strict checks passed", f"A stricter Buy: {hc.get('min_agreeing_models', 3)} or more valuation methods agree "
+                                 "and the business scores well on health checks, with current critical evidence. "
+                                 "This is agreement of rules, not a measured probability of profit."),
         ("Risk level", "Low, Moderate or High, from price swings, how easily it trades, debt or bad loans and "
-                       "company warnings. It never changes the tier; it tells you how bumpy the ride could be."),
-        ("Research score (composite)", f"An independent ranking of all stocks, regardless of entry verdict. "
+                       "company warnings. It never changes the verdict; it tells you how bumpy the ride could be."),
+        ("Research score (composite)", f"An independent ranking of all stocks, regardless of verdict. "
          f"It does not set Buy, Watch or Avoid. Today's mix: {_weights_plain(s)}."),
-        ("Entry and strict checks", "Entry checks set Buy, Watch or Avoid. The separate strict checks require "
-         "stronger model agreement, a higher health score and current evidence."),
-        ("NASI", "The index of all shares on the Nairobi Securities Exchange. Picks are judged against it. It tracks "
-                 "prices only, so it leaves out dividends."),
+        ("NASI", "The index of all shares on the Nairobi Securities Exchange. It tracks prices only, so it leaves out "
+                 "dividends."),
         ("IC (information coefficient)", "How well the score predicted later returns. Above 0 helps, above 0.05 "
                                          "is useful, below 0 means it pointed the wrong way."),
         ("Calibration", "How often real returns landed inside the bad to good range. The ranges are scenarios, not "
@@ -1268,16 +1298,14 @@ def _glossary(s: dict, retro: dict | None = None) -> str:
                         + (f", and so far it is {pct(cal, 0)}, so the ranges are too narrow." if cal is not None and
                            cal < 0.6 else f"; so far it is {pct(cal, 0)}." if cal is not None else ".")),
     ]
-    return ('<details class="fold" id="glossary"><summary><h2>Reading guide &amp; terms</h2></summary>'
-            + _reading_guide() + '<h3>Jargon buster</h3><dl>'
-            + "".join(f"<dt>{E(k)}</dt><dd>{E(d)}</dd>" for k, d in terms) + "</dl></details>")
+    return ('<section class="card" id="glossary"><h2>Words we use</h2><dl>'
+            + "".join(f"<dt>{E(k)}</dt><dd>{E(d)}</dd>" for k, d in terms) + "</dl></section>")
 
 
 def _high_conf(s: dict, cal: float | None = None) -> str:
     hurdle, flagged, near = s.get("hurdle"), s.get("high_confidence") or [], s.get("near_misses") or []
     tb = s.get("tbill_net")
-    out = [f'<details class="fold confidence-panel" id="high-confidence"><summary><h2>'
-           f'Strict checks: {len(flagged)} stocks pass</h2></summary>'
+    out = [f'<section class="card" id="high-confidence"><h2>Strict checks: {len(flagged)} stocks pass</h2>'
            '<p class="small">These checks are separate from the entry rules. Passing is not a probability of profit.</p>'
            f'<p class="small muted">{_inline(s.get("rule", ""))}</p>']
     if flagged:
@@ -1289,60 +1317,76 @@ def _high_conf(s: dict, cal: float | None = None) -> str:
                        + "".join(f'<li>{E(i["ticker"])} ({E(i["tier"])}): '
                                  f'{E("; ".join([g["name"] + ": " + g["detail"] for g in (i.get("conviction") or {}).get("gates", []) if not g["passed"]] + (i.get("conviction") or {}).get("held_back", [])))}</li>'
                                  for i in near) + "</ul></details>")
-    return "".join(out) + "</details>"
+    return "".join(out) + "</section>"
 
 
 def _alerts_changes(s: dict) -> str:
+    """Alerts and recorded changes; nothing when the day is quiet (the status line says so)."""
     ch, alerts = s.get("changes") or {}, s.get("alerts") or []
+    changed = _change_items(s)
+    if not (alerts or changed or ch.get("verdict_details")):
+        return ""
     since = f'since {E(ch["prev_date"])}' if ch.get("prev_date") else "(first brief, nothing to compare yet)"
-    changes = [("New candidates", ", ".join(ch.get("top_in") or [])),
-               ("Left candidates", ", ".join(ch.get("top_out") or [])), ("Tier changes", ch.get("tiers", 0)),
-               ("Threshold crossings", ch.get("crossings", 0)), ("New announcements", ch.get("announcements", 0)),
-               ("Unusual price moves", ch.get("moves", 0))]
-    changed = [(label, value) for label, value in changes if value]
-    al = ('<ul class="small">' + "".join(f"<li>{_inline(a)}</li>" for a in alerts) + "</ul>") if alerts else (
-        f'<div class="quiet-state">{_icon("bell")}<p>No Buy alerts or profit warnings in this brief.</p></div>')
+    al = ('<ul class="small">' + "".join(f"<li>{_inline(a)}</li>" for a in alerts) + "</ul>") if alerts else ""
     more = ('<p class="small"><a href="daily.html#what-changed">Details in the daily brief</a></p>'
             if (config.REPORTS / "daily" / "latest.md").exists() else "")
     change_list = ('<dl class="change-list">' + "".join(
-        f'<div><dt>{E(label)}</dt><dd>{E(str(value))}</dd></div>' for label, value in changed) + '</dl>'
-        if changed else '<p class="small muted">No material changes since the previous brief.</p>')
+        f'<div><dt>{E(label)}</dt><dd>{E(value)}</dd></div>' for label, value in changed) + '</dl>'
+        if changed else "")
     change_list += ('<ul class="small">' + "".join(
         f'<li><b>{E(c["ticker"])}:</b> {E(c["before"])} to {E(c["after"])}. '
         f'Current reason: {E(c["reason"])}.</li>' for c in ch.get("verdict_details", [])) + "</ul>"
         if ch.get("verdict_details") else "")
-    status = (f"{len(alerts)} {'alert' if len(alerts) == 1 else 'alerts'} to review"
-              if alerts else "Changes recorded" if changed else "No material changes")
+    status = (f"{len(alerts)} {'alert' if len(alerts) == 1 else 'alerts'} to review" if alerts else
+              "Changes recorded")
     return (f'<details class="fold updates-panel" id="latest-changes"{" open" if alerts else ""}>'
-            f'<summary><h2>Latest changes</h2><span class="updates-summary">{status}</span></summary>'
-            f'<p class="small muted">Changes {since}.</p>{change_list}{al if alerts else ""}{more}</details>')
-
-
-def _reading_guide() -> str:
-    return ('<div class="reading-guide"><h3>A one-minute reading guide</h3><ol class="guide-steps">'
-            '<li><b>Check the evidence.</b> Confirm prices and sources are current.</li>'
-            '<li><b>Read the conclusion.</b> Buy passes the entry rules. Watch still misses a check.</li>'
-            '<li><b>Open a stock review.</b> Understand its risks and verify the source filing.</li></ol>'
-            '<p class="small muted">Verdict color key:</p><div class="verdict-legend">'
-            '<span class="badge b-buy">Green: Buy rules pass</span>'
-            '<span class="badge b-watch">Amber: Watch / verify</span>'
-            '<span class="badge" style="color:var(--cp-danger)">Red: No qualifying Buy</span>'
-            '<span class="badge b-muted">Gray: Unverified data</span></div>'
-            '<p class="small muted">Green is not a guarantee of profit. Red and Avoid are not automatic '
-            'instructions to sell existing holdings.</p></div>')
+            f'<summary><h2>What changed</h2><span class="updates-summary">{status}</span></summary>'
+            f'<p class="small muted">Changes {since}.</p>{al}{change_list}{more}</details>')
 
 
 def _top(s: dict, cal: float | None = None) -> str:
     top = [i for i in (s.get("top") or []) if i.get("tier") in ("Buy", "Watch")]
+    total = len([r for r in (s.get("ranking") or []) if isinstance(r, dict)])
+    browse = f'<a class="button" href="stocks.html">{f"All {total} stocks" if total else "All stocks"} {_icon("arrow")}</a>'
     if not top:
-        return (f'<section class="card"><div class="quiet-state">{_icon("book")}<div>'
-                '<h2>No entry candidates today</h2><p>No Buy or Watch cards are available in this brief. '
-                'Explore the full ranking for the recorded assessments.</p></div></div></section>')
-    return (f'<section id="candidates"><div class="section-heading"><div><h2>Candidates for review</h2>'
-            f'<p>{len(top)} to review.</p></div>'
-            f'<a class="button" href="stocks.html">All stocks {_icon("arrow")}</a></div><div class="candidate-stack">'
+        return (f'<section class="card quiet-card" id="candidates"><div class="quiet-state">{_icon("book")}<div>'
+                '<h2>Nothing close to a Buy today</h2><p>No stock passes the business health check while missing '
+                'only one other check. Every verdict and its reason is on the stocks page.</p></div></div>'
+                f'{browse}</section>')
+    return (f'<section id="candidates"><div class="section-heading"><div><h2>Stocks to review</h2>'
+            '<p>Buy and Watch stocks. Each card names the check that decides its verdict.</p></div>'
+            f'{browse}</div><div class="candidate-stack">'
             + "".join(_stock_card(i, s.get("hurdle"), why=True, tbill=s.get("tbill_net"), cal=cal) for i in top)
             + "</div></section>")
+
+
+def _since(iso: str) -> str:
+    try:
+        return datetime.fromisoformat(iso).strftime("%B %Y")
+    except (TypeError, ValueError):
+        return str(iso)
+
+
+def _buy_rule_verdict(bt: dict) -> str:
+    ci = (bt.get("buy_rule") or {}).get("ci")
+    if ci and ci[0] > 0:
+        return "The Buy rule beat holding the covered stocks."
+    if ci and ci[1] < 0:
+        return "The Buy rule trailed holding the covered stocks."
+    return "No clear winner between the Buy rule and holding the covered stocks."
+
+
+def _evidence_teaser(target: str | None) -> str:
+    bt = _load_json(config.DATA / "backtest.json") or {}
+    st = bt.get("strategies") or {}
+    if not target or "buy_rule" not in st or "cap" not in st:
+        return ""
+    b, c = st["buy_rule"]["net"], st["cap"]["net"]
+    return ('<section class="card teaser" id="evidence"><div><h2>Has the Buy rule worked before?</h2>'
+            f'<p>{E(_buy_rule_verdict(bt))} Since {E(_since(bt.get("start")))}, it returned <b>{pct(b["cagr"])}</b> '
+            f'a year after costs against <b>{pct(c["cagr"])}</b>, with a worst fall of {pct(b["max_dd"])} against '
+            f'{pct(c["max_dd"])}. Past results are not a forecast.</p></div>'
+            f'<a class="button" href="{target}">See the track record {_icon("arrow")}</a></section>')
 
 
 def _tier_buttons(target: str, counts: dict | None = None) -> str:
@@ -1356,8 +1400,8 @@ def _tier_buttons(target: str, counts: dict | None = None) -> str:
 def _directory(s: dict) -> str:
     from .decision import display_order
     rows = sorted([r for r in (s.get("ranking") or s.get("top") or []) if isinstance(r, dict)], key=display_order)
-    cards = []
     counts = {tier: sum(r["tier"] == tier for r in rows) for tier in ("Buy", "Watch", "Avoid")}
+    cards = []
     for r in rows:
         ticker = E(r["ticker"])
         reason = (r.get("decision") or {}).get("reason") or _plain_reason(consumer_binding(r))
@@ -1366,32 +1410,32 @@ def _directory(s: dict) -> str:
                      f'data-search="{E((r["ticker"] + " " + r["name"] + " " + r["sector"]).lower())}">'
                      f'<header><h2><a href="stocks/{ticker}.html">{ticker}</a></h2>{tier_badge(r["tier"])}</header>'
                      f'<span class="nm">{E(r["name"])} &middot; {E(r["sector"])}</span>'
-                     f'<div class="mini-quote"><b>{kes(r.get("price"))}</b>'
-                     f'{risk_badge(risk.get("label") or risk.get("level"))}</div>'
-                     f'<p>{E(reason or "Review the recorded evidence.")}</p>'
-                     f'<a class="mini-link" href="stocks/{ticker}.html">Read the decision {_icon("arrow")}</a></article>')
-    return ('<div class="directory-heading"><div><p class="eyebrow">The covered universe</p><h1>Explore stocks</h1>'
-            '<p>Start with the verdict. Open a company to see the evidence, assumptions and what would change it. '
-            'Avoid is an entry assessment, not an instruction to sell.</p></div></div>'
-            f'<p class="small muted">Recorded closing prices'
-            + (f' through {E(str(s["price_date"]))}' if s.get("price_date") else "")
-            + '. These are not live quotes.</p>'
-            '<nav class="section-nav" aria-label="Stock views"><a href="stocks.html" aria-current="page">Company cards</a>'
-            '<a href="index.html#all-stocks" data-table-view>Compare numbers</a></nav>'
+                     f'<p class="mini-quote"><b>{kes(r.get("price"))}</b></p>'
+                     f'<p class="mini-reason">{E(reason or "Review the recorded evidence.")}</p>'
+                     f'<p class="mini-risk">{E(_risk_text(risk.get("label") or risk.get("level")))}</p></article>')
+    when = f' through {E(str(s["price_date"]))}' if s.get("price_date") else ""
+    targets = "stock-list stock-table"
+    return (f'<h1>Stocks</h1><p class="lead">{len(rows)} covered companies: Buy first, then Watch, then Avoid. '
+            f'Recorded closing prices{when}. These are not live quotes.</p>'
             '<section data-stock-explorer data-share-filters>'
             '<noscript><p>Filters require JavaScript. All covered stocks are shown below.</p></noscript>'
             '<div class="table-controls" hidden><div class="stock-search">'
-            '<label for="stock-search">Filter companies</label>'
-            '<input id="stock-search" type="search" placeholder="Ticker, company or sector" '
-            'aria-controls="stock-list" autocomplete="off"></div>'
-            '<div class="table-filters" role="group" aria-label="Filter by entry tier">'
-            + _tier_buttons("stock-list", counts) + '</div></div>'
+            '<label for="stock-search">Filter stocks</label>'
+            f'<input id="stock-search" type="search" placeholder="Ticker, company or sector" '
+            f'aria-controls="{targets}" autocomplete="off"></div>'
+            '<div class="table-filters" role="group" aria-label="Filter by verdict">'
+            + _tier_buttons(targets, counts) + '</div>'
+            '<div class="table-filters view-toggle" role="group" aria-label="Choose a view">'
+            '<button type="button" data-view-toggle="cards" aria-pressed="true" aria-controls="stock-list">Cards'
+            '</button><button type="button" data-view-toggle="table" aria-pressed="false" '
+            'aria-controls="stock-table">Table</button></div></div>'
             f'<p class="result-count" data-result-count role="status" aria-live="polite">{len(rows)} stocks shown</p>'
-            '<p class="small muted" data-no-results hidden>No matching stocks. Change the company name or verdict filter.</p>'
-            '<div class="stock-directory" id="stock-list">' + "".join(cards) + "</div></section>")
+            '<p class="small muted" data-no-results hidden>No matching stocks. Change the search or verdict filter.</p>'
+            '<div class="stock-directory" id="stock-list" data-view="cards">' + "".join(cards) + "</div>"
+            '<div data-view="table" hidden>' + _stock_table(s) + "</div></section>")
 
 
-def _ranking(s: dict) -> str:
+def _stock_table(s: dict) -> str:
     from .decision import display_order
     rows = s.get("ranking") or []
     if not rows:
@@ -1416,7 +1460,6 @@ def _ranking(s: dict) -> str:
         f'</tr>' for r in rows)
     heads = ["Ticker", "Name", "Sector", "Verdict", "Reason", "Risk", "Price", "Value gap", "Lower / yr",
              "Middle / yr", "Upper / yr", "Dividend before tax"]
-    filters = _tier_buttons("stock-table")
     research = ('<details class="more"><summary>Independent research-score order</summary>'
                 '<p class="small muted">This score ranks every stock, including Avoids. It does not set the verdict. '
                 f'The mix is {E(_weights_plain(s))}.</p><div class="table-wrap"><table class="data sortable">'
@@ -1424,22 +1467,13 @@ def _ranking(s: dict) -> str:
                 + "".join(f'<tr><td>{r["rank"]}</td><td>{E(r["ticker"])}</td><td>{r["composite"]:.2f}</td></tr>'
                           for r in research_rows if r.get("composite") is not None)
                 + "</tbody></table></div></details>")
-    return ('<section class="card" id="ranking" data-stock-explorer><h2>All stocks by entry verdict</h2>'
-            '<p class="small muted">Buy, then Watch, then Avoid; research score orders stocks within each group. '
-            'Return scenarios are annualised over the stated model horizon, net of costs and dividend tax. '
-            'Dividend yields use trailing regular dividends or an annual-DPS fallback, before tax. '
-            'Select a column heading to sort.</p><div class="table-controls" hidden>'
-            '<div class="stock-search"><label for="stock-search">Find a stock</label>'
-            '<input id="stock-search" type="search" placeholder="Ticker, company or sector" '
-            'aria-controls="stock-table" autocomplete="off"></div>'
-            f'<div class="table-filters" role="group" aria-label="Filter by entry tier">{filters}</div></div>'
-            f'<p class="result-count" data-result-count role="status" aria-live="polite">{len(rows)} stocks shown</p>'
-            '<p class="small muted" data-no-results hidden>No stocks match. Try another company, sector or tier.</p>'
-            '<div class="table-wrap" tabindex="0" role="region" aria-label="Stock research table">'
+    return ('<p class="small muted">Return scenarios are yearly over the model horizon, after costs and dividend '
+            'tax. Dividend yields are before tax. Select a column heading to sort.</p>'
+            '<div class="table-wrap" tabindex="0" role="region" aria-label="Stock comparison table">'
             '<table class="data sortable" id="stock-table"><caption class="sr">All covered stocks, '
-            'their entry tier, risk and valuation scenarios.</caption><thead><tr>'
+            'their verdict, risk and valuation scenarios.</caption><thead><tr>'
             + "".join(f'<th scope="col">{h}</th>' for h in heads) + f"</tr></thead><tbody>{body}"
-            "</tbody></table></div>" + research + "</section>")
+            "</tbody></table></div>" + research)
 
 
 def _nice_step(top: float) -> float:
@@ -1515,7 +1549,7 @@ def _kes_compact(v: float, exact: bool = False) -> str:
 
 
 def _backtest_summary(bt: dict) -> str:
-    """Plain-language panel above the technical backtest: result, growth chart, fixed mixes and experiments."""
+    """The Buy rule against the covered stocks and T-bills: verdict, three numbers, a chart and the details."""
     if not bt.get("months") or not bt.get("strategies"):
         return ""
     st, mx = bt["strategies"], bt["mixes"]
@@ -1540,66 +1574,32 @@ def _backtest_summary(bt: dict) -> str:
         f"{E(_kes_compact(amount, True))} from {E(labels[0])} to {E(labels[-1])} after trading costs. Each month "
         "uses only the company results and CBK T-bill rates published by then.")
     kpis = "".join(f'<div class="kpi"><b>{pct(v)}</b><span>{E(k)}</span></div>' for v, k in (
-        (st["buy_rule"]["net"]["cagr"], "Buy rule a year, after costs"),
-        (st["cap"]["net"]["cagr"], "Covered stocks by size"),
-        (bills["cagr"] if bills else None, "T-bills after tax")))
+        (st["buy_rule"]["net"]["cagr"], f'Buy rule a year; worst fall {pct(st["buy_rule"]["net"]["max_dd"])}'),
+        (st["cap"]["net"]["cagr"], f'Covered stocks by size; worst fall {pct(st["cap"]["net"]["max_dd"])}'),
+        (bills["cagr"] if bills else None, "T-bills after tax; never fell")))
+    ci = (bt.get("buy_rule") or {}).get("ci")
+    detail = (f' The 95% range for the yearly difference runs from {points(ci[0], "")} to {points(ci[1])}.'
+              if ci else "")
     mixes = "".join(f'<tr><td>{E(r["label"])}</td><td class="num">{E(_kes_compact(r["final"], True))}</td>'
                     f'<td class="num">{pct(r["cagr"])}</td><td class="num">{pct(r["max_dd"])}</td></tr>'
                     for r in mx["rows"])
-    exps = "".join(f'<li><b>{E(e.get("label", k))}:</b> {points(e["excess"])} a year against the size-weighted '
-                   "basket" + (f' (95% range {points(e["ci"][0], "")} to {points(e["ci"][1])})' if e.get("ci") else "")
-                   + f'. {E(e["status"])}; {e["live_months"]} live months so far.</li>'
-                   for k, e in (bt.get("experiments") or {}).items())
+    exps = bt.get("experiments") or {}
+    ready = sum(e.get("met") == len(e.get("checks") or {}) for e in exps.values())
+    trials = "".join(f'<li><b>{E(e.get("label", k))}:</b> {points(e["excess"])} a year against the size-weighted '
+                     "basket" + (f' (95% range {points(e["ci"][0], "")} to {points(e["ci"][1])})' if e.get("ci") else "")
+                     + f'. {E(e["status"])}; {e["live_months"]} live months so far.</li>' for k, e in exps.items())
     return ('<section class="card" id="summary"><h2>Did the Buy rule pay off?</h2>'
-            f'<p><b>{E(bt.get("headline", ""))}</b></p><div class="kpis trio">{kpis}</div>{chart}'
-            '<h3>What a fixed mix would have become</h3><div class="table-wrap"><table class="data"><thead><tr>'
-            f'<th>Stocks and T-bills</th><th>Value on {E(bt["end"])}</th><th>Return a year</th>'
-            f'<th>Worst fall</th></tr></thead><tbody>{mixes}</tbody></table></div>'
-            f'<p class="small muted">{E(_kes_compact(amount, True))} is the smallest round amount that buys whole '
-            "shares of every covered stock at today's weights. These are fixed illustrations, the same for every "
-            'reader, not a recommended mix.</p>'
-            + (f'<h3>Rules on trial</h3><p class="small">Frozen rules logged live each month. None changes a '
-               f'verdict until it passes every check and a person reviews it.</p><ul class="small">{exps}</ul>'
-               if exps else "") + "</section>")
-
-
-def _ic_table(ic: dict) -> str:
-    hs = ["1", "3", "6", "12"]
-    rows = []
-    for sig, label in SIGNALS.items():
-        if sig not in ic:
-            continue
-        cells = []
-        for h in hs:
-            v = (ic[sig].get(h) or {}) if isinstance(ic[sig], dict) else {}
-            val = v.get("ic")
-            if val is None:
-                cells.append('<td class="ic muted">n/a</td>')
-                continue
-            shade = min(abs(val) / 0.15, 1) * 45
-            col = "var(--cp-success)" if val >= 0 else "var(--cp-danger)"
-            cells.append(f'<td class="ic" style="background:color-mix(in srgb,{col} {shade:.0f}%,transparent)" '
-                         f'title="n={v.get("n")}, positive in {pct(v.get("positive"), 0)} of months">{val:+.3f}</td>')
-        rows.append(f"<tr><td><b>{E(label)}</b></td>{''.join(cells)}</tr>")
-    if not rows:
-        return ""
-    return ('<div class="table-wrap"><table class="data heat"><thead><tr><th>Signal</th><th>1 month</th>'
-            '<th>3 months</th><th>6 months</th><th>12 months</th></tr></thead><tbody>' + "".join(rows)
-            + "</tbody></table></div><p class=\"small muted\">Spearman rank IC between each signal and the forward "
-              "total return, averaged across monthly reconstructions. Above 0.05 is useful for a stock ranking.</p>")
-
-
-def _miss_bars(att: dict) -> str:
-    counts = att.get("counts") or {}
-    total = sum(counts.values())
-    if not total:
-        return ""
-    rows = "".join(f'<div class="row"><span>{E(MISSES.get(k, k))}</span><div class="track"><div class="fill'
-                   f'{"" if k == "caught" else " miss"}" style="width:{counts[k] / total * 100:.1f}%"></div></div>'
-                   f'<span class="num">{counts[k]} ({pct(counts[k] / total, 0)})</span></div>'
-                   for k in sorted(counts, key=lambda k: (k != "caught", -counts[k])))
-    return (f'<div class="bars">{rows}</div><p class="small muted">The actual top 5 performers over each following '
-            f'12 months ({total} winners), classified by what the engine knew at the start date.</p>')
+            f'<p><b>{E(_buy_rule_verdict(bt))}</b>{E(detail)}</p><div class="kpis trio">{kpis}</div>{chart}'
+            '<details class="more"><summary>If you had split money between stocks and T-bills</summary>'
+            '<div class="table-wrap"><table class="data"><thead><tr><th>Stocks and T-bills</th>'
+            f'<th>Value on {E(bt["end"])}</th><th>Return a year</th><th>Worst fall</th></tr></thead>'
+            f'<tbody>{mixes}</tbody></table></div><p class="small muted">{E(_kes_compact(amount, True))} is the '
+            "smallest round amount that buys whole shares of every covered stock at today's weights. These are fixed "
+            'illustrations, the same for every reader, not a recommended mix.</p></details>'
+            + (f'<details class="more"><summary>Rules on trial: {"none adopted yet" if not ready else f"{ready} ready for review"}'
+               '</summary><p class="small">Frozen rules logged live each month. None changes a verdict until it passes '
+               f'every check and a person reviews it.</p><ul class="small">{trials}</ul></details>' if trials else "")
+            + "</section>")
 
 
 def _track_record(r: dict) -> str:
@@ -1616,10 +1616,10 @@ def _track_record(r: dict) -> str:
                   "This simulation did not beat the simple stock basket." if edge is not None else
                   "There is not enough historical data to compare the rankings.")
     kpis = [
-        (f"{edge * 100:+.1f} percentage points" if edge is not None else "Not available",
-         "Average extra return over the comparison basket"),
-        (pct(y12.get("hit_rate")), "Selected stocks that beat the basket, averaged across test windows"),
-        (pct(y12.get("calibration"), 0), "Actual one-year returns inside the scenario range (all ranked stocks)"),
+        (points(edge) if edge is not None else "Not available",
+         "Top 5 over the equal-weight basket, average 12 months"),
+        (pct(y12.get("hit_rate")), "Selected stocks that beat the basket"),
+        (pct(y12.get("calibration"), 0), "One-year outcomes inside the scenario range"),
     ]
     cal = y12.get("calibration")
     note = (f'<div class="callout warn small"><p><b>The scenarios are poor guides to one-year risk.</b> '
@@ -1658,15 +1658,13 @@ def _track_record(r: dict) -> str:
     ic = f'{y12["ic"]:+.3f}' if y12.get("ic") is not None else "Not available"
     stamp = (f'<p class="small muted">Calculated {E(str(r["generated"]))}; outcomes evaluated through '
              f'{E(str(r["data_end"]))}.</p>') if r.get("generated") and r.get("data_end") else ""
-    return ('<section class="card" id="track-record"><h2>Do the rankings add value?</h2>'
-            f'<p><b>{conclusion}</b></p><p class="small">This measures the research score, not the Buy rules. '
-            'It does not establish that the entry verdicts predict profitable investments.</p>'
-            f'{stamp}{live}{comparison}'
-            '<p class="small muted">The ranking method was chosen using this same history. This is not an '
-            'independent test or a forecast.</p><div class="kpis">'
-            + "".join(f'<div class="kpi"><b>{v}</b><span>{E(k)}</span></div>' for v, k in kpis) + "</div>"
-            + '<p class="small muted">The selected-stock beat rate is not the probability of making a profit.</p>'
-            + note + '<details class="more"><summary>How to interpret this evidence</summary>' + caveat
+    return ('<section class="card" id="track-record"><h2>Does the research ranking help?</h2>'
+            f'<p><b>{conclusion}</b> This tests the research score that orders the stocks, not the Buy rule.</p>'
+            '<div class="kpis trio">' + "".join(f'<div class="kpi"><b>{v}</b><span>{E(k)}</span></div>' for v, k in kpis)
+            + "</div>" + note + '<details class="more"><summary>How to interpret this evidence</summary>'
+            f'{stamp}{live}{comparison}<p class="small muted">The ranking method was chosen using this same history, '
+            'so this is not an independent test or a forecast. The selected-stock beat rate is not the probability '
+            'of making a profit.</p>' + caveat
             + '<dl class="facts"><div><dt>NASI price return (excludes dividends)</dt>'
             f'<dd>{pct(y12.get("nasi"))}</dd></div><div><dt>Ranking association (IC)</dt>'
             f'<dd>{ic}</dd></div></dl><p class="small muted">A positive IC means higher ranks tended to '
@@ -1675,79 +1673,73 @@ def _track_record(r: dict) -> str:
             + chart + link + "</details></section>")
 
 
-def _evidence(r: dict) -> str:
-    ic = _ic_table(r.get("ic") or {})
-    bars = _miss_bars((r.get("attribution") or {}).get("12") or {})
-    if not (ic or bars):
-        return ""
-    return (f'<div class="two"><section class="card"><h2>Which signals work</h2>{ic}</section><section class="card">'
-            f'<h2>Why winners were missed</h2>{bars}<p class="small"><a href="retrospective.html">Full retrospective'
-            f'</a></p></section></div>')
-
-
 def _report_links(present: list[tuple]) -> str:
-    return ('<section><h2>Reports</h2><div class="links">'
+    return ('<div class="links">'
             + "".join(f'<a href="{dst}"><b>{E(label)}</b><span>{E(desc)}</span></a>' for _, dst, label, desc in present)
-            + '<a href="archive.html"><b>Archive</b><span>Every dated daily brief and weekly report.</span></a>'
-              "</div></section>")
+            + '<a href="archive.html"><b>Archive</b><span>Every dated daily brief and weekly report.</span></a></div>')
 
 
-def dashboard(snap: dict | None, retro: dict | None, present: list[tuple]) -> str:
-    parts = []
+def dashboard(snap: dict | None, retro: dict | None, track: str | None = None) -> str:
+    if not snap:
+        return ('<section class="card" id="verdict"><h1 class="big">No daily snapshot yet</h1><p>Run the daily brief '
+                'to fill this page.</p></section>'
+                f'<div class="callout warn small"><p><strong>Not financial advice.</strong> {E(DISCLAIMER)}</p></div>')
+    cal = (((retro or {}).get("reconstructed") or {}).get("12") or {}).get("calibration")
+    return "".join(_panel(fn, snap) for fn in (_hero, _verdict, _alerts_changes, partial(_top, cal=cal),
+                                               lambda s: _evidence_teaser(track)))
+
+
+def _panel(fn, *args) -> str:
+    try:
+        return fn(*args)
+    except Exception as exc:  # one broken panel must not take the site down
+        return f'<div class="empty small">Panel unavailable: {E(type(exc).__name__)}</div>'
+
+
+def _method_page(snap: dict | None, retro: dict | None, present: list[tuple]) -> str:
+    """How verdicts are made, the inputs behind them, data health, terms and every report."""
+    cfg = config.settings()
+    sc, v, b = cfg["screen"], cfg["valuation"], cfg["buy"]
+    steps = [
+        ("Trading", f"The stock trades at least KES {sc['min_avg_daily_turnover_kes']:,.0f} a day on average, has a "
+                    f"closing price from the last {sc['max_price_age_days']} days, at least "
+                    f"{sc['min_annual_periods']} years of sourced results that are not overdue, and positive "
+                    "earnings."),
+        ("Health", "The business passes fixed checks of profitability, debt and, for banks, bad loans."),
+        ("Value", f"At least half the valuation methods that apply (minimum two) put fair value "
+                  f"{pct(v['mos_threshold'], 0)} or more above the price, and the highest estimate is at most "
+                  f"{v['max_model_spread']:g}x the lowest."),
+        ("Return", f"The middle-case return over {v['horizon_years']} years, after costs and dividend tax, beats "
+                   f"the T-bill rate after tax plus {pct(b['hurdle_premium_over_tbill'], 0)}."),
+    ]
+    sections = [("how-verdicts", "Verdicts")]
+    if snap and snap.get("macro"):
+        sections.append(("economic-context", "Rates"))
+    sections += [("data-health", "Data health")]
+    if snap:
+        sections += [("high-confidence", "Strict checks"), ("glossary", "Terms")]
+    sections.append(("reports", "Reports"))
+    out = ['<h1>How it works</h1><p class="lead">Fixed rules turn sourced company filings, NSE closing prices and '
+           'CBK rates into a verdict for each stock. No AI produces a number.</p>'
+           '<nav class="section-nav" aria-label="Page sections">'
+           + "".join(f'<a href="#{k}">{label}</a>' for k, label in sections) + "</nav>",
+           '<section class="card" id="how-verdicts"><h2>How each stock gets its verdict</h2>'
+           '<ol class="check-steps">' + "".join(f"<li><b>{k}</b><span>{E(d)}</span></li>" for k, d in steps)
+           + '</ol><dl class="verdict-key">'
+           f'<div><dt>{tier_badge("Buy")}</dt><dd>Passes all four checks.</dd></div>'
+           f'<div><dt>{tier_badge("Watch")}</dt><dd>Passes the health check and misses exactly one other.</dd></div>'
+           f'<div><dt>{tier_badge("Avoid")}</dt><dd>Misses more, fails the health check, or its valuation methods '
+           'disagree too much.</dd></div></dl><p class="small muted">These are entry rules for research. Avoid is '
+           'not an instruction to sell a stock you own, and Buy is not a guarantee of profit.</p></section>']
+    if snap:
+        out.append(_panel(_economic_context, snap))
+    out.append('<section class="card"><h2>Data health</h2><p class="small muted">Freshness checks confirm timing '
+               'and coverage, not the accuracy of the figures.</p>' + _panel(_health_panel, snap or {}) + "</section>")
     if snap:
         cal = (((retro or {}).get("reconstructed") or {}).get("12") or {}).get("calibration")
-        panels = {}
-        for name, fn in (("hero", _hero), ("health", _health_panel), ("verdict", _verdict),
-                         ("context", _economic_context),
-                         ("changes", _alerts_changes), ("candidates", partial(_top, cal=cal)),
-                         ("confidence", partial(_high_conf, cal=cal)), ("glossary", partial(_glossary, retro=retro))):
-            try:
-                panels[name] = fn(snap)
-            except Exception as exc:  # one broken panel must not take the site down
-                panels[name] = f'<div class="empty small">Panel unavailable: {E(type(exc).__name__)}</div>'
-        parts.extend(panels[name] for name in ("hero", "verdict", "health"))
-        if snap.get("alerts"):
-            parts.append(panels["changes"])
-        parts.append('<div class="brief-layout"><div class="brief-main">' + panels["candidates"] + '</div></div>')
-        if not snap.get("alerts"):
-            parts.append(panels["changes"])
-        parts.append(panels["context"])
-        parts.append('<div class="research-heading"><p class="eyebrow">Go deeper</p>'
-                     '<h2>Explore the evidence</h2><p class="small muted">'
-                     'Compare stocks, review past results or check the source reports.</p></div>')
-        try:
-            parts.append('<details class="fold" id="all-stocks"><summary><h2>All stocks by verdict</h2>'
-                         '</summary>' + _ranking(snap) + "</details>")
-        except Exception as exc:
-            parts.append(f'<div class="empty small">Ranking unavailable: {E(type(exc).__name__)}</div>')
-        parts.append(panels["confidence"])
-        parts.append(panels["glossary"])
-    else:
-        parts.append('<section class="hero"><div><p class="eyebrow">NSE Value Agent</p><h1>Undervalued NSE stocks, '
-                     'ranked by fixed rules</h1><p class="lead">No daily snapshot yet. Run the daily brief to fill this '
-                     f'dashboard.</p></div></section><div class="callout warn small"><p><strong>Not financial advice.'
-                     f'</strong> {E(DISCLAIMER)}</p></div>')
-        parts.append(_health_panel({}))
-    if retro and not any(dst == "retrospective.html" for _, dst, _, _ in present):
-        for fn in (_track_record, _evidence):
-            try:
-                parts.append('<details class="fold"><summary><h2>'
-                             + ("Track record, explained" if fn == _track_record else "Research: ranking evidence")
-                             + "</h2></summary>" + fn(retro) + "</details>")
-            except Exception as exc:
-                parts.append(f'<div class="empty small">Panel unavailable: {E(type(exc).__name__)}</div>')
-    research_links = [(dst, label, desc) for _, dst, label, desc in present
-                      if dst in ("retrospective.html", "weekly.html")]
-    if research_links:
-        parts.append('<nav class="research-links" aria-label="Further research">'
-                     + "".join(f'<a href="{dst}"><b>{E(label)} {_icon("arrow")}</b><span>'
-                               f'{E("Historical simulation and a live record still building." if dst == "retrospective.html" else desc)}'
-                               '</span></a>' for dst, label, desc in research_links) + "</nav>")
-    parts.append('<details class="fold"><summary><h2>More reports and archives</h2></summary>'
-                 + _report_links(present) + "</details>")
-    parts.append('<p class="page-note"><b>Not financial advice.</b> Use the evidence to guide research, '
-                 'verify company filings and understand the assumptions before investing.</p>')
-    return "".join(parts)
+        out += [_panel(_high_conf, snap, cal), _panel(_glossary, snap, retro)]
+    out.append('<section id="reports"><h2>Reports and archive</h2>' + _report_links(present) + "</section>")
+    return "".join(out)
 
 
 def _load_json(p: Path) -> dict | None:
@@ -1805,6 +1797,17 @@ def _stock_finder(snapshot: dict | None, up: str) -> str:
             f'<noscript><a href="{up}stocks.html">Browse all covered stocks</a></noscript></section>')
 
 
+def _stock_head(it: dict) -> str:
+    rk = it.get("risk") or {}
+    flagged = bool((it.get("conviction") or {}).get("flag"))
+    return ('<header class="stock-head"><div class="stock-identity">'
+            f'<div><h1>{E(it["name"])}</h1><span class="nm">{E(it["ticker"])} &middot; {E(it["sector"])}</span>'
+            f'<div class="badges">{tier_badge(it["tier"], flagged)}{risk_badge(rk.get("label") or rk.get("level"))}'
+            f'</div></div></div><div class="pricebox"><div><div class="price">{kes(it.get("price"))}</div>'
+            f'<div class="small muted">Close {E(str(it.get("price_date") or ""))}</div></div>{_spark(it["ticker"])}'
+            "</div></header>")
+
+
 def _stock_sections(item: dict) -> str:
     links = [("stock-overview", "Decision")]
     if (item.get("decision") or {}).get("models"):
@@ -1824,25 +1827,22 @@ def build() -> list[Path]:
     retro = _load_json(config.DATA / "retrospective.json")
     present = [p for p in PAGES if (reports / p[0]).exists()]
     destinations = {dst for _, dst, _, _ in present}
+    track = next((d for d in ("retrospective.html", "backtest.html") if d in destinations), None)
     nav = [("index.html", "Today")] + ([("stocks.html", "Stocks")] if snapshot else [])
-    nav += [(dst, label) for dst, label in (("retrospective.html", "Track record"),)
-            if dst in destinations]
-    research = [(dst, label) for _, dst, label, _ in present if dst != "retrospective.html"]
-    research += [("index.html#data-health", "Data health"), ("archive.html", "Archive")]
-    if snapshot:
-        research.append(("index.html#glossary", "Reading guide"))
+    nav += ([(track, "Track record")] if track else []) + [("method.html", "How it works")]
+    nav_section = {"daily.html": "method.html", "weekly.html": "method.html", "archive.html": "method.html"}
+    nav_section.update({d: track for d in ("retrospective.html", "backtest.html", "scorecard.html", "simulation.html",
+                                           "tuning.html") if track})
+    report_links = [(dst, label) for _, dst, label, _ in present if dst != track] + [("archive.html", "Archive")]
     stamp = datetime.now(EAT).strftime("%d %b %Y %H:%M EAT")
     written: list[Path] = []
 
     def page(name: str, title: str, body: str, active: str) -> None:
         up = "../" * name.count("/")
-        links = "".join(f'<a href="{up}{dst}"{" aria-current=page" if dst == active else ""}>{E(label)}</a>'
+        current = "stocks.html" if active.startswith("stocks/") else nav_section.get(active, active)
+        links = "".join(f'<a href="{up}{dst}"{" aria-current=page" if dst == current else ""}>{E(label)}</a>'
                         for dst, label in nav)
-        if research:
-            links += ('<details><summary>More</summary><div>'
-                      + "".join(f'<a href="{up}{dst}">{E(label)}</a>' for dst, label in research) + "</div></details>")
-        mobile = ''.join(f'<a href="{up}{dst}"{" aria-current=page" if dst == active else ""}>{E(label)}</a>'
-                         for dst, label in nav + research)
+        mobile = links
         doc = (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" '
                f'content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">'
                f'<meta name="description" content="Rule-based value agent for the Nairobi Securities Exchange: '
@@ -1861,7 +1861,9 @@ def build() -> list[Path]:
                f'<main id="main" class="wrap">{body}</main>'
                f'<footer class="foot"><div class="wrap"><p><b>Rule-based, '
                f'no AI.</b> Fundamentals come from sourced company filings, prices from public NSE data and rates '
-               f'from CBK.</p><p><b>Not financial advice.</b> {E(DISCLAIMER)}</p><p>Version {__version__}. Built '
+               f'from CBK.</p><p class="foot-links">Reports: '
+               + " &middot; ".join(f'<a href="{up}{dst}">{E(label)}</a>' for dst, label in report_links)
+               + f'</p><p><b>Not financial advice.</b> {E(DISCLAIMER)}</p><p>Version {__version__}. Built '
                f'{stamp}. <a href="{REPO}">Source on GitHub</a>.</p></div></footer><script>{JS}</script></body>'
                f'</html>\n')
         p = site / name
@@ -1869,9 +1871,10 @@ def build() -> list[Path]:
         p.write_text(doc, encoding="utf-8", newline="\n")
         written.append(p)
 
-    page("index.html", "Dashboard", dashboard(snapshot, retro, present), "index.html")
+    page("index.html", "Today", dashboard(snapshot, retro, track), "index.html")
+    page("method.html", "How it works", _method_page(snapshot, retro, present), "method.html")
     if snapshot:
-        page("stocks.html", "Explore stocks", _directory(snapshot), "stocks.html")
+        page("stocks.html", "Stocks", _directory(snapshot), "stocks.html")
         stocks = {}
         for key in ("ranking", "top", "high_confidence", "near_misses"):
             items = snapshot.get(key)
@@ -1884,29 +1887,36 @@ def build() -> list[Path]:
                       f'Open {E(item.get("latest_period", "annual"))} filing</a></p>'
                       f'<p class="page-note">Verify the figures against this source. Not financial advice.</p>') if item.get("source_url") else (
                           '<p>Source link unavailable in this older snapshot. Check the weekly report.</p>')
-            stock_health = snapshot
-            if snapshot.get("health"):
-                stock_health = snapshot | {"health": snapshot["health"] | {
-                    "tickers": {t: r for t, r in snapshot["health"]["tickers"].items() if t == ticker}}}
+            health_row = ((snapshot.get("health") or {}).get("tickers") or {}).get(ticker)
+            stock_health = ""
+            if health_row and (health_row.get("status") != "Current" or health_row.get("fundamentals_status")
+                               != "Current" or health_row.get("pending_results")):
+                stock_health = _health_panel(snapshot | {"health": snapshot["health"] | {
+                    "tickers": {ticker: health_row}}})
             cal = (((retro or {}).get("reconstructed") or {}).get("12") or {}).get("calibration")
             page(f"stocks/{ticker}.html", item["name"],
-                 f'<a class="back-link" href="../stocks.html">All stocks</a>'
-                 f'<p class="eyebrow">Stock review &middot; {E(snapshot["as_of"])}</p><h1>{E(item["name"])}</h1>'
+                 f'<a class="back-link" href="../stocks.html">All stocks</a>{stock_health}' + _stock_head(item)
                  + _stock_sections(item)
                  + _stock_card(item, snapshot.get("hurdle"), gates=True, why=True, tbill=snapshot.get("tbill_net"),
                                cal=cal, detail=True)
-                 + (filing if not item.get("filings") else "") + _health_panel(stock_health), "stocks.html")
+                 + (filing if not item.get("filings") else ""), f"stocks/{ticker}.html")
     for src, dst, label, _ in present:
         body = render_markdown((reports / src).read_text(encoding="utf-8"))
-        if dst == "retrospective.html" and retro:
+        if dst == track:
+            bt = _load_json(config.DATA / "backtest.json") or {}
             body = re.sub(r"<h1>.*?</h1>", "", body, count=1, flags=re.S)
-            body = ('<h1>Track record, explained</h1>' + _track_record(retro)
-                    + '<details class="fold" id="technical-results"><summary><h2>Full technical report</h2></summary>'
-                    + body + "</details>")
-        if dst == "backtest.html":
-            summary = _backtest_summary(_load_json(config.DATA / "backtest.json") or {})
-            if summary:
-                body = re.sub(r"(<h1>.*?</h1>)", lambda m: m[1] + summary, body, count=1, flags=re.S)
+            technical = [(d, lab, desc) for _, d, lab, desc in present
+                         if d in ("backtest.html", "scorecard.html", "simulation.html", "tuning.html") and d != track]
+            since = f" since {E(_since(bt['start']))}" if bt.get("start") else ""
+            body = ('<h1>Track record</h1><p class="lead">How the rules would have done' + since + ', using only the '
+                    'information published at each date, and how live records compare. Past results do not predict '
+                    'future returns.</p>' + _backtest_summary(bt) + (_track_record(retro) if retro else "")
+                    + ('<section id="technical"><h2>Technical reports</h2><div class="links">' + "".join(
+                        f'<a href="{d}"><b>{E(lab)}</b><span>{E(desc)}</span></a>' for d, lab, desc in technical)
+                       + "</div></section>" if technical else "")
+                    + '<details class="fold" id="technical-results"><summary><h2>Full technical report</h2>'
+                    '</summary>' + body + "</details>")
+            label = "Track record"
         page(dst, label, body, dst)
 
     sections = []

@@ -90,8 +90,11 @@ def test_dashboard_beginner_layer(tree):
     site.build()
     index = (tree / "site" / "index.html").read_text(encoding="utf-8")
     for text in ("No stock meets the Buy rules today", "Watch only: <b>KPLC</b>", "Scenarios / year over 3 years",
-                 "Jargon buster", "Review KPLC", "Not financial advice"):
+                 "Review KPLC", "Not financial advice", 'href="method.html#how-verdicts"'):
         assert text in index
+    method = (tree / "site" / "method.html").read_text(encoding="utf-8")
+    assert "How each stock gets its verdict" in method and "Words we use" in method
+    assert "Words we use" not in index and "Strict checks:" not in index
     detail = (tree / "site" / "stocks" / "KPLC.html").read_text(encoding="utf-8")
     assert "Illustrative KES 10,000 scenario" in detail and "KES 21,768" in detail
     assert "Return drivers and scenarios</summary>" in detail
@@ -162,10 +165,9 @@ def test_track_record_separates_historical_windows_live_results_and_monthly_rota
         html = (tree / "site" / path).read_text(encoding="utf-8")
         if path == "index.html":
             assert 'href="retrospective.html"' in html
-            assert "Historical simulation and a live record still building." in html
             assert "Rank IC of the composite" not in html
             continue
-        for text in ("Do the rankings add value?", "+3.9 percentage points", "24.2%", "20.3%", "54.6%",
+        for text in ("Does the research ranking help?", "+3.9 points", "24.2%", "20.3%", "54.6%",
                      "Selected stocks that beat the basket", "105 overlapping historical holding windows",
                      "Calculated 2026-11-12; outcomes evaluated through 2026-11-11",
                      "No completed 12-month live outcomes yet", "A bear case is not a worst-case loss limit",
@@ -227,11 +229,10 @@ def test_source_details_follow_the_primary_content_instead_of_extending_a_sideba
     }))
     site.build()
     text = (tree / "site" / "index.html").read_text(encoding="utf-8")
-    assert '<aside class="brief-side"' not in text
-    assert text.index('id="economic-context"') > text.index('id="candidates"')
-    assert '<details class="fold" id="economic-context"><summary>' in text
-    assert "Purchasing power" in text
-    assert "other Buy checks still apply" in text
+    method = (tree / "site" / "method.html").read_text(encoding="utf-8")
+    assert 'id="economic-context"' not in text and '<aside class="brief-side"' not in text
+    assert '<section class="card" id="economic-context">' in method
+    assert "Purchasing power" in method and "other Buy checks still apply" in method
     assert site.check() > 0
 
 
@@ -245,12 +246,14 @@ def test_search_is_available_before_verdict_and_on_nested_stock_pages(tree):
     site.build()
     index = (tree / "site" / "index.html").read_text(encoding="utf-8")
     stock = (tree / "site" / "stocks" / "NCBA.html").read_text(encoding="utf-8")
+    directory = (tree / "site" / "stocks.html").read_text(encoding="utf-8")
     assert index.index('id="quick-stock"') < index.index('id="verdict"')
     finder = stock.split('<section class="stock-finder"', 1)[1].split("</section>", 1)[0]
     assert 'href="../stocks/SCOM.html"' in finder and "Safaricom" in finder
-    listing = index.split('id="stock-table"', 1)[1].split("</table>", 1)[0]
+    listing = directory.split('id="stock-table"', 1)[1].split("</table>", 1)[0]
     assert listing.index(">NCBA<") < listing.index(">SCOM<")
-    assert "Independent research-score order" in index and "overview-stats" not in index.split("</style>", 1)[1]
+    assert "Independent research-score order" in directory and 'id="stock-table"' not in index
+    assert "overview-stats" not in index.split("</style>", 1)[1]
     assert site.check() > 0
 
 
@@ -277,7 +280,8 @@ def test_directory_and_verdict_shortcuts_open_real_stock_reviews(tree):
         assert text in directory
     cards = directory.split('id="stock-list"', 1)[1]
     assert cards.index(">NCBA<") < cards.index(">SCOM<")
-    assert 'href="index.html#all-stocks" data-table-view' in directory
+    assert 'data-view-toggle="table"' in directory and 'aria-controls="stock-list stock-table"' in directory
+    assert '<div data-view="table" hidden>' in directory and "Read the decision" not in directory
     assert site.check() > 0
 
 
@@ -313,6 +317,7 @@ def test_entry_check_links_reveal_the_matching_stock_evidence(tree):
     assert 'id="stock-checks"' in detail and 'id="stock-valuations"' in detail
     assert 'id="stock-returns"' in detail and 'id="stock-risk"' in detail and 'id="stock-sources"' in detail
     assert 'aria-label="Stock review sections"' in detail
+    assert detail.count("<h1") == 1 and 'class="stock-head"' in detail and 'id="data-health"' not in detail
     assert site.check() > 0
 
 
@@ -335,9 +340,8 @@ def test_watch_is_prominent_and_avoid_stays_in_research(tree):
     site.build()
     text = (tree / "site" / "index.html").read_text(encoding="utf-8")
     assert "Watch only: <b>KPLC</b>" in text and "Closest is" not in text
-    assert text.count('<article class="stock') == 1
-    assert 'id="all-stocks"' in text and 'href="stocks/KCB.html"' in text
-    assert 'href="#candidates">Review candidates' in text
+    assert text.count('<article class="stock') == 1 and 'id="candidates"' in text
+    assert 'href="stocks/KCB.html"' in text and 'href="stocks.html?tier=Avoid"' in text
     assert 'class="decision-layout"' in text and 'class="candidate-overview"' in text
     assert site.check() > 0
 
@@ -357,7 +361,7 @@ def test_subscription_promotions_are_removed_and_alerts_remain_visible(tree):
     _write(tree / "reports" / "daily" / "latest.json", json.dumps(snap))
     site.build()
     quiet = (tree / "site" / "index.html").read_text(encoding="utf-8")
-    assert 'id="latest-changes"><summary>' in quiet and "No material changes" in quiet
+    assert 'id="latest-changes"' not in quiet and "No material changes" in quiet
     assert site.check() > 0
 
 
@@ -381,8 +385,8 @@ def test_stock_explorer_links_accessible_controls_to_searchable_rows(tree):
         "top": [row], "ranking": [row], "high_confidence": [], "near_misses": [],
     }))
     site.build()
-    text = (tree / "site" / "index.html").read_text(encoding="utf-8")
-    assert '<label for="stock-search">Find a stock</label>' in text
+    text = (tree / "site" / "stocks.html").read_text(encoding="utf-8")
+    assert '<label for="stock-search">Filter stocks</label>' in text
     assert 'id="stock-search" type="search"' in text and 'id="stock-table"' in text
     assert 'data-tier="Watch" data-search="kplc kenya power &amp; lighting energy"' in text
     for tier in ("all", "Buy", "Watch", "Avoid"):
@@ -400,8 +404,10 @@ def test_mobile_navigation_keeps_nested_page_links_relative(tree):
     site.build()
     text = (tree / "site" / "stocks" / "KPLC.html").read_text(encoding="utf-8")
     mobile = text.split('<details class="mobile-nav">', 1)[1].split("</details>", 1)[0]
-    assert '<nav aria-label="Mobile">' in mobile and 'href="../weekly.html"' in mobile
-    assert 'href="../index.html#data-health"' in mobile and 'href="../archive.html"' in mobile
+    assert '<nav aria-label="Mobile">' in mobile and 'href="../index.html"' in mobile
+    assert 'href="../stocks.html" aria-current=page' in mobile and 'href="../method.html"' in mobile
+    footer = text.split('<p class="foot-links">', 1)[1].split("</p>", 1)[0]
+    assert 'href="../weekly.html"' in footer and 'href="../archive.html"' in footer
     assert site.check() > 0
 
 

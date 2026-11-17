@@ -195,25 +195,22 @@ companies:
 
 ## Reports
 
-The Pages site opens on a daily decision brief: evidence health, today's conclusion, changes, and Buy/Watch cards.
-Avoid stocks stay in collapsed research views. Each stock opens a detail page with its source filing, gates and risk
-profile. The reconstructed track record and signal evidence live on the Track record page; the full stock table remains
-available under an expandable section. Every
-Markdown report below is also rendered as a page, with dated archives for the daily brief and weekly report.
-The track record starts with the extra historical return over an equal-weight covered-stock basket, the selected-stock
-beat rate, and scenario coverage. The beat rate is stock-level outperformance, not a probability of profit.
-Historical 12-month holding tests, the separate monthly-rotation chart, and actual live outcomes are labelled separately.
-The dedicated Track record page starts with this same plain-language summary and keeps the full technical report collapsed.
-Candidate cards summarize the blocker, price, valuation and scenario range without repeating the detailed stock report.
-Quiet updates and rates use compact disclosures; material alerts open automatically. Full source and risk information
-remains available in stock reviews. Feed and GitHub subscription promotions are hidden from the site for now;
-background report generation and the Atom endpoint remain unchanged.
-The Backtest page opens with **Did the Buy rule pay off?**: the Buy rule against the covered stocks weighted by
-company size and T-bills, a growth chart after costs, fixed stock and T-bill mixes, and the frozen rules on trial.
-Stock search is integrated into the header of every page. Stock reviews follow **Verdict, Why, What would change it,
-What to verify next**, with recorded company notices and filing caveats beside the decision.
-The Stocks directory supports company/sector search, shareable verdict filters and a link to the numerical comparison
-table. Coverage counts and entry-check checkpoints link to real filtered views or the exact stock evidence.
+The Pages site has four destinations in its header, plus stock search on every page:
+
+| Page | What it answers |
+| --- | --- |
+| **Today** | The answer as the page heading (for example "No stock meets the Buy rules today"), verdict counts that link to filtered stocks, one status line (price date, freshness, changes), the Buy hurdle, cards for Buy and Watch stocks, and a one-line link to the track record. Alerts and recorded changes appear only when there are any |
+| **Stocks** | Every covered company, Buy first, with one shared search and verdict filter and a Cards or Table view. Filters and the view are kept in the URL. Each card opens the stock review |
+| **Track record** | Whether the Buy rule paid off against the covered stocks and T-bills (growth chart after costs, fixed stock and T-bill mixes, rules on trial), whether the research ranking helped, and links to the technical reports |
+| **How it works** | The four entry checks with their thresholds, what Buy, Watch and Avoid mean, rates and inflation, data health, strict checks, terms, and every report and archive |
+
+Stock reviews have one header (name, verdict, risk, price) and follow **Verdict, Why, What would change it, What to
+verify next**, with recorded company notices and filing caveats beside the decision. A freshness panel appears on a
+stock review only when that stock's price or results need attention. Every Markdown report is also rendered as a page
+and linked from the footer, with dated archives for the daily brief and weekly report. The ranking evidence keeps
+historical 12-month tests, the monthly-rotation chart and live outcomes separate; the beat rate is stock-level
+outperformance, not a probability of profit. Feed and GitHub subscription promotions are hidden for now; background
+report generation and the Atom endpoint remain unchanged.
 Stock reviews include a valuation map: each model estimate is plotted against the current price and the estimate
 required to clear the cushion. This explains model agreement without adding a forecast or changing the rules.
 The original interface uses familiar company-snapshot and research-navigation patterns from
