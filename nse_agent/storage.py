@@ -68,6 +68,15 @@ def read_series(path: Path) -> list[tuple[str, float]]:
     return [(r["date"], float(r["value"])) for r in _read_csv(path)]
 
 
+def series_return(series: list[tuple[str, float]], a, b) -> float | None:
+    """Change between the last values on or before dates a and b, or None before the series starts."""
+    if not series or series[0][0] > a.isoformat():
+        return None
+    v0 = [v for d, v in series if d <= a.isoformat()]
+    v1 = [v for d, v in series if d <= b.isoformat()]
+    return v1[-1] / v0[-1] - 1 if v0 and v1 and v0[-1] > 0 else None
+
+
 def upsert_series(path: Path, rows: Iterable[tuple[str, float]]) -> None:
     existing = dict(read_series(path))
     for d, v in rows:

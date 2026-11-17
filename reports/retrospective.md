@@ -2,7 +2,7 @@
 
 > **Not financial advice.** This report is generated automatically from public data and fixed rules. It is not financial advice, an offer, or a recommendation to buy or sell any security. Figures can be wrong or stale. Verify everything against company filings and consult a licensed adviser before investing.
 
-Generated 2026-11-13. Prices through 2026-11-13. Reconstructed rankings cover 117 month starts (first 2017-03-01); the live ledger covers 3 days (first 2026-11-11).
+Generated 2026-11-17. Prices through 2026-11-16. Reconstructed rankings cover 117 month starts (first 2017-03-01); the live ledger covers 4 days (first 2026-11-11).
 
 ## Forward scorecard
 
@@ -12,7 +12,7 @@ Each ranking date, the top 5 by composite score is held for 1, 3, 6 and 12 month
 
 No live window has matured yet. The first 1-month results are due on 2026-12-11.
 
-### Reconstructed (monthly, point-in-time data, today's rates)
+### Reconstructed (monthly, point-in-time data and T-bill rates)
 
 | Horizon | Windows | Top 5 | Universe (EW) | NASI | Excess | Hit rate | Rank IC | Inside bear-bull |
 |---|---|---|---|---|---|---|---|---|
@@ -123,7 +123,7 @@ Share of actual winners with a positive z-score on each signal at the start date
 ## Limitations
 
 - Prices and fundamentals are point in time, but sourced history is short until the backfill lands, so early months rank few stocks and most early misses are missing data.
-- Interest rates are not point in time. Every month uses today's T-bill, cost of equity and hurdle, so fair values, margins of safety and tiers in past months differ from what the engine would have said then. Kenyan yields ranged widely over the decade, so treat valuation signals in early months with care; price signals are unaffected.
+- T-bill rates and the Buy hurdle are point in time, from CBK figures published before each month. The 10-year bond yield and risk premiums are today's, so the cost of equity, fair values and margins of safety in past months still differ from what the engine would have said then. Kenyan yields ranged widely over the decade, so treat valuation signals in early months with care; price signals are unaffected.
 - 89 of 144 fundamentals periods use the CMA filing deadline as their publication date. That is later than the real release for companies that report early, but it is look-ahead for any company that filed late. 53 period(s) with a stated release date, including known late filings, use that date instead.
 - Total return adds dividends net of withholding tax without reinvestment and ignores trading costs. Prices are adjusted only for corporate actions recorded in data/corporate_actions.yaml.
 - The universe is today's 16 counters, so delisted stocks are missing (survivorship bias).

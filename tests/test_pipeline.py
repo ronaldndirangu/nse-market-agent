@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 import yaml
 
-from nse_agent import DISCLAIMER, config, portfolio, report, storage
+from nse_agent import DISCLAIMER, config, portfolio, rates, report, storage
 from nse_agent.engine import analyze
 
 AS_OF = date(2026, 11, 6)
@@ -45,6 +45,9 @@ def market(root):
     fund = data / "fundamentals.yaml"
     fund.write_text(yaml.safe_dump({"companies": {t: {"periods": _bank_periods(1 + 0.2 * k)}
                                                   for k, t in enumerate(BANKS)}}), encoding="utf-8")
+    rates.save([{"month": f"{y}-{m:02d}", "tbill_91d": 0.08, "tbill_182d": 0.085, "tbill_364d": 0.09,
+                 "source": "https://example.test/cbk.csv"} for y in range(2015, 2027) for m in range(1, 13)
+                if f"{y}-{m:02d}" < AS_OF.strftime("%Y-%m")])
     days = _sessions(500)
     for k, (t, (price, beta)) in enumerate(BANKS.items()):
         storage.upsert_prices(t, [
@@ -52,6 +55,7 @@ def market(root):
             for i, d in enumerate(days)])
     yield
     fund.unlink(missing_ok=True)
+    rates.path().unlink(missing_ok=True)
     for t in BANKS:
         storage.price_path(t).unlink(missing_ok=True)
 

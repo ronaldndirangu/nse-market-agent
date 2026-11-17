@@ -6,7 +6,8 @@ import statistics
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from . import announcements, config, decision, dividends, health, ledger, official, prices, publication, report, risk, storage
+from . import (announcements, config, decision, dividends, health, ledger, official, prices, publication, report, risk,
+               shadow, storage)
 from .engine import analyze
 from .fmt import consumer_binding, estimate_reliable, kes, num, pct, table
 from .quality import warnings_for
@@ -352,6 +353,8 @@ def run_brief(fetch: bool = True, alert_file: str | None = None, as_of: date | N
     alert_lines = alerts(result, ch, prev)
     path = write(render(result, ch, alert_lines), result["as_of"])
     logged = ledger.append(result)
+    if logged:
+        shadow.append(result)
     write_snapshot(result, ch, alert_lines)
     report.build_site()
     if alert_file and alert_lines:

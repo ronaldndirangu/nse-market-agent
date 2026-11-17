@@ -22,6 +22,7 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("score", help="Score logged picks against the market")
     bt = sub.add_parser("backtest", help="Point-in-time walk-forward backtest")
     bt.add_argument("--top", type=int, default=3)
+    bt.add_argument("--no-fetch", action="store_true", help="Use the stored CBK T-bill history")
     sm = sub.add_parser("simulate", help="Monte Carlo projection of current picks")
     sm.add_argument("--paths", type=int, default=5000)
     sub.add_parser("reconstruct", help="Rerun the engine point in time on every month start (reconstructed ledger)")
@@ -88,7 +89,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.cmd == "backtest":
         from .backtest import run_backtest
-        print(run_backtest(top=args.top))
+        print(run_backtest(top=args.top, fetch=not args.no_fetch))
         return 0
     if args.cmd == "simulate":
         from .simulate import run_simulation

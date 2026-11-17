@@ -6,7 +6,7 @@ import ssl
 import pytest
 import requests
 
-from nse_agent import config, http, official, storage
+from nse_agent import config, http, official, rates, storage
 from nse_agent.engine import analyze
 from nse_agent.returns import net_tbill
 
@@ -203,3 +203,55 @@ def test_html_notice_pdf_resolution_requires_one_same_host_document(monkeypatch)
     monkeypatch.setattr(http, "get_text", lambda *a, **k: '<a href="a.pdf">A</a><a href="b.pdf">B</a>')
     with pytest.raises(ValueError, match="exactly one"):
         results_watch.document_url(url)
+
+
+CBK_MONTHLY = """,,CENTRAL BANK RATES,,,,,,,
+YEAR,MONTH,Repo,Reverse Repo,Interbank Rate,91-Day Tbill,182-days Tbill,364-days Tbill,Cash Reserve Requirement,Central Bank Rate
+2009,Dec,1,2,3,7.0,7.5,8.0,5,7
+2010,Jan,1,2,3,6.56,7.02,  -  ,5,7
+,Feb,1,2,3,6.21,6.61,7.38,5,7
+2024,January,-,13.76,13.65,16.14,16.18,16.36,4.25,12.5
+,February,-,-,-,16.5,16.6,16.7,4,13
+Source: Central Bank of Kenya,,,,,,,,,
+"""
+
+
+def test_monthly_cbk_history_parses_carried_years_and_missing_tenors():
+    rows = rates.parse(CBK_MONTHLY)
+    assert [r["month"] for r in rows] == ["2010-01", "2010-02", "2024-01", "2024-02"]
+    assert rows[0]["tbill_364d"] is None and rows[2]["tbill_91d"] == pytest.approx(0.1614)
+
+
+def test_monthly_cbk_history_is_append_only_skips_the_open_month_and_rejects_jumps():
+    rows = rates.parse(CBK_MONTHLY)
+    assert [r["month"] for r in rates.merge(rows[:3], rows, TODAY)][-1] == "2024-02"
+    with pytest.raises(ValueError, match="revised"):
+        rates.merge(rows[:3], [rows[0] | {"tbill_91d": 0.07}], TODAY)
+    assert rates.merge(rows, rows + [rows[-1] | {"month": "2026-11"}], TODAY) == rows
+    with pytest.raises(ValueError, match="manual verification"):
+        rates.merge(rows, rows + [rows[-1] | {"month": "2024-03", "tbill_91d": 0.25}], TODAY)
+
+
+def test_history_refresh_records_recovery_outside_the_live_rate_panel(inputs, monkeypatch):
+    def down(url):
+        raise requests.ConnectionError("down")
+    monkeypatch.setattr(http, "get_text", down)
+    assert rates.refresh(TODAY) == "failed"
+    monkeypatch.setattr(http, "get_text", lambda url: CBK_MONTHLY)
+    assert rates.refresh(TODAY) == "updated" and rates.refresh(TODAY) == "unchanged"
+    state = storage.read_json(storage.market_path("health.json"))
+    assert state["cbk_history"]["successful"] and state["cbk_history"]["last_success"] == TODAY.isoformat()
+    assert "cbk_history" not in config.macro(TODAY)["_source_status"]
+
+
+def test_dated_rate_is_the_previous_month_and_never_too_old(inputs):
+    rates.save(rates.parse(CBK_MONTHLY))
+    assert rates.at(date(2024, 2, 15))["month"] == "2024-01"
+    assert rates.at(date(2010, 3, 1))["value"] == pytest.approx(0.0738)
+    with pytest.raises(ValueError, match="too old"):
+        rates.at(date(2024, 7, 1))
+    with pytest.raises(ValueError, match="No CBK"):
+        rates.at(date(2010, 1, 1))
+    m = rates.macro_at(date(2024, 3, 1))
+    assert m["risk_free"]["tbill_364d"]["value"] == pytest.approx(0.167)
+    assert m["risk_free"]["bond_10y"] == config.macro()["risk_free"]["bond_10y"]

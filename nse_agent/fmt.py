@@ -16,6 +16,13 @@ def kes(v: float | None, nd: int = 2) -> str:
     return "n/a" if v is None else f"KES {v:,.{nd}f}"
 
 
+def points(v: float | None, unit: str = " points") -> str:
+    """A signed difference in percentage points; values that round to zero print without a sign."""
+    if v is None:
+        return "n/a"
+    return f"0.0{unit}" if round(v * 100, 1) == 0 else f"{v * 100:+.1f}{unit}"
+
+
 def estimate_reliable(row: dict) -> bool:
     if "estimate_reliable" in row:
         return bool(row["estimate_reliable"])

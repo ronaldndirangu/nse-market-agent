@@ -1,8 +1,8 @@
 """Retrospective: forward scorecard, per-signal rank IC and reverse attribution of the actual winners.
 
 Rankings come from the live ledger or from `reconstruct`, which reruns the engine on each month start using only
-prices and fundamentals published by then. Interest rates are not point in time: every month uses today's T-bill and
-cost of equity. Forward returns are total returns (split-adjusted price plus dividends net of withholding tax, no
+prices, fundamentals and CBK T-bill rates published by then. The 10-year bond yield and risk premiums are today's
+values. Forward returns are total returns (split-adjusted price plus dividends net of withholding tax, no
 reinvestment).
 """
 from __future__ import annotations
@@ -11,7 +11,7 @@ import calendar
 from datetime import date
 from statistics import fmean
 
-from . import config, dividends, fundamentals as fnd, ledger, prices, report, storage
+from . import config, dividends, fundamentals as fnd, ledger, prices, rates, report, storage
 from .backtest import month_starts
 from .engine import analyze
 from .fmt import pct, table
@@ -89,14 +89,6 @@ def fwd(t: str, a: date, b: date) -> float | None:
     return _RET[key]
 
 
-def _nasi_return(series: list[tuple[str, float]], a: date, b: date) -> float | None:
-    if not series or series[0][0] > a.isoformat():
-        return None
-    v0 = [v for d, v in series if d <= a.isoformat()]
-    v1 = [v for d, v in series if d <= b.isoformat()]
-    return v1[-1] / v0[-1] - 1 if v0 and v1 and v0[-1] > 0 else None
-
-
 def _mean(vals) -> float | None:
     vals = [v for v in vals if v is not None]
     return fmean(vals) if vals else None
@@ -109,7 +101,7 @@ def reconstruct(end: date | None = None, start: date = START) -> int:
     end = end or date.today()
     results = []
     for d in month_starts(start, end):
-        res = analyze(d, point_in_time=True, check_liquidity=False, check_suspension=False)
+        res = analyze(d, point_in_time=True, check_liquidity=False, check_suspension=False, macro=rates.macro_at(d))
         if res["ranking"]:
             results.append(res)
     return ledger.write_reconstructed(results)
@@ -142,7 +134,7 @@ def scorecard(snaps: dict[str, dict[str, dict]], end: date, nasi: list[tuple[str
                     inside += bnd[0] <= v <= bnd[1]
                     below += v < bnd[0]
             windows.append({"start": day, "end": b.isoformat(), "top": [t for t, _ in top], "top_return": top_ret,
-                            "universe": uni, "nasi": _nasi_return(nasi, a, b), "excess": top_ret - uni,
+                            "universe": uni, "nasi": storage.series_return(nasi, a, b), "excess": top_ret - uni,
                             "hit_rate": sum(v > uni for _, v in top) / len(top), "ic": ic})
         out[h] = {
             "windows": len(windows),
@@ -331,7 +323,7 @@ def render(res: dict) -> str:
     else:
         due = add_months(date.fromisoformat(res["live_first"]), 1).isoformat() if res["live_first"] else "n/a"
         lines += [f"No live window has matured yet. The first 1-month results are due on {due}.", ""]
-    lines += ["### Reconstructed (monthly, point-in-time data, today's rates)", "", _scorecard_table(recon), "",
+    lines += ["### Reconstructed (monthly, point-in-time data and T-bill rates)", "", _scorecard_table(recon), "",
               "## Per-signal rank IC", "",
               "Mean monthly Spearman IC between each signal and the forward total return, with the share of months "
               "where IC was positive. Price signals use the full price history; valuation and quality signals need "
@@ -368,10 +360,11 @@ def render(res: dict) -> str:
     lines += ["## Limitations", "",
               "- Prices and fundamentals are point in time, but sourced history is short until the backfill lands, so "
               "early months rank few stocks and most early misses are missing data.",
-              "- Interest rates are not point in time. Every month uses today's T-bill, cost of equity and hurdle, so "
-              "fair values, margins of safety and tiers in past months differ from what the engine would have said "
-              "then. Kenyan yields ranged widely over the decade, so treat valuation signals in early months with "
-              "care; price signals are unaffected.",
+              "- T-bill rates and the Buy hurdle are point in time, from CBK figures published before each month. "
+              "The 10-year bond yield and risk premiums are today's, so the cost of equity, fair values and margins "
+              "of safety in past months still differ from what the engine would have said then. Kenyan yields "
+              "ranged widely over the decade, so treat valuation signals in early months with care; price signals "
+              "are unaffected.",
               *([f"- {timing}"] if timing else []),
               "- Total return adds dividends net of withholding tax without reinvestment and ignores trading costs. "
               "Prices are adjusted only for corporate actions recorded in data/corporate_actions.yaml.",

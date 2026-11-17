@@ -30,6 +30,7 @@ equity_risk:
 taxes_and_costs:
   source: "https://businessradar.co.ke/how-to-buy-shares-on-the-nairobi-securities-exchange/"
   trade_cost_per_side: 0.0182   # brokerage, NSE, CMA, CDSC, ICF levies; up to 2.10% for small trades
+  small_trade_cost_per_side: 0.0210   # same source: the upper end for small tickets, used as a cost stress test
   dividend_wht: 0.05            # resident individuals
   tbill_interest_wht: 0.15
   note: "No stamp duty on listed shares. Capital gains tax is not modelled."

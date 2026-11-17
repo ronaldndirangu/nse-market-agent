@@ -17,7 +17,7 @@ PREFIX = {"Buy": "Clears every gate.", "Watch": "Not a Buy: ", "Avoid": "Avoid: 
 @pytest.fixture
 def outputs(root):
     yield root
-    for sub in ("data/rankings", "reports", "site"):
+    for sub in ("data/rankings", "data/shadow", "reports", "site"):
         shutil.rmtree(root / sub, ignore_errors=True)
     for name in ("announcements.json", "dividends.yaml", "corporate_actions.yaml"):
         (root / "data" / name).unlink(missing_ok=True)

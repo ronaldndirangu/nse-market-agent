@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import html
 import json
+import math
 import re
 import xml.etree.ElementTree as ET
 from datetime import datetime
@@ -12,7 +13,7 @@ from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
 
 from . import DISCLAIMER, __version__, config
-from .fmt import consumer_binding, estimate_reliable, kes, pct
+from .fmt import consumer_binding, estimate_reliable, kes, pct, points
 from .health import EAT
 from .risk import FACTORS
 
@@ -24,7 +25,7 @@ PAGES = [  # (source under reports/, output page, nav label, description)
     ("retrospective.md", "retrospective.html", "Track record",
      "How past rankings performed, per-signal IC and why winners were missed."),
     ("scorecard.md", "scorecard.html", "Scorecard", "Logged picks scored against NASI."),
-    ("backtest.md", "backtest.html", "Backtest", "Walk-forward backtest of the ranking rules."),
+    ("backtest.md", "backtest.html", "Backtest", "Did the Buy rule pay off? Tested month by month against the market."),
     ("simulation.md", "simulation.html", "Simulation", "Monte Carlo return ranges and stress tests."),
     ("tuning.md", "tuning.html", "Weight tuning", "Out-of-sample weight selection, proposed for review."),
 ]
@@ -430,6 +431,9 @@ main.wrap{padding-top:20px}.brief-heading{gap:12px}.brief-heading h1{font-size:1
 @media(max-width:820px){.bar{flex-wrap:wrap;padding-top:12px;padding-bottom:12px;gap:12px}
 .stock-finder{order:3;flex:1 0 100%;width:100%;margin:0}.mobile-nav{margin-left:auto}
 html{scroll-padding-top:140px}.stock-matches{max-height:50vh}}
+.kpis.trio{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:600px){.kpis.trio{gap:.4rem}.kpis.trio .kpi{padding:.55rem .6rem}.kpis.trio .kpi b{font-size:1.1rem}
+.plot{overflow-x:auto;direction:rtl}.plot svg{direction:ltr;min-width:540px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 """
 
@@ -1438,6 +1442,49 @@ def _ranking(s: dict) -> str:
             "</tbody></table></div>" + research + "</section>")
 
 
+def _nice_step(top: float) -> float:
+    raw = top / 5
+    mag = 10 ** math.floor(math.log10(raw)) if raw > 0 else 1
+    return next(m * mag for m in (1, 2, 2.5, 5, 10) if raw <= m * mag)
+
+
+def _line_chart(labels: list[str], series: list[tuple[str, str, list[float]]], tick, aria: str,
+                note: str) -> str:
+    """Line chart from a zero baseline. labels are ISO dates; each series is (name, colour, values)."""
+    if len(labels) < 3:
+        return ""
+    W, H, L, R, T, B = 720, 250, 64, 12, 10, 24
+    top = max(max(v) for _, _, v in series) * 1.05
+    step = _nice_step(top)
+
+    def x(i: int) -> float:
+        return L + i * (W - L - R) / (len(labels) - 1)
+
+    def y(v: float) -> float:
+        return T + (1 - v / top) * (H - T - B)
+
+    grid = "".join(f'<line x1="{L}" x2="{W - R}" y1="{y(k * step):.1f}" y2="{y(k * step):.1f}"/>'
+                   f'<text x="{L - 6}" y="{y(k * step) + 4:.1f}" text-anchor="end">{E(tick(k * step))}</text>'
+                   for k in range(int(top / step) + 1))
+    years, seen = [], set()
+    for i, d in enumerate(labels):
+        if d[:4] not in seen:
+            seen.add(d[:4])
+            years.append(f'<text x="{x(i):.1f}" y="{H - 6}" text-anchor="middle">{d[:4]}</text>')
+    lines = "".join(f'<polyline fill="none" stroke="{col}" stroke-width="2.2" points="'
+                    + " ".join(f"{x(i):.1f},{y(v):.1f}" for i, v in enumerate(vals)) + '"/>'
+                    for _, col, vals in series)
+    legend = "".join(f'<span><i style="background:{col}"></i>{E(name)} <b>{E(tick(vals[-1], True))}</b></span>'
+                     for name, col, vals in series)
+    return (f'<div class="chart"><div class="legend">{legend}</div><div class="plot"><svg viewBox="0 0 {W} {H}" '
+            f'role="img" aria-label="{E(aria)}"><g class="grid">{grid}</g>{"".join(years)}{lines}</svg></div>'
+            f'<p class="small muted">{note}</p></div>')
+
+
+def _multiple(v: float, exact: bool = False) -> str:
+    return f"{v:.2f}x" if exact else f"{v:g}x"
+
+
 def _growth_chart(detail: list[dict]) -> str:
     pts, a, b, c = [], 1.0, 1.0, 1.0
     for d in sorted(detail, key=lambda d: d["start"]):
@@ -1449,39 +1496,71 @@ def _growth_chart(detail: list[dict]) -> str:
         pts.append((d.get("end") or d["start"], a, b, c))
     if len(pts) < 3:
         return ""
-    W, H, L, R, T, B = 720, 250, 40, 12, 10, 24
-    top = max(max(p[1:]) for p in pts) * 1.05
-    step = 1 if top <= 6 else 2 if top <= 12 else 5
+    series = [(name, col, [p[k] for p in pts]) for k, col, name in (
+        (1, "var(--cp-text)", "Top 5 each month"), (2, "var(--cp-link)", "Equal-weight universe"),
+        (3, "var(--cp-text-muted)", "NASI"))]
+    return _line_chart(
+        [p[0] for p in pts], series, _multiple,
+        f"Growth of 1 shilling: top 5 {pts[-1][1]:.2f}x, universe {pts[-1][2]:.2f}x, NASI {pts[-1][3]:.2f}x",
+        f'Growth of KES 1 from {E(pts[0][0])} to {E(pts[-1][0])}, rebalanced monthly into the top 5 the engine '
+        f'ranked with data published by each date and the CBK T-bill rates of each month. '
+        f'Before trading costs. Dividends are included in each monthly return, and those returns are compounded '
+        f'at monthly rebalancing. NASI excludes dividends.')
 
-    def x(i: int) -> float:
-        return L + i * (W - L - R) / (len(pts) - 1)
 
-    def y(v: float) -> float:
-        return T + (1 - v / top) * (H - T - B)
+def _kes_compact(v: float, exact: bool = False) -> str:
+    if exact:
+        return f"KES {v:,.0f}"
+    return f"KES {v / 1e6:g}m" if v >= 1e6 else f"KES {v / 1e3:g}k" if v else "0"
 
-    grid = "".join(f'<line x1="{L}" x2="{W - R}" y1="{y(v):.1f}" y2="{y(v):.1f}"/>'
-                   f'<text x="{L - 6}" y="{y(v) + 4:.1f}" text-anchor="end">{v}x</text>'
-                   for v in range(0, int(top) + 1, step))
-    years, seen = [], set()
-    for i, p in enumerate(pts):
-        yr = p[0][:4]
-        if yr not in seen:
-            seen.add(yr)
-            years.append(f'<text x="{x(i):.1f}" y="{H - 6}" text-anchor="middle">{yr}</text>')
-    series = [(1, "var(--cp-text)", "Top 5 each month"), (2, "var(--cp-link)", "Equal-weight universe"),
-              (3, "var(--cp-text-muted)", "NASI")]
-    lines = "".join(f'<polyline fill="none" stroke="{col}" stroke-width="2.2" points="'
-                    + " ".join(f"{x(i):.1f},{y(p[k]):.1f}" for i, p in enumerate(pts)) + '"/>'
-                    for k, col, _ in series)
-    legend = "".join(f'<span><i style="background:{col}"></i>{n} <b>{pts[-1][k]:.2f}x</b></span>'
-                     for k, col, n in series)
-    return (f'<div class="chart"><div class="legend">{legend}</div><svg viewBox="0 0 {W} {H}" role="img" '
-            f'aria-label="Growth of 1 shilling: top 5 {pts[-1][1]:.2f}x, universe {pts[-1][2]:.2f}x, NASI '
-            f'{pts[-1][3]:.2f}x"><g class="grid">{grid}</g>{"".join(years)}{lines}</svg><p class="small muted">'
-            f'Growth of KES 1 from {E(pts[0][0])} to {E(pts[-1][0])}, rebalanced monthly into the top 5 the engine '
-            f'ranked with data published by each date and today\'s interest rates. '
-            f'Before trading costs. Dividends are included in each monthly return, and those returns are compounded '
-            f'at monthly rebalancing. NASI excludes dividends.</p></div>')
+
+def _backtest_summary(bt: dict) -> str:
+    """Plain-language panel above the technical backtest: result, growth chart, fixed mixes and experiments."""
+    if not bt.get("months") or not bt.get("strategies"):
+        return ""
+    st, mx = bt["strategies"], bt["mixes"]
+    amount = mx["amount"]
+    labels = [bt["months"][0]["date"]] + [m["end"] for m in bt["months"]]
+
+    def path(key: str) -> list[float]:
+        out = [amount]
+        for m in bt["months"]:
+            out.append(out[-1] * (1 + m["net"][key]))
+        return out
+
+    bills = next((r for r in mx["rows"] if r["equity"] == 0), None)
+    series = [("Buy rule", "var(--cp-accent)", path("buy_rule")),
+              ("Covered stocks by size", "var(--cp-link)", path("cap"))]
+    if bills:
+        series.append(("T-bills", "var(--cp-text-muted)", path(bills["key"])))
+    chart = _line_chart(
+        labels, series, _kes_compact,
+        "Growth of " + _kes_compact(amount, True) + ": " + ", ".join(
+            f"{n} {_kes_compact(v[-1], True)}" for n, _, v in series),
+        f"{E(_kes_compact(amount, True))} from {E(labels[0])} to {E(labels[-1])} after trading costs. Each month "
+        "uses only the company results and CBK T-bill rates published by then.")
+    kpis = "".join(f'<div class="kpi"><b>{pct(v)}</b><span>{E(k)}</span></div>' for v, k in (
+        (st["buy_rule"]["net"]["cagr"], "Buy rule a year, after costs"),
+        (st["cap"]["net"]["cagr"], "Covered stocks by size"),
+        (bills["cagr"] if bills else None, "T-bills after tax")))
+    mixes = "".join(f'<tr><td>{E(r["label"])}</td><td class="num">{E(_kes_compact(r["final"], True))}</td>'
+                    f'<td class="num">{pct(r["cagr"])}</td><td class="num">{pct(r["max_dd"])}</td></tr>'
+                    for r in mx["rows"])
+    exps = "".join(f'<li><b>{E(e.get("label", k))}:</b> {points(e["excess"])} a year against the size-weighted '
+                   "basket" + (f' (95% range {points(e["ci"][0], "")} to {points(e["ci"][1])})' if e.get("ci") else "")
+                   + f'. {E(e["status"])}; {e["live_months"]} live months so far.</li>'
+                   for k, e in (bt.get("experiments") or {}).items())
+    return ('<section class="card" id="summary"><h2>Did the Buy rule pay off?</h2>'
+            f'<p><b>{E(bt.get("headline", ""))}</b></p><div class="kpis trio">{kpis}</div>{chart}'
+            '<h3>What a fixed mix would have become</h3><div class="table-wrap"><table class="data"><thead><tr>'
+            f'<th>Stocks and T-bills</th><th>Value on {E(bt["end"])}</th><th>Return a year</th>'
+            f'<th>Worst fall</th></tr></thead><tbody>{mixes}</tbody></table></div>'
+            f'<p class="small muted">{E(_kes_compact(amount, True))} is the smallest round amount that buys whole '
+            "shares of every covered stock at today's weights. These are fixed illustrations, the same for every "
+            'reader, not a recommended mix.</p>'
+            + (f'<h3>Rules on trial</h3><p class="small">Frozen rules logged live each month. None changes a '
+               f'verdict until it passes every check and a person reviews it.</p><ul class="small">{exps}</ul>'
+               if exps else "") + "</section>")
 
 
 def _ic_table(ic: dict) -> str:
@@ -1563,9 +1642,12 @@ def _track_record(r: dict) -> str:
                   f'{y12.get("windows", 0)} overlapping historical holding windows, before trading costs.</p>'
                   if top is not None and basket is not None else "")
     caveat = ('<p class="small muted">This tests the five highest-ranked research scores, including stocks that may fail '
-              "the Buy rules. It is not a live record of Buy recommendations. Today's interest rates and the current "
-              "covered-stock universe are reused throughout the history. Neighbouring 12-month tests share much of "
-              "their history, so the windows are not independent. Fees could reduce or erase the edge.</p>")
+              "the Buy rules. It is not a live record of Buy recommendations. Each month uses the CBK T-bill rates "
+              "published by then, but today's bond yield, risk premiums and covered-stock universe are reused "
+              "throughout the history. Neighbouring 12-month tests share much of "
+              "their history, so the windows are not independent. Fees could reduce or erase the edge."
+              + (' <a href="backtest.html">The backtest</a> tests the Buy rule itself, after costs.'
+                 if (config.REPORTS / "backtest.md").exists() else "") + "</p>")
     chart = _growth_chart((rec.get("1") or {}).get("detail") or [])
     if chart:
         chart = ('<h3>A separate test: monthly portfolio rotation</h3><p class="small">This chart holds each '
@@ -1821,6 +1903,10 @@ def build() -> list[Path]:
             body = ('<h1>Track record, explained</h1>' + _track_record(retro)
                     + '<details class="fold" id="technical-results"><summary><h2>Full technical report</h2></summary>'
                     + body + "</details>")
+        if dst == "backtest.html":
+            summary = _backtest_summary(_load_json(config.DATA / "backtest.json") or {})
+            if summary:
+                body = re.sub(r"(<h1>.*?</h1>)", lambda m: m[1] + summary, body, count=1, flags=re.S)
         page(dst, label, body, dst)
 
     sections = []

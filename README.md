@@ -110,10 +110,8 @@ factor is High or two factors are High, Moderate when one factor is High or thre
 The numerical risk level never changes the flag; incomplete evidence can hold a live flag back.
 Missing inputs are listed as not assessed.
 
-Point-in-time backtest of the flag since 2017: it fired 28 times, only on COOP, EQTY and KCB. At 12 months no flagged
-pick lost money, but they trailed the equal-weight universe by 3.5% on average (N=18); at 6 months they beat it by
-4.5% (N=23). The plain Buy tier did better at 12 months (+8.9%). The flag is a stricter filter, and its short record does not yet beat
-the Buy tier.
+In the point-in-time reconstruction since 2017 the flag fired 14 times (stock-months), only on COOP, EQTY and SBIC:
+too few to measure. The backtest page tests the Buy rule itself, after costs.
 
 ## Schedule
 
@@ -164,6 +162,7 @@ does not provide an independent uptime guarantee. Notifications are separate fro
 | Bonus issues, splits, rights, mergers | NSE and company notices | `data/corporate_actions.yaml` |
 | Fundamentals | Company annual and interim reports | `data/fundamentals.yaml` |
 | T-bill accepted-bid rates | [CBK results](https://www.centralbank.go.ke/bills-bonds/treasury-bills/) | Automatic `data/official/cbk/`, curated fallback in `data/macro.yaml` |
+| Monthly T-bill history (91, 182, 364 days, from 2010) | [CBK Central Bank Rates CSV](https://www.centralbank.go.ke/statistics/interest-rates/) | Appended by `backtest` to `data/official/cbk_monthly.csv`; revised past months need review |
 | Observed CPI inflation | [KNBS monthly releases](https://www.knbs.or.ke/) | Automatic `data/official/knbs/`, dated reviewed fallback |
 | Bond yield, CBR and other assumptions | Sources recorded per input | Curated `data/macro.yaml`; never refreshed by a bill auction |
 | Equity and country risk premium | [Damodaran](https://pages.stern.nyu.edu/~adamodar/) | `data/macro.yaml` |
@@ -209,6 +208,8 @@ Candidate cards summarize the blocker, price, valuation and scenario range witho
 Quiet updates and rates use compact disclosures; material alerts open automatically. Full source and risk information
 remains available in stock reviews. Feed and GitHub subscription promotions are hidden from the site for now;
 background report generation and the Atom endpoint remain unchanged.
+The Backtest page opens with **Did the Buy rule pay off?**: the Buy rule against the covered stocks weighted by
+company size and T-bills, a growth chart after costs, fixed stock and T-bill mixes, and the frozen rules on trial.
 Stock search is integrated into the header of every page. Stock reviews follow **Verdict, Why, What would change it,
 What to verify next**, with recorded company notices and filing caveats beside the decision.
 The Stocks directory supports company/sector search, shareable verdict filters and a link to the numerical comparison
@@ -252,7 +253,7 @@ limits or probability bands; the T-bill rollover example assumes today's rate st
 - `reports/latest.md`: ranked picks, fair-value ranges, bear/base/bull returns, risks, confidence and data gaps.
 - `reports/simulation.md`: Monte Carlo (block bootstrap of weekly returns) for 1, 3 and 5 years, plus replays of the
   2016 rate-cap shock, the 2020 COVID crash and the 2023 sell-off.
-- `reports/backtest.md`: point-in-time walk-forward test of the rules against the equal-weight market.
+- `reports/backtest.md`: point-in-time walk-forward test of the Buy rule. See **Backtest and portfolio evidence** below.
 - `reports/scorecard.md`: every logged pick (`data/picks.csv`) scored against the market since the pick date.
 
 ## Run it locally
@@ -275,7 +276,7 @@ python -m venv .venv
 | `tune-weights [--proposal-file F] [--body-file F]` | Walk-forward weight test; writes a proposal only when it wins out of sample |
 | `apply-weights F` | Write a proposal's weights into `data/settings.yaml` (used on the PR branch) |
 | `simulate [--paths N]` | Monte Carlo projection of current picks |
-| `backtest [--top N]` | Walk-forward backtest |
+| `backtest [--top N] [--no-fetch]` | Walk-forward backtest; refreshes the CBK monthly T-bill history first unless `--no-fetch` |
 | `score` | Score logged picks |
 | `review` | Review your own holdings |
 | `results-watch` | Queue new results for review |
@@ -317,8 +318,9 @@ CBK's signed release date is separate from the future issue date. Missing accept
 dated value. Critical health checks distinguish bill rates (9 days) from curated assumptions (14 days).
 Collecting a bill rate never refreshes the 10-year bond, equity premium or tax assumptions.
 
-`--no-fetch`, analysis and site builds make no source requests. Reconstructed backtests still deliberately use current
-rates, as disclosed; date-bounded live analyses cannot use newly collected releases from a future observation date.
+`--no-fetch`, analysis and site builds make no source requests. Backtests and reconstructions use the CBK monthly
+T-bill history instead (see below); date-bounded live analyses cannot use newly collected releases from a future
+observation date.
 Reviewed company figures stay in `data/fundamentals.yaml`. Results notices, including same-host HTML-to-PDF links,
 produce review candidates only. A pending notice is checked against known periods and source documents before it
 holds back strong-confidence flags; `queued` alone is not proof of unreviewed figures. Mark resolved ambiguous or
@@ -326,6 +328,41 @@ restated notices `reviewed` after checking their source. Company discovery dates
 
 The dashboard's Rates and inflation panel explains the inputs and remaining assumptions. Licensed ICE pricing is
 not connected: access credentials and public raw/derived-data redistribution rights must be confirmed first.
+
+## Backtest and portfolio evidence
+
+`python -m nse_agent backtest` reruns the engine on every month start since June 2019 with the fundamentals and CBK
+T-bill rates published by then. A month uses the previous month's CBK figure (weekly auction results are public as they
+happen), carried forward at most three months; with no dated rate the run stops instead of using today's. The Buy hurdle
+uses the 364-day rate; cash earns the 91-day rate after 15% withholding tax. The 10-year bond yield, risk premiums and
+taxes stay at today's reviewed values, so historical valuations are provisional.
+
+Every strategy and benchmark uses the same accounting (`nse_agent/strategy.py`): it starts in cash, pays the per-side
+trading cost on the weight it actually trades (including the first purchase and drift from unchanged holdings), and keeps
+dividends invested until the next monthly rebalance. The report compares:
+
+| Series | What it is |
+| --- | --- |
+| Buy rule | Equal weight in up to 3 stocks that clear every Buy gate, otherwise 91-day T-bills |
+| Top 3 by research score | The ranking, whatever the verdicts |
+| Covered stocks by size | All covered stocks weighted by full market value from sourced share counts, rebased for bonus issues and splits and adjusted for recorded share issues (the NCBA merger). This is the headline benchmark |
+| Covered stocks, equal weights | A policy variant, labelled as such |
+| NASI | Price index of all listed shares, without dividends or costs |
+| Fixed mixes | 0, 25, 50, 75 and 100% covered stocks by size, the rest in T-bills, shown in KES from an amount that buys whole shares of every stock |
+
+A benchmark check compares the size-weighted basket (price only) with NASI; it passes when the yearly gap is within
+1.5 points and the tracking error below 6%. Share counts missing before a company's first sourced filing are backfilled
+from that filing and listed in the report. Weights use full market value, not free float.
+
+**Shadow experiments.** Four frozen rules (`experiments` in `data/settings.yaml`) are tested against the size-weighted
+basket and never change a published verdict: Buy stocks at double weight, dropping stocks priced above their high fair
+value, a Buy rule that holds until the base fair value, and the Buy tilt rebalanced only in February, May, August and
+November with 25% relative drift bands. A rule is put forward for human review only when all four checks pass: the 95%
+circular block-bootstrap range (6-month blocks) of its yearly gain over the basket is above zero, its signal changed the
+portfolio in at least 30 months, it still gains at the 2.10% small-trade cost, and it has at least 24 months of positive
+live results. The first verified daily brief of each month appends every rule's target weights to
+`data/shadow/experiments.csv`; past rows are never rewritten. Fixed mixes and experiments illustrate rules that are the
+same for every reader; they are not personalised advice or a model portfolio.
 
 ## Limits
 

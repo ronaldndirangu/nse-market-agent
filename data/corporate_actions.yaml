@@ -52,8 +52,9 @@ actions:
   ratio: null
   factor: 1.0
   ex_date: '2019-10-01'
+  shares_issued_m: 793.805
   source_url: https://cytonn.com/uploads/downloads/cba-nic-merger-note.pdf
-  note: NIC Group acquired CBA via share swap; NIC issued about 793.8m new shares to CBA shareholders (53:47 CBA:NIC ownership) and was renamed NCBA Group; ticker NIC to NCBA. Existing NIC holders kept their shares one-for-one, so no price factor. Completion also reported at https://kenyanwallstreet.com/nic-cba-merger-a-done-deal. Price 28.95 to 30.90 around the switch.
+  note: NIC Group acquired CBA via share swap; NIC issued about 793.8m new shares to CBA shareholders (53:47 CBA:NIC ownership) and was renamed NCBA Group; ticker NIC to NCBA. Existing NIC holders kept their shares one-for-one, so no price factor. Completion also reported at https://kenyanwallstreet.com/nic-cba-merger-a-done-deal. Price 28.95 to 30.90 around the switch. shares_issued_m is the FY2019 share count (1,497.745m) less FY2018's (703.94m) in data/fundamentals.yaml, matching the note's 793.8m; it keeps market-cap weights correct before the FY2019 results were published.
 - ticker: SCBK
   type: bonus
   ratio: '1:10'

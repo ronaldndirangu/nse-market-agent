@@ -12,11 +12,13 @@ from .valuation import (agreeing, cost_of_equity, fair_value, graham_number, mod
 
 
 def analyze(as_of: date | None = None, point_in_time: bool = False, check_liquidity: bool = True,
-            check_suspension: bool = True, health: dict | None = None) -> dict:
-    """point_in_time=True only uses fundamentals published on or before as_of (backtests)."""
+            check_suspension: bool = True, health: dict | None = None, macro: dict | None = None) -> dict:
+    """point_in_time=True only uses fundamentals published on or before as_of (backtests).
+
+    `macro` overrides the inputs, for example with the T-bill rates published before as_of."""
     as_of = as_of or date.today()
     s = config.settings()
-    macro = deepcopy(config.macro() if point_in_time else config.macro(as_of))
+    macro = deepcopy(macro if macro is not None else config.macro() if point_in_time else config.macro(as_of))
     uni = config.universe()
     tickers = [u["ticker"] for u in uni]
     listing = storage.read_json(storage.market_path("listing.json"), {}) or {}

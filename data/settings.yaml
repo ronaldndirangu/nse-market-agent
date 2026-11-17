@@ -64,3 +64,23 @@ risk:
 high_confidence:
   min_agreeing_models: 3
   min_quality_score: 0.67
+
+# Frozen portfolio experiments. They are logged and scored in shadow; none changes a published verdict. A rule is
+# only put forward for human review when every gate passes.
+experiments:
+  version: "2026-11-17"
+  top: 3
+  tilt_multiplier: 2.0
+  rebalance_months: [2, 5, 8, 11]
+  drift_band: 0.25
+  mixes: [0.0, 0.25, 0.5, 0.75, 1.0]
+  gate:
+    min_signal_months: 30
+    min_live_months: 24
+    confidence: 0.95
+    block_months: 6
+    resamples: 2000
+
+benchmark_check:
+  max_cagr_gap: 0.015
+  max_tracking_error: 0.06
