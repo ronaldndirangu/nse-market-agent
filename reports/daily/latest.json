@@ -1,37 +1,37 @@
 {
   "alerts": [],
-  "as_of": "2026-11-18",
+  "as_of": "2026-11-19",
   "changes": {
     "announcements": 0,
     "crossings": 0,
     "moves": 0,
-    "prev_date": "2026-11-17",
+    "prev_date": "2026-11-18",
     "tiers": 0,
     "top_in": [],
     "top_out": [],
     "verdict_details": []
   },
-  "code_sha": "8363bdef7766",
+  "code_sha": "43bfffea0305",
   "counts": {
     "Avoid": 15,
     "Buy": 0,
     "Watch": 1
   },
-  "generated": "2026-11-17T21:43:56+00:00",
+  "generated": "2026-11-18T21:23:53+00:00",
   "health": {
     "announcements": {
       "fetch": {
         "error": null,
-        "last_attempt": "2026-11-18T00:43:55+03:00",
-        "last_success": "2026-11-18T00:43:55+03:00",
+        "last_attempt": "2026-11-19T00:23:53+03:00",
+        "last_success": "2026-11-19T00:23:53+03:00",
         "successful": true
       },
-      "last_success": "2026-11-17",
+      "last_success": "2026-11-18",
       "status": "Current"
     },
-    "checked_at": "2026-11-18T00:43:55+03:00",
+    "checked_at": "2026-11-19T00:23:53+03:00",
     "critical_ok": true,
-    "expected_session": "2026-11-17",
+    "expected_session": "2026-11-18",
     "issues": [],
     "ledger_ready": true,
     "macro": {
@@ -41,14 +41,14 @@
       "tbill_as_of": "2026-11-12",
       "tbill_status": "Current"
     },
-    "next_update_due": "2026-11-18T17:00:00+03:00",
+    "next_update_due": "2026-11-19T17:00:00+03:00",
     "prices": {
       "current": 16,
       "fetch": {
         "consecutive_failures": 0,
         "errors": [],
-        "last_attempt": "2026-11-18T00:43:52+03:00",
-        "last_success": "2026-11-18T00:43:52+03:00",
+        "last_attempt": "2026-11-19T00:23:38+03:00",
+        "last_success": "2026-11-19T00:23:38+03:00",
         "source": "nse",
         "successful": true
       },
@@ -63,7 +63,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2025",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -73,7 +73,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2025",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -83,7 +83,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2026",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -93,7 +93,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2025",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -103,7 +103,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2025",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -113,7 +113,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2026",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -123,7 +123,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2025",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -133,7 +133,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2025",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -143,7 +143,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2025",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -153,7 +153,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2026",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -163,7 +163,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2026",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -173,7 +173,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2025",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -183,7 +183,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2025",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -193,7 +193,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2025",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -203,7 +203,7 @@
         "fundamentals_status": "Current",
         "pending_results": [],
         "period": "FY2026",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -223,7 +223,7 @@
           }
         ],
         "period": "FY2025",
-        "price_date": "2026-11-17",
+        "price_date": "2026-11-18",
         "status": "Current",
         "suspended": false,
         "suspension_known": true,
@@ -234,23 +234,23 @@
   "high_confidence": [],
   "hurdle": 0.1265833,
   "ledger": {
-    "code_sha": "8363bdef7766",
-    "date": "2026-11-18",
+    "code_sha": "43bfffea0305",
+    "date": "2026-11-19",
     "differences": [],
     "path": "data/rankings/live/2026-11.csv",
     "rows": 16,
-    "sha256": "9788303424cc4357d906a4cdbf495b6b62c0fdb321d72372bc36d39c8bb2a480"
+    "sha256": "ed57bbad618004c806d3a92f80d666442c3c965b553333aae7115ba5ced0adc8"
   },
   "macro": {
     "_source_status": {
       "cbk": {
-        "last_attempt": "2026-11-18T00:43:52+03:00",
-        "last_success": "2026-11-18T00:43:52+03:00",
+        "last_attempt": "2026-11-19T00:23:38+03:00",
+        "last_success": "2026-11-19T00:23:38+03:00",
         "successful": true
       },
       "knbs": {
         "error": "HTTPSConnectionPool(host='www.knbs.or.ke', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1018)')))",
-        "last_attempt": "2026-11-18T00:43:54+03:00",
+        "last_attempt": "2026-11-19T00:23:51+03:00",
         "last_success": "2026-11-12T23:59:55+03:00",
         "successful": false
       }
@@ -330,10 +330,10 @@
     {
       "agree": 1,
       "agree_needed": 3,
-      "base": 0.14898460507318972,
-      "bear": -0.003848906857614928,
+      "base": 0.14658370817870012,
+      "bear": -0.005971616909902477,
       "binding": "Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3.",
-      "bull": 0.23020518965679398,
+      "bull": 0.2285193744468018,
       "company_notes": [
         "H1-2026 net_loans uses the CBK format line, a different definition from the FY IFRS line",
         "H1-2026 omits shares_outstanding; Nedbank tender offer (unconditional 2026-10-19) did not change the share count",
@@ -347,7 +347,7 @@
         "roe FY2022-FY2021 printed; FY2020, FY2019 and FY2018 computed as net_income / closing total_equity",
         "cost_to_income computed as operating expenses excluding impairment / operating income in every year"
       ],
-      "composite": -0.7704749074184007,
+      "composite": -0.7477153675983671,
       "conviction": {
         "failed": [
           "Valuation",
@@ -371,7 +371,7 @@
             "passed": true
           },
           {
-            "detail": "base return 14.9% against the 12.66% hurdle",
+            "detail": "base return 14.7% against the 12.66% hurdle",
             "name": "Return",
             "passed": true
           }
@@ -381,7 +381,7 @@
       "decision": {
         "agreement": "1 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
         "changes": [
-          "With every estimate held fixed, the valuation cushion rule passes at KES 80.49 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply."
+          "With every estimate held fixed, the valuation cushion rule passes at KES 80.50 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply."
         ],
         "checks": [
           {
@@ -400,49 +400,49 @@
             "passed": false
           },
           {
-            "detail": "The middle case is 14.9% a year over 3 years, above the 12.66% return hurdle.",
+            "detail": "The middle case is 14.7% a year over 3 years, above the 12.66% return hurdle.",
             "name": "Return hurdle",
             "passed": true
           }
         ],
         "cushion_fraction": 0.15,
-        "cushion_price": 80.49,
+        "cushion_price": 80.5,
         "holder_note": "These entry rules do not decide whether to sell an existing holding.",
         "models": [
           {
             "name": "Peer earnings multiple",
             "passes": true,
-            "value": 108.73333995321947
+            "value": 108.99191178633951
           },
           {
             "name": "Peer book-value multiple",
             "passes": false,
-            "value": 100.34200989012088
+            "value": 101.44507910484069
           },
           {
             "name": "Bank book-value model",
             "passes": false,
-            "value": 92.56522425979729
+            "value": 92.5793351132486
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 70.20590092113052
+            "value": 70.21270690887005
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 62.122046320584076
+            "value": 62.13151634670604
           }
         ],
         "reason": "Insufficient valuation cushion",
-        "return_context": "The middle case is 14.9% a year over 3 years, above the 12.66% return hurdle.",
+        "return_context": "The middle case is 14.7% a year over 3 years, above the 12.66% return hurdle.",
         "verify": [
           "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
           "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
         ],
         "why": [
-          "The middle case is 14.9% a year over 3 years, above the 12.66% return hurdle. Clearing this hurdle alone does not qualify a stock.",
+          "The middle case is 14.7% a year over 3 years, above the 12.66% return hurdle. Clearing this hurdle alone does not qualify a stock.",
           "1 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates."
         ]
       },
@@ -450,18 +450,18 @@
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.09408450704225352
+        "value": 0.09355742296918768
       },
-      "dividend_yield": 0.09408450704225352,
+      "dividend_yield": 0.09355742296918768,
       "driver": {
-        "contribution": 0.17363215243968688,
+        "contribution": 0.16607162240367132,
         "label": "dividend yield",
         "signal": "dividend_yield"
       },
       "estimate_reliable": true,
-      "fair_base": 92.56522425979729,
-      "fair_high": 108.73333995321947,
-      "fair_low": 62.122046320584076,
+      "fair_base": 92.5793351132486,
+      "fair_high": 108.99191178633951,
+      "fair_low": 62.13151634670604,
       "filings": [
         {
           "period": "FY2025",
@@ -475,31 +475,31 @@
         }
       ],
       "latest_period": "FY2025",
-      "model_spread": 1.750318065700788,
+      "model_spread": 1.754212969439588,
       "model_values": {
-        "earnings_power": 70.20590092113052,
-        "gordon_ddm": 62.122046320584076,
-        "justified_pb": 92.56522425979729,
-        "sector_pb": 100.34200989012088,
-        "sector_pe": 108.73333995321947
+        "earnings_power": 70.21270690887005,
+        "gordon_ddm": 62.13151634670604,
+        "justified_pb": 92.5793351132486,
+        "sector_pb": 101.44507910484069,
+        "sector_pe": 108.99191178633951
       },
       "models": 5,
-      "mos": 0.04298844236391308,
+      "mos": 0.03730347465824768,
       "name": "NCBA Group",
       "notices": [],
-      "price": 88.75,
-      "price_date": "2026-11-17",
+      "price": 89.25,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": 0.14898460507318972,
-        "bear": -0.003848906857614928,
-        "bull": 0.23020518965679398,
+        "base": 0.14658370817870012,
+        "bear": -0.005971616909902477,
+        "bull": 0.2285193744468018,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.076,
+        "dividend_yield_net": 0.07557422969187674,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.076,
+          "dividends": 0.07557422969187674,
           "growth": 0.07,
-          "repricing": 0.015117938406523005
+          "repricing": 0.013142811820156537
         },
         "years": 3
       },
@@ -522,12 +522,12 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -0.4% a year",
+            "detail": "bear case -0.6% a year",
             "level": "Moderate",
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 1.8x (62.1 to 108.7)",
+            "detail": "fair value spread 1.8x (62.1 to 109.0)",
             "level": "Moderate",
             "name": "Valuation spread"
           },
@@ -545,27 +545,27 @@
         "label": "Moderate",
         "level": "Moderate",
         "missing": [],
-        "summary": "Moderate risk: beta 0.81; turnover KES 12.9M a day; bear case -0.4% a year (+2 more)."
+        "summary": "Moderate risk: beta 0.81; turnover KES 12.9M a day; bear case -0.6% a year (+2 more)."
       },
       "sector": "Banking",
       "source_url": "https://ncbagroup.com/wp-content/uploads/2026/06/NCBA-Group-Plc-Annual-2025-Integrated-Report.pdf",
       "ticker": "NCBA",
       "tier": "Watch",
-      "why": "NCBA (Watch): 4.3% upside to base fair value KES 92.57; base return 14.9% a year beats the 12.66% hurdle. Insufficient valuation cushion. Moderate risk (beta 0.81; turnover KES 12.9M a day)."
+      "why": "NCBA (Watch): 3.7% upside to base fair value KES 92.58; base return 14.7% a year beats the 12.66% hurdle. Insufficient valuation cushion. Moderate risk (beta 0.81; turnover KES 12.9M a day)."
     },
     {
       "agree": 0,
       "agree_needed": 3,
-      "base": -0.08792001023898689,
-      "bear": -0.22070970997252792,
-      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -8.8% does not beat the 12.66% hurdle.",
-      "bull": 0.13747426105632576,
+      "base": -0.08993046581792116,
+      "bear": -0.222456957579904,
+      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.0% does not beat the 12.66% hurdle.",
+      "bull": 0.1370785775443776,
       "company_notes": [
         "FY2024 values are the original OCR-read figures; the FY2025 release restated FY2024 (EPS 8.90)",
         "Private placement on 2025-05-21 raised shares from 1,653.6m to 1,740.1m (derived; no document prints the total)",
         "ROE and cost-to-income are integer-rounded by the company; H1-2026 NPL is the text '9%'"
       ],
-      "composite": 0.6434579030649972,
+      "composite": 0.611359403642914,
       "conviction": {
         "failed": [
           "Valuation",
@@ -589,7 +589,7 @@
             "passed": true
           },
           {
-            "detail": "base return -8.8% against the 12.66% hurdle",
+            "detail": "base return -9.0% against the 12.66% hurdle",
             "name": "Return",
             "passed": false
           }
@@ -619,7 +619,7 @@
             "passed": false
           },
           {
-            "detail": "The middle case is -8.8% a year over 3 years, at or below the 12.66% return hurdle.",
+            "detail": "The middle case is -9.0% a year over 3 years, at or below the 12.66% return hurdle.",
             "name": "Return hurdle",
             "passed": false
           }
@@ -631,56 +631,56 @@
           {
             "name": "Peer book-value multiple",
             "passes": false,
-            "value": 85.40996269330479
+            "value": 85.90187067309127
           },
           {
             "name": "Peer earnings multiple",
             "passes": false,
-            "value": 75.4657738095238
+            "value": 75.60221677285938
           },
           {
             "name": "Bank book-value model",
             "passes": false,
-            "value": 45.57479876379209
+            "value": 45.58141918058272
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 44.88707840744085
+            "value": 44.891381385249666
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 29.536277875589125
+            "value": 29.540568458878237
           }
         ],
         "reason": "Price above the middle estimate",
-        "return_context": "The middle case is -8.8% a year over 3 years, at or below the 12.66% return hurdle.",
+        "return_context": "The middle case is -9.0% a year over 3 years, at or below the 12.66% return hurdle.",
         "verify": [
           "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
           "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
         ],
         "why": [
           "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
-          "The middle case is -8.8% a year over 3 years, at or below the 12.66% return hurdle."
+          "The middle case is -9.0% a year over 3 years, at or below the 12.66% return hurdle."
         ]
       },
       "dispersed": false,
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.045871559633027525
+        "value": 0.04559270516717325
       },
-      "dividend_yield": 0.045871559633027525,
+      "dividend_yield": 0.04559270516717325,
       "driver": {
-        "contribution": 1.0404607827637464,
+        "contribution": 1.0099932589413176,
         "label": "momentum",
         "signal": "momentum"
       },
       "estimate_reliable": true,
-      "fair_base": 45.57479876379209,
-      "fair_high": 85.40996269330479,
-      "fair_low": 29.536277875589125,
+      "fair_base": 45.58141918058272,
+      "fair_high": 85.90187067309127,
+      "fair_low": 29.540568458878237,
       "filings": [
         {
           "period": "FY2025",
@@ -694,31 +694,31 @@
         }
       ],
       "latest_period": "FY2025",
-      "model_spread": 2.891696883847834,
+      "model_spread": 2.9079288298960946,
       "model_values": {
-        "earnings_power": 44.88707840744085,
-        "gordon_ddm": 29.536277875589125,
-        "justified_pb": 45.57479876379209,
-        "sector_pb": 85.40996269330479,
-        "sector_pe": 75.4657738095238
+        "earnings_power": 44.891381385249666,
+        "gordon_ddm": 29.540568458878237,
+        "justified_pb": 45.58141918058272,
+        "sector_pb": 85.90187067309127,
+        "sector_pe": 75.60221677285938
       },
       "models": 5,
-      "mos": -0.44251010686492853,
+      "mos": -0.4458186117862283,
       "name": "I&M Group",
       "notices": [],
-      "price": 81.75,
-      "price_date": "2026-11-17",
+      "price": 82.25,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": -0.08792001023898689,
-        "bear": -0.22070970997252792,
-        "bull": 0.13747426105632576,
+        "base": -0.08993046581792116,
+        "bear": -0.222456957579904,
+        "bull": 0.1370785775443776,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.04357798165137615,
+        "dividend_yield_net": 0.04331306990881459,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.04357798165137615,
+          "dividends": 0.04331306990881459,
           "growth": 0.07,
-          "repricing": -0.18936465855702977
+          "repricing": -0.19111020239340248
         },
         "years": 3
       },
@@ -741,12 +741,12 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -22.1% a year",
+            "detail": "bear case -22.2% a year",
             "level": "High",
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 2.9x (29.5 to 85.4)",
+            "detail": "fair value spread 2.9x (29.5 to 85.9)",
             "level": "High",
             "name": "Valuation spread"
           },
@@ -764,653 +764,21 @@
         "label": "High",
         "level": "High",
         "missing": [],
-        "summary": "High risk: bear case -22.1% a year; fair value spread 2.9x (29.5 to 85.4); volatility 31% (+1 more)."
+        "summary": "High risk: bear case -22.2% a year; fair value spread 2.9x (29.5 to 85.9); volatility 31% (+1 more)."
       },
       "sector": "Banking",
       "source_url": "https://www.imbankgroup.com/wp-content/uploads/2026/03/im-bank-group-financials.pdf",
       "ticker": "IMH",
       "tier": "Avoid",
-      "why": "IMH (Avoid): 44.3% downside to base fair value KES 45.57; base return -8.8% a year trails the 12.66% hurdle. Price above the middle estimate. High risk (bear case -22.1% a year; fair value spread 2.9x (29.5 to 85.4))."
-    },
-    {
-      "agree": 0,
-      "agree_needed": 2,
-      "base": -0.10659531567016188,
-      "bear": -0.19909703129593204,
-      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -10.7% does not beat the 12.66% hurdle.",
-      "bull": -0.023594397824596262,
-      "company_notes": [
-        "FY2026 dps 0.75 is the proposed final only; AGM approval not verified",
-        "Company-only statements; no gross_profit line",
-        "Company-only statements as in the repo (KenGen files no group accounts in its results announcements); KShs millions; shares_outstanding 6,594.522m for every period (no share issues after the 2016 rights issue). kengen.co.ke serves a JavaScript bot-challenge page, so every period is taken from nse.co.ke filings.",
-        "gross_profit omitted for all periods: KenGen prints revenue, reimbursable expenses and operating expenses but no cost of sales or gross profit line (same as the repo records). ebit = operating profit as printed.",
-        "FY2017 not recorded: no FY2017 or FY2018 annual results announcement exists on nse.co.ke. The two 'abridged results for the year ended 30 June 2017' files (kengen-ltd-abridged-financial-statements-notice-of-agm.pdf and the AGM notice variant) contain only the Auditor-General's report and the AGM notice, with no financial statements, and no half-year Dec 2017 report (which would carry June 2017 columns) was found.",
-        "FY2022 is partial: no FY2022 or FY2023 annual results file is on nse.co.ke and the FY2024 announcement carries only FY2023 comparatives. Only the audited 30 June 2022 balance-sheet column and the 1 July 2022 equity opening in the HY Dec 2022 report were found, so revenue, ebit, net_income, eps, operating_cash_flow and long_term_debt are omitted for FY2022. FY2022 dps 0.20 is derived from the dividend of KShs 1,319m paid in the HY Dec 2022 equity statement / 6,594.522m shares. FY2022 release was delayed (CMA-approved extension to 30 Nov 2022, notice dated 27 Oct 2022).",
-        "FY2022 later restated: the FY2024 announcement shows equity at 1 July 2022 of 274,597 and retained earnings 106,686, against 275,082 and 108,024 in the HY Dec 2022 report (originals recorded). The HY Dec 2022 report also restated equity at 1 July 2021 to 206,982 (originally published as 210,323 at 30 June 2021; retained-earnings adjustment of -1,753).",
-        "long_term_debt omitted for FY2022, FY2021 and FY2018: those condensed statements print only total non-current liabilities with no borrowings line. FY2023, FY2020 and FY2019 use the non-current borrowings line (repo convention).",
-        "FY2019 audited release was delayed: the HY Dec 2019 report published the FY2019 column as unaudited and stated the audit was not complete. FY2019 is recorded from the audited prior-year comparative in the FY2020 annual report (approved 27 Jan 2021), so published uses that date (conservative); the unaudited FY2019 figures in the HY Dec 2019 report are identical.",
-        "FY2020 release was delayed: financial statements approved by the Board on 27 Jan 2021 (published = approval date, noted).",
-        "FY2023 operating_cash_flow (23,227) is 'net cash generated from operating activities' in the FY2024 summary cash-flow statement; that summary shows FY2024 as 35,650 while the repo FY2024 record carries 36,845, so the repo may use a different cash-flow line. Treat FY2023 OCF comparability with the repo as unverified.",
-        "FY2018 dps 0.40 derived from dividends declared in FY2019 of KShs 2,638m (FY2020 annual report equity statement) / 6,594.522m shares; the per-share amount was not printed in an FY2018 source."
-      ],
-      "composite": 0.5119936016099591,
-      "conviction": {
-        "failed": [
-          "Valuation",
-          "Return"
-        ],
-        "flag": false,
-        "gates": [
-          {
-            "detail": "only 2 models apply to this company and the flag needs 3 to agree (sector P/E and P/B need 3 sourced peers)",
-            "name": "Valuation",
-            "passed": false
-          },
-          {
-            "detail": "quality gate pass, score 0.88, needs pass and 0.67",
-            "name": "Quality",
-            "passed": true
-          },
-          {
-            "detail": "liquid, fresh price and results, enough history, positive EPS",
-            "name": "Screen",
-            "passed": true
-          },
-          {
-            "detail": "base return -10.7% against the 12.66% hurdle",
-            "name": "Return",
-            "passed": false
-          }
-        ],
-        "held_back": []
-      },
-      "decision": {
-        "agreement": "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
-        "changes": [
-          "With every estimate held fixed, the valuation cushion rule passes at KES 3.37 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
-          "A new price, reviewed filing or benchmark rate must produce a modelled return above the hurdle, with the other entry rules still passing."
-        ],
-        "checks": [
-          {
-            "detail": "Price age, trading activity, history and earnings checks pass.",
-            "name": "Trading and data screen",
-            "passed": true
-          },
-          {
-            "detail": "The entry health check passes; stricter checks are separate.",
-            "name": "Business health",
-            "passed": true
-          },
-          {
-            "detail": "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
-            "name": "Valuation cushion",
-            "passed": false
-          },
-          {
-            "detail": "The middle case is -10.7% a year over 3 years, at or below the 12.66% return hurdle.",
-            "name": "Return hurdle",
-            "passed": false
-          }
-        ],
-        "cushion_fraction": 0.15,
-        "cushion_price": 3.37,
-        "holder_note": "These entry rules do not decide whether to sell an existing holding.",
-        "models": [
-          {
-            "name": "Earnings power",
-            "passes": false,
-            "value": 6.545137049096043
-          },
-          {
-            "name": "Dividend model",
-            "passes": false,
-            "value": 3.884891171349851
-          }
-        ],
-        "reason": "Price above the middle estimate",
-        "return_context": "The middle case is -10.7% a year over 3 years, at or below the 12.66% return hurdle.",
-        "verify": [
-          "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
-          "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
-        ],
-        "why": [
-          "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
-          "The middle case is -10.7% a year over 3 years, at or below the 12.66% return hurdle."
-        ]
-      },
-      "dispersed": false,
-      "dividend_context": {
-        "basis": "Trailing regular dividends, before tax",
-        "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.17259414225941422
-      },
-      "dividend_yield": 0.17259414225941422,
-      "driver": {
-        "contribution": 0.8689366556801948,
-        "label": "dividend yield",
-        "signal": "dividend_yield"
-      },
-      "estimate_reliable": true,
-      "fair_base": 5.215014110222947,
-      "fair_high": 6.545137049096043,
-      "fair_low": 3.884891171349851,
-      "filings": [
-        {
-          "period": "FY2026",
-          "published": "2026-10-30",
-          "url": "https://africanfinancials.com/document/ke-kegn-2026-ar-00/"
-        }
-      ],
-      "latest_period": "FY2026",
-      "model_spread": 1.6847671557352426,
-      "model_values": {
-        "earnings_power": 6.545137049096043,
-        "gordon_ddm": 3.884891171349851
-      },
-      "models": 2,
-      "mos": -0.4544964319850474,
-      "name": "KenGen",
-      "notices": [],
-      "price": 9.56,
-      "price_date": "2026-11-17",
-      "projection": {
-        "base": -0.10659531567016188,
-        "bear": -0.19909703129593204,
-        "bull": -0.023594397824596262,
-        "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.07452928870292887,
-        "drivers": {
-          "costs": -0.012133333333333335,
-          "dividends": 0.07452928870292887,
-          "growth": 0.01704394947293476,
-          "repricing": -0.18603522051269228
-        },
-        "years": 3
-      },
-      "rank": 2,
-      "risk": {
-        "factors": [
-          {
-            "detail": "volatility 34%",
-            "level": "Moderate",
-            "name": "Volatility"
-          },
-          {
-            "detail": "beta 1.30",
-            "level": "High",
-            "name": "Beta"
-          },
-          {
-            "detail": "turnover KES 18.1M a day",
-            "level": "Moderate",
-            "name": "Liquidity"
-          },
-          {
-            "detail": "bear case -19.9% a year",
-            "level": "High",
-            "name": "Downside"
-          },
-          {
-            "detail": "fair value spread 1.7x (3.9 to 6.5)",
-            "level": "Moderate",
-            "name": "Valuation spread"
-          },
-          {
-            "detail": "Altman Z'' 2.93, safe zone",
-            "level": "Low",
-            "name": "Balance sheet"
-          },
-          {
-            "detail": "no profit warning or suspension on file",
-            "level": "Low",
-            "name": "Events"
-          }
-        ],
-        "label": "High",
-        "level": "High",
-        "missing": [],
-        "summary": "High risk: beta 1.30; bear case -19.9% a year; volatility 34% (+2 more)."
-      },
-      "sector": "Energy",
-      "source_url": "https://africanfinancials.com/document/ke-kegn-2026-ar-00/",
-      "ticker": "KEGN",
-      "tier": "Avoid",
-      "why": "KEGN (Avoid): 45.4% downside to base fair value KES 5.22; base return -10.7% a year trails the 12.66% hurdle. Price above the middle estimate. High risk (beta 1.30; bear case -19.9% a year)."
-    }
-  ],
-  "price_date": "2026-11-17",
-  "ranking": [
-    {
-      "agree": 0,
-      "agree_needed": 3,
-      "base": -0.08792001023898689,
-      "bear": -0.22070970997252792,
-      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -8.8% does not beat the 12.66% hurdle.",
-      "bull": 0.13747426105632576,
-      "company_notes": [
-        "FY2024 values are the original OCR-read figures; the FY2025 release restated FY2024 (EPS 8.90)",
-        "Private placement on 2025-05-21 raised shares from 1,653.6m to 1,740.1m (derived; no document prints the total)",
-        "ROE and cost-to-income are integer-rounded by the company; H1-2026 NPL is the text '9%'"
-      ],
-      "composite": 0.6434579030649972,
-      "conviction": {
-        "failed": [
-          "Valuation",
-          "Return"
-        ],
-        "flag": false,
-        "gates": [
-          {
-            "detail": "0 of 5 models show at least 15% upside, needs 3",
-            "name": "Valuation",
-            "passed": false
-          },
-          {
-            "detail": "quality gate pass, score 0.80, needs pass and 0.67",
-            "name": "Quality",
-            "passed": true
-          },
-          {
-            "detail": "liquid, fresh price and results, enough history, positive EPS",
-            "name": "Screen",
-            "passed": true
-          },
-          {
-            "detail": "base return -8.8% against the 12.66% hurdle",
-            "name": "Return",
-            "passed": false
-          }
-        ],
-        "held_back": []
-      },
-      "decision": {
-        "agreement": "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
-        "changes": [
-          "With every estimate held fixed, the valuation cushion rule passes at KES 39.63 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
-          "A new price, reviewed filing or benchmark rate must produce a modelled return above the hurdle, with the other entry rules still passing."
-        ],
-        "checks": [
-          {
-            "detail": "Price age, trading activity, history and earnings checks pass.",
-            "name": "Trading and data screen",
-            "passed": true
-          },
-          {
-            "detail": "The entry health check passes; stricter checks are separate.",
-            "name": "Business health",
-            "passed": true
-          },
-          {
-            "detail": "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
-            "name": "Valuation cushion",
-            "passed": false
-          },
-          {
-            "detail": "The middle case is -8.8% a year over 3 years, at or below the 12.66% return hurdle.",
-            "name": "Return hurdle",
-            "passed": false
-          }
-        ],
-        "cushion_fraction": 0.15,
-        "cushion_price": 39.63,
-        "holder_note": "These entry rules do not decide whether to sell an existing holding.",
-        "models": [
-          {
-            "name": "Peer book-value multiple",
-            "passes": false,
-            "value": 85.40996269330479
-          },
-          {
-            "name": "Peer earnings multiple",
-            "passes": false,
-            "value": 75.4657738095238
-          },
-          {
-            "name": "Bank book-value model",
-            "passes": false,
-            "value": 45.57479876379209
-          },
-          {
-            "name": "Earnings power",
-            "passes": false,
-            "value": 44.88707840744085
-          },
-          {
-            "name": "Dividend model",
-            "passes": false,
-            "value": 29.536277875589125
-          }
-        ],
-        "reason": "Price above the middle estimate",
-        "return_context": "The middle case is -8.8% a year over 3 years, at or below the 12.66% return hurdle.",
-        "verify": [
-          "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
-          "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
-        ],
-        "why": [
-          "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
-          "The middle case is -8.8% a year over 3 years, at or below the 12.66% return hurdle."
-        ]
-      },
-      "dispersed": false,
-      "dividend_context": {
-        "basis": "Trailing regular dividends, before tax",
-        "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.045871559633027525
-      },
-      "dividend_yield": 0.045871559633027525,
-      "driver": {
-        "contribution": 1.0404607827637464,
-        "label": "momentum",
-        "signal": "momentum"
-      },
-      "estimate_reliable": true,
-      "fair_base": 45.57479876379209,
-      "fair_high": 85.40996269330479,
-      "fair_low": 29.536277875589125,
-      "filings": [
-        {
-          "period": "FY2025",
-          "published": "2026-05-02",
-          "url": "https://www.imbankgroup.com/wp-content/uploads/2026/03/im-bank-group-financials.pdf"
-        },
-        {
-          "period": "H1-2026",
-          "published": "2026-08-30",
-          "url": "https://www.imbankgroup.com/wp-content/uploads/2026/08/IM-Group-HY-2026-V5-DN-FP-275x330mm.pdf"
-        }
-      ],
-      "latest_period": "FY2025",
-      "model_spread": 2.891696883847834,
-      "model_values": {
-        "earnings_power": 44.88707840744085,
-        "gordon_ddm": 29.536277875589125,
-        "justified_pb": 45.57479876379209,
-        "sector_pb": 85.40996269330479,
-        "sector_pe": 75.4657738095238
-      },
-      "models": 5,
-      "mos": -0.44251010686492853,
-      "name": "I&M Group",
-      "notices": [],
-      "price": 81.75,
-      "price_date": "2026-11-17",
-      "projection": {
-        "base": -0.08792001023898689,
-        "bear": -0.22070970997252792,
-        "bull": 0.13747426105632576,
-        "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.04357798165137615,
-        "drivers": {
-          "costs": -0.012133333333333335,
-          "dividends": 0.04357798165137615,
-          "growth": 0.07,
-          "repricing": -0.18936465855702977
-        },
-        "years": 3
-      },
-      "rank": 1,
-      "risk": {
-        "factors": [
-          {
-            "detail": "volatility 31%",
-            "level": "Moderate",
-            "name": "Volatility"
-          },
-          {
-            "detail": "beta 1.13",
-            "level": "Moderate",
-            "name": "Beta"
-          },
-          {
-            "detail": "turnover KES 34.2M a day",
-            "level": "Low",
-            "name": "Liquidity"
-          },
-          {
-            "detail": "bear case -22.1% a year",
-            "level": "High",
-            "name": "Downside"
-          },
-          {
-            "detail": "fair value spread 2.9x (29.5 to 85.4)",
-            "level": "High",
-            "name": "Valuation spread"
-          },
-          {
-            "detail": "NPL ratio 9.0%, stable or falling",
-            "level": "Low",
-            "name": "Balance sheet"
-          },
-          {
-            "detail": "no profit warning or suspension on file",
-            "level": "Low",
-            "name": "Events"
-          }
-        ],
-        "label": "High",
-        "level": "High",
-        "missing": [],
-        "summary": "High risk: bear case -22.1% a year; fair value spread 2.9x (29.5 to 85.4); volatility 31% (+1 more)."
-      },
-      "sector": "Banking",
-      "source_url": "https://www.imbankgroup.com/wp-content/uploads/2026/03/im-bank-group-financials.pdf",
-      "ticker": "IMH",
-      "tier": "Avoid",
-      "why": "IMH (Avoid): 44.3% downside to base fair value KES 45.57; base return -8.8% a year trails the 12.66% hurdle. Price above the middle estimate. High risk (bear case -22.1% a year; fair value spread 2.9x (29.5 to 85.4))."
-    },
-    {
-      "agree": 0,
-      "agree_needed": 2,
-      "base": -0.10659531567016188,
-      "bear": -0.19909703129593204,
-      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -10.7% does not beat the 12.66% hurdle.",
-      "bull": -0.023594397824596262,
-      "company_notes": [
-        "FY2026 dps 0.75 is the proposed final only; AGM approval not verified",
-        "Company-only statements; no gross_profit line",
-        "Company-only statements as in the repo (KenGen files no group accounts in its results announcements); KShs millions; shares_outstanding 6,594.522m for every period (no share issues after the 2016 rights issue). kengen.co.ke serves a JavaScript bot-challenge page, so every period is taken from nse.co.ke filings.",
-        "gross_profit omitted for all periods: KenGen prints revenue, reimbursable expenses and operating expenses but no cost of sales or gross profit line (same as the repo records). ebit = operating profit as printed.",
-        "FY2017 not recorded: no FY2017 or FY2018 annual results announcement exists on nse.co.ke. The two 'abridged results for the year ended 30 June 2017' files (kengen-ltd-abridged-financial-statements-notice-of-agm.pdf and the AGM notice variant) contain only the Auditor-General's report and the AGM notice, with no financial statements, and no half-year Dec 2017 report (which would carry June 2017 columns) was found.",
-        "FY2022 is partial: no FY2022 or FY2023 annual results file is on nse.co.ke and the FY2024 announcement carries only FY2023 comparatives. Only the audited 30 June 2022 balance-sheet column and the 1 July 2022 equity opening in the HY Dec 2022 report were found, so revenue, ebit, net_income, eps, operating_cash_flow and long_term_debt are omitted for FY2022. FY2022 dps 0.20 is derived from the dividend of KShs 1,319m paid in the HY Dec 2022 equity statement / 6,594.522m shares. FY2022 release was delayed (CMA-approved extension to 30 Nov 2022, notice dated 27 Oct 2022).",
-        "FY2022 later restated: the FY2024 announcement shows equity at 1 July 2022 of 274,597 and retained earnings 106,686, against 275,082 and 108,024 in the HY Dec 2022 report (originals recorded). The HY Dec 2022 report also restated equity at 1 July 2021 to 206,982 (originally published as 210,323 at 30 June 2021; retained-earnings adjustment of -1,753).",
-        "long_term_debt omitted for FY2022, FY2021 and FY2018: those condensed statements print only total non-current liabilities with no borrowings line. FY2023, FY2020 and FY2019 use the non-current borrowings line (repo convention).",
-        "FY2019 audited release was delayed: the HY Dec 2019 report published the FY2019 column as unaudited and stated the audit was not complete. FY2019 is recorded from the audited prior-year comparative in the FY2020 annual report (approved 27 Jan 2021), so published uses that date (conservative); the unaudited FY2019 figures in the HY Dec 2019 report are identical.",
-        "FY2020 release was delayed: financial statements approved by the Board on 27 Jan 2021 (published = approval date, noted).",
-        "FY2023 operating_cash_flow (23,227) is 'net cash generated from operating activities' in the FY2024 summary cash-flow statement; that summary shows FY2024 as 35,650 while the repo FY2024 record carries 36,845, so the repo may use a different cash-flow line. Treat FY2023 OCF comparability with the repo as unverified.",
-        "FY2018 dps 0.40 derived from dividends declared in FY2019 of KShs 2,638m (FY2020 annual report equity statement) / 6,594.522m shares; the per-share amount was not printed in an FY2018 source."
-      ],
-      "composite": 0.5119936016099591,
-      "conviction": {
-        "failed": [
-          "Valuation",
-          "Return"
-        ],
-        "flag": false,
-        "gates": [
-          {
-            "detail": "only 2 models apply to this company and the flag needs 3 to agree (sector P/E and P/B need 3 sourced peers)",
-            "name": "Valuation",
-            "passed": false
-          },
-          {
-            "detail": "quality gate pass, score 0.88, needs pass and 0.67",
-            "name": "Quality",
-            "passed": true
-          },
-          {
-            "detail": "liquid, fresh price and results, enough history, positive EPS",
-            "name": "Screen",
-            "passed": true
-          },
-          {
-            "detail": "base return -10.7% against the 12.66% hurdle",
-            "name": "Return",
-            "passed": false
-          }
-        ],
-        "held_back": []
-      },
-      "decision": {
-        "agreement": "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
-        "changes": [
-          "With every estimate held fixed, the valuation cushion rule passes at KES 3.37 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
-          "A new price, reviewed filing or benchmark rate must produce a modelled return above the hurdle, with the other entry rules still passing."
-        ],
-        "checks": [
-          {
-            "detail": "Price age, trading activity, history and earnings checks pass.",
-            "name": "Trading and data screen",
-            "passed": true
-          },
-          {
-            "detail": "The entry health check passes; stricter checks are separate.",
-            "name": "Business health",
-            "passed": true
-          },
-          {
-            "detail": "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
-            "name": "Valuation cushion",
-            "passed": false
-          },
-          {
-            "detail": "The middle case is -10.7% a year over 3 years, at or below the 12.66% return hurdle.",
-            "name": "Return hurdle",
-            "passed": false
-          }
-        ],
-        "cushion_fraction": 0.15,
-        "cushion_price": 3.37,
-        "holder_note": "These entry rules do not decide whether to sell an existing holding.",
-        "models": [
-          {
-            "name": "Earnings power",
-            "passes": false,
-            "value": 6.545137049096043
-          },
-          {
-            "name": "Dividend model",
-            "passes": false,
-            "value": 3.884891171349851
-          }
-        ],
-        "reason": "Price above the middle estimate",
-        "return_context": "The middle case is -10.7% a year over 3 years, at or below the 12.66% return hurdle.",
-        "verify": [
-          "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
-          "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
-        ],
-        "why": [
-          "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
-          "The middle case is -10.7% a year over 3 years, at or below the 12.66% return hurdle."
-        ]
-      },
-      "dispersed": false,
-      "dividend_context": {
-        "basis": "Trailing regular dividends, before tax",
-        "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.17259414225941422
-      },
-      "dividend_yield": 0.17259414225941422,
-      "driver": {
-        "contribution": 0.8689366556801948,
-        "label": "dividend yield",
-        "signal": "dividend_yield"
-      },
-      "estimate_reliable": true,
-      "fair_base": 5.215014110222947,
-      "fair_high": 6.545137049096043,
-      "fair_low": 3.884891171349851,
-      "filings": [
-        {
-          "period": "FY2026",
-          "published": "2026-10-30",
-          "url": "https://africanfinancials.com/document/ke-kegn-2026-ar-00/"
-        }
-      ],
-      "latest_period": "FY2026",
-      "model_spread": 1.6847671557352426,
-      "model_values": {
-        "earnings_power": 6.545137049096043,
-        "gordon_ddm": 3.884891171349851
-      },
-      "models": 2,
-      "mos": -0.4544964319850474,
-      "name": "KenGen",
-      "notices": [],
-      "price": 9.56,
-      "price_date": "2026-11-17",
-      "projection": {
-        "base": -0.10659531567016188,
-        "bear": -0.19909703129593204,
-        "bull": -0.023594397824596262,
-        "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.07452928870292887,
-        "drivers": {
-          "costs": -0.012133333333333335,
-          "dividends": 0.07452928870292887,
-          "growth": 0.01704394947293476,
-          "repricing": -0.18603522051269228
-        },
-        "years": 3
-      },
-      "rank": 2,
-      "risk": {
-        "factors": [
-          {
-            "detail": "volatility 34%",
-            "level": "Moderate",
-            "name": "Volatility"
-          },
-          {
-            "detail": "beta 1.30",
-            "level": "High",
-            "name": "Beta"
-          },
-          {
-            "detail": "turnover KES 18.1M a day",
-            "level": "Moderate",
-            "name": "Liquidity"
-          },
-          {
-            "detail": "bear case -19.9% a year",
-            "level": "High",
-            "name": "Downside"
-          },
-          {
-            "detail": "fair value spread 1.7x (3.9 to 6.5)",
-            "level": "Moderate",
-            "name": "Valuation spread"
-          },
-          {
-            "detail": "Altman Z'' 2.93, safe zone",
-            "level": "Low",
-            "name": "Balance sheet"
-          },
-          {
-            "detail": "no profit warning or suspension on file",
-            "level": "Low",
-            "name": "Events"
-          }
-        ],
-        "label": "High",
-        "level": "High",
-        "missing": [],
-        "summary": "High risk: beta 1.30; bear case -19.9% a year; volatility 34% (+2 more)."
-      },
-      "sector": "Energy",
-      "source_url": "https://africanfinancials.com/document/ke-kegn-2026-ar-00/",
-      "ticker": "KEGN",
-      "tier": "Avoid",
-      "why": "KEGN (Avoid): 45.4% downside to base fair value KES 5.22; base return -10.7% a year trails the 12.66% hurdle. Price above the middle estimate. High risk (beta 1.30; bear case -19.9% a year)."
+      "why": "IMH (Avoid): 44.6% downside to base fair value KES 45.58; base return -9.0% a year trails the 12.66% hurdle. Price above the middle estimate. High risk (bear case -22.2% a year; fair value spread 2.9x (29.5 to 85.9))."
     },
     {
       "agree": 1,
       "agree_needed": 3,
-      "base": 0.10961643686876087,
-      "bear": -0.1463537062654121,
+      "base": 0.11162498634163784,
+      "bear": -0.14476137777038192,
       "binding": "Avoid: valuation models disagree (high is 3.2x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more).",
-      "bull": 0.27794263316266177,
+      "bull": 0.281257074037271,
       "company_notes": [
         "H1-2026 omits total_equity (only equity including NCI was printed) and shares_outstanding",
         "FY2025 deposits were later restated to 1,443,458.895",
@@ -1418,7 +786,7 @@
         "FY2019 dps omitted; the 2019 dividend (KES 9.5bn total) was declared and then withdrawn in 2020 to protect core capital, and the per-share amount was not printed in the documents opened",
         "FY2019 roe, cost_to_income and core_capital_ratio come from the FY2020 investor briefing presentation, whose direct PDF URL was not captured (cited via the investor relations page)"
       ],
-      "composite": 0.4962522942956429,
+      "composite": 0.5287575507070091,
       "conviction": {
         "failed": [
           "Valuation",
@@ -1485,27 +853,27 @@
           {
             "name": "Peer earnings multiple",
             "passes": true,
-            "value": 146.02428119069685
+            "value": 146.37153223700665
           },
           {
             "name": "Peer book-value multiple",
             "passes": false,
-            "value": 106.3802767328437
+            "value": 107.54972518664557
           },
           {
             "name": "Bank book-value model",
             "passes": false,
-            "value": 99.48210304486626
+            "value": 99.46958762286378
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 69.81959755665854
+            "value": 69.8138417613982
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 46.243022906749964
+            "value": 46.237205267912074
           }
         ],
         "reason": "Cannot value reliably",
@@ -1524,18 +892,18 @@
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.057356608478802994
+        "value": 0.05764411027568922
       },
-      "dividend_yield": 0.057356608478802994,
+      "dividend_yield": 0.05764411027568922,
       "driver": {
-        "contribution": 0.35190497434749585,
+        "contribution": 0.37947048689992446,
         "label": "momentum",
         "signal": "momentum"
       },
       "estimate_reliable": false,
-      "fair_base": 99.48210304486626,
-      "fair_high": 146.02428119069685,
-      "fair_low": 46.243022906749964,
+      "fair_base": 99.46958762286378,
+      "fair_high": 146.37153223700665,
+      "fair_low": 46.237205267912074,
       "filings": [
         {
           "period": "FY2025",
@@ -1549,35 +917,35 @@
         }
       ],
       "latest_period": "FY2025",
-      "model_spread": 3.1577581224557467,
+      "model_spread": 3.1656656449905785,
       "model_values": {
-        "earnings_power": 69.81959755665854,
-        "gordon_ddm": 46.243022906749964,
-        "justified_pb": 99.48210304486626,
-        "sector_pb": 106.3802767328437,
-        "sector_pe": 146.02428119069685
+        "earnings_power": 69.8138417613982,
+        "gordon_ddm": 46.237205267912074,
+        "justified_pb": 99.46958762286378,
+        "sector_pb": 107.54972518664557,
+        "sector_pe": 146.37153223700665
       },
       "models": 5,
-      "mos": -0.007659820001334028,
+      "mos": -0.002811151650488397,
       "name": "Equity Group Holdings",
       "notices": [],
-      "price": 100.25,
-      "price_date": "2026-11-17",
+      "price": 99.75,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": 0.10961643686876087,
-        "bear": -0.1463537062654121,
-        "bull": 0.27794263316266177,
+        "base": 0.11162498634163784,
+        "bear": -0.14476137777038192,
+        "bull": 0.281257074037271,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.05448877805486284,
+        "dividend_yield_net": 0.054761904761904755,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.05448877805486284,
+          "dividends": 0.054761904761904755,
           "growth": 0.07,
-          "repricing": -0.0027390078527686646
+          "repricing": -0.0010035850869337182
         },
         "years": 3
       },
-      "rank": 3,
+      "rank": 2,
       "risk": {
         "factors": [
           {
@@ -1596,12 +964,12 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -14.6% a year",
+            "detail": "bear case -14.5% a year",
             "level": "High",
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 3.2x (46.2 to 146.0)",
+            "detail": "fair value spread 3.2x (46.2 to 146.4)",
             "level": "High",
             "name": "Valuation spread"
           },
@@ -1621,21 +989,468 @@
         "missing": [
           "Downside"
         ],
-        "summary": "High (incomplete) risk: fair value spread 3.2x (46.2 to 146.0); volatility 31%; beta 1.06. Not assessed: downside."
+        "summary": "High (incomplete) risk: fair value spread 3.2x (46.2 to 146.4); volatility 31%; beta 1.06. Not assessed: downside."
       },
       "sector": "Banking",
       "source_url": "https://www.use.or.ug/uploads/46d239d2-356e-4c5c-a297-7ed44d72f790.pdf",
       "ticker": "EQTY",
       "tier": "Avoid",
-      "why": "EQTY (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Cannot value reliably. High (incomplete) risk (fair value spread 3.2x (46.2 to 146.0); volatility 31%)."
+      "why": "EQTY (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Cannot value reliably. High (incomplete) risk (fair value spread 3.2x (46.2 to 146.4); volatility 31%)."
+    }
+  ],
+  "price_date": "2026-11-18",
+  "ranking": [
+    {
+      "agree": 0,
+      "agree_needed": 3,
+      "base": -0.08993046581792116,
+      "bear": -0.222456957579904,
+      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.0% does not beat the 12.66% hurdle.",
+      "bull": 0.1370785775443776,
+      "company_notes": [
+        "FY2024 values are the original OCR-read figures; the FY2025 release restated FY2024 (EPS 8.90)",
+        "Private placement on 2025-05-21 raised shares from 1,653.6m to 1,740.1m (derived; no document prints the total)",
+        "ROE and cost-to-income are integer-rounded by the company; H1-2026 NPL is the text '9%'"
+      ],
+      "composite": 0.611359403642914,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "0 of 5 models show at least 15% upside, needs 3",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.80, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price and results, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return -9.0% against the 12.66% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ],
+        "held_back": []
+      },
+      "decision": {
+        "agreement": "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
+        "changes": [
+          "With every estimate held fixed, the valuation cushion rule passes at KES 39.63 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
+          "A new price, reviewed filing or benchmark rate must produce a modelled return above the hurdle, with the other entry rules still passing."
+        ],
+        "checks": [
+          {
+            "detail": "Price age, trading activity, history and earnings checks pass.",
+            "name": "Trading and data screen",
+            "passed": true
+          },
+          {
+            "detail": "The entry health check passes; stricter checks are separate.",
+            "name": "Business health",
+            "passed": true
+          },
+          {
+            "detail": "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
+            "name": "Valuation cushion",
+            "passed": false
+          },
+          {
+            "detail": "The middle case is -9.0% a year over 3 years, at or below the 12.66% return hurdle.",
+            "name": "Return hurdle",
+            "passed": false
+          }
+        ],
+        "cushion_fraction": 0.15,
+        "cushion_price": 39.63,
+        "holder_note": "These entry rules do not decide whether to sell an existing holding.",
+        "models": [
+          {
+            "name": "Peer book-value multiple",
+            "passes": false,
+            "value": 85.90187067309127
+          },
+          {
+            "name": "Peer earnings multiple",
+            "passes": false,
+            "value": 75.60221677285938
+          },
+          {
+            "name": "Bank book-value model",
+            "passes": false,
+            "value": 45.58141918058272
+          },
+          {
+            "name": "Earnings power",
+            "passes": false,
+            "value": 44.891381385249666
+          },
+          {
+            "name": "Dividend model",
+            "passes": false,
+            "value": 29.540568458878237
+          }
+        ],
+        "reason": "Price above the middle estimate",
+        "return_context": "The middle case is -9.0% a year over 3 years, at or below the 12.66% return hurdle.",
+        "verify": [
+          "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
+          "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
+        ],
+        "why": [
+          "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
+          "The middle case is -9.0% a year over 3 years, at or below the 12.66% return hurdle."
+        ]
+      },
+      "dispersed": false,
+      "dividend_context": {
+        "basis": "Trailing regular dividends, before tax",
+        "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
+        "value": 0.04559270516717325
+      },
+      "dividend_yield": 0.04559270516717325,
+      "driver": {
+        "contribution": 1.0099932589413176,
+        "label": "momentum",
+        "signal": "momentum"
+      },
+      "estimate_reliable": true,
+      "fair_base": 45.58141918058272,
+      "fair_high": 85.90187067309127,
+      "fair_low": 29.540568458878237,
+      "filings": [
+        {
+          "period": "FY2025",
+          "published": "2026-05-02",
+          "url": "https://www.imbankgroup.com/wp-content/uploads/2026/03/im-bank-group-financials.pdf"
+        },
+        {
+          "period": "H1-2026",
+          "published": "2026-08-30",
+          "url": "https://www.imbankgroup.com/wp-content/uploads/2026/08/IM-Group-HY-2026-V5-DN-FP-275x330mm.pdf"
+        }
+      ],
+      "latest_period": "FY2025",
+      "model_spread": 2.9079288298960946,
+      "model_values": {
+        "earnings_power": 44.891381385249666,
+        "gordon_ddm": 29.540568458878237,
+        "justified_pb": 45.58141918058272,
+        "sector_pb": 85.90187067309127,
+        "sector_pe": 75.60221677285938
+      },
+      "models": 5,
+      "mos": -0.4458186117862283,
+      "name": "I&M Group",
+      "notices": [],
+      "price": 82.25,
+      "price_date": "2026-11-18",
+      "projection": {
+        "base": -0.08993046581792116,
+        "bear": -0.222456957579904,
+        "bull": 0.1370785775443776,
+        "cost_drag": 0.012133333333333335,
+        "dividend_yield_net": 0.04331306990881459,
+        "drivers": {
+          "costs": -0.012133333333333335,
+          "dividends": 0.04331306990881459,
+          "growth": 0.07,
+          "repricing": -0.19111020239340248
+        },
+        "years": 3
+      },
+      "rank": 1,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 31%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.13",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 34.2M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -22.2% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 2.9x (29.5 to 85.9)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 9.0%, stable or falling",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "label": "High",
+        "level": "High",
+        "missing": [],
+        "summary": "High risk: bear case -22.2% a year; fair value spread 2.9x (29.5 to 85.9); volatility 31% (+1 more)."
+      },
+      "sector": "Banking",
+      "source_url": "https://www.imbankgroup.com/wp-content/uploads/2026/03/im-bank-group-financials.pdf",
+      "ticker": "IMH",
+      "tier": "Avoid",
+      "why": "IMH (Avoid): 44.6% downside to base fair value KES 45.58; base return -9.0% a year trails the 12.66% hurdle. Price above the middle estimate. High risk (bear case -22.2% a year; fair value spread 2.9x (29.5 to 85.9))."
+    },
+    {
+      "agree": 1,
+      "agree_needed": 3,
+      "base": 0.11162498634163784,
+      "bear": -0.14476137777038192,
+      "binding": "Avoid: valuation models disagree (high is 3.2x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more).",
+      "bull": 0.281257074037271,
+      "company_notes": [
+        "H1-2026 omits total_equity (only equity including NCI was printed) and shares_outstanding",
+        "FY2025 deposits were later restated to 1,443,458.895",
+        "FY2016-FY2018 not recorded; 2016-2019 integrated reports and CBK-format statements not found at probed equitygroupholdings.com or nse.co.ke URLs (site HTML blocked by Incapsula, so listings could not be browsed)",
+        "FY2019 dps omitted; the 2019 dividend (KES 9.5bn total) was declared and then withdrawn in 2020 to protect core capital, and the per-share amount was not printed in the documents opened",
+        "FY2019 roe, cost_to_income and core_capital_ratio come from the FY2020 investor briefing presentation, whose direct PDF URL was not captured (cited via the investor relations page)"
+      ],
+      "composite": 0.5287575507070091,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "models disagree: the high fair value is 3.2x the low, limit 3x",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 1.00, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price and results, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "unclear while valuation evidence disagrees",
+            "name": "Return",
+            "passed": false
+          }
+        ],
+        "held_back": [
+          "Downside: not assessed"
+        ]
+      },
+      "decision": {
+        "agreement": "1 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
+        "changes": [
+          "Verify missing inputs and investigate the disagreement between valuation methods before relying on a return estimate. A lower price alone does not resolve this."
+        ],
+        "checks": [
+          {
+            "detail": "Price age, trading activity, history and earnings checks pass.",
+            "name": "Trading and data screen",
+            "passed": true
+          },
+          {
+            "detail": "The entry health check passes; stricter checks are separate.",
+            "name": "Business health",
+            "passed": true
+          },
+          {
+            "detail": "There are too few estimates or they disagree too widely.",
+            "name": "Valuation cushion",
+            "passed": false
+          },
+          {
+            "detail": "The projected return cannot be assessed reliably.",
+            "name": "Return hurdle",
+            "passed": null
+          }
+        ],
+        "cushion_fraction": 0.15,
+        "cushion_price": null,
+        "holder_note": "These entry rules do not decide whether to sell an existing holding.",
+        "models": [
+          {
+            "name": "Peer earnings multiple",
+            "passes": true,
+            "value": 146.37153223700665
+          },
+          {
+            "name": "Peer book-value multiple",
+            "passes": false,
+            "value": 107.54972518664557
+          },
+          {
+            "name": "Bank book-value model",
+            "passes": false,
+            "value": 99.46958762286378
+          },
+          {
+            "name": "Earnings power",
+            "passes": false,
+            "value": 69.8138417613982
+          },
+          {
+            "name": "Dividend model",
+            "passes": false,
+            "value": 46.237205267912074
+          }
+        ],
+        "reason": "Cannot value reliably",
+        "return_context": "The projected return cannot be assessed reliably.",
+        "verify": [
+          "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
+          "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy.",
+          "Downside: not assessed"
+        ],
+        "why": [
+          "Valuation methods disagree or lack inputs. A point estimate would give false precision.",
+          "There are too few estimates or they disagree too widely."
+        ]
+      },
+      "dispersed": true,
+      "dividend_context": {
+        "basis": "Trailing regular dividends, before tax",
+        "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
+        "value": 0.05764411027568922
+      },
+      "dividend_yield": 0.05764411027568922,
+      "driver": {
+        "contribution": 0.37947048689992446,
+        "label": "momentum",
+        "signal": "momentum"
+      },
+      "estimate_reliable": false,
+      "fair_base": 99.46958762286378,
+      "fair_high": 146.37153223700665,
+      "fair_low": 46.237205267912074,
+      "filings": [
+        {
+          "period": "FY2025",
+          "published": "2026-05-02",
+          "url": "https://www.use.or.ug/uploads/46d239d2-356e-4c5c-a297-7ed44d72f790.pdf"
+        },
+        {
+          "period": "H1-2026",
+          "published": "2026-08-30",
+          "url": "https://www.use.or.ug/uploads/2ae88b67-dff2-4a89-9a79-d889f03d6d41.pdf"
+        }
+      ],
+      "latest_period": "FY2025",
+      "model_spread": 3.1656656449905785,
+      "model_values": {
+        "earnings_power": 69.8138417613982,
+        "gordon_ddm": 46.237205267912074,
+        "justified_pb": 99.46958762286378,
+        "sector_pb": 107.54972518664557,
+        "sector_pe": 146.37153223700665
+      },
+      "models": 5,
+      "mos": -0.002811151650488397,
+      "name": "Equity Group Holdings",
+      "notices": [],
+      "price": 99.75,
+      "price_date": "2026-11-18",
+      "projection": {
+        "base": 0.11162498634163784,
+        "bear": -0.14476137777038192,
+        "bull": 0.281257074037271,
+        "cost_drag": 0.012133333333333335,
+        "dividend_yield_net": 0.054761904761904755,
+        "drivers": {
+          "costs": -0.012133333333333335,
+          "dividends": 0.054761904761904755,
+          "growth": 0.07,
+          "repricing": -0.0010035850869337182
+        },
+        "years": 3
+      },
+      "rank": 2,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 31%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.06",
+            "level": "Moderate",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 197.0M a day",
+            "level": "Low",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -14.5% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 3.2x (46.2 to 146.4)",
+            "level": "High",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "NPL ratio 9.5%, stable or falling",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "label": "High (incomplete)",
+        "level": "High",
+        "missing": [
+          "Downside"
+        ],
+        "summary": "High (incomplete) risk: fair value spread 3.2x (46.2 to 146.4); volatility 31%; beta 1.06. Not assessed: downside."
+      },
+      "sector": "Banking",
+      "source_url": "https://www.use.or.ug/uploads/46d239d2-356e-4c5c-a297-7ed44d72f790.pdf",
+      "ticker": "EQTY",
+      "tier": "Avoid",
+      "why": "EQTY (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Cannot value reliably. High (incomplete) risk (fair value spread 3.2x (46.2 to 146.4); volatility 31%)."
     },
     {
       "agree": 1,
       "agree_needed": 2,
-      "base": 0.29816348341491017,
-      "bear": -0.13803383470988864,
+      "base": 0.2992465027649888,
+      "bear": -0.13728145318362467,
       "binding": "Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2.",
-      "bull": 0.569769643245679,
+      "bull": 0.5710574991654157,
       "company_notes": [
         "FY2026 final dividend 1.20 is proposed; AGM approval not verified",
         "FY2026 omits retained_earnings, long_term_debt and shares_outstanding (one-page condensed announcement), so no FY2026 BVPS",
@@ -1647,7 +1462,7 @@
         "Delayed reporting: FY2018 statements approved 22 Nov 2018, FY2019 approved 4 Sep 2020 and FY2020 approved 25 Feb 2021 (all past the 30 Oct deadline), so those three records use published_basis noted with the board approval date; the public announcement may have followed by a few days.",
         "FY2022 annual report cash-flow page header mislabels its columns as 2021/2020; the values are FY2022/FY2021 (they tie to the FY2021 report)."
       ],
-      "composite": 0.4804521343090641,
+      "composite": 0.5055664972476486,
       "conviction": {
         "failed": [
           "Valuation",
@@ -1715,12 +1530,12 @@
           {
             "name": "Earnings power",
             "passes": true,
-            "value": 59.01728150392904
+            "value": 59.01527929743752
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 10.01778520071282
+            "value": 10.017296857292358
           }
         ],
         "reason": "Cannot value reliably",
@@ -1740,18 +1555,18 @@
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.05022831050228311
+        "value": 0.05034324942791762
       },
-      "dividend_yield": 0.05022831050228311,
+      "dividend_yield": 0.05034324942791762,
       "driver": {
-        "contribution": 0.4320388015440392,
+        "contribution": 0.4531544868028613,
         "label": "momentum",
         "signal": "momentum"
       },
       "estimate_reliable": false,
-      "fair_base": 34.51753335232093,
-      "fair_high": 59.01728150392904,
-      "fair_low": 10.01778520071282,
+      "fair_base": 34.51628807736494,
+      "fair_high": 59.01527929743752,
+      "fair_low": 10.017296857292358,
       "filings": [
         {
           "period": "FY2026",
@@ -1760,32 +1575,32 @@
         }
       ],
       "latest_period": "FY2026",
-      "model_spread": 5.891250443234662,
+      "model_spread": 5.891337766882268,
       "model_values": {
-        "earnings_power": 59.01728150392904,
-        "gordon_ddm": 10.01778520071282
+        "earnings_power": 59.01527929743752,
+        "gordon_ddm": 10.017296857292358
       },
       "models": 2,
-      "mos": 0.5761430754484445,
+      "mos": 0.5796928181860383,
       "name": "Kenya Power and Lighting",
       "notices": [],
-      "price": 21.9,
-      "price_date": "2026-11-17",
+      "price": 21.85,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": 0.29816348341491017,
-        "bear": -0.13803383470988864,
-        "bull": 0.569769643245679,
+        "base": 0.2992465027649888,
+        "bear": -0.13728145318362467,
+        "bull": 0.5710574991654157,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.06506849315068494,
+        "dividend_yield_net": 0.06521739130434782,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.06506849315068494,
+          "dividends": 0.06521739130434782,
           "growth": 0.07,
-          "repricing": 0.17522832359755838
+          "repricing": 0.17616244479397425
         },
         "years": 3
       },
-      "rank": 4,
+      "rank": 3,
       "risk": {
         "factors": [
           {
@@ -1804,7 +1619,7 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -13.8% a year",
+            "detail": "bear case -13.7% a year",
             "level": "High",
             "name": "Downside"
           },
@@ -1839,12 +1654,217 @@
       "why": "KPLC (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Cannot value reliably. High (incomplete) risk (volatility 37%; beta 1.70)."
     },
     {
+      "agree": 0,
+      "agree_needed": 2,
+      "base": -0.10513793384435195,
+      "bear": -0.19776786192880907,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -10.5% does not beat the 12.66% hurdle.",
+      "bull": -0.022022109615739437,
+      "company_notes": [
+        "FY2026 dps 0.75 is the proposed final only; AGM approval not verified",
+        "Company-only statements; no gross_profit line",
+        "Company-only statements as in the repo (KenGen files no group accounts in its results announcements); KShs millions; shares_outstanding 6,594.522m for every period (no share issues after the 2016 rights issue). kengen.co.ke serves a JavaScript bot-challenge page, so every period is taken from nse.co.ke filings.",
+        "gross_profit omitted for all periods: KenGen prints revenue, reimbursable expenses and operating expenses but no cost of sales or gross profit line (same as the repo records). ebit = operating profit as printed.",
+        "FY2017 not recorded: no FY2017 or FY2018 annual results announcement exists on nse.co.ke. The two 'abridged results for the year ended 30 June 2017' files (kengen-ltd-abridged-financial-statements-notice-of-agm.pdf and the AGM notice variant) contain only the Auditor-General's report and the AGM notice, with no financial statements, and no half-year Dec 2017 report (which would carry June 2017 columns) was found.",
+        "FY2022 is partial: no FY2022 or FY2023 annual results file is on nse.co.ke and the FY2024 announcement carries only FY2023 comparatives. Only the audited 30 June 2022 balance-sheet column and the 1 July 2022 equity opening in the HY Dec 2022 report were found, so revenue, ebit, net_income, eps, operating_cash_flow and long_term_debt are omitted for FY2022. FY2022 dps 0.20 is derived from the dividend of KShs 1,319m paid in the HY Dec 2022 equity statement / 6,594.522m shares. FY2022 release was delayed (CMA-approved extension to 30 Nov 2022, notice dated 27 Oct 2022).",
+        "FY2022 later restated: the FY2024 announcement shows equity at 1 July 2022 of 274,597 and retained earnings 106,686, against 275,082 and 108,024 in the HY Dec 2022 report (originals recorded). The HY Dec 2022 report also restated equity at 1 July 2021 to 206,982 (originally published as 210,323 at 30 June 2021; retained-earnings adjustment of -1,753).",
+        "long_term_debt omitted for FY2022, FY2021 and FY2018: those condensed statements print only total non-current liabilities with no borrowings line. FY2023, FY2020 and FY2019 use the non-current borrowings line (repo convention).",
+        "FY2019 audited release was delayed: the HY Dec 2019 report published the FY2019 column as unaudited and stated the audit was not complete. FY2019 is recorded from the audited prior-year comparative in the FY2020 annual report (approved 27 Jan 2021), so published uses that date (conservative); the unaudited FY2019 figures in the HY Dec 2019 report are identical.",
+        "FY2020 release was delayed: financial statements approved by the Board on 27 Jan 2021 (published = approval date, noted).",
+        "FY2023 operating_cash_flow (23,227) is 'net cash generated from operating activities' in the FY2024 summary cash-flow statement; that summary shows FY2024 as 35,650 while the repo FY2024 record carries 36,845, so the repo may use a different cash-flow line. Treat FY2023 OCF comparability with the repo as unverified.",
+        "FY2018 dps 0.40 derived from dividends declared in FY2019 of KShs 2,638m (FY2020 annual report equity statement) / 6,594.522m shares; the per-share amount was not printed in an FY2018 source."
+      ],
+      "composite": 0.4774772562019709,
+      "conviction": {
+        "failed": [
+          "Valuation",
+          "Return"
+        ],
+        "flag": false,
+        "gates": [
+          {
+            "detail": "only 2 models apply to this company and the flag needs 3 to agree (sector P/E and P/B need 3 sourced peers)",
+            "name": "Valuation",
+            "passed": false
+          },
+          {
+            "detail": "quality gate pass, score 0.88, needs pass and 0.67",
+            "name": "Quality",
+            "passed": true
+          },
+          {
+            "detail": "liquid, fresh price and results, enough history, positive EPS",
+            "name": "Screen",
+            "passed": true
+          },
+          {
+            "detail": "base return -10.5% against the 12.66% hurdle",
+            "name": "Return",
+            "passed": false
+          }
+        ],
+        "held_back": []
+      },
+      "decision": {
+        "agreement": "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
+        "changes": [
+          "With every estimate held fixed, the valuation cushion rule passes at KES 3.37 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
+          "A new price, reviewed filing or benchmark rate must produce a modelled return above the hurdle, with the other entry rules still passing."
+        ],
+        "checks": [
+          {
+            "detail": "Price age, trading activity, history and earnings checks pass.",
+            "name": "Trading and data screen",
+            "passed": true
+          },
+          {
+            "detail": "The entry health check passes; stricter checks are separate.",
+            "name": "Business health",
+            "passed": true
+          },
+          {
+            "detail": "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
+            "name": "Valuation cushion",
+            "passed": false
+          },
+          {
+            "detail": "The middle case is -10.5% a year over 3 years, at or below the 12.66% return hurdle.",
+            "name": "Return hurdle",
+            "passed": false
+          }
+        ],
+        "cushion_fraction": 0.15,
+        "cushion_price": 3.37,
+        "holder_note": "These entry rules do not decide whether to sell an existing holding.",
+        "models": [
+          {
+            "name": "Earnings power",
+            "passes": false,
+            "value": 6.544725232148786
+          },
+          {
+            "name": "Dividend model",
+            "passes": false,
+            "value": 3.8846255188834236
+          }
+        ],
+        "reason": "Price above the middle estimate",
+        "return_context": "The middle case is -10.5% a year over 3 years, at or below the 12.66% return hurdle.",
+        "verify": [
+          "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
+          "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
+        ],
+        "why": [
+          "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
+          "The middle case is -10.5% a year over 3 years, at or below the 12.66% return hurdle."
+        ]
+      },
+      "dispersed": false,
+      "dividend_context": {
+        "basis": "Trailing regular dividends, before tax",
+        "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
+        "value": 0.17331932773109243
+      },
+      "dividend_yield": 0.17331932773109243,
+      "driver": {
+        "contribution": 0.8644601202366964,
+        "label": "dividend yield",
+        "signal": "dividend_yield"
+      },
+      "estimate_reliable": true,
+      "fair_base": 5.214675375516105,
+      "fair_high": 6.544725232148786,
+      "fair_low": 3.8846255188834236,
+      "filings": [
+        {
+          "period": "FY2026",
+          "published": "2026-10-30",
+          "url": "https://africanfinancials.com/document/ke-kegn-2026-ar-00/"
+        }
+      ],
+      "latest_period": "FY2026",
+      "model_spread": 1.6847763575496377,
+      "model_values": {
+        "earnings_power": 6.544725232148786,
+        "gordon_ddm": 3.8846255188834236
+      },
+      "models": 2,
+      "mos": -0.45223998156343437,
+      "name": "KenGen",
+      "notices": [],
+      "price": 9.52,
+      "price_date": "2026-11-18",
+      "projection": {
+        "base": -0.10513793384435195,
+        "bear": -0.19776786192880907,
+        "bull": -0.022022109615739437,
+        "cost_drag": 0.012133333333333335,
+        "dividend_yield_net": 0.07484243697478991,
+        "drivers": {
+          "costs": -0.012133333333333335,
+          "dividends": 0.07484243697478991,
+          "growth": 0.01704394947293476,
+          "repricing": -0.18489098695874343
+        },
+        "years": 3
+      },
+      "rank": 4,
+      "risk": {
+        "factors": [
+          {
+            "detail": "volatility 34%",
+            "level": "Moderate",
+            "name": "Volatility"
+          },
+          {
+            "detail": "beta 1.31",
+            "level": "High",
+            "name": "Beta"
+          },
+          {
+            "detail": "turnover KES 18.1M a day",
+            "level": "Moderate",
+            "name": "Liquidity"
+          },
+          {
+            "detail": "bear case -19.8% a year",
+            "level": "High",
+            "name": "Downside"
+          },
+          {
+            "detail": "fair value spread 1.7x (3.9 to 6.5)",
+            "level": "Moderate",
+            "name": "Valuation spread"
+          },
+          {
+            "detail": "Altman Z'' 2.93, safe zone",
+            "level": "Low",
+            "name": "Balance sheet"
+          },
+          {
+            "detail": "no profit warning or suspension on file",
+            "level": "Low",
+            "name": "Events"
+          }
+        ],
+        "label": "High",
+        "level": "High",
+        "missing": [],
+        "summary": "High risk: beta 1.31; bear case -19.8% a year; volatility 34% (+2 more)."
+      },
+      "sector": "Energy",
+      "source_url": "https://africanfinancials.com/document/ke-kegn-2026-ar-00/",
+      "ticker": "KEGN",
+      "tier": "Avoid",
+      "why": "KEGN (Avoid): 45.2% downside to base fair value KES 5.21; base return -10.5% a year trails the 12.66% hurdle. Price above the middle estimate. High risk (beta 1.31; bear case -19.8% a year)."
+    },
+    {
       "agree": 2,
       "agree_needed": 3,
-      "base": 0.14668543654060606,
-      "bear": -0.23826264863205115,
+      "base": 0.14322789994704008,
+      "bear": -0.24065368135778778,
       "binding": "Avoid: valuation models disagree (high is 5.4x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3.",
-      "bull": 0.3607787233018722,
+      "bull": 0.35769525397937174,
       "company_notes": [
         "H1-2026 EPS is annualised as printed (interim periods only feed the NPL trend, not valuations)",
         "source_url values point to IR listing pages because the PDFs are signed download links",
@@ -1855,7 +1875,7 @@
         "FY2019 npl_ratio computed from statement gross NPL 63,396m; 2020 integrated report narrative cites FY2019 NPLs of KES 66.2bn (11.3%), not reconciled",
         "core_capital_ratio and gross NPL taken from the CBK-format statements (group); integrated report ratios may differ slightly"
       ],
-      "composite": 0.37179361059870186,
+      "composite": 0.3714890464396293,
       "conviction": {
         "failed": [
           "Valuation",
@@ -1922,27 +1942,27 @@
           {
             "name": "Peer earnings multiple",
             "passes": true,
-            "value": 159.27137119908207
+            "value": 159.65012430675085
           },
           {
             "name": "Peer book-value multiple",
             "passes": true,
-            "value": 133.79030658308454
+            "value": 135.2610760901069
           },
           {
             "name": "Bank book-value model",
             "passes": false,
-            "value": 99.43076523254867
+            "value": 99.44942160925201
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 78.76876206831969
+            "value": 78.77872470063161
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 29.556793330064615
+            "value": 29.562339125364677
           }
         ],
         "reason": "Cannot value reliably",
@@ -1961,18 +1981,18 @@
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.05698005698005698
+        "value": 0.05649717514124294
       },
-      "dividend_yield": 0.05698005698005698,
+      "dividend_yield": 0.05649717514124294,
       "driver": {
         "contribution": 0.21138652691670337,
         "label": "quality",
         "signal": "quality"
       },
       "estimate_reliable": false,
-      "fair_base": 99.43076523254867,
-      "fair_high": 159.27137119908207,
-      "fair_low": 29.556793330064615,
+      "fair_base": 99.44942160925201,
+      "fair_high": 159.65012430675085,
+      "fair_low": 29.562339125364677,
       "filings": [
         {
           "period": "FY2025",
@@ -1986,31 +2006,31 @@
         }
       ],
       "latest_period": "FY2025",
-      "model_spread": 5.388655305752476,
+      "model_spread": 5.400456426324195,
       "model_values": {
-        "earnings_power": 78.76876206831969,
-        "gordon_ddm": 29.556793330064615,
-        "justified_pb": 99.43076523254867,
-        "sector_pb": 133.79030658308454,
-        "sector_pe": 159.27137119908207
+        "earnings_power": 78.77872470063161,
+        "gordon_ddm": 29.562339125364677,
+        "justified_pb": 99.44942160925201,
+        "sector_pb": 135.2610760901069,
+        "sector_pe": 159.65012430675085
       },
       "models": 5,
-      "mos": 0.1331141337042583,
+      "mos": 0.12372227807064418,
       "name": "KCB Group",
       "notices": [],
-      "price": 87.75,
-      "price_date": "2026-11-17",
+      "price": 88.5,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": 0.14668543654060606,
-        "bear": -0.23826264863205115,
-        "bull": 0.3607787233018722,
+        "base": 0.14322789994704008,
+        "bear": -0.24065368135778778,
+        "bull": 0.35769525397937174,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.043304843304843306,
+        "dividend_yield_net": 0.04293785310734463,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.043304843304843306,
+          "dividends": 0.04293785310734463,
           "growth": 0.07,
-          "repricing": 0.04551392656909606
+          "repricing": 0.042423380173028796
         },
         "years": 3
       },
@@ -2033,12 +2053,12 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -23.8% a year",
+            "detail": "bear case -24.1% a year",
             "level": "High",
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 5.4x (29.6 to 159.3)",
+            "detail": "fair value spread 5.4x (29.6 to 159.7)",
             "level": "High",
             "name": "Valuation spread"
           },
@@ -2058,21 +2078,21 @@
         "missing": [
           "Downside"
         ],
-        "summary": "High (incomplete) risk: beta 1.34; fair value spread 5.4x (29.6 to 159.3); volatility 30% (+1 more). Not assessed: downside."
+        "summary": "High (incomplete) risk: beta 1.34; fair value spread 5.4x (29.6 to 159.7); volatility 30% (+1 more). Not assessed: downside."
       },
       "sector": "Banking",
       "source_url": "https://kcbgroup.com/financial-statements?years=2025",
       "ticker": "KCB",
       "tier": "Avoid",
-      "why": "KCB (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Cannot value reliably. High (incomplete) risk (beta 1.34; fair value spread 5.4x (29.6 to 159.3))."
+      "why": "KCB (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Cannot value reliably. High (incomplete) risk (beta 1.34; fair value spread 5.4x (29.6 to 159.7))."
     },
     {
       "agree": 0,
       "agree_needed": 2,
-      "base": -0.041175461432628936,
-      "bear": -0.10419840149775969,
-      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -4.1% does not beat the 12.66% hurdle.",
-      "bull": 0.018935285959024405,
+      "base": -0.035963604463031935,
+      "bear": -0.09925486601966838,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -3.6% does not beat the 12.66% hurdle.",
+      "bull": 0.02440306569863126,
       "company_notes": [
         "FY2025 final dividend 60 is proposed; AGM approval not verified",
         "H1-2026 omits ebit, gross_profit and retained_earnings (not comparable or not printed)",
@@ -2085,7 +2105,7 @@
         "FY2018 is a prior-year comparative from the FY2019 announcement (the original FY2018 announcement is not on nse.co.ke). The FY2019 statement of changes in equity shows an accounting policy change of -14 to retained earnings at 1 Jan 2018. FY2018 dps 35.00 derived from the printed dividend for the year of KSh 3,500m / 100m shares (per-share amount not printed).",
         "FY2017 and FY2016 not recorded: no BAT Kenya results files exist on nse.co.ke for those years and batkenya.com returns 403. A web search summary quoted FY2017 figures, but the underlying document could not be opened, so nothing was recorded."
       ],
-      "composite": 0.3010642333327784,
+      "composite": 0.3015397870339852,
       "conviction": {
         "failed": [
           "Valuation",
@@ -2109,7 +2129,7 @@
             "passed": true
           },
           {
-            "detail": "base return -4.1% against the 12.66% hurdle",
+            "detail": "base return -3.6% against the 12.66% hurdle",
             "name": "Return",
             "passed": false
           }
@@ -2119,7 +2139,7 @@
       "decision": {
         "agreement": "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
         "changes": [
-          "With every estimate held fixed, the valuation cushion rule passes at KES 243.11 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
+          "With every estimate held fixed, the valuation cushion rule passes at KES 243.05 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
           "A new price, reviewed filing or benchmark rate must produce a modelled return above the hurdle, with the other entry rules still passing."
         ],
         "checks": [
@@ -2139,53 +2159,53 @@
             "passed": false
           },
           {
-            "detail": "The middle case is -4.1% a year over 3 years, at or below the 12.66% return hurdle.",
+            "detail": "The middle case is -3.6% a year over 3 years, at or below the 12.66% return hurdle.",
             "name": "Return hurdle",
             "passed": false
           }
         ],
         "cushion_fraction": 0.15,
-        "cushion_price": 243.11,
+        "cushion_price": 243.05,
         "holder_note": "These entry rules do not decide whether to sell an existing holding.",
         "models": [
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 383.8121575439276
+            "value": 383.7240027046178
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 279.57974161664094
+            "value": 279.515527112978
           }
         ],
         "reason": "Price above the middle estimate",
-        "return_context": "The middle case is -4.1% a year over 3 years, at or below the 12.66% return hurdle.",
+        "return_context": "The middle case is -3.6% a year over 3 years, at or below the 12.66% return hurdle.",
         "verify": [
           "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
           "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
         ],
         "why": [
           "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
-          "The middle case is -4.1% a year over 3 years, at or below the 12.66% return hurdle."
+          "The middle case is -3.6% a year over 3 years, at or below the 12.66% return hurdle."
         ]
       },
       "dispersed": false,
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.1289134438305709
+        "value": 0.13059701492537312
       },
-      "dividend_yield": 0.1289134438305709,
+      "dividend_yield": 0.13059701492537312,
       "driver": {
-        "contribution": 0.4820874971245997,
+        "contribution": 0.49038715954946216,
         "label": "dividend yield",
         "signal": "dividend_yield"
       },
       "estimate_reliable": true,
-      "fair_base": 331.69594958028426,
-      "fair_high": 383.8121575439276,
-      "fair_low": 279.57974161664094,
+      "fair_base": 331.61976490879795,
+      "fair_high": 383.7240027046178,
+      "fair_low": 279.515527112978,
       "filings": [
         {
           "period": "FY2025",
@@ -2201,26 +2221,26 @@
       "latest_period": "FY2025",
       "model_spread": 1.3728181996469897,
       "model_values": {
-        "earnings_power": 279.57974161664094,
-        "gordon_ddm": 383.8121575439276
+        "earnings_power": 279.515527112978,
+        "gordon_ddm": 383.7240027046178
       },
       "models": 2,
-      "mos": -0.3891418976422021,
+      "mos": -0.38130640875224264,
       "name": "British American Tobacco Kenya",
       "notices": [],
-      "price": 543.0,
-      "price_date": "2026-11-17",
+      "price": 536.0,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": -0.041175461432628936,
-        "bear": -0.10419840149775969,
-        "bull": 0.018935285959024405,
+        "base": -0.035963604463031935,
+        "bear": -0.09925486601966838,
+        "bull": 0.02440306569863126,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.12246777163904235,
+        "dividend_yield_net": 0.12406716417910446,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.12246777163904235,
+          "dividends": 0.12406716417910446,
           "growth": 0.0,
-          "repricing": -0.15150989973833795
+          "repricing": -0.14789743530880306
         },
         "years": 3
       },
@@ -2243,12 +2263,12 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -10.4% a year",
-            "level": "High",
+            "detail": "bear case -9.9% a year",
+            "level": "Moderate",
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 1.4x (279.6 to 383.8)",
+            "detail": "fair value spread 1.4x (279.5 to 383.7)",
             "level": "Low",
             "name": "Valuation spread"
           },
@@ -2263,24 +2283,24 @@
             "name": "Events"
           }
         ],
-        "label": "Moderate",
-        "level": "Moderate",
+        "label": "Low",
+        "level": "Low",
         "missing": [],
-        "summary": "Moderate risk: bear case -10.4% a year; turnover KES 12.5M a day."
+        "summary": "Low risk: turnover KES 12.5M a day; bear case -9.9% a year."
       },
       "sector": "Manufacturing",
       "source_url": "https://africanfinancials.com/document/ke-bat-2025-ar-00/",
       "ticker": "BAT",
       "tier": "Avoid",
-      "why": "BAT (Avoid): 38.9% downside to base fair value KES 331.70; base return -4.1% a year trails the 12.66% hurdle. Price above the middle estimate. Moderate risk (bear case -10.4% a year; turnover KES 12.5M a day)."
+      "why": "BAT (Avoid): 38.1% downside to base fair value KES 331.62; base return -3.6% a year trails the 12.66% hurdle. Price above the middle estimate. Low risk (turnover KES 12.5M a day; bear case -9.9% a year)."
     },
     {
       "agree": 0,
       "agree_needed": 3,
-      "base": 0.004928688668592066,
-      "bear": -0.1034016205212941,
+      "base": 0.00540471578631223,
+      "bear": -0.102970668871953,
       "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 0.5% does not beat the 12.66% hurdle.",
-      "bull": 0.0985695123505934,
+      "bull": 0.10115750961726894,
       "company_notes": [
         "FY2023 NPL is the original 16.1% (restated to 16.7%)",
         "FY2016 not recorded; only source found is the 2018/2019 annual report five-year summaries (KSh billion, one decimal; PAT includes minority interest; FY2016 NPL printed 4.6% in AR 2018 vs 4.3% in AR 2019); no FY2016/FY2017 CBK statement or 2017 annual report found on co-opbank.co.ke",
@@ -2292,7 +2312,7 @@
         "shares_outstanding 5,867,174,695 issued shares per 2022 integrated report shareholder profile (balance sheet share capital prints KES 5,867,180k); constant over FY2017-FY2022",
         "net_income and total_equity are attributable to equity holders of the parent (non-controlling interests excluded), taken from annual/integrated reports; CBK-format statements print total equity including NCI"
       ],
-      "composite": 0.17295649856121603,
+      "composite": 0.183696823736081,
       "conviction": {
         "failed": [
           "Valuation",
@@ -2358,27 +2378,27 @@
           {
             "name": "Peer earnings multiple",
             "passes": false,
-            "value": 34.842678405931416
+            "value": 35.04818559177121
           },
           {
             "name": "Peer book-value multiple",
             "passes": false,
-            "value": 34.58486136255772
+            "value": 34.605391535018406
           },
           {
             "name": "Bank book-value model",
             "passes": false,
-            "value": 27.829873833414442
+            "value": 27.828903844097834
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 22.1184895305838
+            "value": 22.11798804047223
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 20.531922749658467
+            "value": 20.53120712493678
           }
         ],
         "reason": "Price above the middle estimate",
@@ -2396,18 +2416,18 @@
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.0641025641025641
+        "value": 0.06418485237483953
       },
-      "dividend_yield": 0.0641025641025641,
+      "dividend_yield": 0.06418485237483953,
       "driver": {
         "contribution": 0.21138652691670337,
         "label": "quality",
         "signal": "quality"
       },
       "estimate_reliable": true,
-      "fair_base": 27.829873833414442,
-      "fair_high": 34.842678405931416,
-      "fair_low": 20.531922749658467,
+      "fair_base": 27.828903844097834,
+      "fair_high": 35.04818559177121,
+      "fair_low": 20.53120712493678,
       "filings": [
         {
           "period": "FY2025",
@@ -2421,31 +2441,31 @@
         }
       ],
       "latest_period": "FY2025",
-      "model_spread": 1.6970002678639047,
+      "model_spread": 1.7070689209112504,
       "model_values": {
-        "earnings_power": 22.1184895305838,
-        "gordon_ddm": 20.531922749658467,
-        "justified_pb": 27.829873833414442,
-        "sector_pb": 34.58486136255772,
-        "sector_pe": 34.842678405931416
+        "earnings_power": 22.11798804047223,
+        "gordon_ddm": 20.53120712493678,
+        "justified_pb": 27.828903844097834,
+        "sector_pb": 34.605391535018406,
+        "sector_pe": 35.04818559177121
       },
       "models": 5,
-      "mos": -0.2864134914509118,
+      "mos": -0.28552236600519043,
       "name": "Co-operative Bank of Kenya",
       "notices": [],
-      "price": 39.0,
-      "price_date": "2026-11-17",
+      "price": 38.95,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": 0.004928688668592066,
-        "bear": -0.1034016205212941,
-        "bull": 0.0985695123505934,
+        "base": 0.00540471578631223,
+        "bear": -0.102970668871953,
+        "bull": 0.10115750961726894,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.06089743589743589,
+        "dividend_yield_net": 0.06097560975609755,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.06089743589743589,
+          "dividends": 0.06097560975609755,
           "growth": 0.07,
-          "repricing": -0.1138354138955105
+          "repricing": -0.11343756063645208
         },
         "years": 3
       },
@@ -2458,7 +2478,7 @@
             "name": "Volatility"
           },
           {
-            "detail": "beta 0.99",
+            "detail": "beta 1.00",
             "level": "Moderate",
             "name": "Beta"
           },
@@ -2473,7 +2493,7 @@
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 1.7x (20.5 to 34.8)",
+            "detail": "fair value spread 1.7x (20.5 to 35.0)",
             "level": "Moderate",
             "name": "Valuation spread"
           },
@@ -2491,7 +2511,7 @@
         "label": "Moderate",
         "level": "Moderate",
         "missing": [],
-        "summary": "Moderate risk: bear case -10.3% a year; volatility 30%; beta 0.99 (+2 more)."
+        "summary": "Moderate risk: bear case -10.3% a year; volatility 30%; beta 1.00 (+2 more)."
       },
       "sector": "Banking",
       "source_url": "https://www.co-opbank.co.ke/wp-content/uploads/2026/03/CO-OP-Bank-Financials-2025.pdf",
@@ -2502,10 +2522,10 @@
     {
       "agree": 0,
       "agree_needed": 3,
-      "base": -0.005734524155212436,
-      "bear": -0.12230595110929728,
-      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -0.6% does not beat the 12.66% hurdle.",
-      "bull": 0.09549527420562436,
+      "base": -0.006688303504185011,
+      "bear": -0.12331073600370798,
+      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -0.7% does not beat the 12.66% hurdle.",
+      "bull": 0.09630645751719039,
       "company_notes": [
         "H1-2026 omits shares_outstanding",
         "Core capital ratio is Bank level, not Group",
@@ -2518,7 +2538,7 @@
         "FY2020 dividend suspended (COVID-19); dps recorded as 0",
         "FY2019 CBK-format statement on the IR site is a scanned image; FY2019 taken from the 2019 integrated report"
       ],
-      "composite": 0.12322772134374022,
+      "composite": 0.06349158387861357,
       "conviction": {
         "failed": [
           "Valuation",
@@ -2542,7 +2562,7 @@
             "passed": true
           },
           {
-            "detail": "base return -0.6% against the 12.66% hurdle",
+            "detail": "base return -0.7% against the 12.66% hurdle",
             "name": "Return",
             "passed": false
           }
@@ -2552,7 +2572,7 @@
       "decision": {
         "agreement": "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
         "changes": [
-          "With every estimate held fixed, the valuation cushion rule passes at KES 19.77 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
+          "With every estimate held fixed, the valuation cushion rule passes at KES 19.78 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
           "A new price, reviewed filing or benchmark rate must produce a modelled return above the hurdle, with the other entry rules still passing."
         ],
         "checks": [
@@ -2572,68 +2592,68 @@
             "passed": false
           },
           {
-            "detail": "The middle case is -0.6% a year over 3 years, at or below the 12.66% return hurdle.",
+            "detail": "The middle case is -0.7% a year over 3 years, at or below the 12.66% return hurdle.",
             "name": "Return hurdle",
             "passed": false
           }
         ],
         "cushion_fraction": 0.15,
-        "cushion_price": 19.77,
+        "cushion_price": 19.78,
         "holder_note": "These entry rules do not decide whether to sell an existing holding.",
         "models": [
           {
             "name": "Peer earnings multiple",
             "passes": false,
-            "value": 29.173829935125113
+            "value": 29.34590142803065
           },
           {
             "name": "Bank book-value model",
             "passes": false,
-            "value": 25.26263276245654
+            "value": 25.26427082358544
           },
           {
             "name": "Peer book-value multiple",
             "passes": false,
-            "value": 22.740771999097614
+            "value": 22.754271315059487
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 17.98488984520999
+            "value": 17.985658123521045
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 16.227445239016284
+            "value": 16.228497447133993
           }
         ],
         "reason": "Price above the middle estimate",
-        "return_context": "The middle case is -0.6% a year over 3 years, at or below the 12.66% return hurdle.",
+        "return_context": "The middle case is -0.7% a year over 3 years, at or below the 12.66% return hurdle.",
         "verify": [
           "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
           "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
         ],
         "why": [
           "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
-          "The middle case is -0.6% a year over 3 years, at or below the 12.66% return hurdle."
+          "The middle case is -0.7% a year over 3 years, at or below the 12.66% return hurdle."
         ]
       },
       "dispersed": false,
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.07164634146341464
+        "value": 0.07142857142857144
       },
-      "dividend_yield": 0.07164634146341464,
+      "dividend_yield": 0.07142857142857144,
       "driver": {
         "contribution": 0.21138652691670337,
         "label": "quality",
         "signal": "quality"
       },
       "estimate_reliable": true,
-      "fair_base": 22.740771999097614,
-      "fair_high": 29.173829935125113,
-      "fair_low": 16.227445239016284,
+      "fair_base": 22.754271315059487,
+      "fair_high": 29.34590142803065,
+      "fair_low": 16.228497447133993,
       "filings": [
         {
           "period": "FY2025",
@@ -2647,31 +2667,31 @@
         }
       ],
       "latest_period": "FY2025",
-      "model_spread": 1.7978079423729207,
+      "model_spread": 1.8082944230436586,
       "model_values": {
-        "earnings_power": 17.98488984520999,
-        "gordon_ddm": 16.227445239016284,
-        "justified_pb": 25.26263276245654,
-        "sector_pb": 22.740771999097614,
-        "sector_pe": 29.173829935125113
+        "earnings_power": 17.985658123521045,
+        "gordon_ddm": 16.228497447133993,
+        "justified_pb": 25.26427082358544,
+        "sector_pb": 22.754271315059487,
+        "sector_pe": 29.34590142803065
       },
       "models": 5,
-      "mos": -0.30668378051531664,
+      "mos": -0.3083808110924168,
       "name": "Absa Bank Kenya",
       "notices": [],
-      "price": 32.8,
-      "price_date": "2026-11-17",
+      "price": 32.9,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": -0.005734524155212436,
-        "bear": -0.12230595110929728,
-        "bull": 0.09549527420562436,
+        "base": -0.006688303504185011,
+        "bear": -0.12331073600370798,
+        "bull": 0.09630645751719039,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.059375,
+        "dividend_yield_net": 0.05919452887537993,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.059375,
+          "dividends": 0.05919452887537993,
           "growth": 0.07,
-          "repricing": -0.12297619082187922
+          "repricing": -0.12374949904623168
         },
         "years": 3
       },
@@ -2694,12 +2714,12 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -12.2% a year",
+            "detail": "bear case -12.3% a year",
             "level": "High",
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 1.8x (16.2 to 29.2)",
+            "detail": "fair value spread 1.8x (16.2 to 29.3)",
             "level": "Moderate",
             "name": "Valuation spread"
           },
@@ -2717,25 +2737,25 @@
         "label": "Moderate",
         "level": "Moderate",
         "missing": [],
-        "summary": "Moderate risk: bear case -12.2% a year; volatility 33%; beta 1.11 (+3 more)."
+        "summary": "Moderate risk: bear case -12.3% a year; volatility 33%; beta 1.11 (+3 more)."
       },
       "sector": "Banking",
       "source_url": "https://www.absabank.co.ke/content/dam/kenya/absa/pdf/Investor-Relations/Financial-Results/financial-results-2025.pdf",
       "ticker": "ABSA",
       "tier": "Avoid",
-      "why": "ABSA (Avoid): 30.7% downside to base fair value KES 22.74; base return -0.6% a year trails the 12.66% hurdle. Price above the middle estimate. Moderate risk (bear case -12.2% a year; volatility 33%)."
+      "why": "ABSA (Avoid): 30.8% downside to base fair value KES 22.75; base return -0.7% a year trails the 12.66% hurdle. Price above the middle estimate. Moderate risk (bear case -12.3% a year; volatility 33%)."
     },
     {
       "agree": 2,
       "agree_needed": 3,
-      "base": 0.012199634823720407,
-      "bear": -0.19348101445864876,
+      "base": 0.011225184500171946,
+      "bear": -0.194270156183749,
       "binding": "Avoid: valuation models disagree (high is 6.3x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3 (+1 more).",
-      "bull": 0.5123843283427066,
+      "bull": 0.5163477961237355,
       "company_notes": [
         "H1-2026 statements are image-only and were read by OCR; H1-2026 omits EPS and core capital"
       ],
-      "composite": -0.1985741673025483,
+      "composite": -0.19678860775225188,
       "conviction": {
         "failed": [
           "Valuation",
@@ -2803,27 +2823,27 @@
           {
             "name": "Peer book-value multiple",
             "passes": true,
-            "value": 469.01413204583235
+            "value": 474.17004880387634
           },
           {
             "name": "Peer earnings multiple",
             "passes": true,
-            "value": 257.6673865792842
+            "value": 258.2801289866426
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 143.71499749265823
+            "value": 143.72110144575865
           },
           {
             "name": "Bank book-value model",
             "passes": false,
-            "value": 77.19907936045315
+            "value": 77.20414454129443
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 74.94471985215431
+            "value": 74.94963712011001
           }
         ],
         "reason": "Cannot value reliably",
@@ -2842,18 +2862,18 @@
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.047936085219707054
+        "value": 0.04780876494023904
       },
-      "dividend_yield": 0.047936085219707054,
+      "dividend_yield": 0.04780876494023904,
       "driver": {
-        "contribution": 0.3419364893690376,
+        "contribution": 0.3437278289758362,
         "label": "momentum",
         "signal": "momentum"
       },
       "estimate_reliable": false,
-      "fair_base": 143.71499749265823,
-      "fair_high": 469.01413204583235,
-      "fair_low": 74.94471985215431,
+      "fair_base": 143.72110144575865,
+      "fair_high": 474.17004880387634,
+      "fair_low": 74.94963712011001,
       "filings": [
         {
           "period": "FY2025",
@@ -2867,31 +2887,31 @@
         }
       ],
       "latest_period": "FY2025",
-      "model_spread": 6.2581344352353385,
+      "model_spread": 6.326515604658612,
       "model_values": {
-        "earnings_power": 143.71499749265823,
-        "gordon_ddm": 74.94471985215431,
-        "justified_pb": 77.19907936045315,
-        "sector_pb": 469.01413204583235,
-        "sector_pe": 257.6673865792842
+        "earnings_power": 143.72110144575865,
+        "gordon_ddm": 74.94963712011001,
+        "justified_pb": 77.20414454129443,
+        "sector_pb": 474.17004880387634,
+        "sector_pe": 258.2801289866426
       },
       "models": 5,
-      "mos": -0.23454062587132773,
+      "mos": -0.23654129378083055,
       "name": "Diamond Trust Bank Kenya",
       "notices": [],
-      "price": 187.75,
-      "price_date": "2026-11-17",
+      "price": 188.25,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": 0.012199634823720407,
-        "bear": -0.19348101445864876,
-        "bull": 0.5123843283427066,
+        "base": 0.011225184500171946,
+        "bear": -0.194270156183749,
+        "bull": 0.5163477961237355,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.0455392809587217,
+        "dividend_yield_net": 0.04541832669322709,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.0455392809587217,
+          "dividends": 0.04541832669322709,
           "growth": 0.07,
-          "repricing": -0.09120631280166798
+          "repricing": -0.09205980885972181
         },
         "years": 3
       },
@@ -2914,12 +2934,12 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -19.3% a year",
+            "detail": "bear case -19.4% a year",
             "level": "High",
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 6.3x (74.9 to 469.0)",
+            "detail": "fair value spread 6.3x (74.9 to 474.2)",
             "level": "High",
             "name": "Valuation spread"
           },
@@ -2939,21 +2959,21 @@
         "missing": [
           "Downside"
         ],
-        "summary": "High (incomplete) risk: fair value spread 6.3x (74.9 to 469.0); volatility 30%; beta 0.95 (+1 more). Not assessed: downside."
+        "summary": "High (incomplete) risk: fair value spread 6.3x (74.9 to 474.2); volatility 30%; beta 0.95 (+1 more). Not assessed: downside."
       },
       "sector": "Banking",
       "source_url": "https://dtbk.dtbafrica.com/storage/uploads/c37e106d-9829-44ac-ae50-05d797e66b64/DTB-Intergrated-Report-2025---digital.pdf",
       "ticker": "DTK",
       "tier": "Avoid",
-      "why": "DTK (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Cannot value reliably. High (incomplete) risk (fair value spread 6.3x (74.9 to 469.0); volatility 30%)."
+      "why": "DTK (Avoid): fair value and projected return unclear because valuation evidence is insufficient or disagrees. Cannot value reliably. High (incomplete) risk (fair value spread 6.3x (74.9 to 474.2); volatility 30%)."
     },
     {
       "agree": 0,
       "agree_needed": 2,
-      "base": -0.16295256770397323,
-      "bear": -0.200650396320561,
-      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -16.3% does not beat the 12.66% hurdle.",
-      "bull": -0.125670518147006,
+      "base": -0.15964492244761094,
+      "bear": -0.19748763387332943,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -16.0% does not beat the 12.66% hurdle.",
+      "bull": -0.12222035245742466,
       "company_notes": [
         "FY2026 dps 2.00 is the proposed final only; AGM approval not verified",
         "Balance-sheet pages are image-only; some fields were read by OCR and checked by arithmetic ties",
@@ -2965,7 +2985,7 @@
         "long_term_debt = non-current borrowings: none on the balance sheet for FY2017-FY2021 (recorded as 0); FY2022 40.197 and FY2023 205.491.",
         "dps = total dividend declared for the fiscal year: final 0.70 for FY2017-FY2020; FY2021 1.60 = final 0.70 + special 0.90; FY2022 and FY2023 final 1.70 each."
       ],
-      "composite": -0.2584875299070819,
+      "composite": -0.2109977881537737,
       "conviction": {
         "failed": [
           "Valuation",
@@ -2989,7 +3009,7 @@
             "passed": true
           },
           {
-            "detail": "base return -16.3% against the 12.66% hurdle",
+            "detail": "base return -16.0% against the 12.66% hurdle",
             "name": "Return",
             "passed": false
           }
@@ -2999,7 +3019,7 @@
       "decision": {
         "agreement": "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
         "changes": [
-          "With every estimate held fixed, the valuation cushion rule passes at KES 14.27 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
+          "With every estimate held fixed, the valuation cushion rule passes at KES 14.26 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
           "A new price, reviewed filing or benchmark rate must produce a modelled return above the hurdle, with the other entry rules still passing."
         ],
         "checks": [
@@ -3019,53 +3039,53 @@
             "passed": false
           },
           {
-            "detail": "The middle case is -16.3% a year over 3 years, at or below the 12.66% return hurdle.",
+            "detail": "The middle case is -16.0% a year over 3 years, at or below the 12.66% return hurdle.",
             "name": "Return hurdle",
             "passed": false
           }
         ],
         "cushion_fraction": 0.15,
-        "cushion_price": 14.27,
+        "cushion_price": 14.26,
         "holder_note": "These entry rules do not decide whether to sell an existing holding.",
         "models": [
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 19.413375399368395
+            "value": 19.410102552776333
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 16.413898628002485
+            "value": 16.409646135493716
           }
         ],
         "reason": "Price above the middle estimate",
-        "return_context": "The middle case is -16.3% a year over 3 years, at or below the 12.66% return hurdle.",
+        "return_context": "The middle case is -16.0% a year over 3 years, at or below the 12.66% return hurdle.",
         "verify": [
           "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
           "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
         ],
         "why": [
           "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
-          "The middle case is -16.3% a year over 3 years, at or below the 12.66% return hurdle."
+          "The middle case is -16.0% a year over 3 years, at or below the 12.66% return hurdle."
         ]
       },
       "dispersed": false,
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.04739336492890995
+        "value": 0.04790419161676647
       },
-      "dividend_yield": 0.04739336492890995,
+      "dividend_yield": 0.04790419161676647,
       "driver": {
-        "contribution": 0.11636973494590452,
+        "contribution": 0.15633478109080456,
         "label": "momentum",
         "signal": "momentum"
       },
       "estimate_reliable": true,
-      "fair_base": 17.913637013685438,
-      "fair_high": 19.413375399368395,
-      "fair_low": 16.413898628002485,
+      "fair_base": 17.909874344135027,
+      "fair_high": 19.410102552776333,
+      "fair_low": 16.409646135493716,
       "filings": [
         {
           "period": "FY2026",
@@ -3074,28 +3094,28 @@
         }
       ],
       "latest_period": "FY2026",
-      "model_spread": 1.182740057030006,
+      "model_spread": 1.1828471127596527,
       "model_values": {
-        "earnings_power": 19.413375399368395,
-        "gordon_ddm": 16.413898628002485
+        "earnings_power": 19.410102552776333,
+        "gordon_ddm": 16.409646135493716
       },
       "models": 2,
-      "mos": -0.5755062319031887,
+      "mos": -0.5710209737931731,
       "name": "Carbacid Investments",
       "notices": [],
-      "price": 42.2,
-      "price_date": "2026-11-17",
+      "price": 41.75,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": -0.16295256770397323,
-        "bear": -0.200650396320561,
-        "bull": -0.125670518147006,
+        "base": -0.15964492244761094,
+        "bear": -0.19748763387332943,
+        "bull": -0.12222035245742466,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.04502369668246445,
+        "dividend_yield_net": 0.045508982035928146,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.04502369668246445,
+          "dividends": 0.045508982035928146,
           "growth": 0.07,
-          "repricing": -0.26584293105310447
+          "repricing": -0.2630205711502059
         },
         "years": 3
       },
@@ -3118,7 +3138,7 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -20.1% a year",
+            "detail": "bear case -19.7% a year",
             "level": "High",
             "name": "Downside"
           },
@@ -3141,21 +3161,21 @@
         "label": "High",
         "level": "High",
         "missing": [],
-        "summary": "High risk: volatility 39%; turnover KES 2.0M a day; bear case -20.1% a year (+1 more)."
+        "summary": "High risk: volatility 39%; turnover KES 2.0M a day; bear case -19.7% a year (+1 more)."
       },
       "sector": "Manufacturing",
       "source_url": "https://carbacid.com/documents/97/2026_Annual_Report.pdf",
       "ticker": "CARB",
       "tier": "Avoid",
-      "why": "CARB (Avoid): 57.6% downside to base fair value KES 17.91; base return -16.3% a year trails the 12.66% hurdle. Price above the middle estimate. High risk (volatility 39%; turnover KES 2.0M a day)."
+      "why": "CARB (Avoid): 57.1% downside to base fair value KES 17.91; base return -16.0% a year trails the 12.66% hurdle. Price above the middle estimate. High risk (volatility 39%; turnover KES 2.0M a day)."
     },
     {
       "agree": 0,
       "agree_needed": 2,
-      "base": -0.22391617985301016,
-      "bear": -0.29563037850641316,
-      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -22.4% does not beat the 12.66% hurdle.",
-      "bull": -0.15823856147076365,
+      "base": -0.22931774527053328,
+      "bear": -0.30061657800602937,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -22.9% does not beat the 12.66% hurdle.",
+      "bull": -0.16402423281626577,
       "company_notes": [
         "FY2026 final dividend 8.70 is proposed; AGM approval not verified",
         "total_liabilities computed as non-current + current liabilities for every period, so it EXCLUDES non-controlling interests; total_assets = total_liabilities + total_equity (parent) + NCI ties exactly in every year (this is the same arithmetic as the existing FY2024 record, whose note says 'includes NCI' but whose numbers also tie only after adding NCI).",
@@ -3163,7 +3183,7 @@
         "long_term_debt = non-current borrowings only; non-current lease liabilities (from FY2020, IFRS 16) and finance lease liabilities (FY2017) are excluded and stated in each source_note.",
         "FY2021 dps recorded as 0: the directors declared no interim or final dividend for the year (COVID-19)."
       ],
-      "composite": -0.3016710809186713,
+      "composite": -0.29910665544806975,
       "conviction": {
         "failed": [
           "Valuation",
@@ -3187,7 +3207,7 @@
             "passed": true
           },
           {
-            "detail": "base return -22.4% against the 12.66% hurdle",
+            "detail": "base return -22.9% against the 12.66% hurdle",
             "name": "Return",
             "passed": false
           }
@@ -3197,7 +3217,7 @@
       "decision": {
         "agreement": "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
         "changes": [
-          "With every estimate held fixed, the valuation cushion rule passes at KES 62.72 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
+          "With every estimate held fixed, the valuation cushion rule passes at KES 62.74 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
           "A new price, reviewed filing or benchmark rate must produce a modelled return above the hurdle, with the other entry rules still passing."
         ],
         "checks": [
@@ -3217,53 +3237,53 @@
             "passed": false
           },
           {
-            "detail": "The middle case is -22.4% a year over 3 years, at or below the 12.66% return hurdle.",
+            "detail": "The middle case is -22.9% a year over 3 years, at or below the 12.66% return hurdle.",
             "name": "Return hurdle",
             "passed": false
           }
         ],
         "cushion_fraction": 0.15,
-        "cushion_price": 62.72,
+        "cushion_price": 62.74,
         "holder_note": "These entry rules do not decide whether to sell an existing holding.",
         "models": [
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 112.62241235117045
+            "value": 112.68029857494574
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 72.13545745915214
+            "value": 72.15891706609153
           }
         ],
         "reason": "Price above the middle estimate",
-        "return_context": "The middle case is -22.4% a year over 3 years, at or below the 12.66% return hurdle.",
+        "return_context": "The middle case is -22.9% a year over 3 years, at or below the 12.66% return hurdle.",
         "verify": [
           "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
           "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
         ],
         "why": [
           "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
-          "The middle case is -22.4% a year over 3 years, at or below the 12.66% return hurdle."
+          "The middle case is -22.9% a year over 3 years, at or below the 12.66% return hurdle."
         ]
       },
       "dispersed": false,
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.04644808743169399
+        "value": 0.045576407506702415
       },
-      "dividend_yield": 0.04644808743169399,
+      "dividend_yield": 0.045576407506702415,
       "driver": {
         "contribution": 0.21138652691670337,
         "label": "quality",
         "signal": "quality"
       },
       "estimate_reliable": true,
-      "fair_base": 92.37893490516129,
-      "fair_high": 112.62241235117045,
-      "fair_low": 72.13545745915214,
+      "fair_base": 92.41960782051864,
+      "fair_high": 112.68029857494574,
+      "fair_low": 72.15891706609153,
       "filings": [
         {
           "period": "FY2026",
@@ -3272,28 +3292,28 @@
         }
       ],
       "latest_period": "FY2026",
-      "model_spread": 1.5612628839977165,
+      "model_spread": 1.5615575060770384,
       "model_values": {
-        "earnings_power": 72.13545745915214,
-        "gordon_ddm": 112.62241235117045
+        "earnings_power": 72.15891706609153,
+        "gordon_ddm": 112.68029857494574
       },
       "models": 2,
-      "mos": -0.6634647180139843,
+      "mos": -0.6696350033225429,
       "name": "East African Breweries",
       "notices": [],
-      "price": 274.5,
-      "price_date": "2026-11-17",
+      "price": 279.75,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": -0.22391617985301016,
-        "bear": -0.29563037850641316,
-        "bull": -0.15823856147076365,
+        "base": -0.22931774527053328,
+        "bear": -0.30061657800602937,
+        "bull": -0.16402423281626577,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.04395264116575592,
+        "dividend_yield_net": 0.0431277926720286,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.04395264116575592,
+          "dividends": 0.0431277926720286,
           "growth": 0.07,
-          "repricing": -0.32573548768543276
+          "repricing": -0.3303122046092286
         },
         "years": 3
       },
@@ -3301,7 +3321,7 @@
       "risk": {
         "factors": [
           {
-            "detail": "volatility 34%",
+            "detail": "volatility 35%",
             "level": "Moderate",
             "name": "Volatility"
           },
@@ -3316,12 +3336,12 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -29.6% a year",
+            "detail": "bear case -30.1% a year",
             "level": "High",
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 1.6x (72.1 to 112.6)",
+            "detail": "fair value spread 1.6x (72.2 to 112.7)",
             "level": "Moderate",
             "name": "Valuation spread"
           },
@@ -3339,21 +3359,21 @@
         "label": "Moderate",
         "level": "Moderate",
         "missing": [],
-        "summary": "Moderate risk: bear case -29.6% a year; volatility 34%; fair value spread 1.6x (72.1 to 112.6)."
+        "summary": "Moderate risk: bear case -30.1% a year; volatility 35%; fair value spread 1.6x (72.2 to 112.7)."
       },
       "sector": "Manufacturing",
       "source_url": "https://www.eabl.com/~/media/Files/E/eabl/documents/investor/agm/2026/eabl-2026-integrated-annual-report-web-version.pdf",
       "ticker": "EABL",
       "tier": "Avoid",
-      "why": "EABL (Avoid): 66.3% downside to base fair value KES 92.38; base return -22.4% a year trails the 12.66% hurdle. Price above the middle estimate. Moderate risk (bear case -29.6% a year; volatility 34%)."
+      "why": "EABL (Avoid): 67.0% downside to base fair value KES 92.42; base return -22.9% a year trails the 12.66% hurdle. Price above the middle estimate. Moderate risk (bear case -30.1% a year; volatility 35%)."
     },
     {
       "agree": 0,
       "agree_needed": 2,
-      "base": -0.19663600847141946,
-      "bear": -0.2762214052601332,
-      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -19.7% does not beat the 12.66% hurdle.",
-      "bull": -0.1246916528393743,
+      "base": -0.19488215115577276,
+      "bear": -0.2746116442122809,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -19.5% does not beat the 12.66% hurdle.",
+      "bull": -0.12280657765609523,
       "company_notes": [
         "Audited IFRS figures include the IAS 29 (Ethiopia hyperinflation) impact; press-release headline profit excludes it",
         "H1-FY2027 is unaudited and reflects an IFRS 15 policy change, so comparatives may differ",
@@ -3369,7 +3389,7 @@
         "EPS is printed to one decimal (FY2023 1.6, FY2022 1.7); net_income/shares gives 1.554 and 1.738, within the 5% check against the rounded print.",
         "total_liabilities + total_equity (parent) is lower than total_assets by the non-controlling interest (FY2023 75,810.0; FY2022 40,232.3, mainly Safaricom Ethiopia); TL + parent equity + NCI ties exactly."
       ],
-      "composite": -0.3387683162082289,
+      "composite": -0.32445248787837133,
       "conviction": {
         "failed": [
           "Valuation",
@@ -3393,7 +3413,7 @@
             "passed": true
           },
           {
-            "detail": "base return -19.7% against the 12.66% hurdle",
+            "detail": "base return -19.5% against the 12.66% hurdle",
             "name": "Return",
             "passed": false
           }
@@ -3423,7 +3443,7 @@
             "passed": false
           },
           {
-            "detail": "The middle case is -19.7% a year over 3 years, at or below the 12.66% return hurdle.",
+            "detail": "The middle case is -19.5% a year over 3 years, at or below the 12.66% return hurdle.",
             "name": "Return hurdle",
             "passed": false
           }
@@ -3435,41 +3455,41 @@
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 15.780625611487826
+            "value": 15.77845224707814
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 9.670798913361262
+            "value": 9.66989051190987
           }
         ],
         "reason": "Price above the middle estimate",
-        "return_context": "The middle case is -19.7% a year over 3 years, at or below the 12.66% return hurdle.",
+        "return_context": "The middle case is -19.5% a year over 3 years, at or below the 12.66% return hurdle.",
         "verify": [
           "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
           "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
         ],
         "why": [
           "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
-          "The middle case is -19.7% a year over 3 years, at or below the 12.66% return hurdle."
+          "The middle case is -19.5% a year over 3 years, at or below the 12.66% return hurdle."
         ]
       },
       "dispersed": false,
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.05763688760806916
+        "value": 0.057971014492753624
       },
-      "dividend_yield": 0.05763688760806916,
+      "dividend_yield": 0.057971014492753624,
       "driver": {
         "contribution": 0.11672743356617606,
         "label": "quality",
         "signal": "quality"
       },
       "estimate_reliable": true,
-      "fair_base": 12.725712262424544,
-      "fair_high": 15.780625611487826,
-      "fair_low": 9.670798913361262,
+      "fair_base": 12.724171379494006,
+      "fair_high": 15.77845224707814,
+      "fair_low": 9.66989051190987,
       "filings": [
         {
           "period": "FY2026",
@@ -3483,13 +3503,13 @@
         }
       ],
       "latest_period": "FY2026",
-      "model_spread": 1.6317809679286346,
+      "model_spread": 1.6317095036024134,
       "model_values": {
-        "earnings_power": 9.670798913361262,
-        "gordon_ddm": 15.780625611487826
+        "earnings_power": 9.66989051190987,
+        "gordon_ddm": 15.77845224707814
       },
       "models": 2,
-      "mos": -0.6332647762990045,
+      "mos": -0.6311834382755361,
       "name": "Safaricom",
       "notices": [
         {
@@ -3498,19 +3518,19 @@
           "url": "https://www.nse.co.ke/wp-content/uploads/Safaricom-Plc-–Audited-Results-for-the-Year-Ended-31-March-2026.pdf"
         }
       ],
-      "price": 34.7,
-      "price_date": "2026-11-17",
+      "price": 34.5,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": -0.19663600847141946,
-        "bear": -0.2762214052601332,
-        "bull": -0.1246916528393743,
+        "base": -0.19488215115577276,
+        "bear": -0.2746116442122809,
+        "bull": -0.12280657765609523,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.0547550432276657,
+        "dividend_yield_net": 0.05507246376811594,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.0547550432276657,
+          "dividends": 0.05507246376811594,
           "growth": 0.06280440706328162,
-          "repricing": -0.30206212542903343
+          "repricing": -0.300625688653837
         },
         "years": 3
       },
@@ -3533,7 +3553,7 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -27.6% a year",
+            "detail": "bear case -27.5% a year",
             "level": "High",
             "name": "Downside"
           },
@@ -3556,21 +3576,21 @@
         "label": "Moderate",
         "level": "Moderate",
         "missing": [],
-        "summary": "Moderate risk: bear case -27.6% a year; beta 0.93; fair value spread 1.6x (9.7 to 15.8)."
+        "summary": "Moderate risk: bear case -27.5% a year; beta 0.93; fair value spread 1.6x (9.7 to 15.8)."
       },
       "sector": "Telecommunication",
       "source_url": "https://www.safaricom.co.ke/images/Downloads/2026_Safaricom_Annual_Report_Updated.pdf",
       "ticker": "SCOM",
       "tier": "Avoid",
-      "why": "SCOM (Avoid): 63.3% downside to base fair value KES 12.73; base return -19.7% a year trails the 12.66% hurdle. Price above the middle estimate. Moderate risk (bear case -27.6% a year; beta 0.93)."
+      "why": "SCOM (Avoid): 63.1% downside to base fair value KES 12.72; base return -19.5% a year trails the 12.66% hurdle. Price above the middle estimate. Moderate risk (bear case -27.5% a year; beta 0.93)."
     },
     {
       "agree": 0,
       "agree_needed": 3,
-      "base": 0.02007521406956366,
-      "bear": -0.03010500206041037,
+      "base": 0.014173469495699373,
+      "bear": -0.03580165728183176,
       "binding": "Avoid: quality gate failed (Piotroski 2/5 below gate); only 0 of 5 valuation models show 15% or more upside, needs 3 (+1 more).",
-      "bull": 0.11472996291842882,
+      "bull": 0.10842239082641776,
       "company_notes": [
         "H1-2026 net_loans and deposits are at KES 0.1bn precision; core capital ratio is Bank level",
         "FY2024 DPS conflict: 20.74 (used) vs 20.83",
@@ -3580,7 +3600,7 @@
         "FY2019 dps 7.05 is interim 1.25 + final 5.80 per the dividend note table (KShs 2,787m); the narrative text quotes a final of KShs 5.82 and a total of about KShs 7",
         "FY2020 roe printed 10.4% in the five-year reviews (one FY2022 report table shows 10.3%); FY2016 roe computed as net_income / closing total_equity because FY2015 equity was not opened"
       ],
-      "composite": -0.36224296240931014,
+      "composite": -0.3952738619635182,
       "conviction": {
         "failed": [
           "Valuation",
@@ -3605,7 +3625,7 @@
             "passed": true
           },
           {
-            "detail": "base return 2.0% against the 12.66% hurdle",
+            "detail": "base return 1.4% against the 12.66% hurdle",
             "name": "Return",
             "passed": false
           }
@@ -3615,7 +3635,7 @@
       "decision": {
         "agreement": "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
         "changes": [
-          "With every estimate held fixed, the valuation cushion rule passes at KES 172.52 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
+          "With every estimate held fixed, the valuation cushion rule passes at KES 172.59 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
           "New, reviewed financial statements must resolve the failed or missing business-health checks.",
           "A new price, reviewed filing or benchmark rate must produce a modelled return above the hurdle, with the other entry rules still passing."
         ],
@@ -3636,43 +3656,43 @@
             "passed": false
           },
           {
-            "detail": "The middle case is 2.0% a year over 3 years, at or below the 12.66% return hurdle.",
+            "detail": "The middle case is 1.4% a year over 3 years, at or below the 12.66% return hurdle.",
             "name": "Return hurdle",
             "passed": false
           }
         ],
         "cushion_fraction": 0.15,
-        "cushion_price": 172.52,
+        "cushion_price": 172.59,
         "holder_note": "These entry rules do not decide whether to sell an existing holding.",
         "models": [
           {
             "name": "Peer book-value multiple",
             "passes": false,
-            "value": 249.13330170820464
+            "value": 249.28119154925827
           },
           {
             "name": "Peer earnings multiple",
             "passes": false,
-            "value": 239.88907553290085
+            "value": 241.30397619731366
           },
           {
             "name": "Bank book-value model",
             "passes": false,
-            "value": 198.40227309646332
+            "value": 198.4841299626176
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 196.3297403505591
+            "value": 196.41074213056476
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 178.61560551294497
+            "value": 178.66342863843275
           }
         ],
         "reason": "Business health check failed",
-        "return_context": "The middle case is 2.0% a year over 3 years, at or below the 12.66% return hurdle.",
+        "return_context": "The middle case is 1.4% a year over 3 years, at or below the 12.66% return hurdle.",
         "verify": [
           "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
           "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
@@ -3680,25 +3700,25 @@
         "why": [
           "Piotroski 2/5 below gate",
           "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
-          "The middle case is 2.0% a year over 3 years, at or below the 12.66% return hurdle."
+          "The middle case is 1.4% a year over 3 years, at or below the 12.66% return hurdle."
         ]
       },
       "dispersed": false,
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.07328493647912886
+        "value": 0.072171581769437
       },
-      "dividend_yield": 0.07328493647912886,
+      "dividend_yield": 0.072171581769437,
       "driver": {
-        "contribution": -0.0009795104802171096,
+        "contribution": -0.00430068244381461,
         "label": "margin of safety",
         "signal": "margin_of_safety"
       },
       "estimate_reliable": true,
-      "fair_base": 198.40227309646332,
-      "fair_high": 249.13330170820464,
-      "fair_low": 178.61560551294497,
+      "fair_base": 198.4841299626176,
+      "fair_high": 249.28119154925827,
+      "fair_low": 178.66342863843275,
       "filings": [
         {
           "period": "FY2025",
@@ -3712,31 +3732,31 @@
         }
       ],
       "latest_period": "FY2025",
-      "model_spread": 1.3948014284236154,
+      "model_spread": 1.3952558363454286,
       "model_values": {
-        "earnings_power": 178.61560551294497,
-        "gordon_ddm": 196.3297403505591,
-        "justified_pb": 198.40227309646332,
-        "sector_pb": 249.13330170820464,
-        "sector_pe": 239.88907553290085
+        "earnings_power": 178.66342863843275,
+        "gordon_ddm": 196.41074213056476,
+        "justified_pb": 198.4841299626176,
+        "sector_pb": 249.28119154925827,
+        "sector_pe": 241.30397619731366
       },
       "models": 5,
-      "mos": -0.2798465586335269,
+      "mos": -0.290494620330232,
       "name": "Stanbic Holdings",
       "notices": [],
-      "price": 275.5,
-      "price_date": "2026-11-17",
+      "price": 279.75,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": 0.02007521406956366,
-        "bear": -0.03010500206041037,
-        "bull": 0.11472996291842882,
+        "base": 0.014173469495699373,
+        "bear": -0.03580165728183176,
+        "bull": 0.10842239082641776,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.07706896551724138,
+        "dividend_yield_net": 0.07589812332439679,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.07706896551724138,
+          "dividends": 0.07589812332439679,
           "growth": 0.06559415478776914,
-          "repricing": -0.11045457290211359
+          "repricing": -0.11518547528313329
         },
         "years": 3
       },
@@ -3759,12 +3779,12 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -3.0% a year",
+            "detail": "bear case -3.6% a year",
             "level": "Moderate",
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 1.4x (178.6 to 249.1)",
+            "detail": "fair value spread 1.4x (178.7 to 249.3)",
             "level": "Low",
             "name": "Valuation spread"
           },
@@ -3782,21 +3802,21 @@
         "label": "Moderate",
         "level": "Moderate",
         "missing": [],
-        "summary": "Moderate risk: volatility 27%; turnover KES 13.2M a day; bear case -3.0% a year."
+        "summary": "Moderate risk: volatility 27%; turnover KES 13.2M a day; bear case -3.6% a year."
       },
       "sector": "Banking",
       "source_url": "https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/Stanbic%20Holdings%20PLC/Financials/2026/Stanbic%20Holdings%20Plc%202025%20Full%20Year%20Financial%20Results.pdf",
       "ticker": "SBIC",
       "tier": "Avoid",
-      "why": "SBIC (Avoid): 28.0% downside to base fair value KES 198.40; base return 2.0% a year trails the 12.66% hurdle. Business health check failed. Moderate risk (volatility 27%; turnover KES 13.2M a day)."
+      "why": "SBIC (Avoid): 29.0% downside to base fair value KES 198.48; base return 1.4% a year trails the 12.66% hurdle. Business health check failed. Moderate risk (volatility 27%; turnover KES 13.2M a day)."
     },
     {
       "agree": 0,
       "agree_needed": 3,
-      "base": -0.020187796193559114,
-      "bear": -0.10363238672037196,
-      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -2.0% does not beat the 12.66% hurdle.",
-      "bull": 0.00981826447211324,
+      "base": -0.014856987842429841,
+      "bear": -0.0989057278783565,
+      "binding": "Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -1.5% does not beat the 12.66% hurdle.",
+      "bull": 0.016927692003580234,
       "company_notes": [
         "EPS is on ordinary profit after preference dividends, so it differs from net_income / shares",
         "total_equity includes about KES 2.8bn of preference shares and capital grants, so derived BVPS is slightly high",
@@ -3812,7 +3832,7 @@
         "FY2016, FY2018 and FY2023 CBK-format statements are scanned images; annual reports used instead",
         "core_capital_ratio is Bank level"
       ],
-      "composite": -0.40837982441066356,
+      "composite": -0.4066939016708938,
       "conviction": {
         "failed": [
           "Valuation",
@@ -3836,7 +3856,7 @@
             "passed": true
           },
           {
-            "detail": "base return -2.0% against the 12.66% hurdle",
+            "detail": "base return -1.5% against the 12.66% hurdle",
             "name": "Return",
             "passed": false
           }
@@ -3846,7 +3866,7 @@
       "decision": {
         "agreement": "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
         "changes": [
-          "With every estimate held fixed, the valuation cushion rule passes at KES 187.54 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
+          "With every estimate held fixed, the valuation cushion rule passes at KES 187.65 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.",
           "A new price, reviewed filing or benchmark rate must produce a modelled return above the hurdle, with the other entry rules still passing."
         ],
         "checks": [
@@ -3866,68 +3886,68 @@
             "passed": false
           },
           {
-            "detail": "The middle case is -2.0% a year over 3 years, at or below the 12.66% return hurdle.",
+            "detail": "The middle case is -1.5% a year over 3 years, at or below the 12.66% return hurdle.",
             "name": "Return hurdle",
             "passed": false
           }
         ],
         "cushion_fraction": 0.15,
-        "cushion_price": 187.54,
+        "cushion_price": 187.65,
         "holder_note": "These entry rules do not decide whether to sell an existing holding.",
         "models": [
           {
             "name": "Peer earnings multiple",
             "passes": false,
-            "value": 224.47257298424466
+            "value": 225.79654487397042
           },
           {
             "name": "Bank book-value model",
             "passes": false,
-            "value": 218.11306474765703
+            "value": 218.06276286373702
           },
           {
             "name": "Peer book-value multiple",
             "passes": false,
-            "value": 215.6766775965197
+            "value": 215.80470700627754
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 208.15077332021673
+            "value": 208.1054397110441
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 170.83262281330389
+            "value": 170.7932248855711
           }
         ],
         "reason": "Price above the middle estimate",
-        "return_context": "The middle case is -2.0% a year over 3 years, at or below the 12.66% return hurdle.",
+        "return_context": "The middle case is -1.5% a year over 3 years, at or below the 12.66% return hurdle.",
         "verify": [
           "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
           "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
         ],
         "why": [
           "0 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
-          "The middle case is -2.0% a year over 3 years, at or below the 12.66% return hurdle."
+          "The middle case is -1.5% a year over 3 years, at or below the 12.66% return hurdle."
         ]
       },
       "dispersed": false,
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.10194174757281553
+        "value": 0.10327868852459017
       },
-      "dividend_yield": 0.10194174757281553,
+      "dividend_yield": 0.10327868852459017,
       "driver": {
-        "contribution": 0.2432181938068675,
+        "contribution": 0.2511902021133686,
         "label": "dividend yield",
         "signal": "dividend_yield"
       },
       "estimate_reliable": true,
-      "fair_base": 215.6766775965197,
-      "fair_high": 224.47257298424466,
-      "fair_low": 170.83262281330389,
+      "fair_base": 215.80470700627754,
+      "fair_high": 225.79654487397042,
+      "fair_low": 170.7932248855711,
       "filings": [
         {
           "period": "FY2025",
@@ -3941,31 +3961,31 @@
         }
       ],
       "latest_period": "FY2025",
-      "model_spread": 1.313991258154256,
+      "model_spread": 1.3220462639853,
       "model_values": {
-        "earnings_power": 208.15077332021673,
-        "gordon_ddm": 170.83262281330389,
-        "justified_pb": 218.11306474765703,
-        "sector_pb": 215.6766775965197,
-        "sector_pe": 224.47257298424466
+        "earnings_power": 208.1054397110441,
+        "gordon_ddm": 170.7932248855711,
+        "justified_pb": 218.06276286373702,
+        "sector_pb": 215.80470700627754,
+        "sector_pe": 225.79654487397042
       },
       "models": 5,
-      "mos": -0.3020172246067323,
+      "mos": -0.29244358358597533,
       "name": "Standard Chartered Bank Kenya",
       "notices": [],
-      "price": 309.0,
-      "price_date": "2026-11-17",
+      "price": 305.0,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": -0.020187796193559114,
-        "bear": -0.10363238672037196,
-        "bull": 0.00981826447211324,
+        "base": -0.014856987842429841,
+        "bear": -0.0989057278783565,
+        "bull": 0.016927692003580234,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.09530744336569578,
+        "dividend_yield_net": 0.09655737704918033,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.09530744336569578,
+          "dividends": 0.09655737704918033,
           "growth": 0.010808652583048015,
-          "repricing": -0.11417055880896952
+          "repricing": -0.1100896841413248
         },
         "years": 3
       },
@@ -3988,12 +4008,12 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -10.4% a year",
-            "level": "High",
+            "detail": "bear case -9.9% a year",
+            "level": "Moderate",
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 1.3x (170.8 to 224.5)",
+            "detail": "fair value spread 1.3x (170.8 to 225.8)",
             "level": "Low",
             "name": "Valuation spread"
           },
@@ -4011,21 +4031,21 @@
         "label": "Moderate",
         "level": "Moderate",
         "missing": [],
-        "summary": "Moderate risk: bear case -10.4% a year; beta 0.85; turnover KES 11.1M a day."
+        "summary": "Moderate risk: beta 0.85; turnover KES 11.1M a day; bear case -9.9% a year."
       },
       "sector": "Banking",
       "source_url": "https://www.nse.co.ke/wp-content/uploads/Standard-Chartered-Bank-Ltd-Financial-Results-for-the-Year-Ended-31-Dec-2025.pdf",
       "ticker": "SCBK",
       "tier": "Avoid",
-      "why": "SCBK (Avoid): 30.2% downside to base fair value KES 215.68; base return -2.0% a year trails the 12.66% hurdle. Price above the middle estimate. Moderate risk (bear case -10.4% a year; beta 0.85)."
+      "why": "SCBK (Avoid): 29.2% downside to base fair value KES 215.80; base return -1.5% a year trails the 12.66% hurdle. Price above the middle estimate. Moderate risk (beta 0.85; turnover KES 11.1M a day)."
     },
     {
       "agree": 0,
       "agree_needed": 2,
-      "base": -0.20655578272128466,
-      "bear": -0.22422472738166316,
-      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -20.7% does not beat the 12.66% hurdle.",
-      "bull": -0.18879052264345736,
+      "base": -0.2051912242450858,
+      "bear": -0.22288547459527358,
+      "binding": "Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -20.5% does not beat the 12.66% hurdle.",
+      "bull": -0.18740052053326933,
       "company_notes": [
         "shares_outstanding includes 454.477m redeemable preference shares, matching the printed EPS",
         "No ebit or long_term_debt lines in the statements",
@@ -4036,7 +4056,7 @@
         "FY2019 and FY2022 are prior-year comparatives (FY2020 and FY2023 annual reports respectively); the original FY2019 and FY2022 announcements are not on nse.co.ke.",
         "Most pre-2022 NSE files are scanned images; values were read from rendered page images (FY2016, FY2017, FY2018, FY2019, FY2020, FY2021) and cross-checked by the balance-sheet identity and EPS = profit / 629.542m."
       ],
-      "composite": -0.462599208541194,
+      "composite": -0.46234927842260576,
       "conviction": {
         "failed": [
           "Valuation",
@@ -4060,7 +4080,7 @@
             "passed": true
           },
           {
-            "detail": "base return -20.7% against the 12.66% hurdle",
+            "detail": "base return -20.5% against the 12.66% hurdle",
             "name": "Return",
             "passed": false
           }
@@ -4093,7 +4113,7 @@
             "passed": false
           },
           {
-            "detail": "The middle case is -20.7% a year over 3 years, at or below the 12.66% return hurdle.",
+            "detail": "The middle case is -20.5% a year over 3 years, at or below the 12.66% return hurdle.",
             "name": "Return hurdle",
             "passed": false
           }
@@ -4105,16 +4125,16 @@
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 18.36323827830557
+            "value": 18.361805505996482
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 17.913243749336726
+            "value": 17.9118460873764
           }
         ],
         "reason": "Price above the middle estimate",
-        "return_context": "The middle case is -20.7% a year over 3 years, at or below the 12.66% return hurdle.",
+        "return_context": "The middle case is -20.5% a year over 3 years, at or below the 12.66% return hurdle.",
         "verify": [
           "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
           "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy.",
@@ -4123,25 +4143,25 @@
         ],
         "why": [
           "0 of 2 methods estimate at least 15% upside; 2 must agree. This cushion allows for errors in the estimates.",
-          "The middle case is -20.7% a year over 3 years, at or below the 12.66% return hurdle."
+          "The middle case is -20.5% a year over 3 years, at or below the 12.66% return hurdle."
         ]
       },
       "dispersed": false,
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.0752453653217012
+        "value": 0.0755750273822563
       },
-      "dividend_yield": 0.0752453653217012,
+      "dividend_yield": 0.0755750273822563,
       "driver": {
         "contribution": 0.022068340215648755,
         "label": "quality",
         "signal": "quality"
       },
       "estimate_reliable": true,
-      "fair_base": 18.138241013821148,
-      "fair_high": 18.36323827830557,
-      "fair_low": 17.913243749336726,
+      "fair_base": 18.13682579668644,
+      "fair_high": 18.361805505996482,
+      "fair_low": 17.9118460873764,
       "filings": [
         {
           "period": "FY2025",
@@ -4152,11 +4172,11 @@
       "latest_period": "FY2025",
       "model_spread": 1.0251207729468599,
       "model_values": {
-        "earnings_power": 18.36323827830557,
-        "gordon_ddm": 17.913243749336726
+        "earnings_power": 18.361805505996482,
+        "gordon_ddm": 17.9118460873764
       },
       "models": 2,
-      "mos": -0.6044004140933228,
+      "mos": -0.6026982300835391,
       "name": "TotalEnergies Marketing Kenya",
       "notices": [
         {
@@ -4165,19 +4185,19 @@
           "url": "https://www.nse.co.ke/wp-content/uploads/TotalEnergies-Marketing-Kenya-PLC-Audited-Financial-Results-for-the-Year-Ended-31-Dec-2025.pdf"
         }
       ],
-      "price": 45.85,
-      "price_date": "2026-11-17",
+      "price": 45.65,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": -0.20655578272128466,
-        "bear": -0.22422472738166316,
-        "bull": -0.18879052264345736,
+        "base": -0.2051912242450858,
+        "bear": -0.22288547459527358,
+        "bull": -0.18740052053326933,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.07148309705561613,
+        "dividend_yield_net": 0.07179627601314348,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.07148309705561613,
+          "dividends": 0.07179627601314348,
           "growth": 0.0,
-          "repricing": -0.26590554644356745
+          "repricing": -0.26485416692489594
         },
         "years": 3
       },
@@ -4200,7 +4220,7 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -22.4% a year",
+            "detail": "bear case -22.3% a year",
             "level": "High",
             "name": "Downside"
           },
@@ -4225,21 +4245,21 @@
         "missing": [
           "Balance sheet"
         ],
-        "summary": "High (incomplete) risk: turnover KES 1.1M a day; bear case -22.4% a year; volatility 26% (+1 more). Not assessed: balance sheet."
+        "summary": "High (incomplete) risk: turnover KES 1.1M a day; bear case -22.3% a year; volatility 26% (+1 more). Not assessed: balance sheet."
       },
       "sector": "Energy",
       "source_url": "https://dxm.content-center.totalenergies.com/api/wedia/dam/variation/xysh7dg731ta7oeegiedu7jb3o/pdf,original?hash=gr3n6cbifh3dyctsryaucqttgy7dyqy-1794352676753&download=true",
       "ticker": "TOTL",
       "tier": "Avoid",
-      "why": "TOTL (Avoid): 60.4% downside to base fair value KES 18.14; base return -20.7% a year trails the 12.66% hurdle. Price above the middle estimate. High (incomplete) risk (turnover KES 1.1M a day; bear case -22.4% a year)."
+      "why": "TOTL (Avoid): 60.3% downside to base fair value KES 18.14; base return -20.5% a year trails the 12.66% hurdle. Price above the middle estimate. High (incomplete) risk (turnover KES 1.1M a day; bear case -22.3% a year)."
     },
     {
       "agree": 1,
       "agree_needed": 3,
-      "base": 0.14898460507318972,
-      "bear": -0.003848906857614928,
+      "base": 0.14658370817870012,
+      "bear": -0.005971616909902477,
       "binding": "Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3.",
-      "bull": 0.23020518965679398,
+      "bull": 0.2285193744468018,
       "company_notes": [
         "H1-2026 net_loans uses the CBK format line, a different definition from the FY IFRS line",
         "H1-2026 omits shares_outstanding; Nedbank tender offer (unconditional 2026-10-19) did not change the share count",
@@ -4253,7 +4273,7 @@
         "roe FY2022-FY2021 printed; FY2020, FY2019 and FY2018 computed as net_income / closing total_equity",
         "cost_to_income computed as operating expenses excluding impairment / operating income in every year"
       ],
-      "composite": -0.7704749074184007,
+      "composite": -0.7477153675983671,
       "conviction": {
         "failed": [
           "Valuation",
@@ -4277,7 +4297,7 @@
             "passed": true
           },
           {
-            "detail": "base return 14.9% against the 12.66% hurdle",
+            "detail": "base return 14.7% against the 12.66% hurdle",
             "name": "Return",
             "passed": true
           }
@@ -4287,7 +4307,7 @@
       "decision": {
         "agreement": "1 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
         "changes": [
-          "With every estimate held fixed, the valuation cushion rule passes at KES 80.49 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply."
+          "With every estimate held fixed, the valuation cushion rule passes at KES 80.50 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply."
         ],
         "checks": [
           {
@@ -4306,49 +4326,49 @@
             "passed": false
           },
           {
-            "detail": "The middle case is 14.9% a year over 3 years, above the 12.66% return hurdle.",
+            "detail": "The middle case is 14.7% a year over 3 years, above the 12.66% return hurdle.",
             "name": "Return hurdle",
             "passed": true
           }
         ],
         "cushion_fraction": 0.15,
-        "cushion_price": 80.49,
+        "cushion_price": 80.5,
         "holder_note": "These entry rules do not decide whether to sell an existing holding.",
         "models": [
           {
             "name": "Peer earnings multiple",
             "passes": true,
-            "value": 108.73333995321947
+            "value": 108.99191178633951
           },
           {
             "name": "Peer book-value multiple",
             "passes": false,
-            "value": 100.34200989012088
+            "value": 101.44507910484069
           },
           {
             "name": "Bank book-value model",
             "passes": false,
-            "value": 92.56522425979729
+            "value": 92.5793351132486
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 70.20590092113052
+            "value": 70.21270690887005
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 62.122046320584076
+            "value": 62.13151634670604
           }
         ],
         "reason": "Insufficient valuation cushion",
-        "return_context": "The middle case is 14.9% a year over 3 years, above the 12.66% return hurdle.",
+        "return_context": "The middle case is 14.7% a year over 3 years, above the 12.66% return hurdle.",
         "verify": [
           "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
           "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
         ],
         "why": [
-          "The middle case is 14.9% a year over 3 years, above the 12.66% return hurdle. Clearing this hurdle alone does not qualify a stock.",
+          "The middle case is 14.7% a year over 3 years, above the 12.66% return hurdle. Clearing this hurdle alone does not qualify a stock.",
           "1 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates."
         ]
       },
@@ -4356,18 +4376,18 @@
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.09408450704225352
+        "value": 0.09355742296918768
       },
-      "dividend_yield": 0.09408450704225352,
+      "dividend_yield": 0.09355742296918768,
       "driver": {
-        "contribution": 0.17363215243968688,
+        "contribution": 0.16607162240367132,
         "label": "dividend yield",
         "signal": "dividend_yield"
       },
       "estimate_reliable": true,
-      "fair_base": 92.56522425979729,
-      "fair_high": 108.73333995321947,
-      "fair_low": 62.122046320584076,
+      "fair_base": 92.5793351132486,
+      "fair_high": 108.99191178633951,
+      "fair_low": 62.13151634670604,
       "filings": [
         {
           "period": "FY2025",
@@ -4381,31 +4401,31 @@
         }
       ],
       "latest_period": "FY2025",
-      "model_spread": 1.750318065700788,
+      "model_spread": 1.754212969439588,
       "model_values": {
-        "earnings_power": 70.20590092113052,
-        "gordon_ddm": 62.122046320584076,
-        "justified_pb": 92.56522425979729,
-        "sector_pb": 100.34200989012088,
-        "sector_pe": 108.73333995321947
+        "earnings_power": 70.21270690887005,
+        "gordon_ddm": 62.13151634670604,
+        "justified_pb": 92.5793351132486,
+        "sector_pb": 101.44507910484069,
+        "sector_pe": 108.99191178633951
       },
       "models": 5,
-      "mos": 0.04298844236391308,
+      "mos": 0.03730347465824768,
       "name": "NCBA Group",
       "notices": [],
-      "price": 88.75,
-      "price_date": "2026-11-17",
+      "price": 89.25,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": 0.14898460507318972,
-        "bear": -0.003848906857614928,
-        "bull": 0.23020518965679398,
+        "base": 0.14658370817870012,
+        "bear": -0.005971616909902477,
+        "bull": 0.2285193744468018,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.076,
+        "dividend_yield_net": 0.07557422969187674,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.076,
+          "dividends": 0.07557422969187674,
           "growth": 0.07,
-          "repricing": 0.015117938406523005
+          "repricing": 0.013142811820156537
         },
         "years": 3
       },
@@ -4428,12 +4448,12 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -0.4% a year",
+            "detail": "bear case -0.6% a year",
             "level": "Moderate",
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 1.8x (62.1 to 108.7)",
+            "detail": "fair value spread 1.8x (62.1 to 109.0)",
             "level": "Moderate",
             "name": "Valuation spread"
           },
@@ -4451,26 +4471,26 @@
         "label": "Moderate",
         "level": "Moderate",
         "missing": [],
-        "summary": "Moderate risk: beta 0.81; turnover KES 12.9M a day; bear case -0.4% a year (+2 more)."
+        "summary": "Moderate risk: beta 0.81; turnover KES 12.9M a day; bear case -0.6% a year (+2 more)."
       },
       "sector": "Banking",
       "source_url": "https://ncbagroup.com/wp-content/uploads/2026/06/NCBA-Group-Plc-Annual-2025-Integrated-Report.pdf",
       "ticker": "NCBA",
       "tier": "Watch",
-      "why": "NCBA (Watch): 4.3% upside to base fair value KES 92.57; base return 14.9% a year beats the 12.66% hurdle. Insufficient valuation cushion. Moderate risk (beta 0.81; turnover KES 12.9M a day)."
+      "why": "NCBA (Watch): 3.7% upside to base fair value KES 92.58; base return 14.7% a year beats the 12.66% hurdle. Insufficient valuation cushion. Moderate risk (beta 0.81; turnover KES 12.9M a day)."
     }
   ],
-  "revision": "3f775774fb981e56d85b",
+  "revision": "e7338093394342b52f51",
   "rule": "A stock is marked **Strict checks passed** only when all four stricter checks pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.66% hurdle (Return). Risk level is rated separately from seven factors and never changes the valuation or return thresholds. These flags also require current critical live evidence. Agreement of methods is not a probability of profit.",
   "tbill_net": 0.07658329999999999,
   "top": [
     {
       "agree": 1,
       "agree_needed": 3,
-      "base": 0.14898460507318972,
-      "bear": -0.003848906857614928,
+      "base": 0.14658370817870012,
+      "bear": -0.005971616909902477,
       "binding": "Not a Buy: only 1 of 5 valuation models show 15% or more upside, needs 3.",
-      "bull": 0.23020518965679398,
+      "bull": 0.2285193744468018,
       "company_notes": [
         "H1-2026 net_loans uses the CBK format line, a different definition from the FY IFRS line",
         "H1-2026 omits shares_outstanding; Nedbank tender offer (unconditional 2026-10-19) did not change the share count",
@@ -4484,7 +4504,7 @@
         "roe FY2022-FY2021 printed; FY2020, FY2019 and FY2018 computed as net_income / closing total_equity",
         "cost_to_income computed as operating expenses excluding impairment / operating income in every year"
       ],
-      "composite": -0.7704749074184007,
+      "composite": -0.7477153675983671,
       "conviction": {
         "failed": [
           "Valuation",
@@ -4508,7 +4528,7 @@
             "passed": true
           },
           {
-            "detail": "base return 14.9% against the 12.66% hurdle",
+            "detail": "base return 14.7% against the 12.66% hurdle",
             "name": "Return",
             "passed": true
           }
@@ -4518,7 +4538,7 @@
       "decision": {
         "agreement": "1 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.",
         "changes": [
-          "With every estimate held fixed, the valuation cushion rule passes at KES 80.49 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply."
+          "With every estimate held fixed, the valuation cushion rule passes at KES 80.50 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply."
         ],
         "checks": [
           {
@@ -4537,49 +4557,49 @@
             "passed": false
           },
           {
-            "detail": "The middle case is 14.9% a year over 3 years, above the 12.66% return hurdle.",
+            "detail": "The middle case is 14.7% a year over 3 years, above the 12.66% return hurdle.",
             "name": "Return hurdle",
             "passed": true
           }
         ],
         "cushion_fraction": 0.15,
-        "cushion_price": 80.49,
+        "cushion_price": 80.5,
         "holder_note": "These entry rules do not decide whether to sell an existing holding.",
         "models": [
           {
             "name": "Peer earnings multiple",
             "passes": true,
-            "value": 108.73333995321947
+            "value": 108.99191178633951
           },
           {
             "name": "Peer book-value multiple",
             "passes": false,
-            "value": 100.34200989012088
+            "value": 101.44507910484069
           },
           {
             "name": "Bank book-value model",
             "passes": false,
-            "value": 92.56522425979729
+            "value": 92.5793351132486
           },
           {
             "name": "Earnings power",
             "passes": false,
-            "value": 70.20590092113052
+            "value": 70.21270690887005
           },
           {
             "name": "Dividend model",
             "passes": false,
-            "value": 62.122046320584076
+            "value": 62.13151634670604
           }
         ],
         "reason": "Insufficient valuation cushion",
-        "return_context": "The middle case is 14.9% a year over 3 years, above the 12.66% return hurdle.",
+        "return_context": "The middle case is 14.7% a year over 3 years, above the 12.66% return hurdle.",
         "verify": [
           "Read the annual filing and any more recent interim results; verify earnings, dividends and share changes.",
           "Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy."
         ],
         "why": [
-          "The middle case is 14.9% a year over 3 years, above the 12.66% return hurdle. Clearing this hurdle alone does not qualify a stock.",
+          "The middle case is 14.7% a year over 3 years, above the 12.66% return hurdle. Clearing this hurdle alone does not qualify a stock.",
           "1 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates."
         ]
       },
@@ -4587,18 +4607,18 @@
       "dividend_context": {
         "basis": "Trailing regular dividends, before tax",
         "note": "Recorded ex dates in the past 365 days; proxy dates may be used. Specials excluded.",
-        "value": 0.09408450704225352
+        "value": 0.09355742296918768
       },
-      "dividend_yield": 0.09408450704225352,
+      "dividend_yield": 0.09355742296918768,
       "driver": {
-        "contribution": 0.17363215243968688,
+        "contribution": 0.16607162240367132,
         "label": "dividend yield",
         "signal": "dividend_yield"
       },
       "estimate_reliable": true,
-      "fair_base": 92.56522425979729,
-      "fair_high": 108.73333995321947,
-      "fair_low": 62.122046320584076,
+      "fair_base": 92.5793351132486,
+      "fair_high": 108.99191178633951,
+      "fair_low": 62.13151634670604,
       "filings": [
         {
           "period": "FY2025",
@@ -4612,31 +4632,31 @@
         }
       ],
       "latest_period": "FY2025",
-      "model_spread": 1.750318065700788,
+      "model_spread": 1.754212969439588,
       "model_values": {
-        "earnings_power": 70.20590092113052,
-        "gordon_ddm": 62.122046320584076,
-        "justified_pb": 92.56522425979729,
-        "sector_pb": 100.34200989012088,
-        "sector_pe": 108.73333995321947
+        "earnings_power": 70.21270690887005,
+        "gordon_ddm": 62.13151634670604,
+        "justified_pb": 92.5793351132486,
+        "sector_pb": 101.44507910484069,
+        "sector_pe": 108.99191178633951
       },
       "models": 5,
-      "mos": 0.04298844236391308,
+      "mos": 0.03730347465824768,
       "name": "NCBA Group",
       "notices": [],
-      "price": 88.75,
-      "price_date": "2026-11-17",
+      "price": 89.25,
+      "price_date": "2026-11-18",
       "projection": {
-        "base": 0.14898460507318972,
-        "bear": -0.003848906857614928,
-        "bull": 0.23020518965679398,
+        "base": 0.14658370817870012,
+        "bear": -0.005971616909902477,
+        "bull": 0.2285193744468018,
         "cost_drag": 0.012133333333333335,
-        "dividend_yield_net": 0.076,
+        "dividend_yield_net": 0.07557422969187674,
         "drivers": {
           "costs": -0.012133333333333335,
-          "dividends": 0.076,
+          "dividends": 0.07557422969187674,
           "growth": 0.07,
-          "repricing": 0.015117938406523005
+          "repricing": 0.013142811820156537
         },
         "years": 3
       },
@@ -4659,12 +4679,12 @@
             "name": "Liquidity"
           },
           {
-            "detail": "bear case -0.4% a year",
+            "detail": "bear case -0.6% a year",
             "level": "Moderate",
             "name": "Downside"
           },
           {
-            "detail": "fair value spread 1.8x (62.1 to 108.7)",
+            "detail": "fair value spread 1.8x (62.1 to 109.0)",
             "level": "Moderate",
             "name": "Valuation spread"
           },
@@ -4682,13 +4702,13 @@
         "label": "Moderate",
         "level": "Moderate",
         "missing": [],
-        "summary": "Moderate risk: beta 0.81; turnover KES 12.9M a day; bear case -0.4% a year (+2 more)."
+        "summary": "Moderate risk: beta 0.81; turnover KES 12.9M a day; bear case -0.6% a year (+2 more)."
       },
       "sector": "Banking",
       "source_url": "https://ncbagroup.com/wp-content/uploads/2026/06/NCBA-Group-Plc-Annual-2025-Integrated-Report.pdf",
       "ticker": "NCBA",
       "tier": "Watch",
-      "why": "NCBA (Watch): 4.3% upside to base fair value KES 92.57; base return 14.9% a year beats the 12.66% hurdle. Insufficient valuation cushion. Moderate risk (beta 0.81; turnover KES 12.9M a day)."
+      "why": "NCBA (Watch): 3.7% upside to base fair value KES 92.58; base return 14.7% a year beats the 12.66% hurdle. Insufficient valuation cushion. Moderate risk (beta 0.81; turnover KES 12.9M a day)."
     }
   ],
   "valued": 16,
