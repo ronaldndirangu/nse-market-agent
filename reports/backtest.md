@@ -50,7 +50,7 @@ Each rule below is frozen and compared with the size-weighted basket. None chang
 | Buy rule that keeps a stock until it reaches its base fair value | 23.7% | +8.0 points | -5.1 points to +21.0 points | 30 | +7.7 points | 0 | Not adopted (2 of 4 checks met) |
 | Buy-stock tilt, rebalanced every three months | 12.7% | -0.1 points | -0.4 points to +0.2 points | 2 | -0.1 points | 0 | Not adopted (0 of 4 checks met) |
 
-Both halves of this history have already been seen, so a split-half result could only veto a rule. The live shadow log is the only untouched test: it starts with the first verified daily brief after this change.
+Both halves of this history have already been seen, so a split-half result could only veto a rule. The live shadow log is the only untouched test: it began in 2026-11.
 
 ## Limitations
 

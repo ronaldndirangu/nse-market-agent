@@ -115,7 +115,7 @@
   },
   "headline": "The Buy rule did not clearly beat or trail the covered stocks weighted by company size: 11.1% a year against 12.8% after trading costs, with a worst fall of -8.2% against -47.7%. The 95% range for the yearly difference is -17.4 points to +10.4 points.",
   "live": {},
-  "live_first": null,
+  "live_first": "2026-11",
   "mixes": {
     "amount": 250000,
     "rows": [
@@ -5963,7 +5963,7 @@
         "total": 1.4396187679312646,
         "vol": 0.22438440363114376
       },
-      "turnover": 0.2108083117573129
+      "turnover": 0.21080831175731296
     },
     "equal": {
       "gross": {
@@ -6008,7 +6008,7 @@
         "total": 1.4476129565578462,
         "vol": 0.2221455887289955
       },
-      "turnover": 0.4048753008028904
+      "turnover": 0.4048753008028905
     },
     "tilt_quarterly": {
       "gross": {
@@ -6023,7 +6023,7 @@
         "total": 1.4338387916241762,
         "vol": 0.22246116082876
       },
-      "turnover": 0.18897195873516603
+      "turnover": 0.1889719587351661
     },
     "top": {
       "gross": {
