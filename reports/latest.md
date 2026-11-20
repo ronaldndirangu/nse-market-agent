@@ -1,4 +1,4 @@
-# NSE value report: 2026-11-13
+# NSE value report: 2026-11-21
 
 > **Not financial advice.** This report is generated automatically from public data and fixed rules. It is not financial advice, an offer, or a recommendation to buy or sell any security. Figures can be wrong or stale. Verify everything against company filings and consult a licensed adviser before investing.
 
@@ -14,16 +14,16 @@
 
 | Input | Value | Source |
 |---|---|---|
-| 364-day T-bill (gross) | 9.01% | https://www.centralbank.go.ke/uploads/91_day_historical_treasury_bill_results/171143691_RESULTS%202708-091%202682-182%202637-364%20DATED%2016-11-2026.pdf |
-| 364-day T-bill (net of 15% WHT) | 7.66% | computed |
-| Buy hurdle (net T-bill + premium) | 12.66% | settings.yaml |
+| 364-day T-bill (gross) | 8.99% | https://www.centralbank.go.ke/uploads/91_day_historical_treasury_bill_results/1907969733_RESULTS%202709-091%202683-182%202638-364%20DATED%2023-11-2026.pdf |
+| 364-day T-bill (net of 15% WHT) | 7.65% | computed |
+| Buy hurdle (net T-bill + premium) | 12.65% | settings.yaml |
 | 10-year government bond | 12.48% | https://tradingeconomics.com/kenya/government-bond-yield |
 | Cost of equity at beta 1 | 20.05% | rf less default spread + beta x ERP + CRP |
 | Curated assumptions reviewed | 2026-11-11 | data/macro.yaml; separate from collected rates |
 
 ## Data health
 
-**Current**. Expected closing session: 2026-11-13. Verified prices: 16/16. Announcements: current (last successful check 2026-11-13). Macro rates: current (curated assumptions 2026-11-11; T-bill results 2026-11-12).
+**Current**. Expected closing session: 2026-11-20. Verified prices: 16/16. Announcements: current (last successful check 2026-11-20). Macro rates: current (curated assumptions 2026-11-11; T-bill results 2026-11-19).
 
 Weekdays only; a delayed session can mean a public holiday or source lag.
 
@@ -33,7 +33,7 @@ Strict-rule flags require current critical evidence. A rule-based Buy with incom
 
 ## Rates and inflation
 
-- **T-bill source:** [CBK results](https://www.centralbank.go.ke/uploads/91_day_historical_treasury_bill_results/171143691_RESULTS%202708-091%202682-182%202637-364%20DATED%2016-11-2026.pdf), released 2026-11-12. The accepted 364-day rate is 9.0098% gross. This feeds the net T-bill comparison and Buy hurdle; it does not change the ranking weights.
+- **T-bill source:** [CBK results](https://www.centralbank.go.ke/uploads/91_day_historical_treasury_bill_results/1907969733_RESULTS%202709-091%202683-182%202638-364%20DATED%2023-11-2026.pdf), released 2026-11-19. The accepted 364-day rate is 8.9943% gross. This feeds the net T-bill comparison and Buy hurdle; it does not change the ranking weights.
 - **Inflation:** 7.3% year-on-year for 2026-10 ([source](https://www.knbs.or.ke/reports/consumer-price-indices-and-inflation-rates-october-2026/)). This describes past price increases, not a forecast.
 - **Purchasing power:** if inflation stayed at that rate, the net T-bill return would be about 0.3% after inflation. This is an illustration, comparing a future investment term with observed inflation. Stock projections remain nominal KES.
 - **Separate assumptions:** the 10-year bond yield remains 12.48%, from an [approximate third-party source](https://tradingeconomics.com/kenya/government-bond-yield); curated assumptions were reviewed 2026-11-11. A new bill auction does not update bond yields, equity premiums or taxes.
@@ -45,36 +45,36 @@ Strict-rule flags require current critical evidence. A rule-based Buy with incom
 
 | # | Ticker | Price | Fair value low / base / high | MoS | Agree | Return p.a. bear / base / bull | Quality | Momentum | Research score | Verdict | Reason | Risk |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | IMH | KES 83.50 | 29.58 / 45.64 / 84.78 | -45.3% | 0/5 | -22.7% / -9.5% / 12.6% | pass | 75.5% | 0.62 | Avoid | Price above the middle estimate | High |
-| 2 | KPLC | KES 22.00 | unclear | unclear | 1/2 | unclear | pass | 50.0% | 0.54 | Avoid | Cannot value reliably | High (incomplete) |
-| 3 | KEGN | KES 9.70 | 3.89 / 5.22 / 6.55 | -46.2% | 0/2 | -20.4% / -11.1% / -2.9% | pass | 12.0% | 0.52 | Avoid | Price above the middle estimate | High |
-| 4 | EQTY | KES 100.00 | unclear | unclear | 1/5 | unclear | pass | 39.9% | 0.43 | Avoid | Cannot value reliably | High (incomplete) |
-| 5 | BAT | KES 543.00 | 279.64 / 331.76 / 383.89 | -38.9% | 0/2 | -10.4% / -4.1% / 1.9% | pass | 17.4% | 0.31 | Avoid | Price above the middle estimate | Moderate |
-| 6 | COOP | KES 38.95 | 20.55 / 27.86 / 34.91 | -28.5% | 0/5 | -10.3% / 0.6% / 10.0% | pass | 35.3% | 0.31 | Avoid | Price above the middle estimate | Moderate |
-| 7 | KCB | KES 89.00 | unclear | unclear | 2/5 | unclear | pass | 27.4% | 0.20 | Avoid | Cannot value reliably | High (incomplete) |
-| 8 | ABSA | KES 32.00 | 16.20 / 22.96 / 29.49 | -28.3% | 0/5 | -11.4% / 0.7% / 10.9% | pass | 20.4% | 0.08 | Avoid | Price above the middle estimate | Moderate |
-| 9 | DTK | KES 188.25 | unclear | unclear | 2/5 | unclear | pass | 44.3% | -0.16 | Avoid | Cannot value reliably | High (incomplete) |
-| 10 | CARB | KES 42.90 | 16.44 / 17.94 / 19.43 | -58.2% | 0/2 | -20.5% / -16.8% / -13.1% | pass | 32.7% | -0.25 | Avoid | Price above the middle estimate | High |
-| 11 | EABL | KES 272.00 | 72.14 / 92.38 / 112.63 | -66.0% | 0/2 | -29.3% / -22.1% / -15.5% | pass | 19.5% | -0.30 | Avoid | Price above the middle estimate | Moderate |
-| 12 | SBIC | KES 272.25 | 178.43 / 198.08 / 251.50 | -27.2% | 0/5 | -2.6% / 2.4% / 12.3% | fail | 22.1% | -0.33 | Avoid | Business health check failed | Moderate |
-| 13 | SCOM | KES 35.00 | 9.67 / 12.73 / 15.78 | -63.6% | 0/2 | -27.9% / -19.9% / -12.7% | pass | 15.1% | -0.38 | Avoid | Price above the middle estimate | Moderate |
-| 14 | SCBK | KES 308.75 | 170.84 / 217.73 / 224.58 | -29.5% | 0/5 | -10.3% / -1.7% / 1.0% | pass | -2.1% | -0.44 | Avoid | Price above the middle estimate | Moderate |
-| 15 | TOTL | KES 45.20 | 17.88 / 18.11 / 18.33 | -59.9% | 0/2 | -22.0% / -20.2% / -18.5% | pass | 5.2% | -0.50 | Avoid | Price above the middle estimate | High (incomplete) |
-| 16 | NCBA | KES 88.75 | 62.12 / 92.56 / 108.71 | 4.3% | 1/5 | -0.4% / 14.9% / 23.0% | pass | 4.4% | -0.65 | Watch | Insufficient valuation cushion | Moderate |
+| 1 | EQTY | KES 97.50 | unclear | unclear | 1/5 | unclear | pass | 47.7% | 0.58 | Avoid | Cannot value reliably | High (incomplete) |
+| 2 | IMH | KES 82.50 | 29.55 / 45.60 / 84.78 | -44.7% | 0/5 | -22.3% / -9.1% / 13.1% | pass | 74.0% | 0.53 | Avoid | Price above the middle estimate | High |
+| 3 | KPLC | KES 21.75 | unclear | unclear | 1/2 | unclear | pass | 50.3% | 0.52 | Avoid | Cannot value reliably | High (incomplete) |
+| 4 | KEGN | KES 9.44 | 3.88 / 5.21 / 6.54 | -44.8% | 0/2 | -19.5% / -10.2% / -1.9% | pass | 7.9% | 0.47 | Avoid | Price above the middle estimate | High |
+| 5 | KCB | KES 85.75 | unclear | unclear | 3/5 | unclear | pass | 34.2% | 0.35 | Avoid | Cannot value reliably | High (incomplete) |
+| 6 | BAT | KES 535.00 | 279.47 / 331.57 / 383.67 | -38.0% | 0/2 | -9.9% / -3.5% / 2.5% | pass | 16.9% | 0.31 | Avoid | Price above the middle estimate | Low |
+| 7 | COOP | KES 38.65 | 20.53 / 27.83 / 34.32 | -28.0% | 0/5 | -10.0% / 0.8% / 9.7% | pass | 29.6% | 0.18 | Avoid | Price above the middle estimate | Moderate |
+| 8 | ABSA | KES 31.55 | 16.22 / 22.54 / 29.10 | -28.6% | 0/5 | -10.9% / 0.6% / 11.1% | pass | 18.2% | 0.04 | Avoid | Price above the middle estimate | Moderate |
+| 9 | DTK | KES 187.25 | unclear | unclear | 2/5 | unclear | pass | 49.2% | -0.09 | Avoid | Cannot value reliably | High (incomplete) |
+| 10 | CARB | KES 41.50 | 16.40 / 17.90 / 19.40 | -56.9% | 0/2 | -19.6% / -15.8% / -12.0% | pass | 36.3% | -0.17 | Avoid | Price above the middle estimate | High |
+| 11 | SBIC | KES 279.75 | 178.78 / 198.68 / 246.88 | -29.0% | 0/5 | -3.6% / 1.4% / 10.5% | fail | 21.3% | -0.37 | Avoid | Business health check failed | Moderate |
+| 12 | SCOM | KES 34.20 | 9.67 / 12.72 / 15.77 | -62.8% | 0/2 | -27.2% / -19.2% / -12.0% | pass | 14.2% | -0.38 | Avoid | Price above the middle estimate | Moderate |
+| 13 | SCBK | KES 308.25 | 170.87 / 213.73 / 221.13 | -30.7% | 0/5 | -10.3% / -2.2% / 0.6% | pass | -1.0% | -0.40 | Avoid | Price above the middle estimate | Moderate |
+| 14 | EABL | KES 282.00 | 72.23 / 92.54 / 112.85 | -67.2% | 0/2 | -30.3% / -23.1% / -16.6% | pass | 14.0% | -0.41 | Avoid | Price above the middle estimate | Moderate |
+| 15 | TOTL | KES 45.00 | 17.91 / 18.14 / 18.36 | -59.7% | 0/2 | -21.8% / -20.1% / -18.3% | pass | 2.9% | -0.53 | Avoid | Price above the middle estimate | High (incomplete) |
+| 16 | NCBA | KES 87.25 | 62.09 / 92.51 / 107.37 | 6.0% | 2/5 | 0.3% / 15.6% / 23.3% | pass | 3.6% | -0.64 | Watch | Insufficient valuation cushion | Moderate |
 
 Independent research rank = 0.3 z(dividend yield) + 0.1 z(margin of safety) + 0.4 z(momentum) + 0.2 z(quality). It ranks all stocks, including Avoids, and does not set entry verdicts. The ranking track record tests this score, not the Buy rules.
 
 ## Strict checks (separate from Buy)
 
-A stock is marked **Strict checks passed** only when all four stricter checks pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.66% hurdle (Return). Risk level is rated separately from seven factors and never changes the valuation or return thresholds. These flags also require current critical live evidence. Agreement of methods is not a probability of profit.
+A stock is marked **Strict checks passed** only when all four stricter checks pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.65% hurdle (Return). Risk level is rated separately from seven factors and never changes the valuation or return thresholds. These flags also require current critical live evidence. Agreement of methods is not a probability of profit.
 
-No stock qualifies on 2026-11-13. The closest candidates and the gates they miss:
+No stock qualifies on 2026-11-21. The closest candidates and the gates they miss:
 
 | Ticker | Tier | Gates passed | Missing | Risk |
 |---|---|---|---|---|
-| NCBA | Watch | 2 of 4 | Valuation: 1 of 5 models show at least 15% upside, needs 3; Quality: quality gate pass, score 0.55, needs pass and 0.67 | Moderate |
-| IMH | Avoid | 2 of 4 | Valuation: 0 of 5 models show at least 15% upside, needs 3; Return: base return -9.5% against the 12.66% hurdle | High |
-| KPLC | Avoid | 2 of 4 | Valuation: models disagree: the high fair value is 5.9x the low, limit 3x; Return: unclear while valuation evidence disagrees; Balance sheet: not assessed; Downside: not assessed | High (incomplete) |
+| NCBA | Watch | 2 of 4 | Valuation: 2 of 5 models show at least 15% upside, needs 3; Quality: quality gate pass, score 0.55, needs pass and 0.67 | Moderate |
+| EQTY | Avoid | 2 of 4 | Valuation: models disagree: the high fair value is 3.1x the low, limit 3x; Return: unclear while valuation evidence disagrees; Downside: not assessed | High (incomplete) |
+| IMH | Avoid | 2 of 4 | Valuation: 0 of 5 models show at least 15% upside, needs 3; Return: base return -9.1% against the 12.65% hurdle | High |
 
 ### Risk profile
 
@@ -82,12 +82,12 @@ Each factor is rated Low, Moderate or High from fixed thresholds in `data/settin
 
 | Ticker | Risk | Volatility | Beta | Liquidity | Downside | Valuation spread | Balance sheet | Events |
 |---|---|---|---|---|---|---|---|---|
-| NCBA | Moderate | Low (24%) | Moderate (0.81) | Moderate (KES 12.9M) | Moderate (-0.4%) | Moderate (1.8x) | Moderate (NPL 10.5%) | Low (none) |
-| IMH | High | Moderate (31%) | Moderate (1.12) | Low (KES 34.2M) | High (-22.7%) | High (2.9x) | Low (NPL 9.0%) | Low (none) |
+| NCBA | Moderate | Low (24%) | Moderate (0.81) | Moderate (KES 12.9M) | Low (+0.3%) | Moderate (1.7x) | Moderate (NPL 10.5%) | Low (none) |
+| EQTY | High (incomplete) | Moderate (31%) | Moderate (1.06) | Low (KES 197.0M) | unclear | High (3.1x) | Low (NPL 9.5%) | Low (none) |
+| IMH | High | Moderate (31%) | Moderate (1.12) | Low (KES 34.2M) | High (-22.3%) | High (2.9x) | Low (NPL 9.0%) | Low (none) |
 | KPLC | High (incomplete) | High (37%) | High (1.70) | Low (KES 27.5M) | unclear | High (5.9x) | n/a | Low (none) |
-| KEGN | High | Moderate (34%) | High (1.30) | Moderate (KES 18.1M) | High (-20.4%) | Moderate (1.7x) | Low (Z'' 2.93) | Low (none) |
-| EQTY | High (incomplete) | Moderate (31%) | Moderate (1.06) | Low (KES 197.0M) | unclear | High (3.2x) | Low (NPL 9.5%) | Low (none) |
-| BAT | Moderate | Low (22%) | Low (0.57) | Moderate (KES 12.5M) | High (-10.4%) | Low (1.4x) | Low (Z'' 7.09) | Low (none) |
+| KEGN | High | Moderate (34%) | High (1.31) | Moderate (KES 18.1M) | High (-19.5%) | Moderate (1.7x) | Low (Z'' 2.93) | Low (none) |
+| KCB | High (incomplete) | Moderate (31%) | High (1.34) | Low (KES 126.0M) | unclear | High (5.3x) | Moderate (NPL 15.1%) | Low (none) |
 
 ## Picks
 
@@ -96,20 +96,20 @@ No counter passed every rule this week. The closest candidates follow.
 ### NCBA Group (NCBA): Watch, Moderate risk
 
 - **Verdict: Watch. Insufficient valuation cushion.**
-- **Why:** The middle case is 14.9% a year over 3 years, above the 12.66% return hurdle. Clearing this hurdle alone does not qualify a stock. 1 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.
-- **What would change it:** With every estimate held fixed, the valuation cushion rule passes at KES 80.48 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.
+- **Why:** The middle case is 15.6% a year over 3 years, above the 12.65% return hurdle. Clearing this hurdle alone does not qualify a stock. 2 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.
+- **What would change it:** With every estimate held fixed, the valuation cushion rule passes at KES 80.44 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.
 - **What to verify:** Read the annual filing and any more recent interim results; verify earnings, dividends and share changes. Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy.
 - **Already own it?** These entry rules do not decide whether to sell an existing holding.
-- **Valuation:** last close KES 88.75 on 2026-11-13. Fair value range KES 62.12 to KES 108.71, base KES 92.56, a margin of safety of 4.3%. 1 of 5 models value it at least 15% above the price (needs 3).
-- **Models:** Peer earnings multiple KES 108.71 (agrees); Peer book-value multiple KES 100.74; Bank book-value model KES 92.56; Earnings power KES 70.20; Dividend model KES 62.12.
-- **Inputs:** FY2025 results: EPS KES 14.20, book value per share KES 77.36, DPS KES 7.10. P/E 6.2, P/B 1.15. Average ROE 21.6%, sustainable growth 7.0%, cost of equity 19.2% (beta 0.81).
-- **Projected annual return over 3 years (net of costs and withholding tax):** bear -0.4%, base 14.9%, bull 23.0%. Net dividend yield 7.6%. The 364-day T-bill nets 7.7%; the buy hurdle is 12.7%.
+- **Valuation:** last close KES 87.25 on 2026-11-20. Fair value range KES 62.09 to KES 107.37, base KES 92.51, a margin of safety of 6.0%. 2 of 5 models value it at least 15% above the price (needs 3).
+- **Models:** Peer earnings multiple KES 107.37 (agrees); Peer book-value multiple KES 101.34 (agrees); Bank book-value model KES 92.51; Earnings power KES 70.18; Dividend model KES 62.09.
+- **Inputs:** FY2025 results: EPS KES 14.20, book value per share KES 77.36, DPS KES 7.10. P/E 6.1, P/B 1.13. Average ROE 21.6%, sustainable growth 7.0%, cost of equity 19.2% (beta 0.81).
+- **Projected annual return over 3 years (net of costs and withholding tax):** bear 0.3%, base 15.6%, bull 23.3%. Net dividend yield 7.7%. The 364-day T-bill nets 7.6%; the buy hurdle is 12.6%.
 - **Quality:** Piotroski 3/5 signals, NPL ratio 10.5%, change +0.3pp (rising); quality gate passes.
-- **Momentum (average of 6 and 12 month returns, skipping the last month):** 4.4%.
-- **Risk profile: Moderate.** Moderate risk: beta 0.81; turnover KES 12.9M a day; bear case -0.4% a year (+2 more).
+- **Momentum (average of 6 and 12 month returns, skipping the last month):** 3.6%.
+- **Risk profile: Moderate.** Moderate risk: beta 0.81; turnover KES 12.9M a day; fair value spread 1.7x (62.1 to 107.4) (+1 more).
 - **Risks:**
   - NPL ratio rising to 10.5%
-  - Bear case (-0.4%) trails the net T-bill yield (7.7%).
+  - Bear case (0.3%) trails the net T-bill yield (7.6%).
   - Kenyan market risks: shilling depreciation, interest-rate and tax policy changes, thin trading.
 - **Source:** [FY2025 results](https://ncbagroup.com/wp-content/uploads/2026/06/NCBA-Group-Plc-Annual-2025-Integrated-Report.pdf)
 
