@@ -1,14 +1,14 @@
 {
-  "as_of": "2026-11-25",
-  "generated": "2026-11-24T22:59:25+00:00",
+  "as_of": "2026-11-26",
+  "generated": "2026-11-25T22:28:11+00:00",
   "ledger": {
-    "code_sha": "058e0126cdd6",
-    "date": "2026-11-25",
+    "code_sha": "25ac7f43b820",
+    "date": "2026-11-26",
     "differences": [],
     "path": "data/rankings/live/2026-11.csv",
     "rows": 16,
-    "sha256": "f41d4790b013a6d3a8a13d8af065c4af0f65bf9de88adb3eda95d2f0c090a54b"
+    "sha256": "7e8cf4f5958857bc78dfbad0bf5e91006fd24bb6c3fda98d0f4d9667d6ea4f5b"
   },
-  "revision": "7c17b7608ef0b166081b",
-  "snapshot": "snapshots/7c17b7608ef0b166081b.json"
+  "revision": "894a9791238fd56e9093",
+  "snapshot": "snapshots/894a9791238fd56e9093.json"
 }

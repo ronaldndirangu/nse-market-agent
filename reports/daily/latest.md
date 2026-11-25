@@ -1,4 +1,4 @@
-# NSE daily brief: 2026-11-25
+# NSE daily brief: 2026-11-26
 
 > **Not financial advice.** This report is generated automatically from public data and fixed rules. It is not financial advice, an offer, or a recommendation to buy or sell any security. Figures can be wrong or stale. Verify everything against company filings and consult a licensed adviser before investing.
 
@@ -6,7 +6,7 @@
 
 ## Data health
 
-**Current**. Expected closing session: 2026-11-24. Verified prices: 16/16. Announcements: current (last successful check 2026-11-24). Macro rates: current (curated assumptions 2026-11-11; T-bill results 2026-11-19).
+**Degraded**. Expected closing session: 2026-11-25. Verified prices: 16/16. Announcements: current (last successful check 2026-11-25). Macro rates: stale (curated assumptions 2026-11-11; T-bill results 2026-11-19).
 
 Weekdays only; a delayed session can mean a public holiday or source lag.
 
@@ -26,21 +26,27 @@ Strict-rule flags require current critical evidence. A rule-based Buy with incom
 
 ## What changed
 
-Compared with the brief for 2026-11-24.
+Compared with the brief for 2026-11-25.
 
-No rank, tier, threshold, announcement or price changes worth flagging.
+- Rank: IMH moved from #4 to #1.
+- Rank: EQTY moved from #1 to #3.
+- Rank: KPLC moved from #2 to #4.
+- Rank: COOP moved from #7 to #5.
+- Rank: BAT moved from #5 to #7.
+- Rank: SCOM moved from #15 to #13.
+- Rank: TOTL moved from #13 to #15.
 
 ## Strict checks (separate from Buy)
 
 A stock is marked **Strict checks passed** only when all four stricter checks pass: at least 3 valuation models agree on 15% or more upside (Valuation), the quality gate passes with a score of 0.67 or more (Quality), the liquidity, freshness and history screen passes (Screen), and the base return beats the 12.65% hurdle (Return). Risk level is rated separately from seven factors and never changes the valuation or return thresholds. These flags also require current critical live evidence. Agreement of methods is not a probability of profit.
 
-No stock qualifies on 2026-11-25. The closest candidates and the gates they miss:
+No stock qualifies on 2026-11-26. The closest candidates and the gates they miss:
 
 | Ticker | Tier | Gates passed | Missing | Risk |
 |---|---|---|---|---|
-| NCBA | Watch | 2 of 4 | Valuation: 2 of 5 models show at least 15% upside, needs 3; Quality: quality gate pass, score 0.55, needs pass and 0.67 | Moderate |
-| EQTY | Avoid | 2 of 4 | Valuation: models disagree: the high fair value is 3.1x the low, limit 3x; Return: unclear while valuation evidence disagrees; Downside: not assessed | High (incomplete) |
-| KPLC | Avoid | 2 of 4 | Valuation: models disagree: the high fair value is 5.9x the low, limit 3x; Return: unclear while valuation evidence disagrees; Balance sheet: not assessed; Downside: not assessed | High (incomplete) |
+| NCBA | Watch | 2 of 4 | Valuation: 2 of 5 models show at least 15% upside, needs 3; Quality: quality gate pass, score 0.55, needs pass and 0.67; Macro rates: stale | Moderate |
+| IMH | Avoid | 2 of 4 | Valuation: 0 of 5 models show at least 15% upside, needs 3; Return: base return -9.2% against the 12.65% hurdle; Macro rates: stale | High |
+| KEGN | Avoid | 2 of 4 | Valuation: only 2 models apply to this company and the flag needs 3 to agree (sector P/E and P/B need 3 sourced peers); Return: base return -10.4% against the 12.65% hurdle; Macro rates: stale | High |
 
 ### Risk profile
 
@@ -48,22 +54,22 @@ Each factor is rated Low, Moderate or High from fixed thresholds in `data/settin
 
 | Ticker | Risk | Volatility | Beta | Liquidity | Downside | Valuation spread | Balance sheet | Events |
 |---|---|---|---|---|---|---|---|---|
-| NCBA | Moderate | Low (24%) | Moderate (0.80) | Moderate (KES 5.1M) | Low (+1.0%) | Moderate (1.7x) | Moderate (NPL 10.5%) | Low (none) |
-| EQTY | High (incomplete) | Moderate (31%) | Moderate (1.07) | Low (KES 114.3M) | unclear | High (3.1x) | Low (NPL 9.5%) | Low (none) |
-| KPLC | High (incomplete) | High (36%) | High (1.70) | Moderate (KES 16.9M) | unclear | High (5.9x) | n/a | Low (none) |
-| KEGN | High | Moderate (34%) | High (1.29) | Moderate (KES 11.4M) | High (-19.8%) | Moderate (1.7x) | Low (Z'' 2.93) | Low (none) |
-| IMH | High | Moderate (31%) | Moderate (1.13) | Moderate (KES 9.5M) | High (-22.5%) | High (2.8x) | Low (NPL 9.0%) | Low (none) |
-| BAT | Low | Low (22%) | Low (0.58) | Moderate (KES 6.0M) | Moderate (-9.8%) | Low (1.4x) | Low (Z'' 7.09) | Low (none) |
+| NCBA | Moderate | Low (24%) | Moderate (0.80) | High (KES 5.0M) | Low (+1.0%) | Moderate (1.7x) | Moderate (NPL 10.5%) | Low (none) |
+| IMH | High | Moderate (31%) | Moderate (1.13) | Moderate (KES 9.7M) | High (-22.4%) | High (2.8x) | Low (NPL 9.0%) | Low (none) |
+| KEGN | High | Moderate (34%) | High (1.29) | Moderate (KES 11.0M) | High (-19.6%) | Moderate (1.7x) | Low (Z'' 2.93) | Low (none) |
+| EQTY | High (incomplete) | Moderate (31%) | Moderate (1.07) | Low (KES 110.4M) | unclear | High (3.1x) | Low (NPL 9.5%) | Low (none) |
+| KPLC | High (incomplete) | High (36%) | High (1.70) | Moderate (KES 18.0M) | unclear | High (5.9x) | n/a | Low (none) |
+| COOP | Moderate | Moderate (29%) | Moderate (1.00) | Low (KES 24.8M) | Moderate (-9.8%) | Moderate (1.7x) | Moderate (NPL 13.9%) | Low (none) |
 
 ## Candidates for review
 
 Buy candidates first, then Watch. Avoid stocks remain in the full research ranking. The score rank is not a buy signal.
 
-- NCBA (Watch): 8.1% upside to base fair value KES 92.66; base return 16.5% a year beats the 12.65% hurdle. Insufficient valuation cushion. Moderate risk (beta 0.80; turnover KES 5.1M a day).
+- NCBA (Watch): 8.1% upside to base fair value KES 92.66; base return 16.5% a year beats the 12.65% hurdle. Insufficient valuation cushion. Moderate risk (turnover KES 5.0M a day; beta 0.80).
 - **Verdict: Watch. Insufficient valuation cushion.**
 - **Why:** The middle case is 16.5% a year over 3 years, above the 12.65% return hurdle. Clearing this hurdle alone does not qualify a stock. 2 of 5 methods estimate at least 15% upside; 3 must agree. This cushion allows for errors in the estimates.
 - **What would change it:** With every estimate held fixed, the valuation cushion rule passes at KES 80.57 or lower. This is a conditional rule threshold, not a price target or a Buy instruction. Peer prices, bond yields and new filings can move the estimates. All other entry and evidence checks still apply.
-- **What to verify:** Read the annual filing and any more recent interim results; verify earnings, dividends and share changes. Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy.
+- **What to verify:** Read the annual filing and any more recent interim results; verify earnings, dividends and share changes. Review company notices and the assumptions behind the valuation; a fresh feed does not prove accuracy. Macro rates: stale
 - **Already own it?** These entry rules do not decide whether to sell an existing holding.
 
 
@@ -73,28 +79,28 @@ Each cell is the signal's contribution to the composite (weight x z-score), with
 
 | Rank | Ticker | Tier | Composite | Dividend yield | Margin of safety | Momentum | Quality |
 |---|---|---|---|---|---|---|---|
-| 16 | NCBA | Watch | -0.67 | +0.19 (9.7%) | +0.10 (8.1%) | -0.50 (1.7%) | -0.47 (0.55) |
+| 16 | NCBA | Watch | -0.69 | +0.19 (9.7%) | +0.11 (8.1%) | -0.52 (0.3%) | -0.47 (0.55) |
 
 ## Full ranking
 
 | Rank | Ticker | Tier | Composite | Price | MoS | Bear / base / bull a year | Div. yield | Volatility | Risk | Binding constraint |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1 | EQTY | Avoid | +0.53 | KES 95.25 | unclear | unclear | 6.0% | 31.2% | High (incomplete) | Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3. |
-| 2 | KPLC | Avoid | +0.50 | KES 21.55 | unclear | unclear | 5.1% | 36.2% | High (incomplete) | Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. |
-| 3 | KEGN | Avoid | +0.49 | KES 9.56 | -45.3% | -19.8% / -10.6% / -2.3% | 17.3% | 33.7% | High | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -10.6% does not beat the 12.65% hurdle. |
-| 4 | IMH | Avoid | +0.48 | KES 83.00 | -45.1% | -22.5% / -9.3% / 12.4% | 4.5% | 30.7% | High | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.3% does not beat the 12.65% hurdle. |
-| 5 | BAT | Avoid | +0.30 | KES 534.00 | -37.9% | -9.8% / -3.5% / 2.6% | 13.1% | 21.6% | Low | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -3.5% does not beat the 12.65% hurdle. |
-| 6 | KCB | Avoid | +0.29 | KES 85.75 | unclear | unclear | 5.8% | 29.1% | High (incomplete) | Avoid: valuation models disagree (high is 5.2x the low, limit 3.0x). |
-| 7 | COOP | Avoid | +0.29 | KES 38.45 | -27.7% | -9.9% / 1.0% / 9.6% | 6.5% | 29.2% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 1.0% does not beat the 12.65% hurdle. |
-| 8 | ABSA | Avoid | +0.10 | KES 30.10 | -25.7% | -9.3% / 2.2% / 12.7% | 7.8% | 33.5% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 2.2% does not beat the 12.65% hurdle. |
-| 9 | DTK | Avoid | -0.07 | KES 183.25 | unclear | unclear | 4.9% | 29.3% | High (incomplete) | Avoid: valuation models disagree (high is 6.3x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
-| 10 | CARB | Avoid | -0.07 | KES 40.10 | -55.1% | -18.4% / -14.6% / -10.8% | 5.0% | 37.6% | High | Avoid: illiquid (avg turnover KES 939,806); only 0 of 2 valuation models show 15% or more upside, needs 2 (+1 more). |
-| 11 | SBIC | Avoid | -0.39 | KES 278.75 | -28.3% | -3.3% / 1.8% / 10.4% | 7.2% | 27.0% | Moderate | Avoid: quality gate failed (Piotroski 2/5 below gate); only 0 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
-| 12 | SCBK | Avoid | -0.41 | KES 306.00 | -30.7% | -10.0% / -2.1% / 0.5% | 10.3% | 18.0% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -2.1% does not beat the 12.65% hurdle. |
-| 13 | TOTL | Avoid | -0.44 | KES 44.85 | -59.5% | -21.7% / -19.9% / -18.2% | 7.7% | 25.7% | High (incomplete) | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -19.9% does not beat the 12.65% hurdle. |
-| 14 | EABL | Avoid | -0.46 | KES 287.50 | -67.8% | -30.8% / -23.7% / -17.2% | 4.4% | 34.1% | Moderate | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -23.7% does not beat the 12.65% hurdle. |
-| 15 | SCOM | Avoid | -0.48 | KES 33.95 | -62.7% | -27.1% / -19.1% / -11.9% | 5.9% | 24.1% | Moderate | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -19.1% does not beat the 12.65% hurdle. |
-| 16 | NCBA | Watch | -0.67 | KES 85.75 | 8.1% | 1.0% / 16.5% / 23.2% | 9.7% | 24.1% | Moderate | Not a Buy: only 2 of 5 valuation models show 15% or more upside, needs 3. |
+| 1 | IMH | Avoid | +0.52 | KES 82.75 | -44.9% | -22.4% / -9.2% / 12.6% | 4.5% | 30.7% | High | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -9.2% does not beat the 12.65% hurdle. |
+| 2 | KEGN | Avoid | +0.52 | KES 9.50 | -45.0% | -19.6% / -10.4% / -2.0% | 17.4% | 33.7% | High | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -10.4% does not beat the 12.65% hurdle. |
+| 3 | EQTY | Avoid | +0.50 | KES 96.25 | unclear | unclear | 6.0% | 31.1% | High (incomplete) | Avoid: valuation models disagree (high is 3.1x the low, limit 3.0x); only 1 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
+| 4 | KPLC | Avoid | +0.47 | KES 21.70 | unclear | unclear | 5.1% | 36.2% | High (incomplete) | Avoid: valuation models disagree (high is 5.9x the low, limit 3.0x); only 1 of 2 valuation models show 15% or more upside, needs 2. |
+| 5 | COOP | Avoid | +0.33 | KES 38.40 | -27.6% | -9.8% / 1.1% / 9.8% | 6.5% | 29.2% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 1.1% does not beat the 12.65% hurdle. |
+| 6 | KCB | Avoid | +0.32 | KES 85.50 | unclear | unclear | 5.8% | 29.1% | High (incomplete) | Avoid: valuation models disagree (high is 5.3x the low, limit 3.0x). |
+| 7 | BAT | Avoid | +0.29 | KES 535.00 | -38.1% | -9.9% / -3.5% / 2.5% | 13.1% | 21.6% | Low | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -3.5% does not beat the 12.65% hurdle. |
+| 8 | ABSA | Avoid | +0.11 | KES 31.35 | -28.5% | -10.6% / 0.7% / 11.0% | 7.5% | 33.1% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return 0.7% does not beat the 12.65% hurdle. |
+| 9 | CARB | Avoid | -0.08 | KES 38.55 | -53.4% | -17.2% / -13.3% / -9.5% | 5.2% | 38.2% | High | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -13.3% does not beat the 12.65% hurdle. |
+| 10 | DTK | Avoid | -0.12 | KES 182.75 | unclear | unclear | 4.9% | 29.3% | High (incomplete) | Avoid: valuation models disagree (high is 6.3x the low, limit 3.0x); only 2 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
+| 11 | SBIC | Avoid | -0.35 | KES 278.00 | -28.2% | -3.2% / 1.9% / 10.6% | 7.3% | 27.0% | Moderate | Avoid: quality gate failed (Piotroski 2/5 below gate); only 0 of 5 valuation models show 15% or more upside, needs 3 (+1 more). |
+| 12 | SCBK | Avoid | -0.42 | KES 306.50 | -30.6% | -10.1% / -2.1% / 0.5% | 10.3% | 18.0% | Moderate | Avoid: only 0 of 5 valuation models show 15% or more upside, needs 3; base return -2.1% does not beat the 12.65% hurdle. |
+| 13 | SCOM | Avoid | -0.44 | KES 33.75 | -62.4% | -26.9% / -18.9% / -11.7% | 5.9% | 24.1% | Moderate | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -18.9% does not beat the 12.65% hurdle. |
+| 14 | EABL | Avoid | -0.45 | KES 280.50 | -67.0% | -30.1% / -23.0% / -16.5% | 4.5% | 34.1% | Moderate | Avoid: only 0 of 2 valuation models show 15% or more upside, needs 2; base return -23.0% does not beat the 12.65% hurdle. |
+| 15 | TOTL | Avoid | -0.49 | KES 44.15 | -58.9% | -21.2% / -19.4% / -17.7% | 7.8% | 25.8% | High (incomplete) | Avoid: illiquid (avg turnover KES 590,844); only 0 of 2 valuation models show 15% or more upside, needs 2 (+1 more). |
+| 16 | NCBA | Watch | -0.69 | KES 85.75 | 8.1% | 1.0% / 16.5% / 23.9% | 9.7% | 24.1% | Moderate | Not a Buy: only 2 of 5 valuation models show 15% or more upside, needs 3. |
 
 ## How to read this
 
@@ -240,7 +246,7 @@ Each cell is the signal's contribution to the composite (weight x z-score), with
 - TOTL: FY2018 is partial: no FY2018 or FY2019 annual results announcement is on nse.co.ke (media API searched for 'total kenya', 'total kenya plc audited' and '2018'). The balance sheet comes from the 31 Dec 2018 comparative column of the HY June 2019 unaudited report (dated 29 Aug 2019). revenue, gross_profit, net_income, eps and operating_cash_flow omitted; net income is not back-derived from the retained-earnings movement because IFRS 9 opening adjustments in 2018 could distort it. FY2018 dps 1.30 derived from 'Dividends declared - 2018' of 818,405 in the HY June 2019 equity statement / 629.542m.
 - TOTL: FY2019 and FY2022 are prior-year comparatives (FY2020 and FY2023 annual reports respectively); the original FY2019 and FY2022 announcements are not on nse.co.ke.
 - TOTL: Most pre-2022 NSE files are scanned images; values were read from rendered page images (FY2016, FY2017, FY2018, FY2019, FY2020, FY2021) and cross-checked by the balance-sheet identity and EPS = profit / 629.542m.
-- Energy (KPLC, KEGN, TOTL): fewer than 3 sourced peers, so no sector P/E or P/B model. These stocks get under 3 valuation models and cannot pass the strict checks until more peers are sourced
+- Energy (KEGN, KPLC, TOTL): fewer than 3 sourced peers, so no sector P/E or P/B model. These stocks get under 3 valuation models and cannot pass the strict checks until more peers are sourced
 - Manufacturing (BAT, CARB, EABL): fewer than 3 sourced peers, so no sector P/E or P/B model. These stocks get under 3 valuation models and cannot pass the strict checks until more peers are sourced
 - Telecommunication (SCOM): fewer than 3 sourced peers, so no sector P/E or P/B model. These stocks get under 3 valuation models and cannot pass the strict checks until more peers are sourced
 
