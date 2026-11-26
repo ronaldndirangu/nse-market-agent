@@ -4,10 +4,10 @@
   "market_status": "closed",
   "rows": {
     "ABSA": {
-      "price": 31.35,
+      "price": 30.7,
       "suspended": null,
-      "turnover": 15819834.05,
-      "volume": 504787
+      "turnover": 2801833.5,
+      "volume": 91212
     },
     "ALP": {
       "price": 1.02,
@@ -16,10 +16,10 @@
       "volume": 0
     },
     "AMAC": {
-      "price": 301.5,
+      "price": 291,
       "suspended": null,
-      "turnover": 31356,
-      "volume": 104
+      "turnover": 49179.25,
+      "volume": 169
     },
     "ARM": {
       "price": null,
@@ -36,26 +36,26 @@
     "BAT": {
       "price": 535,
       "suspended": null,
-      "turnover": 2049208,
-      "volume": 3831
+      "turnover": 1761560,
+      "volume": 3294
     },
     "BKG": {
-      "price": 61,
+      "price": 61.5,
       "suspended": null,
-      "turnover": 1973634.25,
-      "volume": 32337
+      "turnover": 582861.5,
+      "volume": 9475
     },
     "BOC": {
-      "price": 176,
+      "price": 176.75,
       "suspended": null,
-      "turnover": 26224.25,
-      "volume": 149
+      "turnover": 69650.5,
+      "volume": 394
     },
     "BRIT": {
-      "price": 17.45,
+      "price": 16.55,
       "suspended": null,
-      "turnover": 1626502.75,
-      "volume": 93189
+      "turnover": 944170.95,
+      "volume": 57086
     },
     "CABL": {
       "price": 1.71,
@@ -64,40 +64,40 @@
       "volume": null
     },
     "CARB": {
-      "price": 38.55,
+      "price": 37.75,
       "suspended": null,
-      "turnover": 2206449.5,
-      "volume": 57212
+      "turnover": 1491483.3,
+      "volume": 39512
     },
     "CGEN": {
-      "price": 264,
+      "price": 265.25,
       "suspended": null,
-      "turnover": 520858,
-      "volume": 1973
+      "turnover": 273898.5,
+      "volume": 1033
     },
     "CIC": {
       "price": 4.44,
       "suspended": null,
-      "turnover": 191584.89,
-      "volume": 43149
+      "turnover": 244524.07,
+      "volume": 55130
     },
     "COOP": {
-      "price": 38.4,
+      "price": 37.3,
       "suspended": null,
-      "turnover": 30403959,
-      "volume": 791693
+      "turnover": 9742318.85,
+      "volume": 261332
     },
     "CRWN": {
       "price": 62,
       "suspended": null,
-      "turnover": 425166.75,
-      "volume": 6866
+      "turnover": 226733.5,
+      "volume": 3664
     },
     "CTUM": {
-      "price": 16.7,
+      "price": 16.75,
       "suspended": null,
-      "turnover": 193722.55,
-      "volume": 11613
+      "turnover": 1000387.2,
+      "volume": 59661
     },
     "DCON": {
       "price": null,
@@ -106,34 +106,34 @@
       "volume": null
     },
     "DTK": {
-      "price": 182.75,
+      "price": 183.25,
       "suspended": null,
-      "turnover": 2705485,
-      "volume": 14808
+      "turnover": 3428603.75,
+      "volume": 18708
     },
     "EABL": {
       "price": 280.5,
       "suspended": null,
-      "turnover": 91672777,
-      "volume": 326792
+      "turnover": 3960872.75,
+      "volume": 14124
     },
     "EGAD": {
-      "price": 27.85,
+      "price": 26.5,
       "suspended": null,
-      "turnover": 3762.15,
-      "volume": 135
+      "turnover": 13302.6,
+      "volume": 502
     },
     "EQTY": {
-      "price": 96.25,
+      "price": 96,
       "suspended": null,
-      "turnover": 32861471.75,
-      "volume": 341668
+      "turnover": 16162100,
+      "volume": 168222
     },
     "EVRD": {
       "price": 0.92,
       "suspended": null,
-      "turnover": 185488.22,
-      "volume": 200980
+      "turnover": 87647.97,
+      "volume": 95672
     },
     "FAHR": {
       "price": 5.52,
@@ -142,28 +142,28 @@
       "volume": null
     },
     "FMLY": {
-      "price": 25.55,
+      "price": 25.9,
       "suspended": null,
-      "turnover": 16734743.2,
-      "volume": 654575
+      "turnover": 1389661,
+      "volume": 53706
     },
     "FTGH": {
-      "price": 2.1,
+      "price": 2.11,
       "suspended": null,
-      "turnover": 20653.69,
-      "volume": 9838
+      "turnover": 42954.4,
+      "volume": 20397
     },
     "GLD": {
-      "price": 4425,
+      "price": 4460,
       "suspended": null,
-      "turnover": 1839770,
-      "volume": 416
+      "turnover": 602365,
+      "volume": 135
     },
     "HAFR": {
       "price": 1,
       "suspended": null,
-      "turnover": 397982.98,
-      "volume": 398285
+      "turnover": 184284.94,
+      "volume": 183980
     },
     "HBE": {
       "price": 4.66,
@@ -172,10 +172,10 @@
       "volume": 0
     },
     "HFCB": {
-      "price": 12.35,
+      "price": 12.4,
       "suspended": null,
-      "turnover": 824635.15,
-      "volume": 66743
+      "turnover": 1674972.3,
+      "volume": 135283
     },
     "HFCK": {
       "price": 0.1,
@@ -186,68 +186,68 @@
     "IMH": {
       "price": 82.75,
       "suspended": null,
-      "turnover": 14282700,
-      "volume": 172765
+      "turnover": 109933678.75,
+      "volume": 1329706
     },
     "JUB": {
-      "price": 393,
+      "price": 397,
       "suspended": null,
-      "turnover": 190252,
-      "volume": 484
+      "turnover": 143720,
+      "volume": 362
     },
     "KAPC": {
-      "price": 308,
+      "price": 312,
       "suspended": null,
-      "turnover": 402120,
-      "volume": 1306
+      "turnover": 411350.75,
+      "volume": 1318
     },
     "KCB": {
-      "price": 85.5,
+      "price": 84.5,
       "suspended": null,
-      "turnover": 76301530.5,
-      "volume": 892034
+      "turnover": 72141675.5,
+      "volume": 853585
     },
     "KEGN": {
-      "price": 9.5,
+      "price": 9.48,
       "suspended": null,
-      "turnover": 3084844.12,
-      "volume": 324498
+      "turnover": 3569000.48,
+      "volume": 376278
     },
     "KNRE": {
       "price": 3.93,
       "suspended": null,
-      "turnover": 7044076.82,
-      "volume": 1792194
+      "turnover": 3191146.56,
+      "volume": 812132
     },
     "KPC": {
-      "price": 10.45,
+      "price": 10.85,
       "suspended": null,
-      "turnover": 3454656.2,
-      "volume": 331246
+      "turnover": 1299081.15,
+      "volume": 119944
     },
     "KPLC": {
-      "price": 21.7,
+      "price": 21.45,
       "suspended": null,
-      "turnover": 39762085.75,
-      "volume": 1834458
+      "turnover": 17921707,
+      "volume": 835162
     },
     "KQ": {
       "price": 5.32,
       "suspended": null,
-      "turnover": 879328.58,
-      "volume": 165143
+      "turnover": 551524.3,
+      "volume": 103611
     },
     "KUKZ": {
       "price": 430.5,
       "suspended": null,
-      "turnover": 23084,
-      "volume": 57
+      "turnover": 8947.5,
+      "volume": 22
     },
     "KURV": {
       "price": 1220,
       "suspended": null,
-      "turnover": 137860,
-      "volume": 113
+      "turnover": 1220,
+      "volume": 1
     },
     "LAPR": {
       "price": 20,
@@ -256,22 +256,22 @@
       "volume": 0
     },
     "LBTY": {
-      "price": 9.08,
+      "price": 9.06,
       "suspended": null,
-      "turnover": 90541.8,
-      "volume": 9974
+      "turnover": 16754.7,
+      "volume": 1848
     },
     "LIMT": {
       "price": 566,
       "suspended": null,
-      "turnover": 60007,
-      "volume": 106
+      "turnover": 28360,
+      "volume": 51
     },
     "LKL": {
-      "price": 2.49,
+      "price": 2.5,
       "suspended": null,
-      "turnover": 15451.03,
-      "volume": 6208
+      "turnover": 12346.62,
+      "volume": 4943
     },
     "MSC": {
       "price": 0.29,
@@ -286,106 +286,106 @@
       "volume": null
     },
     "NBV": {
-      "price": 1.29,
+      "price": 1.34,
       "suspended": null,
-      "turnover": 78887.42,
-      "volume": 60937
+      "turnover": 38783.54,
+      "volume": 29006
     },
     "NCBA": {
-      "price": 85.75,
+      "price": 86.5,
       "suspended": null,
-      "turnover": 3647980.25,
-      "volume": 42535
+      "turnover": 182282506.75,
+      "volume": 2106331
     },
     "NMG": {
-      "price": 13.85,
+      "price": 13.7,
       "suspended": null,
-      "turnover": 30583.55,
-      "volume": 2211
+      "turnover": 18127.85,
+      "volume": 1321
     },
     "NSE": {
-      "price": 34.9,
+      "price": 33.85,
       "suspended": null,
-      "turnover": 3158093.6,
-      "volume": 90554
+      "turnover": 6985870.8,
+      "volume": 206487
     },
     "OCH": {
-      "price": 9.66,
+      "price": 9.34,
       "suspended": null,
-      "turnover": 473945.7,
-      "volume": 49043
+      "turnover": 28687.3,
+      "volume": 3069
     },
     "PORT": {
-      "price": 106,
+      "price": 109.25,
       "suspended": null,
-      "turnover": 256744,
-      "volume": 2424
+      "turnover": 728249.75,
+      "volume": 6673
     },
     "QMRT": {
-      "price": 7.9,
+      "price": 7.7,
       "suspended": null,
-      "turnover": 8834919.3,
-      "volume": 1119058
+      "turnover": 1243946.78,
+      "volume": 161531
     },
     "SASN": {
-      "price": 22.9,
+      "price": 22.8,
       "suspended": null,
-      "turnover": 81164.7,
-      "volume": 3542
+      "turnover": 8120.05,
+      "volume": 356
     },
     "SBIC": {
       "price": 278,
       "suspended": null,
-      "turnover": 538641,
-      "volume": 1938
+      "turnover": 2716065.25,
+      "volume": 9774
     },
     "SCAN": {
-      "price": 1.87,
+      "price": 1.85,
       "suspended": null,
-      "turnover": 52859.86,
-      "volume": 28236
+      "turnover": 4971652.07,
+      "volume": 2687392
     },
     "SCBK": {
-      "price": 306.5,
+      "price": 309.5,
       "suspended": null,
-      "turnover": 2176000.25,
-      "volume": 7097
+      "turnover": 15872342.25,
+      "volume": 51299
     },
     "SCOM": {
-      "price": 33.75,
+      "price": 33.2,
       "suspended": null,
-      "turnover": 144533116.55,
-      "volume": 4280718
+      "turnover": 441461112.75,
+      "volume": 13305740
     },
     "SGL": {
-      "price": 6.08,
+      "price": 5.96,
       "suspended": null,
-      "turnover": 7177.58,
-      "volume": 1182
+      "turnover": 4463.82,
+      "volume": 749
     },
     "SKL": {
-      "price": 14.05,
+      "price": 13.05,
       "suspended": null,
-      "turnover": 106749.75,
-      "volume": 7597
+      "turnover": 317938.1,
+      "volume": 24357
     },
     "SLAM": {
-      "price": 9.38,
+      "price": 9.64,
       "suspended": null,
-      "turnover": 53474.82,
-      "volume": 5704
+      "turnover": 67955.92,
+      "volume": 7050
     },
     "SMER": {
-      "price": 15.2,
+      "price": 15.1,
       "suspended": null,
-      "turnover": 11340.5,
-      "volume": 746
+      "turnover": 108445.1,
+      "volume": 7188
     },
     "SMWF": {
       "price": 914,
       "suspended": null,
-      "turnover": 104191,
-      "volume": 114
+      "turnover": 33084,
+      "volume": 36
     },
     "TCL": {
       "price": 1.12,
@@ -394,54 +394,54 @@
       "volume": null
     },
     "TOTL": {
-      "price": 44.15,
+      "price": 45.1,
       "suspended": null,
-      "turnover": 181146.4,
-      "volume": 4105
+      "turnover": 146289.9,
+      "volume": 3243
     },
     "TPSE": {
-      "price": 17.1,
+      "price": 16.95,
       "suspended": null,
-      "turnover": 3595.8,
-      "volume": 210
+      "turnover": 2945.6,
+      "volume": 174
     },
     "TRFC": {
-      "price": 1.34,
+      "price": 1.31,
       "suspended": null,
-      "turnover": 1340,
-      "volume": 1000
+      "turnover": 18340,
+      "volume": 14000
     },
     "UCHM": {
-      "price": 1.29,
+      "price": 1.28,
       "suspended": null,
-      "turnover": 38312.36,
-      "volume": 29811
+      "turnover": 62046.69,
+      "volume": 48483
     },
     "UMME": {
-      "price": 5.92,
+      "price": 5.86,
       "suspended": null,
-      "turnover": 44957.4,
-      "volume": 7587
+      "turnover": 69669.06,
+      "volume": 11877
     },
     "UNGA": {
-      "price": 34,
+      "price": 33.95,
       "suspended": null,
-      "turnover": 92257.6,
-      "volume": 2713
+      "turnover": 14085.5,
+      "volume": 415
     },
     "WTK": {
-      "price": 154,
+      "price": 153.25,
       "suspended": null,
-      "turnover": 7451838.5,
-      "volume": 48379
+      "turnover": 292854.5,
+      "volume": 1910
     },
     "XPRS": {
-      "price": 7.3,
+      "price": 7.74,
       "suspended": null,
-      "turnover": 50032.3,
-      "volume": 6859
+      "turnover": 114902.76,
+      "volume": 14855
     }
   },
   "source": "nse",
-  "trade_date": "2026-11-25"
+  "trade_date": "2026-11-26"
 }
