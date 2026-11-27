@@ -2,40 +2,40 @@
 
 > **Not financial advice.** This report is generated automatically from public data and fixed rules. It is not financial advice, an offer, or a recommendation to buy or sell any security. Figures can be wrong or stale. Verify everything against company filings and consult a licensed adviser before investing.
 
-Monthly rebalance from 2019-06-01 to 2026-11-01 (89 months). At each date the engine only sees annual results published by then and the CBK T-bill rates published before each month start (the Buy hurdle uses the 364-day rate; cash earns the 91-day rate after 15% tax).
+Monthly rebalance from 2019-06-01 to 2026-11-27 (90 months). At each date the engine only sees annual results published by then and the CBK T-bill rates published before each month start (the Buy hurdle uses the 364-day rate; cash earns the 91-day rate after 15% tax).
 
 ## Result
 
-**The Buy rule did not clearly beat or trail the covered stocks weighted by company size: 11.1% a year against 12.8% after trading costs, with a worst fall of -8.2% against -47.7%. The 95% range for the yearly difference is -17.4 points to +10.4 points.**
+**The Buy rule did not clearly beat or trail the covered stocks weighted by company size: 11.1% a year against 12.6% after trading costs, with a worst fall of -8.2% against -47.7%. The 95% range for the yearly difference is -17.2 points to +11.3 points.**
 
 | Strategy | Return a year after costs | Before costs | Volatility | Worst fall | Turnover a year |
 |---|---|---|---|---|---|
-| Buy rule (T-bills when there is no Buy) | 11.1% | 15.0% | 7.4% | -8.2% | 1.90x |
-| Top 3 by research score | 16.0% | 32.2% | 23.5% | -52.4% | 7.15x |
-| Covered stocks, weighted by company size | 12.8% | 13.2% | 22.4% | -47.7% | 0.21x |
-| Covered stocks, equal weights | 20.2% | 21.7% | 17.5% | -25.8% | 0.68x |
-| NASI, all listed shares (price only, no dividends or costs) | 6.4% | 6.4% | 20.2% | -51.4% | n/a |
+| Buy rule (T-bills when there is no Buy) | 11.1% | 15.0% | 7.4% | -8.2% | 1.87x |
+| Top 3 by research score | 15.6% | 31.9% | 23.4% | -52.4% | 7.16x |
+| Covered stocks, weighted by company size | 12.6% | 13.0% | 22.3% | -47.7% | 0.21x |
+| Covered stocks, equal weights | 19.8% | 21.3% | 17.5% | -25.8% | 0.68x |
+| NASI, all listed shares (price only, no dividends or costs) | 6.4% | 6.4% | 20.1% | -51.4% | n/a |
 | 91-day T-bills after tax | 8.1% | 8.1% | n/a | 0.0% | 0.00x |
 
 - Every strategy starts in cash and pays 1.82% per side on the weight it trades, including the first purchase and monthly rebalancing. Dividends stay invested until the next rebalance.
-- The Buy rule held stocks in **15 of 89** months. In those months it earned 4.10% a month before costs and 2.95% after, against 2.83% for the size-weighted basket.
+- The Buy rule held stocks in **15 of 90** months. In those months it earned 4.10% a month before costs and 2.95% after, against 2.83% for the size-weighted basket.
 - The T-bill hurdle never blocked a stock that passed the valuation checks, even when 364-day bills paid 17.0%.
 
 ## Benchmark check
 
-The size-weighted covered basket, price only, returned 7.0% a year against 6.4% for NASI: a gap of +0.5 points and a tracking error of 4.6%. **Passed** (limits: 1.5% gap, 6.0% tracking error). A close match means the 16 covered stocks stand in reasonably for the whole market.
+The size-weighted covered basket, price only, returned 6.8% a year against 6.4% for NASI: a gap of +0.5 points and a tracking error of 4.6%. **Passed** (limits: 1.5% gap, 6.0% tracking error). A close match means the 16 covered stocks stand in reasonably for the whole market.
 
 ## What a fixed mix would have become
 
-KES 250,000 invested on 2019-06-01 in the size-weighted covered basket and 91-day T-bills, rebalanced monthly after costs. KES 250,000 is the smallest round amount that buys whole shares of every covered stock at today's weights with under 1% left over.
+KES 100,000 invested on 2019-06-01 in the size-weighted covered basket and 91-day T-bills, rebalanced monthly after costs. KES 100,000 is the smallest round amount that buys whole shares of every covered stock at today's weights with under 1% left over.
 
-| Mix | Value on 2026-11-01 | Return a year | Worst fall |
+| Mix | Value on 2026-11-27 | Return a year | Worst fall |
 |---|---|---|---|
-| 0% stocks, 100% T-bills | KES 446,556 | 8.1% | 0.0% |
-| 25% stocks, 75% T-bills | KES 493,070 | 9.6% | -5.0% |
-| 50% stocks, 50% T-bills | KES 537,248 | 10.9% | -21.0% |
-| 75% stocks, 25% T-bills | KES 577,374 | 11.9% | -35.5% |
-| 100% stocks, 0% T-bills | KES 609,905 | 12.8% | -47.7% |
+| 0% stocks, 100% T-bills | KES 179,732 | 8.1% | 0.0% |
+| 25% stocks, 75% T-bills | KES 197,880 | 9.5% | -5.0% |
+| 50% stocks, 50% T-bills | KES 215,016 | 10.7% | -21.0% |
+| 75% stocks, 25% T-bills | KES 230,471 | 11.8% | -35.5% |
+| 100% stocks, 0% T-bills | KES 242,850 | 12.6% | -47.7% |
 
 These illustrate fixed rules and are the same for every reader. They are not a recommended mix.
 
@@ -45,28 +45,29 @@ Each rule below is frozen and compared with the size-weighted basket. None chang
 
 | Experiment | Return a year | Gain over basket | 95% range | Signal months | Gain at 2.10% | Live months | Status |
 |---|---|---|---|---|---|---|---|
-| Covered basket with Buy stocks at double weight | 12.8% | 0.0 points | -0.4 points to +0.6 points | 15 | -0.1 points | 0 | Not adopted (0 of 4 checks met) |
-| Covered basket without stocks priced above their high fair value | 17.3% | +3.7 points | -6.9 points to +13.6 points | 89 | +3.3 points | 0 | Not adopted (2 of 4 checks met) |
-| Buy rule that keeps a stock until it reaches its base fair value | 23.7% | +8.0 points | -5.1 points to +21.0 points | 30 | +7.7 points | 0 | Not adopted (2 of 4 checks met) |
-| Buy-stock tilt, rebalanced every three months | 12.7% | -0.1 points | -0.4 points to +0.2 points | 2 | -0.1 points | 0 | Not adopted (0 of 4 checks met) |
+| Covered basket with Buy stocks at double weight | 12.6% | 0.0 points | -0.4 points to +0.5 points | 15 | -0.1 points | 0 | Not adopted (0 of 4 checks met) |
+| Covered basket without stocks priced above their high fair value | 17.0% | +3.6 points | -6.3 points to +13.6 points | 90 | +3.2 points | 0 | Not adopted (2 of 4 checks met) |
+| Buy rule that keeps a stock until it reaches its base fair value | 23.5% | +8.0 points | -4.9 points to +20.8 points | 30 | +7.7 points | 0 | Not adopted (2 of 4 checks met) |
+| Buy-stock tilt, rebalanced every three months | 12.5% | -0.1 points | -0.4 points to +0.2 points | 2 | -0.1 points | 0 | Not adopted (0 of 4 checks met) |
 
 Both halves of this history have already been seen, so a split-half result could only veto a rule. The live shadow log is the only untouched test: it began in 2026-11.
 
 ## Limitations
 
-- Cash earned between 5.3% (2020-09-01) and 14.2% (2024-04-01) a year after tax. Each month uses the previous month's CBK figure.
+- Cash earned between 5.3% (2020-09-01) and 14.2% (2024-04-01) a year after tax. Each month uses the previous month's CBK figure; 1 month(s) carried an older figure forward.
 - The 10-year bond yield, risk premiums and taxes are today's values, so valuations stay provisional until dated versions are sourced.
 - The universe is today's 16 covered stocks, so delisted and failed counters are missing (survivorship bias). The NASI check above bounds the effect on the size-weighted basket.
 - Size weights use full market value from published share counts, not free float, so majority-owned companies weigh more than an index fund could hold. Share counts for DTK, EQTY, IMH, KCB were backfilled from their earliest sourced filing for months before it, rebased for bonus issues and splits.
 - 89 of 144 fundamentals periods use the CMA filing deadline as their publication date. That is later than the real release for companies that report early, but it is look-ahead for any company that filed late. 53 period(s) with a stated release date, including known late filings, use that date instead.
 - Liquidity and suspension screens are off because historical volume and suspension data are not stored.
 - Small trades can cost more than the base rate, and whole-share rounding is ignored after the start.
-- 89 months of one market make every figure noisy. Treat them as a sanity check, not a forecast.
+- 90 months of one market make every figure noisy. Treat them as a sanity check, not a forecast.
 
 ## Holdings by month
 
 | Month | Buys | Buy rule | Size-weighted | Equal | NASI | Cash rate | Hurdle |
 |---|---|---|---|---|---|---|---|
+| 2026-11-01 | cash | 0.6% | -0.5% | -0.7% | 0.0% | 7.45% | 12.70% |
 | 2026-10-01 | cash | 0.6% | -6.4% | -4.6% | -3.0% | 7.45% | 12.70% |
 | 2026-09-01 | cash | 0.6% | -2.1% | -0.7% | -2.3% | 7.46% | 12.68% |
 | 2026-08-01 | cash | -1.2% | 8.0% | 8.3% | 5.7% | 7.48% | 12.67% |
