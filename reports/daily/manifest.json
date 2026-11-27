@@ -1,6 +1,6 @@
 {
   "as_of": "2026-11-28",
-  "generated": "2026-11-27T21:55:52+00:00",
+  "generated": "2026-11-27T22:42:12+00:00",
   "ledger": {
     "code_sha": "a273ecf99705",
     "date": "2026-11-28",
@@ -9,6 +9,6 @@
     "rows": 16,
     "sha256": "8804ae26e3bd3fac9a8ff6cc8e401c92cce76675e567ac552f229abb799e8a23"
   },
-  "revision": "d5ce18fcf588114d8a40",
-  "snapshot": "snapshots/d5ce18fcf588114d8a40.json"
+  "revision": "20231febec7d30be2563",
+  "snapshot": "snapshots/20231febec7d30be2563.json"
 }
